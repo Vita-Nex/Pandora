@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Caption="Client">
+  <LeftObject xsi:type="MultiCommandDef" DefaultIndex="4">
+    <Commands>
+      <anyType xsi:type="MenuCommand" Caption="Props" Command="Props" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Bank" Command="Bank" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Skills" Command="Skills" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="View Equip" Command="ViewEquip" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Client" Command="Client" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Guild Props" Command="GuildProps" UsePrefix="true" />
+    </Commands>
+  </LeftObject>
+</ButtonDef>

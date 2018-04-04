@@ -1,0 +1,443 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>MapViewer Control</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<style type="text/css"> 
+		<!--
+		table.d1
+		{
+			background: #f5f9fc;
+			border-width: 1px;
+			border-color: #000000;
+			border-style: solid;
+		}
+
+		table.d5
+		{
+			background: ;
+			border-width: 1px;
+			border-color: #000000;
+			border-style: solid;
+			border-top-width: none;
+			border-top-color: none;
+			border-top-style: none;
+		}
+
+		table.d2
+		{
+			background: #f5f9fc;
+			border-width: 1px;
+			border-color: #000000;
+			border-style: solid;
+		}
+
+		table.d3
+		{
+			background: #000000;
+			border-width: 0px;
+			border-color: #000000;
+			border-style: solid;
+		}
+
+		table.d4
+		{
+			background: ;
+			border-width: 1px;
+			border-color: #000000;
+			border-style: solid;
+			border-bottom-width: none;
+			border-bottom-color: none;
+			border-bottom-style: none;
+		}
+
+		.ne
+		{
+			font-family: tahoma;
+			font-size: 11px;
+			color: #000000;
+		}
+
+		.date
+		{
+			font-family: tahoma;
+			font-size: 11px;
+			color: #FFFFFF;
+		}
+
+		.no
+		{
+			font-family: verdana;
+			font-size: 9px;
+			color: #000000;
+		}
+
+		.tx
+		{
+			font-family: tahoma;
+			font-size: 10px;
+			border: 1px;
+			border-style: solid;
+			border-color: #000000;
+		}
+	--></style>
+</head>
+<body>
+<!--IMAGE HEADER-->
+<table class="d4" cellspacing="0" cellpadding="0" width="603" align="center">
+	<tr>
+		<td>
+			<table cellpadding="0" cellspacing="0">
+				<tr>
+					<td bgcolor="#acc6dd" class="ne" width="603" height="103">
+						<table class="d2" align="center">
+							<tr>
+								<td width="580" height="88" class="ne">
+									<div align="center">
+										<p>
+											<b>
+												<font size="+1">. :</font>
+											</b> <font size="+2">MapViewer Control </font><font size="+1">
+												<b>: .</b>
+											</font><br>
+											<span class="no"> Version 2.0.0.0</span>
+										</p>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!--END IMAGE HEADER-->
+<!--START OF NAVIGATION-->
+<table class="d3" cellspacing="0" cellpadding="0" width="603" align="center">
+	<tr>
+		<td>
+			<table width="100%" cellpadding="2" cellspacing="1">
+				<tr>
+					<td bgcolor="#41729e" class="ne" width="20" height="18">&nbsp;</td>
+					<td height="18" bgcolor="#ffffff" class="ne">&nbsp;</td>
+					<td bgcolor="#41729e" class="ne" width="20" height="18">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!--END OF NAVIGATION-->
+<table class="d5" cellspacing="0" cellpadding="0" width="603" align="center">
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td bgcolor="#acc6dd" class="ne" width="603" height="603">
+<table class="d2" align="center">
+<tr>
+<td width="580" height="580" valign="top">
+<table width="580">
+<tr>
+<td height="500" valign="top">
+<br>
+<br>
+<table summary="" class="d3" width="75%" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td height="17" valign="top">
+			<table width="100%" height="100%" cellpadding="2" cellspacing="1" class="d3" summary="">
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne">
+						&nbsp;<b>. :</b> General
+						Information
+					</td>
+					<td bgcolor="#41729e" width="50" height="17" class="ne">
+						<div align="right"></div>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" width="100%" height="17" class="ne" colspan="2">
+						This control provides functionality similar to the well known UOMap.ocx ActiveX
+						control. The main difference between UOMap and MapViewer is the type of
+						control. MapViewer is a C# control, making it somewhat more reliable because
+						you're sure your application is going to use exactly the version you used when
+						programming.
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne" colspan="2">
+						&nbsp;<b>: .</b>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<br>
+<table summary="" class="d3" width="75%" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td height="17" valign="top">
+			<table width="100%" height="100%" cellpadding="2" cellspacing="1" class="d3" summary="">
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne">
+						&nbsp;<b>. :</b> Using the
+						control
+					</td>
+					<td bgcolor="#41729e" width="50" height="17" class="ne">
+						<div align="right"></div>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" width="100%" height="17" class="ne" colspan="2">
+						<p>
+							I am not going to provide detailed information on the use of this control
+							because if you're going to use it, you most likely know what you're doing
+							already ;) You can use this control as any other control in a development
+							environment as Visual Studio. Just add it to your project and drag it to your
+							form.
+						</p>
+						<p>
+							Make sure that when you reference the control inside your project, the
+							MapViewer.xml file is in the same folder as the dll. This will add the
+							IntelliSense functionality which provides you with a short explanation of all
+							the available classes, methods and properties.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne" colspan="2">
+						&nbsp;<b>: .</b>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<br>
+<table summary="" class="d3" width="75%" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td height="17" valign="top">
+			<table width="100%" height="100%" cellpadding="2" cellspacing="1" class="d3" summary="">
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne">
+						&nbsp;<b>. :</b> Draw
+						Objects
+					</td>
+					<td bgcolor="#41729e" width="50" height="17" class="ne">
+						<div align="right"></div>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" width="100%" height="17" class="ne" colspan="2">
+						<p>
+							You can add
+							your own custom objects on the map surface by creating a class that implements
+							the TheBox.MapViewer.DrawObjects.IMapDrawable interface which is composed of
+							two methods:
+						</p>
+						<ul>
+							<li>
+							bool IsVisible( Rectangle bounds, Maps map );
+							<li>
+								void Draw( Graphics g, MapViewInfo ViewInfo );
+							</li>
+						</ul>
+						<p>
+							The IsVisible method determines if the object is visible for the current view of
+							the map. the bounds parameter is a rectangle in map coordinates that specifies
+							the map area visible on the control. map is an enumeration value specifying
+							which map is currently displayd.
+						</p>
+						<p>
+							The Draw method implements the actual drawing and is called only when IsVisible
+							returns true. The MapViewInfo class provides access to the logic governing the
+							control surface and its mapping into map coordinates. It provides methods to
+							convert points and distances from map coordinates to control coordinates and
+							vice versa. Implementation of this method is strictly dependant on the type of
+							object you're drawing. I might add some examples to the documentation if
+							there's such a request.
+						</p>
+						<p>
+							The control includes a few basic objects you can already use. They are located
+							in the TheBox.MapViewer.DrawObjects namespace and they are a rectangle, a
+							circle and a cross. I might add more in future releases.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne" colspan="2">
+						&nbsp;<b>: .</b>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<br>
+<table summary="" class="d3" width="75%" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+		<td height="17" valign="top">
+			<table width="100%" height="100%" cellpadding="2" cellspacing="1" class="d3" summary="">
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne">
+						&nbsp;<b>. :</b> Bug
+						reports and support
+					</td>
+					<td bgcolor="#41729e" width="50" height="17" class="ne">
+						<div align="right"></div>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" width="100%" height="17" class="ne" colspan="2">
+						All support
+						for this program is provided through <a href="http://arya.runuo.com/">The Box</a>
+						website.
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#acc6dd" width="198" height="17" class="ne" colspan="2">
+						&nbsp;<b>: .</b>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<br> <table width="75%" height="10%" align="center" cellpadding="2" cellspacing="1" class="d3" summary="">
+	<tr>
+		<td width="198" height="21" bgcolor="#acc6dd" class="ne">&nbsp;<b>. :</b> Requirements </td>
+		<td bgcolor="#41729e" width="50" class="ne">
+			<div align="right"></div>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#ffffff" width="100%" height="17" class="ne" colspan="2">
+			<p>MapViewer is a .NET control, therefore it requires the .NET Framework redistributable (version 1.1) installed on the target system to operate.</p>
+			<p>Since version 2.0 MapViewer also requires the &quot;Box Common Library&quot; (BoxCL.dll) to be present in the MapViewer.dll folder (or in your application folder if you're re-using code). The BoxCL.dll library provides the MulManager class used to manage the location of UO files. If you don't want to use BoxCL.dll you'll have to write your own file location routines. The source of BoxCL.dll is not being released for now, but an XML file for Intellisense will be provided. </p>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#acc6dd" width="198" height="17" class="ne" colspan="2">&nbsp;<b>: .</b> </td>
+	</tr>
+</table>
+<br>
+<table width="75%" height="801" align="center" cellpadding="0" cellspacing="0" class="d3" summary="">
+	<tr>
+		<td height="17" valign="top">
+			<table width="100%" height="100%" cellpadding="2" cellspacing="1" class="d3" summary="">
+				<tr>
+					<td bgcolor="#acc6dd" width="335" height="17" class="ne">
+						&nbsp;<b>. :</b> Version
+						History
+					</td>
+					<td bgcolor="#41729e" width="76" height="17" class="ne">
+						<div align="left">1.0.0.0</div>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" height="17" class="ne" colspan="2">
+						<p>
+							August 16, 2003 - First
+							release of the control. Functionalities implemented:
+						</p>
+						<ul>
+							<li>
+							All the main functionality needed to display the map
+							<li>
+							Zooming
+							<li>
+								Draw Objects (rectangle, circle and cross included) with support for user
+								created objects (must implement IMapDrawable)
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#acc6dd" height="17" class="ne">&nbsp;</td>
+					<td bgcolor="#41729e" height="17" class="ne">
+						<div align="left">1.0.1.0</div>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#ffffff" height="8" class="ne" colspan="2">
+						<p>
+							September 18 ,
+							2003
+						</p>
+						<ul>
+							<li>
+							Fixed an issue with the ClientPath property. If set to null it will now read
+							information from the registry. Make sure you ship your software with this
+							property set to null to avoid the users having to set the mul path manually.
+							null is considered as a default value meaning that the path will be retrieved
+							from the registry.
+							<li>
+							ClientPath is now validated in order to ensure that it contains the required
+							files. If the path is not valid, the previous value is not altered.
+							<li>
+								Exposed the Zoom property in the MapViewInfo object.
+							</li>
+						</ul>
+						<p>
+							<strong>NOTE</strong>: If you're upgrading existing software from 1.0.0.0 to
+							1.0.1.0, you have to remove or set to null your existing ClientPath value.
+						</p>
+						<p>&nbsp;</p>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#acc6dd" height="17" class="ne">&nbsp;</td>
+					<td bgcolor="#41729e" height="17" class="ne">
+						<div align="left">2.0.0.0</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" bgcolor="#ffffff" class="ne">
+						<p>May 13, 2004 </p>
+						<p>This new version of the MapViewer control is the one bundled with Pandora's Box 2 and comes with several new features.</p>
+						<ul>
+							<li><strong>Navigation</strong> property: allows you to use built in map navigation specifying which mouse button should be considered as the input for map movement (<strong>MapNavigation</strong> enumeration). </li>
+							<li><strong>WheelZoom</strong> property: allows you to use the mouse wheel to perform zooming in the map.</li>
+							<li><strong>MulManager</strong> and static <strong>MulFileManager</strong> properties. This is the new system used to locate UO files. The <strong>MulManager</strong> class is located in the BoxCL.dll library (aka Box Common Library) which allows the MulManager class to be created and managed in your application and then assigned to either the MapViewer object or class from your code. BoxCL.dll is a required component of the MapViewer and it will not function properly without it. If you're using the MapViewer source code you must add a reference to BoxCL.dll to your project, or write a new file managment. The source of BoxCL.dll will not be released at this time.</li>
+							<li>[Unsupported] <strong>ExtractMap()</strong> function: this function saves a JPEG image of a map to disk. This function hasn't been tested so is provided without support. Use at your own risk.</li>
+							<li>[Unsupported] <strong>RotateView</strong> property: this property allows to see the map rotated by 45&deg; making it similar to the radar map in the UO game window. Keep in mind that this mode required to load a much larger portion of the map therefore it may slow down the MapViewer performance. This feature can lead to unexpected results in certain cases (depending on the control size). If the result is not what you're expeting try changing your control width/height by 1 or 2 pixels.</li>
+							<li>ClientPath property removed: use MulManager.CustomFolder.</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#acc6dd" height="17" class="ne" colspan="2">
+						&nbsp;<b>: .</b>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<p>
+	<br>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<div align="center" class="ne">
+	<p>
+		this document is based on the fade out web templated create by clouser 2002©<br>
+		modified by Arya<br>
+		.: this machine will not communicate :.
+	</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Lights>
+	<Category name="BigSources">
+		<Light name="EastBig"></Light>
+		<Light name="NorthBig"></Light>
+		<Light name="NorthBig2"></Light>
+		<Light name="NorthEastBig"></Light>
+		<Light name="NorthWestBig2"></Light>
+		<Light name="NorthWestBig"></Light>
+		<Light name="SouthBig"></Light>
+		<Light name="SouthWestBig"></Light>
+		<Light name="WestBig2"></Light>
+		<Light name="WestBig"></Light>
+	</Category>
+	<Category name="Circular">
+		<Light name="Circle150"></Light>
+		<Light name="Circle225"></Light>
+		<Light name="Circle300"></Light>
+	</Category>
+	<Category name="Dark">
+		<Light name="DarkCircle300"></Light>
+		<Light name="DarkEast"></Light>
+		<Light name="DarkNorthWest"></Light>
+		<Light name="DarkSouth2"></Light>
+		<Light name="DarkSouth"></Light>
+		<Light name="DarkSouthEast"></Light>
+	</Category>
+	<Category name="Decoration">
+		<Light name="DecorationNorth"></Light>
+		<Light name="DecorationNorthEast"></Light>
+		<Light name="DecorationSouthWest"></Light>
+		<Light name="DecorationWest"></Light>
+	</Category>
+	<Category name="Doors">
+		<Light name="DoorEast"></Light>
+		<Light name="DoorOpenEast"></Light>
+		<Light name="DoorOpenSouth"></Light>
+		<Light name="DoorSouth"></Light>
+	</Category>
+	<Category name="Hole">
+		<Light name="HoleEast"></Light>
+		<Light name="HoleSouth"></Light>
+		<Light name="SmallHoleEast"></Light>
+		<Light name="SmallHoleSouth"></Light>
+	</Category>
+	<Category name="Miscellaneous">
+		<Light name="Moongate"></Light>
+		<Light name="Strips"></Light>
+	</Category>
+	<Category name="RoundWindows">
+		<Light name="ArchedWindowEast"></Light>
+		<Light name="ArchedWindowEastNoRay"></Light>
+		<Light name="ArchedWindowSouth"></Light>
+		<Light name="ArchedWindowSouthNoRay"></Light>
+		<Light name="SkinnyWindowEast"></Light>
+		<Light name="SkinnyWindowEastNoRay"></Light>
+		<Light name="SkinnyWindowSouthNoRay"></Light>
+	</Category>
+	<Category name="SmallSources">
+		<Light name="EastSmall"></Light>
+		<Light name="EastTiny"></Light>
+		<Light name="NorthEastSmall"></Light>
+		<Light name="NorthSmall"></Light>
+		<Light name="SouthSmall"></Light>
+		<Light name="SouthTiny"></Light>
+		<Light name="WestSmall"></Light>
+	</Category>
+	<Category name="SquareWindows">
+		<Light name="RectWindowEast"></Light>
+		<Light name="RectWindowEastNoRay"></Light>
+		<Light name="RectWindowSouth"></Light>
+		<Light name="RectWindowSouthNoRay"></Light>
+		<Light name="SquareWindowEast"></Light>
+		<Light name="SquareWindowEastNoRay"></Light>
+		<Light name="SquareWindowSouth"></Light>
+		<Light name="SquareWindowSouthNoRay"></Light>
+	</Category>
+</Lights>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Profile">
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="GenericNode" Name="Set Profiles">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Toggle" Command="SetProfiles" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Enable" Command="SetProfiles true" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Disable" Command="SetProfiles false" UsePrefix="true" />
+				</Elements>
+			</anyType>
+			<anyType xsi:type="MenuCommand" Caption="Count Objects" Command="CountObjects" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Dump Timers" Command="DumpTimers" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Profile Packets" Command="PacketProfiles" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Profile World" Command="ProfileWorld" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Profile Timers" Command="TimerProfiles" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Trace Internal" Command="TraceInternal" UsePrefix="true" />
+		</Items>
+	</LeftObject>
+</ButtonDef>

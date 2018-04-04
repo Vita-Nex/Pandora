@@ -1,0 +1,938 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BalloonWindow</name>
+    </assembly>
+    <members>
+        <member name="T:Rilling.Common.UI.Forms.GraphicsPathWindow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.#ctor">
+            <summary>
+            	Initialize a new, default, instance.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.OnBorderColorChanged(System.EventArgs)">
+            <summary>
+            	Raises the <see cref="F:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderColorChanged"/> event.
+            </summary>
+            <param name="e">
+            	Arguments passed to the event handler.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.OnBorderStyleChanged(System.EventArgs)">
+            <summary>
+            	Raises the <see cref="F:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderStyleChanged"/> event.
+            </summary>
+            	Arguments passed to the event handler.
+            <param name="e"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.OnBackStyleChanged(System.EventArgs)">
+            <summary>
+            	Raises the <see cref="F:Rilling.Common.UI.Forms.GraphicsPathWindow.BackStyleChanged"/> event.
+            </summary>
+            <param name="e">
+            	Arguments passed to the event handler.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.OnPathLayoutChanged(System.EventArgs)">
+            <summary>
+            	Raises the <see cref="F:Rilling.Common.UI.Forms.GraphicsPathWindow.PathLayoutChanged"/> event.
+            </summary>
+            <param name="e">
+            	Arguments passed to the event handler.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.PreparePath">
+            <summary>
+            	Calculates the shape of the window.  Each derived class should
+            	override this method and provide their own calculated shape.
+            </summary>
+            <returns>
+            	A <see cref="T:System.Drawing.Drawing2D.GraphicsPath"/> defining the window shape.
+            </returns>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.SetPath(System.Drawing.Drawing2D.GraphicsPath)">
+            <summary>
+            	Sets the path shape.
+            </summary>
+            <param name="path">
+            	A <see cref="T:System.Drawing.Drawing2D.GraphicsPath"/> defining the window shape.
+            </param>
+            <remarks>
+            	The <see cref="F:Rilling.Common.UI.Forms.GraphicsPathWindow.PathLayoutChanged"/> event will not fire if
+            	a reference to the set path is changed outside of this object.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.GetPath">
+            <summary>
+            	Gets the path shape.  If no path exists, then 
+            	<see cref="M:Rilling.Common.UI.Forms.GraphicsPathWindow.PreparePath"/> is called.
+            </summary>
+            <returns>
+            	A <see cref="T:System.Drawing.Drawing2D.GraphicsPath"/> defining the window shape.
+            </returns>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.GetPath(System.Boolean)">
+            <summary>
+            	Gets the path shape.  If no path exists, then 
+            	<see cref="M:Rilling.Common.UI.Forms.GraphicsPathWindow.PreparePath"/> is called.
+            </summary>
+            <param name="forceCalc">
+            	Pass true if the path shape should always be recalculated, even
+            	if cached, otherwise pass false.
+            </param>
+            <returns>
+            	A <see cref="T:System.Drawing.Drawing2D.GraphicsPath"/> defining the window shape.
+            </returns>
+            <remarks>
+            	If the shape is being forced to recalculate then the
+            	<see cref="F:Rilling.Common.UI.Forms.GraphicsPathWindow.PathLayoutChanged"/> event will fire even if no 
+            	actual changes to the path occured.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.ResetPath">
+            <summary>
+            	Clears any existing path.  Will force the derived class to 
+            	provide the shape again.
+            </summary>
+            <remarks>
+            	The <see cref="F:Rilling.Common.UI.Forms.GraphicsPathWindow.PathLayoutChanged"/> event will always fire the next
+            	time the path is aquired even if no actual changes where made.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            	Renders renders the balloon design.
+            </summary>
+            <param name="e"> 
+            	Arguments passed to the event handler.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.RegionFromPath(System.Drawing.Drawing2D.GraphicsPath)">
+            <summary>
+            	Translates a <see cref="T:System.Drawing.Drawing2D.GraphicsPath"/> object into a 
+            	<see cref="T:System.Drawing.Region"/> object.
+            </summary>
+            <param name="gp">
+            	The <see cref="T:System.Drawing.Drawing2D.GraphicsPath"/> that will become the windows shape.
+            </param>
+            <returns>
+            	A <see cref="T:System.Drawing.Region"/> defining the shape of the
+            	<see cref="T:System.Drawing.Drawing2D.GraphicsPath"/>.
+            </returns>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.GraphicsPathWindow.OnResize(System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.GraphicsPathWindow.FormBorderStyle">
+            <summary>
+            	Sets the style for the form.  This property should not
+            	be set when using this, or any inherited, classes.
+            </summary>
+        </member>
+        <member name="E:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderColorChanged">
+            <summary>
+            	Occurs when the value of the <see cref="P:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderColor"/> property
+            	changes.
+            </summary>
+        </member>
+        <member name="E:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderStyleChanged">
+            <summary>
+            	Occurs when the value of the <see cref="P:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderStyle"/> property
+            	changes.
+            </summary>
+        </member>
+        <member name="E:Rilling.Common.UI.Forms.GraphicsPathWindow.BackStyleChanged">
+            <summary>
+            	Occurs when the value of the <see cref="P:Rilling.Common.UI.Forms.GraphicsPathWindow.BackStyle"/> property
+            	changes.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderColor">
+            <summary>
+            	Sets or retreives the border color.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderStyle">
+            <summary>
+            	Sets or retreives the border style.  Takes precedence over
+            	<see cref="P:Rilling.Common.UI.Forms.GraphicsPathWindow.BorderColor"/> when set.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.GraphicsPathWindow.BackStyle">
+            <summary>
+            	Sets or retrieves the background style.  Takes presedence over
+            	<see cref="!:BackColor"/> when set.
+            </summary>
+        </member>
+        <member name="E:Rilling.Common.UI.Forms.GraphicsPathWindow.PathLayoutChanged">
+            <summary>
+            	Occurs when the the window shape has changes.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.#ctor">
+            <summary>
+            	Initialize a new, default, instance.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.ShowShadow">
+            <summary>
+            	Displays a shadow is one is not already displayed.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.HideShadow">
+            <summary>
+            	Removes the shadow if one is currently displayed.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.OnVisibleChanged(System.EventArgs)">
+            <summary>
+            	Synchs the state of the shadow with the window's visible state.
+            </summary>
+            <param name="e">
+            	Parameter containing event information.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.OnLoad(System.EventArgs)">
+             <summary>
+            		The shadow should be initialized if one is required.
+             </summary>
+             <param name="e">
+            		Parameter containing event information.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.OnMove(System.EventArgs)">
+            <summary>
+            	Ensures that the shadow follows its parent.
+            </summary>
+            <param name="e">
+            	Parameter containing event information.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.OnResize(System.EventArgs)">
+            <summary>
+            	Ensures that the shadow follows its parent.
+            </summary>
+            <param name="e">
+            	Parameter containing event information.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.Dispose(System.Boolean)">
+            <summary>
+            	Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.BindShadowToOwner(Rilling.Common.UI.Forms.ShadowedWindow.Projection,Rilling.Common.UI.Forms.GraphicsPathWindow)">
+            <summary>
+            	Connect the window and its shadow.
+            </summary>
+            <param name="shadowWindow">
+            	The window's shadow.
+            </param>
+            <param name="owningWindow">
+            	The window that owns the shadow.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.CreateShadowProjection">
+            <summary>
+            	Initializes a new shadow projects for this window.
+            </summary>
+            <returns>
+            	The shadow projection for the window.
+            </returns>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.ShadowedWindow.ShadowColor">
+            <summary>
+            	Sets or retrieves the color of the shadow.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.ShadowedWindow.ShadowMargin">
+            <summary>
+            	Sets or retrieves the distance the shadow extends.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.ShadowedWindow.Shadow">
+            <summary>
+            	Sets or retrieves whether the shadow should be displayed.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.Projection.SetBitmap(System.Drawing.Bitmap)">
+            <summary>
+            	Changes the current bitmap.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.ShadowedWindow.Projection.SetBitmap(System.Drawing.Bitmap,System.Byte)">
+            <para>Changes the current bitmap with a custom opacity level.  Here is where all happens!</para>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.CLOSEBOX_DISTANCE_FROM_EDGE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.Show(System.Drawing.Point)">
+            <summary>
+            	Shows the balloon and anchors it to the given point.
+            </summary>
+            <param name="pt">
+            	The point the anchor will occupy, in screen coordinates.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.Show(System.Drawing.Rectangle)">
+            <summary>
+            	Shows the balloon and anchors it to the given rectangle.
+            </summary>
+            <param name="rect">
+            	The rectangle the anchor will occupy, in screen coordinates.
+            </param>
+            <remarks>
+            	If <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AllowObscure"/> is true, the anchor will be 
+            	centered in the rectangle, otherwise it will be anchored to a point
+            	outside the rectangle.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.Show(System.Windows.Forms.Control)">
+            <summary>
+            	Shows the balloon and anchors it to the given control.
+            </summary>
+            <param name="control">
+            	The control the anchor will occupy.
+            </param>
+            <remarks>
+            	If <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AllowObscure"/> is true, the anchor will be 
+            	centered in the control, otherwise it will be anchored to a point
+            	outside the control bounds.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.MoveAnchorTo(System.Drawing.Rectangle)">
+            <summary>
+            	Moves the anchor to the specified rectangle.
+            </summary>
+            <param name="rect">
+            	The rectangle the anchor will occupy, in screen coordinates.
+            </param>
+            <remarks>
+            	If <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AllowObscure"/> is true, the anchor will be 
+            	centered in the rectangle, otherwise it will be anchored to a point
+            	outside the rectangle.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.MoveAnchorTo(System.Windows.Forms.Control)">
+            <summary>
+            	Moves the anchor to the specified control.
+            </summary>
+            <param name="control">
+            	The control the anchor will occupy.
+            </param>
+            <remarks>
+            	If <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AllowObscure"/> is true, the anchor will be 
+            	centered in the control, otherwise it will be anchored to a point
+            	outside the control bounds.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.MoveAnchorTo(System.Drawing.Point)">
+            <summary>
+            	Moves the anchor to specified point.
+            </summary>
+            <param name="point">
+            	The point the anchor will occupy, in screen coordinates.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.MoveAnchorTo(System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            	Moves the anchor to specified point.
+            </summary>
+            <param name="point">
+            	The point the anchor will occupy, in screen coordinates.
+            </param>
+            <param name="pivot">
+            	A focal (pivot) point is used when the balloon cannot fit on 
+            	the screen.  When the balloon is moved, the distance
+            	between the anchor and the pivot is maintained.  Useful when
+            	auto-orientation is set.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.MoveAnchorTo(System.Int32,System.Int32)">
+            <summary>
+            	Moves the anchor to the specified X and Y coordinates.
+            </summary>
+            <param name="x">
+            	The horizontal coordinate.
+            </param>
+            <param name="y">
+            	The vertical coordinate.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.OffsetAnchorBy(System.Int32,System.Int32)">
+            <summary>
+            	Shifts the anchor by  <paramref name="dx"/> and 
+            	<paramref name="dy"/>.
+            </summary>
+            <param name="dx">
+            	The horizontal delta.
+            </param>
+            <param name="dy">
+            	The vertical delta.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.OffsetAnchorBy(System.Drawing.Size)">
+            <summary>
+            	Shifts the anchor by the dimensions specified in 
+            	<paramref name="size"/>.
+            </summary>
+            <param name="size">
+            	Specifies the horizontal and vertical offsets.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.RecalcLayout">
+            <summary>
+            	Recalculates the balloon layout based on the balloon's current 
+            	state.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.RecalcLayout(Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout,Rilling.Common.UI.Forms.BalloonWindow.LayoutInfo)">
+            <summary>
+            	Recalculates the balloon layout. 
+            </summary>
+            <param name="layout">
+            	The <see cref="T:Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout"/> object used to calculate the layout.
+            </param>
+            <param name="layoutInfo">
+            	The state that the layout will be set to.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.GetAnchorLayout(Rilling.Common.UI.Forms.AnchorQuadrant@,System.Int32@,System.Drawing.Point)">
+            <summary>
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/> and <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorOffset"/> are
+            	dependent properties when auto-orientation is enabled.  This method
+            	makes sure to take both into account when determining property
+            	layout state.
+            </summary>
+            <param name="quadrant">
+            	The <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/> state for the balloon.
+            </param>
+            <param name="offset">
+            	The <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorOffset"/> state for the balloon.
+            </param>
+            <param name="pivot">
+            	The pivot by which the balloon will be flipped, if necessary.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.TimeoutCallback(System.Object)">
+            <summary>
+            	Callback for when the timeout countdown as elapsed.
+            </summary>
+            <param name="state">
+            	Will always be 'null'.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.ShowCloseBox">
+            <summary>
+            	
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.HideCloseBox">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.CloseBoxHandler(System.Object,System.EventArgs)">
+            <summary>
+            	Handler for when the user clicks the close box.
+            </summary>
+            <param name="sender">
+            	A reference to the close box.
+            </param>
+            <param name="e">
+            	The arguments passed to the event handler.
+            </param>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__baseAnchorQuadrant">
+            <summary>
+            	Stores the quadrant used initially when 
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/> is set to
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/>.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__cb">
+            <summary>
+            	Stores a reference to the close box on the balloon.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__baseAnchorOffset">
+            <summary>
+            	Stores the offset used initially when
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorOffset"/> is -1.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__anchorQuadrant">
+            <summary>
+            	Stores the quadrant the anchor will display in.  Specify
+            	<see cref="!:AnchorQuadrent.Auto"/> to allow the system to 
+            	determine the appropriate position based on anchor position and
+            	balloon size.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__anchorOffset">
+            <summary>
+            	Stores the anchor tip offset from the left or top of the
+            	quadrent.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__timeout">
+            <summary>
+            	Stores the number of milliseconds before a balloon will be hidden.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__anchorMargin">
+            <summary>
+            	Stores the distance between the anchor tip and the balloon 
+            	border.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__cornerRadius">
+            <summary>
+            	Stores the radius for the balloon corners.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__showCloseBox">
+            <summary>
+            	Stores whether the close box should be displayed.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__dismissTimer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__obscure">
+            <summary>
+            	
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__targetControl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__lockAnchor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.#ctor">
+            <summary>
+            	Initialize a new instance.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.HideAndTrack">
+            <summary>
+            	Hide the balloon but maintains maintains the event handlers.
+            </summary>
+            <remarks>
+            	Used when a balloon is already visible but the target control
+            	is removed from the screen.  For example, if the form is moved
+            	and the control is no longer within the display.  When the form
+            	is moved back, and the control is again visible, the balloon
+            	will appear.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.UnregisterLayoutTracking(System.Windows.Forms.Control)">
+            <summary>
+            	Removes event handler registration for Move and Resize events.
+            </summary>
+            <param name="control">
+            	Target control to watch.
+            </param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.RegisterLayoutTracking(System.Windows.Forms.Control)">
+            <summary>
+            	Adds event handler registration for Move and Resize events.
+            </summary>
+            <param name="control">
+            	Target control to watch.
+            </param>
+            <remarks>
+            	Must watch the events for all container controls as well.
+            </remarks>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.TrackLayoutHandler(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.BalloonWindow.__targetPivot">
+            <summary>
+            	
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant">
+            <summary>
+            	Sets or retrieves the quadrant the anchor will be displayed in
+            	as defined by the <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/> enumeration.
+            </summary>
+            <remarks>
+            	When <see cref="!:AnchorQuadrent.Auto"/> is set, 
+            	<see cref="T:Rilling.Common.UI.Forms.BalloonWindow"/> will calculate the quadrant to 
+            	ensure the best placement for the anchor based on its position on
+            	the screen to ensure the balloon remains entirly visible on the 
+            	screen, when possible.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrantBase">
+            <summary>
+            	The base anchor quadrant for the balloon.
+            </summary>
+            <remarks>
+            	<p>
+            	The base anchor quadrant allows the client to indicate the starting
+            	quadrant when <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/> is set to 
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/>.  This must be set prior to the 
+            	the first display of the balloon.  This property is ignored after
+            	the balloon is first displayed.
+            	</p>
+            	<p>
+            	The value cannot be set to <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/>.
+            	</p>
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrantEx">
+            <summary>
+            	Retrieves the anchor quadrant location.
+            </summary>
+            <remarks>
+            	This is necessary because the client can set the value of 
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/> to <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/>
+            	which makes no sense when calculating the layout.  The actual 
+            	quadrant, as used by the layout, is returned.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorOffset">
+            <summary>
+            	Sets or retrieves the increasing distance along the anchor quadrant
+            	edge where the anchor tip will be positioned.
+            </summary>
+            <remarks>
+            	<p>
+            	When the value is -1, <see cref="T:Rilling.Common.UI.Forms.BalloonWindow"/> will calculate the
+            	offset based on the balloon's screen position.  When the value is -2,
+            	the anchor will maintain a center position.
+            	</p>
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorOffsetBase">
+            <summary>
+            	The base anchor offset for the balloon.
+            </summary>
+            <remarks>
+            	<p>
+            	The base anchor offset allows the client to indicate the starting
+            	offset when <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorOffset"/> is set to -1.
+            	This must be set prior to the 
+            	the first display of the balloon.  This property is ignored after
+            	the balloon is first displayed.
+            	</p>
+            	<p>
+            	The value cannot be set to -1.
+            	</p>
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorOffsetEx">
+            <summary>
+            	Retrieves the anchor offset location.
+            </summary>
+            <remarks>
+            	This is necessary because the client can set the value of 
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/> to <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorQuadrant"/>
+            	which makes no sense when calculating the layout.  The actual 
+            	quadrant, as used by the layout, is returned.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorMargin">
+            <summary>
+            	Sets or retrieves the distance the anchor tip extends from the 
+            	balloon border.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorMarginEx">
+            <summary>
+            	Used internally to detemine the actual margin the layout will use.
+            </summary>
+            <remarks>
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorMargin"/> is a constrained property.  This means
+            	the client can set the property to any value, but then the layout
+            	is calculated, the actual value used will be dependent on other
+            	factors such as the size of the balloon.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.CornerRadius">
+            <summary>
+            	Sets or retrieves the radius, in degrees, for the balloon
+            	corners.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.CornerRadiusEx">
+            <summary>
+            	Used internally to detemine the radius the layout will use.
+            </summary>
+            <remarks>
+            	<see cref="P:Rilling.Common.UI.Forms.BalloonWindow.CornerRadius"/> is a constrained property.  This means
+            	the client can set the property to any value, but then the layout
+            	is calculated, the actual value used will be dependent on other
+            	factors such as the size of the balloon.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.Timeout">
+            <summary>
+            	Sets or retrieves the number of milliseconds that the balloon
+            	is visible.  After the time has elapsed, the balloon will hide.
+            </summary>
+            <remarks>
+            	To prevent the balloon from automatically closing, specify
+            	the value 0.
+            </remarks>
+            <remarks>
+            	When the time elaspes, the balloon is only hidden.  That means, 
+            	any resources the balloon was using are still in memory.  The 
+            	client must close and release the balloon.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.CloseBox">
+            <summary>
+            	Sets or retrieves whether the close box should be displayed.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.MoveWithTarget">
+            <summary>
+            	Sets or retrieves whether the the balloon should be repositioned
+            	when the target area is moved.
+            </summary>
+            <remarks>
+            	Only applicable when a control is specified as the target.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.TargetControl">
+            <summary>
+            	Sets or retrieves the control that the balloon will be anchored
+            	to.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AllowObscure">
+            <summary>
+            	Sets or retrieves whether the balloon is allowed to 
+            	overlap any part of the target region.
+            </summary>
+            <remarks>
+            	<p>
+            	When a balloon is allowed to overlap target areas, the anchor tip
+            	is centered in the visible region of that control or rectangle.  
+            	If overlaping is not allowed, the anchor tip is snapped to the edge
+            	of the control, preserving the anchor quadrant.
+            	</p>
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.AnchorPoint">
+            <summary>
+            	Sets or retrieves the <see cref="T:System.Drawing.Point"/> the anchor tip is 
+            	located at.
+            </summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout.RecalcLayout(System.Drawing.Rectangle)">
+            <summary>
+            	Calculates the border path for the balloon and anchor.
+            </summary>
+            <param name="rect">
+            	The <see cref="T:System.Drawing.Rectangle"/> constraining the returned
+            	<see cref="T:System.Drawing.Drawing2D.GraphicsPath"/>.
+            </param>
+            <returns>
+            	A <see cref="T:System.Drawing.Drawing2D.GraphicsPath"/> object containing shapes that
+            	define the balloon and anchor.
+            </returns>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout.AnchorPoint">
+            <summary>
+            	Retrieves the anchor point in screen coordinates.
+            </summary>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout.AnchorQuadrant">
+            <summary>
+            	Sets or retreives the quadrent the anchor will be displayed in.
+            	The quadrents can be Top, Bottom, Left, Right, or Auto.
+            </summary>
+            <remarks>
+            	When <see cref="P:Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout.AnchorQuadrant"/> is set, 
+            	<see cref="T:Rilling.Common.UI.Forms.BalloonWindow"/> will calculate the quadrent to 
+            	ensure the best placement for the anchor.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout.AnchorOffset">
+            <summary>
+            	Sets or retreives a value that indicates the number of pixels,
+            	from the top or left depending on the quadrent, that the anchor
+            	tip will be positioned at.
+            </summary>
+            <remarks>
+            	When <see cref="!:AnchorQuadrent"/> is either 
+            	<see cref="!:AnchorQuadrent.Top"/> or
+            	<see cref="!:AnchorQuadrent.Bottom"/>, the offset increases from
+            	left to right.  When <see cref="!:AnchorQuadrent"/> is either
+            	<see cref="!:AnchorQuadrent.Left"/> or
+            	<see cref="!:AnchorQuadrent.Right"/>, the offset increases from
+            	top to bottom.
+            </remarks>
+        </member>
+        <member name="P:Rilling.Common.UI.Forms.BalloonWindow.BalloonLayout.Path">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Rilling.Common.UI.Forms.AnchorQuadrant">
+            <summary>
+            	Enumeration the defines the possible location for the balloon's anchor.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.AnchorQuadrant.Top">
+            <summary>
+            	Identifies the top-most edge of the balloon.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.AnchorQuadrant.Bottom">
+            <summary>
+            	Identifies the bottom-most edge of the balloon.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.AnchorQuadrant.Left">
+            <summary>
+            	Identifies the left-most edge of the balloon.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.AnchorQuadrant.Right">
+            <summary>
+            	Identifies the right-most edge of the balloon.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.AnchorQuadrant.Auto">
+            <summary>
+            	Identifies <see cref="T:Rilling.Common.UI.Forms.BalloonWindow"/> will calculate the "best"
+            	quadrant based on the balloons position to ensure the 
+            	largest visible area is displayed on the screen.
+            </summary>
+        </member>
+        <member name="T:Rilling.Common.UI.Controls.CloseButton">
+            <summary>
+            Summary description for CloseButton.
+            </summary>
+        </member>
+        <member name="T:Rilling.Common.UI.Forms.ErrorManager">
+            <summary>
+            Summary description for ErrorManager.
+            </summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.HorizontalAutoScale">
+            <summary>Expands horizontal dimension allowing message to fit.</summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.VerticalAutoScale">
+            <summary>Expands vertical dimension allowing message to fit.</summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.ShowShadow">
+            <summary>Displays the shadow.</summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.AllowObscure">
+            <summary>Anchor is centered on target control.</summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.Timeout">
+            <summary>Dismisses the balloon after 10 seconds.</summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.All">
+            <summary></summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.None">
+            <summary></summary>
+        </member>
+        <member name="F:Rilling.Common.UI.Forms.MessageBalloonOptions.Default">
+            <summary></summary>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.Windows.Forms.Control)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.Drawing.Point)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="point"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.String,System.Windows.Forms.Control)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.String,System.Drawing.Point)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="point"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.String,System.Drawing.Icon,System.Windows.Forms.Control)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="icon"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.String,System.Drawing.Icon,System.Drawing.Point)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="icon"></param>
+            <param name="point"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.String,System.Drawing.Icon,Rilling.Common.UI.Forms.MessageBalloonOptions,System.Windows.Forms.Control)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="icon"></param>
+            <param name="options"></param>
+            <param name="control"></param>
+        </member>
+        <member name="M:Rilling.Common.UI.Forms.MessageBalloon.Show(System.String,System.String,System.Drawing.Icon,Rilling.Common.UI.Forms.MessageBalloonOptions,System.Drawing.Point)">
+            <summary>
+            	Displays a message balloon.
+            </summary>
+            <param name="message"></param>
+            <param name="title"></param>
+            <param name="icon"></param>
+            <param name="options"></param>
+            <param name="point"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,70 @@
+# -----------------------------------------------------------------
+# File name:  MAKEFILE
+#
+# This file contains the build information necessary to create
+# the WINCAP sample program.  Note that it makes a recursive
+# call to NMK to build the DIBAPI.DLL.
+#
+# This is an NMAKE FILE.
+#
+# Development Team: Mark Bader
+#                   Patrick Schreiber
+#                   Garrett McAuliffe
+#                   Eric Flo
+#                   Tony Claflin
+#                   Dan Ruder
+#
+# Written by Microsoft Product Support Services, Windows Developer Support.
+#
+# Copyright (c) 1991, 1992 Microsoft Corporation.  All rights reserved.
+# -----------------------------------------------------------------
+
+# If you use C6 with this makefile, call it with:
+#   NMAKE C6=1
+# Note "C6" must be in upper case
+
+# The "all" dependency line below causes the two targets listed to be built.
+# "makelib" is a pseudo-target which checks to make sure the DLL is built.
+# "wincap.exe" is a real target, and builds the main WINCAP Exe.
+#
+# To make this makefile run faster, remove the makelib target below.  This
+# prevents NMAKE from being called for the DLL each time this makefile runs,
+# so you must build the DLL manually by calling "nmake /f dibapi.mak".
+
+all: makelib wincap.exe
+
+OBJS = wincap.obj dialogs.obj dlgopen.obj
+
+APP_compile = -c -AS -Gsw -Zpe -W3 -Os
+APP_link = /NOD /NOE
+
+.c.obj:
+    cl $(APP_compile) $*.c
+
+# Make the DLL containing the DIB api functions.
+makelib:
+!if "$(C6)"=="1"
+    nmk /f makedib
+!else
+    nmake /f makedib
+!endif
+
+wincap.obj: wincap.c wincap.h dialogs.h dibapi.h
+
+dialogs.obj: dialogs.c dialogs.h
+
+dlgopen.obj: dlgopen.c wincap.h
+
+wincap.res: $*.rc wincap.h dialogs.h dialogs.dlg \
+            wincap.rc dibapi.h wincap.ico select.cur startup.bmp
+     rc -r $*.rc
+
+wincap.exe: $(OBJS) wincap.def wincap.res dibapi.lib
+    link @<<
+         $(APP_link) $(OBJS)
+         wincap.exe
+         wincap.map/map/al:16
+         libw slibcew dibapi commdlg
+         wincap.def
+<<
+     rc $*.res

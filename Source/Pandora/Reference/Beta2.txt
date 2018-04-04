@@ -1,0 +1,27 @@
+Fixes
+
+- Fixed the command format for the Send command to actually work.
+- Added the All Files option when browsing for MUL and other UO files so that you can now easily grab the files that UOGateway downloads.
+- Item Spawn button now actually sends the command to the client.
+- Fixed an issue that caused the window minimize to the lower left side of the desktop (when it was set to minimize to tray and not show in the taskbar at all).
+- Fixed an issue with spawn parameters not being correctly saved
+- When adding roofing rectanlges, they get normalized (empty rectangle bug fix)
+- Fixed a bug which caused the incorrect tiles to be tiles using the roofing tool
+- Fixed a bug in the mapviewer which caused PB to crash when another application was using radarcol.mul (such as UOAM)
+
+May 1
+- Fixed the tray icon issue (now the tray icon will display correctly)
+- Fixed keyboard navigation in deco/items/npcs tabs. You can now also move from the left to the right tree views using arrow keys. In the categories view, use the Enter key to collapse or expand a node.
+- Fixed a crash occurring when taking screenshots
+- Recompiled the screen capture library so that it no longer required MFC 7 installed on the target system.
+- Fixed a potential crash on the client list view
+- Added an option to use the random area tiler specifying a given Z coordinate
+
+Apr. 30
+- Crash when the profile wizard can't locate the files needed to generate one of the map images.
+- MapViewer not displaying correctly statics on Ilshenar and Malas maps
+- Crash occurring on systems that have only a 3D UO installation
+- Fixed missing localization of context menu on the deco page
+- Fixed a crash localized to few systems related to embedded images managment
+- Fixed crash occurring when trying to micro manage UO files from the profile wizard
+- Fixed a crash when setting more than one custom UO file from the options

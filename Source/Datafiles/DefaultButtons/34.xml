@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		   Caption="Who">
+	<LeftObject xsi:type="MultiCommandDef" DefaultIndex="0">
+		<Commands>
+			<MenuCommand Caption="Who" Command="Who" UsePrefix="true" />
+			<MenuCommand Caption="Client" Command="Client" UsePrefix="true" />
+			<MenuCommand Caption="Admin" Command="Admin" UsePrefix="true" />
+		</Commands>
+	</LeftObject>
+</ButtonDef>

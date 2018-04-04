@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Players">
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="MenuCommand" Caption="Skills" Command="Skills" UsePrefix="true" />
+			<anyType xsi:type="GenericNode" Name="Hide">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Hide" Command="Hide" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Unhide" Command="Unhide" UsePrefix="true" />
+				</Elements>
+			</anyType>
+			<anyType xsi:type="GenericNode" Name="Invul">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Invul" Command="Invul" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="No Invul" Command="NoInvul" UsePrefix="true" />
+				</Elements>
+			</anyType>
+			<anyType xsi:type="GenericNode" Name="View">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Equipment" Command="ViewEquip" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Houses" Command="ViewHouses" UsePrefix="true" />
+				</Elements>
+			</anyType>
+			<anyType xsi:type="MenuCommand" Caption="Get Followers" Command="GetFollowers" UsePrefix="true" />
+			<anyType xsi:type="GenericNode" Name="Squelch">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Squelch" Command="Squelch" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Unsquelch" Command="Unsquelch" UsePrefix="true" />
+				</Elements>
+			</anyType>
+			<anyType xsi:type="GenericNode" Name="Shave">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Hair" Command="ShaveHair" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="ShaveBeard" Command="ShaveBeard" UsePrefix="true" />
+				</Elements>
+			</anyType>
+			<anyType xsi:type="MenuCommand" Caption="Stuck Menu" Command="Stuck" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Hardware Info" Command="HWInfo" UsePrefix="true" />
+		</Items>
+	</LeftObject>
+</ButtonDef>

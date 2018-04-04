@@ -1,0 +1,1041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{22374E67-1ED8-4E2A-AED6-3068D7DD2BA5}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>..\Images\App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Pandora</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TheBox</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>TheBox.Pandora</StartupObject>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\..\Build\Pandora\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\Build\Pandora\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\log4net\log4net.csproj">
+      <Project>{f6a02431-167e-4347-bc43-65532c31cdb7}</Project>
+      <Name>log4net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ultima\Ultima.csproj">
+      <Project>{e08cfbe4-e013-44ee-8829-426d05bc083f}</Project>
+      <Name>Ultima</Name>
+    </ProjectReference>
+    <Reference Include="LightCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0e5f0cb63554a380, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\LightCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\ArtViewer\ArtViewer.csproj">
+      <Name>ArtViewer</Name>
+      <Project>{97632EC5-40A8-4A78-93A5-75831DC331E9}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\BoxCommonLibrary\BoxCommonLibrary.csproj">
+      <Name>BoxCommonLibrary</Name>
+      <Project>{42C26843-2517-44D5-9ADF-EF5310D7E5B0}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\BoxRemote\BoxServer.csproj">
+      <Project>{585a8775-f9a4-411d-8550-da6b66814ef8}</Project>
+      <Name>BoxServer</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MapViewer\MapViewer.csproj">
+      <Name>MapViewer</Name>
+      <Project>{BCF60001-3CDA-420E-83ED-F1FEAC1E005A}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Private>False</Private>
+    </ProjectReference>
+    <Reference Include="TSWizards, Version=1.1.0.0, Culture=neutral, PublicKeyToken=8e33d70370d413db">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\TSWizards.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Box.resx">
+      <DependentUpon>Box.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BoxForm.resx">
+      <DependentUpon>BoxForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\BoxButton.resx">
+      <DependentUpon>BoxButton.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\BoxMenuEditor.resx">
+      <DependentUpon>BoxMenuEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\BoxMenuItem.resx">
+      <DependentUpon>BoxMenuItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\ButtonEditor.resx">
+      <DependentUpon>ButtonEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\MultiCommandEditor.resx">
+      <DependentUpon>MultiCommandEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buttons\SimpleCommand.resx">
+      <DependentUpon>SimpleCommand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BooleanControl.resx">
+      <DependentUpon>BooleanControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DateTimeControl.resx">
+      <DependentUpon>DateTimeControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DecoMover.resx">
+      <DependentUpon>DecoMover.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EnumControl.resx">
+      <DependentUpon>EnumControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HueMenuItem.resx">
+      <DependentUpon>HueMenuItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\BoolParam.resx">
+      <DependentUpon>BoolParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\ConstructorsViewer.resx">
+      <DependentUpon>ConstructorsViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\DateTimeParam.resx">
+      <DependentUpon>DateTimeParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\EnumParam.resx">
+      <DependentUpon>EnumParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\MapParam.resx">
+      <DependentUpon>MapParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\NumericParam.resx">
+      <DependentUpon>NumericParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\Point3DForm.resx">
+      <DependentUpon>Point3DForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\Point3DParam.resx">
+      <DependentUpon>Point3DParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\TextParam.resx">
+      <DependentUpon>TextParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\TimeSpanForm.resx">
+      <DependentUpon>TimeSpanForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Params\TimeSpanParam.resx">
+      <DependentUpon>TimeSpanParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Point3DControl.resx">
+      <DependentUpon>Point3DControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PropManager.resx">
+      <DependentUpon>PropManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RecentHuesMenu.resx">
+      <DependentUpon>RecentHuesMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TileList.resx">
+      <DependentUpon>TileList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TimeSpanControl.resx">
+      <DependentUpon>TimeSpanControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TopBar.resx">
+      <DependentUpon>TopBar.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UOGrid.resx">
+      <DependentUpon>UOGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BoxServerForm.resx">
+      <DependentUpon>BoxServerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BuilderControl.resx">
+      <DependentUpon>BuilderControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CapForm.resx">
+      <DependentUpon>CapForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientList.resx">
+      <DependentUpon>ClientList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editors\QuickDeco.resx">
+      <DependentUpon>QuickDeco.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editors\QuickItem.resx">
+      <DependentUpon>QuickItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editors\QuickLocation.resx">
+      <DependentUpon>QuickLocation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editors\QuickMobile.resx">
+      <DependentUpon>QuickMobile.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editors\QuickSpawnGroup.resx">
+      <DependentUpon>QuickSpawnGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FilterBuilder.resx">
+      <DependentUpon>FilterBuilder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenericLongMessage.resx">
+      <DependentUpon>GenericLongMessage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HuePicker.resx">
+      <DependentUpon>HuePicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HueSelector.resx">
+      <DependentUpon>HueSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LauncherForm.resx">
+      <DependentUpon>LauncherForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MapFilesForm.resx">
+      <DependentUpon>MapFilesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MulManagerForm.resx">
+      <DependentUpon>MulManagerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PointForm.resx">
+      <DependentUpon>PointForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PopUpForm.resx">
+      <DependentUpon>PopUpForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileChooser.resx">
+      <DependentUpon>ProfileChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\LanguageSelector.resx">
+      <DependentUpon>LanguageSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\ProfileWizard.resx">
+      <DependentUpon>ProfileWizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep1.resx">
+      <DependentUpon>pwStep1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep3Name.resx">
+      <DependentUpon>pwStep3Name.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep4Folder.resx">
+      <DependentUpon>pwStep4Folder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep5aMapNames.resx">
+      <DependentUpon>pwStep5aMapNames.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep6bServer.resx">
+      <DependentUpon>pwStep6bServer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep6Images.resx">
+      <DependentUpon>pwStep6Images.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\pwStep7End.resx">
+      <DependentUpon>pwStep7End.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfileWizard\Step5CustomMap.resx">
+      <DependentUpon>Step5CustomMap.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickHue.resx">
+      <DependentUpon>QuickHue.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RandomTiler.resx">
+      <DependentUpon>RandomTiler.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RandomTileTemplate.resx">
+      <DependentUpon>RandomTileTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RemoteEditor.resx">
+      <DependentUpon>RemoteEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ScriptViewer.resx">
+      <DependentUpon>ScriptViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchResultsSelector.resx">
+      <DependentUpon>SearchResultsSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SimpleTextEntry.resx">
+      <DependentUpon>SimpleTextEntry.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SpawnForm.resx">
+      <DependentUpon>SpawnForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StringListForm.resx">
+      <DependentUpon>StringListForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VisualClientList.resx">
+      <DependentUpon>VisualClientList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WorldMap.resx">
+      <DependentUpon>WorldMap.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Deco.resx">
+      <DependentUpon>Deco.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Doors.resx">
+      <DependentUpon>Doors.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\General.resx">
+      <DependentUpon>General.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Items.resx">
+      <DependentUpon>Items.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Lights.resx">
+      <DependentUpon>Lights.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Mobiles.resx">
+      <DependentUpon>Mobiles.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Notes.resx">
+      <DependentUpon>Notes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Props.resx">
+      <DependentUpon>Props.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Tools.resx">
+      <DependentUpon>Tools.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Travel.resx">
+      <DependentUpon>Travel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pandora.resx">
+      <DependentUpon>Pandora.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Roofing\RoofingForm.resx">
+      <DependentUpon>RoofingForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Box.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BoxForm.Designer.cs">
+      <DependentUpon>BoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BoxServer\BoxConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\BoxServerEnums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Builder\BuildMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Builder\ControlMessages.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\ClientList\ClientCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\ClientList\ClientListMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\ClientList\ClientListRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Errors.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\CreateFolder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\DeleteRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\DownloadRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\ExplorerMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\ExplorerRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\FileTransport.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\FolderInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Explorer\MoveRequest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Login.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Messages\GetDatafile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Messages\ReturnDatafile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Messages\SpawnMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\RandomTiler\RandomBrushMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\RandomTiler\RandomItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxServer\Theatre\AddActorsMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\BoxButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Buttons\BoxMenuEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buttons\BoxMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Buttons\ButtonActions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\ButtonDef.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\ButtonEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buttons\ButtonID.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\LastCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\MenuCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\MenuDef.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\ModifierCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\MultiCommandDef.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Buttons\MultiCommandEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buttons\SimpleCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\BoxLog.cs" />
+    <Compile Include="Common\ISplash.cs" />
+    <Compile Include="Common\ProcessExtension.cs" />
+    <Compile Include="Common\ScreenCapture.cs" />
+    <Compile Include="Common\Splash.cs" />
+    <Compile Include="Controls\BooleanControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DateTimeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DecoMover.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EnumControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HueMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\BoolParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\ConstructorsViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\DateTimeParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\EnumParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\IParam.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\MapParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\NumericParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\Point3DForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\Point3DParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\TextParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\TimeSpanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Params\TimeSpanParam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Point3DControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PropManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RecentHuesMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SpawnDrawObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\TileList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\TimeSpanControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TopBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TopBar.Designer.cs">
+      <DependentUpon>TopBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UOGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\AccessLevel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\BoxData.cs">
+    </Compile>
+    <Compile Include="Data\BoxDeco.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\BoxSpawn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\ButtonManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Decorator.cs">
+    </Compile>
+    <Compile Include="Data\DoorsData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\HueGroups.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Item.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\LightsData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\Notes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\PropsData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\RandomPalettes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\RandomTile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\ScriptList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\SkillsData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\SoundData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\SpawnData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\SpawnGroups.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\TravelAgent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\TreeSearch.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\UOMatrix.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Delegates.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BoxServerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BuilderControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editors\QuickDeco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editors\QuickItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editors\QuickLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editors\QuickMobile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Editors\QuickSpawnGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FilterBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenericLongMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HuePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HueSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IForm.cs" />
+    <Compile Include="Forms\IProfileChooser.cs" />
+    <Compile Include="Forms\LauncherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MapFilesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MulManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PointForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PopUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\ILanguageSelector.cs" />
+    <Compile Include="Forms\ProfileWizard\LanguageSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\ProfileWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep3Name.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep4Folder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep5aMapNames.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep6bServer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep6Images.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\pwStep7End.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfileWizard\Step5CustomMap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickHue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RandomTiler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RandomTileTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RemoteEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScriptViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchResultsSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SimpleTextEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SpawnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StringListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VisualClientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WorldMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IBoxForm.cs" />
+    <Compile Include="LightCoreBuilder.cs" />
+    <Compile Include="Localization\LocalizationHelper.cs" />
+    <Compile Include="Options\AdminOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\ButtonIndex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\Commands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\DecoOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\General.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\Hues.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\ItemsOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\LauncherOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\Mobiles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\Profile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\ProfileIO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\Props.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\ScreenshotOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\ServerOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\Travel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\Admin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Deco.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Doors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\General.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Items.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Lights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Mobiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Notes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Props.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Tools.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Travel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pandora.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProfileManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Roofing\Roof.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Roofing\RoofImage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Roofing\RoofingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roofing\RoofingHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Roofing\RoofRect.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Roofing\TileMask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Roofing\TileSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StartingContext.cs" />
+    <None Include="app.config" />
+    <Content Include="Roofing\Roofing.cs">
+      <SubType>Code</SubType>
+    </Content>
+    <None Include="Resources\box_down.gif" />
+    <None Include="Resources\box_normal.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reference\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

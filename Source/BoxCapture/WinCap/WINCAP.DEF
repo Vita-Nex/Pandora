@@ -1,0 +1,20 @@
+; Copyright (c) 1992 Microsoft Corporation. All rights reserved.
+
+NAME            WINCAP
+DESCRIPTION     'Windows Screen Capture Utility'
+EXETYPE         WINDOWS
+STUB            'WINSTUB.EXE'
+CODE            PRELOAD MOVEABLE
+DATA            PRELOAD MOVEABLE MULTIPLE
+HEAPSIZE        8192
+STACKSIZE       12000
+EXPORTS         WndProc          @1
+                AboutDlgProc     @2
+                PrintDlgProc     @3
+                SavingDlgProc    @4
+                FullViewWndProc  @5
+                FileSaveHookProc @6
+
+
+
+

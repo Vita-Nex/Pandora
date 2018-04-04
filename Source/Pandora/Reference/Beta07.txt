@@ -1,0 +1,6 @@
+- Fixed a crash occurring in the profile wizard when using a custom maps setup
+- Added a remote edit to the script explorer. Double click a file in the script explorer window to bring up a simple text editor which allows you to save remotely or locally the file you're editing.
+- Fixed a bug in the script explorer which causes files to show twice in the list when uploading and overwriting an existing entry.
+- Fixed a bug which caused lost of topmost property in the main window to be lost when minimizing to tray.
+- Added an Open Folder button to the screenshot manager window to quickly view the folder which holds the saved images.
+- When viewing the about form, the main form will disappear to prevent some issues when using the always on top option.

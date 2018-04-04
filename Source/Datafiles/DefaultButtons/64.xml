@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Guards">
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="MenuCommand" Caption="Check Guarded" Command="CheckGuarded" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Toggle" Command="ToggleGuarded" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Make Guarded" Command="SetGuarded true" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Make Unguarded" Command="SetGuarded false" UsePrefix="true" />
+		</Items>
+	</LeftObject>
+</ButtonDef>

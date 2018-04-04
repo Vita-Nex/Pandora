@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+	</head>
+	<body>
+		<P align="center"><FONT face="Verdana" size="5"><STRONG><U>.:. Release 2 .:.</U></STRONG></FONT></P>
+		<P><FONT face="Verdana"><U><STRONG>Changes</STRONG></U>:</FONT></P>
+		<UL>
+			<LI>
+				<FONT face="Verdana" size="2">Hue Picker:</FONT>
+				<UL>
+					<LI>
+						<FONT face="Verdana" size="2">No longer modal. You can now keep the hue picker open 
+							and use it while still using PB.</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Added a Cancel button to exit without selecting a 
+							hue.</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Added a Select button that will select the current 
+							hue on the PB main window</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Now supports the zero hue.</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Added a smell 0 link. Clicking it will set the 
+							current hue to zero aka no hue.</FONT>&nbsp;</LI></UL>
+			<LI>
+				<FONT face="Verdana" size="2">Clicking the hue preview in the PB main window will 
+					not show/hide the hue picker rather than just opening it.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Hue will be added to the recently used hues only when 
+					using the Set button, not when selecting them through the hue picker or filling 
+					their value in.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Added a Clear button to the small Props tab (which of 
+					course clears all the fields).</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Whenever two tree views are close to each other, they 
+					can now be resized.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Added an OK button to the options window.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Added dispaly&nbsp;of the art ID to the art viewer.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">World map now displays spawns if SpawnData is 
+					enabled.</FONT></LI></UL>
+		<P><FONT face="Verdana"><U><STRONG>Fixes</STRONG></U>:</FONT></P>
+		<UL>
+			<LI>
+				<FONT face="Verdana" size="2">Pandora will no longer go offline when a requested 
+					datafile is not available on the server.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Getting SpawnData through BoxServer will now 
+					automatically enable spawns view on the travel map.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Tool tip for the tray icon now says 'Pandora's Box' 
+					rather than 'Tray'.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Show in taskbar option now correctly applied on 
+					startup.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Fixed bug where occasionally the window wouldn't be 
+					shown when clicking the tray icon.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Fixed bug where Pandora would minimize rather than 
+					closing when using Menu/Exit and having the Minimize with X button option 
+					checked.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">When changing category on the travel tab, the map 
+					will no longer change its center to the first location listed in the previous 
+					category.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">Fixed bug: Range value for spawns was wrongly updated 
+					using the amount value instead.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">The button editor will now correctly localize the 
+					type of action associated with each button when opening on an existing button.</FONT>
+			<LI>
+				<FONT face="Verdana" size="2">The world map will now correctly remember whether it 
+					was set to big or small.</FONT></LI></UL>
+		<P><FONT face="Verdana"><U><STRONG>New Features</STRONG></U>:</FONT></P>
+		<UL>
+			<LI>
+				<FONT face="Verdana" size="2">Props Tab</FONT>
+				<UL>
+					<LI>
+						<FONT face="Verdana" size="2">This tab shows all the properties that can be 
+							seen/set on the Props gumps for all the items and mobiles scripted on the 
+							server. This features relies on the PropsData.xml datafile, which can be 
+							generated using the [GenPropsData script.</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Properties can be filtered according to the 
+							AccessLevel required to set them. (Admin will display all props, Councelor will 
+							display few props).</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Show All Types: if checked this will display all 
+							types, even those that contain no additional properties (example: the Anvil 
+							item has no additional props, other than those declared for Item. If this 
+							option is unchecked only Item will be displayed, if it's checked both Item and 
+							Anvil will be).</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Show All Props: if checked this will display all the 
+							properties available for a selected type (both inherited and declared 
+							properties). If unchecked, each entry will not display the properties of the 
+							base class, but only those declared by itself.</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Find function: can search for a type. If the Show All 
+							Types option is unchecked, it will move to the parent class that declared at 
+							least one property.</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Provides easy to use inputs for data types as 
+							TimeSpan, DateTime, Point3D and fast access to all the values in an 
+							enumeration.</FONT></LI></UL>
+			<LI>
+				<FONT face="Verdana" size="2">Remote Scripts Explorer (BoxServer)</FONT>
+				<UL>
+					<LI>
+						<FONT face="Verdana" size="2">This feature allows a user to access one or more 
+							folders within the server's Scripts folder and upload, download, rename and 
+							delete files and folders.</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">Access to this feature must be specifies in the 
+							BoxRemoteExplorerConfig class (in other words, you must explicitly allow access 
+							for each account).</FONT>
+					<LI>
+						<FONT face="Verdana" size="2">The explorer supports C#, VB, XML and text files.</FONT></LI></UL>
+			<LI>
+				<FONT face="Verdana" size="2">Deco Tab</FONT>
+			</LI>
+			<UL>
+				<LI>
+					<FONT face="Verdana" size="2">Same old deco tab, with a few more graphics 
+						(including the mahjong board, the only relevant addition).</FONT>
+				<LI>
+					<FONT face="Verdana" size="2">Hued function works only with a custom script 
+						(BoxDecoItem.cs found in BoxServer\temp). This might be changed later, 
+						especially if I manage to get the RunUO devs to add a new constructor for the 
+						Item class.</FONT>
+				<LI>
+					<FONT face="Verdana" size="2">A special 'Custom Deco' Category is now available: 
+						users with custom graphics can use it to add their own entries.</FONT></LI></UL>
+		</UL>
+	</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Caption="Remove">
+  <LeftObject xsi:type="MultiCommandDef" DefaultIndex="0">
+    <Commands>
+      <anyType xsi:type="MenuCommand" Caption="Remove" Command="Remove" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="mRemove" Command="mRemove" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Wipe" Command="Wipe" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="WipeItems" Command="WipeItems" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="WipeNPCs" Command="WipeNPCs" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="WipeMultis" Command="WipeMultis" UsePrefix="true" />
+    </Commands>
+  </LeftObject>
+</ButtonDef>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Hide">
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="MenuCommand" Caption="Hide" Command="Self Hide" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Unhide" Command="Self Unhide" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Hide Player" Command="Hide" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Unhide Player" Command="Unhide" UsePrefix="true" />
+		</Items>
+	</LeftObject>
+</ButtonDef>

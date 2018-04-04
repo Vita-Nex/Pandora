@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Misc">
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="GenericNode" Name="Clear Facet">
+				<Elements>
+					<anyType xsi:type="GenericNode" Name="Are you sure?">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Yes, delete everything!" Command="ClearFacet" UsePrefix="true" />
+						</Elements>
+					</anyType>
+				</Elements>
+			</anyType>
+			<anyType xsi:type="MenuCommand" Caption="Find Runes to Green Acres" Command="FindRunes" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Rebuild Add Menu" Command="RebuildCategorization" UsePrefix="true" />
+		</Items>
+	</LeftObject>
+</ButtonDef>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Items">
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="MenuCommand" Caption="Link" Command="Link" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Chain Link" Command="ChainLink" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="All Spells" Command="AllSpells" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Design Insert" Command="DesignInsert" UsePrefix="true" />
+		</Items>
+	</LeftObject>
+</ButtonDef>

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3E20BA2C-177C-4141-8BE4-3010D9DF7959}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Data</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Data</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\..\..\Build\Pandora\Data\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\..\Build\Pandora\Data\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="BoxData.xml" />
+    <EmbeddedResource Include="Deco.xml" />
+    <EmbeddedResource Include="Doors.xml" />
+    <EmbeddedResource Include="HueGroups.xml" />
+    <EmbeddedResource Include="Lights.xml" />
+    <EmbeddedResource Include="Lights\BigSources\EastBig.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\NorthBig.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\NorthBig2.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\NorthEastBig.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\NorthWestBig.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\NorthWestBig2.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\SouthBig.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\SouthWestBig.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\WestBig.jpg" />
+    <EmbeddedResource Include="Lights\BigSources\WestBig2.jpg" />
+    <EmbeddedResource Include="Lights\Circular\Circle150.jpg" />
+    <EmbeddedResource Include="Lights\Circular\Circle225.jpg" />
+    <EmbeddedResource Include="Lights\Circular\Circle300.jpg" />
+    <EmbeddedResource Include="Lights\Dark\DarkCircle300.jpg" />
+    <EmbeddedResource Include="Lights\Dark\DarkEast.jpg" />
+    <EmbeddedResource Include="Lights\Dark\DarkNorthWest.jpg" />
+    <EmbeddedResource Include="Lights\Dark\DarkSouth.jpg" />
+    <EmbeddedResource Include="Lights\Dark\DarkSouth2.jpg" />
+    <EmbeddedResource Include="Lights\Dark\DarkSouthEast.jpg" />
+    <EmbeddedResource Include="Lights\Decoration\DecorationNorth.jpg" />
+    <EmbeddedResource Include="Lights\Decoration\DecorationNorthEast.jpg" />
+    <EmbeddedResource Include="Lights\Decoration\DecorationSouthWest.jpg" />
+    <EmbeddedResource Include="Lights\Decoration\DecorationWest.jpg" />
+    <EmbeddedResource Include="Lights\Doors\DoorEast.jpg" />
+    <EmbeddedResource Include="Lights\Doors\DoorOpenEast.jpg" />
+    <EmbeddedResource Include="Lights\Doors\DoorOpenSouth.jpg" />
+    <EmbeddedResource Include="Lights\Doors\DoorSouth.jpg" />
+    <EmbeddedResource Include="Lights\Hole\HoleEast.jpg" />
+    <EmbeddedResource Include="Lights\Hole\HoleSouth.jpg" />
+    <EmbeddedResource Include="Lights\Hole\SmallHoleEast.jpg" />
+    <EmbeddedResource Include="Lights\Hole\SmallHoleSouth.jpg" />
+    <EmbeddedResource Include="Lights\Miscellaneous\Moongate.jpg" />
+    <EmbeddedResource Include="Lights\Miscellaneous\Strips.jpg" />
+    <EmbeddedResource Include="Lights\RoundWindows\ArchedWindowEast.jpg" />
+    <EmbeddedResource Include="Lights\RoundWindows\ArchedWindowEastNoRay.jpg" />
+    <EmbeddedResource Include="Lights\RoundWindows\ArchedWindowSouth.jpg" />
+    <EmbeddedResource Include="Lights\RoundWindows\ArchedWindowSouthNoRay.jpg" />
+    <EmbeddedResource Include="Lights\RoundWindows\SkinnyWindowEast.jpg" />
+    <EmbeddedResource Include="Lights\RoundWindows\SkinnyWindowEastNoRay.jpg" />
+    <EmbeddedResource Include="Lights\RoundWindows\SkinnyWindowSouthNoRay.jpg" />
+    <EmbeddedResource Include="Lights\SmallSources\EastSmall.jpg" />
+    <EmbeddedResource Include="Lights\SmallSources\EastTiny.jpg" />
+    <EmbeddedResource Include="Lights\SmallSources\NorthEastSmall.jpg" />
+    <EmbeddedResource Include="Lights\SmallSources\NorthSmall.jpg" />
+    <EmbeddedResource Include="Lights\SmallSources\SouthSmall.jpg" />
+    <EmbeddedResource Include="Lights\SmallSources\SouthTiny.jpg" />
+    <EmbeddedResource Include="Lights\SmallSources\WestSmall.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\RectWindowEast.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\RectWindowEastNoRay.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\RectWindowSouth.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\RectWindowSouthNoRay.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\SquareWindowEast.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\SquareWindowEastNoRay.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\SquareWindowSouth.jpg" />
+    <EmbeddedResource Include="Lights\SquareWindows\SquareWindowSouthNoRay.jpg" />
+    <EmbeddedResource Include="map0.xml" />
+    <EmbeddedResource Include="map1.xml" />
+    <EmbeddedResource Include="map2.xml" />
+    <EmbeddedResource Include="map3.xml" />
+    <EmbeddedResource Include="PropsData.xml" />
+    <EmbeddedResource Include="RandomTiles.xml" />
+    <EmbeddedResource Include="rooftiles.cfg" />
+    <EmbeddedResource Include="Skills.ini" />
+    <EmbeddedResource Include="SoundData.xml" />
+    <EmbeddedResource Include="map4.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

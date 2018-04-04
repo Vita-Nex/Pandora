@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Tele">
+	<RightObject xsi:type="MenuCommand" Command="Multi Tele" UsePrefix="true" />
+	<LeftObject xsi:type="MenuCommand" Command="Tele" UsePrefix="true" />
+</ButtonDef>

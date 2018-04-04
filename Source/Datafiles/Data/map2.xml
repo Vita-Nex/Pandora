@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Facet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MapValue="2">
+	<Nodes>
+		<GenericNode Name="Caves">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Ancient Lair">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="940" Y="503" Z="-30">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="85" Y="745" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lizard Passage">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="314" Y="1334" Z="-35">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="329" Y="1589" Z="-17">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 2" X="227" Y="1339" Z="-18">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Mushroom Cave">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="1459" Y="1329" Z="-24">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="1473" Y="1495" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Rat Cave">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="1034" Y="1153" Z="-22">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="1346" Y="1511" Z="-3">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 2" X="1247" Y="1510" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Spider Cave">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="1421" Y="913" Z="-16">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="1786" Y="989" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 2" X="1504" Y="879" Z="10">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Ethereal Keep" X="1363" Y="1097" Z="-27">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Cities">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Alexandretta's Bowl">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="1396" Y="432" Z="-17">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Ancient Citadel">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="1518" Y="568" Z="-13">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Gargoyle City">
+					<Elements>
+						<anyType xsi:type="Location" Name="Bank" X="852" Y="602" Z="-40">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Central Area" X="836" Y="641" Z="-20">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lakeshire">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="1203" Y="1124" Z="-25">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Mistas">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="820" Y="1073" Z="-30">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Montor">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="1643" Y="310" Z="48">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Req Volon">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="1362" Y="1073" Z="-13">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Savage Camp">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="1251" Y="743" Z="-80">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Terort Skitas">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="567" Y="437" Z="21">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Dungeons">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Ankh">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="576" Y="1150" Z="-100">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Kirin Passage" X="11" Y="874" Z="-27">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="155" Y="1482" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Serpentine Passage" X="396" Y="1578" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Blood">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="1747" Y="1228" Z="-1">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="2114" Y="834" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Exodus">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="835" Y="777" Z="-80">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="1974" Y="115" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Rock">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="1788" Y="573" Z="71">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="2188" Y="318" Z="-7">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 2" X="2188" Y="28" Z="-27">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Sorcerers">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="548" Y="462" Z="-53">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="428" Y="109" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 2" X="240" Y="23" Z="-18">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 3" X="272" Y="136" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 4" X="132" Y="124" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 5" X="236" Y="121" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Spectre">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="1363" Y="1033" Z="-8">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="1982" Y="1103" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Wisp">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="651" Y="1302" Z="-58">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="627" Y="1525" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 2" X="718" Y="1492" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 3" X="832" Y="1551" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 4" X="960" Y="1428" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 5" X="942" Y="1465" Z="-33">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 6" X="866" Y="1434" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 7" X="807" Y="1548" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 8" X="754" Y="1479" Z="-28">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Forts and Camps">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Girpsy">
+					<Elements>
+						<anyType xsi:type="Location" Name="Gypsy Camp" X="504" Y="536" Z="-60">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Gypsy Camp 1" X="1508" Y="620" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Gypsy Camp 2" X="1612" Y="548" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Gypsy Camp 3" X="948" Y="428" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Gypsy Camp 4" X="860" Y="464" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Gypsy Camp 5" X="1228" Y="544" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Gypsy Camp 6" X="1392" Y="432" Z="0">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Juka Camp">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="1248" Y="724" Z="0">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lizardman's Hut">
+					<Elements>
+						<anyType xsi:type="Location" Name="Central Area" X="298" Y="1336" Z="-24">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Rat Fort">
+					<Elements>
+						<anyType xsi:type="Location" Name="Cellar" X="171" Y="750" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Fort" X="642" Y="845" Z="-58">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Misc">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Passages">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance to Central Ilshenar 1" X="1141" Y="594" Z="-80">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Entrance to Central Ilshenar 2" X="1238" Y="583" Z="-19">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Pass of Karnaugh" X="915" Y="305" Z="30">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Shrines">
+					<Elements>
+						<anyType xsi:type="Location" Name="Chaos" X="1747" Y="234" Z="58">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Compassion" X="1217" Y="469" Z="-13">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Honesty" X="720" Y="1356" Z="-59">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Honor" X="748" Y="728" Z="-28">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Humility" X="287" Y="1016" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Justice" X="987" Y="1007" Z="-36">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Sacrifice" X="1175" Y="1287" Z="-30">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Spirituality" X="1532" Y="1341" Z="-3">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Valor" X="527" Y="218" Z="-43">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Sightings">
+					<Elements>
+						<anyType xsi:type="Location" Name="Cyclops Temple" X="901" Y="1297" Z="-71">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Blackthorn's Ilshenar Castle" X="1084" Y="652" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Nox Tereg" X="416" Y="1176" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Pormir Felwis" X="472" Y="352" Z="-78">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Pormir Harm" X="745" Y="492" Z="-66">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Reg Volon" X="1364" Y="1056" Z="0">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Terort Skitas" X="568" Y="430" Z="41">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Twin Oaks" X="1568" Y="1047" Z="-7">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+	</Nodes>
+</Facet>

@@ -1,0 +1,8 @@
+*.suo
+*.user
+
+*obj/
+*bin/
+
+/Build
+/

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Facet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MapValue="4">
+	<Nodes>
+		<GenericNode Name="Homare - jima">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Adventure point">
+					<Elements>
+						<anyType xsi:type="Location" Name="Crane Marsh" X="223" Y="1083" Z="10">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Bushido Dojo" X="319" Y="436" Z="32">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Field of Echoes" X="165" Y="628" Z="42">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Homare's Eye" X="492" Y="372" Z="45">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Kitsune Woods" X="545" Y="519" Z="32">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Lightning Watch" X="375" Y="812" Z="34">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Revenant Jima" X="350" Y="257" Z="29">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Sho Toh" X="657" Y="410" Z="32">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Yomotsu Mines Entrance" X="253" Y="789" Z="63">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="(M)Yomotsu Mines" X="6" Y="124" Z="-1">
+							<Map>3</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Zen Maze" X="411" Y="592" Z="29">
+							<Map>4</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Misk">
+					<Elements>
+						<anyType xsi:type="Location" Name="Homare-Jima MoonGate" X="267" Y="625" Z="15">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Shrine of Homare" X="293" Y="712" Z="55">
+							<Map>4</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Isamu - jima">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Adventure point">
+					<Elements>
+						<anyType xsi:type="Location" Name="Beetlescape" X="801" Y="246" Z="54">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Fan Dancer Dojo Entrance" X="981" Y="197" Z="24">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="(M)Fan Dancer Dojo Level 1" X="72" Y="337" Z="-1">
+							<Map>3</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="(M)Fan Dancer Dojo Level 2" X="66" Y="525" Z="-1">
+							<Map>3</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="(M)Fan Dancer Dojo Level 3" X="80" Y="691" Z="-1">
+							<Map>3</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Hiryu Forest" X="914" Y="650" Z="15">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Hotaka Plains" X="1213" Y="857" Z="28">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Lake Kappa" X="1079" Y="969" Z="20">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Lightest Dark" X="819" Y="736" Z="24">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Lotus Lakes" X="1071" Y="859" Z="52">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mount Hakonu" X="1381" Y="885" Z="24">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mount Sho" X="1110" Y="672" Z="66">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Storm Point" X="1196" Y="1088" Z="26">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Tsuki Garden" X="1166" Y="516" Z="23">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Valley of the Sleeping Dragons" X="949" Y="439" Z="8">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Winter Spur" X="923" Y="113" Z="48">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Yamandon Point" X="1088" Y="422" Z="6">
+							<Map>4</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Misk">
+					<Elements>
+						<anyType xsi:type="Location" Name="Isamu-Jima MoonGate" X="1167" Y="1002" Z="36">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Shrine of Isamu" X="1045" Y="518" Z="15">
+							<Map>4</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Makoto - jima">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Misk">
+					<Elements>
+						<anyType xsi:type="Location" Name="Shrine of Makoto" X="718" Y="1159" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Phoenix mountains" X="725" Y="1052" Z="35">
+							<Map>4</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Town Zento">
+					<Elements>
+						<anyType xsi:type="Location" Name="Miyabi Inn" X="678" Y="1224" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Sake Saka Tavern" X="697" Y="1232" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Suteki Na Craftworks" X="732" Y="1232" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Satori Healing Garden" X="781" Y="1230" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mibu BlackSmith" X="766" Y="1260" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Yume Stables" X="791" Y="1287" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Kagome Bowyer" X="792" Y="1300" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Iroha Armorer" X="770" Y="1297" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Zento Provides" X="739" Y="1283" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Good Fortunes Jewelry" X="717" Y="1303" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Sasara Magical Supplies" X="709" Y="1298" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Koku Kitchens" X="713" Y="1258" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Central place" X="736" Y="1256" Z="30">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Rokuon Cultural Center" X="677" Y="1284" Z="25">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="MoonGate" X="800" Y="1207" Z="25">
+							<Map>4</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Waste">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="730" Y="1031" Z="30">
+							<Map>4</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="House" X="541" Y="943" Z="29">
+							<Map>4</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+	</Nodes>
+</Facet>

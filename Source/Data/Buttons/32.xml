@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Caption="Hide">
+  <LeftObject xsi:type="MenuDef">
+    <Items>
+      <anyType xsi:type="MenuCommand" Caption="Hide" Command="SetMy Hidden true" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Unhide" Command="SetMy Hidden false" UsePrefix="true" />
+    </Items>
+  </LeftObject>
+</ButtonDef>

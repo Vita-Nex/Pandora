@@ -1,0 +1,25 @@
+Additions:
+
+- Tools: Launcher. Allows to set a number of programs to run with the options of automatically running them when Pandora's Box starts.
+- Tools: Random Tiler (BoxServer section
+- General: added an option to add to the presets the current text in the speech and web combo boxes (accessed through the context menu).
+- Admin: completed the server launcher. You can now run/stop the server from PB using additional command line parameters as well. Added also support for showing/hiding the console window.
+- Props control: added filter support including a filter builder (supporting drag and drop from the props tab). Right click the filter combo box to manage presets.
+- Hue picker: added a Set button to quickly set the selected hue
+- Support for custom clients (Options, Advanced tab)
+- Screen capture functionality (only for the client window). Click the image in the top right corner of the window (where the Menu button was) to take a screenshot. Right click it to bring up the screenshot manager.
+- Modifiers can now be customized in the options/advanced tab.
+- Custom buttons tab (on the small tab control)
+
+Changes:
+
+- Removed the Menu button from the top right corner. All functionality has been moved to the Tools tab.
+- Props control has been changed to support modifiers (right click the set button)
+- Changed the way spawn details are displayed on the map. No longer a tool tip is used, but a custom window which appears only if you RIGHT CLICK a spawn marker.
+
+Fixes:
+
+- Hopefully fixed the restore from tray bug
+- Fixed a startup error on the general tab due to the dupe amount being initialized to 0
+- Fixed bug that caused the Items tab not to update when retrieving remotely the BoxData
+- Added the Region modifier to the default modifiers setup (warning enabled)

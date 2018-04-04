@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>BoxServer Readme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+}
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	cursor: hand;
+}
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+}
+.style1 {
+	font-size: 12px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<h3>BoxServer Readme file</h3>
+<p>Updated on: March 1, 2004<br>
+  BoxServer version: 1.0</p>
+<p><strong>Table of Contents</strong></p>
+<ol>
+  <li>BoxServer: general information</li>
+  <li>Installation</li>
+  <li>Configuration</li>
+  <li>Stability</li>
+  <li>Security</li>
+  <li>Authentication</li>
+  <li>Spawners</li>
+  <li>Modules
+    <ol>
+      <li>Core</li>
+      <li>Builder</li>
+      <li>Retrieve Datafiles</li>
+      <li>Script Explorer</li>
+      <li>Spawn Groups</li>
+      <li>Client List </li>
+    </ol>
+  </li>
+  <li>Uninstallation</li>
+  <li>Support</li>
+</ol>
+<p class="style1">1. BoxServer: general information</p>
+<p>BoxServer is a set of scripts for RunUO that allow Pandora's Box to access additional functions. For a complete list of functions please review section 7: Modules.</p>
+<p>This file provides important information about running BoxServer, regarding its security and features. Please take a few moments to read it before installing the server exstensions.</p>
+<p>BoxServer has been introduced with Pandora's Box 2.0 and is based on .NET remoting, an architecture for inter domain communication. Simply put, BoxServer creates a special object of type BoxRemote on the RunUO server, and registers this object for remote access. The BoxRemote object is inside a library called BoxServer.dll that's installed into your \RunUO\folder. This is necessary, as opposed to just script it, because .NET remoting identifies the remote object through its type and assembly. The remote object has one public method called PerformRemoteRequest() that allows Pandora's Box to send and process a message (or packet) on the server.</p>
+<p>The basic transaction mechanism is as follows:</p>
+<ol>
+  <li>Pandora creates a message (any object inherited from BoxMessage) and compresses it into a byte stream using ZLib.</li>
+  <li>Pandora connects to the remote server and invokes the PerformRemoteRequest method on the registered BoxRemote object, passing the data stream as parameter to the method.</li>
+  <li>The server decompresses the packet, performs authentication and if it succeeds, performs the action requested.</li>
+  <li>If the outcome of the process is an error, or if the action requires data sent from the server back to Pandora, the server will create a message as well, compress it using ZLib and send it back.</li>
+</ol>
+<p class="style1">2. Installation </p>
+<p>Installation is performed through a wizard which will perform the following actions:</p>
+<ol>
+  <li>Copy BoxServer.dll into your \RunUO\ folder</li>
+  <li>Update your \RunUO\Data\Assemblies.cfg file ensuring that the BoxServer.dll and System.Runtime.Remoting.dll libraries are loaded by RunUO.</li>
+  <li>Copy all the scripts to the target folder. You will be able to select which modules you wish to install.</li>
+</ol>
+<p class="style1">3. Configuration </p>
+<p>Configuration for the BoxServer is located in the Configuration.cs file in your BoxServer installation folder. You can configure the following properties:</p>
+<ul>
+  <li>Port: BoxServer requires an unused port on the host machine. By default this value is 8035, but you might need to change it if this port is already used on your system. If this is the case, you will receive an error message in the RunUO console stating that the BoxServer port is already in use.</li>
+  <li>Message Hue: this allows you to specify a hue for all the messages generated in game by the BoxServer scripts.</li>
+  <li>Minimum AccessLevel: specifies the minimum AccessLevel required to access BoxServer functions. This can be overriden for a specific feature: review section 6: Authentication for more details.</li>
+</ul>
+<p class="style1">4. Stability </p>
+<p>The scripts composing BoxServer have been tested and are believed to be stable. .NET Remoting itself provides for additional stability because in most cases, errors in the BoxServer code are sent to the Pandora's Box client rather than to the RunUO process. This doesn't happen all the time though, here's a brief description of the process and of its implications.</p>
+<ol>
+  <li>Pandora's Box performs an operation on the BoxServer. This includes authentication followed by the Perform() method of the message being processed. Anything that happens in this scope is managed by Pandora's Box, so if this code leads to an Exception, this Exception will NOT crash the server.</li>
+  <li>In some cases the Perform() method will interact with the user. For example, when placing a spawn group, it will assign a special target to the calling client. This is where the separation occurs: whatever happens after the target is assigned is managed by the server, so if this code ( namely OnTarget() ) leads to an Exception, it will crash the server. A lot of care has been put into evaluating such situations  to ensure the maximum stability possible.</li>
+</ol>
+<p class="style1">5. Security </p>
+<p><strong>5.1 Account Information Security</strong></p>
+<p>Account information is used by Pandora's Box to authenticate the user on the BoxServer. BoxServer has naturally access to this information through the Server.Accounting.Accounts class. Pandora's Box will collect this information from the user. The account name will be stored in the Pandora's Box profile in plain text, while the password will be hashed using a M5D hash.</p>
+<p>Pandora's Box will never store on file or permanently in memory a password in plain text. Instead, once the user has provided the password, it will perform the hashing. The hashing process implies loss of data about the original string, which makes it pretty much impossible for anyone to revert the hash into the original string. Also, even if not proved, it is strongly believed that no two different strings can lead to the same hash. In other words, there's no way to retrieve the account password from Pandora's Box.</p>
+<p>On the server, authentication is performed by calculating the hash on the password stored in the Accounts class. If the two hashes match, authentication succeeds.</p>
+<p><strong>5.2 Network Security</strong></p>
+<p>.NET remoting exposes an object on the host machine. This object can be instantiated by anyone who can connect to the remote service. The object called BoxRemote works in singletone mode, which means that only one object will be created and it will serve all remote requests coming from outside clients. A client can only call one method defined on the object, PerformRemoteRequest() that takes as parameters a Type name and a stream of bytes. The server will try to find the loaded type corresponding to the parameter provided: if not found, it will return a FeatureNotSupported message, otherwise it will try to decompress and deserialize the data. If this process is succesful, it will perform authentication on the message as described by the message class located on the server itself. This allows the server administrator to strictly control access to features of BoxServer, making the architecture as secure as desired.</p>
+<p>NOTE: The architecture relies on the trust you put into your staff. If you don't fully trust your staff, limit their access to the BoxServer or set the minimum AccessLevel to Administrator or Seer (by default it's GameMaster). While the default BoxServer installation doesn't feature any potentially dangerous situations, it could lead to annoying situations if not used wisely (think of a huge roof created over Britain). Special care should be taken in configuring the Script Explorer, please review the corresponding section for details.</p>
+<p class="style1">6. Authentication </p>
+<p>There are two levels of authentication for each feature installed on the server:</p>
+<ol>
+  <li>Basic Authentication: this is built in by default in the server itself. Authentication of username and password as described in the Security section is performed always and should not be removed. There's also a minimum AccessLevel required to access the server specified in the Configuration.cs file. This should never be set to Player, otherwise anyone with an account on your shard will be able to use some features.</li>
+  <li>Advanced Authentication: this is done by implementing the IAuthenticable interface on a single message (or feature). The IAuthenticable interface is defined as follows:
+    <ul>
+      <li>AccessLevel <strong>MinAccessLevel</strong> { get; } : Overrides the minimum AccessLevel required to access this feature. Keep in mind that this can't be lower than the global minimum AccessLevel because that check is always performed first.</li>
+      <li>bool <strong>RequireOnlineMobile</strong> { get; } : Specifies if a feature requires the user to be actually online while using it. An example is creating a spawn group: the user must be logged into the server in order to target the location of the spawner.</li>
+    </ul>
+  </li>
+</ol>
+  <p>Implementing the IAuthenticable interface is very simple and can be done on any class that inherits from BoxMessage (wouldn't make much sense on other classes). If implemented correctly, the server will automatically perform the checks implied by the interface. You can see an example of this implementation in Modules\SpawnGroups\SpawnMessage.cs.</p>
+  <p class="style1">7. Spawners</p>
+  <p>BoxServer deals with spawner objects in two modules:</p>
+  <ol>
+    <li>The SpawnData datafile: this is used to display the existing spawns on the Pandora's Box travel map. The generator evaluates each spawner object and converts it to a SpawnEntry object that carries information used in Pandora's Box.</li>
+    <li>The Spawn Groups module: as the name implies, this converts a spawn group defined in Pandora's Box to an actual spawn in the world.</li>
+  </ol>
+  <p>Both of these actions require knowledge of the shard specific spawner object. The installation wizard currently supports the default Spawner and the XmlSpawner, providing users with code designed to work correctly with those objects.</p>
+  <p>All spawner specific code is located in the file Core\SpawnerHelper.cs. In case your spawner is not supported by default by BoxServer, you can choose the 'Other' option in the wizard and fill the methods yourself. The SpawnerHelper class consists of three static methods and one property: </p>
+  <ol>
+    <li>public static Type <strong>SpawnerType</strong> { get; } : defines the type of the object used as spawner. This is used to identify the object that act as spawners when generating the SpawnData datafile.</li>
+    <li>public static SpawnEntry <strong>SpawnerToData</strong>( Item spawnerItem ) : this method converts a spawner item into a SpawnEntry object that carries information about the spawn ( location and so on ). This is used to build the SpawnData.</li>
+    <li>public static Item <strong>CreateBoxSpawn</strong>( BoxSpawn spawn ) : this method converts a BoxSpawn object that represents a spawn group, into a spawner object filled with the creatures that will be spawning. The spawner object returned by this method should not be active.</li>
+    <li>public static void <strong>StartSpawner</strong>( Item spawner ) : this method is called when the spawner carrying the spawn group has been placed in the world and must be actived and spawned.</li>
+  </ol>
+  <p>When you select the 'Other' option, you will be provided with skeleton code in SpawnerHelper.cs and commented out code for the default RunUO Spawner so you have an idea of how you can code your specific implementation.</p>
+  <p>NOTE: I will be providing support for custom spawners in my free time. You can contact me about this through the forums on my site. I am also willing to add more spawners into the installer, if you're the author of a spawner object and wish to be officially supported by Pandora's Box please compile a SpawnerHelper class specific for your spawner, and email me both scripts at <a href="mailto:arya@box.it">arya@box.it</a></p>
+  <p class="style1">8. Modules</p>
+  <p>BoxServer is composed of modules. You can choose which modules you wish to install during the installation wizard, and in case you wish to remove a module at a later time you can simply delete its folder in the Modules directory and restart your server. Please don't remove any files from the Core folder as they might compromise the BoxServer. I will not provide support for such situations. </p>
+  <blockquote>
+    <p class="style1">1. Core</p>
+    <p>As the name implies, the Core module includes classes used for the main functionality of BoxServer:</p>
+  </blockquote>
+  <ul>
+    <li>Login functionality: provides Pandora's Box with a quick authentication for the user before allowing access to other BoxServer features.</li>
+    <li>Various data structures used throughout the BoxServer.</li>
+    <li>Various methods used by the BoxServer scripts.</li>
+    <li>Error messages</li>
+    <li>Datafile generators: even if in a separate directory for easier identification, these scripts are part of the BoxServer core and should not be removed (otherwise other modules might fail to compile). The generation scripts can be accessed through the BoxServer control panel (see the in game commands sections for more details).</li>
+  </ul>
+  <blockquote>
+    <p>Attempting to modify the core features is totally unsupported because it might break the behaviour of the BoxServer, of Pandora's Box and might place security threats on your server.</p>
+    <p class="style1">2. Builder</p>
+    <p><strong>Authentication</strong>: IAuthenticable<br>
+      <strong>MinAccessLevel</strong>: GameMaster<br>
+      <strong>RequireOnlineMobile</strong>: true </p>
+    <p>This module is used by two and possibly more features of Pandora's Box (namely roofing and the random tiler). When you create a structure of items through the roofing tool, for instance, using the Generate through Server option, the structure will be automatically saved in the Builder class. This will allow users of Pandora's Box to quickly move, remove or hue the whole structure.</p>
+    <p class="style1">3. Retrieve Datafiles </p>
+    <p><strong>Authentication</strong>: Basic <br>
+      <strong>MinAccessLevel</strong>: BoxServer default <br>
+      <strong>RequireOnlineMobile</strong>: none (false)</p>
+    <p>This module allows users to retrieve datafiles used in Pandora's Box to display custom items, mobiles and so on. The datafiles available are:</p>
+  </blockquote>
+
+  <ul>
+    <li>BoxData [ RunUO\TheBox\BoxData.xml ] : contains the definitions of all constructable items and mobiles scripted on the server.</li>
+    <li>PropsData [ RunUO\TheBox\PropsData.xml ] : contains the definitions of all the properties defined on constructable items and mobiles. It is used on the Props tab in Pandora's Box.</li>
+    <li>SpawnData [ RunUO\TheBox\SpawnData.xml ] : contains information about the spawns in the world, used to display them on the travel map in Pandora's Box.</li>
+  </ul>
+<blockquote>
+    <p>This module is very useful for distributing shard specific information to the staff. All the datafiles are generated in the RunUO\TheBox folder by default. If you wish to allow users to retrieve only a part of available datafiles (for example only BoxData), simply don't generate (or delete) the other datafiles from the RunUO\TheBox folder.</p>
+    <p class="style1">4. Script Explorer</p>
+    <p><strong>Authentication</strong>: Custom <br>
+      <strong>MinAccessLevel</strong>: BoxServer default <br>
+      <strong>RequireOnlineMobile</strong>: none (false)</p>
+    <p>This is a powerful yet potentially dangerous module. Simply put, it's a FTP architecture limited to .cs, .vb, .xml and .txt files. It allows remote users to download, upload, delete and move files and is intended to aid remote scripting.</p>
+    <p>In order to minimize risks associated with this module, it requires a special configuration located in the file \Modules\ScriptExplorer\Configuration.cs. You must provide a user esplicit permission for this module by specifying their account name and the folders they are allowed to access. All folders are specified relatively to the \Scripts\ folder on the server. The Configuration.cs file explains in detail how to register a user for this module.</p>
+    <p>Whenever a user tries to use this module, the script will check if the user is registered, and if so it will check if the file being modified belongs to the user's registered folder(s).</p>
+    <p>IMPORTANT: This module is active only when the server is running. If a remote user modifies a script, or uploads code that fails to compile, and then restarts the server, the server will not restart and will need mainteinance by other means. Please use this module carefully.</p>
+    <p class="style1">5. Spawn Groups </p>
+    <p><strong>Authentication</strong>: IAuthenticable <br>
+      <strong>MinAccessLevel</strong>: GameMaster <br>
+      <strong>RequireOnlineMobile</strong>: true</p>
+  <p>This module allows users to spawn full spawn groups as defined in Pandora's Box. For more information about spawners refer to section 7.</p>
+    <p class="style1">6. Client List </p>
+    <p><strong>Authentication</strong>: IAuthenticable to perform commands on clients <br>
+        <strong>MinAccessLevel</strong>: GameMaster <br>
+        <strong>RequireOnlineMobile</strong>: true to perform commands on clients </p>
+  <p>This module transfers the client list to Pandora's Box. Information collected include: player and account name, last login time, location, map and serial. This module is used in Pandora's Box by the Client Map which displays where clients are located on a world map, and by the Client List which lists (allowing different sorting orders) all the clients connected. This second mode also allows to quickly go to the selected client, view their props or client information and for administrators also their account details. </p>
+  </blockquote>
+  <p class="style1"><strong>9. Uninstallation</strong></p>
+  <p>Uninstalling the BoxServer is very easy and is done in three steps:</p>
+  <ol>
+    <li>Delete the file \RunUO\BoxServer.dll</li>
+    <li>Open the file \RunUO\Data\Assemblies.cfg and remove the following entries:
+      <ol>
+        <li>BoxServer.dll</li>
+        <li>System.Runtime.Remoting.dll (keep in mind that other software might need this, such as UOArchitect or other <a href="http://www.orbsydia.com" target="_blank">Orbsydia</a> programs)</li>
+      </ol>
+    </li>
+    <li>Delete all the scripts within the BoxServer folder.</li>
+  </ol>
+  <p class="style1"><strong>10. Support</strong></p>
+  <p>Support for the BoxServer is provided through the BoxServer forum located at <a href="http://arya.runuo.com/" target="_blank">http://arya.runuo.com/</a> </p>
+  <blockquote>
+    <p>&nbsp;</p>
+  </blockquote>
+</body>
+</html>

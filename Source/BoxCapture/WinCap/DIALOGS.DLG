@@ -1,0 +1,86 @@
+DLGINCLUDE RCDATA DISCARDABLE
+BEGIN
+    "DIALOGS.H\0"
+END
+
+ABOUT DIALOG 76, 31, 234, 105
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About WinCap"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Copyright ©1992, Microsoft Corp.", IDC_COPYRIGHT, 41, 
+                    34, 132, 8
+    DEFPUSHBUTTON   "O&K", IDOK, 185, 5, 44, 14
+    LTEXT           "Microsoft Windows Developer Support", -1, 41, 25, 158, 
+                    8
+    LTEXT           "Screen Capture Sample Application", -1, 41, 16, 143, 8
+    CONTROL         "", 127, "Static", SS_BLACKRECT, 0, 49, 234, 1
+    LTEXT           "WinCap demonstrates how to use the Windows bitmap and DIB functions to take a snapshot of a single window or the entire screen and then print it or save it to a .BMP file.", 
+                    IDC_BITMAP1, 8, 55, 220, 27
+    LTEXT           "WinCap Version 3.10", IDC_TEXT1, 41, 7, 112, 8
+    LTEXT           "Development Team:  Mark Bader, Patrick Schreiber, Garrett McAuliffe, Eric Flo, Tony Claflin and Dan Ruder", 
+                    113, 8, 84, 219, 17
+END
+
+SAVING DIALOG 105, 44, 206, 37
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_THICKFRAME
+CAPTION "Windows Screen Capture"
+FONT 8, "Helv"
+BEGIN
+    CTEXT           "Saving captured screen to file", IDC_DIVIDINGLINE, 72, 
+                    11, 114, 8
+    ICON            "WINCAP", IDC_ABOUT, 12, 14, 16, 16
+    CTEXT           "filename", IDC_FILETEXT, 56, 23, 146, 8
+END
+
+PRINTING DIALOG 115, 63, 210, 80
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows Screen Capture"
+FONT 8, "Helv"
+BEGIN
+    DEFPUSHBUTTON   "Cancel", IDCANCEL, 85, 60, 40, 14
+    CTEXT           "Printing", IDC_PRINTTEXT1, 41, 14, 157, 8
+    CTEXT           "on Printer", IDC_PRINTTEXT2, 41, 25, 157, 8
+    CTEXT           "Spooling...", IDC_PERCENTAGE, 41, 37, 157, 8
+    ICON            "WINCAP", 113, 11, 12, 16, 16
+    GROUPBOX        "", IDC_BOX1, 35, 4, 170, 47
+END
+
+Print DIALOG 76, 31, 205, 92
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Windows Screen Capture"
+FONT 8, "Helv"
+BEGIN
+    GROUPBOX        "Printer Options", IDC_BOX1, 9, 7, 132, 76
+    CONTROL         "&Best Fit", IDC_BESTFIT, "Button", BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP, 21, 17, 44, 12
+    CONTROL         "Stretch to &Page", IDC_STRETCHTOPAGE, "Button", 
+                    BS_AUTORADIOBUTTON | WS_TABSTOP, 21, 29, 70, 10
+    CONTROL         "Sca&le", IDC_SCALE, "Button", BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP, 21, 44, 44, 12
+    LTEXT           "&X Axis", IDC_XTEXT, 69, 48, 23, 8
+    EDITTEXT        IDC_XAXIS, 97, 46, 26, 12
+    LTEXT           "&Y Axis", IDC_YTEXT, 69, 62, 25, 8, NOT WS_GROUP
+    EDITTEXT        IDC_YAXIS, 97, 60, 26, 12
+    GROUPBOX        "", IDC_BOX4, 17, 38, 114, 38
+    DEFPUSHBUTTON   "Print", IDOK, 153, 13, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 153, 35, 40, 14
+    ICON            "WINCAP", 113, 165, 61, 16, 16
+END
+
+OPENING DIALOG 74, 62, 221, 93
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Copyright ©1992, Microsoft Corp.", IDC_COPYRIGHT, 37, 
+                    42, 132, 8
+    LTEXT           "Microsoft Windows Developer Support", -1, 37, 33, 158, 
+                    8
+    LTEXT           "Screen Capture Sample Application", -1, 37, 24, 143, 8
+    CONTROL         "", 127, "Static", SS_BLACKRECT, 36, 57, 173, 1
+    LTEXT           "WinCap Version 3.10", IDC_TEXT1, 37, 15, 112, 8
+    CONTROL         "", 130, "Static", SS_BLACKRECT, 36, 8, 173, 1
+    ICON            132, 113, 11, 9, 16, 16
+    LTEXT           "Development Team:  Mark Bader, Patrick Schreiber, Garrett McAuliffe, Eric Flo, Tony Claflin and Dan Ruder", 
+                    133, 36, 63, 183, 25
+END

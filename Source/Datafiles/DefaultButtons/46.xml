@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Lock">
+	<LeftObject xsi:type="MultiCommandDef" DefaultIndex="0">
+		<Commands>
+			<MenuCommand Caption="Lock" Command="Set Movable false" UsePrefix="true" />
+			<MenuCommand Caption="Unlock" Command="Set Movable true" UsePrefix="true" />
+		</Commands>
+	</LeftObject>
+</ButtonDef>

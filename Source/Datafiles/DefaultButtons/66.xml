@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Freeze">
+	<RightObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="MenuCommand" Caption="Freeze Map" Command="FreezeMap" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Freeze World" Command="FreezeWorld" UsePrefix="true" />
+		</Items>
+	</RightObject>
+	<LeftObject xsi:type="MenuCommand" Command="Freeze" UsePrefix="false" />
+</ButtonDef>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Generate">
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="MenuCommand" Caption="Decoration" Command="Decorate" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Documentation" Command="DocGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Doors" Command="DoorGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Malas Secret Locations" Command="SecretLocGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Moongates" Command="MoonGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Signs" Command="SignGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Solen Hives Teleporters" Command="SHTelGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Teleporters" Command="TelGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="Vendors" Command="VendorGen" UsePrefix="true" />
+			<anyType xsi:type="MenuCommand" Caption="AutoMap Vendors" Command="UOAMVendors" UsePrefix="true" />
+		</Items>
+	</LeftObject>
+</ButtonDef>

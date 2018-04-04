@@ -1,0 +1,7 @@
+; BoxCapture.def : Declares the module parameters for the DLL.
+
+LIBRARY      "BoxCapture"
+
+EXPORTS
+    ; Explicit exports can go here
+	CaptureWindow

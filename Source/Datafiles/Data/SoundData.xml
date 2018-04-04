@@ -1,0 +1,1874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<SoundData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Structure>
+		<GenericNode Name="Ambient">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Air">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="655" Name="Air 01" />
+						<anyType xsi:type="UOSound" Index="656" Name="Air 02" />
+						<anyType xsi:type="UOSound" Index="657" Name="Air 03" />
+						<anyType xsi:type="UOSound" Index="658" Name="Air 04" />
+						<anyType xsi:type="UOSound" Index="659" Name="Air 05" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Boulder">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="541" Name="Boulder 1" />
+						<anyType xsi:type="UOSound" Index="542" Name="Boulder 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Bubble">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="32" Name="Bubble 1" />
+						<anyType xsi:type="UOSound" Index="33" Name="Bubble 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Crumble">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="543" Name="Crumble 1" />
+						<anyType xsi:type="UOSound" Index="544" Name="Crumble 2" />
+						<anyType xsi:type="UOSound" Index="545" Name="Crumble 3" />
+						<anyType xsi:type="UOSound" Index="546" Name="Crumble 4" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Drip">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="34" Name="Drip 1" />
+						<anyType xsi:type="UOSound" Index="733" Name="Drip 10" />
+						<anyType xsi:type="UOSound" Index="734" Name="Drip 11" />
+						<anyType xsi:type="UOSound" Index="735" Name="Drip 12" />
+						<anyType xsi:type="UOSound" Index="736" Name="Drip 13" />
+						<anyType xsi:type="UOSound" Index="727" Name="Drip 2" />
+						<anyType xsi:type="UOSound" Index="35" Name="Drip 3" />
+						<anyType xsi:type="UOSound" Index="728" Name="Drip 4" />
+						<anyType xsi:type="UOSound" Index="729" Name="Drip 5" />
+						<anyType xsi:type="UOSound" Index="730" Name="Drip 6" />
+						<anyType xsi:type="UOSound" Index="36" Name="Drip 7" />
+						<anyType xsi:type="UOSound" Index="731" Name="Drip 8" />
+						<anyType xsi:type="UOSound" Index="732" Name="Drip 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Dropping">
+					<Elements>
+						<anyType xsi:type="GenericNode" Name="Gem">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="50" Name="Drop gem 1" />
+								<anyType xsi:type="UOSound" Index="737" Name="Drop gem 2" />
+								<anyType xsi:type="UOSound" Index="51" Name="Drop gem 3" />
+								<anyType xsi:type="UOSound" Index="738" Name="Drop gem 4" />
+								<anyType xsi:type="UOSound" Index="52" Name="Drop gem 5" />
+								<anyType xsi:type="UOSound" Index="739" Name="Drop gem 6" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="GenericNode" Name="Money">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="53" Name="Drop Money 1" />
+								<anyType xsi:type="UOSound" Index="740" Name="Drop Money 2" />
+								<anyType xsi:type="UOSound" Index="54" Name="Drop Money 3" />
+								<anyType xsi:type="UOSound" Index="741" Name="Drop Money 4" />
+								<anyType xsi:type="UOSound" Index="55" Name="Drop Money 5" />
+								<anyType xsi:type="UOSound" Index="742" Name="Drop Money 6" />
+							</Elements>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="574" Name="Dyes" />
+				<anyType xsi:type="GenericNode" Name="Explosion">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="283" Name="Explosion 1" />
+						<anyType xsi:type="UOSound" Index="286" Name="Explosion 10" />
+						<anyType xsi:type="UOSound" Index="519" Name="Explosion 11" />
+						<anyType xsi:type="UOSound" Index="773" Name="Explosion 2" />
+						<anyType xsi:type="UOSound" Index="774" Name="Explosion 3" />
+						<anyType xsi:type="UOSound" Index="775" Name="Explosion 4" />
+						<anyType xsi:type="UOSound" Index="284" Name="Explosion 5" />
+						<anyType xsi:type="UOSound" Index="776" Name="Explosion 6" />
+						<anyType xsi:type="UOSound" Index="285" Name="Explosion 7" />
+						<anyType xsi:type="UOSound" Index="777" Name="Explosion 8" />
+						<anyType xsi:type="UOSound" Index="1231" Name="Explosion 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Feet">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="289" Name="Feet 1" />
+						<anyType xsi:type="UOSound" Index="298" Name="Feet 10" />
+						<anyType xsi:type="UOSound" Index="299" Name="Feet 11" />
+						<anyType xsi:type="UOSound" Index="300" Name="Feet 12" />
+						<anyType xsi:type="UOSound" Index="301" Name="Feet 13" />
+						<anyType xsi:type="UOSound" Index="302" Name="Feet 14" />
+						<anyType xsi:type="UOSound" Index="303" Name="Feet 15" />
+						<anyType xsi:type="UOSound" Index="304" Name="Feet 16" />
+						<anyType xsi:type="UOSound" Index="305" Name="Feet 17" />
+						<anyType xsi:type="UOSound" Index="306" Name="Feet 18" />
+						<anyType xsi:type="UOSound" Index="307" Name="Feet 19" />
+						<anyType xsi:type="UOSound" Index="290" Name="Feet 2" />
+						<anyType xsi:type="UOSound" Index="308" Name="Feet 20" />
+						<anyType xsi:type="UOSound" Index="291" Name="Feet 3" />
+						<anyType xsi:type="UOSound" Index="292" Name="Feet 4" />
+						<anyType xsi:type="UOSound" Index="293" Name="Feet 5" />
+						<anyType xsi:type="UOSound" Index="294" Name="Feet 6" />
+						<anyType xsi:type="UOSound" Index="295" Name="Feet 7" />
+						<anyType xsi:type="UOSound" Index="296" Name="Feet 8" />
+						<anyType xsi:type="UOSound" Index="297" Name="Feet 9" />
+						<anyType xsi:type="UOSound" Index="825" Name="Grass 1" />
+						<anyType xsi:type="UOSound" Index="826" Name="Grass 2" />
+						<anyType xsi:type="UOSound" Index="827" Name="Grovel 1" />
+						<anyType xsi:type="UOSound" Index="828" Name="Grovel 2" />
+						<anyType xsi:type="UOSound" Index="829" Name="Pavement 1" />
+						<anyType xsi:type="UOSound" Index="830" Name="Pavement 2" />
+						<anyType xsi:type="UOSound" Index="831" Name="Sand 1" />
+						<anyType xsi:type="UOSound" Index="832" Name="Sand 2" />
+						<anyType xsi:type="UOSound" Index="833" Name="Snow 1" />
+						<anyType xsi:type="UOSound" Index="834" Name="Snow 2" />
+						<anyType xsi:type="UOSound" Index="835" Name="Wood 1" />
+						<anyType xsi:type="UOSound" Index="836" Name="Wood 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Fire">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="837" Name="Fire 1" />
+						<anyType xsi:type="UOSound" Index="477" Name="Fire 2" />
+						<anyType xsi:type="UOSound" Index="838" Name="Fire 3" />
+						<anyType xsi:type="UOSound" Index="839" Name="Fire 4" />
+						<anyType xsi:type="UOSound" Index="840" Name="Fire 5" />
+						<anyType xsi:type="UOSound" Index="841" Name="Fire 6" />
+						<anyType xsi:type="UOSound" Index="842" Name="Fire 7" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Flame">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="549" Name="Flame 1" />
+						<anyType xsi:type="UOSound" Index="854" Name="Flame 2" />
+						<anyType xsi:type="UOSound" Index="550" Name="Flame 3" />
+						<anyType xsi:type="UOSound" Index="855" Name="Flame 4" />
+						<anyType xsi:type="UOSound" Index="551" Name="Flame 5" />
+						<anyType xsi:type="UOSound" Index="857" Name="Flame 6" />
+						<anyType xsi:type="UOSound" Index="1232" Name="Flame 7" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Forest">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="0" Name="Forest 1" />
+						<anyType xsi:type="UOSound" Index="1" Name="Forest 2" />
+						<anyType xsi:type="UOSound" Index="2" Name="Forest 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Glass Break">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="62" Name="Glass Break 1" />
+						<anyType xsi:type="UOSound" Index="909" Name="Glass Break 2" />
+						<anyType xsi:type="UOSound" Index="63" Name="Glass Break 3" />
+						<anyType xsi:type="UOSound" Index="910" Name="Glass Break 4" />
+						<anyType xsi:type="UOSound" Index="64" Name="Glass Break 5" />
+						<anyType xsi:type="UOSound" Index="911" Name="Glass Break 6" />
+						<anyType xsi:type="UOSound" Index="65" Name="Glass Break 7" />
+						<anyType xsi:type="UOSound" Index="912" Name="Glass Break 8" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Hit">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="309" Name="Hit 1" />
+						<anyType xsi:type="UOSound" Index="930" Name="Hit 10" />
+						<anyType xsi:type="UOSound" Index="318" Name="Hit 11" />
+						<anyType xsi:type="UOSound" Index="931" Name="Hit 12" />
+						<anyType xsi:type="UOSound" Index="319" Name="Hit 13" />
+						<anyType xsi:type="UOSound" Index="932" Name="Hit 14" />
+						<anyType xsi:type="UOSound" Index="320" Name="Hit 15" />
+						<anyType xsi:type="UOSound" Index="933" Name="Hit 16" />
+						<anyType xsi:type="UOSound" Index="321" Name="Hit 17" />
+						<anyType xsi:type="UOSound" Index="934" Name="Hit 18" />
+						<anyType xsi:type="UOSound" Index="322" Name="Hit 19" />
+						<anyType xsi:type="UOSound" Index="310" Name="Hit 2" />
+						<anyType xsi:type="UOSound" Index="935" Name="Hit 20" />
+						<anyType xsi:type="UOSound" Index="323" Name="Hit 21" />
+						<anyType xsi:type="UOSound" Index="936" Name="Hit 22" />
+						<anyType xsi:type="UOSound" Index="324" Name="Hit 23" />
+						<anyType xsi:type="UOSound" Index="937" Name="Hit 24" />
+						<anyType xsi:type="UOSound" Index="325" Name="Hit 25" />
+						<anyType xsi:type="UOSound" Index="938" Name="Hit 26" />
+						<anyType xsi:type="UOSound" Index="326" Name="Hit 27" />
+						<anyType xsi:type="UOSound" Index="939" Name="Hit 28" />
+						<anyType xsi:type="UOSound" Index="327" Name="Hit 29" />
+						<anyType xsi:type="UOSound" Index="311" Name="Hit 3" />
+						<anyType xsi:type="UOSound" Index="940" Name="Hit 30" />
+						<anyType xsi:type="UOSound" Index="941" Name="Hit 31" />
+						<anyType xsi:type="UOSound" Index="328" Name="Hit 32" />
+						<anyType xsi:type="UOSound" Index="942" Name="Hit 33" />
+						<anyType xsi:type="UOSound" Index="329" Name="Hit 34" />
+						<anyType xsi:type="UOSound" Index="943" Name="Hit 35" />
+						<anyType xsi:type="UOSound" Index="330" Name="Hit 36" />
+						<anyType xsi:type="UOSound" Index="944" Name="Hit 37" />
+						<anyType xsi:type="UOSound" Index="945" Name="Hit 38" />
+						<anyType xsi:type="UOSound" Index="946" Name="Hit 39" />
+						<anyType xsi:type="UOSound" Index="312" Name="Hit 4" />
+						<anyType xsi:type="UOSound" Index="947" Name="Hit 40" />
+						<anyType xsi:type="UOSound" Index="948" Name="Hit 41" />
+						<anyType xsi:type="UOSound" Index="949" Name="Hit 42" />
+						<anyType xsi:type="UOSound" Index="950" Name="Hit 43" />
+						<anyType xsi:type="UOSound" Index="951" Name="Hit 44" />
+						<anyType xsi:type="UOSound" Index="313" Name="Hit 5" />
+						<anyType xsi:type="UOSound" Index="314" Name="Hit 6" />
+						<anyType xsi:type="UOSound" Index="315" Name="Hit 7" />
+						<anyType xsi:type="UOSound" Index="316" Name="Hit 8" />
+						<anyType xsi:type="UOSound" Index="317" Name="Hit 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Jungle">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="3" Name="Jungle 1" />
+						<anyType xsi:type="UOSound" Index="691" Name="Jungle 2" />
+						<anyType xsi:type="UOSound" Index="4" Name="Jungle 3" />
+						<anyType xsi:type="UOSound" Index="692" Name="Jungle 4" />
+						<anyType xsi:type="UOSound" Index="5" Name="Jungle 5" />
+						<anyType xsi:type="UOSound" Index="693" Name="Jungle 6" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Night">
+					<Elements>
+						<anyType xsi:type="GenericNode" Name="Forest">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="8" Name="Forest Night 1" />
+								<anyType xsi:type="UOSound" Index="9" Name="Forest Night 2" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="GenericNode" Name="Jungle">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="12" Name="Jungle Night 1" />
+								<anyType xsi:type="UOSound" Index="13" Name="Jungle Night 2" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="UOSound" Index="10" Name="Night 1" />
+						<anyType xsi:type="UOSound" Index="11" Name="Night 2" />
+						<anyType xsi:type="GenericNode" Name="Swamp">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="14" Name="Swamp Night 1" />
+								<anyType xsi:type="UOSound" Index="15" Name="Swamp Night 2" />
+							</Elements>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="78" Name="Pouring" />
+				<anyType xsi:type="GenericNode" Name="Splash">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="868" Name="Splash 1" />
+						<anyType xsi:type="UOSound" Index="1233" Name="Splash 2" />
+						<anyType xsi:type="UOSound" Index="575" Name="Splash 3" />
+						<anyType xsi:type="UOSound" Index="37" Name="Splash 4" />
+						<anyType xsi:type="UOSound" Index="38" Name="Splash 5" />
+						<anyType xsi:type="UOSound" Index="39" Name="Splash 6" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Swamp">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="6" Name="Swamp 1" />
+						<anyType xsi:type="UOSound" Index="694" Name="Swamp 2" />
+						<anyType xsi:type="UOSound" Index="7" Name="Swamp 3" />
+						<anyType xsi:type="UOSound" Index="695" Name="Swamp 4" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Thunder">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="40" Name="Thunder 1" />
+						<anyType xsi:type="UOSound" Index="518" Name="Thunder 2" />
+						<anyType xsi:type="UOSound" Index="41" Name="Thunder 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Vapor">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="559" Name="Vapor 1" />
+						<anyType xsi:type="UOSound" Index="560" Name="Vapor 2" />
+						<anyType xsi:type="UOSound" Index="561" Name="Vapor 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Water">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="16" Name="Water 1" />
+						<anyType xsi:type="UOSound" Index="17" Name="Water 2" />
+						<anyType xsi:type="UOSound" Index="278" Name="Water 3" />
+						<anyType xsi:type="UOSound" Index="279" Name="Water 4" />
+						<anyType xsi:type="UOSound" Index="280" Name="Water 5" />
+						<anyType xsi:type="UOSound" Index="281" Name="Water 6" />
+						<anyType xsi:type="UOSound" Index="282" Name="Water 7" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Wave">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="18" Name="Wave 1" />
+						<anyType xsi:type="UOSound" Index="19" Name="Wave 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Wind">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="20" Name="Wind 1" />
+						<anyType xsi:type="UOSound" Index="21" Name="Wind 2" />
+						<anyType xsi:type="UOSound" Index="22" Name="Wind 3" />
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Animals">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Alligator">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="90" Name="Alligator 1" />
+						<anyType xsi:type="UOSound" Index="664" Name="Alligator 10" />
+						<anyType xsi:type="UOSound" Index="660" Name="Alligator 2" />
+						<anyType xsi:type="UOSound" Index="91" Name="Alligator 3" />
+						<anyType xsi:type="UOSound" Index="661" Name="Alligator 4" />
+						<anyType xsi:type="UOSound" Index="92" Name="Alligator 5" />
+						<anyType xsi:type="UOSound" Index="662" Name="Alligator 6" />
+						<anyType xsi:type="UOSound" Index="93" Name="Alligator 7" />
+						<anyType xsi:type="UOSound" Index="663" Name="Alligator 8" />
+						<anyType xsi:type="UOSound" Index="94" Name="Alligator 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Bear">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="95" Name="Bear 1" />
+						<anyType xsi:type="UOSound" Index="1222" Name="Bear 10" />
+						<anyType xsi:type="UOSound" Index="99" Name="Bear 11" />
+						<anyType xsi:type="UOSound" Index="1223" Name="Bear 12" />
+						<anyType xsi:type="UOSound" Index="666" Name="Bear 2" />
+						<anyType xsi:type="UOSound" Index="1218" Name="Bear 3" />
+						<anyType xsi:type="UOSound" Index="1219" Name="Bear 4" />
+						<anyType xsi:type="UOSound" Index="96" Name="Bear 5" />
+						<anyType xsi:type="UOSound" Index="1220" Name="Bear 6" />
+						<anyType xsi:type="UOSound" Index="97" Name="Bear 7" />
+						<anyType xsi:type="UOSound" Index="1221" Name="Bear 8" />
+						<anyType xsi:type="UOSound" Index="98" Name="Bear 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Bird">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="23" Name="Bird 1" />
+						<anyType xsi:type="UOSound" Index="624" Name="Bird 10" />
+						<anyType xsi:type="UOSound" Index="625" Name="Bird 11" />
+						<anyType xsi:type="UOSound" Index="626" Name="Bird 12" />
+						<anyType xsi:type="UOSound" Index="627" Name="Bird 13" />
+						<anyType xsi:type="UOSound" Index="667" Name="Bird 14" />
+						<anyType xsi:type="UOSound" Index="628" Name="Bird 15" />
+						<anyType xsi:type="UOSound" Index="668" Name="Bird 16" />
+						<anyType xsi:type="UOSound" Index="629" Name="Bird 17" />
+						<anyType xsi:type="UOSound" Index="669" Name="Bird 18" />
+						<anyType xsi:type="UOSound" Index="630" Name="Bird 19" />
+						<anyType xsi:type="UOSound" Index="24" Name="Bird 2" />
+						<anyType xsi:type="UOSound" Index="670" Name="Bird 20" />
+						<anyType xsi:type="UOSound" Index="631" Name="Bird 21" />
+						<anyType xsi:type="UOSound" Index="671" Name="Bird 22" />
+						<anyType xsi:type="UOSound" Index="632" Name="Bird 23" />
+						<anyType xsi:type="UOSound" Index="672" Name="Bird 24" />
+						<anyType xsi:type="UOSound" Index="633" Name="Bird 25" />
+						<anyType xsi:type="UOSound" Index="148" Name="Bird 26" />
+						<anyType xsi:type="UOSound" Index="149" Name="Bird 27" />
+						<anyType xsi:type="UOSound" Index="150" Name="Bird 28" />
+						<anyType xsi:type="UOSound" Index="151" Name="Bird 29" />
+						<anyType xsi:type="UOSound" Index="25" Name="Bird 3" />
+						<anyType xsi:type="UOSound" Index="152" Name="Bird 30" />
+						<anyType xsi:type="UOSound" Index="173" Name="Bird 31" />
+						<anyType xsi:type="UOSound" Index="174" Name="Bird 32" />
+						<anyType xsi:type="UOSound" Index="175" Name="Bird 33" />
+						<anyType xsi:type="UOSound" Index="176" Name="Bird 34" />
+						<anyType xsi:type="UOSound" Index="177" Name="Bird 35" />
+						<anyType xsi:type="UOSound" Index="26" Name="Bird 4" />
+						<anyType xsi:type="UOSound" Index="27" Name="Bird 5" />
+						<anyType xsi:type="UOSound" Index="28" Name="Bird 6" />
+						<anyType xsi:type="UOSound" Index="29" Name="Bird 7" />
+						<anyType xsi:type="UOSound" Index="30" Name="Bird 8" />
+						<anyType xsi:type="UOSound" Index="31" Name="Bird 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Bull">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="100" Name="Bull 1" />
+						<anyType xsi:type="UOSound" Index="101" Name="Bull 2" />
+						<anyType xsi:type="UOSound" Index="102" Name="Bull 3" />
+						<anyType xsi:type="UOSound" Index="103" Name="Bull 4" />
+						<anyType xsi:type="UOSound" Index="104" Name="Bull 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Cat">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="105" Name="Cat 1" />
+						<anyType xsi:type="UOSound" Index="678" Name="Cat 10" />
+						<anyType xsi:type="UOSound" Index="674" Name="Cat 2" />
+						<anyType xsi:type="UOSound" Index="106" Name="Cat 3" />
+						<anyType xsi:type="UOSound" Index="675" Name="Cat 4" />
+						<anyType xsi:type="UOSound" Index="107" Name="Cat 5" />
+						<anyType xsi:type="UOSound" Index="676" Name="Cat 6" />
+						<anyType xsi:type="UOSound" Index="108" Name="Cat 7" />
+						<anyType xsi:type="UOSound" Index="677" Name="Cat 8" />
+						<anyType xsi:type="UOSound" Index="109" Name="Cat 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Chicken">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="110" Name="Chicken 1" />
+						<anyType xsi:type="UOSound" Index="111" Name="Chicken 2" />
+						<anyType xsi:type="UOSound" Index="112" Name="Chicken 3" />
+						<anyType xsi:type="UOSound" Index="113" Name="Chicken 4" />
+						<anyType xsi:type="UOSound" Index="114" Name="Chicken 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Coguar">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="115" Name="Coguar 1" />
+						<anyType xsi:type="UOSound" Index="116" Name="Coguar 2" />
+						<anyType xsi:type="UOSound" Index="117" Name="Coguar 3" />
+						<anyType xsi:type="UOSound" Index="118" Name="Coguar 4" />
+						<anyType xsi:type="UOSound" Index="119" Name="Coguar 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Cow">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="120" Name="Cow 1" />
+						<anyType xsi:type="UOSound" Index="121" Name="Cow 2" />
+						<anyType xsi:type="UOSound" Index="122" Name="Cow 3" />
+						<anyType xsi:type="UOSound" Index="123" Name="Cow 4" />
+						<anyType xsi:type="UOSound" Index="124" Name="Cow 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Crow">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="125" Name="Crow 1" />
+						<anyType xsi:type="UOSound" Index="126" Name="Crow 2" />
+						<anyType xsi:type="UOSound" Index="127" Name="Crow 3" />
+						<anyType xsi:type="UOSound" Index="128" Name="Crow 4" />
+						<anyType xsi:type="UOSound" Index="129" Name="Crow 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Deer">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="130" Name="Deer 1" />
+						<anyType xsi:type="UOSound" Index="701" Name="Deer 2" />
+						<anyType xsi:type="UOSound" Index="131" Name="Deer 3" />
+						<anyType xsi:type="UOSound" Index="702" Name="Deer 4" />
+						<anyType xsi:type="UOSound" Index="1226" Name="Deer 5" />
+						<anyType xsi:type="UOSound" Index="132" Name="Deer 6" />
+						<anyType xsi:type="UOSound" Index="703" Name="Deer 7" />
+						<anyType xsi:type="UOSound" Index="1227" Name="Deer 8" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Dog">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="133" Name="Dog 1" />
+						<anyType xsi:type="UOSound" Index="134" Name="Dog 2" />
+						<anyType xsi:type="UOSound" Index="135" Name="Dog 3" />
+						<anyType xsi:type="UOSound" Index="136" Name="Dog 4" />
+						<anyType xsi:type="UOSound" Index="137" Name="Dog 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Dolphin">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="138" Name="Dolphin 1" />
+						<anyType xsi:type="UOSound" Index="139" Name="Dolphin 2" />
+						<anyType xsi:type="UOSound" Index="140" Name="Dolphin 3" />
+						<anyType xsi:type="UOSound" Index="141" Name="Dolphin 4" />
+						<anyType xsi:type="UOSound" Index="142" Name="Dolphin 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Eagle">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="143" Name="Eagle 1" />
+						<anyType xsi:type="UOSound" Index="754" Name="Eagle 10" />
+						<anyType xsi:type="UOSound" Index="750" Name="Eagle 2" />
+						<anyType xsi:type="UOSound" Index="144" Name="Eagle 3" />
+						<anyType xsi:type="UOSound" Index="751" Name="Eagle 4" />
+						<anyType xsi:type="UOSound" Index="145" Name="Eagle 5" />
+						<anyType xsi:type="UOSound" Index="752" Name="Eagle 6" />
+						<anyType xsi:type="UOSound" Index="146" Name="Eagle 7" />
+						<anyType xsi:type="UOSound" Index="753" Name="Eagle 8" />
+						<anyType xsi:type="UOSound" Index="147" Name="Eagle 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Frog">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="858" Name="Frog 1" />
+						<anyType xsi:type="UOSound" Index="618" Name="Frog 10" />
+						<anyType xsi:type="UOSound" Index="863" Name="Frog 11" />
+						<anyType xsi:type="UOSound" Index="619" Name="Frog 12" />
+						<anyType xsi:type="UOSound" Index="864" Name="Frog 13" />
+						<anyType xsi:type="UOSound" Index="620" Name="Frog 14" />
+						<anyType xsi:type="UOSound" Index="865" Name="Frog 15" />
+						<anyType xsi:type="UOSound" Index="621" Name="Frog 16" />
+						<anyType xsi:type="UOSound" Index="866" Name="Frog 17" />
+						<anyType xsi:type="UOSound" Index="622" Name="Frog 18" />
+						<anyType xsi:type="UOSound" Index="867" Name="Frog 19" />
+						<anyType xsi:type="UOSound" Index="614" Name="Frog 2" />
+						<anyType xsi:type="UOSound" Index="623" Name="Frog 20" />
+						<anyType xsi:type="UOSound" Index="859" Name="Frog 3" />
+						<anyType xsi:type="UOSound" Index="615" Name="Frog 4" />
+						<anyType xsi:type="UOSound" Index="860" Name="Frog 5" />
+						<anyType xsi:type="UOSound" Index="616" Name="Frog 6" />
+						<anyType xsi:type="UOSound" Index="861" Name="Frog 7" />
+						<anyType xsi:type="UOSound" Index="617" Name="Frog 8" />
+						<anyType xsi:type="UOSound" Index="862" Name="Frog 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Giant Rat">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="392" Name="Giant Rat 1" />
+						<anyType xsi:type="UOSound" Index="393" Name="Giant Rat 2" />
+						<anyType xsi:type="UOSound" Index="394" Name="Giant Rat 3" />
+						<anyType xsi:type="UOSound" Index="395" Name="Giant Rat 4" />
+						<anyType xsi:type="UOSound" Index="396" Name="Giant Rat 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Goat">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="153" Name="Goat 1" />
+						<anyType xsi:type="UOSound" Index="154" Name="Goat 2" />
+						<anyType xsi:type="UOSound" Index="155" Name="Goat 3" />
+						<anyType xsi:type="UOSound" Index="156" Name="Goat 4" />
+						<anyType xsi:type="UOSound" Index="157" Name="Goat 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Gorilla">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="158" Name="Gorilla 1" />
+						<anyType xsi:type="UOSound" Index="159" Name="Gorilla 2" />
+						<anyType xsi:type="UOSound" Index="160" Name="Gorilla 3" />
+						<anyType xsi:type="UOSound" Index="161" Name="Gorilla 4" />
+						<anyType xsi:type="UOSound" Index="162" Name="Gorilla 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Grizzly">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="163" Name="Grizzly 1" />
+						<anyType xsi:type="UOSound" Index="164" Name="Grizzly 2" />
+						<anyType xsi:type="UOSound" Index="165" Name="Grizzly 3" />
+						<anyType xsi:type="UOSound" Index="166" Name="Grizzly 4" />
+						<anyType xsi:type="UOSound" Index="167" Name="Grizzly 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Horse">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="168" Name="Horse 1" />
+						<anyType xsi:type="UOSound" Index="169" Name="Horse 2" />
+						<anyType xsi:type="UOSound" Index="170" Name="Horse 3" />
+						<anyType xsi:type="UOSound" Index="171" Name="Horse 4" />
+						<anyType xsi:type="UOSound" Index="172" Name="Horse 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Insects">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="959" Name="Insects 1" />
+						<anyType xsi:type="UOSound" Index="960" Name="Insects 2" />
+						<anyType xsi:type="UOSound" Index="961" Name="Insects 3" />
+						<anyType xsi:type="UOSound" Index="962" Name="Insects 4" />
+						<anyType xsi:type="UOSound" Index="963" Name="Insects 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Kirin">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="965" Name="Kirin 1" />
+						<anyType xsi:type="UOSound" Index="966" Name="Kirin 2" />
+						<anyType xsi:type="UOSound" Index="967" Name="Kirin 3" />
+						<anyType xsi:type="UOSound" Index="968" Name="Kirin 4" />
+						<anyType xsi:type="UOSound" Index="969" Name="Kirin 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lion">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="178" Name="Lion 1" />
+						<anyType xsi:type="UOSound" Index="1010" Name="Lion 10" />
+						<anyType xsi:type="UOSound" Index="1006" Name="Lion 2" />
+						<anyType xsi:type="UOSound" Index="179" Name="Lion 3" />
+						<anyType xsi:type="UOSound" Index="1007" Name="Lion 4" />
+						<anyType xsi:type="UOSound" Index="180" Name="Lion 5" />
+						<anyType xsi:type="UOSound" Index="1008" Name="Lion 6" />
+						<anyType xsi:type="UOSound" Index="181" Name="Lion 7" />
+						<anyType xsi:type="UOSound" Index="1009" Name="Lion 8" />
+						<anyType xsi:type="UOSound" Index="182" Name="Lion 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lizard">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="649" Name="Lizard 1" />
+						<anyType xsi:type="UOSound" Index="650" Name="Lizard 2" />
+						<anyType xsi:type="UOSound" Index="651" Name="Lizard 3" />
+						<anyType xsi:type="UOSound" Index="652" Name="Lizard 4" />
+						<anyType xsi:type="UOSound" Index="653" Name="Lizard 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Llama">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1011" Name="Llama 1" />
+						<anyType xsi:type="UOSound" Index="1012" Name="Llama 2" />
+						<anyType xsi:type="UOSound" Index="183" Name="Llama 3" />
+						<anyType xsi:type="UOSound" Index="1013" Name="Llama 4" />
+						<anyType xsi:type="UOSound" Index="1236" Name="Llama 5" />
+						<anyType xsi:type="UOSound" Index="184" Name="Llama 6" />
+						<anyType xsi:type="UOSound" Index="1014" Name="Llama 7" />
+						<anyType xsi:type="UOSound" Index="185" Name="Llama 8" />
+						<anyType xsi:type="UOSound" Index="1015" Name="Llama 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Longhorn">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1016" Name="Longhorn 1" />
+						<anyType xsi:type="UOSound" Index="1017" Name="Longhorn 2" />
+						<anyType xsi:type="UOSound" Index="1018" Name="Longhorn 3" />
+						<anyType xsi:type="UOSound" Index="1019" Name="Longhorn 4" />
+						<anyType xsi:type="UOSound" Index="1020" Name="Longhorn 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Mimic">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1100" Name="Mimic 1" />
+						<anyType xsi:type="UOSound" Index="1101" Name="Mimic 2" />
+						<anyType xsi:type="UOSound" Index="1102" Name="Mimic 3" />
+						<anyType xsi:type="UOSound" Index="1103" Name="Mimic 4" />
+						<anyType xsi:type="UOSound" Index="1104" Name="Mimic 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Panther">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="186" Name="Panther 1" />
+						<anyType xsi:type="UOSound" Index="1126" Name="Panther 10" />
+						<anyType xsi:type="UOSound" Index="1122" Name="Panther 2" />
+						<anyType xsi:type="UOSound" Index="187" Name="Panther 3" />
+						<anyType xsi:type="UOSound" Index="1123" Name="Panther 4" />
+						<anyType xsi:type="UOSound" Index="188" Name="Panther 5" />
+						<anyType xsi:type="UOSound" Index="1124" Name="Panther 6" />
+						<anyType xsi:type="UOSound" Index="189" Name="Panther 7" />
+						<anyType xsi:type="UOSound" Index="1125" Name="Panther 8" />
+						<anyType xsi:type="UOSound" Index="190" Name="Panther 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Parrot">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="191" Name="Parrot 1" />
+						<anyType xsi:type="UOSound" Index="192" Name="Parrot 2" />
+						<anyType xsi:type="UOSound" Index="193" Name="Parrot 3" />
+						<anyType xsi:type="UOSound" Index="194" Name="Parrot 4" />
+						<anyType xsi:type="UOSound" Index="195" Name="Parrot 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Pig">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="196" Name="Pig 1" />
+						<anyType xsi:type="UOSound" Index="197" Name="Pig 2" />
+						<anyType xsi:type="UOSound" Index="198" Name="Pig 3" />
+						<anyType xsi:type="UOSound" Index="199" Name="Pig 4" />
+						<anyType xsi:type="UOSound" Index="200" Name="Pig 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Rabbit">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="201" Name="Rabbit 1" />
+						<anyType xsi:type="UOSound" Index="202" Name="Rabbit 2" />
+						<anyType xsi:type="UOSound" Index="203" Name="Rabbit 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Rat">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="204" Name="Rat 1" />
+						<anyType xsi:type="UOSound" Index="205" Name="Rat 2" />
+						<anyType xsi:type="UOSound" Index="206" Name="Rat 3" />
+						<anyType xsi:type="UOSound" Index="207" Name="Rat 4" />
+						<anyType xsi:type="UOSound" Index="208" Name="Rat 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Raven">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="209" Name="Raven 1" />
+						<anyType xsi:type="UOSound" Index="210" Name="Raven 2" />
+						<anyType xsi:type="UOSound" Index="211" Name="Raven 3" />
+						<anyType xsi:type="UOSound" Index="212" Name="Raven 4" />
+						<anyType xsi:type="UOSound" Index="213" Name="Raven 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Sea Horse">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1144" Name="Sea Horse 1" />
+						<anyType xsi:type="UOSound" Index="1145" Name="Sea Horse 2" />
+						<anyType xsi:type="UOSound" Index="1146" Name="Sea Horse 3" />
+						<anyType xsi:type="UOSound" Index="1147" Name="Sea Horse 4" />
+						<anyType xsi:type="UOSound" Index="1148" Name="Sea Horse 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Sheep">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="214" Name="Sheep 1" />
+						<anyType xsi:type="UOSound" Index="215" Name="Sheep 2" />
+						<anyType xsi:type="UOSound" Index="216" Name="Sheep 3" />
+						<anyType xsi:type="UOSound" Index="1159" Name="Sheep 4" />
+						<anyType xsi:type="UOSound" Index="217" Name="Sheep 5" />
+						<anyType xsi:type="UOSound" Index="218" Name="Sheep 6" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Slime">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="456" Name="Slime 1" />
+						<anyType xsi:type="UOSound" Index="457" Name="Slime 2" />
+						<anyType xsi:type="UOSound" Index="458" Name="Slime 3" />
+						<anyType xsi:type="UOSound" Index="459" Name="Slime 4" />
+						<anyType xsi:type="UOSound" Index="460" Name="Slime 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Snail">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="898" Name="Snail 1" />
+						<anyType xsi:type="UOSound" Index="899" Name="Snail 2" />
+						<anyType xsi:type="UOSound" Index="900" Name="Snail 3" />
+						<anyType xsi:type="UOSound" Index="901" Name="Snail 4" />
+						<anyType xsi:type="UOSound" Index="902" Name="Snail 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Snake">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="219" Name="Snake 1" />
+						<anyType xsi:type="UOSound" Index="643" Name="Snake 10" />
+						<anyType xsi:type="UOSound" Index="644" Name="Snake 11" />
+						<anyType xsi:type="UOSound" Index="645" Name="Snake 12" />
+						<anyType xsi:type="UOSound" Index="646" Name="Snake 13" />
+						<anyType xsi:type="UOSound" Index="647" Name="Snake 14" />
+						<anyType xsi:type="UOSound" Index="648" Name="Snake 15" />
+						<anyType xsi:type="UOSound" Index="634" Name="Snake 16" />
+						<anyType xsi:type="UOSound" Index="635" Name="Snake 17" />
+						<anyType xsi:type="UOSound" Index="636" Name="Snake 18" />
+						<anyType xsi:type="UOSound" Index="637" Name="Snake 19" />
+						<anyType xsi:type="UOSound" Index="220" Name="Snake 2" />
+						<anyType xsi:type="UOSound" Index="638" Name="Snake 20" />
+						<anyType xsi:type="UOSound" Index="221" Name="Snake 3" />
+						<anyType xsi:type="UOSound" Index="222" Name="Snake 4" />
+						<anyType xsi:type="UOSound" Index="223" Name="Snake 5" />
+						<anyType xsi:type="UOSound" Index="639" Name="Snake 6" />
+						<anyType xsi:type="UOSound" Index="640" Name="Snake 7" />
+						<anyType xsi:type="UOSound" Index="641" Name="Snake 8" />
+						<anyType xsi:type="UOSound" Index="642" Name="Snake 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Spider">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1170" Name="Spider 1" />
+						<anyType xsi:type="UOSound" Index="598" Name="Spider 10" />
+						<anyType xsi:type="UOSound" Index="599" Name="Spider 11" />
+						<anyType xsi:type="UOSound" Index="600" Name="Spider 12" />
+						<anyType xsi:type="UOSound" Index="601" Name="Spider 13" />
+						<anyType xsi:type="UOSound" Index="602" Name="Spider 14" />
+						<anyType xsi:type="UOSound" Index="603" Name="Spider 15" />
+						<anyType xsi:type="UOSound" Index="589" Name="Spider 16" />
+						<anyType xsi:type="UOSound" Index="590" Name="Spider 17" />
+						<anyType xsi:type="UOSound" Index="591" Name="Spider 18" />
+						<anyType xsi:type="UOSound" Index="592" Name="Spider 19" />
+						<anyType xsi:type="UOSound" Index="594" Name="Spider 2" />
+						<anyType xsi:type="UOSound" Index="593" Name="Spider 20" />
+						<anyType xsi:type="UOSound" Index="1171" Name="Spider 3" />
+						<anyType xsi:type="UOSound" Index="595" Name="Spider 4" />
+						<anyType xsi:type="UOSound" Index="1172" Name="Spider 5" />
+						<anyType xsi:type="UOSound" Index="596" Name="Spider 6" />
+						<anyType xsi:type="UOSound" Index="1173" Name="Spider 7" />
+						<anyType xsi:type="UOSound" Index="597" Name="Spider 8" />
+						<anyType xsi:type="UOSound" Index="1174" Name="Spider 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Unicorn">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1212" Name="Unicorn 1" />
+						<anyType xsi:type="UOSound" Index="1213" Name="Unicorn 2" />
+						<anyType xsi:type="UOSound" Index="1214" Name="Unicorn 3" />
+						<anyType xsi:type="UOSound" Index="1215" Name="Unicorn 4" />
+						<anyType xsi:type="UOSound" Index="1216" Name="Unicorn 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Walrus">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="224" Name="Walrus 1" />
+						<anyType xsi:type="UOSound" Index="225" Name="Walrus 2" />
+						<anyType xsi:type="UOSound" Index="226" Name="Walrus 3" />
+						<anyType xsi:type="UOSound" Index="227" Name="Walrus 4" />
+						<anyType xsi:type="UOSound" Index="228" Name="Walrus 5" />
+						<anyType xsi:type="UOSound" Index="1217" Name="Walrus 6" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Wisp">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="466" Name="Wisp 1" />
+						<anyType xsi:type="UOSound" Index="467" Name="Wisp 2" />
+						<anyType xsi:type="UOSound" Index="468" Name="Wisp 3" />
+						<anyType xsi:type="UOSound" Index="469" Name="Wisp 4" />
+						<anyType xsi:type="UOSound" Index="470" Name="Wisp 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Wolf">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="229" Name="Wolf 1" />
+						<anyType xsi:type="UOSound" Index="230" Name="Wolf 2" />
+						<anyType xsi:type="UOSound" Index="231" Name="Wolf 3" />
+						<anyType xsi:type="UOSound" Index="232" Name="Wolf 4" />
+						<anyType xsi:type="UOSound" Index="233" Name="Wolf 5" />
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Human">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Female">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="778" Name="Ah" />
+						<anyType xsi:type="UOSound" Index="779" Name="Ahha" />
+						<anyType xsi:type="UOSound" Index="780" Name="Applaud" />
+						<anyType xsi:type="UOSound" Index="781" Name="Blownose" />
+						<anyType xsi:type="UOSound" Index="782" Name="Burp" />
+						<anyType xsi:type="UOSound" Index="783" Name="Cheer" />
+						<anyType xsi:type="UOSound" Index="784" Name="Clear Throat" />
+						<anyType xsi:type="UOSound" Index="785" Name="Cough 1" />
+						<anyType xsi:type="UOSound" Index="786" Name="Cough 2" />
+						<anyType xsi:type="UOSound" Index="787" Name="Cry" />
+						<anyType xsi:type="GenericNode" Name="Death">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="788" Name="Death 1" />
+								<anyType xsi:type="UOSound" Index="789" Name="Death 2" />
+								<anyType xsi:type="UOSound" Index="790" Name="Death 3" />
+								<anyType xsi:type="UOSound" Index="791" Name="Death 4" />
+								<anyType xsi:type="UOSound" Index="336" Name="Death 5" />
+								<anyType xsi:type="UOSound" Index="337" Name="Death 6" />
+								<anyType xsi:type="UOSound" Index="338" Name="Death 7" />
+								<anyType xsi:type="UOSound" Index="339" Name="Death 8" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="UOSound" Index="792" Name="Fart" />
+						<anyType xsi:type="UOSound" Index="793" Name="Gasp" />
+						<anyType xsi:type="UOSound" Index="794" Name="Giggle" />
+						<anyType xsi:type="UOSound" Index="795" Name="Groan" />
+						<anyType xsi:type="UOSound" Index="796" Name="Growl" />
+						<anyType xsi:type="UOSound" Index="797" Name="Hey" />
+						<anyType xsi:type="UOSound" Index="798" Name="Hiccup" />
+						<anyType xsi:type="UOSound" Index="799" Name="Huh" />
+						<anyType xsi:type="UOSound" Index="800" Name="Kiss" />
+						<anyType xsi:type="UOSound" Index="801" Name="Laugh" />
+						<anyType xsi:type="UOSound" Index="802" Name="No" />
+						<anyType xsi:type="UOSound" Index="803" Name="Oh" />
+						<anyType xsi:type="GenericNode" Name="Oomph">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="804" Name="Oomph 1" />
+								<anyType xsi:type="UOSound" Index="333" Name="Oomph 10" />
+								<anyType xsi:type="UOSound" Index="334" Name="Oomph 11" />
+								<anyType xsi:type="UOSound" Index="335" Name="Oomph 12" />
+								<anyType xsi:type="UOSound" Index="805" Name="Oomph 2" />
+								<anyType xsi:type="UOSound" Index="806" Name="Oomph 3" />
+								<anyType xsi:type="UOSound" Index="807" Name="Oomph 4" />
+								<anyType xsi:type="UOSound" Index="808" Name="Oomph 5" />
+								<anyType xsi:type="UOSound" Index="809" Name="Oomph 6" />
+								<anyType xsi:type="UOSound" Index="810" Name="Oomph 7" />
+								<anyType xsi:type="UOSound" Index="331" Name="Oomph 8" />
+								<anyType xsi:type="UOSound" Index="332" Name="Oomph 9" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="UOSound" Index="811" Name="Oooh" />
+						<anyType xsi:type="UOSound" Index="812" Name="Oops" />
+						<anyType xsi:type="UOSound" Index="813" Name="Puke" />
+						<anyType xsi:type="UOSound" Index="814" Name="Scream" />
+						<anyType xsi:type="UOSound" Index="815" Name="Shush" />
+						<anyType xsi:type="UOSound" Index="816" Name="Sigh" />
+						<anyType xsi:type="UOSound" Index="817" Name="Sneeze" />
+						<anyType xsi:type="UOSound" Index="818" Name="Sniff" />
+						<anyType xsi:type="UOSound" Index="819" Name="Snore" />
+						<anyType xsi:type="UOSound" Index="820" Name="Spit" />
+						<anyType xsi:type="UOSound" Index="821" Name="Whistle" />
+						<anyType xsi:type="UOSound" Index="822" Name="Yawn" />
+						<anyType xsi:type="UOSound" Index="823" Name="Yeah" />
+						<anyType xsi:type="UOSound" Index="824" Name="Yell" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Male">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1049" Name="Ah" />
+						<anyType xsi:type="UOSound" Index="1050" Name="Ahha" />
+						<anyType xsi:type="UOSound" Index="1051" Name="Applaud" />
+						<anyType xsi:type="UOSound" Index="485" Name="Arrow" />
+						<anyType xsi:type="UOSound" Index="1052" Name="Blownose" />
+						<anyType xsi:type="UOSound" Index="1053" Name="Burp" />
+						<anyType xsi:type="UOSound" Index="1054" Name="Cheer" />
+						<anyType xsi:type="UOSound" Index="1055" Name="Clear Throat" />
+						<anyType xsi:type="UOSound" Index="1056" Name="Cough 1" />
+						<anyType xsi:type="UOSound" Index="1057" Name="Cough 2" />
+						<anyType xsi:type="UOSound" Index="1058" Name="Cry" />
+						<anyType xsi:type="GenericNode" Name="Death">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="1059" Name="Death 1" />
+								<anyType xsi:type="UOSound" Index="1060" Name="Death 2" />
+								<anyType xsi:type="UOSound" Index="1061" Name="Death 3" />
+								<anyType xsi:type="UOSound" Index="1062" Name="Death 4" />
+								<anyType xsi:type="UOSound" Index="1063" Name="Death 5" />
+								<anyType xsi:type="UOSound" Index="346" Name="Death 6" />
+								<anyType xsi:type="UOSound" Index="347" Name="Death 7" />
+								<anyType xsi:type="UOSound" Index="348" Name="Death 8" />
+								<anyType xsi:type="UOSound" Index="349" Name="Death 9" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="UOSound" Index="1064" Name="Fart" />
+						<anyType xsi:type="UOSound" Index="1065" Name="Gasp" />
+						<anyType xsi:type="UOSound" Index="1066" Name="Giggle" />
+						<anyType xsi:type="UOSound" Index="1067" Name="Groan" />
+						<anyType xsi:type="UOSound" Index="1068" Name="Growl" />
+						<anyType xsi:type="UOSound" Index="1069" Name="Hey" />
+						<anyType xsi:type="UOSound" Index="1070" Name="Hiccup" />
+						<anyType xsi:type="UOSound" Index="1071" Name="Huh" />
+						<anyType xsi:type="UOSound" Index="1072" Name="Kiss" />
+						<anyType xsi:type="UOSound" Index="1073" Name="Laugh" />
+						<anyType xsi:type="UOSound" Index="500" Name="Lock" />
+						<anyType xsi:type="UOSound" Index="1074" Name="No" />
+						<anyType xsi:type="UOSound" Index="1075" Name="Oh" />
+						<anyType xsi:type="GenericNode" Name="Oomph">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="1076" Name="Oomph 1" />
+								<anyType xsi:type="UOSound" Index="340" Name="Oomph 10" />
+								<anyType xsi:type="UOSound" Index="341" Name="Oomph 11" />
+								<anyType xsi:type="UOSound" Index="342" Name="Oomph 12" />
+								<anyType xsi:type="UOSound" Index="343" Name="Oomph 13" />
+								<anyType xsi:type="UOSound" Index="344" Name="Oomph 14" />
+								<anyType xsi:type="UOSound" Index="345" Name="Oomph 15" />
+								<anyType xsi:type="UOSound" Index="1077" Name="Oomph 2" />
+								<anyType xsi:type="UOSound" Index="1078" Name="Oomph 3" />
+								<anyType xsi:type="UOSound" Index="1079" Name="Oomph 4" />
+								<anyType xsi:type="UOSound" Index="1080" Name="Oomph 5" />
+								<anyType xsi:type="UOSound" Index="1081" Name="Oomph 6" />
+								<anyType xsi:type="UOSound" Index="1082" Name="Oomph 7" />
+								<anyType xsi:type="UOSound" Index="1083" Name="Oomph 8" />
+								<anyType xsi:type="UOSound" Index="1084" Name="Oomph 9" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="UOSound" Index="1085" Name="Oooh" />
+						<anyType xsi:type="UOSound" Index="1086" Name="Oops" />
+						<anyType xsi:type="UOSound" Index="1087" Name="Puke" />
+						<anyType xsi:type="UOSound" Index="1088" Name="Scream" />
+						<anyType xsi:type="UOSound" Index="1089" Name="Shush" />
+						<anyType xsi:type="UOSound" Index="1090" Name="Sigh" />
+						<anyType xsi:type="UOSound" Index="1091" Name="Sneeze" />
+						<anyType xsi:type="UOSound" Index="1092" Name="Sniff" />
+						<anyType xsi:type="UOSound" Index="1093" Name="Snore" />
+						<anyType xsi:type="UOSound" Index="1094" Name="Spit" />
+						<anyType xsi:type="UOSound" Index="1095" Name="Whistle" />
+						<anyType xsi:type="UOSound" Index="1096" Name="Yawn" />
+						<anyType xsi:type="UOSound" Index="1097" Name="Yeah" />
+						<anyType xsi:type="UOSound" Index="1098" Name="Yell" />
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Instruments">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Drums">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="56" Name="Drum 1" />
+						<anyType xsi:type="UOSound" Index="746" Name="Drum 2" />
+						<anyType xsi:type="UOSound" Index="57" Name="Drum 3" />
+						<anyType xsi:type="UOSound" Index="747" Name="Drum 4" />
+						<anyType xsi:type="UOSound" Index="748" Name="Drum 5" />
+						<anyType xsi:type="UOSound" Index="749" Name="Drum 6" />
+						<anyType xsi:type="UOSound" Index="743" Name="Drum Battle" />
+						<anyType xsi:type="UOSound" Index="744" Name="Drum Drama" />
+						<anyType xsi:type="UOSound" Index="745" Name="Drum Peace" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="61" Name="Flute" />
+				<anyType xsi:type="GenericNode" Name="Harp">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="67" Name="Harp 1" />
+						<anyType xsi:type="UOSound" Index="68" Name="Harp 2" />
+						<anyType xsi:type="UOSound" Index="69" Name="Harp 3" />
+						<anyType xsi:type="UOSound" Index="70" Name="Harp 4" />
+						<anyType xsi:type="UOSound" Index="913" Name="Harp Battle" />
+						<anyType xsi:type="UOSound" Index="914" Name="Harp Drama" />
+						<anyType xsi:type="UOSound" Index="915" Name="Harp Peace" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lap Harp">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="970" Name="Lap Harp 1" />
+						<anyType xsi:type="UOSound" Index="979" Name="Lap Harp 10" />
+						<anyType xsi:type="UOSound" Index="980" Name="Lap Harp 11" />
+						<anyType xsi:type="UOSound" Index="981" Name="Lap Harp 12" />
+						<anyType xsi:type="UOSound" Index="982" Name="Lap Harp 13" />
+						<anyType xsi:type="UOSound" Index="983" Name="Lap Harp 14" />
+						<anyType xsi:type="UOSound" Index="984" Name="Lap Harp 15" />
+						<anyType xsi:type="UOSound" Index="985" Name="Lap Harp 16" />
+						<anyType xsi:type="UOSound" Index="986" Name="Lap Harp 17" />
+						<anyType xsi:type="UOSound" Index="987" Name="Lap Harp 18" />
+						<anyType xsi:type="UOSound" Index="988" Name="Lap Harp 19" />
+						<anyType xsi:type="UOSound" Index="971" Name="Lap Harp 2" />
+						<anyType xsi:type="UOSound" Index="989" Name="Lap Harp 20" />
+						<anyType xsi:type="UOSound" Index="990" Name="Lap Harp 21" />
+						<anyType xsi:type="UOSound" Index="991" Name="Lap Harp 22" />
+						<anyType xsi:type="UOSound" Index="992" Name="Lap Harp 23" />
+						<anyType xsi:type="UOSound" Index="993" Name="Lap Harp 24" />
+						<anyType xsi:type="UOSound" Index="994" Name="Lap Harp 25" />
+						<anyType xsi:type="UOSound" Index="972" Name="Lap Harp 3" />
+						<anyType xsi:type="UOSound" Index="973" Name="Lap Harp 4" />
+						<anyType xsi:type="UOSound" Index="974" Name="Lap Harp 5" />
+						<anyType xsi:type="UOSound" Index="975" Name="Lap Harp 6" />
+						<anyType xsi:type="UOSound" Index="976" Name="Lap Harp 7" />
+						<anyType xsi:type="UOSound" Index="977" Name="Lap Harp 8" />
+						<anyType xsi:type="UOSound" Index="978" Name="Lap Harp 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lute">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1021" Name="Lute 1" />
+						<anyType xsi:type="UOSound" Index="1031" Name="Lute 10" />
+						<anyType xsi:type="UOSound" Index="1032" Name="Lute 11" />
+						<anyType xsi:type="UOSound" Index="1033" Name="Lute 12" />
+						<anyType xsi:type="UOSound" Index="1034" Name="Lute 13" />
+						<anyType xsi:type="UOSound" Index="1036" Name="Lute 14" />
+						<anyType xsi:type="UOSound" Index="1037" Name="Lute 15" />
+						<anyType xsi:type="UOSound" Index="1038" Name="Lute 16" />
+						<anyType xsi:type="UOSound" Index="1039" Name="Lute 17" />
+						<anyType xsi:type="UOSound" Index="1040" Name="Lute 18" />
+						<anyType xsi:type="UOSound" Index="1041" Name="Lute 19" />
+						<anyType xsi:type="UOSound" Index="1022" Name="Lute 2" />
+						<anyType xsi:type="UOSound" Index="1042" Name="Lute 20" />
+						<anyType xsi:type="UOSound" Index="1043" Name="Lute 21" />
+						<anyType xsi:type="UOSound" Index="1044" Name="Lute 22" />
+						<anyType xsi:type="UOSound" Index="1045" Name="Lute 23" />
+						<anyType xsi:type="UOSound" Index="1046" Name="Lute 24" />
+						<anyType xsi:type="UOSound" Index="1047" Name="Lute 25" />
+						<anyType xsi:type="UOSound" Index="76" Name="Lute 26" />
+						<anyType xsi:type="UOSound" Index="77" Name="Lute 27" />
+						<anyType xsi:type="UOSound" Index="1023" Name="Lute 3" />
+						<anyType xsi:type="UOSound" Index="1024" Name="Lute 4" />
+						<anyType xsi:type="UOSound" Index="1025" Name="Lute 5" />
+						<anyType xsi:type="UOSound" Index="1026" Name="Lute 6" />
+						<anyType xsi:type="UOSound" Index="1028" Name="Lute 7" />
+						<anyType xsi:type="UOSound" Index="1029" Name="Lute 8" />
+						<anyType xsi:type="UOSound" Index="1030" Name="Lute 9" />
+						<anyType xsi:type="UOSound" Index="1027" Name="Lute Battle" />
+						<anyType xsi:type="UOSound" Index="1035" Name="Lute Drama" />
+						<anyType xsi:type="UOSound" Index="1048" Name="Lute Peace" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Standing Harp">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1175" Name="Standing Harp 1" />
+						<anyType xsi:type="UOSound" Index="1184" Name="Standing Harp 10" />
+						<anyType xsi:type="UOSound" Index="1185" Name="Standing Harp 11" />
+						<anyType xsi:type="UOSound" Index="1186" Name="Standing Harp 12" />
+						<anyType xsi:type="UOSound" Index="1187" Name="Standing Harp 13" />
+						<anyType xsi:type="UOSound" Index="1188" Name="Standing Harp 14" />
+						<anyType xsi:type="UOSound" Index="1189" Name="Standing Harp 15" />
+						<anyType xsi:type="UOSound" Index="1190" Name="Standing Harp 16" />
+						<anyType xsi:type="UOSound" Index="1191" Name="Standing Harp 17" />
+						<anyType xsi:type="UOSound" Index="1192" Name="Standing Harp 18" />
+						<anyType xsi:type="UOSound" Index="1193" Name="Standing Harp 19" />
+						<anyType xsi:type="UOSound" Index="1176" Name="Standing Harp 2" />
+						<anyType xsi:type="UOSound" Index="1194" Name="Standing Harp 20" />
+						<anyType xsi:type="UOSound" Index="1195" Name="Standing Harp 21" />
+						<anyType xsi:type="UOSound" Index="1196" Name="Standing Harp 22" />
+						<anyType xsi:type="UOSound" Index="1197" Name="Standing Harp 23" />
+						<anyType xsi:type="UOSound" Index="1198" Name="Standing Harp 24" />
+						<anyType xsi:type="UOSound" Index="1199" Name="Standing Harp 25" />
+						<anyType xsi:type="UOSound" Index="1177" Name="Standing Harp 3" />
+						<anyType xsi:type="UOSound" Index="1178" Name="Standing Harp 4" />
+						<anyType xsi:type="UOSound" Index="1179" Name="Standing Harp 5" />
+						<anyType xsi:type="UOSound" Index="1180" Name="Standing Harp 6" />
+						<anyType xsi:type="UOSound" Index="1181" Name="Standing Harp 7" />
+						<anyType xsi:type="UOSound" Index="1182" Name="Standing Harp 8" />
+						<anyType xsi:type="UOSound" Index="1183" Name="Standing Harp 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Tambourine">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="82" Name="Tambourine 1" />
+						<anyType xsi:type="UOSound" Index="83" Name="Tambourine 2" />
+						<anyType xsi:type="UOSound" Index="1205" Name="Tambourine Battle" />
+						<anyType xsi:type="UOSound" Index="1206" Name="Tambourine Drama" />
+						<anyType xsi:type="UOSound" Index="1207" Name="Tambourine Peace" />
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Items">
+			<Elements>
+				<anyType xsi:type="UOSound" Index="42" Name="Anvil" />
+				<anyType xsi:type="UOSound" Index="562" Name="Axe" />
+				<anyType xsi:type="UOSound" Index="43" Name="Bellows" />
+				<anyType xsi:type="GenericNode" Name="Blade">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="536" Name="Blade 1" />
+						<anyType xsi:type="UOSound" Index="537" Name="Blade 2" />
+						<anyType xsi:type="UOSound" Index="538" Name="Blade 3" />
+						<anyType xsi:type="UOSound" Index="539" Name="Blade 4" />
+						<anyType xsi:type="UOSound" Index="540" Name="Blade 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="563" Name="Blunt" />
+				<anyType xsi:type="GenericNode" Name="Containers">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="44" Name="Chest Close" />
+						<anyType xsi:type="UOSound" Index="45" Name="Chest Open" />
+						<anyType xsi:type="UOSound" Index="46" Name="Drawer Close" />
+						<anyType xsi:type="UOSound" Index="47" Name="Drawer Open" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Crossbow">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="564" Name="Crossbow 1" />
+						<anyType xsi:type="UOSound" Index="689" Name="Crossbow 2" />
+						<anyType xsi:type="UOSound" Index="690" Name="Crossbow 3" />
+						<anyType xsi:type="UOSound" Index="1224" Name="Crossbow 4" />
+						<anyType xsi:type="UOSound" Index="1225" Name="Crossbow 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Dart">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="547" Name="Dart 1" />
+						<anyType xsi:type="UOSound" Index="548" Name="Dart 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Doors">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="234" Name="Open 1" />
+						<anyType xsi:type="UOSound" Index="235" Name="Open 2" />
+						<anyType xsi:type="UOSound" Index="236" Name="Open 3" />
+						<anyType xsi:type="UOSound" Index="237" Name="Open 4" />
+						<anyType xsi:type="UOSound" Index="238" Name="Portcullis 1" />
+						<anyType xsi:type="UOSound" Index="1141" Name="Portcullis 2" />
+						<anyType xsi:type="UOSound" Index="239" Name="Portcullis 3" />
+						<anyType xsi:type="UOSound" Index="1142" Name="Portcullis 4" />
+						<anyType xsi:type="UOSound" Index="240" Name="Portcullis 5" />
+						<anyType xsi:type="UOSound" Index="1143" Name="Portcullis 6" />
+						<anyType xsi:type="UOSound" Index="241" Name="Shut 1" />
+						<anyType xsi:type="UOSound" Index="242" Name="Shut 2" />
+						<anyType xsi:type="UOSound" Index="243" Name="Shut 3" />
+						<anyType xsi:type="UOSound" Index="244" Name="Shut 4" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Guilliotine">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="565" Name="Guilliotine 1" />
+						<anyType xsi:type="UOSound" Index="903" Name="Guilliotine 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="66" Name="Hammer" />
+				<anyType xsi:type="GenericNode" Name="Heavy Sword">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="566" Name="Heavy Sword 1" />
+						<anyType xsi:type="UOSound" Index="952" Name="Heavy Sword 2" />
+						<anyType xsi:type="UOSound" Index="953" Name="Heavy Sword 3" />
+						<anyType xsi:type="UOSound" Index="954" Name="Heavy Sword 4" />
+						<anyType xsi:type="UOSound" Index="567" Name="Heavy Sword 5" />
+						<anyType xsi:type="UOSound" Index="955" Name="Heavy Sword 6" />
+						<anyType xsi:type="UOSound" Index="956" Name="Heavy Sword 7" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Leather">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="72" Name="Leather 1" />
+						<anyType xsi:type="UOSound" Index="995" Name="Leather 2" />
+						<anyType xsi:type="UOSound" Index="88" Name="Leather 3" />
+						<anyType xsi:type="UOSound" Index="89" Name="Leather 4" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lever">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="73" Name="Lever 1" />
+						<anyType xsi:type="UOSound" Index="1000" Name="Lever 10" />
+						<anyType xsi:type="UOSound" Index="996" Name="Lever 2" />
+						<anyType xsi:type="UOSound" Index="1234" Name="Lever 3" />
+						<anyType xsi:type="UOSound" Index="74" Name="Lever 4" />
+						<anyType xsi:type="UOSound" Index="997" Name="Lever 5" />
+						<anyType xsi:type="UOSound" Index="1235" Name="Lever 6" />
+						<anyType xsi:type="UOSound" Index="998" Name="Lever 7" />
+						<anyType xsi:type="UOSound" Index="999" Name="Lever 8" />
+						<anyType xsi:type="UOSound" Index="75" Name="Lever 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="576" Name="Liquid" />
+				<anyType xsi:type="UOSound" Index="577" Name="Lockpick" />
+				<anyType xsi:type="UOSound" Index="578" Name="Mortar" />
+				<anyType xsi:type="GenericNode" Name="Mushroom">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="552" Name="Mushroom 1" />
+						<anyType xsi:type="UOSound" Index="553" Name="Mushroom 2" />
+						<anyType xsi:type="UOSound" Index="554" Name="Mushroom 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="583" Name="Powder" />
+				<anyType xsi:type="UOSound" Index="584" Name="Scissors" />
+				<anyType xsi:type="GenericNode" Name="Spike">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="555" Name="Spike 1" />
+						<anyType xsi:type="UOSound" Index="556" Name="Spike 2" />
+						<anyType xsi:type="UOSound" Index="557" Name="Spike 3" />
+						<anyType xsi:type="UOSound" Index="558" Name="Spike 4" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="81" Name="Switch" />
+				<anyType xsi:type="GenericNode" Name="Sword">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="571" Name="Sword 1" />
+						<anyType xsi:type="UOSound" Index="572" Name="Sword 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Torch">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1208" Name="Extinguish" />
+						<anyType xsi:type="UOSound" Index="71" Name="Ignite 1" />
+						<anyType xsi:type="UOSound" Index="958" Name="Ignite 2" />
+						<anyType xsi:type="UOSound" Index="1209" Name="Ignite 3" />
+						<anyType xsi:type="UOSound" Index="84" Name="Torch 1" />
+						<anyType xsi:type="UOSound" Index="1211" Name="Torch 2" />
+						<anyType xsi:type="UOSound" Index="1210" Name="Torch Loop" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="495" Name="Trap" />
+				<anyType xsi:type="UOSound" Index="87" Name="Use Cloth" />
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Misc">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Big Foot">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="287" Name="Big Foot 1" />
+						<anyType xsi:type="UOSound" Index="288" Name="Big Foot 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="489" Name="Birdseye" />
+				<anyType xsi:type="GenericNode" Name="Drink">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="48" Name="Drink 1" />
+						<anyType xsi:type="UOSound" Index="49" Name="Drink 2" />
+						<anyType xsi:type="UOSound" Index="726" Name="Drink 3" />
+						<anyType xsi:type="UOSound" Index="1228" Name="Drink 4" />
+						<anyType xsi:type="UOSound" Index="1229" Name="Drink 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Eat">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="58" Name="Eat 1" />
+						<anyType xsi:type="UOSound" Index="59" Name="Eat 2" />
+						<anyType xsi:type="UOSound" Index="60" Name="Eat 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="756" Name="Electricity 1" />
+				<anyType xsi:type="UOSound" Index="476" Name="Electricity 2" />
+				<anyType xsi:type="GenericNode" Name="Energy Wind">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="529" Name="Energy Wind 1" />
+						<anyType xsi:type="UOSound" Index="1111" Name="Energy Wind 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Gallop">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="588" Name="Horse Foot 1" />
+						<anyType xsi:type="UOSound" Index="587" Name="Horse Foot 2" />
+						<anyType xsi:type="UOSound" Index="869" Name="On Grass" />
+						<anyType xsi:type="UOSound" Index="870" Name="On Grovel" />
+						<anyType xsi:type="UOSound" Index="871" Name="On Pavement" />
+						<anyType xsi:type="UOSound" Index="872" Name="On Sand" />
+						<anyType xsi:type="UOSound" Index="873" Name="On Snow" />
+						<anyType xsi:type="UOSound" Index="874" Name="On Wood" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="478" Name="Hiss" />
+				<anyType xsi:type="GenericNode" Name="Mystery">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="579" Name="Mystery 1" />
+						<anyType xsi:type="UOSound" Index="580" Name="Mystery 2" />
+						<anyType xsi:type="UOSound" Index="581" Name="Mystery 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="79" Name="Rustle" />
+				<anyType xsi:type="GenericNode" Name="Sound Effects">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="245" Name="Sound Effects 1" />
+						<anyType xsi:type="UOSound" Index="254" Name="Sound Effects 10" />
+						<anyType xsi:type="UOSound" Index="255" Name="Sound Effects 11" />
+						<anyType xsi:type="UOSound" Index="256" Name="Sound Effects 12" />
+						<anyType xsi:type="UOSound" Index="257" Name="Sound Effects 13" />
+						<anyType xsi:type="UOSound" Index="258" Name="Sound Effects 14" />
+						<anyType xsi:type="UOSound" Index="259" Name="Sound Effects 15" />
+						<anyType xsi:type="UOSound" Index="260" Name="Sound Effects 16" />
+						<anyType xsi:type="UOSound" Index="261" Name="Sound Effects 17" />
+						<anyType xsi:type="UOSound" Index="262" Name="Sound Effects 18" />
+						<anyType xsi:type="UOSound" Index="246" Name="Sound Effects 2" />
+						<anyType xsi:type="UOSound" Index="247" Name="Sound Effects 3" />
+						<anyType xsi:type="UOSound" Index="248" Name="Sound Effects 4" />
+						<anyType xsi:type="UOSound" Index="249" Name="Sound Effects 5" />
+						<anyType xsi:type="UOSound" Index="250" Name="Sound Effects 6" />
+						<anyType xsi:type="UOSound" Index="251" Name="Sound Effects 7" />
+						<anyType xsi:type="UOSound" Index="252" Name="Sound Effects 8" />
+						<anyType xsi:type="UOSound" Index="253" Name="Sound Effects 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="80" Name="Swallow" />
+				<anyType xsi:type="GenericNode" Name="Swish">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="568" Name="Swish 1" />
+						<anyType xsi:type="UOSound" Index="569" Name="Swish 2" />
+						<anyType xsi:type="UOSound" Index="570" Name="Swish 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="85" Name="Turn Page" />
+				<anyType xsi:type="UOSound" Index="86" Name="Unkown" />
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Monsters">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Blade Spirits">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="673" Name="Blade Spirits 1" />
+						<anyType xsi:type="UOSound" Index="512" Name="Blade Spirits 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Centaur">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="679" Name="Centaur 1" />
+						<anyType xsi:type="UOSound" Index="680" Name="Centaur 2" />
+						<anyType xsi:type="UOSound" Index="681" Name="Centaur 3" />
+						<anyType xsi:type="UOSound" Index="682" Name="Centaur 4" />
+						<anyType xsi:type="UOSound" Index="683" Name="Centaur 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Corpser">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="353" Name="Corpser 1" />
+						<anyType xsi:type="UOSound" Index="843" Name="Corpser 10" />
+						<anyType xsi:type="UOSound" Index="844" Name="Corpser 11" />
+						<anyType xsi:type="UOSound" Index="845" Name="Corpser 12" />
+						<anyType xsi:type="UOSound" Index="846" Name="Corpser 13" />
+						<anyType xsi:type="UOSound" Index="847" Name="Corpser 14" />
+						<anyType xsi:type="UOSound" Index="848" Name="Corpser 15" />
+						<anyType xsi:type="UOSound" Index="684" Name="Corpser 2" />
+						<anyType xsi:type="UOSound" Index="685" Name="Corpser 3" />
+						<anyType xsi:type="UOSound" Index="354" Name="Corpser 4" />
+						<anyType xsi:type="UOSound" Index="686" Name="Corpser 5" />
+						<anyType xsi:type="UOSound" Index="355" Name="Corpser 6" />
+						<anyType xsi:type="UOSound" Index="687" Name="Corpser 7" />
+						<anyType xsi:type="UOSound" Index="356" Name="Corpser 8" />
+						<anyType xsi:type="UOSound" Index="688" Name="Corpser 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Cyclop">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="604" Name="Cyclop 1" />
+						<anyType xsi:type="UOSound" Index="613" Name="Cyclop 10" />
+						<anyType xsi:type="UOSound" Index="605" Name="Cyclop 2" />
+						<anyType xsi:type="UOSound" Index="606" Name="Cyclop 3" />
+						<anyType xsi:type="UOSound" Index="607" Name="Cyclop 4" />
+						<anyType xsi:type="UOSound" Index="608" Name="Cyclop 5" />
+						<anyType xsi:type="UOSound" Index="609" Name="Cyclop 6" />
+						<anyType xsi:type="UOSound" Index="610" Name="Cyclop 7" />
+						<anyType xsi:type="UOSound" Index="611" Name="Cyclop 8" />
+						<anyType xsi:type="UOSound" Index="612" Name="Cyclop 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Daemon">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="357" Name="Daemon 1" />
+						<anyType xsi:type="UOSound" Index="700" Name="Daemon 10" />
+						<anyType xsi:type="UOSound" Index="696" Name="Daemon 2" />
+						<anyType xsi:type="UOSound" Index="358" Name="Daemon 3" />
+						<anyType xsi:type="UOSound" Index="697" Name="Daemon 4" />
+						<anyType xsi:type="UOSound" Index="359" Name="Daemon 5" />
+						<anyType xsi:type="UOSound" Index="698" Name="Daemon 6" />
+						<anyType xsi:type="UOSound" Index="360" Name="Daemon 7" />
+						<anyType xsi:type="UOSound" Index="699" Name="Daemon 8" />
+						<anyType xsi:type="UOSound" Index="361" Name="Daemon 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Dragon">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="704" Name="Asian Attack" />
+						<anyType xsi:type="UOSound" Index="705" Name="Asian Die" />
+						<anyType xsi:type="UOSound" Index="706" Name="Asian Fight" />
+						<anyType xsi:type="UOSound" Index="707" Name="Asian Get Hit" />
+						<anyType xsi:type="UOSound" Index="708" Name="Asian Idle" />
+						<anyType xsi:type="UOSound" Index="709" Name="Asian Run" />
+						<anyType xsi:type="UOSound" Index="710" Name="Asian Walk" />
+						<anyType xsi:type="UOSound" Index="362" Name="Dragon 1" />
+						<anyType xsi:type="UOSound" Index="363" Name="Dragon 2" />
+						<anyType xsi:type="UOSound" Index="364" Name="Dragon 3" />
+						<anyType xsi:type="UOSound" Index="365" Name="Dragon 4" />
+						<anyType xsi:type="UOSound" Index="366" Name="Dragon 5" />
+						<anyType xsi:type="UOSound" Index="711" Name="Red Attack 1" />
+						<anyType xsi:type="UOSound" Index="712" Name="Red Attack 2" />
+						<anyType xsi:type="UOSound" Index="713" Name="Red Attack 3" />
+						<anyType xsi:type="UOSound" Index="714" Name="Red Attack 4" />
+						<anyType xsi:type="UOSound" Index="715" Name="Red Attack 5" />
+						<anyType xsi:type="UOSound" Index="716" Name="Red Die" />
+						<anyType xsi:type="UOSound" Index="717" Name="Red Die Air" />
+						<anyType xsi:type="UOSound" Index="718" Name="Red Fight 1" />
+						<anyType xsi:type="UOSound" Index="719" Name="Red Fight 2" />
+						<anyType xsi:type="UOSound" Index="720" Name="Red Fly" />
+						<anyType xsi:type="UOSound" Index="721" Name="Red Get Hit" />
+						<anyType xsi:type="UOSound" Index="722" Name="Red Idle" />
+						<anyType xsi:type="UOSound" Index="723" Name="Red Run" />
+						<anyType xsi:type="UOSound" Index="724" Name="Red Stand" />
+						<anyType xsi:type="UOSound" Index="725" Name="Red Walk" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Elementals">
+					<Elements>
+						<anyType xsi:type="GenericNode" Name="Air">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="263" Name="Air 1" />
+								<anyType xsi:type="UOSound" Index="264" Name="Air 2" />
+								<anyType xsi:type="UOSound" Index="265" Name="Air 3" />
+								<anyType xsi:type="UOSound" Index="266" Name="Air 4" />
+								<anyType xsi:type="UOSound" Index="267" Name="Air 5" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="GenericNode" Name="Earth">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="268" Name="Earth 1" />
+								<anyType xsi:type="UOSound" Index="269" Name="Earth 2" />
+								<anyType xsi:type="UOSound" Index="270" Name="Earth 3" />
+								<anyType xsi:type="UOSound" Index="271" Name="Earth 4" />
+								<anyType xsi:type="UOSound" Index="272" Name="Earth 5" />
+							</Elements>
+						</anyType>
+						<anyType xsi:type="GenericNode" Name="Fire">
+							<Elements>
+								<anyType xsi:type="UOSound" Index="273" Name="Fire 1" />
+								<anyType xsi:type="UOSound" Index="274" Name="Fire 2" />
+								<anyType xsi:type="UOSound" Index="275" Name="Fire 3" />
+								<anyType xsi:type="UOSound" Index="276" Name="Fire 4" />
+								<anyType xsi:type="UOSound" Index="277" Name="Fire 5" />
+							</Elements>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Ethereal Warrior">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="757" Name="Ethereal Warrior 1" />
+						<anyType xsi:type="UOSound" Index="758" Name="Ethereal Warrior 2" />
+						<anyType xsi:type="UOSound" Index="759" Name="Ethereal Warrior 3" />
+						<anyType xsi:type="UOSound" Index="760" Name="Ethereal Warrior 4" />
+						<anyType xsi:type="UOSound" Index="761" Name="Ethereal Warrior 5" />
+						<anyType xsi:type="UOSound" Index="762" Name="Ethereal Warrior 6" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Ettin">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="367" Name="Ettin 1" />
+						<anyType xsi:type="UOSound" Index="767" Name="Ettin 10" />
+						<anyType xsi:type="UOSound" Index="763" Name="Ettin 2" />
+						<anyType xsi:type="UOSound" Index="368" Name="Ettin 3" />
+						<anyType xsi:type="UOSound" Index="764" Name="Ettin 4" />
+						<anyType xsi:type="UOSound" Index="369" Name="Ettin 5" />
+						<anyType xsi:type="UOSound" Index="765" Name="Ettin 6" />
+						<anyType xsi:type="UOSound" Index="370" Name="Ettin 7" />
+						<anyType xsi:type="UOSound" Index="766" Name="Ettin 8" />
+						<anyType xsi:type="UOSound" Index="371" Name="Ettin 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Exodus">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="768" Name="Exodus 1" />
+						<anyType xsi:type="UOSound" Index="769" Name="Exodus 2" />
+						<anyType xsi:type="UOSound" Index="770" Name="Exodus 3" />
+						<anyType xsi:type="UOSound" Index="771" Name="Exodus 4" />
+						<anyType xsi:type="UOSound" Index="772" Name="Exodus 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Gargoyle">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="372" Name="Gargoyle 1" />
+						<anyType xsi:type="UOSound" Index="373" Name="Gargoyle 2" />
+						<anyType xsi:type="UOSound" Index="374" Name="Gargoyle 3" />
+						<anyType xsi:type="UOSound" Index="375" Name="Gargoyle 4" />
+						<anyType xsi:type="UOSound" Index="376" Name="Gargoyle 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Gazer">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="377" Name="Gazer 1" />
+						<anyType xsi:type="UOSound" Index="879" Name="Gazer 10" />
+						<anyType xsi:type="UOSound" Index="875" Name="Gazer 2" />
+						<anyType xsi:type="UOSound" Index="378" Name="Gazer 3" />
+						<anyType xsi:type="UOSound" Index="876" Name="Gazer 4" />
+						<anyType xsi:type="UOSound" Index="379" Name="Gazer 5" />
+						<anyType xsi:type="UOSound" Index="877" Name="Gazer 6" />
+						<anyType xsi:type="UOSound" Index="380" Name="Gazer 7" />
+						<anyType xsi:type="UOSound" Index="878" Name="Gazer 8" />
+						<anyType xsi:type="UOSound" Index="381" Name="Gazer 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Genie">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="880" Name="Genie 1" />
+						<anyType xsi:type="UOSound" Index="881" Name="Genie 2" />
+						<anyType xsi:type="UOSound" Index="882" Name="Genie 3" />
+						<anyType xsi:type="UOSound" Index="883" Name="Genie 4" />
+						<anyType xsi:type="UOSound" Index="884" Name="Genie 5" />
+						<anyType xsi:type="UOSound" Index="885" Name="Genie 6" />
+						<anyType xsi:type="UOSound" Index="886" Name="Genie 7" />
+						<anyType xsi:type="UOSound" Index="887" Name="Genie 8" />
+						<anyType xsi:type="UOSound" Index="888" Name="Genie 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Ghost">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="382" Name="Ghost 1" />
+						<anyType xsi:type="UOSound" Index="895" Name="Ghost 10" />
+						<anyType xsi:type="UOSound" Index="385" Name="Ghost 11" />
+						<anyType xsi:type="UOSound" Index="896" Name="Ghost 12" />
+						<anyType xsi:type="UOSound" Index="386" Name="Ghost 13" />
+						<anyType xsi:type="UOSound" Index="897" Name="Ghost 14" />
+						<anyType xsi:type="UOSound" Index="889" Name="Ghost 2" />
+						<anyType xsi:type="UOSound" Index="383" Name="Ghost 3" />
+						<anyType xsi:type="UOSound" Index="890" Name="Ghost 4" />
+						<anyType xsi:type="UOSound" Index="891" Name="Ghost 5" />
+						<anyType xsi:type="UOSound" Index="892" Name="Ghost 6" />
+						<anyType xsi:type="UOSound" Index="893" Name="Ghost 7" />
+						<anyType xsi:type="UOSound" Index="894" Name="Ghost 8" />
+						<anyType xsi:type="UOSound" Index="384" Name="Ghost 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Giant Scorpion">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="397" Name="Giant Scorpion 1" />
+						<anyType xsi:type="UOSound" Index="398" Name="Giant Scorpion 2" />
+						<anyType xsi:type="UOSound" Index="399" Name="Giant Scorpion 3" />
+						<anyType xsi:type="UOSound" Index="400" Name="Giant Scorpion 4" />
+						<anyType xsi:type="UOSound" Index="401" Name="Giant Scorpion 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Giant Spider">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="387" Name="Giant Spider 1" />
+						<anyType xsi:type="UOSound" Index="908" Name="Giant Spider 10" />
+						<anyType xsi:type="UOSound" Index="904" Name="Giant Spider 2" />
+						<anyType xsi:type="UOSound" Index="388" Name="Giant Spider 3" />
+						<anyType xsi:type="UOSound" Index="905" Name="Giant Spider 4" />
+						<anyType xsi:type="UOSound" Index="389" Name="Giant Spider 5" />
+						<anyType xsi:type="UOSound" Index="906" Name="Giant Spider 6" />
+						<anyType xsi:type="UOSound" Index="390" Name="Giant Spider 7" />
+						<anyType xsi:type="UOSound" Index="907" Name="Giant Spider 8" />
+						<anyType xsi:type="UOSound" Index="391" Name="Giant Spider 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Harpy">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="916" Name="Attack" />
+						<anyType xsi:type="UOSound" Index="917" Name="Die 1" />
+						<anyType xsi:type="UOSound" Index="921" Name="Die 2" />
+						<anyType xsi:type="UOSound" Index="922" Name="Fidget" />
+						<anyType xsi:type="UOSound" Index="918" Name="Fight" />
+						<anyType xsi:type="UOSound" Index="919" Name="Get Hit 1" />
+						<anyType xsi:type="UOSound" Index="923" Name="Get Hit 2" />
+						<anyType xsi:type="UOSound" Index="402" Name="Harpy 1" />
+						<anyType xsi:type="UOSound" Index="403" Name="Harpy 2" />
+						<anyType xsi:type="UOSound" Index="404" Name="Harpy 3" />
+						<anyType xsi:type="UOSound" Index="405" Name="Harpy 4" />
+						<anyType xsi:type="UOSound" Index="406" Name="Harpy 5" />
+						<anyType xsi:type="UOSound" Index="920" Name="Walk" />
+						<anyType xsi:type="UOSound" Index="924" Name="Walk" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Headless">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="407" Name="Headless 1" />
+						<anyType xsi:type="UOSound" Index="929" Name="Headless 10" />
+						<anyType xsi:type="UOSound" Index="925" Name="Headless 2" />
+						<anyType xsi:type="UOSound" Index="408" Name="Headless 3" />
+						<anyType xsi:type="UOSound" Index="926" Name="Headless 4" />
+						<anyType xsi:type="UOSound" Index="409" Name="Headless 5" />
+						<anyType xsi:type="UOSound" Index="927" Name="Headless 6" />
+						<anyType xsi:type="UOSound" Index="410" Name="Headless 7" />
+						<anyType xsi:type="UOSound" Index="928" Name="Headless 8" />
+						<anyType xsi:type="UOSound" Index="411" Name="Headless 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Kraken">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="849" Name="Kraken 1" />
+						<anyType xsi:type="UOSound" Index="850" Name="Kraken 2" />
+						<anyType xsi:type="UOSound" Index="851" Name="Kraken 3" />
+						<anyType xsi:type="UOSound" Index="852" Name="Kraken 4" />
+						<anyType xsi:type="UOSound" Index="853" Name="Kraken 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Liche">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="412" Name="Liche 1" />
+						<anyType xsi:type="UOSound" Index="1005" Name="Liche 10" />
+						<anyType xsi:type="UOSound" Index="1001" Name="Liche 2" />
+						<anyType xsi:type="UOSound" Index="413" Name="Liche 3" />
+						<anyType xsi:type="UOSound" Index="1002" Name="Liche 4" />
+						<anyType xsi:type="UOSound" Index="414" Name="Liche 5" />
+						<anyType xsi:type="UOSound" Index="1003" Name="Liche 6" />
+						<anyType xsi:type="UOSound" Index="415" Name="Liche 7" />
+						<anyType xsi:type="UOSound" Index="1004" Name="Liche 8" />
+						<anyType xsi:type="UOSound" Index="416" Name="Liche 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Lizardman">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="417" Name="Lizardman 1" />
+						<anyType xsi:type="UOSound" Index="418" Name="Lizardman 2" />
+						<anyType xsi:type="UOSound" Index="419" Name="Lizardman 3" />
+						<anyType xsi:type="UOSound" Index="420" Name="Lizardman 4" />
+						<anyType xsi:type="UOSound" Index="421" Name="Lizardman 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Mongbat">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="422" Name="Mongbat 1" />
+						<anyType xsi:type="UOSound" Index="423" Name="Mongbat 2" />
+						<anyType xsi:type="UOSound" Index="424" Name="Mongbat 3" />
+						<anyType xsi:type="UOSound" Index="425" Name="Mongbat 4" />
+						<anyType xsi:type="UOSound" Index="426" Name="Mongbat 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Mushroom Men">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1105" Name="Mushroom Men 1" />
+						<anyType xsi:type="UOSound" Index="1106" Name="Mushroom Men 2" />
+						<anyType xsi:type="UOSound" Index="1107" Name="Mushroom Men 3" />
+						<anyType xsi:type="UOSound" Index="1108" Name="Mushroom Men 4" />
+						<anyType xsi:type="UOSound" Index="1109" Name="Mushroom Men 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Ogre">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="427" Name="Ogre 1" />
+						<anyType xsi:type="UOSound" Index="428" Name="Ogre 2" />
+						<anyType xsi:type="UOSound" Index="429" Name="Ogre 3" />
+						<anyType xsi:type="UOSound" Index="430" Name="Ogre 4" />
+						<anyType xsi:type="UOSound" Index="431" Name="Ogre 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Orc">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="432" Name="Orc 1" />
+						<anyType xsi:type="UOSound" Index="434" Name="Orc 10" />
+						<anyType xsi:type="UOSound" Index="1119" Name="Orc 11" />
+						<anyType xsi:type="UOSound" Index="435" Name="Orc 12" />
+						<anyType xsi:type="UOSound" Index="1120" Name="Orc 13" />
+						<anyType xsi:type="UOSound" Index="436" Name="Orc 14" />
+						<anyType xsi:type="UOSound" Index="1121" Name="Orc 15" />
+						<anyType xsi:type="UOSound" Index="1112" Name="Orc 2" />
+						<anyType xsi:type="UOSound" Index="433" Name="Orc 3" />
+						<anyType xsi:type="UOSound" Index="1113" Name="Orc 4" />
+						<anyType xsi:type="UOSound" Index="1114" Name="Orc 5" />
+						<anyType xsi:type="UOSound" Index="1115" Name="Orc 6" />
+						<anyType xsi:type="UOSound" Index="1116" Name="Orc 7" />
+						<anyType xsi:type="UOSound" Index="1117" Name="Orc 8" />
+						<anyType xsi:type="UOSound" Index="1118" Name="Orc 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Pixie">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1127" Name="Attack" />
+						<anyType xsi:type="UOSound" Index="1133" Name="Attack 2" />
+						<anyType xsi:type="UOSound" Index="1128" Name="Cast" />
+						<anyType xsi:type="UOSound" Index="1134" Name="Cast 2" />
+						<anyType xsi:type="UOSound" Index="1129" Name="Die" />
+						<anyType xsi:type="UOSound" Index="1135" Name="Die 2" />
+						<anyType xsi:type="UOSound" Index="1136" Name="Fidget" />
+						<anyType xsi:type="UOSound" Index="1130" Name="Fight" />
+						<anyType xsi:type="UOSound" Index="1131" Name="Get Hit" />
+						<anyType xsi:type="UOSound" Index="1137" Name="Get Hit 2" />
+						<anyType xsi:type="UOSound" Index="1132" Name="Walk " />
+						<anyType xsi:type="UOSound" Index="1138" Name="Walk Fly 1" />
+						<anyType xsi:type="UOSound" Index="1139" Name="Walk Fly 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Ratman">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="437" Name="Ratman 1" />
+						<anyType xsi:type="UOSound" Index="438" Name="Ratman 2" />
+						<anyType xsi:type="UOSound" Index="439" Name="Ratman 3" />
+						<anyType xsi:type="UOSound" Index="440" Name="Ratman 4" />
+						<anyType xsi:type="UOSound" Index="441" Name="Ratman 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Reaper">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="442" Name="Reaper 1" />
+						<anyType xsi:type="UOSound" Index="443" Name="Reaper 2" />
+						<anyType xsi:type="UOSound" Index="444" Name="Reaper 3" />
+						<anyType xsi:type="UOSound" Index="445" Name="Reaper 4" />
+						<anyType xsi:type="UOSound" Index="446" Name="Reaper 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Sea Serpent">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="447" Name="Sea Serpent 1" />
+						<anyType xsi:type="UOSound" Index="448" Name="Sea Serpent 2" />
+						<anyType xsi:type="UOSound" Index="449" Name="Sea Serpent 3" />
+						<anyType xsi:type="UOSound" Index="450" Name="Sea Serpent 4" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Shadow">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1154" Name="Shadow 1" />
+						<anyType xsi:type="UOSound" Index="1155" Name="Shadow 2" />
+						<anyType xsi:type="UOSound" Index="1156" Name="Shadow 3" />
+						<anyType xsi:type="UOSound" Index="1157" Name="Shadow 4" />
+						<anyType xsi:type="UOSound" Index="1158" Name="Shadow 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Shadowlord">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1149" Name="Shadowlord 1" />
+						<anyType xsi:type="UOSound" Index="1150" Name="Shadowlord 2" />
+						<anyType xsi:type="UOSound" Index="1151" Name="Shadowlord 3" />
+						<anyType xsi:type="UOSound" Index="1152" Name="Shadowlord 4" />
+						<anyType xsi:type="UOSound" Index="1153" Name="Shadowlord 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Skeletal Dragon">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1160" Name="Skeletal Dragon 1" />
+						<anyType xsi:type="UOSound" Index="1161" Name="Skeletal Dragon 2" />
+						<anyType xsi:type="UOSound" Index="1162" Name="Skeletal Dragon 3" />
+						<anyType xsi:type="UOSound" Index="1163" Name="Skeletal Dragon 4" />
+						<anyType xsi:type="UOSound" Index="1164" Name="Skeletal Dragon 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Skeleton">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="451" Name="Skeleton 1" />
+						<anyType xsi:type="UOSound" Index="1169" Name="Skeleton 10" />
+						<anyType xsi:type="UOSound" Index="1165" Name="Skeleton 2" />
+						<anyType xsi:type="UOSound" Index="452" Name="Skeleton 3" />
+						<anyType xsi:type="UOSound" Index="1166" Name="Skeleton 4" />
+						<anyType xsi:type="UOSound" Index="453" Name="Skeleton 5" />
+						<anyType xsi:type="UOSound" Index="1167" Name="Skeleton 6" />
+						<anyType xsi:type="UOSound" Index="454" Name="Skeleton 7" />
+						<anyType xsi:type="UOSound" Index="1168" Name="Skeleton 8" />
+						<anyType xsi:type="UOSound" Index="455" Name="Skeleton 9" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Succubus">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="1200" Name="Succubus 1" />
+						<anyType xsi:type="UOSound" Index="1201" Name="Succubus 2" />
+						<anyType xsi:type="UOSound" Index="1202" Name="Succubus 3" />
+						<anyType xsi:type="UOSound" Index="1203" Name="Succubus 4" />
+						<anyType xsi:type="UOSound" Index="1204" Name="Succubus 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Troll">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="461" Name="Troll 1" />
+						<anyType xsi:type="UOSound" Index="462" Name="Troll 2" />
+						<anyType xsi:type="UOSound" Index="463" Name="Troll 3" />
+						<anyType xsi:type="UOSound" Index="464" Name="Troll 4" />
+						<anyType xsi:type="UOSound" Index="465" Name="Troll 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Zombie">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="471" Name="Zombie 1" />
+						<anyType xsi:type="UOSound" Index="472" Name="Zombie 2" />
+						<anyType xsi:type="UOSound" Index="473" Name="Zombie 3" />
+						<anyType xsi:type="UOSound" Index="474" Name="Zombie 4" />
+						<anyType xsi:type="UOSound" Index="475" Name="Zombie 5" />
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Skills">
+			<Elements>
+				<anyType xsi:type="UOSound" Index="573" Name="Carpentry" />
+				<anyType xsi:type="GenericNode" Name="Identify">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="492" Name="Identify 1" />
+						<anyType xsi:type="UOSound" Index="957" Name="Identify 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="585" Name="Scribe" />
+				<anyType xsi:type="UOSound" Index="586" Name="Spirit Speak" />
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Spells">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Agility">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="487" Name="Agility 1" />
+						<anyType xsi:type="UOSound" Index="654" Name="Agility 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="503" Name="Arch Protect" />
+				<anyType xsi:type="GenericNode" Name="ArchCure">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="488" Name="ArchCure 1" />
+						<anyType xsi:type="UOSound" Index="665" Name="ArchCure 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="490" Name="Bless" />
+				<anyType xsi:type="UOSound" Index="479" Name="Clumsy" />
+				<anyType xsi:type="UOSound" Index="482" Name="Create Food" />
+				<anyType xsi:type="UOSound" Index="491" Name="Cunning" />
+				<anyType xsi:type="UOSound" Index="480" Name="Cure" />
+				<anyType xsi:type="UOSound" Index="481" Name="Curse" />
+				<anyType xsi:type="UOSound" Index="530" Name="Death Vortex" />
+				<anyType xsi:type="UOSound" Index="513" Name="Dispel Field" />
+				<anyType xsi:type="GenericNode" Name="Earthquake">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="525" Name="Earthquake 1" />
+						<anyType xsi:type="UOSound" Index="1230" Name="Earthquake 2" />
+						<anyType xsi:type="UOSound" Index="755" Name="Earthquake 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Energy Field">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="528" Name="Energy Field 1" />
+						<anyType xsi:type="UOSound" Index="1110" Name="Energy Field 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="484" Name="Feeblemind" />
+				<anyType xsi:type="GenericNode" Name="Fireball">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="350" Name="Fireball 1" />
+						<anyType xsi:type="UOSound" Index="351" Name="Fireball 2" />
+						<anyType xsi:type="UOSound" Index="352" Name="Fireball 3" />
+						<anyType xsi:type="UOSound" Index="499" Name="Fireball 4" />
+						<anyType xsi:type="UOSound" Index="1099" Name="Fireball 5" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="520" Name="Flamestrike" />
+				<anyType xsi:type="UOSound" Index="526" Name="Gate Travel" />
+				<anyType xsi:type="UOSound" Index="514" Name="Greater Heal" />
+				<anyType xsi:type="UOSound" Index="497" Name="Harm" />
+				<anyType xsi:type="UOSound" Index="498" Name="Heal" />
+				<anyType xsi:type="GenericNode" Name="Invisibility">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="515" Name="Invisibility 1" />
+						<anyType xsi:type="UOSound" Index="964" Name="Invisibility 2" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="504" Name="Mana Drain" />
+				<anyType xsi:type="UOSound" Index="505" Name="Mana Vampire" />
+				<anyType xsi:type="UOSound" Index="506" Name="Mark" />
+				<anyType xsi:type="UOSound" Index="507" Name="Mass Curse" />
+				<anyType xsi:type="UOSound" Index="521" Name="Mass Dispel" />
+				<anyType xsi:type="UOSound" Index="531" Name="Mind Blast" />
+				<anyType xsi:type="UOSound" Index="527" Name="Polymorph" />
+				<anyType xsi:type="UOSound" Index="483" Name="Night Sight" />
+				<anyType xsi:type="UOSound" Index="522" Name="Energy Bolt" />
+				<anyType xsi:type="UOSound" Index="523" Name="Parafiled" />
+				<anyType xsi:type="UOSound" Index="516" Name="Paralyze" />
+				<anyType xsi:type="GenericNode" Name="Poison">
+					<Elements>
+						<anyType xsi:type="UOSound" Index="517" Name="Poison 1" />
+						<anyType xsi:type="UOSound" Index="582" Name="Poison 2" />
+						<anyType xsi:type="UOSound" Index="1140" Name="Poison 3" />
+					</Elements>
+				</anyType>
+				<anyType xsi:type="UOSound" Index="524" Name="Poison Field" />
+				<anyType xsi:type="UOSound" Index="493" Name="Protect" />
+				<anyType xsi:type="UOSound" Index="508" Name="Recall" />
+				<anyType xsi:type="UOSound" Index="532" Name="Resurect" />
+				<anyType xsi:type="UOSound" Index="509" Name="Reveal" />
+				<anyType xsi:type="UOSound" Index="494" Name="Strength" />
+				<anyType xsi:type="UOSound" Index="533" Name="Summon Creature" />
+				<anyType xsi:type="UOSound" Index="534" Name="Summon Daemon" />
+				<anyType xsi:type="UOSound" Index="535" Name="Summon Elemental" />
+				<anyType xsi:type="UOSound" Index="501" Name="Telekinesis" />
+				<anyType xsi:type="UOSound" Index="510" Name="Teleport" />
+				<anyType xsi:type="UOSound" Index="511" Name="Unlock" />
+				<anyType xsi:type="UOSound" Index="496" Name="Untrap" />
+				<anyType xsi:type="UOSound" Index="502" Name="Wall of Stone" />
+				<anyType xsi:type="UOSound" Index="486" Name="Weaken" />
+			</Elements>
+		</GenericNode>
+	</Structure>
+</SoundData>

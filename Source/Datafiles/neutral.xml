@@ -1,0 +1,631 @@
+<?xml version="1.0"?>
+<Data language="Whatever">
+  <section name="Admin">
+    <entry name="CreateFold" text="?" />
+    <entry name="DelFolder" text="?" />
+    <entry name="SaveAs" text="?" />
+    <entry name="Title" text="?" />
+  </section>
+  <section name="ButtonMenuEditor">
+    <entry name="Caption" text="?" />
+    <entry name="Command" text="?" />
+    <entry name="EmptySection" text="?" />
+    <entry name="ErrCommand" text="?" />
+    <entry name="ErrSub" text="?" />
+    <entry name="Instructions" text="?" />
+    <entry name="Menu" text="?" />
+    <entry name="NewComText" text="?" />
+    <entry name="NewSubText" text="?" />
+    <entry name="NoNode" text="?" />
+    <entry name="Preview" text="?" />
+    <entry name="PreviewMsg" text="?" />
+    <entry name="Title" text="?" />
+    <entry name="UsePrefix" text="?" />
+  </section>
+  <section name="Buttons">
+    <entry name="ConfirmClear" text="?" />
+    <entry name="EnterCommand" text="?" />
+    <entry name="ErasePrevious" text="?" />
+    <entry name="ErrCommand" text="?" />
+    <entry name="ImportConfirm" text="?" />
+    <entry name="Intstructions" text="?" />
+    <entry name="LastCommand" text="?" />
+    <entry name="LeftMouse" text="?" />
+    <entry name="LoadFail" text="?" />
+    <entry name="MenuDesc" text="?" />
+    <entry name="Modifiers" text="?" />
+    <entry name="ModRight" text="?" />
+    <entry name="Multi" text="?" />
+    <entry name="MultiRightClick" text="?" />
+    <entry name="RightMouse" text="?" />
+    <entry name="Single" text="?" />
+    <entry name="TipLeft" text="?" />
+    <entry name="TipRight" text="?" />
+    <entry name="TipTwoLine" text="?" />
+    <entry name="Title" text="?" />
+  </section>
+  <section name="ClientList">
+    <entry name="Acc" text="?" />
+    <entry name="Client" text="?" />
+    <entry name="Control" text="?" />
+    <entry name="Go" text="?" />
+    <entry name="Login" text="?" />
+    <entry name="Props" text="?" />
+    <entry name="Serial" text="?" />
+    <entry name="Title" text="?" />
+  </section>
+  <section name="Commands">
+    <entry name="Area" text="?" />
+    <entry name="Global" text="?" />
+    <entry name="Go" text="?" />
+    <entry name="Multi" text="?" />
+    <entry name="Online" text="?" />
+    <entry name="Self" text="?" />
+    <entry name="SetHue" text="?" />
+    <entry name="SetMap" text="?" />
+    <entry name="Single" text="?" />
+    <entry name="Spawn" text="?" />
+  </section>
+  <section name="Common">
+    <entry name="About" text="?" />
+    <entry name="Account" text="?" />
+    <entry name="Add" text="?" />
+    <entry name="BoxData" text="?" />
+    <entry name="Browse" text="?" />
+    <entry name="Cancel" text="?" />
+    <entry name="Change" text="?" />
+    <entry name="Choose" text="?" />
+    <entry name="Clear" text="?" />
+    <entry name="Close" text="?" />
+    <entry name="Current" text="?" />
+    <entry name="Default" text="?" />
+    <entry name="Delete" text="?" />
+    <entry name="Desc" text="?" />
+    <entry name="Edit" text="?" />
+    <entry name="Exit" text="?" />
+    <entry name="Export" text="?" />
+    <entry name="False" text="?" />
+    <entry name="File" text="?" />
+    <entry name="Find" text="?" />
+    <entry name="GlobalWarning" text="?" />
+    <entry name="Height" text="?" />
+    <entry name="Hue" text="?" />
+    <entry name="ID" text="?" />
+    <entry name="Import" text="?" />
+    <entry name="Index" text="?" />
+    <entry name="Lang" text="?" />
+    <entry name="Load" text="?" />
+    <entry name="Location" text="?" />
+    <entry name="Map" text="?" />
+    <entry name="Maps" text="?" />
+    <entry name="Menu" text="?" />
+    <entry name="Miscellaneous" text="?" />
+    <entry name="Name" text="?" />
+    <entry name="New" text="?" />
+    <entry name="No" text="?" />
+    <entry name="None" text="?" />
+    <entry name="Not" text="?" />
+    <entry name="Ok" text="?" />
+    <entry name="OnlineWarning" text="?" />
+    <entry name="Open" text="?" />
+    <entry name="Options" text="?" />
+    <entry name="Preview" text="?" />
+    <entry name="Profile" text="?" />
+    <entry name="PropsData" text="?" />
+    <entry name="Refresh" text="?" />
+    <entry name="Rename" text="?" />
+    <entry name="RestoreDefault" text="?" />
+    <entry name="Run" text="?" />
+    <entry name="Save" text="?" />
+    <entry name="SaveAs" text="?" />
+    <entry name="Select" text="?" />
+    <entry name="Server" text="?" />
+    <entry name="Set" text="?" />
+    <entry name="SpawnData" text="?" />
+    <entry name="Stop" text="?" />
+    <entry name="Test" text="?" />
+    <entry name="True" text="?" />
+    <entry name="Type" text="?" />
+    <entry name="Update" text="?" />
+    <entry name="Value" text="?" />
+    <entry name="View" text="?" />
+    <entry name="Wait" text="?" />
+    <entry name="Width" text="?" />
+    <entry name="X" text="?" />
+    <entry name="Y" text="?" />
+    <entry name="Yes" text="?" />
+    <entry name="Z" text="?" />
+  </section>
+  <section name="Deco">
+    <entry name="cmCat" text="?" />
+    <entry name="cmDelete" text="?" />
+    <entry name="cmItem" text="?" />
+    <entry name="ConfirmDelCat" text="?" />
+    <entry name="CustomNode" text="?" />
+    <entry name="Hued" text="?" />
+    <entry name="NoIDFound" text="?" />
+    <entry name="NoName" text="?" />
+    <entry name="NoResults" text="?" />
+    <entry name="Static" text="?" />
+    <entry name="Tile" text="?" />
+    <entry name="TipNudgeDown" text="?" />
+    <entry name="TipNudgeUp" text="?" />
+    <entry name="Title" text="?" />
+  </section>
+  <section name="Doors">
+    <entry name="Lock" text="?" />
+    <entry name="Select" text="?" />
+    <entry name="Unlock" text="?" />
+  </section>
+  <section name="Errors">
+    <entry name="AccessLevel" text="?" />
+    <entry name="CantDelButton" text="?" />
+    <entry name="ConnectionLost" text="?" />
+    <entry name="DelProfileErr" text="?" />
+    <entry name="Generic" text="?" />
+    <entry name="GenServErr" text="?" />
+    <entry name="LoginAccess" text="?" />
+    <entry name="LogUnregistered" text="?" />
+    <entry name="ModifierWarn" text="?" />
+    <entry name="NoData" text="?" />
+    <entry name="NoServer" text="?" />
+    <entry name="NotOnline" text="?" />
+    <entry name="NotSupported" text="?" />
+    <entry name="ProfExists" text="?" />
+    <entry name="ServerConnection" text="?" />
+    <entry name="ServerError" text="?" />
+    <entry name="Spawn" text="?" />
+    <entry name="WrongCredentials" text="?" />
+    <entry name="WrongFile" text="?" />
+  </section>
+  <section name="General">
+    <entry name="AddCurrPreset" text="?" />
+    <entry name="All" text="?" />
+    <entry name="Bag" text="?" />
+    <entry name="BCast" text="?" />
+    <entry name="ChooseSnd" text="?" />
+    <entry name="Cmd" text="?" />
+    <entry name="Dupe" text="?" />
+    <entry name="EditPresets" text="?" />
+    <entry name="Light" text="?" />
+    <entry name="priv" text="?" />
+    <entry name="SM" text="?" />
+    <entry name="Snd" text="?" />
+    <entry name="Tell" text="?" />
+    <entry name="www" text="?" />
+    <entry name="You" text="?" />
+  </section>
+  <section name="HuePicker">
+    <entry name="Animate" text="?" />
+    <entry name="DeleteGroup" text="?" />
+    <entry name="Groups" text="?" />
+    <entry name="Instructions" text="?" />
+    <entry name="RoomView" text="?" />
+    <entry name="Scale" text="?" />
+    <entry name="SelHue" text="?" />
+    <entry name="Title" text="?" />
+  </section>
+  <section name="Items">
+    <entry name="Add" text="?" />
+    <entry name="DelCat" text="?" />
+    <entry name="DelItem" text="?" />
+    <entry name="ItemID" text="?" />
+    <entry name="NoCtor" text="?" />
+    <entry name="NoName" text="?" />
+    <entry name="ToPack" text="?" />
+  </section>
+  <section name="Lights">
+    <entry name="NoLight" text="?" />
+    <entry name="SetDeco" text="?" />
+    <entry name="SetMsg" text="?" />
+  </section>
+  <section name="Messages">
+    <entry name="DelConfirm" text="?" />
+    <entry name="DelCurrentProfile" text="?" />
+    <entry name="DelLoc" text="?" />
+    <entry name="DelProfile" text="?" />
+    <entry name="GenericError" text="?" />
+    <entry name="MapImgError" text="?" />
+    <entry name="NewLocErr" text="?" />
+  </section>
+  <section name="Misc">
+    <entry name="AllSkills" text="?" />
+    <entry name="BoxTitle" text="?" />
+    <entry name="Connecting" text="?" />
+    <entry name="DataFolder" text="?" />
+    <entry name="Edit" text="?" />
+    <entry name="FindItem" text="?" />
+    <entry name="FindLoc" text="?" />
+    <entry name="FindMob" text="?" />
+    <entry name="Log" text="?" />
+    <entry name="NoResults" text="?" />
+    <entry name="Offline" text="?" />
+    <entry name="Online" text="?" />
+    <entry name="PassSecurity" text="?" />
+    <entry name="Players" text="?" />
+    <entry name="ProfileImport" text="?" />
+    <entry name="ProfileIOErr" text="?" />
+    <entry name="RemoveHue" text="?" />
+    <entry name="RequestConnection" text="?" />
+    <entry name="Search" text="?" />
+    <entry name="SearchError" text="?" />
+    <entry name="ServerChanged" text="?" />
+    <entry name="Skills" text="?" />
+    <entry name="Speech" text="?" />
+    <entry name="StringList" text="?" />
+    <entry name="StringListTitle" text="?" />
+    <entry name="WebSnd" text="?" />
+    <entry name="www" text="?" />
+  </section>
+  <section name="Mul">
+    <entry name="CustFolder" text="?" />
+    <entry name="DefFolder" text="?" />
+    <entry name="NotFound" text="?" />
+  </section>
+  <section name="MultiCmd">
+    <entry name="Instructions" text="?" />
+    <entry name="Preview" text="?" />
+    <entry name="Title" text="?" />
+  </section>
+  <section name="Notes">
+    <entry name="AddLoc" text="?" />
+    <entry name="Ascending" text="?" />
+    <entry name="Created" text="?" />
+    <entry name="Date" text="?" />
+    <entry name="DelLoc" text="?" />
+    <entry name="Descending" text="?" />
+    <entry name="High" text="?" />
+    <entry name="Locs" text="?" />
+    <entry name="Low" text="?" />
+    <entry name="New" text="?" />
+    <entry name="Normal" text="?" />
+    <entry name="Priority" text="?" />
+    <entry name="Urgent" text="?" />
+  </section>
+  <section name="NPCs">
+    <entry name="Amount" text="?" />
+    <entry name="BigSpawn" text="?" />
+    <entry name="ConfirmDel" text="?" />
+    <entry name="DeleteCat" text="?" />
+    <entry name="DeleteSpawns" text="?" />
+    <entry name="MaxTime" text="?" />
+    <entry name="mCatAddCat" text="?" />
+    <entry name="mCatAddSub" text="?" />
+    <entry name="mCatDelete" text="?" />
+    <entry name="mCatRename" text="?" />
+    <entry name="MinTime" text="?" />
+    <entry name="mMobAddMob" text="?" />
+    <entry name="mMobAddSpawn" text="?" />
+    <entry name="mMobBody" text="?" />
+    <entry name="mMobBodyMod" text="?" />
+    <entry name="mMobDelete" text="?" />
+    <entry name="mMobEdit" text="?" />
+    <entry name="NameError" text="?" />
+    <entry name="Range" text="?" />
+    <entry name="Range2ToolTip" text="?" />
+    <entry name="Spawn" text="?" />
+    <entry name="SpawnGroups" text="?" />
+    <entry name="SpawnRange" text="?" />
+    <entry name="Team" text="?" />
+    <entry name="ToSpawn" text="?" />
+  </section>
+  <section name="Options">
+    <entry name="Animate" text="?" />
+    <entry name="ArtBack" text="?" />
+    <entry name="ArtPreview" text="?" />
+    <entry name="BoxData" text="?" />
+    <entry name="CalcMaps" text="?" />
+    <entry name="CmdPrefix" text="?" />
+    <entry name="Commands" text="?" />
+    <entry name="ConnStartup" text="?" />
+    <entry name="CurrProf" text="?" />
+    <entry name="CustomClient" text="?" />
+    <entry name="CustomDeco" text="?" />
+    <entry name="CustomizeCommands" text="?" />
+    <entry name="DataFolder" text="?" />
+    <entry name="DefaultProf" text="?" />
+    <entry name="DefLoc" text="?" />
+    <entry name="DefLocWarn" text="?" />
+    <entry name="DrawStatics" text="?" />
+    <entry name="FlatBtn" text="?" />
+    <entry name="GlobalWarn" text="?" />
+    <entry name="Go" text="?" />
+    <entry name="ImportData" text="?" />
+    <entry name="ImportGroups" text="?" />
+    <entry name="ImportSpawns" text="?" />
+    <entry name="LinkColor" text="?" />
+    <entry name="Modifiers" text="?" />
+    <entry name="ModWarn" text="?" />
+    <entry name="Movedown" text="?" />
+    <entry name="Moveup" text="?" />
+    <entry name="MulManage" text="?" />
+    <entry name="MulManage2" text="?" />
+    <entry name="NOUOFolder" text="?" />
+    <entry name="Opacity" text="?" />
+    <entry name="OriginalNames" text="?" />
+    <entry name="OverwriteBoxData" text="?" />
+    <entry name="OverwriteGroups" text="?" />
+    <entry name="OverwriteMap" text="?" />
+    <entry name="OverwriteProps" text="?" />
+    <entry name="OverwriteSpawns" text="?" />
+    <entry name="PassUpdated" text="?" />
+    <entry name="Pw" text="?" />
+    <entry name="ResetDefault" text="?" />
+    <entry name="RoomView" text="?" />
+    <entry name="RotateMap" text="?" />
+    <entry name="Scale" text="?" />
+    <entry name="SelectedMapLocations" text="?" />
+    <entry name="Send" text="?" />
+    <entry name="ServAddress" text="?" />
+    <entry name="ServPort" text="?" />
+    <entry name="SetMap" text="?" />
+    <entry name="SHA1" text="?" />
+    <entry name="SHA1CheckWarn" text="?" />
+    <entry name="ShowSpawns" text="?" />
+    <entry name="SpawnColor" text="?" />
+    <entry name="TabStartup" text="?" />
+    <entry name="Taskbar" text="?" />
+    <entry name="Title" text="?" />
+    <entry name="Topmost" text="?" />
+    <entry name="TravelFormat" text="?" />
+    <entry name="Tray" text="?" />
+    <entry name="UOFolder" text="?" />
+    <entry name="UseBoxServer" text="?" />
+    <entry name="UseCustomFolder" text="?" />
+    <entry name="User" text="?" />
+    <entry name="Window" text="?" />
+    <entry name="WrongUOFolder" text="?" />
+    <entry name="XClose" text="?" />
+  </section>
+  <section name="ProfileChooser">
+    <entry name="Default" text="?" />
+    <entry name="Title" text="?" />
+    <entry name="ToolTip" text="?" />
+  </section>
+  <section name="Props">
+    <entry name="AddCond" text="?" />
+    <entry name="AddPres" text="?" />
+    <entry name="AddPreset" text="?" />
+    <entry name="AllClasses" text="?" />
+    <entry name="AllProps" text="?" />
+    <entry name="Check" text="?" />
+    <entry name="Cond" text="?" />
+    <entry name="DateTime" text="?" />
+    <entry name="Days" text="?" />
+    <entry name="DelPreset" text="?" />
+    <entry name="FB" text="?" />
+    <entry name="Get" text="?" />
+    <entry name="gSet" text="?" />
+    <entry name="Hours" text="?" />
+    <entry name="Milli" text="?" />
+    <entry name="Minutes" text="?" />
+    <entry name="mSet" text="?" />
+    <entry name="NoClassMatch" text="?" />
+    <entry name="NoType" text="?" />
+    <entry name="Numeric" text="?" />
+    <entry name="Op" text="?" />
+    <entry name="Other" text="?" />
+    <entry name="Property" text="?" />
+    <entry name="Seconds" text="?" />
+    <entry name="SelectEnum" text="?" />
+    <entry name="Set" text="?" />
+    <entry name="Text" text="?" />
+    <entry name="TimeSpan" text="?" />
+    <entry name="Type" text="?" />
+    <entry name="Value" text="?" />
+  </section>
+  <section name="Random">
+    <entry name="AddItems" text="?" />
+    <entry name="Area" text="?" />
+    <entry name="AreaDesc" text="?" />
+    <entry name="Brush" text="?" />
+    <entry name="BrushDesc" text="?" />
+    <entry name="Drag" text="?" />
+    <entry name="EditHue" text="?" />
+    <entry name="EditTile" text="?" />
+    <entry name="Esplicit" text="?" />
+    <entry name="Hgt" text="?" />
+    <entry name="InvalidIDs" text="?" />
+    <entry name="ItemRnd" text="?" />
+    <entry name="labFill" text="?" />
+    <entry name="NoHue" text="?" />
+    <entry name="NoMap" text="?" />
+    <entry name="NoRndHue" text="?" />
+    <entry name="NoTile" text="?" />
+    <entry name="Purge" text="?" />
+    <entry name="Quick" text="?" />
+    <entry name="RndHue" text="?" />
+    <entry name="SelHue" text="?" />
+    <entry name="SingleDesc" text="?" />
+    <entry name="TileSet" text="?" />
+    <entry name="Wdth" text="?" />
+  </section>
+  <section name="Roofing">
+    <entry name="Add" text="?" />
+    <entry name="AlreadyAdded" text="?" />
+    <entry name="Bottom" text="?" />
+    <entry name="CantAdd" text="?" />
+    <entry name="ClearAll" text="?" />
+    <entry name="EmptyRoof" text="?" />
+    <entry name="FromCli" text="?" />
+    <entry name="Gen" text="?" />
+    <entry name="Generate" text="?" />
+    <entry name="Height" text="?" />
+    <entry name="Left" text="?" />
+    <entry name="MissTiles" text="?" />
+    <entry name="NewSection" text="?" />
+    <entry name="NotOddWide" text="?" />
+    <entry name="Point1" text="?" />
+    <entry name="Point2" text="?" />
+    <entry name="Remove" text="?" />
+    <entry name="Right" text="?" />
+    <entry name="Roofing" text="?" />
+    <entry name="ServCP" text="?" />
+    <entry name="Slope" text="?" />
+    <entry name="Tent" text="?" />
+    <entry name="Test" text="?" />
+    <entry name="TestRest" text="?" />
+    <entry name="TileSet" text="?" />
+    <entry name="Title" text="?" />
+    <entry name="Top" text="?" />
+    <entry name="Up" text="?" />
+    <entry name="UseCli" text="?" />
+    <entry name="UseSer" text="?" />
+  </section>
+  <section name="Script">
+    <entry name="ConfirmDel" text="?" />
+    <entry name="CrateOk" text="?" />
+    <entry name="CreateFail" text="?" />
+    <entry name="CreateFolder" text="?" />
+    <entry name="CurrFold" text="?" />
+    <entry name="DelErr" text="?" />
+    <entry name="Delete" text="?" />
+    <entry name="DelOk" text="?" />
+    <entry name="DownOk" text="?" />
+    <entry name="Exit" text="?" />
+    <entry name="ExtError" text="?" />
+    <entry name="FileNotFound" text="?" />
+    <entry name="GenericErr" text="?" />
+    <entry name="NotRegistered" text="?" />
+    <entry name="ReadErr" text="?" />
+    <entry name="Refresh" text="?" />
+    <entry name="RenFail" text="?" />
+    <entry name="RenOk" text="?" />
+    <entry name="Title" text="?" />
+    <entry name="UnexpectedErr" text="?" />
+    <entry name="Upload" text="?" />
+    <entry name="UploadFail" text="?" />
+    <entry name="UploadOk" text="?" />
+    <entry name="WriteErr" text="?" />
+  </section>
+  <section name="Server">
+    <entry name="CantWriteFile" text="?" />
+    <entry name="Datafiles" text="?" />
+    <entry name="GetBox" text="?" />
+    <entry name="GetProps" text="?" />
+    <entry name="GetSpawn" text="?" />
+    <entry name="Login" text="?" />
+    <entry name="PleaseConnect" text="?" />
+    <entry name="RndTile" text="?" />
+    <entry name="ScriptEx" text="?" />
+  </section>
+  <section name="Spawns">
+    <entry name="Added" text="?" />
+    <entry name="Drop" text="?" />
+    <entry name="Empty" text="?" />
+    <entry name="Exists" text="?" />
+    <entry name="Instructions" text="?" />
+    <entry name="List" text="?" />
+    <entry name="mClear" text="?" />
+    <entry name="mDelete" text="?" />
+    <entry name="NoName" text="?" />
+    <entry name="Title" text="?" />
+  </section>
+  <section name="Tabs">
+    <entry name="Admin" text="?" />
+    <entry name="Adv" text="?" />
+    <entry name="Art" text="?" />
+    <entry name="Custom" text="?" />
+    <entry name="Deco" text="?" />
+    <entry name="Doors" text="?" />
+    <entry name="General" text="?" />
+    <entry name="Items" text="?" />
+    <entry name="Lights" text="?" />
+    <entry name="Map" text="?" />
+    <entry name="Notes" text="?" />
+    <entry name="NPCs" text="?" />
+    <entry name="Profiles" text="?" />
+    <entry name="Props" text="?" />
+    <entry name="Server" text="?" />
+    <entry name="Tools" text="?" />
+    <entry name="Travel" text="?" />
+  </section>
+  <section name="Theater">
+    <entry name="ActorsEvent" text="?" />
+    <entry name="CantCalibrate" text="?" />
+    <entry name="CtorName" text="?" />
+    <entry name="DefaultWait" text="?" />
+    <entry name="EditActor" text="?" />
+    <entry name="EnterVars" text="?" />
+    <entry name="FillVar" text="?" />
+    <entry name="Location" text="?" />
+    <entry name="Prop" text="?" />
+    <entry name="PropExists" text="?" />
+    <entry name="VarExists" text="?" />
+    <entry name="VarName" text="?" />
+    <entry name="Vars" text="?" />
+    <entry name="VarsDesc" text="?" />
+    <entry name="VarVal" text="?" />
+    <entry name="XOff" text="?" />
+  </section>
+  <section name="Tips">
+    <entry name="Operators" text="?" />
+    <entry name="Screenshot" text="?" />
+  </section>
+  <section name="Tools">
+    <entry name="Args" text="?" />
+    <entry name="Browse" text="?" />
+    <entry name="ClientMap" text="?" />
+    <entry name="Desc" text="?" />
+    <entry name="FormTitle" text="?" />
+    <entry name="Launcher" text="?" />
+    <entry name="LaunchErr" text="?" />
+    <entry name="Startup" text="?" />
+  </section>
+  <section name="Travel">
+    <entry name="ConfirmDelCat" text="?" />
+    <entry name="ConfirmDelLoc" text="?" />
+    <entry name="Find" text="?" />
+    <entry name="GetFromClient" text="?" />
+    <entry name="GetFromMap" text="?" />
+    <entry name="Go" text="?" />
+    <entry name="NewCat" text="?" />
+    <entry name="NewLoc" text="?" />
+    <entry name="NewSub" text="?" />
+    <entry name="NoMaps" text="?" />
+    <entry name="Send" text="?" />
+    <entry name="SetMap" text="?" />
+    <entry name="SpawnDetails" text="?" />
+    <entry name="SpawnTipDetailed" text="?" />
+    <entry name="World" text="?" />
+    <entry name="WrongMap" text="?" />
+    <entry name="ZoomIN" text="?" />
+    <entry name="ZoomOut" text="?" />
+  </section>
+  <section name="WizProfile">
+    <entry name="BoxServer" text="?" />
+    <entry name="ChooseLang" text="?" />
+    <entry name="CustomMaps" text="?" />
+    <entry name="CustomMapTitle" text="?" />
+    <entry name="DefaultProfile" text="?" />
+    <entry name="EmptyName" text="?" />
+    <entry name="EndDescription" text="?" />
+    <entry name="EndTitle" text="?" />
+    <entry name="EnterName" text="?" />
+    <entry name="Explanation" text="?" />
+    <entry name="FilesDescription" text="?" />
+    <entry name="FilesTitle" text="?" />
+    <entry name="FolderDescription" text="?" />
+    <entry name="FolderFound" text="?" />
+    <entry name="FolderNotFound" text="?" />
+    <entry name="FolderTitle" text="?" />
+    <entry name="ImgDescription" text="?" />
+    <entry name="ImgTitle" text="?" />
+    <entry name="LanguageSelection" text="?" />
+    <entry name="MulManage" text="?" />
+    <entry name="Name" text="?" />
+    <entry name="NameMaps" text="?" />
+    <entry name="NamesDescription" text="?" />
+    <entry name="NamesTitle" text="?" />
+    <entry name="NeedMapName" text="?" />
+    <entry name="PassSecurity" text="?" />
+    <entry name="ProfileExists" text="?" />
+    <entry name="Welcome" text="?" />
+  </section>
+  <section name="World">
+    <entry name="Big" text="?" />
+    <entry name="NoImage" text="?" />
+    <entry name="Small" text="?" />
+    <entry name="WorldMap" text="?" />
+  </section>
+</Data>

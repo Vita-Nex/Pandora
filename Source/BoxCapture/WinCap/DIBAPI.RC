@@ -1,0 +1,27 @@
+/*  dibapi.rc
+ *
+ *  This is the resource script for dibapi.dll.
+ *
+ *  Contents:
+ *      PRINTING -- dialog box
+ *
+ *  Copyright (c) 1992 Microsoft Corporation.  All rights reserved.
+ */
+
+#include <windows.h>
+#include "dibdll.h"
+
+PRINTER ICON printer.ico
+
+PRINTING DIALOG 115, 63, 210, 80
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Print Bitmap"
+FONT 8, "Helv"
+BEGIN
+    DEFPUSHBUTTON   "Cancel", IDCANCEL, 85, 60, 40, 14
+    CTEXT           "Printing", IDC_PRINTTEXT1, 41, 14, 157, 8
+    CTEXT           "on Printer", IDC_PRINTTEXT2, 41, 25, 157, 8
+    CTEXT           "Spooling...", IDC_PERCENTAGE, 41, 37, 157, 8
+    ICON            "PRINTER", 0x0071, 11, 12, 16, 16
+    GROUPBOX        "", IDC_BOX1, 35, 4, 170, 47
+END

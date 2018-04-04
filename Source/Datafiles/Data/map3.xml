@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Facet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MapValue="3">
+	<Nodes>
+		<GenericNode Name="Dungeons">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Doom">
+					<Elements>
+						<anyType xsi:type="Location" Name="Entrance" X="2367" Y="1268" Z="-85">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 1" X="2352" Y="1267" Z="-110">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Level 2" X="381" Y="133" Z="33">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Sites">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Arena">
+					<Elements>
+						<anyType xsi:type="Location" Name="Center" X="2365" Y="1129" Z="-90">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Caves and Mines">
+					<Elements>
+						<anyType xsi:type="Location" Name="Mine 1" X="2102" Y="558" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 2" X="2157" Y="459" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 3" X="1811" Y="365" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 4" X="1793" Y="472" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 5" X="1629" Y="430" Z="-85">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 6" X="1658" Y="308" Z="-85">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 7" X="1073" Y="244" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 8" X="1095" Y="205" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Mine 9" X="1195" Y="509" Z="-90">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Orc Forts">
+					<Elements>
+						<anyType xsi:type="Location" Name="Fort 1" X="912" Y="193" Z="-79">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Fort 2" X="1666" Y="362" Z="-50">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Fort 3" X="1364" Y="599" Z="-87">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Fort 4" X="1205" Y="705" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Fort 5" X="1257" Y="1331" Z="-87">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Fort 6" X="1598" Y="1825" Z="-110">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Points of Interest">
+					<Elements>
+						<anyType xsi:type="Location" Name="Broken Mountains" X="1111" Y="1461" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Corrupted Forest" X="2172" Y="1144" Z="-87">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Crumbling Continent" X="736" Y="1180" Z="-92">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Crystal Fens" X="1388" Y="616" Z="-85">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Divide of the Abyss" X="1545" Y="877" Z="-85">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Dry Highlands" X="2128" Y="1668" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Forgotten Pyramid" X="1825" Y="1799" Z="-50">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Gravewater Lake" X="1596" Y="1656" Z="-115">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Grimswind Ruins" X="2192" Y="330" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Hanse's Hostel" X="1065" Y="1435" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Northern Crags" X="1580" Y="384" Z="-50">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Orc Fortress" X="1340" Y="1226" Z="-90">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+		<GenericNode Name="Towns">
+			<Elements>
+				<anyType xsi:type="GenericNode" Name="Luna">
+					<Elements>
+						<anyType xsi:type="Location" Name="Bank" X="991" Y="519" Z="-50">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Arena" X="957" Y="637" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Moongate" X="1014" Y="529" Z="-70">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Vault of Secrets" X="1070" Y="461" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Stables" X="1023" Y="503" Z="-70">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+				<anyType xsi:type="GenericNode" Name="Umbra">
+					<Elements>
+						<anyType xsi:type="Location" Name="Stables" X="1992" Y="1326" Z="-90">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Bridge" X="1941" Y="1321" Z="-88">
+							<Map>0</Map>
+						</anyType>
+						<anyType xsi:type="Location" Name="Moongate" X="1998" Y="1382" Z="-90">
+							<Map>0</Map>
+						</anyType>
+					</Elements>
+				</anyType>
+			</Elements>
+		</GenericNode>
+	</Nodes>
+</Facet>

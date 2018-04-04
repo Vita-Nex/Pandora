@@ -1,0 +1,66 @@
+; -----------------------------------------------------------------
+; File name:  DIBAPI.DEF
+;
+; This is the module definition file for DIBAPI.DLL, a multiple-
+; segment DLL that exports several routines for working with bitmaps
+; and DIBs.
+; It demonstrates how to use the SEGMENTS statement to specify the 
+; attributes of each code segment.
+;
+; Development Team:  Dan Ruder
+;
+; Written by Microsoft Product Support Services, Windows Developer Support.
+;
+; Copyright (c) 1991, 1992 Microsoft Corporation.  All rights reserved.
+; -----------------------------------------------------------------
+
+
+LIBRARY DIBAPI
+ 
+DESCRIPTION  'DIB and Bitmap API sample DLL'
+EXETYPE  WINDOWS
+
+SEGMENTS
+    WEPSEG      PRELOAD FIXED
+    HOOKSEG     PRELOAD FIXED ;Segment with our KeyboardHook proc in it
+
+CODE    PRELOAD MOVEABLE DISCARDABLE
+DATA    PRELOAD MOVEABLE SINGLE
+
+HEAPSIZE 8192
+
+EXPORTS
+   WEP                      @1     RESIDENTNAME
+   _BitmapToDIB             @2
+   _ChangeBitmapFormat      @3
+   _ChangeDIBFormat         @4
+   _CopyScreenToBitmap      @5
+   _CopyScreentoDIB         @6
+   _CopyWindowToBitmap      @7
+   _CopyWindowToDIB         @8
+   _CreateDIBPalette        @9
+   _CreateDIB               @31
+   _DestroyDIB              @10
+   _DIBError                @11
+   _DIBHeight               @12
+   _DIBNumColors            @13
+   _DIBToBitmap             @14
+   _DIBWidth                @15
+   _FindDIBBits             @16
+   _GetSystemPalette        @17
+   _LoadDIB                 @18
+   _PaintBitmap             @19
+   _PaintDIB                @20
+   _PalEntriesOnDevice      @21
+   _PaletteSize             @22
+   _PrintDIB                @23
+   _PrintScreen             @24
+   _PrintWindow             @25
+   _SaveDIB                 @26
+   PrintAbortDlg            @27
+   PrintAbortProc           @28
+   InstallHook              @29    ; For Keyboard Hook
+   KeyboardHook             @30    ; For Keyboard Hook
+
+
+    

@@ -1,0 +1,151 @@
+# -----------------------------------------------------------------
+# File name:  MAKEDIB
+#
+# This file contains the build information necessary to create
+# DIBAPI.DLL.  To build a DEBUG version, build with:
+#
+#     NMAKE /f MAKEDIB DEBUG=1
+#
+# To build for a release version, build with:
+#
+#     NMAKE /f MAKEDIB
+#
+# To assume Microsoft C 6.0 or earlier, add the macro definition
+#
+#     C6=1
+#
+# to the appropriate line above.
+#
+# Development Team:  Dan Ruder
+#                    Mark Bader
+#
+# Written by Microsoft Product Support Services, Windows Developer Support.
+#
+# Copyright (c) 1991, 1992 Microsoft Corporation.  All rights reserved.
+# -----------------------------------------------------------------
+
+
+# Options:
+#
+#   DEBUG=1  build debug version.  Default is nodebug version.
+#   C6=1     assume Microsoft C 6.0 or earlier, default is to assume C7.
+#
+
+
+# Different options depending on debug or release version
+!if "$(DEBUG)"=="1"
+DLL_CFLAGS = -c -W3 -Alnw -Gsw -Zpie -Od
+DLL_LINKFLAGS = /NOD/NOE/CO/MAP
+ASM_FLAGS = -MX
+!else
+DLL_CFLAGS = -c -W3 -Alnw -Gsw -Zpe -Oselg
+DLL_LINKFLAGS = /NOD/NOE
+ASM_FLAGS = -MX
+!endif
+
+#
+# Different library options. For C7, we need oldnames.lib because we
+# use Microsoft extensions without underscores.
+#
+
+!if "$(C6)"=="1"
+LIBS    = libw mdllcew
+!else
+LIBS    = libw mdllcew oldnames
+!endif
+
+all: dibapi.dll 
+
+DLL_OBJS = dllinit.obj wepcode.obj file.obj copy.obj \
+       errors.obj print.obj dibutil.obj hook.obj
+
+EXTOBJS = libentry.obj
+
+# Inference rules
+
+.c.obj:
+    cl $(DLL_CFLAGS) $*.c
+
+.asm.obj:
+    masm $(ASM_FLAGS) $*.asm
+
+
+# Rules for building DIBAPI.DLL.
+
+dllinit.obj: dllinit.c dibdll.h
+
+wepcode.obj: wepcode.c
+    cl $(DLL_CFLAGS) -NT WEPSEG wepcode.c
+
+# The next target is libentry.obj.
+#
+# If you have Microsoft C/C++ 7.0, libentry.obj is already included
+# in the libraries, so there is no need to explicitly include it here.
+
+# If you have Microsoft C version 6.0, you may use the libentry.obj that
+# comes with the SDK or if you want to do advanced processing in
+# libentry.asm, you may assemble the one from the SDK.  To do this,
+# copy libentry.asm from your SDK directory.  Note that you must remove
+# the line "include CONVDLL.INC" from the 3.1 libentry.asm for it
+# to assmeble correctly.
+
+# This line is for MASM 6.0.  If you use MASM 6.0, be sure to use the
+# cmacros.inc file that comes with it.  Do not use the cmacros.inc that
+# comes with the SDK as it is for MASM 5.1.
+
+#libentry.obj: libentry.asm
+#        ml $(-c -Cx -W2 -Zm) libentry.asm
+
+# This line is for MASM 5.1.  If you use MASM 5.1, you can use the
+# cmacros.inc that comes with the SDK.
+#
+# libentry.obj: libentry.asm
+#    masm -MX libentry.asm;
+
+file.obj: file.c dibapi.h dibutil.h 
+
+copy.obj: copy.c dibapi.h dibutil.h 
+
+errors.obj: errors.c dibapi.h
+
+print.obj: print.c dibapi.h dibutil.h dibdll.h 
+
+dibutil.obj: dibutil.c dibutil.h dibapi.h
+
+# We will add the code for our Hook Proc to the DIBAPI.DLL so
+# we don't require 2 dlls for WINCAP to work, although it
+# isn't officially part of the DIB API set.
+
+hook.obj: hook.c
+    cl $(DLL_CFLAGS) -NT HOOKSEG hook.c
+
+dibapi.res: dibapi.rc dibdll.h
+    rc -r dibapi.rc
+
+
+# NOTE: The dependencies in this file are not set up to build the
+# DLL properly if the file DIBAPI.DLL exists but the import library
+# DIBAPI.LIB is out of date or is deleted. In this case, the
+# makefile never knows that the library needs to be rebuilt.
+#
+# To take care of this situation, just delete the file DIBAPI.DLL and
+# re-run NMAKE on this makefile.
+#
+# To modify this makefile to allow for this case would require
+# redundancies and multiple calls to implib, so a tradeoff was made
+# to make this makefile run a bit quicker, and be a bit easier to
+# understand.
+
+
+dibapi.dll: $(DLL_OBJS) dibapi.res dibapi.def
+    link @<<
+    $(DLL_LINKFLAGS)+
+    $(DLL_OBJS) +
+    $(EXTOBJS)
+    dibapi.dll
+    dibapi.map/map/al:16
+    $(LIBS)
+    dibapi.def
+<<
+    rc dibapi.res dibapi.dll
+    implib dibapi.lib dibapi.def

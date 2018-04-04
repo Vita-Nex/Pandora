@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   Caption="Cast">
+	<RightObject xsi:type="LastCommand" />
+	<LeftObject xsi:type="MenuDef">
+		<Items>
+			<anyType xsi:type="GenericNode" Name="Mage">
+				<Elements>
+					<anyType xsi:type="GenericNode" Name="First">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Clumsy" Command="Cast ClumsySpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Create Food" Command="Cast CreateFoodSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Feeblemind" Command="Cast FeeblemindSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Heal" Command="Cast HealSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Magic Arrow" Command="Cast MagicArrowSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Night Sight" Command="Cast NightSightSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Reactive Armor" Command="Cast ReactiveArmorSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Weaken" Command="Cast WeakenSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+					<anyType xsi:type="GenericNode" Name="Second">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Agility" Command="Cast AgilitySpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Cunning" Command="Cast CunningSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Cure" Command="Cast CureSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Harm" Command="Cast HarmSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Magic Trap" Command="Cast MagicTrapSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Magic Untrap" Command="Cast RemoveTrapSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Protection" Command="Cast ProtectionSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Strength" Command="Cast StrengthSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+					<anyType xsi:type="GenericNode" Name="Third">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Bless" Command="Cast BlessSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Fireball" Command="Cast FireballSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Magic Lock" Command="Cast MagicLockSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Poison" Command="Cast PoisonSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Telekinesis" Command="Cast TelekinesisSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Teleport" Command="Cast TeleportSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Unlock" Command="Cast UnlockSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Wall of Stone" Command="Cast WallOfStoneSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+					<anyType xsi:type="GenericNode" Name="Fourth">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Arch Cure" Command="Cast ArchCureSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Arch Protection" Command="Cast ArchProtectionSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Curse" Command="Cast CurseSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Fire Field" Command="Cast FireFieldSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Greater Heal" Command="Cast GreaterHealSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Lightning" Command="Cast LightningSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Mana Drain" Command="Cast ManaDrainSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Recall" Command="Cast RecallSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+					<anyType xsi:type="GenericNode" Name="Fifth">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Blade Spirits" Command="Cast BladeSpiritsSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Dispel Field" Command="Cast DispelFieldSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Incognito" Command="Cast IncognitoSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Magic Reflection" Command="Cast MagicReflectSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Mind Blast" Command="Cast MindBlastSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Paralyze" Command="Cast ParalyzeSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Poison Field" Command="Cast PoisonFieldSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Summon Creature" Command="Cast SummonCreatureSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+					<anyType xsi:type="GenericNode" Name="Sixth">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Dispel" Command="Cast DispelSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Energy Bolt" Command="Cast EnergyBoltSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Explosion" Command="Cast ExplosionSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Invisibility" Command="Cast InvisibilitySpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Mark" Command="Cast MarkSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Mass Curse" Command="Cast MassCurseSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Paralyze Field" Command="Cast ParalyzeFieldSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Reveal" Command="Cast RevealSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+					<anyType xsi:type="GenericNode" Name="Seventh">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Chain Lightning" Command="Cast ChainLightningSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Energy Field" Command="Cast EnergyFieldSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Flame Strike" Command="Cast FlameStrikeSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Gate Travel" Command="Cast GateTravelSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Mana Vampire" Command="Cast ManaVampireSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Mass Dispel" Command="Cast MassDispelSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Meteor Swarm" Command="Cast MeteorSwarmSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Polymorph" Command="Cast PolymorphSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+					<anyType xsi:type="GenericNode" Name="Eigth">
+						<Elements>
+							<anyType xsi:type="MenuCommand" Caption="Earthquake" Command="Cast EarthquakeSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Energy Vortex" Command="Cast EnergyVortexSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Resurrection" Command="Cast ResurrectionSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Air Elemental" Command="Cast AirElementalSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Summon Daemon" Command="Cast SummonDaemonSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Earth Elemental" Command="Cast EarthElementalSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Fire Elemental" Command="Cast FireElementalSpell" UsePrefix="true" />
+							<anyType xsi:type="MenuCommand" Caption="Water Elemental" Command="Cast WaterElementalSpell" UsePrefix="true" />
+						</Elements>
+					</anyType>
+				</Elements>
+			</anyType>
+			<anyType xsi:type="GenericNode" Name="Paladin">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Cleanse by Fire" Command="Cast CleanseByFireSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Close Wounds" Command="Cast CloseWoundsSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Consecrate Weapon" Command="Cast ConsecrateWeaponSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Dispel Evil" Command="Cast DispelEvilSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Divine Fury" Command="Cast DivineFurySpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Enemy of One" Command="Cast EnemyOfOneSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Holy Light" Command="Cast HolyLightSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Noble Sacrifice" Command="Cast NobleSacrificeSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Remove Curse" Command="Cast RemoveCurseSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Sacred Journey" Command="Cast SacredJourneySpell" UsePrefix="true" />
+				</Elements>
+			</anyType>
+			<anyType xsi:type="GenericNode" Name="Necromancer">
+				<Elements>
+					<anyType xsi:type="MenuCommand" Caption="Animate Dead" Command="Cast AnimateDeadSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Blood Oath" Command="Cast BloodOathSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Corpse Skin" Command="Cast CorpseSkinSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Curse Weapon" Command="Cast CurseWeaponSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Evil Omen" Command="Cast EvilOmenSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Horrific Beast" Command="Cast HorrificBeastSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Lich Form" Command="Cast LichFormSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Mind Rot" Command="Cast MindRotSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Pain Spike" Command="Cast PainSpikeSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Poison Strike" Command="Cast PoisonStrikeSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Strangle" Command="Cast StrangleSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Summon Familiar" Command="Cast SummonFamiliarSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Vampiric Embrace" Command="Cast VampiricEmbraceSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Vengeful Spirit" Command="Cast VengefulSpiritSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Wither" Command="Cast WitherSpell" UsePrefix="true" />
+					<anyType xsi:type="MenuCommand" Caption="Wraith Form" Command="Cast WraithFormSpell" UsePrefix="true" />
+				</Elements>
+			</anyType>
+		</Items>
+	</LeftObject>
+</ButtonDef>

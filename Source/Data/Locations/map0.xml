@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<Facet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" MapValue="0">
+  <Nodes>
+    <anyType xsi:type="GenericNode" Name="Adventuring">
+      <Elements>
+        <anyType xsi:type="GenericNode" Name="Forts">
+          <Elements>
+            <anyType xsi:type="Location" Name="Cove Orc Fort" X="2171" Y="1332" Z="0" />
+            <anyType xsi:type="Location" Name="Yew Brigand Camp" X="885" Y="1682" Z="0" />
+            <anyType xsi:type="Location" Name="Yew Orc Fort" X="634" Y="1500" Z="0" />
+            <anyType xsi:type="Location" Name="Vesper Camp" X="3349" Y="573" Z="0" />
+          </Elements>
+        </anyType>
+      </Elements>
+    </anyType>
+    <anyType xsi:type="GenericNode" Name="Dungeons">
+      <Elements>
+        <anyType xsi:type="GenericNode" Name="Britain Passage">
+          <Elements>
+            <anyType xsi:type="Location" Name="Britain Entrance" X="6032" Y="1500" Z="25" />
+            <anyType xsi:type="Location" Name="Lost Lands Entrance" X="6140" Y="1434" Z="4" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Covetous">
+          <Elements>
+            <anyType xsi:type="Location" Name="Lake Area" X="5467" Y="1809" Z="0" />
+            <anyType xsi:type="Location" Name="Level 1" X="5456" Y="1862" Z="0" />
+            <anyType xsi:type="Location" Name="Level 2" X="5613" Y="1998" Z="0" />
+            <anyType xsi:type="Location" Name="Level 3" X="5580" Y="1926" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance" X="2499" Y="922" Z="0" />
+            <anyType xsi:type="Location" Name="Torture Chambers" X="5553" Y="1808" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Deceit">
+          <Elements>
+            <anyType xsi:type="Location" Name="Level 1" X="5189" Y="637" Z="0" />
+            <anyType xsi:type="Location" Name="Level 2" X="5310" Y="531" Z="0" />
+            <anyType xsi:type="Location" Name="Level 3" X="5141" Y="651" Z="0" />
+            <anyType xsi:type="Location" Name="Level 4" X="5307" Y="655" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance" X="4111" Y="434" Z="5" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Despise">
+          <Elements>
+            <anyType xsi:type="Location" Name="Entrance (Outside)" X="1300" Y="1081" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance (Cave)" X="5581" Y="631" Z="30" />
+            <anyType xsi:type="Location" Name="Level 1" X="5499" Y="571" Z="59" />
+            <anyType xsi:type="Location" Name="Level 2" X="5518" Y="673" Z="20" />
+            <anyType xsi:type="Location" Name="Level 3" X="5405" Y="860" Z="45" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Destard">
+          <Elements>
+            <anyType xsi:type="Location" Name="Level 1" X="5243" Y="1004" Z="0" />
+            <anyType xsi:type="Location" Name="Level 2" X="5148" Y="805" Z="0" />
+            <anyType xsi:type="Location" Name="Level 3" X="5140" Y="983" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance" X="1176" Y="2639" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Fire Dungeon">
+          <Elements>
+            <anyType xsi:type="Location" Name="Entrance" X="5761" Y="2907" Z="15" />
+            <anyType xsi:type="Location" Name="Level 1" X="5782" Y="1420" Z="41" />
+            <anyType xsi:type="Location" Name="Exit to Serpent's Hold" X="5687" Y="1422" Z="40" />
+            <anyType xsi:type="Location" Name="Level 2" X="5702" Y="1313" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Graveyards">
+          <Elements>
+            <anyType xsi:type="Location" Name="City of the Dead" X="5222" Y="3661" Z="3" />
+            <anyType xsi:type="Location" Name="Britain" X="1384" Y="1498" Z="10" />
+            <anyType xsi:type="Location" Name="Cove" X="2444" Y="1123" Z="5" />
+            <anyType xsi:type="Location" Name="Jhelom" X="1295" Y="3720" Z="0" />
+            <anyType xsi:type="Location" Name="Moonglow" X="4545" Y="1339" Z="8" />
+            <anyType xsi:type="Location" Name="Nujel'm" X="3537" Y="1157" Z="20" />
+            <anyType xsi:type="Location" Name="Vesper" X="2787" Y="867" Z="0" />
+            <anyType xsi:type="Location" Name="Yew" X="724" Y="1139" Z="0" />
+            <anyType xsi:type="Location" Name="Yew Crypts" X="972" Y="768" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Hythloth">
+          <Elements>
+            <anyType xsi:type="Location" Name="Level 1" X="5907" Y="28" Z="44" />
+            <anyType xsi:type="Location" Name="Level 2" X="5978" Y="171" Z="0" />
+            <anyType xsi:type="Location" Name="Level 3" X="6083" Y="148" Z="-22" />
+            <anyType xsi:type="Location" Name="Level 4" X="6059" Y="92" Z="22" />
+            <anyType xsi:type="Location" Name="Entrance" X="4722" Y="3825" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Ice Dungeon">
+          <Elements>
+            <anyType xsi:type="Location" Name="Entrance" X="1999" Y="81" Z="5" />
+            <anyType xsi:type="Location" Name="Entrance (Lost Lands)" X="5209" Y="2322" Z="33" />
+            <anyType xsi:type="Location" Name="Level 1" X="5874" Y="242" Z="-4" />
+            <anyType xsi:type="Location" Name="Level 2" X="5833" Y="329" Z="16" />
+            <anyType xsi:type="Location" Name="Level 3" X="5701" Y="306" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Shame">
+          <Elements>
+            <anyType xsi:type="Location" Name="Level 1" X="5395" Y="126" Z="0" />
+            <anyType xsi:type="Location" Name="Level 2" X="5515" Y="15" Z="5" />
+            <anyType xsi:type="Location" Name="Level 3" X="5516" Y="142" Z="25" />
+            <anyType xsi:type="Location" Name="Level 4" X="5876" Y="22" Z="-10" />
+            <anyType xsi:type="Location" Name="Entrance" X="514" Y="1561" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Terathan Keep">
+          <Elements>
+            <anyType xsi:type="Location" Name="Entrance" X="5499" Y="3224" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance (Keep)" X="5451" Y="3140" Z="-60" />
+            <anyType xsi:type="Location" Name="Level 1" X="5341" Y="1599" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Trinsic Passage">
+          <Elements>
+            <anyType xsi:type="Location" Name="Entrance (Trinsic)" X="1628" Y="3323" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance (City of the Dead)" X="5139" Y="3664" Z="32" />
+            <anyType xsi:type="Location" Name="Entrance (Delucia)" X="5154" Y="4063" Z="37" />
+            <anyType xsi:type="Location" Name="Level 1" X="5900" Y="1406" Z="40" />
+            <anyType xsi:type="Location" Name="Level 2" X="5971" Y="1408" Z="31" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Wrong">
+          <Elements>
+            <anyType xsi:type="Location" Name="Level 1" X="5825" Y="630" Z="0" />
+            <anyType xsi:type="Location" Name="Level 2" X="5694" Y="569" Z="20" />
+            <anyType xsi:type="Location" Name="Level 3" X="5703" Y="630" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance" X="2044" Y="238" Z="10" />
+          </Elements>
+        </anyType>
+      </Elements>
+    </anyType>
+    <anyType xsi:type="GenericNode" Name="Misc">
+      <Elements>
+        <anyType xsi:type="GenericNode" Name="Moongates">
+          <Elements>
+            <anyType xsi:type="Location" Name="Britain" X="1338" Y="1991" Z="0" />
+            <anyType xsi:type="Location" Name="Jhelom" X="1502" Y="3769" Z="0" />
+            <anyType xsi:type="Location" Name="Magincia" X="3567" Y="2138" Z="27" />
+            <anyType xsi:type="Location" Name="Minoc" X="2705" Y="691" Z="0" />
+            <anyType xsi:type="Location" Name="Moonglow" X="4470" Y="1281" Z="0" />
+            <anyType xsi:type="Location" Name="Skara Brae" X="647" Y="2067" Z="0" />
+            <anyType xsi:type="Location" Name="Trinsic" X="1826" Y="2944" Z="-25" />
+            <anyType xsi:type="Location" Name="Yew" X="769" Y="747" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Shrines">
+          <Elements>
+            <anyType xsi:type="Location" Name="Chaos" X="1462" Y="844" Z="0" />
+            <anyType xsi:type="Location" Name="Compassion" X="1856" Y="874" Z="-1" />
+            <anyType xsi:type="Location" Name="Honesty" X="4217" Y="564" Z="35" />
+            <anyType xsi:type="Location" Name="Honor" X="1729" Y="3527" Z="3" />
+            <anyType xsi:type="Location" Name="Humility" X="4273" Y="3699" Z="0" />
+            <anyType xsi:type="Location" Name="Justice" X="1301" Y="639" Z="15" />
+            <anyType xsi:type="Location" Name="Sacrifice" X="3355" Y="299" Z="9" />
+            <anyType xsi:type="Location" Name="Spirituality" X="1601" Y="2487" Z="5" />
+            <anyType xsi:type="Location" Name="Valor" X="2496" Y="3932" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Sights">
+          <Elements>
+            <anyType xsi:type="Location" Name="Fisherman's Hut" X="2384" Y="3485" Z="3" />
+            <anyType xsi:type="Location" Name="Hidden Valley" X="1687" Y="2986" Z="0" />
+            <anyType xsi:type="Location" Name="Hedge Maze" X="1148" Y="2229" Z="20" />
+            <anyType xsi:type="Location" Name="Temple Island" X="2491" Y="3584" Z="5" />
+            <anyType xsi:type="Location" Name="Fire Temple" X="4596" Y="3576" Z="75" />
+            <anyType xsi:type="Location" Name="Great Waterfall" X="1322" Y="544" Z="30" />
+            <anyType xsi:type="Location" Name="Marble Island" X="1903" Y="2097" Z="5" />
+          </Elements>
+        </anyType>
+      </Elements>
+    </anyType>
+    <anyType xsi:type="GenericNode" Name="Staff">
+      <Elements>
+        <anyType xsi:type="GenericNode" Name="Common">
+          <Elements>
+            <anyType xsi:type="Location" Name="Jail" X="5300" Y="1185" Z="0" />
+            <anyType xsi:type="Location" Name="Lava Pool" X="5435" Y="1097" Z="0" />
+            <anyType xsi:type="Location" Name="Green Acres" X="5445" Y="1153" Z="0" />
+          </Elements>
+        </anyType>
+      </Elements>
+    </anyType>
+    <anyType xsi:type="GenericNode" Name="Towns">
+      <Elements>
+        <anyType xsi:type="GenericNode" Name="Britain">
+          <Elements>
+            <anyType xsi:type="Location" Name="Bank" X="1422" Y="1697" Z="0" />
+            <anyType xsi:type="Location" Name="Healer" X="1474" Y="1611" Z="20" />
+            <anyType xsi:type="Location" Name="Provisioner/Fisher" X="1475" Y="1672" Z="0" />
+            <anyType xsi:type="Location" Name="Center" X="1475" Y="1645" Z="21" />
+            <anyType xsi:type="Location" Name="Ethereal Goods" X="1502" Y="1661" Z="27" />
+            <anyType xsi:type="Location" Name="Farmlands" X="1228" Y="1705" Z="0" />
+            <anyType xsi:type="Location" Name="Graveyard" X="1384" Y="1497" Z="10" />
+            <anyType xsi:type="Location" Name="Hall of Virtues" X="1554" Y="1610" Z="11" />
+            <anyType xsi:type="Location" Name="Lord Blackthorne's Castle" X="1523" Y="1456" Z="15" />
+            <anyType xsi:type="Location" Name="Lord British Castle" X="1401" Y="1625" Z="28" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Bucaneer's Den">
+          <Elements>
+            <anyType xsi:type="Location" Name="Bathhouse" X="2667" Y="2084" Z="5" />
+            <anyType xsi:type="Location" Name="Docks" X="2736" Y="2166" Z="1" />
+            <anyType xsi:type="Location" Name="Tavern" X="2691" Y="2233" Z="2" />
+            <anyType xsi:type="Location" Name="Secret Passage" X="2652" Y="2194" Z="4" />
+            <anyType xsi:type="Location" Name="Undergound" X="2645" Y="2195" Z="-20" />
+            <anyType xsi:type="Location" Name="Bank" X="2723" Y="2189" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Cove">
+          <Elements>
+            <anyType xsi:type="Location" Name="Center" X="2267" Y="1211" Z="0" />
+            <anyType xsi:type="Location" Name="Graveyard" X="2444" Y="1122" Z="5" />
+            <anyType xsi:type="Location" Name="Orc Fort" X="2172" Y="1332" Z="0" />
+            <anyType xsi:type="Location" Name="Bank" X="2234" Y="1198" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Delucia">
+          <Elements>
+            <anyType xsi:type="Location" Name="Bank" X="5272" Y="3991" Z="37" />
+            <anyType xsi:type="Location" Name="Healer" X="5194" Y="3988" Z="37" />
+            <anyType xsi:type="Location" Name="Gates (North)" X="5209" Y="3951" Z="37" />
+            <anyType xsi:type="Location" Name="Gates (East)" X="5306" Y="3973" Z="38" />
+            <anyType xsi:type="Location" Name="Gates (South)" X="5286" Y="4051" Z="37" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Jhelom">
+          <Elements>
+            <anyType xsi:type="Location" Name="Docks" X="1485" Y="3695" Z="0" />
+            <anyType xsi:type="Location" Name="North Jhelom" X="1141" Y="3613" Z="0" />
+            <anyType xsi:type="Location" Name="South Jhelom" X="1441" Y="3999" Z="0" />
+            <anyType xsi:type="Location" Name="Fighting Pit" X="1397" Y="3745" Z="-20" />
+            <anyType xsi:type="Location" Name="Tailor Shop" X="1460" Y="4011" Z="0" />
+            <anyType xsi:type="Location" Name="Morning Star Inn" X="1377" Y="3817" Z="0" />
+            <anyType xsi:type="Location" Name="Bank" X="1324" Y="3779" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Minoc">
+          <Elements>
+            <anyType xsi:type="Location" Name="Center" X="2466" Y="443" Z="15" />
+            <anyType xsi:type="Location" Name="Mt. Kendall" X="2553" Y="503" Z="13" />
+            <anyType xsi:type="Location" Name="Stables" X="2527" Y="378" Z="23" />
+            <anyType xsi:type="Location" Name="Bank" X="2517" Y="553" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Moonglow">
+          <Elements>
+            <anyType xsi:type="Location" Name="Graveyard" X="4546" Y="1336" Z="8" />
+            <anyType xsi:type="Location" Name="Lycaeum" X="4310" Y="1007" Z="0" />
+            <anyType xsi:type="Location" Name="Bank" X="4471" Y="1178" Z="0" />
+            <anyType xsi:type="Location" Name="Docks" X="4406" Y="1045" Z="-2" />
+            <anyType xsi:type="Location" Name="Zoo" X="4521" Y="1407" Z="10" />
+            <anyType xsi:type="Location" Name="Telescope" X="4707" Y="1126" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Nujel'm">
+          <Elements>
+            <anyType xsi:type="Location" Name="Center" X="3756" Y="1244" Z="0" />
+            <anyType xsi:type="Location" Name="Marketplace" X="3554" Y="1187" Z="0" />
+            <anyType xsi:type="Location" Name="Palace" X="3701" Y="1280" Z="20" />
+            <anyType xsi:type="Location" Name="Restful Slumber Inn" X="3744" Y="1316" Z="0" />
+            <anyType xsi:type="Location" Name="Bank" X="3770" Y="1315" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Occlo">
+          <Elements>
+            <anyType xsi:type="Location" Name="Bank" X="3686" Y="2519" Z="0" />
+            <anyType xsi:type="Location" Name="Docks" X="3643" Y="2655" Z="-2" />
+            <anyType xsi:type="Location" Name="Farms" X="3724" Y="2646" Z="22" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Papua">
+          <Elements>
+            <anyType xsi:type="Location" Name="Just Inn" X="5770" Y="3162" Z="14" />
+            <anyType xsi:type="Location" Name="Bank" X="5675" Y="3144" Z="12" />
+            <anyType xsi:type="Location" Name="Docks" X="5827" Y="3259" Z="2" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Serpent's Hold">
+          <Elements>
+            <anyType xsi:type="Location" Name="Center" X="3021" Y="3397" Z="15" />
+            <anyType xsi:type="Location" Name="Gates" X="2980" Y="3387" Z="15" />
+            <anyType xsi:type="Location" Name="Bank" X="2875" Y="3471" Z="15" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Skara Brae">
+          <Elements>
+            <anyType xsi:type="Location" Name="Bank" X="591" Y="2155" Z="0" />
+            <anyType xsi:type="Location" Name="Councelor's Hall" X="619" Y="2131" Z="0" />
+            <anyType xsi:type="Location" Name="Farmer's Market" X="611" Y="2159" Z="0" />
+            <anyType xsi:type="Location" Name="Tailor" X="650" Y="2184" Z="0" />
+            <anyType xsi:type="Location" Name="Provisioner" X="584" Y="2227" Z="0" />
+            <anyType xsi:type="Location" Name="Bowyer" X="595" Y="2211" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Trinsic">
+          <Elements>
+            <anyType xsi:type="Location" Name="Bank" X="1820" Y="2822" Z="0" />
+            <anyType xsi:type="Location" Name="Provisioner" X="1852" Y="2792" Z="-8" />
+            <anyType xsi:type="Location" Name="Center" X="1956" Y="2780" Z="10" />
+            <anyType xsi:type="Location" Name="Armorer" X="1934" Y="2772" Z="10" />
+            <anyType xsi:type="Location" Name="Gates" X="1827" Y="2779" Z="0" />
+            <anyType xsi:type="Location" Name="Jail" X="1851" Y="2770" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Vesper">
+          <Elements>
+            <anyType xsi:type="Location" Name="Graveyard" X="2785" Y="867" Z="0" />
+            <anyType xsi:type="Location" Name="Docks" X="3003" Y="830" Z="0" />
+            <anyType xsi:type="Location" Name="Bank" X="2899" Y="676" Z="0" />
+            <anyType xsi:type="Location" Name="Ironwood Inn" X="2762" Y="978" Z="0" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Wind">
+          <Elements>
+            <anyType xsi:type="Location" Name="Outside Entrance" X="0" Y="0" Z="0" />
+            <anyType xsi:type="Location" Name="Entrance" X="5172" Y="242" Z="15" />
+            <anyType xsi:type="Location" Name="Garden" X="5215" Y="23" Z="15" />
+          </Elements>
+        </anyType>
+        <anyType xsi:type="GenericNode" Name="Yew">
+          <Elements>
+            <anyType xsi:type="Location" Name="Graveyard" X="724" Y="1138" Z="0" />
+            <anyType xsi:type="Location" Name="Center" X="546" Y="991" Z="0" />
+            <anyType xsi:type="Location" Name="Empath Abbey" X="635" Y="858" Z="0" />
+          </Elements>
+        </anyType>
+      </Elements>
+    </anyType>
+  </Nodes>
+</Facet>

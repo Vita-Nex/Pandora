@@ -1,0 +1,22 @@
+Fixes:
+
+- Profiles and other data (including the log file) will be now stored in the Application Data folder. This is a system specific folder ( on WinXP it's located in C:\Documents and Settings\Your_Username\Application Data\Pandora's Box 2\ ). Pandora will automatically move your existing profiles.
+- Fixed a crash occurring when map image generation failed.
+- Installer will now correctly use a custom folder for installation
+- Nudge amount should now be correctly saved even when just typing it rather than using the arrows.
+- Fixed bug that caused the Team property to be set to MaxDelay when spawning NPCs
+- Fixed crash when renaming a folder or image in the screenshots manager
+- Fixed an image tree navigation issue in the screenshots manager
+- Fixed a crash occurring when exporting a profile (and potential crash during BoxServer operation)
+- Fixed a few issues with the button editor
+- When changing the default command in a multi command button, the command will be sent to UO as well
+
+Additions:
+
+- Mouse Wheel can be now used to zoom in and out of the map viewer.
+- Option to rotate the map viewer to match the UO radar map orientation.
+- Set Hue button now supports command modifiers through right clicking
+- Added an option to restore default location files in Options/Maps.
+- Splash screen added
+- About window finalized
+- Added a confirmation box when importing a profile by double clicking a profile file

@@ -1,0 +1,738 @@
+<?xml version="1.0"?>
+
+<Data language="English">
+	<section name="Items">
+		<entry name="NoName" text="Please specify a name for your item." />
+		<entry name="Add" text="Add Item" />
+		<entry name="ItemID" text="Set ItemID" />
+		<entry name="NoCtor" text="No additional constructors available" />
+		<entry name="DelItem" text="Are you sure you wish to remove this item?" />
+		<entry name="ToPack" text="To Pack" />
+		<entry name="DelCat"
+			   text="This action will delete all the items and subcategories in the selected node. Are you sure you wish to proceed?" />
+	</section>
+	<section name="ButtonMenuEditor">
+		<entry name="Command" text="Command" />
+		<entry name="EmptySection" text="The section name can't be empty" />
+		<entry name="NewSubText" text="Add new submenu" />
+		<entry name="Title" text="Menu Editor" />
+		<entry name="NoNode" text="Please select a menu node before adding a new item" />
+		<entry name="ErrCommand" text="Caption and command can't be empty. Please fill the form before adding a new item." />
+		<entry name="Instructions"
+			   text="Add submenus and menu items/command using the sections above.&#xD;&#xA;&#xD;&#xA;Use the up and down arrows to move items along the tree, del to delete an item and F2 to rename it.&#xD;&#xA;&#xD;&#xA;You can edit commands in the command window." />
+		<entry name="UsePrefix" text="Use command prefix" />
+		<entry name="PreviewMsg" text="The command sent to UO is:&#xD;&#xA;&#xD;&#xA;{0}" />
+		<entry name="Menu" text="Menu" />
+		<entry name="Preview" text="Click here to preview your menu" />
+		<entry name="ErrSub" text="You can't add an empty submenu." />
+		<entry name="Caption" text="Caption" />
+		<entry name="NewComText" text="Add a new command" />
+	</section>
+	<section name="Deco">
+		<entry name="CustomNode" text="Custom Deco" />
+		<entry name="ConfirmDelCat"
+			   text="You are about to delete a category and all its items.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="NoName" text="Please enter a name for this item." />
+		<entry name="cmCat" text="Add Category" />
+		<entry name="TipNudgeUp" text="Right click to mass nudge up." />
+		<entry name="NoResults" text="No items match your search." />
+		<entry name="cmDelete" text="Delete" />
+		<entry name="Tile" text="Tile" />
+		<entry name="Title" text="Custom Decoration" />
+		<entry name="Static" text="Static" />
+		<entry name="NoIDFound" text="The ID {0} hasn't been found." />
+		<entry name="TipNudgeDown" text="Right click to mass nudge down." />
+		<entry name="cmItem" text="Add Item" />
+		<entry name="Hued" text="Hued" />
+	</section>
+	<section name="Tools">
+		<entry name="Startup" text="Run this program when Pandora's Box starts" />
+		<entry name="FormTitle" text="Create a new launcher entry" />
+		<entry name="Launcher" text="Launcher" />
+		<entry name="ClientMap" text="Client Map" />
+		<entry name="Args" text="Please enter any additional command line arguments below (optional)" />
+		<entry name="LaunchErr"
+			   text="An error occurred when running the specified application. The error has been recorded in the log file." />
+		<entry name="Browse" text="Use the Browse button to locate the file you wish to launch" />
+		<entry name="Desc" text="Please enter a name for your launcher entry" />
+	</section>
+	<section name="Notes">
+		<entry name="Normal" text="Normal" />
+		<entry name="DelLoc" text="Delete Location" />
+		<entry name="AddLoc" text="Add Location" />
+		<entry name="Locs" text="Locations" />
+		<entry name="New" text="New Note" />
+		<entry name="Low" text="Low" />
+		<entry name="Date" text="Date" />
+		<entry name="High" text="High" />
+		<entry name="Descending" text="Descending" />
+		<entry name="Created" text="Created on {0} at {1}" />
+		<entry name="Priority" text="Priority" />
+		<entry name="Urgent" text="Urgent" />
+		<entry name="Ascending" text="Ascending" />
+	</section>
+	<section name="Cap">
+		<entry name="Title" text="Screenshots Managment" />
+		<entry name="DelFolder"
+			   text="You're about to remove a folder. This action will also delete all of its subfolders as well as any screenshots stored within.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="SaveAs" text="Save As..." />
+		<entry name="CreateFold" text="Create Folder" />
+	</section>
+	<section name="Buttons">
+		<entry name="LoadFail"
+			   text="An error occurred while loading the button. This might be due to an erroneous XML file. Check the log file for details on the erro." />
+		<entry name="Single" text="Single Command" />
+		<entry name="Intstructions"
+			   text="Button Customization Instructions&#xD;&#xA;&#xD;&#xA;You can assign a different action to each mouse button. Here's a list of actions you can configure:&#xD;&#xA;&#xD;&#xA;- None: the button will do nothing.&#xD;&#xA;&#xD;&#xA;- Single Command: the button will send a simple command to UO.&#xD;&#xA;&#xD;&#xA;- Menu: the button will bring up a menu that will allow you to select a command to send to UO.&#xD;&#xA;&#xD;&#xA;- Last Command: this will send to UO whatever command has been last sent. This is useful with complex menus and requires a menu to be defined on the other button before it can be added.&#xD;&#xA;&#xD;&#xA;- Multi Command: This is a special command/menu combo and takes both mouse slots. When right clicked the button will display a list of commands: you can choose one of those commands to be the default command. Left clicking the button will send to UO the default command. This type of function will ignore the button caption as it will be changed according to the default command selected.&#xD;&#xA;&#xD;&#xA;- Modifier Command: This behaviour allows you to specify one command which will be used when left clicking the button. When right clicking the button, the modifiers menu will popup allowing you to send the command using the selected modifier.&#xD;&#xA;&#xD;&#xA;Once you have assigned a function to a button, you can edit it by right clicking the corresponding link in order to modify the existing function rather than create a new one." />
+		<entry name="EnterCommand" text="EnterCommand" />
+		<entry name="ConfirmClear" text="Are you sure you want to remove the current button logic?" />
+		<entry name="MultiRightClick" text="Changes the default command sent by left clicking" />
+		<entry name="LastCommand" text="Last Command" />
+		<entry name="ErasePrevious" text="This will erase the previous item. Are you sure you want to proceed?" />
+		<entry name="TipLeft" text="Left click: {0}" />
+		<entry name="SaveFail"
+			   text="An error occurred when saving the file. Please review the log file for further information on the error." />
+		<entry name="Title" text="Configure Button" />
+		<entry name="ErrCommand" text="Please enter a command before confirming." />
+		<entry name="ImportConfirm"
+			   text="Importing a button will erase the current configuration. Are you sure you want to proceed?" />
+		<entry name="LeftMouse" text="Left Mouse Button" />
+		<entry name="TipTwoLine" text="{0}&#xD;&#xA;{1}&#xD;&#xA;Ctrl-Click to edit" />
+		<entry name="MenuDesc" text="Brings up a menu" />
+		<entry name="TipRight" text="Right click: {0}" />
+		<entry name="Modifiers" text="Modifiers Command" />
+		<entry name="RightMouse" text="Right Mouse Button" />
+		<entry name="Multi" text="Multi Command" />
+		<entry name="ModRight" text="Brings up the command modifiers menu" />
+	</section>
+	<section name="MultiCmd">
+		<entry name="Title" text="Multi Command Button" />
+		<entry name="Preview" text="Preview" />
+		<entry name="Instructions"
+			   text="Add new items using the area above. You can display and edit the contents of an item by right clicking it in the listing.&#xD;&#xA;&#xD;&#xA;You can press the Delete button on the list view to remove an entry.&#xD;&#xA;&#xD;&#xA;You can use the up and down arrow keys to move the entries in the list." />
+	</section>
+	<section name="Travel">
+		<entry name="Find" text="Find Location" />
+		<entry name="ConfirmDelCat"
+			   text="This will delete the current node and all the data contained in it.&#xD;&#xA;&#xD;&#xA;Are you sure you want to proceed?" />
+		<entry name="Send" text="Send" />
+		<entry name="GetFromMap" text="Get location from the map" />
+		<entry name="Go" text="Go" />
+		<entry name="World" text="World Map" />
+		<entry name="SetMap" text="Set Map" />
+		<entry name="SpawnTipDetailed"
+			   text="Count: {0}    Range: {1}    Team: {2}&#xD;&#xA;Delay: {3}:{4}:{5} - {6}:{7}:{8}&#xD;&#xA;&#xD;&#xA;Creatures: {9}" />
+		<entry name="NewCat" text="Add main category" />
+		<entry name="SpawnDetails" text="Spawn Details" />
+		<entry name="GetFromClient" text="Get location from the client" />
+		<entry name="WrongMap"
+			   text="Your client is currently set to a different map than the one you're editing. Only information about your coordinates will be used.&#xD;&#xA;&#xD;&#xA;If you wish to add locations to a different map, please do so by selecting the appropriate branch on the travel tree." />
+		<entry name="ConfirmDelLoc" text="Are you sure you want to delete this location?" />
+		<entry name="ZoomIN" text="Zoom In" />
+		<entry name="ZoomOut" text="Zoom Out" />
+		<entry name="NewLoc" text="Add new location" />
+		<entry name="NewSub" text="Add sub category" />
+		<entry name="NoMaps" text="No maps have been defined for this profile." />
+	</section>
+	<section name="Options">
+		<entry name="Opacity" text="Opacity" />
+		<entry name="XClose" text="Minimize with X button" />
+		<entry name="NOUOFolder" text="No UO folder detected" />
+		<entry name="Topmost" text="Always on top" />
+		<entry name="CalcMaps" text="Refresh world map images" />
+		<entry name="ImportSpawns" text="Import SpawnData" />
+		<entry name="Movedown" text="Move Down" />
+		<entry name="ArtPreview" text="Art Preview" />
+		<entry name="TravelFormat"
+			   text="You can define the format used on the send and go commands by using the following terms instead of the respective values:&#xD;&#xA;&#xD;&#xA;{x}, {y}, {z} for the three x,y,z coordinates&#xD;&#xA;{map} for the map name&#xD;&#xA;&#xD;&#xA;Pandora's Box provides you with a custom script that creates a custom GoMap command. The format for this custom command is:&#xD;&#xA;&#xD;&#xA;GoMap {x} {y} {z} {map}&#xD;&#xA;&#xD;&#xA;and it will teleport you to the correct map plane. If you decide to stick with the default commands, you can check the SetMy Map checkbox in order to set your map before going to your destination. Please note that you will have to manually set the map when sending a player." />
+		<entry name="SHA1" text="Server uses SHA1 hashing" />
+		<entry name="Scale" text="Scale pictures of tall items" />
+		<entry name="SetMap" text="SetMy Map on go" />
+		<entry name="Tray" text="Minimize to tray" />
+		<entry name="Modifiers" text="Modifiers" />
+		<entry name="SpawnColor" text="Choose the color used to display spawns on the map" />
+		<entry name="OverwriteGroups"
+			   text="This will erase all your current spawn groups.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="ArtBack" text="Change background color" />
+		<entry name="ShowSpawns" text="Display spawns (requires SpawnData)" />
+		<entry name="FlatBtn" text="Use flat buttons" />
+		<entry name="OriginalNames" text="Use original map names when setting maps in game" />
+		<entry name="OverwriteSpawns"
+			   text="This will erase all the spawns currently displayed.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="Go" text="Go" />
+		<entry name="Moveup" text="Move Up" />
+		<entry name="PassUpdated" text="Your password has been updated succesfully." />
+		<entry name="UseBoxServer" text="Use Box Server" />
+		<entry name="BoxData" text="Import BoxData" />
+		<entry name="Title" text="Configuration Panel" />
+		<entry name="GlobalWarn" text="Warn when using the Global and Online modifiers" />
+		<entry name="WrongUOFolder"
+			   text="The folder you supplied doesn't seem to contain valid MUL files and it hasn't been accepted. Please select a different location." />
+		<entry name="DefLoc" text="Restore default location files" />
+		<entry name="Taskbar" text="Show in taskbar" />
+		<entry name="CustomClient" text="Use a custom client" />
+		<entry name="DefLocWarn"
+			   text="By performing this operation you're going to discard any changed you made to your current locations datafiles.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="MulManage" text="UO Files Managment" />
+		<entry name="DataFolder" text="View the Pandora's Box Application Data folder." />
+		<entry name="Commands" text="Commands" />
+		<entry name="Window" text="Window" />
+		<entry name="SHA1CheckWarn"
+			   text="You have changed the password encryption method. Please retype your password and use the update button to recode it." />
+		<entry name="OverwriteBoxData"
+			   text="This action will overwrite all the information in your current BoxData.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="ResetDefault" text="Reset Default Profile" />
+		<entry name="ModWarn" text="Checked modifiers will display a warning when used." />
+		<entry name="CurrProf" text="Current Profile" />
+		<entry name="ServAddress" text="Server Address" />
+		<entry name="User" text="Username" />
+		<entry name="OverwriteMap"
+			   text="This will delete all the locations currently loaded on the selected map.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="ImportGroups" text="Import Spawn Groups" />
+		<entry name="Pw" text="Password" />
+		<entry name="MulManage2" text="Click here to manage how Pandora's Box locates the UO files." />
+		<entry name="UOFolder" text="Ultima Online Folder" />
+		<entry name="UseCustomFolder" text="Specify a custom Ultima Online folder" />
+		<entry name="CustomizeCommands" text="Go and Send commands" />
+		<entry name="RotateMap" text="Rotate Map" />
+		<entry name="RoomView" text="Use room view for items" />
+		<entry name="CustomDeco" text="Show Custom Deco section" />
+		<entry name="Send" text="Send" />
+		<entry name="Animate" text="Animate NPCs" />
+		<entry name="ServPort" text="Server Port" />
+		<entry name="TabStartup" text="On startup select this tab:" />
+		<entry name="DefaultProf" text="Default Profile : {0}" />
+		<entry name="SelectedMapLocations" text="Show only locations for the selected map" />
+		<entry name="ImportData" text="Import Datafiles" />
+		<entry name="ConnStartup" text="Connect to server on startup" />
+		<entry name="LinkColor" text="Links Color" />
+		<entry name="OverwriteProps"
+			   text="This will replace your current properties.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="DrawStatics" text="Draw statics on the map" />
+		<entry name="CmdPrefix" text="Command Prefix" />
+	</section>
+	<section name="Misc">
+		<entry name="FindItem" text="Fine Item" />
+		<entry name="Skills" text="Skills" />
+		<entry name="BoxTitle" text="Pandora's Box : {0} - {1}" />
+		<entry name="Players" text="Players" />
+		<entry name="WebSnd" text="Web Pages and Sounds" />
+		<entry name="AllSkills" text="All Skills" />
+		<entry name="SearchError"
+			   text="The search results are no longer valid because of changes made to the data structure. Please repeat your search." />
+		<entry name="RequestConnection"
+			   text="The action you're trying to perform requires a connection to the BoxServer. Would you like to connect now?" />
+		<entry name="NoResults" text="No matches found" />
+		<entry name="Connecting" text="Connecting" />
+		<entry name="Log" text="Log File" />
+		<entry name="PassSecurity"
+			   text="In order to access the BoxServer features you must provide Pandora's Box with your game staff account username and password. This is sensitive information and will be treated by Pandora's Box appropriately.&#xD;&#xA;&#xD;&#xA;Your account name will be stored as is in the profiles xml file. The password however will be encoded using a hashing algorithm that is not reversible. This means that the algorithm does loose data in the encoding process, therefore making it extremely hard to retrieve the original password from the encoded result. Pandora's box will only store the encoded password. You can see the result of the encoding in the profile.xml file.&#xD;&#xA;&#xD;&#xA;Your real password is never stored on file by Pandora's Box. It stays in memory only when you enter it for the first time, until you confirm it. Then only the encoded password is stored and exchanged with the BoxServer, which applies the same algorithm on the password stored on the RunUO server to perform authentication." />
+		<entry name="ProfileImport" text="The profile has been imported succesfully. Do you wish to load it now?" />
+		<entry name="Online" text="Online" />
+		<entry name="DataFolder" text="Data Folder" />
+		<entry name="www" text="Visit The Box website" />
+		<entry name="FindMob" text="Find Mobile" />
+		<entry name="ServerChanged"
+			   text="Your server settings have been changed. Do you wish to connect to the Box Server now?" />
+		<entry name="ProfileIOErr"
+			   text="You are tyring to import a profile that has been exported by a more recent version of Pandora's Box.&#xD;&#xA;&#xD;&#xA;Please upgrade your version of Pandora's Box before importing it." />
+		<entry name="StringListTitle" text="Edit Values" />
+		<entry name="FindLoc" text="Find Location" />
+		<entry name="Edit" text="Right click to edit" />
+		<entry name="StringList" text="Please enter each entry on a separate line." />
+		<entry name="Offline" text="Offline" />
+		<entry name="Speech" text="Speech" />
+		<entry name="RemoveHue" text="Remove Hue" />
+		<entry name="Search"
+			   text="Please enter the text you wish to search for. You can navigate the search results by using the following keys:&#xD;&#xA;&#xD;&#xA;F5: Previous result&#xD;&#xA;F8: Next result" />
+	</section>
+	<section name="Mul">
+		<entry name="Title" text="UO Files Managment" />
+		<entry name="NotFound" text="File not found. Please set it manually." />
+		<entry name="SelFile" text="Selected File" />
+		<entry name="CustFolder" text="Custom UO Folder" />
+		<entry name="DefFolder" text="Default UO Folder" />
+	</section>
+	<section name="WizProfile">
+		<entry name="FolderNotFound"
+			   text="The wizard couldn't find an installation of Ultima Online on your system. Please specify your Ultima Online folder manually.&#xD;&#xA;&#xD;&#xA;If you don't specify a valid Ultima Online folder, some features like the travel map or the items preview will not be available." />
+		<entry name="EnterName" text="Please enter the name for the new profile:" />
+		<entry name="BoxServer"
+			   text="Enable Box Server for this profile. Check this if your shard installed the scripts pack provided with Pandora's Box." />
+		<entry name="FolderFound"
+			   text="The wizard has detected an installation of Ultima Online on your computer located in the folder below. If you wish to use a different location as source for your mul files use the Change button to select a different folder." />
+		<entry name="PassSecurity" text="Click here for information about the security of your account information." />
+		<entry name="FilesDescription" text="You can add custom locations files to your custom maps." />
+		<entry name="ImgTtitle" text="Map Images" />
+		<entry name="CustomMapTitle" text="Custom Maps" />
+		<entry name="NameMaps"
+			   text="Please provide names for your custom maps.&#xD;&#xA;&#xD;&#xA;Also you can choose to disable one or more maps. Disabled maps will not appear as choices on the travel tab." />
+		<entry name="EndTitle" text="Profile created" />
+		<entry name="Welcome" text="Welcome to Pandora's Box profile wizard" />
+		<entry name="NeedMapName" text="Map names can't be empty. Please complete the form or disable more maps." />
+		<entry name="MulManage" text="Click here to manage the location of each UO file used by Pandora's Box." />
+		<entry name="EmptyName"
+			   text="The profile name can't be empty. Please enter a value before proceeding to the next step." />
+		<entry name="Explanation"
+			   text="This wizard will guide you through the process of configuring the most common options for Pandora's Box.&#xD;&#xA;&#xD;&#xA;You will be able to change any of these options later from the configuration panel." />
+		<entry name="ImgDescription"
+			   text="Pandora's Box will now generate images of your map files for the world map viewer." />
+		<entry name="FolderTitle" text="Ultima Online location" />
+		<entry name="ProfileExists"
+			   text="Another profile named {0} already exists. Please choose a different name before proceeding." />
+		<entry name="Name" text="Profile Name" />
+		<entry name="DefaultProfile" text="Make this the default profile" />
+		<entry name="EndDescription"
+			   text="Your profile has been created and is ready to be used. You can also set it to be the default profile loaded at start up." />
+		<entry name="NamesDescription" text="Please provide names for your custom maps." />
+		<entry name="LanguageSelection" text="Language Selection" />
+		<entry name="CustomMaps" text="Does your shard use custom maps?" />
+		<entry name="ChooseLang" text="Please select the language you wish to use for this profile:" />
+		<entry name="FilesTitle" text="Map Locations Files" />
+		<entry name="FolderDescription" text="Configure the location of the mul files required to run Pandora's Box" />
+		<entry name="NamesTitle" text="Map Names" />
+	</section>
+	<section name="Spawns">
+		<entry name="mDelete" text="Delete Item" />
+		<entry name="NoName" text="Please enter a name for your spawn." />
+		<entry name="Drop" text="Drop Here" />
+		<entry name="Exists" text="That item is already listed." />
+		<entry name="Instructions"
+			   text="Drag and drop entries from Pandora's Box, or use the text field on the right to add them manually." />
+		<entry name="Added" text="Added" />
+		<entry name="Title" text="Spawn Group Editor" />
+		<entry name="List" text="Creatures List" />
+		<entry name="mClear" text="Clear All" />
+		<entry name="Empty" text="This spawn is empty. Please add some mobiles or items." />
+	</section>
+	<section name="Doors">
+		<entry name="Lock" text="Lock Door" />
+		<entry name="Unlock" text="Unlock Door" />
+		<entry name="Select" text="Select a door" />
+	</section>
+	<section name="Roofing">
+		<entry name="ServCP" text="Control Panel" />
+		<entry name="TileSet" text="Tileset:" />
+		<entry name="Tent" text="Tent" />
+		<entry name="Slope" text="Slope" />
+		<entry name="Generate" text="Generate" />
+		<entry name="FromCli" text="Get from client" />
+		<entry name="NewSection" text="Add a roof section" />
+		<entry name="TestRest" text="Do you wish to generate the remaining pieces?" />
+		<entry name="Left" text="Left" />
+		<entry name="UseCli" text="Use Client" />
+		<entry name="EmptyRoof" text="Can't add an empty roof" />
+		<entry name="Bottom" text="Bottom" />
+		<entry name="Add" text="Add Section" />
+		<entry name="Remove" text="Remove Last" />
+		<entry name="Point2" text="Point 2" />
+		<entry name="Title" text="Roof Builder" />
+		<entry name="Point1" text="Point 1" />
+		<entry name="Test" text="Test" />
+		<entry name="Right" text="Right" />
+		<entry name="NotOddWide"
+			   text="This roof piece isn't odd wide and it will look weird. Are you sure you wish to add it?" />
+		<entry name="UseSer" text="Use BoxServer" />
+		<entry name="Height" text="Height" />
+		<entry name="MissTiles"
+			   text="This tileset cannot generate the roof you requested. Missing pieces are marked in red. Would you like to generate this roof anyway?" />
+		<entry name="Up" text="Goes Up" />
+		<entry name="CantAdd" text="Can't add the selected rectangle." />
+		<entry name="AlreadyAdded" text="You have already added this rectangle" />
+		<entry name="Roofing" text="Roofing" />
+		<entry name="Gen" text="Generate" />
+		<entry name="ClearAll" text="Are you sure you wish to clear your roof?" />
+		<entry name="Top" text="Top" />
+	</section>
+	<section name="NPCs">
+		<entry name="MinTime" text="Delay: Min - Max" />
+		<entry name="mMobBodyMod" text="Set BodyMod" />
+		<entry name="mMobDelete" text="Delete" />
+		<entry name="Range2ToolTip"
+			   text="This is an additional field that can be used in the&#xD;&#xA;spawner constructor. It is not used in the default version, &#xD;&#xA;but you can use it to add a further property to a custom&#xD;&#xA;spawner. For example, when using David's spawner you&#xD;&#xA;can use this parameter to represent the SpawnRange&#xD;&#xA;property.&#xD;&#xA;&#xD;&#xA;You can enable this parameter in the Commands&#xD;&#xA;Options using the {extra} parameter in the Spawn&#xD;&#xA;command." />
+		<entry name="mMobBody" text="Set Body" />
+		<entry name="SpawnRange" text="Extra" />
+		<entry name="SpawnGroups" text="Spawn Groups" />
+		<entry name="mCatRename" text="Rename" />
+		<entry name="Range" text="Range" />
+		<entry name="mMobEdit" text="Edit" />
+		<entry name="mMobAddMob" text="Add Mobile" />
+		<entry name="DeleteSpawns"
+			   text="You are about to delete a section containing spawn groups. This will erase all the spawns defined in it.&#xD;&#xA;&#xD;&#xA;Are you sure you want to proceed?" />
+		<entry name="NameError"
+			   text="The name of the mobile cannot be empty. Please specify a name before confirming your addition." />
+		<entry name="mCatAddSub" text="Add Subsection" />
+		<entry name="mMobAddSpawn" text="Add Spawn Group" />
+		<entry name="ToSpawn" text="To Spawn" />
+		<entry name="ConfirmDel" text="Are you sure you want to remove the selected item?" />
+		<entry name="mCatAddCat" text="Add Main Category" />
+		<entry name="mCatDelete" text="Delete" />
+		<entry name="Amount" text="Amount" />
+		<entry name="MaxTime" text="Max Time" />
+		<entry name="BigSpawn" text="Spawn" />
+		<entry name="Team" text="Team" />
+		<entry name="Spawn" text="Spawn" />
+		<entry name="DeleteCat"
+			   text="You are about to delete a category from your mobiles list. This will remove all the subcategories as well as mobile definitions contained in the selected node.&#xD;&#xA;&#xD;&#xA;Are you sure you want to proceed?" />
+	</section>
+	<section name="Tips">
+		<entry name="Operators"
+			   text="Available operators:&#xD;&#xA;&#xD;&#xA;- == : the objects property matches the value&#xD;&#xA;- != : the objects property does not match the value&#xD;&#xA;- &gt; : the objects property is greater than the value&#xD;&#xA;- &lt; : the objects property is less than the value&#xD;&#xA;- &gt;= : the objects property is greater than or equal to the value&#xD;&#xA;- &lt;= : the objects property is less than or equal to the value&#xD;&#xA;&#xD;&#xA;String only operators:&#xD;&#xA;&#xD;&#xA;- ==~ : the object property is equal to the value, case insensitive&#xD;&#xA;- starts : the object property starts with the value, case sensitive&#xD;&#xA;- starts~ : the object property starts with the value, case insensitive&#xD;&#xA;- ends : the object property ends with the, case sensitive&#xD;&#xA;- ends~ : the object property ends with the value, case insensitive&#xD;&#xA;- contains : the object property contains the value, case sensitive&#xD;&#xA;- contains~ : the object property contains the value, case insensitive" />
+		<entry name="Screenshot"
+			   text="Left click to take a screenshot&#xD;&#xA;Right click to access the screenshots manager" />
+	</section>
+	<section name="Script">
+		<entry name="Exit" text="Exit the remote script explorer" />
+		<entry name="NotRegistered"
+			   text="Your username hasn't been registered for access to server scripts. Contact your shard administrator to receive access to this feature of BoxServer." />
+		<entry name="DelOk" text="Item(s) deleted" />
+		<entry name="UnexpectedErr" text="Failed: unexpected server error." />
+		<entry name="FileNotFound" text="Failed: file not found." />
+		<entry name="CrateOk" text="Folder created" />
+		<entry name="Download" text="Download the selected file" />
+		<entry name="WriteErr"
+			   text="The file could have not been saved. The download was succesful but a local error occurred. Details about the error have been logged." />
+		<entry name="UploadOk" text="Upload succeful" />
+		<entry name="Delete" text="Delete the currently selected item" />
+		<entry name="RenFail" text="Rename Failed" />
+		<entry name="DelErr" text="An error occurred: the selected items have not beed deleted" />
+		<entry name="Title" text="Remote Script Explorer" />
+		<entry name="ExtError" text="Not allowed to change extensions" />
+		<entry name="GenericErr" text="Error: action failed." />
+		<entry name="Refresh" text="Refresh the folders list" />
+		<entry name="RenOk" text="Item renamed" />
+		<entry name="ReadErr" text="Local read error: the selectected file can't be opened." />
+		<entry name="ConfirmDel"
+			   text="You are about to remove one or more items from the server. This can't be undone.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="UploadFail" text="Upload Failed" />
+		<entry name="CurrFold" text="Current Folder" />
+		<entry name="CreateFail" text="Folder not created" />
+		<entry name="CreateFolder" text="Create a new folder on the server" />
+		<entry name="DownOk" text="File {0} download and saved to {1}" />
+		<entry name="Upload" text="Upload a file into the selected folder" />
+	</section>
+	<section name="Commands">
+		<entry name="Online" text="Online" />
+		<entry name="Multi" text="Multi" />
+		<entry name="Self" text="Self" />
+		<entry name="Global" text="Global" />
+		<entry name="Area" text="Area" />
+		<entry name="SetHue" text="Available variables:&#xD;&#xA;&#xD;&#xA;{hue} : the hue value that is being set" />
+		<entry name="Spawn"
+			   text="Available properties are:&#xD;&#xA;&#xD;&#xA;{creature} - The name of the creature as selected in the NPCs tab.&#xD;&#xA;{amount}, {min}, {max}, {team}, {range} correspond to the values in the Spawn configuration.&#xD;&#xA;{extra} is an additional parameter that can be used in conjunction with a custom spawner." />
+		<entry name="SetMap"
+			   text="Available variables:&#xD;&#xA;&#xD;&#xA;{map} : The value corresponding to the target map." />
+		<entry name="Single" text="Single" />
+		<entry name="Go"
+			   text="Available variables:&#xD;&#xA;&#xD;&#xA;{x}, {y}, {z} : The x, y and z coordinates of the target location&#xD;&#xA;{map} : A value corresponding to the map plane the target location is on" />
+	</section>
+	<section name="Props">
+		<entry name="Seconds" text="Seconds" />
+		<entry name="mSet" text="mSet" />
+		<entry name="Check" text="Check Condition" />
+		<entry name="Milli" text="MilliSec." />
+		<entry name="SelectEnum" text="Select one of the possible values:" />
+		<entry name="AllProps" text="Show All Props" />
+		<entry name="Numeric"
+			   text="The value of this property is a number. Some properties might limit the range of accepted values." />
+		<entry name="DelPreset" text="Delete a preset" />
+		<entry name="Set" text="Set" />
+		<entry name="NoType" text="Please enter a type" />
+		<entry name="AddPres" text="Add to presets" />
+		<entry name="NoClassMatch" text="No class corresponding to the search has been found." />
+		<entry name="AddCond" text="Add a condition" />
+		<entry name="Value" text="Value" />
+		<entry name="Cond" text="Conditions" />
+		<entry name="TimeSpan" text="TimeSpan" />
+		<entry name="Get" text="Get" />
+		<entry name="Text" text="This property accepts text as its value." />
+		<entry name="Other" text="No additional information is available on the values accepted by this property." />
+		<entry name="Hours" text="Hours" />
+		<entry name="Op" text="Operator" />
+		<entry name="Minutes" text="Minutes" />
+		<entry name="AllClasses" text="Show All Types" />
+		<entry name="DateTime" text="Date and Time" />
+		<entry name="Days" text="Days" />
+		<entry name="Type" text="Use filter" />
+		<entry name="gSet" text="gSet" />
+		<entry name="FB" text="Filter Builder" />
+		<entry name="AddPreset" text="Add this filter to the presets" />
+		<entry name="Property" text="Property" />
+	</section>
+	<section name="Theater">
+		<entry name="VarsDesc"
+			   text="Use this variables to replace any text in speech or commands. Values will be entered when the play starts." />
+		<entry name="ActorsEvent" text="Create NPCs Event" />
+		<entry name="EditActor" text="Create a NPC" />
+		<entry name="Vars" text="Variables" />
+		<entry name="VarName" text="Variable Name" />
+		<entry name="DefaultWait" text="Please click the OK button to continue the play" />
+		<entry name="CtorName" text="NPC Name" />
+		<entry name="EnterVars" text="Please enter the variables that will be used in the current play." />
+		<entry name="YOff" text="Y Offset" />
+		<entry name="XOff" text="X Offset" />
+		<entry name="VarExists" text="This variable already exists. Please choose a different name." />
+		<entry name="Location" text="Set the X and Y offset with regards to where your character will be standing." />
+		<entry name="PropExists" text="The selected property has already been set. Modify the existing value instead." />
+		<entry name="VarVal" text="Variable Value" />
+		<entry name="CantCalibrate"
+			   text="Pandora hasn't been able to calibrate your UO client and therefore can't retrieve information about your location. The requested NPC hasn't been created." />
+		<entry name="FillVar" text="Please fill all the fields first." />
+		<entry name="Prop" text="Set additional properties on the NPC" />
+	</section>
+	<section name="Server">
+		<entry name="PleaseConnect" text="Please connect to BoxServer before accessing this feature." />
+		<entry name="ScriptEx" text="Script Explorer" />
+		<entry name="RndTile" text="Random Tiler" />
+		<entry name="GetSpawn" text="Get spawns information (SpawnData)" />
+		<entry name="GetProps" text="Get properties information (PropsData)" />
+		<entry name="CantWriteFile"
+			   text="The file has been downloaded succesfully from the server, but an error occurred when writing it to the specified location. More details are included in the log file." />
+		<entry name="Datafiles" text="Datafiles" />
+		<entry name="Login" text="Login" />
+		<entry name="GetBox" text="Get Items and Mobiles definitions (BoxData)" />
+	</section>
+	<section name="Messages">
+		<entry name="DelLoc" text="Are you sure you want to delete the selected location?" />
+		<entry name="DelProfile"
+			   text="This will erase all the information contained in the current profile. &#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="MapImgError"
+			   text="An error has occurred and map {0} has been disabled in this profile. Please review the log for further information on the error." />
+		<entry name="DelConfirm" text="Are you sure you want to delete that item?" />
+		<entry name="DelCurrentProfile"
+			   text="You have choosen to delete the profile currently loaded. This will restart Pandora's Box and erase all the information contained in this profile.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="NewLocErr"
+			   text="The new location couldn't be added because the node selected on the category tree was not correct. Please report this bug to the author." />
+		<entry name="GenericError"
+			   text="An unexpected error has occurred. Details have been recorded in the log file.&#xD;&#xA;&#xD;&#xA;Please contact the author with your log file if you wish to support development." />
+	</section>
+	<section name="Lights">
+		<entry name="SetMsg"
+			   text="Please click the light you wish to set by default on all the items added through the Deco section.&#xD;&#xA;&#xD;&#xA;Note: not all items support light sources." />
+		<entry name="NoLight" text="No Light" />
+		<entry name="SetDeco" text="Default light for deco" />
+	</section>
+	<section name="ProfileChooser">
+		<entry name="Title" text="Profile Chooser" />
+		<entry name="ToolTip" text="Check the checkbox to select a profile as default." />
+		<entry name="Default" text="Set as default" />
+	</section>
+	<section name="HuePicker">
+		<entry name="Groups" text="Hue Groups Editor" />
+		<entry name="RoomView" text="Room View" />
+		<entry name="Animate" text="Animate NPCs" />
+		<entry name="Instructions"
+			   text="Before creating a selection, make sure you create a new entry using the New button, and select it in the combo box in the top left area of the window.&#xD;&#xA;&#xD;&#xA;Selecting hues:&#xD;&#xA;&#xD;&#xA;- Left click and drag to select hues.&#xD;&#xA;- Ctrl + click a hue to deselect it if selected.&#xD;&#xA;- Click a hue, then shift + click another hue to select the whole range of hues between them.&#xD;&#xA;&#xD;&#xA;Once you're happy with your selection make sure you hit the Update button to save your selection to the current template." />
+		<entry name="Title" text="Pandora's Box Hue Picker" />
+		<entry name="SelHue" text="Please select a hue..." />
+		<entry name="DeleteGroup" text="Are you sure you wish to delete this group?" />
+		<entry name="Scale" text="Scale" />
+	</section>
+	<section name="Errors">
+		<entry name="NoData"
+			   text="The data you requested is not available on the server. Contact your shard administrator to generate it." />
+		<entry name="ConnectionLost"
+			   text="There has been an error when communicating with the server.&#xD;&#xA;&#xD;&#xA;This can be due to a connection loss, or to an error in the remote script. You can find more details about the error in the BoxLog.txt file in your Pandora's Box folder." />
+		<entry name="NoServer"
+			   text="The feature you're trying to use requires a connection to a Box Server. Please configure the server in the program options to access it." />
+		<entry name="GenServErr"
+			   text="The BoxServer encountered an error when processing your request. The server said:&#xD;&#xA;&#xD;&#xA;{0}" />
+		<entry name="NotOnline"
+			   text="Authentication failed: you must be logged in into the server in order to access this feature." />
+		<entry name="Generic" text="The server has returned an unkown error." />
+		<entry name="DelProfileErr"
+			   text="Unable to delete selected profile. Details about the error occurred have been recorded in the log file." />
+		<entry name="ServerError"
+			   text="A BoxServer is installed on the remote system. However the installation seems to be incomplete, missing a required file (BoxServer.cs). Please contact your shard administrator to fix this problem." />
+		<entry name="CantDelButton" text="There was an error when processing the request: can't delete file {0}." />
+		<entry name="ServerConnection"
+			   text="The connection to the server failed. Make sure a firewall isn't blocking you and ensure that the server is up and properly configured to offer BoxServer connections." />
+		<entry name="WrongFile"
+			   text="The selected file is either corrupted or doesn't contain valid data for this process.&#xD;&#xA;&#xD;&#xA;Action aborted." />
+		<entry name="LoginAccess" text="Authentication failed: your Access Level isn't high enough to use this feature;" />
+		<entry name="LogUnregistered"
+			   text="Authentication failed: your account hasn't been registered to access this feature. Please contact your shard administrator for registration." />
+		<entry name="Spawn"
+			   text="The saved spawn parameters couldn't be interpreted correctly. Some values might not have been saved properly." />
+		<entry name="AccessLevel" text="Your access level isn't high enough to access Pandora's Box server extensions." />
+		<entry name="NotSupported"
+			   text="The requested feature hasn't been installed on the server. Contact your shard administrator to install it." />
+		<entry name="WrongCredentials" text="Authentication failed: the supplied credentials are invalid." />
+		<entry name="ProfExists"
+			   text="The name you selected is already used by another profile. This change hasn't been committed." />
+		<entry name="ModifierWarn"
+			   text="The modifier you are about to use requires an additional confirmation. Are you sure you wish to use the following:&#xD;&#xA;&#xD;&#xA;{0}" />
+	</section>
+	<section name="World">
+		<entry name="Big" text="Big" />
+		<entry name="NoImage"
+			   text="An error occurred when displaying a pre generated map image. You can find details in the program log. You can attempt correcting this error by running the Image Generation process from the Configuration Panel." />
+		<entry name="WorldMap" text="World Map" />
+		<entry name="Small" text="Small" />
+	</section>
+	<section name="General">
+		<entry name="SM" text="Staff Msg" />
+		<entry name="Cmd" text="Commands" />
+		<entry name="Bag" text="In Bag" />
+		<entry name="EditPresets" text="Edit Presets" />
+		<entry name="BCast" text="Broadcast" />
+		<entry name="Light" text="Light" />
+		<entry name="Tell" text="Tell" />
+		<entry name="All" text="All" />
+		<entry name="You" text="You" />
+		<entry name="Dupe" text="Dupe" />
+		<entry name="Snd" text="Sound" />
+		<entry name="AddCurrPreset" text="Add to presets" />
+		<entry name="ChooseSnd" text="Sounds" />
+		<entry name="priv" text="PrivSound" />
+		<entry name="www" text="WWW" />
+	</section>
+	<section name="Tabs">
+		<entry name="Deco" text="Deco" />
+		<entry name="Map" text="Map" />
+		<entry name="NPCs" text="NPCs" />
+		<entry name="Lights" text="Lights" />
+		<entry name="Items" text="Items" />
+		<entry name="Doors" text="Doors" />
+		<entry name="Server" text="Server" />
+		<entry name="Admin" text="Admin" />
+		<entry name="Notes" text="Notes" />
+		<entry name="Profiles" text="Profiles" />
+		<entry name="General" text="General" />
+		<entry name="Custom" text="Custom" />
+		<entry name="Adv" text="Advanced" />
+		<entry name="Tools" text="Tools" />
+		<entry name="Props" text="Props" />
+		<entry name="Art" text="Art" />
+		<entry name="Travel" text="Travel" />
+	</section>
+	<section name="Common">
+		<entry name="Select" text="Select" />
+		<entry name="Add" text="Add" />
+		<entry name="Browse" text="Browse" />
+		<entry name="Open" text="Open" />
+		<entry name="Test" text="Test" />
+		<entry name="About" text="About" />
+		<entry name="Location" text="Location" />
+		<entry name="Desc" text="Description" />
+		<entry name="Type" text="Type" />
+		<entry name="Z" text="Z" />
+		<entry name="Height" text="Height" />
+		<entry name="Load" text="Load" />
+		<entry name="No" text="No" />
+		<entry name="PropsData" text="PropsData" />
+		<entry name="Change" text="Change" />
+		<entry name="Options" text="Options" />
+		<entry name="GlobalWarning"
+			   text="You are about to use a command on all existing items and mobiles, including players not logged in.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="OnlineWarning"
+			   text="You are about to execute a command on all the players currently logged in.&#xD;&#xA;&#xD;&#xA;Are you sure you wish to proceed?" />
+		<entry name="Index" text="Index" />
+		<entry name="Maps" text="Maps" />
+		<entry name="Default" text="Default" />
+		<entry name="Find" text="Find" />
+		<entry name="SpawnData" text="SpawnData" />
+		<entry name="ID" text="ID" />
+		<entry name="Width" text="Width" />
+		<entry name="Exit" text="Exit" />
+		<entry name="Profile" text="Profile" />
+		<entry name="Not" text="Not" />
+		<entry name="Delete" text="Delete" />
+		<entry name="False" text="False" />
+		<entry name="Import" text="Import" />
+		<entry name="Account" text="Account" />
+		<entry name="Rename" text="Rename" />
+		<entry name="Miscellaneous" text="Miscellaneous" />
+		<entry name="Clear" text="Clear" />
+		<entry name="X" text="X" />
+		<entry name="Y" text="Y" />
+		<entry name="New" text="New" />
+		<entry name="RestoreDefault" text="Restore Default" />
+		<entry name="Close" text="Close" />
+		<entry name="Hue" text="Hue" />
+		<entry name="True" text="True" />
+		<entry name="Refresh" text="Refresh" />
+		<entry name="Name" text="Name" />
+		<entry name="Current" text="Current" />
+		<entry name="None" text="None" />
+		<entry name="Server" text="Server" />
+		<entry name="View" text="View" />
+		<entry name="Value" text="Value" />
+		<entry name="Update" text="Update" />
+		<entry name="Wait" text="Please wait..." />
+		<entry name="Export" text="Export" />
+		<entry name="Set" text="Set" />
+		<entry name="Yes" text="Yes" />
+		<entry name="Stop" text="Stop" />
+		<entry name="Preview" text="Preview" />
+		<entry name="Choose" text="Choose" />
+		<entry name="BoxData" text="BoxData" />
+		<entry name="Edit" text="Edit" />
+		<entry name="Lang" text="Language" />
+		<entry name="Run" text="Run" />
+		<entry name="Cancel" text="Cancel" />
+		<entry name="Map" text="Map" />
+		<entry name="Save" text="Save" />
+		<entry name="Menu" text="Menu" />
+		<entry name="File" text="File" />
+		<entry name="SaveAs" text="Save as..." />
+		<entry name="Ok" text="OK" />
+	</section>
+	<section name="Admin">
+		<entry name="ProcessFound" text="Server Found" />
+		<entry name="ProcessNotFound" text="Server Not Found" />
+		<entry name="CmdArgs" text="Arguments" />
+		<entry name="SpecifyServer" text="Please specify a valid location for the server executable." />
+		<entry name="Control" text="Control" />
+		<entry name="Process" text="Server Process" />
+		<entry name="Hide" text="Hide Console" />
+		<entry name="NoServerFile" text="The server executable specified isn't valid. Please change it and try again." />
+		<entry name="World" text="World" />
+		<entry name="Show" text="Show Console" />
+		<entry name="Stopped" text="Server Stopped" />
+		<entry name="Statics" text="Statics" />
+		<entry name="Running" text="Server Running" />
+	</section>
+	<section name="Random">
+		<entry name="TileSet" text="Choose a tileset" />
+		<entry name="EditTile" text="Edit Tilesets" />
+		<entry name="BrushDesc"
+			   text="This feature is similat to the random area tiler, but uses a smaller brush (maximum size 15x15) to fill areas providing the user with a target in game." />
+		<entry name="Hgt" text="  Height" />
+		<entry name="RndHue" text="Random Hue" />
+		<entry name="NoMap"
+			   text="In order to use this feature you must specify a map on which the tiling will occur. This is used by Pandora's Box to calculate the height for each tile and is a mandatory parameter." />
+		<entry name="NoHue" text="No Hue" />
+		<entry name="Drag" text="Drag'n'drop an item from the deco section to quickly add it to the template." />
+		<entry name="AddItems"
+			   text="Add a single item ID for each line, or drag'n'drop an item from the deco section to add it." />
+		<entry name="SingleDesc"
+			   text="This feature uses BoxServer to add several random items one after the other. When executed, this feature will present you with a target in game. Using the target multiple times will allow you to add items randomly choosen from the tileset on the left, and hued according to your choice." />
+		<entry name="AreaDesc"
+			   text="This features randomdly tiles items on an area specified by a rectangle. The fill slider specifies the percentage of the area that will be filled." />
+		<entry name="Purge" text="{0} templates have been removed from the list because they were empty." />
+		<entry name="Area" text="Area Tile" />
+		<entry name="Quick" text="Quick Add" />
+		<entry name="NoRndHue"
+			   text="You have chosen to use random huing but haven't specified a random hue template for this action. Please define a random hue group first." />
+		<entry name="Wdth" text="  Width" />
+		<entry name="NoTile" text="Please select a tileset first." />
+		<entry name="labFill" text="Fill Percentage: {0}%" />
+		<entry name="Brush" text="Brush" />
+		<entry name="ItemRnd" text="Item Randomizer" />
+		<entry name="SelHue" text="Selected Hue" />
+		<entry name="InvalidIDs" text="No valid item IDs have been specified." />
+		<entry name="EditHue" text="Edit Hues" />
+		<entry name="Esplicit" text="Esplicitly Add Items" />
+	</section>
+	<section name="ClientList">
+		<entry name="Client" text="Client Info" />
+		<entry name="Acc" text="View Account" />
+		<entry name="Props" text="View Props" />
+		<entry name="Control" text="Client Control" />
+		<entry name="Title" text="Client List" />
+		<entry name="Serial" text="Serial" />
+		<entry name="Login" text="Login Time" />
+		<entry name="Go" text="Go To" />
+	</section>
+</Data>

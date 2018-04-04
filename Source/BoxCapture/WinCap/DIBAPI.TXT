@@ -1,0 +1,839 @@
+
+         DIB Screen Capture/Printing API Specification
+                By Pat Schreiber and Mark Bader
+                 Version dated March 27, 1992
+
+The following document contains descriptions of the functions
+defined in the DIBAPI dynamic-linked library.  This DLL
+demonstrates using the Windows Device-Independent Bitmap (DIB)
+functions to capture the screen, print bitmaps, convert between
+bitmap formats, and to display DIBs.
+
+The DIBAPI DLL is a component of the WINCAP sample program,
+available in the Microsoft Software Library as WINCAP.ZIP.
+This sample program demonstrates using these APIs.
+
+To use these APIs in your own program, first compile the
+DIBAPI.DLL using the MAKEDIB make file.  Then, in your
+program, simply include the DIBAPI.H header file, and link with
+the DIBAPI.LIB import library (and make sure DIBAPI.DLL is in
+your path).
+
+-Mark & Pat
+
+===============================================================
+BitmapToDIB
+Syntax    HDIB BitmapToDIB(hBitmap, hPal)
+          
+          This function creates a device-independent bitmap
+          (DIB) from a device-dependent bitmap using the
+          specified palette.  The DIB format is the same as the
+          hBitmap parameter.
+          
+          Parameter      Type/Description
+          hBitmap        HBITMAPSpecifies the handle to the
+                                bitmap to convert.
+          
+          hPal           HPALETTE    Specifies the handle to
+                                the palette associated with
+                                the bitmap.
+          
+Return Value   The value returned identifies the device-
+          independent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  The bitmap and palette remain intact after calling
+          this function. They should be deleted using the
+          Windows DeleteObject function once they are no longer
+          needed.
+
+
+ChangeBitmapFormat
+Syntax    HDIB ChangeBitmapFormat(hBitmap, wBitCount,
+                    dwCompression, hPal)
+          
+          This function converts a bitmap to a DIB of the
+          specified bits per pixel and compression format using
+          the specified palette.
+          
+          Parameter      Type/Description
+          hBitmap        HBITMAPSpecifies the handle to the
+                                bitmap.
+          
+          wBitCount      WORD   Specifies the desired bits per
+                                pixel.
+          
+          dwCompression  DWORD  Specifies the desired
+                                compression format. Must be
+                                one of the following:
+                                BI_RGB, BI_RLE4, or BI_RLE8.
+          
+          hPal           HPALETTE    Specifies the handle to
+                                the palette associated with
+                                the bitmap.
+          
+Return Value   The value returned identifies the device-
+          dependent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  The bitmap and palette remain intact after calling
+          this function. They should be deleted using the
+          Windows DeleteObject function once they are no longer
+          needed.
+
+
+ChangeDIBFormat
+Syntax    HDIB ChangeDIBFormat(hDIB, wBitCount, dwCompression)
+          
+          This function changes the bits per pixel and
+          compression format of the given DIB to those
+          specified by the wBitCount and dwCompression.
+          
+          Parameter      Type/Description
+          hBitmap        HBITMAPSpecifies the handle to the
+                                bitmap.
+          
+          wBitCount      WORD   Specifies the desired bits per
+                                pixel.
+          
+          dwCompression  DWORD  Specifies the desired
+                                compression format. Must be
+                                one of the following:
+                                BI_RGB, BI_RLE4, or BI_RLE8.
+          
+          hPal           HPALETTE    Specifies the handle to
+                                the palette associated with
+                                the bitmap.
+          
+Return Value   The value returned identifies the device-
+          dependent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  The original DIB is left intact after calling this
+          function. It should be deleted using
+          DestroyDIBDestroyDIB once it is no longer needed.
+
+
+CopyScreenToBitmap
+Syntax    HBITMAP CopyScreenToBitmap(lpRect)
+          
+          This function copies the specified part of the screen
+          to a device-dependent bitmap.
+          
+          Parameter      Type/Description
+          lpRect         LPRECT Pointer to a RECT data
+                                structure that contains the
+                                rectangle to be copied.
+          
+Return Value   The value returned identifies the deice-
+          dependent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  The bitmap should be deleted using the Windows
+          DeleteObject function once it is no longer needed.
+
+
+CopyScreenToDIB
+Syntax    HDIB CopyScreenToDIB(lpRect)
+          
+          This function copies the specified part of the screen
+          to a device-independent bitmap.
+          
+          Parameter      Type/Description
+          lpRect         LPRECT Pointer to a RECT data
+                                structure that contains the
+                                rectangle to be copied.
+          
+Return Value   The value returned identifies the device-
+          independent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  The DIB should be deleted using the
+          DestroyDIBDestroyDIB function once it is no longer
+          needed.
+
+
+CopyWindowToBitmap
+Syntax    HBITMAP CopyWindowToBitmap(hWnd, fPrintArea)
+          
+          This function copies the specified part of  the
+          window to a device-dependent bitmap.
+          
+          Parameter      Type/Description
+          hWnd           HWND   Specifies the window.
+          
+          fPrintArea     WORD   Specifies the window area(s) to
+                                copy into the device-
+                                independent bitmap.
+          
+          The fPrintArea parameter must be one of the
+                                following:
+          
+          Value          Meaning
+          PW_WINDOW      Copy the entire window.
+          
+          PW_CLIENT      Copy only the client area of the given
+                                window.
+          
+Return Value   The value returned identifies the device-
+          dependent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  The bitmap should be deleted using the Windows
+          DeleteObject function once it is no longer needed.
+
+
+CopyWindowToDIB
+Syntax    HDIB CopyWindowToDIB(hWnd, fPrintArea)
+          
+          This function copies the specified part of the window
+          to a device-independent bitmap.
+          
+          Parameter      Type/Description
+          hWnd           HWND   Specifies the window.
+          
+          fPrintArea     WORD   Specifies the window area(s) to
+                                copy into the device-
+                                independent bitmap.
+          
+          The fPrintArea parameter must be one of the
+                                following:
+          
+          Value          Meaning
+          PW_WINDOW      Copy the entire window.
+          
+          PW_CLIENT      Copy only the client area of the given
+                                window.
+          
+          
+Return Value   The value returned identifies the device-
+          independent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  The DIB should be deleted using the
+          DestroyDIBDestroyDIB function once it is no longer
+          needed.
+
+
+CreateDIBPalette
+Syntax    HPALETTE CreateDIBPalette(hDIB)
+          
+          This function creates a logical palette from the
+          color table of the specified DIB.
+          
+          Parameter      Type/Description
+          hDIB           HDIB   Specifies the handle to the
+                                DIB.
+          
+Return Value   The value returned identifies the logical
+          palette corresponding to the DIB's color table.
+          Otherwise, it is NULL.
+
+Comments  The palette should be deleted using the Windows
+          DeleteObject function once it is no longer needed.
+
+
+CreateDIB
+Syntax    HDIB CreateDIB(dwWidth, dwHeight, wBitCount)
+          
+          This function allocates memory for and initializes a
+          new DIB by filling in the BITMAPINFOHEADER,
+          allocating memory for the color table, and allocating
+          memory for the bitmap bits. The color table and
+          bitmap bits are all set to zeros.  As with all HDIBs,
+          the header, color table, and bits are all in one
+          contiguous memory block. This function is similar to
+          the Windows CreateBitmap function.
+          
+          Parameter      Type/Description
+          dwWidth        DWORD  Specifies the width of the new
+                                DIB in pixels.
+          
+          dwHeight       DWORD  Specifies the height of the new
+                                DIB in pixels.
+          
+          wBitCount      WORD   Specifies the bits per pixel of
+                                the new DIB. This must be one
+                                of the following: 1, 4, 8, or
+                                24.
+          
+Return Value   The value returned identifies the new DIB.
+          Otherwise, it is NULL.
+
+Comments  The DIB should be deleted using the
+          DestroyDIBDestroyDIB function once it is no longer
+          needed.
+
+
+DestroyDIB
+Syntax    WORD DestroyDIB(hDib)
+          
+          This function destroys the specified DIB, deleting
+          any memory associated with the DIB.  The handle to
+          the DIB is invalid after calling this function.
+          
+          Parameter      Type/Description
+          hDib           HDIB   Specifies the handle to the DIB
+                                to destroy.
+          
+Return Value   The value returned is zero for success.
+
+
+DIBError
+Syntax    void DIBError(ErrNo)
+          
+          This function displays a MessageBox with an error
+          message corresponding to the specified error number.
+          
+          Parameter      Type/Description
+          ErrNo          int    Specifies the error message to
+                                display.
+          
+          The error message must be one of the following:
+          
+          Value          Meaning
+          ERR_NOT_DIB  Tried to load a non-DIB file.
+          
+          ERR_MEMORY   Not enough memory.
+          
+          ERR_READ     Error reading a file.
+          
+          ERR_LOCK     Error on a GlobalLock.
+          
+          ERR_OPEN     Error opening a file.
+          
+          ERR_CREATEPAL       Error creating a palette.
+          
+          ERR_GETDC    Error getting a DC.
+          
+          ERR_CREATEDDB       Error creating a bitmap.
+          
+          ERR_STRETCHBLT      StretchBlt failed.
+          
+          ERR_STRETCHDIBITS   StretchDIBits failed.
+          
+          ERR_SETDIBITSTODEVICE    SetDIBitsToDevice failed.
+          
+          ERR_STARTDOC Error calling StartDoc.
+          
+          ERR_NOGDIMODULE     GDI module was not in memory.
+                                
+          ERR_SETABORTPROC    Error calling SetAbortProc.
+          
+          ERR_STARTPAGE       Error calling StartPage.
+          
+          ERR_NEWFRAME Error calling NEWFRAME escape.
+          
+          ERR_ENDPAGE  Error calling EndPage.
+          
+          ERR_ENDDOC   Error calling EndDoc.
+          
+          ERR_SETDIBITS       Error calling SetDIBits.
+          
+          ERR_FILENOTFOUND    Error opening file in
+                                LoadDIBLoadDIB.
+          
+          ERR_INVALIDHANDLE   Invalid handle.
+          
+          ERR_DIBFUNCTION     Error on call to DIB function.
+          
+Return Value   None.
+
+
+DIBHeight
+Syntax    DWORD DIBHeight(lpDIB)
+          
+          This function gets the height of the specified DIB.
+          
+          Parameter      Type/Description
+          lpDIB          LPSTR  Specifies the DIB.
+          
+Return Value   The value returned specifies the height of the
+          DIB.
+
+Comments  This function requires a pointer to a DIB rather than
+          an HDIB.  In order to use this function with an HDIB,
+          you must first call the Windows GlobalLock function
+          on the HDIB, and pass the resulting pointer to this
+          function.
+
+
+DIBNumColors
+Syntax    WORD DIBNumColors(lpDIB)
+          
+          This function calculates the number of colors in
+          color table of the specified DIB specification.
+          
+          Parameter      Type/Description
+          lpDIB          LPSTR  Pointer to a DIB specification.
+          
+Return Value   The value returned specifies the number of
+          colors in the color table.
+
+Comments  This function requires a pointer to a DIB rather than
+          an HDIB.  In order to use this function with an HDIB,
+          you must first call the Windows GlobalLock function
+          on the HDIB, and pass the resulting pointer to this
+          function.
+
+
+DIBToBitmap
+Syntax    HBITMAP DIBToBitmap(hDIB, hPal)
+          
+          This function creates a device-dependent bitmap from
+          the specified DIB and palette.
+          
+          Parameter      Type/Description
+          hDIB           HDIB   Specifies the DIB.
+          
+          hPal           HPALETTE    Specifies the handle to
+                                the palette.
+          
+Return Value   The value returned identifies the device-
+          dependent bitmap. Otherwise, it is NULL.
+
+Comments  The original DIB is left intact after calling this
+          function. It should be deleted using
+          DestroyDIBDestroyDIB once it is no longer needed.
+
+          The bitmap returned from this function is always a
+          bitmap compatible with the screen (e.g. same
+          bits/pixel and color planes) rather than a bitmap
+          with the same attributes as the DIB.  This behavior
+          is by design, and occurs because this function calls
+          the Windows CreateDIBitmap function to do its work,
+          and CreateDIBitmap always creates a bitmap compatible
+          with the hDC parameter passed in (because it in turn
+          calls the Windows CreateCompatibleBitmap function).
+          
+          So for instance, if your DIB is a monochrome DIB and
+          you call this function, you will not get back a
+          monochrome HBITMAP -- you will get an HBITMAP
+          compatible with the screen DC, but with only 2 colors
+          used in the bitmap.  If your application requires a
+          monochrome HBITMAP returned for a monochrome DIB, use
+          the Windows function SetDIBits instead.
+
+
+DIBWidth
+Syntax    DWORD DIBWidth(lpDIB)
+          
+          This function gets the width of the specified DIB.
+          
+          Parameter      Type/Description
+          lpDIB          LPSTR  Specifies the DIB.
+          
+Return Value   The value returned specifies the width of the
+          DIB.
+
+Comments  This function requires a pointer to a DIB rather than
+          an HDIB.  In order to use this function with an HDIB,
+          you must first call the Windows GlobalLock function
+          on the HDIB, and pass the resulting pointer to this
+          function.
+
+
+FindDIBBits
+Syntax    LPSTR FindDIBBits(lpDIB)
+          
+          This function finds and returns a pointer to the
+          specified DIB's bits.
+          
+          Parameter      Type/Description
+          lpDIB          LPSTR  Pointer to the DIB
+                                specification.
+          
+Return Value   The value returned is a pointer to the DIB's
+          bits.
+
+Comments  This function requires a pointer to a DIB rather than
+          an HDIB.  In order to use this function with an HDIB,
+          you must first call the Windows GlobalLock function
+          on the HDIB, and pass the resulting pointer to this
+          function.
+
+
+GetSystemPalette
+Syntax    HPALETTE GetSystemPalette(void)
+          
+          This function returns a logical palette that
+          represents the current system palette.
+          
+Return Value   The value returned identifies the logical
+          palette representing the current system palette.
+
+Comments  The palette should be deleted using the Windows
+          DeleteObject function once it is no longer needed.
+
+
+LoadDIB
+Syntax    HDIB LoadDIB(lpFileName)
+          
+          This function loads a DIB from the specified file,
+          allocates memory for the DIB, and returns a handle to
+          the DIB.
+          
+          Parameter      Type/Description
+          lpFileName     LPSTR  Specifies the complete path
+                                name of the DOS filename of
+                                the DIB to load.  This
+                                function will load files with
+                                any extension, but the
+                                convention is to name DIB
+                                files with a .BMP extension.
+          
+Return Value   The value returned identifies the deice-
+          dependent bitmap if the function is successful.
+          Otherwise, it is NULL.
+
+Comments  This function is similar to the Windows LoadBitmap
+          function, but there are a few major differences:
+
+          1. The filename passed into this function is the name
+          of a Disk-based file rather than a resource in the
+          executable.  You can specify a full path name for the
+          filename if required.
+          
+          2. This function will preserve the bitmap's color
+          format when it loads the DIB.  For instance, if you
+          load a 256-color DIB with this function, the DIB is
+          stored in memory as a 256-color DIB.  The Windows
+          LoadBitmap function always reduces a DIBs color
+          format to the reserved system colors (e.g. for a 256-
+          color bitmap on a 256-color display, the LoadBitmap
+          function will color-reduce the bitmap to 20 colors).
+          
+          3. This function returns a HDIB rather than an
+          HBITMAP.
+          
+          The DIB should be deleted using the
+          DestroyDIBDestroyDIB function once it is no longer
+          needed.
+
+
+PaintBitmap
+Syntax    BOOL PaintBitmap(hDC, lpDCRect, hDDB, lpDDBRect,
+                    hPalette)
+          
+          This function draws the specified bitmap in the given
+          DC. The bitmap is output to the DC at the coordinates
+          given by lpDCRect. The area of the bitmap to be
+          output is given by the lpDDBRect parameter.
+          
+          Parameter      Type/Description
+          hDC            HDC    Specifies the output DC. The
+                                bitmap specified by hDDB must
+                                be compatible with this DC.
+          
+          lpDCRect       LPRECT Specifies the destination
+                                coordinates of the bitmap
+                                being drawn.
+          
+          hDDB           HBITMAPSpecifies the bitmap.
+          
+          lpDDBRect      LPRECT Specifies the area of the
+                                bitmap to be drawn.
+          
+          hPalette       HPALETTE    Specifies the palette to
+                                be used in drawing the bitmap.
+          
+Return Value   The value returned is non-zero if successful.
+          Otherwise, it is zero.
+
+Comments  Note that the palette is selected and realized as a
+          background palette. If a foreground palette is
+          needed, it must be selected as foreground and
+          realized before calling this function.
+
+
+PaintDIB
+Syntax    BOOL PaintDIB(hDC, lpDCRect, hDIB, lpDIBRect, hPal)
+          
+          This function draws the specified DIB in the given
+          DC. The DIB is output to the DC at the coordinates
+          given by lpDCRect. The area of the DIB to be output
+          is given by the lpDIBRect parameter.
+          
+          Parameter      Type/Description
+          hDC            HDC    Specifies the output DC. The
+                                bitmap specified by hDDB must
+                                be compatible with this DC.
+          
+          lpDCRect       LPRECT Specifies the destination
+                                coordinates of the bitmap
+                                being drawn.
+          
+          hDIB           HDIB   Specifies the DIB.
+          
+          lpDIBRect      LPRECT Specifies the area of the DIB
+                                to be drawn.
+          
+          hPal           HPALETTE    Specifies the palette to
+                                be associated with the DIB.
+          
+Return Value   The value returned is non-zero if successful.
+          Otherwise, it is zero.
+
+Comments  Note that the palette is selected and realized as a
+          background palette. If a foreground palette is
+          needed, it must be selected as foreground and
+          realized before calling this function.
+
+
+PaletteSize
+Syntax    WORD PaletteSize(lpDIB)
+          
+          This function gets the size required to store the
+          specified DIB's palette.
+          
+          Parameter      Type/Description
+          lpDIB          LPSTR  Pointer to a DIB specification.
+          
+Return Value   The value returned specifies the size of the
+          DIB's color palette.
+
+Comments  This function requires a pointer to a DIB rather than
+          an HDIB.  In order to use this function with an HDIB,
+          you must first call the Windows GlobalLock function
+          on the HDIB, and pass the resulting pointer to this
+          function.
+
+
+PalEntriesOnDevice
+Syntax    int PalEntriesOnDevice(hDC)
+          
+          This function gets the number of palette entries on a
+          specified device.
+          
+          Parameter      Type/Description
+          hDC            HDC    Specifies the device.
+          
+Return Value   The value returned specifies the number of
+          palette entries.
+
+
+PrintDIB
+Syntax    WORD PrintDIB(hDib, fPrintOpt, wXScale, wYScale,
+                    szJobName)
+
+          This function prints the specified DIB.
+
+          Parameter      Type/Description
+          hDib           HDIB   Specifies the handle to a DIB
+                                which is to be printed
+          
+          fPrintOpt      WORD   Specifies the printing option.
+          
+          wXScale        WORD   Specifies the x-axis scaling
+                                factor for the printed window.
+                                The x and y scaling factors
+                                are only used if the PW_SCALE
+                                option is selected for the
+                                fPrintOpt parameter.
+          
+          wYScale        WORD   Specifies the y-axis scaling
+                                factor.
+          
+          szJobName      LPSTR  Specifies the name of the print
+                                job.  This string is used in
+                                the job name sent to the print
+                                spooler, as well as in the
+                                print dialog box.
+          
+          The fPrintOpt parameter must be set to one of the
+          following:
+          
+          Value             Meaning
+          PW_BESTFIT        Fits the printed screen on the page
+                            in as large of a area as possible
+                            while still retaining the correct
+                            screen aspect ratio.  The wXScale
+                            and wYScale parameters are not
+                            used if this option is selected.
+                            This is the default value.
+          
+          PW_STRETCHTOPAGE  Stretches the printed screen to
+                            fill up the entire printed page.
+                            The wXScale and wYScale parameters
+                            are not used if this option is
+                            selected.
+          
+          PW_SCALE          Scales the printed screen by the
+                            integer scaling factors specified
+                            in the wXScale and wYScale
+                            parameters.   If the scaling is
+                            set too large, the screen may
+                            extend off the printed page and
+                            will be clipped.
+
+Return Value   0 if successful, or one of:  ERR_INVALIDHANDLE,
+          ERR_LOCK, ERR_SETABORTPROC, ERR_STARTDOC,
+          ERR_NEWFRAME, ERR_ENDDOC, ERR_GETDC,
+          ERR_STRETCHDIBITS.  These constants are defined in
+          dibapi.h.
+
+
+PrintScreen
+Syntax    WORD PrintScreen(rRegion, fPrintOpt, wXScale,
+                    wYScale, szJobName)
+          
+          This function prints the specified area of the screen
+          on the default printer.
+          
+          Parameter      Type/Description
+          rRegion        LPRECT Specifies the region of the
+                                screen (in screen coordinates)
+                                to be printed.  To print the
+                                entire screen, set this RECT
+                                to encompass the entire
+                                screen.
+          
+          fPrintOpt      WORD   Species the printing options.
+          
+          wXScale        WORD   Specifies the x-axis scaling
+                                factor for the printed window.
+                                The x and y scaling factors
+                                are only used if the PW_SCALE
+                                option below is selected.
+          
+          wYScale        WORD   Specifies the y-axis scaling
+                                factor.
+          
+          szJobName      LPSTR  Specifies the name of the print
+                                job.  This string is used in
+                                the job name sent to the print
+                                spooler, as well as in the
+                                print dialog box.
+          
+          The fPrintOpt parameter must be set to one of the
+          following:
+          
+          Value             Meaning
+          PW_BESTFIT        Fits the printed screen on the page
+                            in as large of a area as possible
+                            while still retaining the correct
+                            screen aspect ratio.  The wXScale
+                            and wYScale parameters are not
+                            used if this option is selected.
+                            This is the default value.
+          
+          PW_STRETCHTOPAGE  Stretches the printed screen to
+                            fill up the entire printed page.
+                            The wXScale and wYScale parameters
+                            are not used if this option is
+                            selected.
+          
+          PW_SCALE          Scales the printed screen by the
+                            integer scaling factors specified
+                            in the wXScale and wYScale
+                            parameters.   If the scaling is
+                            set too large, the screen may
+                            extend off the printed page and
+                            will be clipped.
+          
+Return Value   0 if successful, or one of: ERR_DIBFUNCTION,
+          ERR_INVALIDHANDLE, ERR_LOCK, ERR_SETABORTPROC,
+          ERR_STARTDOC, ERR_NEWFRAME, ERR_ENDDOC, ERR_GETDC,
+          ERR_STRETCHDIBITS.  These constants are defined in
+          dibapi.h.
+
+
+PrintWindow
+Syntax    WORD PrintWindow(hWnd, fPrintArea, fPrintOpt,
+                    wXScale, wYScale, szJobName)
+          
+          This function prints an entire window or its client
+          area on the current default printer.  Banding is used
+          if the printer driver supports it.
+          
+          Parameter      Type/Description
+          hWnd           HWND   Specifies the window to be
+                                printed.
+          
+          fPrintArea     WORD   Specifies the area(s) of the
+                                window to be printed.  See
+                                below for a listing of the
+                                possible values for this
+                                parameter.
+          
+          fPrintOpt      WORD   Species the printing options.
+                                See below for a listing of the
+                                possible values for this
+                                parameter.
+          
+          wXScale        WORD   Specifies the x-axis scaling
+                                factor for the printed window.
+                                The x and y scaling factors
+                                are only used if the PW_SCALE
+                                option below is selected.
+          
+          wYScale        WORD   Specifies the y-axis scaling
+                                factor.
+          
+          szJobName      LPSTR  Specifies the name of the print
+                                job.  This string is used in
+                                the job name sent to the print
+                                spooler, as well as in the
+                                print dialog box.
+          
+          The fPrintArea parameter must be set to one of the
+          following:
+          
+          Value             Meaning
+          PW_WINDOW         Print the entire window.
+          
+          PW_CLIENT         Print the client area of the
+                            window.
+          
+          The fPrintOpt parameter must be set to one of the
+          following:
+          
+          Value             Meaning
+          PW_BESTFIT        Fits the printed screen on the page
+                            in as large of a area as possible
+                            while still retaining the correct
+                            screen aspect ratio.  The wXScale
+                            and wYScale parameters are not
+                            used if this option is selected.
+                            This is the default value.
+          
+          PW_STRETCHTOPAGE  Stretches the printed screen to
+                            fill up the entire printed page.
+                            The wXScale and wYScale parameters
+                            are not used if this option is
+                            selected.
+          
+          PW_SCALE          Scales the printed screen by the
+                            integer scaling factors specified
+                            in the wXScale and wYScale
+                            parameters.   If the scaling is
+                            set too large, the screen may
+                            extend off the printed page and
+                            will be clipped.
+          
+Return Value   0 if successful, or one of: ERR_DIBFUNCTION,
+          ERR_INVALIDHANDLE, ERR_LOCK, ERR_SETABORTPROC,
+          ERR_STARTDOC, ERR_NEWFRAME, ERR_ENDDOC, ERR_GETDC,
+          ERR_STRETCHDIBITS.  These constants are defined in
+          errors.h.
+
+
+SaveDIB
+Syntax    WORD SaveDIB(hDib, lpFileName)
+
+          This function saves the specified DIB to a disk file
+          in Windows 3 DIB format.  Although the convention for
+          naming DIB files is to use a .BMP extension, the
+          entire file name must be specified.
+
+          Parameter      Type/Description
+          hDib           HDIB   Specifies the handle to a DIB
+                                which is to be saved.
+
+          lpFileName     LPSTR  Specifies the complete path
+                                name of the DOS filename under
+                                which this DIB is to be saved.
+
+Return Value   The value returned is zero for success or an
+          error code of one of the following:
+          ERR_INVALIDHANDLE, ERR_OPEN, or ERR_LOCK.

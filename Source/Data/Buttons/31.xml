@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ButtonDef xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Caption="Who">
+  <LeftObject xsi:type="MultiCommandDef" DefaultIndex="0">
+    <Commands>
+      <anyType xsi:type="MenuCommand" Caption="Who" Command="Who" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Client" Command="Client" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Admin" Command="Admin" UsePrefix="true" />
+      <anyType xsi:type="MenuCommand" Caption="Pages" Command="Pages" UsePrefix="true" />
+    </Commands>
+  </LeftObject>
+</ButtonDef>
