@@ -1,0 +1,9 @@
+*.pdb
+*.exe
+*.log
+*.suo
+*.user
+
+/.JustCode
+/bin
+/obj
