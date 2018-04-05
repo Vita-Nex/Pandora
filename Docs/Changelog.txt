@@ -1,3 +1,12 @@
+Pandora's Box 4.0.0.* (Updated on 05.04.2018)
+- Replaced Ultima SDK imports with embedded Ultima SDK build.
+- Implemented support for UOP file format for maps, gumps, sounds and statics.
+- Removed redundant code, performed full code-clean-up.
+- Removed map rotation feature; it skewed the output with new maps.
+- Fixed an issue with hues not properly applying.
+- Fixed an issue where minimizing would cause a stack overflow.
+- Add support for Ter Mur map.
+
 Pandora's Box 3.0.0.5 (Updated on 20.07.2010)
 - Issue 46: Power Scroll issue
 - Issue 47: Runics dont give resource option.
