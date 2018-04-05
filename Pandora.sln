@@ -40,8 +40,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrMsgBox", "Source\ErrMsgB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima", "Source\Ultima\Ultima.csproj", "{E08CFBE4-E013-44EE-8829-426D05BC083F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "log4net", "Source\log4net\log4net.csproj", "{F6A02431-167E-4347-BC43-65532C31CDB7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -184,14 +182,6 @@ Global
 		{E08CFBE4-E013-44EE-8829-426D05BC083F}.Release|x64.Build.0 = Release|x64
 		{E08CFBE4-E013-44EE-8829-426D05BC083F}.Release|x86.ActiveCfg = Release|x86
 		{E08CFBE4-E013-44EE-8829-426D05BC083F}.Release|x86.Build.0 = Release|x86
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Release|x64.ActiveCfg = Release|Any CPU
-		{F6A02431-167E-4347-BC43-65532C31CDB7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

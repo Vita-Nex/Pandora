@@ -90,10 +90,6 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\log4net\log4net.csproj">
-      <Project>{f6a02431-167e-4347-bc43-65532c31cdb7}</Project>
-      <Name>log4net</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ultima\Ultima.csproj">
       <Project>{e08cfbe4-e013-44ee-8829-426d05bc083f}</Project>
       <Name>Ultima</Name>
@@ -101,6 +97,10 @@
     <Reference Include="LightCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0e5f0cb63554a380, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\LightCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System">
@@ -1025,6 +1025,7 @@
     <Content Include="Roofing\Roofing.cs">
       <SubType>Code</SubType>
     </Content>
+    <None Include="packages.config" />
     <None Include="Resources\box_down.gif" />
     <None Include="Resources\box_normal.gif" />
   </ItemGroup>
