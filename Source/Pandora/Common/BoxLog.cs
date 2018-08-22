@@ -8,12 +8,6 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-
-using log4net;
-using log4net.Appender;
-using log4net.Config;
-using log4net.Layout;
-using log4net.Repository;
 #endregion
 
 namespace TheBox.Common
@@ -76,49 +70,25 @@ namespace TheBox.Common
 
 		private readonly string filename;
 		private StreamWriter m_Stream;
-
-		#region log4net
-		/// <summary>
-		///     Should we user log4net? Otherwise the old system is used.
-		///     Use this for testing and later remove the old code.
-		/// </summary>
-		public static readonly bool USE_LOG4NET = true;
-
-		/// <summary>
-		///     The log repository
-		/// </summary>
-		private ILoggerRepository repository;
-
-		/// <summary>
-		///     Replacement for the old boxLog
-		/// </summary>
-		private ILog boxLog;
-		#endregion
-
+		
 		public BoxLog(string filename)
 		{
 			this.filename = filename;
-			if (USE_LOG4NET)
+
+			var folder = Path.GetDirectoryName(filename);
+
+			// Ensure directory
+			if (!Directory.Exists(folder))
+				Directory.CreateDirectory(folder);
+
+			try
 			{
-				SetupLog4Net();
+				m_Stream = new StreamWriter(filename, false);
 			}
-			else
+			catch
 			{
-				var folder = Path.GetDirectoryName(filename);
-
-				// Ensure directory
-				if (!Directory.Exists(folder))
-					Directory.CreateDirectory(folder);
-
-				try
-				{
-					m_Stream = new StreamWriter(filename, false);
-				}
-				catch
-				{
-					m_Stream = null;
-					return;
-				}
+				m_Stream = null;
+				return;
 			}
 
 			LogHeader();
@@ -158,68 +128,16 @@ namespace TheBox.Common
 			var memSt = new MEMORYSTATUS();
 			GlobalMemoryStatus(ref memSt);
 
-			if (USE_LOG4NET)
-			{
-				boxLog.Info("Pandora's Box - Log");
-				boxLog.InfoFormat("Pandora version {0}", Pandora.Version);
-				boxLog.Info("");
-				boxLog.Info(DateTime.Now.ToString());
-				boxLog.Info("Windows version: " + Environment.OSVersion.Version);
-				boxLog.Info("Processor family: " + CPUType);
+			m_Stream.WriteLine("Pandora's Box - Log");
+			m_Stream.WriteLine("Pandora version {0}", Pandora.Version);
+			m_Stream.WriteLine("");
+			m_Stream.WriteLine(DateTime.Now.ToString());
+			m_Stream.WriteLine("Windows version: " + Environment.OSVersion.Version);
 
-				boxLog.Info("Physical memory: " + (memSt.dwTotalPhys / 1024));
-				boxLog.Info("");
-			}
-			else
-			{
-				m_Stream.WriteLine("Pandora's Box - Log");
-				m_Stream.WriteLine("Pandora version {0}", Pandora.Version);
-				m_Stream.WriteLine("");
-				m_Stream.WriteLine(DateTime.Now.ToString());
-				m_Stream.WriteLine("Windows version: " + Environment.OSVersion.Version);
+			m_Stream.WriteLine("Processor family: " + CPUType);
 
-				m_Stream.WriteLine("Processor family: " + CPUType);
-
-				m_Stream.WriteLine("Physical memory: " + (memSt.dwTotalPhys / 1024));
-				m_Stream.WriteLine();
-			}
-		}
-
-		private void SetupLog4Net()
-		{
-			// Uncomment the next line to enable log4net internal debugging
-			// log4net.Util.LogLog.InternalDebugging = true;
-
-			// This will instruct log4net to look for a configuration file
-			// called config.log4net in the root directory of the device
-			XmlConfigurator.Configure(new FileInfo(@"\logger.config"));
-
-			repository = LogManager.CreateRepository("BoxLogRepository");
-
-			// see: http://logging.apache.org/log4net/release/sdk/log4net.Layout.PatternLayout.html
-			ILayout layout = new PatternLayout("[%date{HH:mm:ss}] %-5level %message%newline");
-
-			var fileAppender = new FileAppender();
-			fileAppender.File = filename;
-			fileAppender.Layout = layout;
-			fileAppender.AppendToFile = false;
-			fileAppender.ActivateOptions();
-
-			var consoleAppender = new ConsoleAppender();
-			consoleAppender.Layout = layout;
-			consoleAppender.ActivateOptions();
-
-			BasicConfigurator.Configure(repository, fileAppender);
-			BasicConfigurator.Configure(repository, consoleAppender);
-
-			boxLog = LogManager.GetLogger(repository.Name, "BoxLog");
-
-			repository.ConfigurationChanged += repository_ConfigurationChanged;
-		}
-
-		void repository_ConfigurationChanged(object sender, EventArgs e)
-		{
-			boxLog.Debug("repository_ConfigurationChanged");
+			m_Stream.WriteLine("Physical memory: " + (memSt.dwTotalPhys / 1024));
+			m_Stream.WriteLine();
 		}
 
 		private string CurrentTime
@@ -229,17 +147,10 @@ namespace TheBox.Common
 
 		public void WriteEntry(string text)
 		{
-			if (USE_LOG4NET)
+			if (m_Stream != null)
 			{
-				boxLog.Info(text);
-			}
-			else
-			{
-				if (m_Stream != null)
-				{
-					m_Stream.WriteLine("{0} {1}", CurrentTime, text);
-					m_Stream.Flush();
-				}
+				m_Stream.WriteLine("{0} {1}", CurrentTime, text);
+				m_Stream.Flush();
 			}
 		}
 
@@ -250,24 +161,17 @@ namespace TheBox.Common
 
 		public void WriteError(Exception error, string additionalInfo)
 		{
-			if (USE_LOG4NET)
+			if (m_Stream != null)
 			{
-				boxLog.Error(String.Format("Additional information: {0}", additionalInfo), error);
-			}
-			else
-			{
-				if (m_Stream != null)
-				{
-					WriteEntry("**** ERROR ****");
+				WriteEntry("**** ERROR ****");
 
-					if (error != null)
-						m_Stream.WriteLine(error.ToString());
+				if (error != null)
+					m_Stream.WriteLine(error.ToString());
 
-					if (additionalInfo != null)
-						m_Stream.WriteLine("Additional information: {0}", additionalInfo);
+				if (additionalInfo != null)
+					m_Stream.WriteLine("Additional information: {0}", additionalInfo);
 
-					m_Stream.Flush();
-				}
+				m_Stream.Flush();
 			}
 		}
 
@@ -282,19 +186,11 @@ namespace TheBox.Common
 		/// </summary>
 		public void Close()
 		{
-			if (USE_LOG4NET)
+			if (m_Stream != null)
 			{
-				boxLog.Info("Session closed");
-				LogManager.Shutdown();
-			}
-			else
-			{
-				if (m_Stream != null)
-				{
-					WriteEntry("Session closed");
-					m_Stream.Close();
-					m_Stream = null;
-				}
+				WriteEntry("Session closed");
+				m_Stream.Close();
+				m_Stream = null;
 			}
 		}
 	}
