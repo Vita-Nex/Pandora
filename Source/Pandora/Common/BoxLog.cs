@@ -99,32 +99,6 @@ namespace TheBox.Common
 		/// </summary>
 		private void LogHeader()
 		{
-			// System info
-			var pSI = new SYSTEM_INFO();
-			GetSystemInfo(ref pSI);
-			string CPUType;
-			switch (pSI.dwProcessorType)
-			{
-				case PROCESSOR_INTEL_386:
-					CPUType = "Intel 386";
-					break;
-				case PROCESSOR_INTEL_486:
-					CPUType = "Intel 486";
-					break;
-				case PROCESSOR_INTEL_PENTIUM:
-					CPUType = "Intel Pentium";
-					break;
-				case PROCESSOR_MIPS_R4000:
-					CPUType = "MIPS R4000";
-					break;
-				case PROCESSOR_ALPHA_21064:
-					CPUType = "DEC Alpha 21064";
-					break;
-				default:
-					CPUType = "(unknown)";
-					break;
-			}
-
 			var memSt = new MEMORYSTATUS();
 			GlobalMemoryStatus(ref memSt);
 
@@ -133,8 +107,6 @@ namespace TheBox.Common
 			m_Stream.WriteLine("");
 			m_Stream.WriteLine(DateTime.Now.ToString());
 			m_Stream.WriteLine("Windows version: " + Environment.OSVersion.Version);
-
-			m_Stream.WriteLine("Processor family: " + CPUType);
 
 			m_Stream.WriteLine("Physical memory: " + (memSt.dwTotalPhys / 1024));
 			m_Stream.WriteLine();
