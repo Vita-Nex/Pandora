@@ -4,12 +4,10 @@
 //  */
 #endregion
 
-namespace TheBox.Common
+namespace TheBox.Forms
 {
-	public interface ISplash
+	public interface ISplash : IForm
 	{
-		void Close();
 		void SetStatusText(string text);
-		void Show();
 	}
 }

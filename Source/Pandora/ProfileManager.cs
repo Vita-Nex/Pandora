@@ -10,6 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using TheBox.Common;
+using TheBox.Forms;
 using TheBox.Forms.ProfileWizard;
 using TheBox.Options;
 #endregion
@@ -194,7 +195,11 @@ namespace TheBox
 			};
 			// TODO: Display GUI to create a new profile. 
 			var wiz = new ProfileWizard(profile);
-			_ = wiz.ShowDialog();
+			if (wiz.ShowDialog() != DialogResult.OK)
+			{
+				_splash.Close();
+				return;
+			}
 			profile = wiz.Profile;
 
 			if (wiz.UseProfileAsDefault)

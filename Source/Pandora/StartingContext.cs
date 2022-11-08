@@ -41,20 +41,19 @@ namespace TheBox
 			}
 			else
 			{
-				Pandora.Log.WriteEntry("Normal startup initiated");
-
 				// Move on with normal startup
 				var proc = Pandora.ExistingInstance;
 				if (proc != null) // Single instance check
 				{
-					Pandora.Log.WriteError(null, "Double instance detected");
-					_ = MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
+					//Pandora.Log.WriteError(null, "Double instance detected");
+					//_ = MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
 					//  Issue 33:  	 Bring to front if already started - Tarion
 					ProcessExtension.BringToFront(proc);
 				}
 				else
 				{
-					Pandora.Log.WriteEntry("Double instances check passed");
+					Pandora.Log.WriteEntry("Normal startup initiated");
+					//Pandora.Log.WriteEntry("Double instances check passed");
 					DoProfile();
 				}
 			}
@@ -97,7 +96,10 @@ namespace TheBox
 
 			var languageSelector = _container.Resolve<ILanguageSelector>();
 			MainForm = languageSelector as Form;
-			MainForm.Show();
+			if (MainForm.ShowDialog(_splash) != DialogResult.OK)
+			{
+				_splash.Close();
+			}
 		}
 
 		/// <summary>
@@ -110,7 +112,10 @@ namespace TheBox
 
 			var profileChooser = _container.Resolve<IProfileChooser>();
 			MainForm = profileChooser as Form;
-			MainForm.Show();
+			if (MainForm.ShowDialog(_splash) != DialogResult.OK)
+			{
+				_splash.Close();
+			}
 		}
 
 		/// <summary>
@@ -141,9 +146,7 @@ namespace TheBox
 
 			if (_profileManager.Profile == null)
 			{
-				var msg = String.Format(
-					"The profile {0} is corrupt, therefore it can't be loaded. Would you like to attempt to restore it?",
-					name);
+				var msg = String.Format("The profile {0} is corrupt, therefore it can't be loaded. Would you like to attempt to restore it?", name);
 
 				if (MessageBox.Show(null, msg, "Profile Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{

@@ -132,7 +132,7 @@ namespace TheBox.Options
 			m_MulManager = new MulManager();
 		}
 
-		private string m_Name;
+		private string m_Name = "Default";
 		private string m_Language = "English";
 		private string m_CustomClient;
 

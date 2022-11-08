@@ -4,9 +4,11 @@
 //  */
 #endregion
 
+using System.Windows.Forms;
+
 namespace TheBox.Forms
 {
-	public interface IForm
+	public interface IForm : IWin32Window
 	{
 		bool TopMost { get; set; }
 		bool ShowInTaskbar { get; set; }

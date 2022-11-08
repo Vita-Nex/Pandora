@@ -396,10 +396,10 @@ namespace TheBox
 		{
 			get
 			{
-				// Issue 11 - Change profile directory - http://code.google.com/p/pandorasbox3/issues/detail?id=11 - Smjert
-				var folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Pandora's Box 3");
-				// Issue 11 - End
+				var folder = "State";
+
 				Utility.EnsureDirectory(folder);
+
 				return folder;
 			}
 		}
@@ -409,7 +409,7 @@ namespace TheBox
 		/// <summary>
 		///     Gets the profile currently loaded
 		/// </summary>
-		[Obsolete("ProfileManager.Profile should be used")]
+		//[Obsolete("ProfileManager.Profile should be used")]
 		public static Profile Profile
 			// Workaround, there are over 640 refferences... - Tarion
 			=> _profileManager.Profile;

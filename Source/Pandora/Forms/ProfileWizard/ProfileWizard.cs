@@ -161,12 +161,21 @@ namespace TheBox.Forms.ProfileWizard
 
 		private void ProfileWizard_Closing(object sender, CancelEventArgs e)
 		{
-			if (!Succesful && Profile != null)
+			if (!Succesful)
 			{
-				if (Directory.Exists(Profile.BaseFolder))
+				DialogResult = DialogResult.Cancel;
+
+				if (Profile != null)
 				{
-					Directory.Delete(Profile.BaseFolder, true);
+					if (Directory.Exists(Profile.BaseFolder))
+					{
+						Directory.Delete(Profile.BaseFolder, true);
+					}
 				}
+			}
+			else
+			{
+				DialogResult = DialogResult.OK;
 			}
 		}
 

@@ -193,6 +193,7 @@ namespace TheBox.Forms
 		{
 			SelectedProfile = (string)list.SelectedItem;
 			Action = Actions.LoadProfile;
+			DialogResult = DialogResult.OK;
 
 			// Must be handled from dialog user
 			//if ( chkDefault.Checked )
@@ -204,12 +205,14 @@ namespace TheBox.Forms
 		private void bNew_Click(object sender, EventArgs e)
 		{
 			Action = Actions.MakeNewProfile;
+			DialogResult = DialogResult.OK;
 			Close();
 		}
 
 		private void bExit_Click(object sender, EventArgs e)
 		{
 			Action = Actions.Exit;
+			DialogResult = DialogResult.Cancel;
 			Close();
 		}
 
