@@ -30,7 +30,7 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<object> List
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			get;
 			set;
@@ -54,7 +54,7 @@ namespace TheBox.Data
 		/// </param>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public ScriptList(List<object> items)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			List = items;
 		}
@@ -102,12 +102,16 @@ namespace TheBox.Data
 			var gNode = new GenericNode(node.Text);
 
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			foreach (var o in (node.Tag as List<object>))
+			foreach (var o in node.Tag as List<object>)
+			{
 				// Issue 10 - End
 				gNode.Elements.Add(o);
+			}
 
 			foreach (TreeNode subNode in node.Nodes)
+			{
 				gNode.Elements.Add(DoNode(subNode));
+			}
 
 			return gNode;
 		}
@@ -119,18 +123,24 @@ namespace TheBox.Data
 		/// <returns>A TreeNode object corresponding to the GenericNode supplied</returns>
 		private TreeNode GetNode(GenericNode from)
 		{
-			var node = new TreeNode(from.Name);
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode(from.Name)
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
 			foreach (var o in from.Elements)
 			{
 				if (o is GenericNode)
-					node.Nodes.Add(GetNode(o as GenericNode));
+				{
+					_ = node.Nodes.Add(GetNode(o as GenericNode));
+				}
 				else
+				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					(node.Tag as List<object>).Add(o);
+				}
 				// Issue 10 - End
 			}
 
@@ -148,7 +158,9 @@ namespace TheBox.Data
 			for (var i = 0; i < nodes.Length; i++)
 			{
 				if (List[i] is GenericNode)
+				{
 					nodes[i] = GetNode(List[i] as GenericNode);
+				}
 			}
 
 			return nodes;
@@ -161,16 +173,22 @@ namespace TheBox.Data
 		/// <returns>null if there are no valid entries in the array list, the corresponding tree nodes otherwise</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public TreeNode[] GetDataNodes(List<object> items)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			var count = 0;
 
 			foreach (var o in items)
+			{
 				if (!(o is GenericNode))
+				{
 					count++;
+				}
+			}
 
 			if (count == 0)
+			{
 				return null;
+			}
 
 			var nodes = new TreeNode[count];
 
@@ -208,10 +226,7 @@ namespace TheBox.Data
 
 		protected virtual void OnSaving(EventArgs e)
 		{
-			if (Saving != null)
-			{
-				Saving(this, e);
-			}
+			Saving?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -227,11 +242,11 @@ namespace TheBox.Data
 
 				while (index < text.Length)
 				{
-					if (char.IsUpper(text, index))
+					if (Char.IsUpper(text, index))
 					{
 						if (index < text.Length - 1)
 						{
-							if (char.IsLower(text, index + 1))
+							if (Char.IsLower(text, index + 1))
 							{
 								text = text.Insert(index++, " ");
 							}
@@ -239,7 +254,7 @@ namespace TheBox.Data
 						else
 						{
 							// Last char, insert space only if after lowercase
-							if (char.IsLower(text, index - 1))
+							if (Char.IsLower(text, index - 1))
 							{
 								text = text.Insert(index++, " ");
 							}

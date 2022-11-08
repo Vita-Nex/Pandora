@@ -75,7 +75,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private BoxItem SelectedItem
 		{
-			get { return m_SelectedItem; }
+			get => m_SelectedItem;
 			set
 			{
 				m_SelectedItem = value;
@@ -185,8 +185,8 @@ namespace TheBox.Pages
 			this.nTile = new System.Windows.Forms.NumericUpDown();
 			this.bFind = new System.Windows.Forms.Button();
 			this.panelTrees.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numNudge)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nTile)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numNudge).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nTile).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panelTrees
@@ -389,7 +389,7 @@ namespace TheBox.Pages
 			// bDown
 			// 
 			this.bDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bDown.Image = ((System.Drawing.Image)(resources.GetObject("bDown.Image")));
+			this.bDown.Image = (System.Drawing.Image)resources.GetObject("bDown.Image");
 			this.bDown.Location = new System.Drawing.Point(408, 0);
 			this.bDown.Name = "bDown";
 			this.bDown.Size = new System.Drawing.Size(16, 23);
@@ -399,17 +399,17 @@ namespace TheBox.Pages
 			// numNudge
 			// 
 			this.numNudge.Location = new System.Drawing.Point(428, 2);
-			this.numNudge.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
+			this.numNudge.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
 			this.numNudge.Name = "numNudge";
 			this.numNudge.Size = new System.Drawing.Size(44, 20);
 			this.numNudge.TabIndex = 10;
-			this.numNudge.Value = new System.Decimal(new int[] {127, 0, 0, 0});
+			this.numNudge.Value = new decimal(new int[] { 127, 0, 0, 0 });
 			this.numNudge.ValueChanged += new System.EventHandler(this.numNudge_ValueChanged);
 			// 
 			// bUp
 			// 
 			this.bUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bUp.Image = ((System.Drawing.Image)(resources.GetObject("bUp.Image")));
+			this.bUp.Image = (System.Drawing.Image)resources.GetObject("bUp.Image");
 			this.bUp.Location = new System.Drawing.Point(476, 0);
 			this.bUp.Name = "bUp";
 			this.bUp.Size = new System.Drawing.Size(16, 23);
@@ -420,7 +420,7 @@ namespace TheBox.Pages
 			// 
 			this.bConfigSpawn.Enabled = false;
 			this.bConfigSpawn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bConfigSpawn.Image = ((System.Drawing.Image)(resources.GetObject("bConfigSpawn.Image")));
+			this.bConfigSpawn.Image = (System.Drawing.Image)resources.GetObject("bConfigSpawn.Image");
 			this.bConfigSpawn.Location = new System.Drawing.Point(476, 28);
 			this.bConfigSpawn.Name = "bConfigSpawn";
 			this.bConfigSpawn.Size = new System.Drawing.Size(16, 23);
@@ -441,12 +441,12 @@ namespace TheBox.Pages
 			// nTile
 			// 
 			this.nTile.Location = new System.Drawing.Point(428, 30);
-			this.nTile.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.nTile.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.nTile.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.nTile.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.nTile.Name = "nTile";
 			this.nTile.Size = new System.Drawing.Size(44, 20);
 			this.nTile.TabIndex = 15;
-			this.nTile.Value = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.nTile.Value = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.nTile.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
 			// 
 			// bFind
@@ -480,8 +480,8 @@ namespace TheBox.Pages
 			this.Load += new System.EventHandler(this.Items_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DoKeys);
 			this.panelTrees.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numNudge)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nTile)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numNudge).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nTile).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -492,7 +492,9 @@ namespace TheBox.Pages
 		private void Items_Load(object sender, EventArgs e)
 		{
 			if (tCat.Nodes.Count > 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -565,7 +567,7 @@ namespace TheBox.Pages
 		/// <param name="items">A List of BoxItems objects</param>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private void UpdateItems(List<object> items)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			if (items != null && items.Count > 0)
 			{
@@ -792,12 +794,14 @@ namespace TheBox.Pages
 		/// </summary>
 		private void cmAddSub_Click(object sender, EventArgs e)
 		{
-			var node = new TreeNode("NewSubsection");
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode("NewSubsection")
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
-			tCat.SelectedNode.Nodes.Add(node);
+			_ = tCat.SelectedNode.Nodes.Add(node);
 
 			tCat.LabelEdit = true;
 
@@ -854,7 +858,9 @@ namespace TheBox.Pages
 			{
 				var next = tCat.SelectedNode.NextNode;
 				if (next == null)
+				{
 					next = tCat.SelectedNode.PrevNode;
+				}
 
 				tCat.Nodes.Remove(tCat.SelectedNode);
 
@@ -869,12 +875,14 @@ namespace TheBox.Pages
 		/// </summary>
 		private void cmAddMainCat_Click(object sender, EventArgs e)
 		{
-			var node = new TreeNode("NewCategory");
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode("NewCategory")
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
-			tCat.Nodes.Add(node);
+			_ = tCat.Nodes.Add(node);
 			tCat.LabelEdit = true;
 
 			tCat.SelectedNode = node;
@@ -923,7 +931,7 @@ namespace TheBox.Pages
 
 				foreach (TreeNode t in tItems.Nodes)
 				{
-					if (t.Tag as BoxItem == form.Item)
+					if ((t.Tag as BoxItem) == form.Item)
 					{
 						tItems.SelectedNode = t;
 						break;
@@ -941,9 +949,10 @@ namespace TheBox.Pages
 		{
 			if (SelectedItem != null)
 			{
-				var form = new QuickItem();
-
-				form.Item = SelectedItem;
+				var form = new QuickItem
+				{
+					Item = SelectedItem
+				};
 
 				if (form.ShowDialog() == DialogResult.OK)
 				{
@@ -954,7 +963,7 @@ namespace TheBox.Pages
 
 					foreach (TreeNode t in tItems.Nodes)
 					{
-						if (t.Tag as BoxItem == form.Item)
+						if ((t.Tag as BoxItem) == form.Item)
 						{
 							tItems.SelectedNode = t;
 							break;
@@ -975,7 +984,7 @@ namespace TheBox.Pages
 				DialogResult.Yes)
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				(tCat.SelectedNode.Tag as List<object>).Remove(SelectedItem);
+				_ = (tCat.SelectedNode.Tag as List<object>).Remove(SelectedItem);
 				// Issue 10 - End
 
 				var next = tItems.SelectedNode.NextNode;
@@ -1002,7 +1011,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void cmSetItemID_Click(object sender, EventArgs e)
 		{
-			Pandora.SendToUO(string.Format("Set ItemID {0}", SelectedItem.ItemID), true);
+			Pandora.SendToUO(String.Format("Set ItemID {0}", SelectedItem.ItemID), true);
 
 			Pandora.Prop.DisplayedProp = "ItemID";
 			Pandora.Prop.DisplayedValue = SelectedItem.ItemID.ToString();
@@ -1029,7 +1038,7 @@ namespace TheBox.Pages
 
 				if (m_Results.Count == 0)
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["Misc.NoResults"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Misc.NoResults"]);
 					m_Results = null;
 				}
 				else
@@ -1084,8 +1093,8 @@ namespace TheBox.Pages
 				foreach (TreeNode node in tItems.Nodes)
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					if ((node.Tag as BoxItem) == (tCat.SelectedNode.Tag as List<object>)[res.Index] as BoxItem)
-						// Issue 10 - End
+					if ((node.Tag as BoxItem) == ((tCat.SelectedNode.Tag as List<object>)[res.Index] as BoxItem))
+					// Issue 10 - End
 					{
 						tItems.SelectedNode = node;
 						break;
@@ -1094,7 +1103,7 @@ namespace TheBox.Pages
 			}
 			catch
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Misc.SearchError"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Misc.SearchError"]);
 				m_Results = null;
 			}
 		}
@@ -1121,13 +1130,19 @@ namespace TheBox.Pages
 				case Keys.Left:
 
 					if (sender.Equals(tItems))
-						tCat.Focus();
+					{
+						_ = tCat.Focus();
+					}
+
 					break;
 
 				case Keys.Right:
 
 					if (sender.Equals(tCat) && tItems.Nodes.Count > 0)
-						tItems.Focus();
+					{
+						_ = tItems.Focus();
+					}
+
 					break;
 
 				case Keys.Enter:
@@ -1139,9 +1154,13 @@ namespace TheBox.Pages
 						if (node != null)
 						{
 							if (node.IsExpanded)
+							{
 								node.Collapse();
+							}
 							else
+							{
 								node.Expand();
+							}
 						}
 					}
 					break;
@@ -1180,7 +1199,9 @@ namespace TheBox.Pages
 		private void ShowSpawnConfig()
 		{
 			if (m_SpawnForm != null && m_SpawnForm.Visible)
+			{
 				return;
+			}
 
 			if (m_SpawnForm != null && !m_SpawnForm.Disposing)
 			{
@@ -1188,14 +1209,15 @@ namespace TheBox.Pages
 				m_SpawnForm = null;
 			}
 
-			m_SpawnForm = new SpawnForm();
-
-			m_SpawnForm.Amount = Pandora.Profile.Items.Amount;
-			m_SpawnForm.Range = Pandora.Profile.Items.Range;
-			m_SpawnForm.MinDelay = Pandora.Profile.Items.MinDelay;
-			m_SpawnForm.MaxDelay = Pandora.Profile.Items.MaxDelay;
-			m_SpawnForm.Team = Pandora.Profile.Items.Team;
-			m_SpawnForm.Extra = Pandora.Profile.Items.Extra;
+			m_SpawnForm = new SpawnForm
+			{
+				Amount = Pandora.Profile.Items.Amount,
+				Range = Pandora.Profile.Items.Range,
+				MinDelay = Pandora.Profile.Items.MinDelay,
+				MaxDelay = Pandora.Profile.Items.MaxDelay,
+				Team = Pandora.Profile.Items.Team,
+				Extra = Pandora.Profile.Items.Extra
+			};
 
 			var location = PointToScreen(new Point(380, 28));
 			m_SpawnForm.Location = location;
@@ -1296,7 +1318,9 @@ namespace TheBox.Pages
 		private void tItems_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.None)
+			{
 				return;
+			}
 
 			if (Math.Abs(e.X - m_DragPoint.X) > 5 || Math.Abs(e.Y - m_DragPoint.Y) > 5)
 			{
@@ -1304,7 +1328,7 @@ namespace TheBox.Pages
 
 				if (SelectedItem != null)
 				{
-					tItems.DoDragDrop(SelectedItem.Name, DragDropEffects.Copy);
+					_ = tItems.DoDragDrop(SelectedItem.Name, DragDropEffects.Copy);
 				}
 				m_DragPoint = Point.Empty;
 			}

@@ -53,12 +53,14 @@ namespace TheBox.Forms
 
 			bClose.Text = Pandora.Localization.TextProvider["Common.Exit"];
 
-			tBar.ImageList = new ImageList();
-			tBar.ImageList.ImageSize = new Size(1, 1);
+			tBar.ImageList = new ImageList
+			{
+				ImageSize = new Size(1, 1)
+			};
 
 			Pandora.Localization.LocalizeControl(this);
 
-			m_Buttons = new[] {bMap0, bMap1, bMap2, bMap3, bMap4};
+			m_Buttons = new[] { bMap0, bMap1, bMap2, bMap3, bMap4 };
 
 			InitToolBar();
 			DoDisplay();
@@ -139,7 +141,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.Img);
 			this.Controls.Add(this.tBar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "WorldMap";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -189,9 +191,9 @@ namespace TheBox.Forms
 			if (bmp == null)
 			{
 				m_Buttons[(int)m_Map].Enabled = false;
-				Pandora.Log.WriteError(null, string.Format("Display of enabled map {0} failed.", (int)m_Map));
+				Pandora.Log.WriteError(null, String.Format("Display of enabled map {0} failed.", (int)m_Map));
 
-				MessageBox.Show(Pandora.Localization.TextProvider["World.NoImage"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["World.NoImage"]);
 			}
 			else
 			{
@@ -225,7 +227,9 @@ namespace TheBox.Forms
 					var y = (int)(spawn.Y * yscale);
 
 					if (x >= 0 && y >= 0 && x < bmp.Width && y < bmp.Height)
+					{
 						bmp.SetPixel(x, y, color);
+					}
 				}
 			}
 		}

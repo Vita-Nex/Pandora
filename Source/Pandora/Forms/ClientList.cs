@@ -23,47 +23,44 @@ namespace TheBox.Forms
 		#region InternalComparer
 		private class InternalComparer : IComparer
 		{
-			private readonly int m_Column;
-			private readonly bool m_Ascending = true;
 
 			/// <summary>
 			///     Gets the column that's used for sorting
 			/// </summary>
-			public int Column { get { return m_Column; } }
+			public int Column { get; }
 
-			public bool Ascending { get { return m_Ascending; } }
+			public bool Ascending { get; } = true;
 
 			public InternalComparer()
 			{
-				m_Column = 0;
+				Column = 0;
 			}
 
 			public InternalComparer(int column)
 			{
-				m_Column = column;
+				Column = column;
 			}
 
 			public InternalComparer(int column, bool ascending)
 			{
-				m_Column = column;
-				m_Ascending = ascending;
+				Column = column;
+				Ascending = ascending;
 			}
 
 			public int Compare(object x, object y)
 			{
-				var X = x as ListViewItem;
-				var Y = y as ListViewItem;
-
-				if (X == null || Y == null)
+				if (!(x is ListViewItem X) || !(y is ListViewItem Y))
+				{
 					return 0;
+				}
 
 				ClientEntry item1 = null;
 				ClientEntry item2 = null;
 
 				try
 				{
-					var s1 = int.Parse(X.SubItems[5].Text);
-					var s2 = int.Parse(Y.SubItems[5].Text);
+					var s1 = Int32.Parse(X.SubItems[5].Text);
+					var s2 = Int32.Parse(Y.SubItems[5].Text);
 
 					item1 = m_Clients[s1] as ClientEntry;
 					item2 = m_Clients[s2] as ClientEntry;
@@ -76,22 +73,20 @@ namespace TheBox.Forms
 					return 0;
 				}
 
-				if (!m_Ascending)
+				if (!Ascending)
 				{
-					var temp = item1;
-					item1 = item2;
-					item2 = temp;
+					(item2, item1) = (item1, item2);
 				}
 
-				switch (m_Column)
+				switch (Column)
 				{
 					case 0: // Name
 
-						return string.Compare(item1.Name, item2.Name);
+						return String.Compare(item1.Name, item2.Name);
 
 					case 1: // Account
 
-						return string.Compare(item1.Account, item2.Account);
+						return String.Compare(item1.Account, item2.Account);
 
 					case 2: // Map
 
@@ -102,9 +97,13 @@ namespace TheBox.Forms
 						var cmp = item1.X.CompareTo(item2.Y);
 
 						if (cmp == 0)
+						{
 							return item1.Y.CompareTo(item2.Y);
+						}
 						else
+						{
 							return cmp;
+						}
 
 					case 4: // Login time
 
@@ -176,7 +175,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private ClientEntry Client
 		{
-			get { return m_Client; }
+			get => m_Client;
 			set
 			{
 				m_Client = value;
@@ -239,11 +238,11 @@ namespace TheBox.Forms
 			// lst
 			// 
 			this.lst.Anchor =
-			((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
-													System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
-												  System.Windows.Forms.AnchorStyles.Right)));
+			System.Windows.Forms.AnchorStyles.Top |
+													System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left |
+												  System.Windows.Forms.AnchorStyles.Right;
 			this.lst.Columns.AddRange(
-				new System.Windows.Forms.ColumnHeader[] {this.col0, this.col1, this.col2, this.col3, this.col4, this.col5});
+				new System.Windows.Forms.ColumnHeader[] { this.col0, this.col1, this.col2, this.col3, this.col4, this.col5 });
 			this.lst.FullRowSelect = true;
 			this.lst.HideSelection = false;
 			this.lst.Location = new System.Drawing.Point(96, 8);
@@ -341,7 +340,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.bGoTo);
 			this.Controls.Add(this.bRefresh);
 			this.Controls.Add(this.lst);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "ClientListForm";
 			this.Text = "ClientList.Title";
 			this.Load += new System.EventHandler(this.ClientListForm_Load);
@@ -355,9 +354,8 @@ namespace TheBox.Forms
 		private void RefreshList()
 		{
 			var msg = new ClientListRequest();
-			var list = Pandora.BoxConnection.SendToServer(msg) as ClientListMessage;
 
-			if (list != null)
+			if (Pandora.BoxConnection.SendToServer(msg) is ClientListMessage list)
 			{
 				m_Clients.Clear();
 
@@ -389,7 +387,7 @@ namespace TheBox.Forms
 					map = "-";
 				}
 
-				var location = string.Format("({0},{1})", client.X, client.Y);
+				var location = String.Format("({0},{1})", client.X, client.Y);
 
 				var item = new ListViewItem(
 					new[]
@@ -397,7 +395,7 @@ namespace TheBox.Forms
 						client.Name, client.Account, map, location, client.LoggedIn.ToShortTimeString(), client.Serial.ToString("X")
 					});
 
-				lst.Items.Add(item);
+				_ = lst.Items.Add(item);
 			}
 
 			lst.EndUpdate();
@@ -430,7 +428,7 @@ namespace TheBox.Forms
 
 				try
 				{
-					current = m_Clients[int.Parse(lst.SelectedItems[0].SubItems[5].Text)] as ClientEntry;
+					current = m_Clients[Int32.Parse(lst.SelectedItems[0].SubItems[5].Text)] as ClientEntry;
 				}
 				catch
 				{ }
@@ -459,7 +457,7 @@ namespace TheBox.Forms
 		{
 			if (Client != null)
 			{
-				Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "go"));
+				_ = Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "go"));
 			}
 		}
 
@@ -467,7 +465,7 @@ namespace TheBox.Forms
 		{
 			if (Client != null)
 			{
-				Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "props"));
+				_ = Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "props"));
 			}
 		}
 
@@ -475,7 +473,7 @@ namespace TheBox.Forms
 		{
 			if (Client != null)
 			{
-				Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "client"));
+				_ = Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "client"));
 			}
 		}
 
@@ -483,7 +481,7 @@ namespace TheBox.Forms
 		{
 			if (Client != null)
 			{
-				Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "account"));
+				_ = Pandora.BoxConnection.SendToServer(new ClientListCommand(Client.Serial, "account"));
 			}
 		}
 	}

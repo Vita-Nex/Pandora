@@ -93,7 +93,7 @@ namespace TheBox.TravelAgent
 			InitializeComponent();
 			m_FacetNode = new TreeNode("Facet");
 
-			tCat.Nodes.Add(m_FacetNode);
+			_ = tCat.Nodes.Add(m_FacetNode);
 		}
 
 		/// <summary>
@@ -170,14 +170,14 @@ namespace TheBox.TravelAgent
 			this.lnk4 = new System.Windows.Forms.LinkLabel();
 			this.groupBox1.SuspendLayout();
 			this.grpPoint.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nZ)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nY)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nX)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nZ).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nY).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nX).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mMain
 			// 
-			this.mMain.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.menuItem1});
+			this.mMain.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.menuItem1 });
 			// 
 			// menuItem1
 			// 
@@ -222,7 +222,7 @@ namespace TheBox.TravelAgent
 			// menuItem4
 			// 
 			this.menuItem4.Index = 5;
-			this.menuItem4.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.miImport});
+			this.menuItem4.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.miImport });
 			this.menuItem4.Text = "Import";
 			// 
 			// miImport
@@ -258,7 +258,7 @@ namespace TheBox.TravelAgent
 			// 
 			// cmCat
 			// 
-			this.cmCat.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.miCatRename, this.miCatDelete});
+			this.cmCat.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.miCatRename, this.miCatDelete });
 			this.cmCat.Popup += new System.EventHandler(this.cmCat_Popup);
 			// 
 			// miCatRename
@@ -294,7 +294,7 @@ namespace TheBox.TravelAgent
 			// cmLoc
 			// 
 			this.cmLoc.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.miLocRename, this.miLocDelete, this.menuItem2, this.miLocUpdate});
+				new System.Windows.Forms.MenuItem[] { this.miLocRename, this.miLocDelete, this.menuItem2, this.miLocUpdate });
 			this.cmLoc.Popup += new System.EventHandler(this.cmLoc_Popup);
 			// 
 			// miLocRename
@@ -317,7 +317,7 @@ namespace TheBox.TravelAgent
 			// miLocUpdate
 			// 
 			this.miLocUpdate.Index = 3;
-			this.miLocUpdate.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.miUpdateClient, this.miUpdateMap});
+			this.miLocUpdate.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.miUpdateClient, this.miUpdateMap });
 			this.miLocUpdate.Text = "Update Location";
 			// 
 			// miUpdateClient
@@ -533,8 +533,8 @@ namespace TheBox.TravelAgent
 			// nZ
 			// 
 			this.nZ.Location = new System.Drawing.Point(204, 12);
-			this.nZ.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.nZ.Minimum = new System.Decimal(new int[] {127, 0, 0, -2147483648});
+			this.nZ.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.nZ.Minimum = new decimal(new int[] { 127, 0, 0, -2147483648 });
 			this.nZ.Name = "nZ";
 			this.nZ.Size = new System.Drawing.Size(52, 20);
 			this.nZ.TabIndex = 2;
@@ -543,7 +543,7 @@ namespace TheBox.TravelAgent
 			// nY
 			// 
 			this.nY.Location = new System.Drawing.Point(116, 12);
-			this.nY.Maximum = new System.Decimal(new int[] {5000, 0, 0, 0});
+			this.nY.Maximum = new decimal(new int[] { 5000, 0, 0, 0 });
 			this.nY.Name = "nY";
 			this.nY.Size = new System.Drawing.Size(52, 20);
 			this.nY.TabIndex = 1;
@@ -552,7 +552,7 @@ namespace TheBox.TravelAgent
 			// nX
 			// 
 			this.nX.Location = new System.Drawing.Point(28, 12);
-			this.nX.Maximum = new System.Decimal(new int[] {6500, 0, 0, 0});
+			this.nX.Maximum = new decimal(new int[] { 6500, 0, 0, 0 });
 			this.nX.Name = "nX";
 			this.nX.Size = new System.Drawing.Size(52, 20);
 			this.nX.TabIndex = 0;
@@ -602,7 +602,7 @@ namespace TheBox.TravelAgent
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.tCat);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Menu = this.mMain;
 			this.Name = "TravelAgentForm";
@@ -611,9 +611,9 @@ namespace TheBox.TravelAgent
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.TravelAgentForm_Closing);
 			this.groupBox1.ResumeLayout(false);
 			this.grpPoint.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.nZ)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nY)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nX)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nZ).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nY).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nX).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -622,7 +622,7 @@ namespace TheBox.TravelAgent
 		///     The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main()
+		private static void Main()
 		{
 			Application.EnableVisualStyles();
 			Application.Run(new TravelAgentForm());
@@ -729,7 +729,9 @@ namespace TheBox.TravelAgent
 			var parent = tCat.SelectedNode;
 
 			if (parent == null)
+			{
 				return;
+			}
 
 			if (parent != m_FacetNode)
 			{
@@ -738,11 +740,11 @@ namespace TheBox.TravelAgent
 				// Issue 10 - End
 			}
 
-			parent.Nodes.Add(node);
+			_ = parent.Nodes.Add(node);
 			parent.Expand();
 
 			txCat.Clear();
-			txCat.Focus();
+			_ = txCat.Focus();
 
 			m_Changed = true;
 			EnableButtons();
@@ -753,20 +755,24 @@ namespace TheBox.TravelAgent
 			var parent = tCat.SelectedNode;
 
 			if (parent.Tag == null)
+			{
 				return;
+			}
 
 			var x = 0;
 			var y = 0;
 			var z = 0;
 			var map = 0;
 
-			var loc = new Location();
-			loc.Name = txLoc.Text;
+			var loc = new Location
+			{
+				Name = txLoc.Text
+			};
 
 			if (rClient.Checked)
 			{
 				Client.Calibrate();
-				Client.FindLocation(ref x, ref y, ref z, ref map);
+				_ = Client.FindLocation(ref x, ref y, ref z, ref map);
 			}
 			else if (rMap.Checked)
 			{
@@ -781,9 +787,11 @@ namespace TheBox.TravelAgent
 			loc.Z = (sbyte)z;
 			loc.Map = map;
 
-			var node = new TreeNode(loc.Name);
-			node.Tag = loc;
-			tLoc.Nodes.Add(node);
+			var node = new TreeNode(loc.Name)
+			{
+				Tag = loc
+			};
+			_ = tLoc.Nodes.Add(node);
 			tLoc.SelectedNode = node;
 
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert	
@@ -791,7 +799,7 @@ namespace TheBox.TravelAgent
 			// Issue 10 - End
 
 			txLoc.Clear();
-			txLoc.Focus();
+			_ = txLoc.Focus();
 
 			m_Changed = true;
 			EnableButtons();
@@ -800,13 +808,17 @@ namespace TheBox.TravelAgent
 		private void txCat_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter && bAddCat.Enabled)
+			{
 				bAddCat.PerformClick();
+			}
 		}
 
 		private void txLoc_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter && bAddLoc.Enabled)
+			{
 				bAddLoc.PerformClick();
+			}
 		}
 
 		private void tCat_AfterSelect(object sender, TreeViewEventArgs e)
@@ -820,11 +832,13 @@ namespace TheBox.TravelAgent
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				foreach (Location loc in e.Node.Tag as List<object>)
-					// Issue 10 - End
+				// Issue 10 - End
 				{
-					var node = new TreeNode(loc.Name);
-					node.Tag = loc;
-					tLoc.Nodes.Add(node);
+					var node = new TreeNode(loc.Name)
+					{
+						Tag = loc
+					};
+					_ = tLoc.Nodes.Add(node);
 				}
 			}
 
@@ -868,7 +882,7 @@ namespace TheBox.TravelAgent
 		/// </summary>
 		private Location CurrentLocation
 		{
-			get { return m_Location; }
+			get => m_Location;
 			set
 			{
 				m_SettingLocation = true;
@@ -918,7 +932,7 @@ namespace TheBox.TravelAgent
 
 						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 						foreach (Location loc in sub.Tag as List<object>)
-							// Issue 10 - End
+						// Issue 10 - End
 						{
 							gSub.Elements.Add(loc);
 						}
@@ -947,9 +961,11 @@ namespace TheBox.TravelAgent
 
 					foreach (GenericNode gSub in gCat.Elements)
 					{
-						var sub = new TreeNode(gSub.Name);
-						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-						sub.Tag = new List<object>();
+						var sub = new TreeNode(gSub.Name)
+						{
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							Tag = new List<object>()
+						};
 						// Issue 10 - End
 
 						foreach (Location loc in gSub.Elements)
@@ -959,13 +975,13 @@ namespace TheBox.TravelAgent
 							// Issue 10 - End
 						}
 
-						cat.Nodes.Add(sub);
+						_ = cat.Nodes.Add(sub);
 					}
 
-					m_FacetNode.Nodes.Add(cat);
+					_ = m_FacetNode.Nodes.Add(cat);
 				}
 
-				tCat.Nodes.Add(m_FacetNode);
+				_ = tCat.Nodes.Add(m_FacetNode);
 
 				tCat.EndUpdate();
 				tLoc.EndUpdate();
@@ -977,17 +993,17 @@ namespace TheBox.TravelAgent
 			var f = CurrentFacet;
 
 			var mapindex = new MapIndexForm();
-			mapindex.ShowDialog();
+			_ = mapindex.ShowDialog();
 
 			var index = mapindex.MapFile;
 			f.MapValue = (byte)index;
 
 			if (BrowseFolder.ShowDialog() == DialogResult.OK)
 			{
-				var filename = Path.Combine(BrowseFolder.SelectedPath, string.Format("map{0}.xml", index));
-				Utility.SaveXml(f, filename);
+				var filename = Path.Combine(BrowseFolder.SelectedPath, String.Format("map{0}.xml", index));
+				_ = Utility.SaveXml(f, filename);
 
-				MessageBox.Show(string.Format("This facet has been saved to:\n\n{0}", filename));
+				_ = MessageBox.Show(String.Format("This facet has been saved to:\n\n{0}", filename));
 				m_Changed = false;
 			}
 		}
@@ -995,7 +1011,9 @@ namespace TheBox.TravelAgent
 		private void CheckModified()
 		{
 			if (!m_Changed)
+			{
 				return;
+			}
 
 			if (MessageBox.Show(
 					this,
@@ -1029,9 +1047,7 @@ namespace TheBox.TravelAgent
 
 			if (OpenFile.ShowDialog() == DialogResult.OK)
 			{
-				var f = Utility.LoadXml(typeof(Facet), OpenFile.FileName) as Facet;
-
-				if (f != null)
+				if (Utility.LoadXml(typeof(Facet), OpenFile.FileName) is Facet f)
 				{
 					CurrentFacet = f;
 					m_Changed = false;
@@ -1039,7 +1055,7 @@ namespace TheBox.TravelAgent
 				}
 				else
 				{
-					MessageBox.Show("Couldn't load the selected file");
+					_ = MessageBox.Show("Couldn't load the selected file");
 				}
 			}
 		}
@@ -1102,7 +1118,7 @@ namespace TheBox.TravelAgent
 		private void miLocDelete_Click(object sender, EventArgs e)
 		{
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			(tCat.SelectedNode.Tag as List<object>).Remove(CurrentLocation);
+			_ = (tCat.SelectedNode.Tag as List<object>).Remove(CurrentLocation);
 			// Issue 10 - End
 			tLoc.Nodes.Remove(tLoc.SelectedNode);
 			CurrentLocation = null;
@@ -1113,7 +1129,9 @@ namespace TheBox.TravelAgent
 		private void miUpdateClient_Click(object sender, EventArgs e)
 		{
 			if (CurrentLocation == null)
+			{
 				return;
+			}
 
 			var x = 0;
 			var y = 0;
@@ -1121,7 +1139,7 @@ namespace TheBox.TravelAgent
 			var map = 0;
 
 			Client.Calibrate();
-			Client.FindLocation(ref x, ref y, ref z, ref map);
+			_ = Client.FindLocation(ref x, ref y, ref z, ref map);
 
 			CurrentLocation.X = (short)x;
 			CurrentLocation.Y = (short)y;
@@ -1150,16 +1168,14 @@ namespace TheBox.TravelAgent
 		{
 			if (OpenFile.ShowDialog() == DialogResult.OK)
 			{
-				var f = Utility.LoadXml(typeof(Facet), OpenFile.FileName) as Facet;
-
-				if (f != null)
+				if (Utility.LoadXml(typeof(Facet), OpenFile.FileName) is Facet f)
 				{
 					m_Changed = true;
 					Merge(f);
 				}
 				else
 				{
-					MessageBox.Show("Couldn't load the selected file");
+					_ = MessageBox.Show("Couldn't load the selected file");
 				}
 			}
 		}
@@ -1184,7 +1200,7 @@ namespace TheBox.TravelAgent
 				if (catNode == null)
 				{
 					catNode = new TreeNode(cat.Name);
-					m_FacetNode.Nodes.Add(catNode);
+					_ = m_FacetNode.Nodes.Add(catNode);
 				}
 
 				foreach (GenericNode sub in cat.Elements)
@@ -1202,13 +1218,15 @@ namespace TheBox.TravelAgent
 
 					if (subNode == null)
 					{
-						subNode = new TreeNode(sub.Name);
-						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-						subNode.Tag = new List<object>();
+						subNode = new TreeNode(sub.Name)
+						{
+							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+							Tag = new List<object>()
+						};
 						// Issue 10 - End
 					}
 
-					catNode.Nodes.Add(subNode);
+					_ = catNode.Nodes.Add(subNode);
 
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					(subNode.Tag as List<object>).AddRange(sub.Elements);
@@ -1265,7 +1283,7 @@ namespace TheBox.TravelAgent
 				}
 				else
 				{
-					MessageBox.Show("Import failed");
+					_ = MessageBox.Show("Import failed");
 				}
 			}
 		}

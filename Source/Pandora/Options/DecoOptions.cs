@@ -17,11 +17,6 @@ namespace TheBox.Options
 	{
 		#region Variables
 		private bool m_ShowCustomDeco;
-		private bool m_Static = true;
-		private int m_MoveAmount = 1;
-		private int m_NudgeAmount = 1;
-		private string m_Light = "Circle225";
-		private int m_RandomAmount = 5;
 
 		public DecoOptions()
 		{
@@ -43,7 +38,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or sets the light set when adding deco items
 		/// </summary>
-		public string Light { get { return m_Light; } set { m_Light = value; } }
+		public string Light { get; set; } = "Circle225";
 
 		/// <summary>
 		///     Gets or sets the art index currently displayed on the deco tab
@@ -58,7 +53,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or sets the move amount
 		/// </summary>
-		public int MoveAmount { get { return m_MoveAmount; } set { m_MoveAmount = value; } }
+		public int MoveAmount { get; set; } = 1;
 
 		/// <summary>
 		///     States whether tiles should be added hued
@@ -68,7 +63,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     States whether deco items should be created not movable
 		/// </summary>
-		public bool Static { get { return m_Static; } set { m_Static = value; } }
+		public bool Static { get; set; } = true;
 
 		/// <summary>
 		///     Gets or sets the current height at which to tile
@@ -78,7 +73,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or sets the amount for the nudge command
 		/// </summary>
-		public int NudgeAmount { get { return m_NudgeAmount; } set { m_NudgeAmount = value; } }
+		public int NudgeAmount { get; set; } = 1;
 
 		/// <summary>
 		///     States whether to use the randomization constructor
@@ -88,22 +83,19 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or set the randomization amount
 		/// </summary>
-		public int RandomizeAmount { get { return m_RandomAmount; } set { m_RandomAmount = value; } }
+		public int RandomizeAmount { get; set; } = 5;
 
 		/// <summary>
 		///     States whether the Custom Deco node should be displayed or not
 		/// </summary>
 		public bool ShowCustomDeco
 		{
-			get { return m_ShowCustomDeco; }
+			get => m_ShowCustomDeco;
 			set
 			{
 				m_ShowCustomDeco = value;
 
-				if (ShowCustomDecoChanged != null)
-				{
-					ShowCustomDecoChanged(this, new EventArgs());
-				}
+				ShowCustomDecoChanged?.Invoke(this, new EventArgs());
 			}
 		}
 	}

@@ -48,11 +48,11 @@ namespace Ultima
 					}
 					m_Header = new int[blockCount];
 					var structsize = Marshal.SizeOf(typeof(HueDataMul));
-					var buffer = new byte[blockCount * (4 + 8 * structsize)];
+					var buffer = new byte[blockCount * (4 + (8 * structsize))];
 					var gc = GCHandle.Alloc(buffer, GCHandleType.Pinned);
 					try
 					{
-						fs.Read(buffer, 0, buffer.Length);
+						_ = fs.Read(buffer, 0, buffer.Length);
 						long currpos = 0;
 
 						for (var i = 0; i < blockCount; ++i)
@@ -175,22 +175,22 @@ namespace Ultima
 		public static Color HueToColor(short hue)
 		{
 			const int scale = 255 / 31;
-			return Color.FromArgb((((hue & 0x7c00) >> 10) * scale), (((hue & 0x3e0) >> 5) * scale), ((hue & 0x1f) * scale));
+			return Color.FromArgb(((hue & 0x7c00) >> 10) * scale, ((hue & 0x3e0) >> 5) * scale, (hue & 0x1f) * scale);
 		}
 
 		public static int HueToColorR(short hue)
 		{
-			return (((hue & 0x7c00) >> 10) * (255 / 31));
+			return ((hue & 0x7c00) >> 10) * (255 / 31);
 		}
 
 		public static int HueToColorG(short hue)
 		{
-			return (((hue & 0x3e0) >> 5) * (255 / 31));
+			return ((hue & 0x3e0) >> 5) * (255 / 31);
 		}
 
 		public static int HueToColorB(short hue)
 		{
-			return ((hue & 0x1f) * (255 / 31));
+			return (hue & 0x1f) * (255 / 31);
 		}
 
 		public static unsafe void ApplyTo(Bitmap bmp, short[] Colors, bool onlyHueGrayPixels)
@@ -440,15 +440,15 @@ namespace Ultima
 						}
 						else if (i == -2)
 						{
-							TableStart = (short)(ushort.Parse(line) | 0x8000);
+							TableStart = (short)(UInt16.Parse(line) | 0x8000);
 						}
 						else if (i == -1)
 						{
-							TableEnd = (short)(ushort.Parse(line) | 0x8000);
+							TableEnd = (short)(UInt16.Parse(line) | 0x8000);
 						}
 						else
 						{
-							Colors[i] = (short)(ushort.Parse(line) | 0x8000);
+							Colors[i] = (short)(UInt16.Parse(line) | 0x8000);
 						}
 						++i;
 					}

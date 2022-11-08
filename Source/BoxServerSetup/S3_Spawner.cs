@@ -130,19 +130,25 @@ namespace BoxServerSetup
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton1.Checked)
+			{
 				Setup.Spawner = "Spawner";
+			}
 		}
 
 		private void radioButton2_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton2.Checked)
+			{
 				Setup.Spawner = "XmlSpawner";
+			}
 		}
 
 		private void radioButton3_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton3.Checked)
+			{
 				Setup.Spawner = "Other";
+			}
 
 			labOther.Visible = radioButton3.Checked;
 		}

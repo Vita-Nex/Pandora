@@ -33,35 +33,31 @@ namespace TheBox.Buttons
 			var cmd = Command;
 
 			if (modifier != null)
-				cmd = string.Format("{0} {1}", modifier, cmd);
-
-			if (SendCommand != null)
 			{
-				SendCommand(this, new SendCommandEventArgs(cmd, true));
+				cmd = String.Format("{0} {1}", modifier, cmd);
 			}
+
+			SendCommand?.Invoke(this, new SendCommandEventArgs(cmd, true));
 		}
 
 		[XmlIgnore]
 		/// <summary>
 		/// Gets the command callback for this button
 		/// </summary>
-		public CommandCallback CommandCallback { get { return PerformCommand; } }
+		public CommandCallback CommandCallback => PerformCommand;
 
 		#region IButtonFunction Members
-		public string Name { get { return "Buttons.Modifiers"; } }
+		public string Name => "Buttons.Modifiers";
 
-		public bool AllowsSecondButton { get { return false; } }
+		public bool AllowsSecondButton => false;
 
-		public bool RequiresSecondButton { get { return false; } }
+		public bool RequiresSecondButton => false;
 
 		public void DoAction(BoxButton button, Point clickPoint, MouseButtons mouseButton)
 		{
 			if (mouseButton == MouseButtons.Left)
 			{
-				if (SendCommand != null)
-				{
-					SendCommand(this, new SendCommandEventArgs(Command, true));
-				}
+				SendCommand?.Invoke(this, new SendCommandEventArgs(Command, true));
 			}
 			else
 			{
@@ -72,19 +68,13 @@ namespace TheBox.Buttons
 		//  Issue 9:  	 Warnings - Interface - Tarion
 		protected virtual void OnSendLastCommand(EventArgs e)
 		{
-			if (SendLastCommand != null)
-			{
-				SendLastCommand(this, e);
-			}
+			SendLastCommand?.Invoke(this, e);
 		}
 
 		//  Issue 9:  	 Warnings - Interface - Tarion
 		protected virtual void OnCommandChanged(CommandChangedEventArgs e)
 		{
-			if (CommandChanged != null)
-			{
-				CommandChanged(this, e);
-			}
+			CommandChanged?.Invoke(this, e);
 		}
 
 		public event SendCommandEventHandler SendCommand;
@@ -97,8 +87,10 @@ namespace TheBox.Buttons
 		#region ICloneable Members
 		public object Clone()
 		{
-			var cmd = new ModifierCommand();
-			cmd.Command = Command;
+			var cmd = new ModifierCommand
+			{
+				Command = Command
+			};
 
 			return cmd;
 		}

@@ -286,7 +286,7 @@ namespace TheBox.Pages
 			// cmDatafiles
 			// 
 			this.cmDatafiles.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.miBoxData, this.miProps, this.miSpawn});
+				new System.Windows.Forms.MenuItem[] { this.miBoxData, this.miProps, this.miSpawn });
 			// 
 			// miBoxData
 			// 
@@ -484,7 +484,7 @@ namespace TheBox.Pages
 		{
 			// Do not acces the container from a static refference, should be solved better
 			var form = new OptionsForm(Pandora.Container.Resolve<ProfileManager>());
-			form.ShowDialog();
+			_ = form.ShowDialog();
 		}
 
 		/// <summary>
@@ -508,7 +508,7 @@ namespace TheBox.Pages
 		private void bLogin_Click(object sender, EventArgs e)
 		{
 			var form = new BoxServerForm(false);
-			form.ShowDialog();
+			_ = form.ShowDialog();
 		}
 
 		private ScriptViewer m_ScriptExplorer;
@@ -579,13 +579,9 @@ namespace TheBox.Pages
 
 			if (form.ShowDialog(this) == DialogResult.OK)
 			{
-				var data = form.Response as ReturnDatafile;
-
-				if (data != null)
+				if (form.Response is ReturnDatafile data)
 				{
-					var bdata = data.Data as BoxData;
-
-					if (bdata != null)
+					if (data.Data is BoxData bdata)
 					{
 						Pandora.BoxData = bdata;
 						Pandora.BoxForm.UpdateBoxData();
@@ -605,13 +601,9 @@ namespace TheBox.Pages
 
 			if (form.ShowDialog() == DialogResult.OK)
 			{
-				var data = form.Response as ReturnDatafile;
-
-				if (data != null)
+				if (form.Response is ReturnDatafile data)
 				{
-					var props = data.Data as PropsData;
-
-					if (props != null)
+					if (data.Data is PropsData props)
 					{
 						PropsData.Props = props;
 					}
@@ -629,13 +621,9 @@ namespace TheBox.Pages
 
 			if (form.ShowDialog() == DialogResult.OK)
 			{
-				var data = form.Response as ReturnDatafile;
-
-				if (data != null)
+				if (form.Response is ReturnDatafile data)
 				{
-					var sdata = data.Data as SpawnData;
-
-					if (sdata != null)
+					if (data.Data is SpawnData sdata)
 					{
 						SpawnData.SpawnProvider = sdata;
 						Pandora.Profile.Travel.ShowSpawns = true;
@@ -670,7 +658,7 @@ namespace TheBox.Pages
 		private void bAbout_Click(object sender, EventArgs e)
 		{
 			var form = new AboutForm();
-			form.ShowDialog();
+			_ = form.ShowDialog();
 		}
 
 		private ClientListForm m_ClientList;

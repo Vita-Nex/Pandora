@@ -163,7 +163,7 @@ namespace TheBox.Forms.ProfileWizard
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			var form = new MulManagerForm((Wizard as ProfileWizard).Profile.MulManager, ProfileWizard.TextProvider);
-			form.ShowDialog();
+			_ = form.ShowDialog();
 		}
 	}
 }

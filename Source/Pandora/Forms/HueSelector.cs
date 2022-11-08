@@ -43,7 +43,7 @@ namespace TheBox.Forms
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<int> SelectedHues
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			get;
 			set;
@@ -268,7 +268,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.TheImage);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.HelpButton = true;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "HueSelector";
 			this.Text = "HuePicker.Groups";
@@ -310,20 +310,24 @@ namespace TheBox.Forms
 			var color = Hue.ToColor(Color16);
 
 			// Find the top left corner of the box
-			var x = (column * 9);
-			var y = (row * 5);
+			var x = column * 9;
+			var y = row * 5;
 
 			// Color
 			for (var iX = 0; iX < 9; iX++)
-			for (var iY = 0; iY < 5; iY++)
-				bmp.SetPixel(x + iX, y + iY, color);
+			{
+				for (var iY = 0; iY < 5; iY++)
+				{
+					bmp.SetPixel(x + iX, y + iY, color);
+				}
+			}
 		}
 
 		private int GetHueIndex(int x, int y)
 		{
 			var column = x / 9;
 			var row = y / 5;
-			return (column * 60 + row + 1);
+			return (column * 60) + row + 1;
 		}
 
 		private void DrawSelectionChart()
@@ -348,7 +352,7 @@ namespace TheBox.Forms
 
 			if (!(ShiftPressed() || ControlPressed()))
 			{
-				if ((SelectedHues.Count == 1) && (SelectedHues.Contains(SelectedColor)))
+				if ((SelectedHues.Count == 1) && SelectedHues.Contains(SelectedColor))
 				{
 					SelectedHues.Clear();
 					DrawSelectionChart();
@@ -365,23 +369,27 @@ namespace TheBox.Forms
 			if (SelectedHues.Contains(SelectedColor))
 			{
 				// Clicking the same just deselects it
-				SelectedHues.Remove(SelectedColor);
+				_ = SelectedHues.Remove(SelectedColor);
 
 				if (ShiftPressed())
 				{
 					// Go down
-					if (SelectedHues.Contains((SelectedColor + 1)))
+					if (SelectedHues.Contains(SelectedColor + 1))
 					{
-						for (var i = (SelectedColor + 1); i <= PreviousSelectedColor; i++)
+						for (var i = SelectedColor + 1; i <= PreviousSelectedColor; i++)
 						{
 							if (SelectedHues.Contains(i))
-								SelectedHues.Remove(i);
+							{
+								_ = SelectedHues.Remove(i);
+							}
 							else
+							{
 								break;
+							}
 						}
 					}
 				}
-				PreviousSelectedColor = (SelectedColor - 1);
+				PreviousSelectedColor = SelectedColor - 1;
 				DrawSelectionChart();
 				return;
 			}
@@ -402,15 +410,23 @@ namespace TheBox.Forms
 				{
 					// Moving backwards
 					for (var i = SelectedColor; i > PreviousSelectedColor; i--)
+					{
 						if (!SelectedHues.Contains(i))
+						{
 							SelectedHues.Add(i);
+						}
+					}
 				}
 				if (PreviousSelectedColor > SelectedColor)
 				{
 					// Moving forward
 					for (var i = SelectedColor; i < PreviousSelectedColor; i++)
+					{
 						if (!SelectedHues.Contains(i)) // Avoid duplicates
+						{
 							SelectedHues.Add(i);
+						}
+					}
 				}
 
 				PreviousSelectedColor = SelectedColor;
@@ -420,7 +436,7 @@ namespace TheBox.Forms
 
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private Bitmap DrawSelection(Bitmap oldImg, List<int> list, Color color)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			TempBmp = (Bitmap)oldImg.Clone();
 
@@ -431,7 +447,9 @@ namespace TheBox.Forms
 				GCSteps = 0;
 			}
 			else
+			{
 				GCSteps++;
+			}
 
 			// Sort the selected hues
 			list.Sort();
@@ -445,7 +463,9 @@ namespace TheBox.Forms
 			foreach (var s in list)
 			{
 				if (First == s)
+				{
 					continue;
+				}
 
 				if (s == (Last + 1))
 				{
@@ -455,9 +475,13 @@ namespace TheBox.Forms
 				}
 
 				if (Range)
-					DrawSelectionBox(TempBmp, (First - 1), (Last - 1), color);
+				{
+					DrawSelectionBox(TempBmp, First - 1, Last - 1, color);
+				}
 				else
-					DrawSelectionBox(TempBmp, (First - 1), color);
+				{
+					DrawSelectionBox(TempBmp, First - 1, color);
+				}
 
 				Range = false;
 				First = s;
@@ -465,9 +489,13 @@ namespace TheBox.Forms
 			}
 
 			if (Range)
-				DrawSelectionBox(TempBmp, (First - 1), (short)(Last - 1), color);
+			{
+				DrawSelectionBox(TempBmp, First - 1, (short)(Last - 1), color);
+			}
 			else
-				DrawSelectionBox(TempBmp, (First - 1), color);
+			{
+				DrawSelectionBox(TempBmp, First - 1, color);
+			}
 
 			return TempBmp;
 		}
@@ -482,9 +510,9 @@ namespace TheBox.Forms
 			if (c2 == c1)
 			{
 				// Draw a long box
-				var x = (c1 * 9);
-				var y1 = (r1 * 5);
-				var y2 = ((r2 * 5) + 4);
+				var x = c1 * 9;
+				var y1 = r1 * 5;
+				var y2 = (r2 * 5) + 4;
 
 				for (var i = 0; i < 8; i++)
 				{
@@ -502,30 +530,37 @@ namespace TheBox.Forms
 			if (c2 > c1)
 			{
 				// Get the two points first
-				var x1 = (c1 * 9);
-				var x2 = (c2 * 9);
-				var y1 = (r1 * 5);
-				var y2 = (r2 * 5);
+				var x1 = c1 * 9;
+				var x2 = c2 * 9;
+				var y1 = r1 * 5;
+				var y2 = r2 * 5;
 
-				var TopX1 = (x1 + 9); // Can't be invalid
-				var TopX2 = (x2 + 8);
+				var TopX1 = x1 + 9; // Can't be invalid
+				var TopX2 = x2 + 8;
 
 				// Draw the top segment
 				for (var i = TopX1; i <= TopX2; i++)
+				{
 					img.SetPixel(i, 0, color);
+				}
 
 				var BottomX1 = x1;
-				var BottomX2 = (x2 - 1); // Can't be invalid
+				var BottomX2 = x2 - 1; // Can't be invalid
 
 				// Draw the bottom segment
 				for (var i = BottomX1; i <= BottomX2; i++)
+				{
 					img.SetPixel(i, 299, color);
+				}
 
 				// Draw left horizontal segment, height: y1
 				for (var i = BottomX1; i <= TopX1; i++)
 				{
 					if ((c2 == (c1 + 1)) && (i == TopX1))
+					{
 						break;
+					}
+
 					img.SetPixel(i, y1, color);
 				}
 
@@ -534,37 +569,55 @@ namespace TheBox.Forms
 				for (var i = BottomX2; i <= TopX2; i++)
 				{
 					if ((c2 == (c1 + 1)) && (i == BottomX2))
+					{
 						continue;
+					}
+
 					img.SetPixel(i, y2, color);
 				}
 
 				// Draw left segment
 				for (var i = y1; i <= 299; i++)
+				{
 					img.SetPixel(BottomX1, i, color);
+				}
 
-				var my = 0;
-
+				int my;
 				if (c2 == (c1 + 1))
+				{
 					my = Math.Min(y1, y2);
+				}
 				else
+				{
 					my = y1;
+				}
 
 				// Draw top left segment
 				for (var i = 0; i <= my; i++)
+				{
 					img.SetPixel(TopX1, i, color);
+				}
 
 				// Draw right segment
 				for (var i = 0; i <= y2; i++)
+				{
 					img.SetPixel(TopX2, i, color);
+				}
 
 				if (c2 == (c1 + 1))
+				{
 					my = Math.Max(y1, y2);
+				}
 				else
+				{
 					my = y2;
+				}
 
 				// Draw bottom right segment
 				for (var i = my; i <= 299; i++)
+				{
 					img.SetPixel(BottomX2, i, color);
+				}
 			}
 		}
 
@@ -576,8 +629,8 @@ namespace TheBox.Forms
 			var row = index % 60;
 
 			// Find the top left corner of the box
-			var x = (column * 9);
-			var y = (row * 5);
+			var x = column * 9;
+			var y = row * 5;
 
 			// Draw the box
 			for (var iX = 0; iX < 9; iX++)
@@ -611,7 +664,10 @@ namespace TheBox.Forms
 		{
 			var shift = GetKeyState(VK_SHIFT);
 			if (shift < -100)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -619,7 +675,10 @@ namespace TheBox.Forms
 		{
 			var control = GetKeyState(VK_CONTROL);
 			if (control < -100)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -627,7 +686,10 @@ namespace TheBox.Forms
 		{
 			var alt = GetKeyState(VK_MENU);
 			if (alt < -100)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -663,12 +725,14 @@ namespace TheBox.Forms
 			{
 				// If Alt is pressed, don't select
 				if (AltPressed())
+				{
 					return;
+				}
 
 				// Get the hue index ( zero based )
 				var column = e.X / 9;
 				var row = e.Y / 5;
-				var selHue = column * 60 + row + 1;
+				var selHue = (column * 60) + row + 1;
 
 				if ((column >= 0) && (column <= 49) && (row >= 0) && (row <= 59))
 				{
@@ -703,16 +767,17 @@ namespace TheBox.Forms
 
 		private void bNew_Click(object sender, EventArgs e)
 		{
-			var c = new HuesCollection();
-
-			c.Name = txNew.Text;
+			var c = new HuesCollection
+			{
+				Name = txNew.Text
+			};
 			txNew.Text = "";
 
 			c.Hues.Add(1);
 
 			m_Groups.Groups.Add(c);
 
-			cmbGroups.Items.Add(c);
+			_ = cmbGroups.Items.Add(c);
 			cmbGroups.SelectedItem = c;
 		}
 
@@ -738,11 +803,13 @@ namespace TheBox.Forms
 
 			foreach (var c in m_Groups.Groups)
 			{
-				cmbGroups.Items.Add(c);
+				_ = cmbGroups.Items.Add(c);
 			}
 
 			if (cmbGroups.Items.Count > 0)
+			{
 				cmbGroups.SelectedIndex = 0;
+			}
 		}
 
 		private void bDelete_Click(object sender, EventArgs e)
@@ -750,7 +817,7 @@ namespace TheBox.Forms
 			if (MessageBox.Show(this, "", Pandora.Localization.TextProvider["HuePicker.DeleteGroup"], MessageBoxButtons.YesNo) ==
 				DialogResult.Yes)
 			{
-				m_Groups.Groups.Remove(m_SelectedGroup);
+				_ = m_Groups.Groups.Remove(m_SelectedGroup);
 
 				var index = cmbGroups.Items.IndexOf(m_SelectedGroup);
 

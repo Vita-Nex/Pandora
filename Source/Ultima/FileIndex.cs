@@ -82,7 +82,7 @@ namespace Ultima
 
 			patched = false;
 
-			Stream.Seek(e.lookup, SeekOrigin.Begin);
+			_ = Stream.Seek(e.lookup, SeekOrigin.Begin);
 			return Stream;
 		}
 
@@ -215,7 +215,6 @@ namespace Ultima
 
 				if (String.IsNullOrEmpty(uopPath))
 				{
-					uopPath = null;
 				}
 				else
 				{
@@ -226,7 +225,6 @@ namespace Ultima
 
 					if (!File.Exists(uopPath))
 					{
-						uopPath = null;
 					}
 					else
 					{
@@ -253,16 +251,16 @@ namespace Ultima
 
 					using (var br = new BinaryReader(Stream))
 					{
-						br.BaseStream.Seek(0, SeekOrigin.Begin);
+						_ = br.BaseStream.Seek(0, SeekOrigin.Begin);
 
 						if (br.ReadInt32() != 0x50594D)
 						{
 							throw new ArgumentException("Bad UOP file.");
 						}
 
-						br.ReadInt64(); // version + signature
+						_ = br.ReadInt64(); // version + signature
 						var nextBlock = br.ReadInt64();
-						br.ReadInt32(); // block capacity
+						_ = br.ReadInt32(); // block capacity
 						var count = br.ReadInt32();
 
 						if (idxLength > 0)
@@ -274,7 +272,7 @@ namespace Ultima
 
 						for (var i = 0; i < length; i++)
 						{
-							var entryName = string.Format("build/{0}/{1:D8}{2}", uopPattern, i, uopEntryExtension);
+							var entryName = String.Format("build/{0}/{1:D8}{2}", uopPattern, i, uopEntryExtension);
 							var hash = HashFileName(entryName);
 
 							if (!hashes.ContainsKey(hash))
@@ -283,7 +281,7 @@ namespace Ultima
 							}
 						}
 
-						br.BaseStream.Seek(nextBlock, SeekOrigin.Begin);
+						_ = br.BaseStream.Seek(nextBlock, SeekOrigin.Begin);
 
 						do
 						{
@@ -297,7 +295,7 @@ namespace Ultima
 								var compressedLength = br.ReadInt32();
 								var decompressedLength = br.ReadInt32();
 								var hash = br.ReadUInt64();
-								br.ReadUInt32(); // Adler32
+								_ = br.ReadUInt32(); // Adler32
 								var flag = br.ReadInt16();
 
 								var entryLength = flag == 1 ? compressedLength : decompressedLength;
@@ -307,8 +305,7 @@ namespace Ultima
 									continue;
 								}
 
-								int idx;
-								if (hashes.TryGetValue(hash, out idx))
+								if (hashes.TryGetValue(hash, out var idx))
 								{
 									if (idx < 0 || idx > Index.Length)
 									{
@@ -322,7 +319,7 @@ namespace Ultima
 									{
 										var curPos = br.BaseStream.Position;
 
-										br.BaseStream.Seek(offset + headerLength, SeekOrigin.Begin);
+										_ = br.BaseStream.Seek(offset + headerLength, SeekOrigin.Begin);
 
 										var extra = br.ReadBytes(8);
 
@@ -330,9 +327,9 @@ namespace Ultima
 										var extra2 = (ushort)((extra[7] << 24) | (extra[6] << 16) | (extra[5] << 8) | extra[4]);
 
 										Index[idx].lookup += 8;
-										Index[idx].extra = extra1 << 16 | extra2;
+										Index[idx].extra = (extra1 << 16) | extra2;
 
-										br.BaseStream.Seek(curPos, SeekOrigin.Begin);
+										_ = br.BaseStream.Seek(curPos, SeekOrigin.Begin);
 									}
 								}
 							}
@@ -350,7 +347,7 @@ namespace Ultima
 					IdxLength = index.Length;
 					var gc = GCHandle.Alloc(Index, GCHandleType.Pinned);
 					var buffer = new byte[index.Length];
-					index.Read(buffer, 0, (int)index.Length);
+					_ = index.Read(buffer, 0, (int)index.Length);
 					Marshal.Copy(buffer, 0, gc.AddrOfPinnedObject(), (int)Math.Min(IdxLength, length * 12));
 					gc.Free();
 					for (var i = count; i < length; ++i)
@@ -439,7 +436,7 @@ namespace Ultima
 					Index = new Entry3D[count];
 					var gc = GCHandle.Alloc(Index, GCHandleType.Pinned);
 					var buffer = new byte[index.Length];
-					index.Read(buffer, 0, (int)index.Length);
+					_ = index.Read(buffer, 0, (int)index.Length);
 					Marshal.Copy(buffer, 0, gc.AddrOfPinnedObject(), (int)index.Length);
 					gc.Free();
 				}
@@ -478,11 +475,10 @@ namespace Ultima
 		{
 			uint eax, ecx, edx, ebx, esi, edi;
 
-			eax = ecx = edx = ebx = esi = edi = 0;
+			eax = _ = _ = _ = 0u;
 			ebx = edi = esi = (uint)s.Length + 0xDEADBEEF;
 
-			var i = 0;
-
+			int i;
 			for (i = 0; i + 12 < s.Length; i += 12)
 			{
 				edi = (uint)((s[i + 7] << 24) | (s[i + 6] << 16) | (s[i + 5] << 8) | s[i + 4]) + edi;

@@ -152,19 +152,19 @@ namespace TheBox.Forms
 			this.groupBox1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.slideFill)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.slideFill).BeginInit();
 			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.n1Y)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.n1X)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n1Y).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n1X).BeginInit();
 			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.n2Y)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.n2X)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n2Y).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n2X).BeginInit();
 			this.tabPage2.SuspendLayout();
 			this.tabPage3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pBarFill2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nHeight)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nWidth)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.pBarFill2).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nHeight).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nWidth).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).BeginInit();
 			this.SuspendLayout();
 			// 
 			// cmbTileSet
@@ -388,7 +388,7 @@ namespace TheBox.Forms
 			// n1Y
 			// 
 			this.n1Y.Location = new System.Drawing.Point(88, 16);
-			this.n1Y.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n1Y.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n1Y.Name = "n1Y";
 			this.n1Y.Size = new System.Drawing.Size(52, 20);
 			this.n1Y.TabIndex = 1;
@@ -396,7 +396,7 @@ namespace TheBox.Forms
 			// n1X
 			// 
 			this.n1X.Location = new System.Drawing.Point(20, 16);
-			this.n1X.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n1X.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n1X.Name = "n1X";
 			this.n1X.Size = new System.Drawing.Size(52, 20);
 			this.n1X.TabIndex = 0;
@@ -448,7 +448,7 @@ namespace TheBox.Forms
 			// n2Y
 			// 
 			this.n2Y.Location = new System.Drawing.Point(88, 16);
-			this.n2Y.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n2Y.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n2Y.Name = "n2Y";
 			this.n2Y.Size = new System.Drawing.Size(52, 20);
 			this.n2Y.TabIndex = 2;
@@ -456,7 +456,7 @@ namespace TheBox.Forms
 			// n2X
 			// 
 			this.n2X.Location = new System.Drawing.Point(20, 16);
-			this.n2X.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n2X.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n2X.Name = "n2X";
 			this.n2X.Size = new System.Drawing.Size(52, 20);
 			this.n2X.TabIndex = 1;
@@ -537,12 +537,12 @@ namespace TheBox.Forms
 			// nHeight
 			// 
 			this.nHeight.Location = new System.Drawing.Point(72, 112);
-			this.nHeight.Maximum = new System.Decimal(new int[] {15, 0, 0, 0});
-			this.nHeight.Minimum = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.nHeight.Maximum = new decimal(new int[] { 15, 0, 0, 0 });
+			this.nHeight.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			this.nHeight.Name = "nHeight";
 			this.nHeight.Size = new System.Drawing.Size(48, 20);
 			this.nHeight.TabIndex = 4;
-			this.nHeight.Value = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.nHeight.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// label9
 			// 
@@ -557,12 +557,12 @@ namespace TheBox.Forms
 			// nWidth
 			// 
 			this.nWidth.Location = new System.Drawing.Point(72, 72);
-			this.nWidth.Maximum = new System.Decimal(new int[] {15, 0, 0, 0});
-			this.nWidth.Minimum = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.nWidth.Maximum = new decimal(new int[] { 15, 0, 0, 0 });
+			this.nWidth.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			this.nWidth.Name = "nWidth";
 			this.nWidth.Size = new System.Drawing.Size(48, 20);
 			this.nWidth.TabIndex = 1;
-			this.nWidth.Value = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.nWidth.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// label8
 			// 
@@ -594,8 +594,8 @@ namespace TheBox.Forms
 			// numZ
 			// 
 			this.numZ.Location = new System.Drawing.Point(192, 124);
-			this.numZ.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.numZ.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.numZ.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.numZ.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.numZ.Name = "numZ";
 			this.numZ.Size = new System.Drawing.Size(48, 20);
 			this.numZ.TabIndex = 14;
@@ -609,26 +609,26 @@ namespace TheBox.Forms
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.cmbTileSet);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "RandomTiler";
 			this.Text = "RandomTiler";
 			this.Load += new System.EventHandler(this.RandomTiler_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.slideFill)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.slideFill).EndInit();
 			this.groupBox2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.n1Y)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.n1X)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n1Y).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n1X).EndInit();
 			this.groupBox3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.n2Y)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.n2X)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n2Y).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n2X).EndInit();
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pBarFill2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nHeight)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nWidth)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.pBarFill2).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nHeight).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nWidth).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -641,13 +641,15 @@ namespace TheBox.Forms
 
 			foreach (RandomTilesList tileset in tiles.List)
 			{
-				cmbTileSet.Items.Add(tileset);
+				_ = cmbTileSet.Items.Add(tileset);
 			}
 
 			cmbTileSet.EndUpdate();
 
 			if (cmbTileSet.Items.Count > 0)
+			{
 				cmbTileSet.SelectedIndex = 0;
+			}
 
 			var hues = HueGroups.Load();
 
@@ -655,13 +657,15 @@ namespace TheBox.Forms
 
 			foreach (var huelist in hues.Groups)
 			{
-				cmbHues.Items.Add(huelist);
+				_ = cmbHues.Items.Add(huelist);
 			}
 
 			cmbHues.EndUpdate();
 
 			if (cmbHues.Items.Count > 0)
+			{
 				cmbHues.SelectedIndex = 0;
+			}
 
 			UpdateFillText();
 
@@ -672,7 +676,7 @@ namespace TheBox.Forms
 			{
 				if (Pandora.Profile.Travel.EnabledMaps[i])
 				{
-					cmbMap.Items.Add(Pandora.Profile.Travel.MapNames[i]);
+					_ = cmbMap.Items.Add(Pandora.Profile.Travel.MapNames[i]);
 				}
 			}
 
@@ -686,8 +690,8 @@ namespace TheBox.Forms
 
 		private void UpdateFillText()
 		{
-			labFill.Text = string.Format(Pandora.Localization.TextProvider["Random.labFill"], slideFill.Value);
-			labFill2.Text = string.Format(Pandora.Localization.TextProvider["Random.labFill"], pBarFill2.Value);
+			labFill.Text = String.Format(Pandora.Localization.TextProvider["Random.labFill"], slideFill.Value);
+			labFill2.Text = String.Format(Pandora.Localization.TextProvider["Random.labFill"], pBarFill2.Value);
 		}
 
 		private void rRandomHue_CheckedChanged(object sender, EventArgs e)
@@ -715,13 +719,15 @@ namespace TheBox.Forms
 
 			foreach (RandomTilesList tileset in tiles.List)
 			{
-				cmbTileSet.Items.Add(tileset);
+				_ = cmbTileSet.Items.Add(tileset);
 			}
 
 			cmbTileSet.EndUpdate();
 
 			if (cmbTileSet.Items.Count > 0)
+			{
 				cmbTileSet.SelectedIndex = 0;
+			}
 		}
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -744,28 +750,28 @@ namespace TheBox.Forms
 
 			foreach (var hc in hues.Groups)
 			{
-				cmbHues.Items.Add(hc);
+				_ = cmbHues.Items.Add(hc);
 			}
 
 			cmbHues.EndUpdate();
 
 			if (cmbHues.Items.Count > 0)
+			{
 				cmbHues.SelectedIndex = 0;
+			}
 		}
 
 		private bool EnsureConditions()
 		{
 			if (!Pandora.BoxConnection.Connected)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Server.PleaseConnect"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Server.PleaseConnect"]);
 				return false;
 			}
 
-			var tileset = cmbTileSet.SelectedItem as RandomTilesList;
-
-			if (tileset == null)
+			if (!(cmbTileSet.SelectedItem is RandomTilesList))
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Random.NoTile"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Random.NoTile"]);
 				return false;
 			}
 
@@ -773,7 +779,7 @@ namespace TheBox.Forms
 
 			if (rRandomHue.Checked && hues == null)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Random.NoRndHue"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Random.NoRndHue"]);
 				return false;
 			}
 
@@ -783,15 +789,16 @@ namespace TheBox.Forms
 		private void bRunSingle_Click(object sender, EventArgs e)
 		{
 			if (!EnsureConditions())
+			{
 				return;
+			}
 
 			var tileset = cmbTileSet.SelectedItem as RandomTilesList;
 
 			var hues = cmbHues.SelectedItem as HuesCollection;
-
-			RandomItem msg = null;
 			;
 
+			RandomItem msg;
 			if (rNoHue.Checked)
 			{
 				msg = new RandomItem(tileset);
@@ -805,7 +812,7 @@ namespace TheBox.Forms
 				msg = new RandomItem(tileset, hues);
 			}
 
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void labFill_Paint(object sender, PaintEventArgs e)
@@ -853,11 +860,13 @@ namespace TheBox.Forms
 		private void bAreaRun_Click(object sender, EventArgs e)
 		{
 			if (!EnsureConditions())
+			{
 				return;
+			}
 
 			if (cmbMap.SelectedIndex == -1)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Random.NoMap"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Random.NoMap"]);
 				return;
 			}
 
@@ -878,18 +887,26 @@ namespace TheBox.Forms
 			var rnd = new RandomRectangle(tileset, rect, fill, map);
 
 			if (rNoHue.Checked)
+			{
 				rnd.Hue = 0;
+			}
 			else if (rSelectedHue.Checked)
+			{
 				rnd.Hue = Pandora.Profile.Hues.SelectedIndex;
+			}
 			else
+			{
 				rnd.RandomHues = hues;
+			}
 
 			if (chkZ.Checked)
+			{
 				rnd.Z = (int)numZ.Value;
+			}
 
 			BoxMessage msg = rnd.CreateMessage();
 
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -920,7 +937,9 @@ namespace TheBox.Forms
 		private void bRunBrush_Click(object sender, EventArgs e)
 		{
 			if (!EnsureConditions())
+			{
 				return;
+			}
 
 			var fill = pBarFill2.Value / 100d;
 			var width = (int)nWidth.Value;
@@ -928,8 +947,7 @@ namespace TheBox.Forms
 
 			var brush = new RandomBrush(width, height);
 			var tileset = cmbTileSet.SelectedItem as RandomTilesList;
-			RandomBrushMessage msg = null;
-
+			RandomBrushMessage msg;
 			if (rRandomHue.Checked)
 			{
 				var hues = cmbHues.SelectedItem as HuesCollection;
@@ -948,7 +966,7 @@ namespace TheBox.Forms
 				}
 			}
 
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 	}
 }

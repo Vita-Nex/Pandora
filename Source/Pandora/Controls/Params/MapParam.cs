@@ -66,7 +66,7 @@ namespace TheBox.Controls.Params
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.labName.Location = new System.Drawing.Point(0, 0);
 			this.labName.Name = "labName";
 			this.labName.Size = new System.Drawing.Size(96, 16);
@@ -98,7 +98,7 @@ namespace TheBox.Controls.Params
 				{
 					if (Pandora.Profile.Travel.EnabledMaps[i])
 					{
-						cmb.Items.Add(Pandora.Profile.Travel.MapNames[i]);
+						_ = cmb.Items.Add(Pandora.Profile.Travel.MapNames[i]);
 					}
 				}
 
@@ -108,7 +108,7 @@ namespace TheBox.Controls.Params
 			{ }
 		}
 
-		private static readonly string[] m_MapNames = {"felucca", "trammel", "ilshenar", "malas"};
+		private static readonly string[] m_MapNames = { "felucca", "trammel", "ilshenar", "malas" };
 
 		#region IParam Members
 		public string ParamName
@@ -138,7 +138,7 @@ namespace TheBox.Controls.Params
 			}
 		}
 
-		public bool IsDefined { get { return true; } }
+		public bool IsDefined => true;
 		#endregion
 	}
 }

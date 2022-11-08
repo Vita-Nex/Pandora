@@ -181,7 +181,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.labFile);
 			this.Controls.Add(this.bBrowse);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "LauncherForm";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -223,13 +223,17 @@ namespace TheBox.Forms
 			DialogResult = DialogResult.OK;
 
 			if (m_Entry == null)
+			{
 				m_Entry = new LauncherEntry();
+			}
 
 			m_Entry.Path = labFile.Text;
 			m_Entry.Name = txName.Text;
 
 			if (txArgs.Text.Length > 0)
+			{
 				m_Entry.Arguments = txArgs.Text;
+			}
 
 			m_Entry.RunOnStartup = chkStartup.Checked;
 		}
@@ -244,7 +248,7 @@ namespace TheBox.Forms
 		/// </summary>
 		public LauncherEntry SelectedEntry
 		{
-			get { return m_Entry; }
+			get => m_Entry;
 			set
 			{
 				m_Entry = value;

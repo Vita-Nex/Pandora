@@ -99,7 +99,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.tx);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "StringListForm";
@@ -117,7 +117,7 @@ namespace TheBox.Forms
 
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<string> Strings
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			get
 			{
@@ -129,7 +129,9 @@ namespace TheBox.Forms
 				{
 					var add = s.Trim();
 					if (add.Length > 0)
+					{
 						list.Add(add);
+					}
 				}
 
 				return list;

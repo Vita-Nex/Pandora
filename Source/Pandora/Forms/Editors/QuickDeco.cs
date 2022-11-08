@@ -129,7 +129,7 @@ namespace TheBox.Forms.Editors
 			this.Controls.Add(this.art);
 			this.Controls.Add(this.pGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "QuickDeco";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -151,7 +151,7 @@ namespace TheBox.Forms.Editors
 		{
 			if (Deco.Name == null || Deco.Name.Length == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Deco.NoName"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Deco.NoName"]);
 				return;
 			}
 
@@ -192,9 +192,11 @@ namespace TheBox.Forms.Editors
 			}
 			set
 			{
-				m_Backup = new BoxDeco();
-				m_Backup.ID = value.ID;
-				m_Backup.Name = value.Name;
+				m_Backup = new BoxDeco
+				{
+					ID = value.ID,
+					Name = value.Name
+				};
 
 				m_Deco = value;
 			}

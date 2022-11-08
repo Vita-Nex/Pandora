@@ -146,7 +146,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.Art);
 			this.Controls.Add(this.huesChart1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "QuickHue";
 			this.Text = "HuePicker.Title";
 			this.Load += new System.EventHandler(this.QuickHue_Load);
@@ -154,23 +154,21 @@ namespace TheBox.Forms
 		}
 		#endregion
 
-		private int m_Hue;
-
 		/// <summary>
 		///     Gets the hue selected by the user
 		/// </summary>
-		public int Hue { get { return m_Hue; } }
+		public int Hue { get; private set; }
 
 		private void huesChart1_HueChanged(object sender, EventArgs e)
 		{
 			Art.Hue = huesChart1.SelectedIndex;
-			m_Hue = huesChart1.SelectedIndex;
+			Hue = huesChart1.SelectedIndex;
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
 			Art.Hue = 0;
-			m_Hue = 0;
+			Hue = 0;
 		}
 
 		private void QuickHue_Load(object sender, EventArgs e)

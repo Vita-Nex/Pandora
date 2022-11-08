@@ -118,7 +118,7 @@ namespace BoxServerSetup
 
 				if (!File.Exists(assemblies))
 				{
-					MessageBox.Show(
+					_ = MessageBox.Show(
 						"The selected file doesn't appear to be a valid RunUO executable, or doesn't belong to a valid RunUO installation. Please select the Server.exe, Service.exe or RunUO.exe files as they are found in the default RunUO distribution.");
 					Setup.RunUOFolder = null;
 
@@ -135,7 +135,7 @@ namespace BoxServerSetup
 		{
 			if (Setup.RunUOFolder == null)
 			{
-				MessageBox.Show("Please select a RunUO executable before proceeding.");
+				_ = MessageBox.Show("Please select a RunUO executable before proceeding.");
 				e.Cancel = true;
 			}
 		}

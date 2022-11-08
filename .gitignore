@@ -4,5 +4,6 @@
 *obj/
 *bin/
 
+/.git
+/.vs
 /Build
-/

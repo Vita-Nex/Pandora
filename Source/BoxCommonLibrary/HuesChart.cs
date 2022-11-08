@@ -31,7 +31,7 @@ namespace TheBox.Common
 		/// </summary>
 		public Hues Hues
 		{
-			get { return m_Hues; }
+			get => m_Hues;
 			set
 			{
 				m_Hues = value;
@@ -44,7 +44,7 @@ namespace TheBox.Common
 		/// </summary>
 		public int SelectedIndex
 		{
-			get { return m_SelectedIndex; }
+			get => m_SelectedIndex;
 			set
 			{
 				if (value > 0 && value < 3001)
@@ -64,26 +64,32 @@ namespace TheBox.Common
 		/// <summary>
 		///     Gets the selected Hue object
 		/// </summary>
-		public Hue SelectedHue { get { return m_Hues[m_SelectedIndex]; } }
+		public Hue SelectedHue => m_Hues[m_SelectedIndex];
 
 		/// <summary>
 		///     Gets or sets the value that specifies which color from each hue is used to draw the hue
 		/// </summary>
 		public int ColorTableIndex
 		{
-			get { return m_ColorTableIndex; }
+			get => m_ColorTableIndex;
 			set
 			{
 				if (m_ColorTableIndex == value)
+				{
 					return;
+				}
 
 				m_ColorTableIndex = value;
 
 				if (m_ColorTableIndex < 0)
+				{
 					m_ColorTableIndex = 0;
+				}
 
 				if (m_ColorTableIndex > 31)
+				{
 					m_ColorTableIndex = 31;
+				}
 
 				Refresh();
 			}
@@ -100,10 +106,7 @@ namespace TheBox.Common
 		/// </summary>
 		protected virtual void OnHueChanged(EventArgs e)
 		{
-			if (HueChanged != null)
-			{
-				HueChanged(this, e);
-			}
+			HueChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -147,7 +150,9 @@ namespace TheBox.Common
 			base.OnPaint(e);
 
 			if (m_Hues == null)
+			{
 				return;
+			}
 
 			for (var i = 1; i < 3001; i++)
 			{
@@ -200,14 +205,13 @@ namespace TheBox.Common
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
 			base.OnMouseDown(e);
-
-			var x = e.X - 1;
-			var y = e.Y - 1;
+			_ = e.X - 1;
+			_ = e.Y - 1;
 
 			var column = e.X / 9;
 			var row = e.Y / 5;
 
-			var index = column * 60 + row + 1;
+			var index = (column * 60) + row + 1;
 
 			SelectedIndex = index;
 		}

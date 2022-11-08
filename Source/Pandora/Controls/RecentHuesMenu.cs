@@ -19,12 +19,11 @@ namespace TheBox.Controls
 	public class RecentHuesMenu : ContextMenu
 	{
 		private readonly RecentIntList m_List;
-		private int m_SelectedHue;
 
 		/// <summary>
 		///     Gets the hue value that has been selected by the user
 		/// </summary>
-		public int SelectedHue { get { return m_SelectedHue; } }
+		public int SelectedHue { get; private set; }
 
 		/// <summary>
 		///     Creates a RecentHuesMenu that can
@@ -46,7 +45,9 @@ namespace TheBox.Controls
 		private void DisposeMenu()
 		{
 			while (MenuItems.Count > 0)
+			{
 				MenuItems[0].Dispose();
+			}
 		}
 
 		private void MakeMenu()
@@ -56,11 +57,15 @@ namespace TheBox.Controls
 				HueMenuItem mi = null;
 
 				if (i == 0)
+				{
 					mi = new HueMenuItem(i.ToString(), null);
+				}
 				else
+				{
 					mi = new HueMenuItem(i.ToString(), Pandora.Hues[i].ColorTable);
+				}
 
-				MenuItems.Add(mi);
+				_ = MenuItems.Add(mi);
 
 				mi.Click += mi_Click;
 			}
@@ -68,11 +73,9 @@ namespace TheBox.Controls
 
 		private void mi_Click(object sender, EventArgs e)
 		{
-			var mi = sender as HueMenuItem;
-
-			if (mi != null)
+			if (sender is HueMenuItem mi)
 			{
-				m_SelectedHue = Convert.ToInt32(mi.Text);
+				SelectedHue = Convert.ToInt32(mi.Text);
 				OnHueClicked(new EventArgs());
 			}
 		}
@@ -81,10 +84,7 @@ namespace TheBox.Controls
 
 		protected virtual void OnHueClicked(EventArgs e)
 		{
-			if (HueClicked != null)
-			{
-				HueClicked(this, e);
-			}
+			HueClicked?.Invoke(this, e);
 		}
 	}
 }

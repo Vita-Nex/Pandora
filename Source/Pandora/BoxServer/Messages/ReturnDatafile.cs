@@ -24,7 +24,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the BoxData retrieved from the server
 		/// </summary>
-		public object Data { get { return m_Data; } set { m_Data = value; } }
+		public object Data { get => m_Data; set => m_Data = value; }
 
 		/// <summary>
 		///     Creates a new ReturnBoxData message

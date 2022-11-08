@@ -23,19 +23,13 @@ namespace Ultima
 
 		public static void FireFileSaveEvent()
 		{
-			if (FileSaveEvent != null)
-			{
-				FileSaveEvent();
-			}
+			FileSaveEvent?.Invoke();
 		}
-
-		private static bool m_CacheData = true;
-		private static string m_Directory;
 
 		/// <summary>
 		///     Should loaded Data be cached
 		/// </summary>
-		public static bool CacheData { get { return m_CacheData; } set { m_CacheData = value; } }
+		public static bool CacheData { get; set; } = true;
 
 		/// <summary>
 		///     Should a Hashfile be used to speed up loading
@@ -50,7 +44,7 @@ namespace Ultima
 		/// <summary>
 		///     Gets a list of paths to the Client's data files.
 		/// </summary>
-		public static string Directory { get { return m_Directory; } }
+		public static string Directory { get; private set; }
 
 		/// <summary>
 		///     Contains the rootDir (so relative values are possible for <see cref="MulPath" />
@@ -79,7 +73,7 @@ namespace Ultima
 
 		static Files()
 		{
-			m_Directory = LoadDirectory();
+			Directory = LoadDirectory();
 			LoadMulPath();
 		}
 
@@ -88,7 +82,7 @@ namespace Ultima
 		/// </summary>
 		public static void ReLoadDirectory()
 		{
-			m_Directory = LoadDirectory();
+			Directory = LoadDirectory();
 		}
 
 		/// <summary>
@@ -215,7 +209,7 @@ namespace Ultima
 			@"Origin Worlds Online\Ultima Online Third Dawn\1.0"
 		};
 
-		private static readonly string[] knownRegPathkeys = {"ExePath", "Install Dir", "InstallDir"};
+		private static readonly string[] knownRegPathkeys = { "ExePath", "Install Dir", "InstallDir" };
 
 		public static string LoadDirectory()
 		{
@@ -226,7 +220,7 @@ namespace Ultima
 
 				if (Environment.Is64BitOperatingSystem)
 				{
-					exePath = GetPath(string.Format(@"Wow6432Node\{0}", knownRegkeys[i]));
+					exePath = GetPath(String.Format(@"Wow6432Node\{0}", knownRegkeys[i]));
 				}
 				else
 				{
@@ -246,11 +240,11 @@ namespace Ultima
 		{
 			try
 			{
-				var key = Registry.LocalMachine.OpenSubKey(string.Format(@"SOFTWARE\{0}", regkey));
+				var key = Registry.LocalMachine.OpenSubKey(String.Format(@"SOFTWARE\{0}", regkey));
 
 				if (key == null)
 				{
-					key = Registry.CurrentUser.OpenSubKey(string.Format(@"SOFTWARE\{0}", regkey));
+					key = Registry.CurrentUser.OpenSubKey(String.Format(@"SOFTWARE\{0}", regkey));
 
 					if (key == null)
 					{
@@ -270,7 +264,7 @@ namespace Ultima
 
 					if (pathkey == "InstallDir")
 					{
-						path = path + @"\";
+						path += @"\";
 					}
 
 					if (!System.IO.Directory.Exists(path) && !File.Exists(path))
@@ -366,7 +360,7 @@ namespace Ultima
 					{
 						var length = bin.ReadInt32();
 						var buffer = new byte[length];
-						bin.Read(buffer, 0, length);
+						_ = bin.Read(buffer, 0, length);
 						var hashold = BitConverter.ToString(buffer).Replace("-", "").ToLower();
 						return CompareMD5(GetFilePath(String.Format("{0}.mul", what)), hashold);
 					}

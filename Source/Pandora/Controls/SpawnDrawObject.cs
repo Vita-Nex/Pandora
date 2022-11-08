@@ -31,10 +31,15 @@ namespace TheBox.MapViewer.DrawObjects
 		public bool IsVisible(Rectangle bounds, Maps map)
 		{
 			if (Spawn.Map != (int)map)
+			{
 				return false;
+			}
 
 			if (Spawn.X >= bounds.Left && Spawn.X <= bounds.Right && Spawn.Y >= bounds.Top && Spawn.Y <= bounds.Bottom)
+			{
 				return true;
+			}
+
 			return false;
 		}
 

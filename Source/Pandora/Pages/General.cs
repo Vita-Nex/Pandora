@@ -125,11 +125,11 @@ namespace TheBox.Pages
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.groupBox4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numSkill)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numSkill).BeginInit();
 			this.groupBox5.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numDupe)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numDupe).BeginInit();
 			this.groupBox6.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numLight)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numLight).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lnkSound
@@ -359,11 +359,11 @@ namespace TheBox.Pages
 			// 
 			this.numSkill.DecimalPlaces = 1;
 			this.numSkill.Location = new System.Drawing.Point(32, 44);
-			this.numSkill.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.numSkill.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.numSkill.Name = "numSkill";
 			this.numSkill.Size = new System.Drawing.Size(48, 20);
 			this.numSkill.TabIndex = 1;
-			this.numSkill.Value = new System.Decimal(new int[] {1099, 0, 0, 65536});
+			this.numSkill.Value = new decimal(new int[] { 1099, 0, 0, 65536 });
 			this.numSkill.ValueChanged += new System.EventHandler(this.numSkill_ValueChanged);
 			// 
 			// lnkSkill
@@ -381,7 +381,7 @@ namespace TheBox.Pages
 			// bGetSkill
 			// 
 			this.bGetSkill.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bGetSkill.Image = ((System.Drawing.Image)(resources.GetObject("bGetSkill.Image")));
+			this.bGetSkill.Image = (System.Drawing.Image)resources.GetObject("bGetSkill.Image");
 			this.bGetSkill.Location = new System.Drawing.Point(4, 44);
 			this.bGetSkill.Name = "bGetSkill";
 			this.bGetSkill.Size = new System.Drawing.Size(24, 23);
@@ -425,12 +425,12 @@ namespace TheBox.Pages
 			// numDupe
 			// 
 			this.numDupe.Location = new System.Drawing.Point(24, 16);
-			this.numDupe.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
-			this.numDupe.Minimum = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.numDupe.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+			this.numDupe.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			this.numDupe.Name = "numDupe";
 			this.numDupe.Size = new System.Drawing.Size(60, 20);
 			this.numDupe.TabIndex = 15;
-			this.numDupe.Value = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.numDupe.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			this.numDupe.ValueChanged += new System.EventHandler(this.numDupe_ValueChanged);
 			// 
 			// chkDupe
@@ -488,7 +488,7 @@ namespace TheBox.Pages
 			// numLight
 			// 
 			this.numLight.Location = new System.Drawing.Point(16, 16);
-			this.numLight.Minimum = new System.Decimal(new int[] {100, 0, 0, -2147483648});
+			this.numLight.Minimum = new decimal(new int[] { 100, 0, 0, -2147483648 });
 			this.numLight.Name = "numLight";
 			this.numLight.Size = new System.Drawing.Size(48, 20);
 			this.numLight.TabIndex = 0;
@@ -509,11 +509,11 @@ namespace TheBox.Pages
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numSkill)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numSkill).EndInit();
 			this.groupBox5.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numDupe)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numDupe).EndInit();
 			this.groupBox6.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numLight)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numLight).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -918,21 +918,21 @@ namespace TheBox.Pages
 
 			var add = new MenuItem(Pandora.Localization.TextProvider["General.AddCurrPreset"]);
 			add.Click += add_Click;
-			m_WebMenu.MenuItems.Add(add);
+			_ = m_WebMenu.MenuItems.Add(add);
 
 			var edit = new MenuItem(Pandora.Localization.TextProvider["General.EditPresets"]);
 			edit.Click += EditWebPresets;
-			m_WebMenu.MenuItems.Add(edit);
+			_ = m_WebMenu.MenuItems.Add(edit);
 
 			if (Pandora.Profile.General.WebPresets.Count > 0)
 			{
-				m_WebMenu.MenuItems.Add("-");
+				_ = m_WebMenu.MenuItems.Add("-");
 
 				foreach (var url in Pandora.Profile.General.WebPresets)
 				{
 					var mi = new MenuItem(url);
 					mi.Click += SelectWebPreset;
-					m_WebMenu.MenuItems.Add(mi);
+					_ = m_WebMenu.MenuItems.Add(mi);
 				}
 			}
 
@@ -954,21 +954,21 @@ namespace TheBox.Pages
 
 			var add = new MenuItem(Pandora.Localization.TextProvider["General.AddCurrPreset"]);
 			add.Click += add_Click2;
-			m_SpeechMenu.MenuItems.Add(add);
+			_ = m_SpeechMenu.MenuItems.Add(add);
 
 			var edit = new MenuItem(Pandora.Localization.TextProvider["General.EditPresets"]);
 			edit.Click += EditSpeechPresets;
-			m_SpeechMenu.MenuItems.Add(edit);
+			_ = m_SpeechMenu.MenuItems.Add(edit);
 
 			if (Pandora.Profile.General.SpeechPresets.Count > 0)
 			{
-				m_SpeechMenu.MenuItems.Add("-");
+				_ = m_SpeechMenu.MenuItems.Add("-");
 
 				foreach (var speech in Pandora.Profile.General.SpeechPresets)
 				{
 					var mi = new MenuItem(speech);
 					mi.Click += SelectSpeechPreset;
-					m_SpeechMenu.MenuItems.Add(mi);
+					_ = m_SpeechMenu.MenuItems.Add(mi);
 				}
 			}
 
@@ -981,11 +981,12 @@ namespace TheBox.Pages
 		/// </summary>
 		private void EditSpeechPresets(object sender, EventArgs e)
 		{
-			var form = new StringListForm();
+			var form = new StringListForm
+			{
+				Strings = Pandora.Profile.General.SpeechPresets
+			};
 
-			form.Strings = Pandora.Profile.General.SpeechPresets;
-
-			form.ShowDialog();
+			_ = form.ShowDialog();
 
 			Pandora.Profile.General.SpeechPresets = form.Strings;
 
@@ -997,11 +998,12 @@ namespace TheBox.Pages
 		/// </summary>
 		private void EditWebPresets(object sender, EventArgs e)
 		{
-			var form = new StringListForm();
+			var form = new StringListForm
+			{
+				Strings = Pandora.Profile.General.WebPresets
+			};
 
-			form.Strings = Pandora.Profile.General.WebPresets;
-
-			form.ShowDialog();
+			_ = form.ShowDialog();
 
 			Pandora.Profile.General.WebPresets = form.Strings;
 
@@ -1013,9 +1015,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void SelectSpeechPreset(object sender, EventArgs e)
 		{
-			var mi = sender as MenuItem;
-
-			if (mi != null)
+			if (sender is MenuItem mi)
 			{
 				cmbSpeech.Text = mi.Text;
 			}
@@ -1026,9 +1026,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void SelectWebPreset(object sender, EventArgs e)
 		{
-			var mi = sender as MenuItem;
-
-			if (mi != null)
+			if (sender is MenuItem mi)
 			{
 				cmbWeb.Text = mi.Text;
 			}

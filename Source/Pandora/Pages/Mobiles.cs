@@ -129,12 +129,12 @@ namespace TheBox.Pages
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.splitter = new System.Windows.Forms.Splitter();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nRange2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nTeam)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMaxDelay)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMinDelay)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nRange)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nAmount)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange2).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nTeam).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nMaxDelay).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nMinDelay).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nAmount).BeginInit();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -326,7 +326,7 @@ namespace TheBox.Pages
 			// nRange2
 			// 
 			this.nRange2.Location = new System.Drawing.Point(64, 100);
-			this.nRange2.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nRange2.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nRange2.Name = "nRange2";
 			this.nRange2.Size = new System.Drawing.Size(48, 20);
 			this.nRange2.TabIndex = 19;
@@ -348,7 +348,7 @@ namespace TheBox.Pages
 			// nTeam
 			// 
 			this.nTeam.Location = new System.Drawing.Point(8, 100);
-			this.nTeam.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nTeam.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nTeam.Name = "nTeam";
 			this.nTeam.Size = new System.Drawing.Size(48, 20);
 			this.nTeam.TabIndex = 16;
@@ -358,7 +358,7 @@ namespace TheBox.Pages
 			// nMaxDelay
 			// 
 			this.nMaxDelay.Location = new System.Drawing.Point(64, 64);
-			this.nMaxDelay.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.nMaxDelay.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.nMaxDelay.Name = "nMaxDelay";
 			this.nMaxDelay.Size = new System.Drawing.Size(48, 20);
 			this.nMaxDelay.TabIndex = 15;
@@ -368,7 +368,7 @@ namespace TheBox.Pages
 			// nMinDelay
 			// 
 			this.nMinDelay.Location = new System.Drawing.Point(8, 64);
-			this.nMinDelay.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.nMinDelay.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.nMinDelay.Name = "nMinDelay";
 			this.nMinDelay.Size = new System.Drawing.Size(48, 20);
 			this.nMinDelay.TabIndex = 14;
@@ -378,7 +378,7 @@ namespace TheBox.Pages
 			// nRange
 			// 
 			this.nRange.Location = new System.Drawing.Point(64, 28);
-			this.nRange.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nRange.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nRange.Name = "nRange";
 			this.nRange.Size = new System.Drawing.Size(48, 20);
 			this.nRange.TabIndex = 13;
@@ -392,9 +392,9 @@ namespace TheBox.Pages
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.nAmount.Location = new System.Drawing.Point(8, 28);
-			this.nAmount.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nAmount.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nAmount.Name = "nAmount";
 			this.nAmount.Size = new System.Drawing.Size(48, 20);
 			this.nAmount.TabIndex = 12;
@@ -519,12 +519,12 @@ namespace TheBox.Pages
 			this.Load += new System.EventHandler(this.Mobiles_Load);
 			this.Enter += new System.EventHandler(this.Mobiles_Enter);
 			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.nRange2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nTeam)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMaxDelay)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMinDelay)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nRange)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nAmount)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange2).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nTeam).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nMaxDelay).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nMinDelay).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nAmount).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 		}
@@ -570,7 +570,9 @@ namespace TheBox.Pages
 		private void Mobiles_Load(object sender, EventArgs e)
 		{
 			if (tCat.Nodes.Count > 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -605,7 +607,7 @@ namespace TheBox.Pages
 				catch (Exception err)
 				{
 					Pandora.Log.WriteError(err, "Couldn't load spawn information properly");
-					MessageBox.Show(Pandora.Localization.TextProvider["Errors.Spawn"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.Spawn"]);
 				}
 
 				// Recent names
@@ -634,7 +636,7 @@ namespace TheBox.Pages
 			// Spawn groups
 			m_GroupNode = new TreeNode(Pandora.Localization.TextProvider["NPCs.SpawnGroups"]);
 			m_GroupNode.Nodes.AddRange(Pandora.SpawnGroups.GetNodes());
-			tCat.Nodes.Add(m_GroupNode);
+			_ = tCat.Nodes.Add(m_GroupNode);
 
 			// Mobiles data
 			var nodes = Pandora.Mobiles.GetNodes();
@@ -658,9 +660,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				var mob = tMob.SelectedNode.Tag as BoxMobile;
-
-				if (mob != null)
+				if (tMob.SelectedNode.Tag is BoxMobile mob)
 				{
 					Pandora.Art.ArtIndex = mob.Art;
 					Pandora.Art.Hue = mob.Hue;
@@ -699,9 +699,11 @@ namespace TheBox.Pages
 
 						foreach (BoxSpawn spawn in list)
 						{
-							var node = new TreeNode(spawn.Name);
-							node.Tag = spawn;
-							tMob.Nodes.Add(node);
+							var node = new TreeNode(spawn.Name)
+							{
+								Tag = spawn
+							};
+							_ = tMob.Nodes.Add(node);
 						}
 					}
 				}
@@ -709,7 +711,7 @@ namespace TheBox.Pages
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					if (e.Node.Tag is List<object>)
-						// Issue 10 - End
+					// Issue 10 - End
 					{
 						tMob.BeginUpdate();
 						tMob.Nodes.Clear();
@@ -868,7 +870,9 @@ namespace TheBox.Pages
 			if (SelectedSpawn != null)
 			{
 				if (!Pandora.BoxConnection.Connected)
+				{
 					Pandora.BoxConnection.RequestConnection();
+				}
 
 				if (Pandora.BoxConnection.Connected)
 				{
@@ -887,7 +891,9 @@ namespace TheBox.Pages
 					msg.Spawn = spawn;
 
 					if (Pandora.BoxConnection.ProcessMessage(msg) == null) // null answer = ok
+					{
 						Utility.BringClientToFront();
+					}
 				}
 			}
 		}
@@ -931,7 +937,9 @@ namespace TheBox.Pages
 
 					// null outcome means that the spawn has been processed
 					if (response == null)
+					{
 						Utility.BringClientToFront();
+					}
 				}
 			}
 		}
@@ -1033,13 +1041,13 @@ namespace TheBox.Pages
 
 			if (sf.ShowDialog() == DialogResult.OK)
 			{
-				var text = sf.SearchString.Replace(" ", "");
+				_ = sf.SearchString.Replace(" ", "");
 
 				m_Results = TreeSearch.Find(tCat, sf.SearchString);
 
 				if (m_Results.Count == 0)
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["Misc.NoResults"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Misc.NoResults"]);
 					m_Results = null;
 				}
 				else
@@ -1094,7 +1102,7 @@ namespace TheBox.Pages
 			}
 			catch
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Misc.SearchError"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Misc.SearchError"]);
 				m_Results = null;
 			}
 		}
@@ -1121,13 +1129,19 @@ namespace TheBox.Pages
 				case Keys.Left:
 
 					if (sender.Equals(tMob))
-						tCat.Focus();
+					{
+						_ = tCat.Focus();
+					}
+
 					break;
 
 				case Keys.Right:
 
 					if (sender.Equals(tCat) && tMob.Nodes.Count > 0)
-						tMob.Focus();
+					{
+						_ = tMob.Focus();
+					}
+
 					break;
 
 				case Keys.Enter:
@@ -1139,9 +1153,13 @@ namespace TheBox.Pages
 						if (node != null)
 						{
 							if (node.IsExpanded)
+							{
 								node.Collapse();
+							}
 							else
+							{
 								node.Expand();
+							}
 						}
 					}
 					break;
@@ -1212,12 +1230,14 @@ namespace TheBox.Pages
 		/// </summary>
 		private void mCatAddCat_Click(object sender, EventArgs e)
 		{
-			var node = new TreeNode("NewCategory");
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode("NewCategory")
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
-			tCat.Nodes.Add(node);
+			_ = tCat.Nodes.Add(node);
 
 			tCat.SelectedNode = node;
 
@@ -1238,7 +1258,9 @@ namespace TheBox.Pages
 			else
 			{
 				if (e.Label != null)
+				{
 					e.Node.Text = e.Label;
+				}
 
 				SortTree();
 
@@ -1260,19 +1282,21 @@ namespace TheBox.Pages
 		/// </summary>
 		private void mCatAddSub_Click(object sender, EventArgs e)
 		{
-			var node = new TreeNode("NewSubsection");
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode("NewSubsection")
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
 			if (m_SpawnNode)
 			{
 				// Add node to spawn groups
-				m_GroupNode.Nodes.Add(node);
+				_ = m_GroupNode.Nodes.Add(node);
 			}
 			else
 			{
-				tCat.SelectedNode.Nodes.Add(node);
+				_ = tCat.SelectedNode.Nodes.Add(node);
 			}
 
 			tCat.SelectedNode = node;
@@ -1304,7 +1328,9 @@ namespace TheBox.Pages
 			{
 				var next = tCat.SelectedNode.NextNode;
 				if (next == null)
+				{
 					next = tCat.SelectedNode.PrevNode;
+				}
 
 				tCat.Nodes.Remove(tCat.SelectedNode);
 
@@ -1404,8 +1430,10 @@ namespace TheBox.Pages
 		{
 			if (tMob.SelectedNode.Tag is BoxMobile)
 			{
-				var qm = new QuickMobile();
-				qm.Mobile = tMob.SelectedNode.Tag as BoxMobile;
+				var qm = new QuickMobile
+				{
+					Mobile = tMob.SelectedNode.Tag as BoxMobile
+				};
 
 				if (qm.ShowDialog() == DialogResult.OK)
 				{
@@ -1427,8 +1455,10 @@ namespace TheBox.Pages
 			{
 				if (m_SpawnForm == null)
 				{
-					m_SpawnForm = new QuickSpawnGroup();
-					m_SpawnForm.Spawn = tMob.SelectedNode.Tag as BoxSpawn;
+					m_SpawnForm = new QuickSpawnGroup
+					{
+						Spawn = tMob.SelectedNode.Tag as BoxSpawn
+					};
 
 					m_SpawnEdit = true;
 					m_ManagingSpawns = true;
@@ -1454,7 +1484,7 @@ namespace TheBox.Pages
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				var spawn = (tMob.SelectedNode.Tag is BoxSpawn);
+				var spawn = tMob.SelectedNode.Tag is BoxSpawn;
 
 				var index = tMob.Nodes.IndexOf(tMob.SelectedNode);
 
@@ -1464,7 +1494,9 @@ namespace TheBox.Pages
 
 				var next = tMob.SelectedNode.NextNode;
 				if (next == null)
+				{
 					next = tMob.SelectedNode.PrevNode;
+				}
 
 				tMob.Nodes.Remove(tMob.SelectedNode);
 				tMob.SelectedNode = next;
@@ -1520,7 +1552,9 @@ namespace TheBox.Pages
 		private void tMob_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.None)
+			{
 				return;
+			}
 
 			if (Math.Abs(e.X - m_DragPoint.X) > 5 || Math.Abs(e.Y - m_DragPoint.Y) > 5)
 			{
@@ -1528,7 +1562,7 @@ namespace TheBox.Pages
 
 				if (tMob.SelectedNode != null)
 				{
-					tMob.DoDragDrop((tMob.SelectedNode.Tag as BoxMobile).Name, DragDropEffects.Copy);
+					_ = tMob.DoDragDrop((tMob.SelectedNode.Tag as BoxMobile).Name, DragDropEffects.Copy);
 				}
 				m_DragPoint = Point.Empty;
 			}

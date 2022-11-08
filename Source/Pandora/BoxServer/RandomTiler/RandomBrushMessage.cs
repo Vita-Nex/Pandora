@@ -23,7 +23,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the list of items that will be created
 		/// </summary>
-		public ArrayList Items { get { return m_Items; } set { m_Items = value; } }
+		public ArrayList Items { get => m_Items; set => m_Items = value; }
 
 		public RandomBrushMessage()
 		{

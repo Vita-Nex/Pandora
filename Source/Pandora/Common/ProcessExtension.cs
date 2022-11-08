@@ -31,8 +31,8 @@ namespace TheBox.Common
 		{
 			if (procToFront != null)
 			{
-				ShowWindowAsync(procToFront.MainWindowHandle, WS_SHOWNORMAL);
-				SetForegroundWindow(procToFront.MainWindowHandle);
+				_ = ShowWindowAsync(procToFront.MainWindowHandle, WS_SHOWNORMAL);
+				_ = SetForegroundWindow(procToFront.MainWindowHandle);
 			}
 		}
 	}

@@ -34,10 +34,10 @@ namespace TheBox.Options
 		///     Gets or sets the entires in the launcher
 		/// </summary>
 		public List<LauncherEntry> LauncherEntries
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Entries; }
-			set { m_Entries = value; }
+			get => m_Entries;
+			set => m_Entries = value;
 		}
 
 		public LauncherOptions()
@@ -65,7 +65,9 @@ namespace TheBox.Options
 			}
 
 			if (img == null)
+			{
 				img = new ImageList();
+			}
 
 			var nodes = new TreeNode[m_Entries.Count];
 			img.Images.Clear();
@@ -114,12 +116,9 @@ namespace TheBox.Options
 		{
 			if (m_Entries.Contains(entry))
 			{
-				m_Entries.Remove(entry);
+				_ = m_Entries.Remove(entry);
 
-				if (OnEntriesChanged != null)
-				{
-					OnEntriesChanged(this, new EventArgs());
-				}
+				OnEntriesChanged?.Invoke(this, new EventArgs());
 			}
 		}
 
@@ -136,10 +135,7 @@ namespace TheBox.Options
 
 				m_Entries.Add(entry);
 
-				if (OnEntriesChanged != null)
-				{
-					OnEntriesChanged(this, new EventArgs());
-				}
+				OnEntriesChanged?.Invoke(this, new EventArgs());
 			}
 		}
 
@@ -150,17 +146,18 @@ namespace TheBox.Options
 		public void EditEntry(LauncherEntry entry)
 		{
 			if (!m_Entries.Contains(entry))
+			{
 				return;
+			}
 
-			var form = new LauncherForm();
-			form.SelectedEntry = entry;
+			var form = new LauncherForm
+			{
+				SelectedEntry = entry
+			};
 
 			if (form.ShowDialog() == DialogResult.OK)
 			{
-				if (OnEntriesChanged != null)
-				{
-					OnEntriesChanged(this, new EventArgs());
-				}
+				OnEntriesChanged?.Invoke(this, new EventArgs());
 			}
 		}
 	}
@@ -180,31 +177,31 @@ namespace TheBox.Options
 		/// <summary>
 		/// The path to the file referenced by this entry
 		/// </summary>
-		public string Path { get { return m_Path; } set { m_Path = value; } }
+		public string Path { get => m_Path; set => m_Path = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// The additional launch arguments
 		/// </summary>
-		public string Arguments { get { return m_Arguments; } set { m_Arguments = value; } }
+		public string Arguments { get => m_Arguments; set => m_Arguments = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// The name of the entry
 		/// </summary>
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// States whether this entry should be launched when Pandora starts
 		/// </summary>
-		public bool RunOnStartup { get { return m_RunOnStartup; } set { m_RunOnStartup = value; } }
+		public bool RunOnStartup { get => m_RunOnStartup; set => m_RunOnStartup = value; }
 
 		[XmlIgnore]
 		/// <summary>
 		/// States whether the exists
 		/// </summary>
-		public bool Valid { get { return File.Exists(m_Path); } }
+		public bool Valid => File.Exists(m_Path);
 
 		/// <summary>
 		///     Executes this entry
@@ -217,17 +214,17 @@ namespace TheBox.Options
 				{
 					if (m_Arguments != null && m_Arguments.Length > 0)
 					{
-						Process.Start(m_Path, m_Arguments);
+						_ = Process.Start(m_Path, m_Arguments);
 					}
 					else
 					{
-						Process.Start(m_Path);
+						_ = Process.Start(m_Path);
 					}
 				}
 				catch (Exception err)
 				{
 					Pandora.Log.WriteError(err, "Error occurred when trying to run {0}", m_Name);
-					MessageBox.Show(Pandora.Localization.TextProvider["Tools.LaunchErr"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Tools.LaunchErr"]);
 				}
 			}
 		}
@@ -239,9 +236,11 @@ namespace TheBox.Options
 		{
 			get
 			{
-				var node = new TreeNode();
-				node.Text = m_Name;
-				node.Tag = this;
+				var node = new TreeNode
+				{
+					Text = m_Name,
+					Tag = this
+				};
 
 				return node;
 			}

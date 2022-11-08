@@ -34,8 +34,10 @@ namespace TheBox.Common
 				return;
 			}
 
-			m_Thread = new Thread(ShowThread);
-			m_Thread.IsBackground = true;
+			m_Thread = new Thread(ShowThread)
+			{
+				IsBackground = true
+			};
 			m_Thread.SetApartmentState(ApartmentState.STA);
 			m_Thread.Start();
 		}
@@ -43,11 +45,13 @@ namespace TheBox.Common
 		public void Close()
 		{
 			if (m_Thread == null || m_Form == null)
+			{
 				return;
+			}
 
 			try
 			{
-				m_Form.Invoke(new MethodInvoker(m_Form.Close));
+				_ = m_Form.Invoke(new MethodInvoker(m_Form.Close));
 			}
 			catch
 			{ }

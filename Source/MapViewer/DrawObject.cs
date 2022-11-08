@@ -50,16 +50,6 @@ namespace TheBox.MapViewer.DrawObjects
 		private readonly Maps m_Map;
 
 		/// <summary>
-		///     The color for the rectangle border
-		/// </summary>
-		private Color m_Color;
-
-		/// <summary>
-		///     The color for the fill of the rectangle
-		/// </summary>
-		private Color m_FillColor;
-
-		/// <summary>
 		///     States whether to fill the rectangle or not
 		/// </summary>
 		private readonly bool m_Fill;
@@ -67,17 +57,17 @@ namespace TheBox.MapViewer.DrawObjects
 		/// <summary>
 		///     The rectangle coordinates (in map units)
 		/// </summary>
-		public Rectangle Rectangle { get { return m_Location; } set { m_Location = value; } }
+		public Rectangle Rectangle { get => m_Location; set => m_Location = value; }
 
 		/// <summary>
 		///     Gets or sets the color of the border
 		/// </summary>
-		public Color Color { get { return m_Color; } set { m_Color = value; } }
+		public Color Color { get; set; }
 
 		/// <summary>
 		///     Gets or sets the color of the fill
 		/// </summary>
-		public Color FillColor { get { return m_FillColor; } set { m_FillColor = value; } }
+		public Color FillColor { get; set; }
 
 		/// <summary>
 		///     Creates a new Rectangle object that can be drawn on the mapviewer and that is filled inside
@@ -89,8 +79,8 @@ namespace TheBox.MapViewer.DrawObjects
 		public MapRectangle(Rectangle location, Maps map, Color color, Color fillColor)
 		{
 			m_Location = location;
-			m_Color = color;
-			m_FillColor = fillColor;
+			Color = color;
+			FillColor = fillColor;
 			m_Fill = true;
 			m_Map = map;
 		}
@@ -104,7 +94,7 @@ namespace TheBox.MapViewer.DrawObjects
 		public MapRectangle(Rectangle location, Maps map, Color color)
 		{
 			m_Location = location;
-			m_Color = color;
+			Color = color;
 			m_Fill = false;
 			m_Map = map;
 		}
@@ -119,11 +109,16 @@ namespace TheBox.MapViewer.DrawObjects
 		public bool IsVisible(Rectangle bounds, Maps map)
 		{
 			if ((m_Map != map) && (m_Map != Maps.AllMaps))
+			{
 				return false;
+			}
 
 			if ((m_Location.Left > bounds.Right) || (m_Location.Right < bounds.Left) || (m_Location.Top > bounds.Bottom) ||
 				(m_Location.Bottom < bounds.Top))
+			{
 				return false;
+			}
+
 			return true;
 		}
 
@@ -137,14 +132,14 @@ namespace TheBox.MapViewer.DrawObjects
 			var p1 = ViewInfo.MapToControl(new Point(m_Location.X, m_Location.Y));
 			var p2 = ViewInfo.MapToControl(new Point(m_Location.Right, m_Location.Bottom));
 
-			Brush borderBrush = new SolidBrush(m_Color);
+			Brush borderBrush = new SolidBrush(Color);
 			var borderPen = new Pen(borderBrush);
 
 			g.DrawRectangle(borderPen, p1.X, p1.Y, p2.X - p1.X, p2.Y - p1.Y);
 
 			if (m_Fill)
 			{
-				Brush fillBrush = new SolidBrush(m_FillColor);
+				Brush fillBrush = new SolidBrush(FillColor);
 
 				g.FillRectangle(fillBrush, p1.X, p1.Y, p2.X - p1.X, p2.Y - p1.Y);
 			}
@@ -165,34 +160,24 @@ namespace TheBox.MapViewer.DrawObjects
 		private Point m_Location;
 
 		/// <summary>
-		///     The color that the cross should use
-		/// </summary>
-		private Color m_Color;
-
-		/// <summary>
 		///     The map on which the object is drawn
 		/// </summary>
 		private readonly Maps m_Map;
 
 		/// <summary>
-		///     The length of a segment composing the cross in pixels
-		/// </summary>
-		private int m_Length;
-
-		/// <summary>
 		///     The color of the cross
 		/// </summary>
-		public Color Color { get { return m_Color; } set { m_Color = value; } }
+		public Color Color { get; set; }
 
 		/// <summary>
 		///     The length of each segment composing the cross ( in pixels )
 		/// </summary>
-		public int Length { get { return m_Length; } set { m_Length = value; } }
+		public int Length { get; set; }
 
 		/// <summary>
 		///     The point at which the cross is drawn
 		/// </summary>
-		public Point Location { get { return m_Location; } set { m_Location = value; } }
+		public Point Location { get => m_Location; set => m_Location = value; }
 
 		/// <summary>
 		///     Creates a cross that is displayed at a given location on a given map
@@ -203,8 +188,8 @@ namespace TheBox.MapViewer.DrawObjects
 		/// <param name="map">The map on which the cross lies on</param>
 		public MapCross(int segmentLength, Color color, Point location, Maps map)
 		{
-			m_Length = segmentLength;
-			m_Color = color;
+			Length = segmentLength;
+			Color = color;
 			m_Location = location;
 			m_Map = map;
 		}
@@ -219,11 +204,15 @@ namespace TheBox.MapViewer.DrawObjects
 		public bool IsVisible(Rectangle bounds, Maps map)
 		{
 			if ((m_Map != map) && (m_Map != Maps.AllMaps))
+			{
 				return false;
+			}
 
 			if ((m_Location.X > bounds.Left) && (m_Location.X < bounds.Right) && (m_Location.Y > bounds.Top) &&
 				(m_Location.Y < bounds.Bottom))
+			{
 				return true;
+			}
 
 			return false;
 		}
@@ -240,11 +229,11 @@ namespace TheBox.MapViewer.DrawObjects
 			var x = p.X;
 			var y = p.Y;
 
-			Brush brush = new SolidBrush(m_Color);
+			Brush brush = new SolidBrush(Color);
 			var pen = new Pen(brush);
 
-			g.DrawLine(pen, x - m_Length, y, x + m_Length, y);
-			g.DrawLine(pen, x, y - m_Length, x, y + m_Length);
+			g.DrawLine(pen, x - Length, y, x + Length, y);
+			g.DrawLine(pen, x, y - Length, x, y + Length);
 		}
 		#endregion
 	}
@@ -267,21 +256,6 @@ namespace TheBox.MapViewer.DrawObjects
 		private Point m_Location;
 
 		/// <summary>
-		///     The radius of the circle
-		/// </summary>
-		private int m_Radius;
-
-		/// <summary>
-		///     The color of the border
-		/// </summary>
-		private Color m_Color;
-
-		/// <summary>
-		///     The color of the fill
-		/// </summary>
-		private Color m_FillColor;
-
-		/// <summary>
 		///     States whether the circle should be filled or not
 		/// </summary>
 		private readonly bool m_Fill;
@@ -289,22 +263,22 @@ namespace TheBox.MapViewer.DrawObjects
 		/// <summary>
 		///     The location of the center of the circle
 		/// </summary>
-		public Point Location { get { return m_Location; } set { m_Location = value; } }
+		public Point Location { get => m_Location; set => m_Location = value; }
 
 		/// <summary>
 		///     The radius of the circle in map units
 		/// </summary>
-		public int Radius { get { return m_Radius; } set { m_Radius = value; } }
+		public int Radius { get; set; }
 
 		/// <summary>
 		///     Gets or sets the color for circle border
 		/// </summary>
-		public Color Color { get { return m_Color; } set { m_Color = value; } }
+		public Color Color { get; set; }
 
 		/// <summary>
 		///     Gets or sets the fill color of the circle
 		/// </summary>
-		public Color FillColor { get { return m_FillColor; } set { m_FillColor = value; } }
+		public Color FillColor { get; set; }
 
 		/// <summary>
 		///     Creates a MapCircle object at a given location, without any fill
@@ -315,10 +289,10 @@ namespace TheBox.MapViewer.DrawObjects
 		/// <param name="color">The color of the border</param>
 		public MapCircle(int radius, Point location, Maps map, Color color)
 		{
-			m_Radius = radius;
+			Radius = radius;
 			m_Map = map;
 			m_Location = location;
-			m_Color = color;
+			Color = color;
 			m_Fill = false;
 		}
 
@@ -332,11 +306,11 @@ namespace TheBox.MapViewer.DrawObjects
 		/// <param name="fillColor">The color of the fill</param>
 		public MapCircle(int radius, Point location, Maps map, Color color, Color fillColor)
 		{
-			m_Radius = radius;
+			Radius = radius;
 			m_Map = map;
 			m_Location = location;
-			m_Color = color;
-			m_FillColor = fillColor;
+			Color = color;
+			FillColor = fillColor;
 			m_Fill = true;
 		}
 
@@ -350,11 +324,15 @@ namespace TheBox.MapViewer.DrawObjects
 		public bool IsVisible(Rectangle bounds, Maps map)
 		{
 			if ((m_Map != map) && (m_Map != Maps.AllMaps))
+			{
 				return false;
+			}
 
-			if ((m_Location.X - m_Radius > bounds.Right) || (m_Location.X + m_Radius < bounds.Left) ||
-				(m_Location.Y - m_Radius > bounds.Bottom) || (m_Location.Y + m_Radius < bounds.Top))
+			if ((m_Location.X - Radius > bounds.Right) || (m_Location.X + Radius < bounds.Left) ||
+				(m_Location.Y - Radius > bounds.Bottom) || (m_Location.Y + Radius < bounds.Top))
+			{
 				return false;
+			}
 
 			return true;
 		}
@@ -372,11 +350,11 @@ namespace TheBox.MapViewer.DrawObjects
 			var x = p.X;
 			var y = p.Y;
 
-			Brush brush = new SolidBrush(m_Color);
+			Brush brush = new SolidBrush(Color);
 			var pen = new Pen(brush);
 
 			// Change radius accordingly to zoom level
-			var radius = ViewInfo.MapToControl(m_Radius);
+			var radius = ViewInfo.MapToControl(Radius);
 
 			// Draw the circle
 			g.DrawEllipse(pen, x - radius, y - radius, radius * 2, radius * 2);
@@ -384,7 +362,7 @@ namespace TheBox.MapViewer.DrawObjects
 			if (m_Fill)
 			{
 				// Fill it
-				brush = new SolidBrush(m_FillColor);
+				brush = new SolidBrush(FillColor);
 				g.FillEllipse(brush, x - radius, y - radius, radius * 2, radius * 2);
 			}
 		}

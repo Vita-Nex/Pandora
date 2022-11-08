@@ -18,7 +18,7 @@ namespace TheBox.Controls
 {
 	public partial class TopBar : UserControl
 	{
-		readonly HuePicker _huePicker;
+		private readonly HuePicker _huePicker;
 
 		public TopBar()
 		{
@@ -69,7 +69,7 @@ namespace TheBox.Controls
 			{
 				// Show screenshot control
 				var form = new CapForm();
-				form.ShowDialog();
+				_ = form.ShowDialog();
 			}
 		}
 
@@ -101,7 +101,9 @@ namespace TheBox.Controls
 		private void numHue_ValueChanged(object sender, EventArgs e)
 		{
 			if (!Created)
+			{
 				return;
+			}
 
 			if (numHue.Value != 0)
 			{

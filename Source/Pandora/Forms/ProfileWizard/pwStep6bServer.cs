@@ -69,7 +69,7 @@ namespace TheBox.Forms.ProfileWizard
 			this.txAddress = new System.Windows.Forms.TextBox();
 			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 			this.grpServer.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numPort)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numPort).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Description
@@ -156,11 +156,11 @@ namespace TheBox.Forms.ProfileWizard
 			// numPort
 			// 
 			this.numPort.Location = new System.Drawing.Point(112, 48);
-			this.numPort.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.numPort.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.numPort.Name = "numPort";
 			this.numPort.Size = new System.Drawing.Size(64, 20);
 			this.numPort.TabIndex = 11;
-			this.numPort.Value = new System.Decimal(new int[] {8035, 0, 0, 0});
+			this.numPort.Value = new decimal(new int[] { 8035, 0, 0, 0 });
 			// 
 			// txAddress
 			// 
@@ -197,7 +197,7 @@ namespace TheBox.Forms.ProfileWizard
 			this.Controls.SetChildIndex(this.grpServer, 0);
 			this.Controls.SetChildIndex(this.linkLabel1, 0);
 			this.grpServer.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numPort)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numPort).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -225,7 +225,7 @@ namespace TheBox.Forms.ProfileWizard
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			var glm = new GenericLongMessage(ProfileWizard.TextProvider["Misc.PassSecurity"]);
-			glm.ShowDialog();
+			_ = glm.ShowDialog();
 		}
 
 		private void pwStep6bServer_ShowStep(object sender, ShowStepEventArgs e)

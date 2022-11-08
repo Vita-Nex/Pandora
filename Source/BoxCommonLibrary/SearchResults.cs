@@ -48,7 +48,7 @@ namespace TheBox.Common
 		/// <summary>
 		///     Gets the number of results found by the search
 		/// </summary>
-		public int Count { get { return m_Results.Count; } }
+		public int Count => m_Results.Count;
 
 		/// <summary>
 		///     Gets the next result in the list
@@ -144,7 +144,7 @@ namespace TheBox.Common
 				}
 				return Node.FullPath.CompareTo(cmp.Node.FullPath);
 			}
-			throw new Exception(string.Format("Cannot compare Result to {0}", obj.GetType().Name));
+			throw new Exception(String.Format("Cannot compare Result to {0}", obj.GetType().Name));
 		}
 		#endregion
 	}

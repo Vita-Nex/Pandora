@@ -23,7 +23,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the spawn requested by Pandora's Box
 		/// </summary>
-		public BoxSpawn Spawn { get { return m_Spawn; } set { m_Spawn = value; } }
+		public BoxSpawn Spawn { get => m_Spawn; set => m_Spawn = value; }
 
 		/// <summary>
 		///     Creates a new SpawnMessage

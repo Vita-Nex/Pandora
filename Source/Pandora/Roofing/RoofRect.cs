@@ -28,10 +28,6 @@ namespace TheBox.Roofing
 	/// </summary>
 	public class RoofRect : ICloneable
 	{
-		private readonly bool m_GoesUp;
-		private readonly bool m_Tent;
-		private readonly bool m_Sloped;
-		private readonly Slope m_Slope;
 
 		/// <summary>
 		///     Gets or sets the rectangle bounds
@@ -41,22 +37,22 @@ namespace TheBox.Roofing
 		/// <summary>
 		///     Gets the orientation of the rectangle
 		/// </summary>
-		public bool GoesUp { get { return m_GoesUp; } }
+		public bool GoesUp { get; }
 
 		/// <summary>
 		///     States whether the rectangle represents a tent roof
 		/// </summary>
-		public bool Tent { get { return m_Tent; } }
+		public bool Tent { get; }
 
 		/// <summary>
 		///     States whether the roof is sloped (half roof)
 		/// </summary>
-		public bool Sloped { get { return m_Sloped; } }
+		public bool Sloped { get; }
 
 		/// <summary>
 		///     Gets the slope type for this roof
 		/// </summary>
-		public Slope Slope { get { return m_Slope; } }
+		public Slope Slope { get; }
 
 		/// <summary>
 		///     Creates a new roofing section rectangle
@@ -69,16 +65,16 @@ namespace TheBox.Roofing
 		public RoofRect(Rectangle rect, bool goesUp, bool tent, bool sloped, Slope slope)
 		{
 			Rectangle = rect;
-			m_GoesUp = goesUp;
-			m_Tent = tent;
-			m_Sloped = sloped;
-			m_Slope = slope;
+			GoesUp = goesUp;
+			Tent = tent;
+			Sloped = sloped;
+			Slope = slope;
 		}
 
 		#region ICloneable Members
 		public object Clone()
 		{
-			return new RoofRect(Rectangle, m_GoesUp, m_Tent, m_Sloped, m_Slope);
+			return new RoofRect(Rectangle, GoesUp, Tent, Sloped, Slope);
 		}
 		#endregion
 	}

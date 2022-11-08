@@ -70,29 +70,29 @@ namespace Ultima
 				return false;
 			}
 
-			pc.BeginAccess();
+			_ = pc.BeginAccess();
 
 			if (lp.PointerX > 0)
 			{
-				pc.Seek(lp.PointerX, SeekOrigin.Begin);
+				_ = pc.Seek(lp.PointerX, SeekOrigin.Begin);
 				x = Read(pc, lp.SizeX);
 			}
 
 			if (lp.PointerY > 0)
 			{
-				pc.Seek(lp.PointerY, SeekOrigin.Begin);
+				_ = pc.Seek(lp.PointerY, SeekOrigin.Begin);
 				y = Read(pc, lp.SizeY);
 			}
 
 			if (lp.PointerZ > 0)
 			{
-				pc.Seek(lp.PointerZ, SeekOrigin.Begin);
+				_ = pc.Seek(lp.PointerZ, SeekOrigin.Begin);
 				z = Read(pc, lp.SizeZ);
 			}
 
 			if (lp.PointerF > 0)
 			{
-				pc.Seek(lp.PointerF, SeekOrigin.Begin);
+				_ = pc.Seek(lp.PointerF, SeekOrigin.Begin);
 				facet = Read(pc, lp.SizeF);
 			}
 
@@ -105,7 +105,7 @@ namespace Ultima
 		{
 			var buffer = new byte[bytes];
 
-			pc.Read(buffer, 0, bytes);
+			_ = pc.Read(buffer, 0, bytes);
 
 			switch (bytes)
 			{
@@ -114,7 +114,7 @@ namespace Ultima
 				case 2:
 					return (short)(buffer[0] | (buffer[1] << 8));
 				case 4:
-					return (buffer[0] | (buffer[1] << 8) | (buffer[2] << 16) | (buffer[3] << 24));
+					return buffer[0] | (buffer[1] << 8) | (buffer[2] << 16) | (buffer[3] << 24);
 			}
 
 			var val = 0;
@@ -139,13 +139,13 @@ namespace Ultima
 			const int chunkSize = 4096;
 			var readSize = chunkSize + mask.Length;
 
-			pc.BeginAccess();
+			_ = pc.BeginAccess();
 
 			var read = new byte[readSize];
 
-			for (var i = 0;; ++i)
+			for (var i = 0; ; ++i)
 			{
-				pc.Seek(0x400000 + (i * chunkSize), SeekOrigin.Begin);
+				_ = pc.Seek(0x400000 + (i * chunkSize), SeekOrigin.Begin);
 				var count = pc.Read(read, 0, readSize);
 
 				if (count != readSize)
@@ -159,7 +159,7 @@ namespace Ultima
 
 					for (var k = 0; ok && k < mask.Length; ++k)
 					{
-						ok = ((read[j + k] & mask[k]) == vals[k]);
+						ok = (read[j + k] & mask[k]) == vals[k];
 					}
 
 					if (ok)
@@ -179,13 +179,13 @@ namespace Ultima
 			const int chunkSize = 4096;
 			var readSize = chunkSize + buffer.Length;
 
-			pc.BeginAccess();
+			_ = pc.BeginAccess();
 
 			var read = new byte[readSize];
 
-			for (var i = 0;; ++i)
+			for (var i = 0; ; ++i)
 			{
-				pc.Seek(0x400000 + (i * chunkSize), SeekOrigin.Begin);
+				_ = pc.Seek(0x400000 + (i * chunkSize), SeekOrigin.Begin);
 				var count = pc.Read(read, 0, readSize);
 
 				if (count != readSize)
@@ -199,7 +199,7 @@ namespace Ultima
 
 					for (var k = 0; ok && k < buffer.Length; ++k)
 					{
-						ok = (buffer[k] == read[j + k]);
+						ok = buffer[k] == read[j + k];
 					}
 
 					if (ok)
@@ -335,18 +335,18 @@ namespace Ultima
 
 		private static void GetCoordDetails(ProcessStream pc, int ptr, byte[] dets, out int coordPointer, out int coordSize)
 		{
-			pc.Seek(ptr + dets[0], SeekOrigin.Begin);
+			_ = pc.Seek(ptr + dets[0], SeekOrigin.Begin);
 			coordPointer = Read(pc, dets[1]);
 
 			if (dets[2] < 0xFF)
 			{
-				pc.Seek(coordPointer, SeekOrigin.Begin);
+				_ = pc.Seek(coordPointer, SeekOrigin.Begin);
 				coordPointer = Read(pc, dets[2]);
 			}
 
 			if (dets[3] < 0xFF)
 			{
-				pc.Seek(ptr + dets[3], SeekOrigin.Begin);
+				_ = pc.Seek(ptr + dets[3], SeekOrigin.Begin);
 				coordPointer += Read(pc, dets[4]);
 			}
 
@@ -400,7 +400,7 @@ namespace Ultima
 		///     Whether or not the Client is currently running.
 		///     <seealso cref="ClientHandle" />
 		/// </summary>
-		public static bool Running { get { return (!Handle.IsInvalid); } }
+		public static bool Running => !Handle.IsInvalid;
 
 		/// <summary>
 		///     Is Client Iris2
@@ -412,7 +412,7 @@ namespace Ultima
 			int value = c;
 			var lParam = 1 | ((NativeMethods.OemKeyScan(value) & 0xFF) << 16) | (0x3 << 30);
 
-			NativeMethods.PostMessage(hWnd, WM_CHAR, value, lParam);
+			_ = NativeMethods.PostMessage(hWnd, WM_CHAR, value, lParam);
 		}
 
 		/// <summary>
@@ -425,7 +425,7 @@ namespace Ultima
 
 			if (!hWnd.IsInvalid)
 			{
-				NativeMethods.SetForegroundWindow(hWnd);
+				_ = NativeMethods.SetForegroundWindow(hWnd);
 
 				return true;
 			}
@@ -433,7 +433,7 @@ namespace Ultima
 		}
 
 		/// <summary>
-		///     Sends a <see cref="string" /> of characters (<paramref name="text" />) to the Client. The string is followed by a
+		///     Sends a <see cref="String" /> of characters (<paramref name="text" />) to the Client. The string is followed by a
 		///     carriage return and line feed.
 		/// </summary>
 		/// <returns>True if the Client is running, false if not.</returns>
@@ -457,10 +457,10 @@ namespace Ultima
 		}
 
 		/// <summary>
-		///     Sends a formatted <see cref="string" /> of characters to the Client. The string is followed by a carriage return
+		///     Sends a formatted <see cref="String" /> of characters to the Client. The string is followed by a carriage return
 		///     and line feed. The format functionality is the same as
 		///     <see
-		///         cref="string.Format">
+		///         cref="String.Format">
 		///         String.Format
 		///     </see>
 		///     .

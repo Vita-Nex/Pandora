@@ -48,12 +48,12 @@ namespace TheBox.Data
 
 		private ArrayList m_Spawns;
 
-		public static bool ExportSpawnInfo { get { return m_ExportSpawnInfo; } set { m_ExportSpawnInfo = value; } }
+		public static bool ExportSpawnInfo { get => m_ExportSpawnInfo; set => m_ExportSpawnInfo = value; }
 
 		[XmlAttribute]
-		public bool Detailed { get { return m_ExportSpawnInfo; } set { m_ExportSpawnInfo = value; } }
+		public bool Detailed { get => m_ExportSpawnInfo; set => m_ExportSpawnInfo = value; }
 
-		public ArrayList Spawns { get { return m_Spawns; } set { m_Spawns = value; } }
+		public ArrayList Spawns { get => m_Spawns; set => m_Spawns = value; }
 
 		public SpawnData()
 		{
@@ -77,13 +77,13 @@ namespace TheBox.Data
 					var data = serializer.Deserialize(stream) as SpawnData;
 					stream.Close();
 
-					Pandora.Log.WriteEntry(string.Format("Read spawn data from {0} succesful", path));
+					Pandora.Log.WriteEntry(String.Format("Read spawn data from {0} succesful", path));
 
 					return data;
 				}
 				catch (Exception err)
 				{
-					Pandora.Log.WriteError(err, string.Format("Couldn't read spawn data from {0}", path));
+					Pandora.Log.WriteError(err, String.Format("Couldn't read spawn data from {0}", path));
 					return null;
 				}
 			}
@@ -150,16 +150,16 @@ namespace TheBox.Data
 
 		#region Properties
 		[XmlAttribute]
-		public int Map { get { return m_Map; } set { m_Map = value; } }
+		public int Map { get => m_Map; set => m_Map = value; }
 
 		[XmlAttribute]
-		public int X { get { return m_X; } set { m_X = value; } }
+		public int X { get => m_X; set => m_X = value; }
 
 		[XmlAttribute]
-		public int Y { get { return m_Y; } set { m_Y = value; } }
+		public int Y { get => m_Y; set => m_Y = value; }
 
 		[XmlAttribute]
-		public int Z { get { return m_Z; } set { m_Z = value; } }
+		public int Z { get => m_Z; set => m_Z = value; }
 
 		[XmlAttribute]
 		public int Count
@@ -167,10 +167,13 @@ namespace TheBox.Data
 			get
 			{
 				if (SpawnData.ExportSpawnInfo)
+				{
 					return m_Count;
+				}
+
 				return -1;
 			}
-			set { m_Count = value; }
+			set => m_Count = value;
 		}
 
 		[XmlAttribute]
@@ -179,10 +182,13 @@ namespace TheBox.Data
 			get
 			{
 				if (SpawnData.ExportSpawnInfo)
+				{
 					return m_Range;
+				}
+
 				return -1;
 			}
-			set { m_Range = value; }
+			set => m_Range = value;
 		}
 
 		[XmlAttribute]
@@ -191,10 +197,13 @@ namespace TheBox.Data
 			get
 			{
 				if (SpawnData.ExportSpawnInfo)
+				{
 					return m_MinDelay.TotalSeconds;
+				}
+
 				return -1;
 			}
-			set { m_MinDelay = TimeSpan.FromSeconds(value); }
+			set => m_MinDelay = TimeSpan.FromSeconds(value);
 		}
 
 		[XmlAttribute]
@@ -203,10 +212,13 @@ namespace TheBox.Data
 			get
 			{
 				if (SpawnData.ExportSpawnInfo)
+				{
 					return m_MaxDelay.TotalSeconds;
+				}
+
 				return -1;
 			}
-			set { m_MaxDelay = TimeSpan.FromSeconds(value); }
+			set => m_MaxDelay = TimeSpan.FromSeconds(value);
 		}
 
 		[XmlAttribute]
@@ -215,10 +227,13 @@ namespace TheBox.Data
 			get
 			{
 				if (SpawnData.ExportSpawnInfo)
+				{
 					return m_Team;
+				}
+
 				return -1;
 			}
-			set { m_Team = value; }
+			set => m_Team = value;
 		}
 
 		[XmlAttribute]
@@ -247,14 +262,10 @@ namespace TheBox.Data
 		}
 
 		[XmlIgnore]
-		public string Names { get { return m_Names; } set { m_Names = value; } }
+		public string Names { get => m_Names; set => m_Names = value; }
 		#endregion
 
-		public string ToolTipDetailed
-		{
-			get
-			{
-				return string.Format(
+		public string ToolTipDetailed => String.Format(
 					Pandora.Localization.TextProvider["Travel.SpawnTipDetailed"],
 					m_Count,
 					m_Range,
@@ -266,7 +277,5 @@ namespace TheBox.Data
 					m_MaxDelay.Minutes,
 					m_MaxDelay.Seconds,
 					m_Names);
-			}
-		}
 	}
 }

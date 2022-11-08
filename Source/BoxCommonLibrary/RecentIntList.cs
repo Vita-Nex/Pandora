@@ -33,16 +33,20 @@ namespace TheBox.Common
 		[XmlAttribute]
 		public int Capacity
 		{
-			get { return m_Capacity; }
+			get => m_Capacity;
 			set
 			{
 				m_Capacity = value;
 
 				if (m_Capacity < 1)
+				{
 					m_Capacity = 1;
+				}
 
 				while (m_List.Count > m_Capacity)
+				{
 					m_List.RemoveAt(m_List.Count - 1);
+				}
 			}
 		}
 
@@ -51,10 +55,10 @@ namespace TheBox.Common
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<int> List
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_List; }
-			set { m_List = value; }
+			get => m_List;
+			set => m_List = value;
 		}
 
 		/// <summary>
@@ -76,8 +80,10 @@ namespace TheBox.Common
 			get
 			{
 				if (index < m_List.Count)
+				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					return m_List[index];
+				}
 				// Issue 10 - End
 				return 0;
 			}
@@ -92,7 +98,9 @@ namespace TheBox.Common
 			if (m_List.Count < m_Capacity)
 			{
 				if (m_List.Contains(value))
-					m_List.Remove(value);
+				{
+					_ = m_List.Remove(value);
+				}
 
 				m_List.Insert(0, value);
 			}
@@ -100,7 +108,7 @@ namespace TheBox.Common
 			{
 				if (m_List.Contains(value))
 				{
-					m_List.Remove(value);
+					_ = m_List.Remove(value);
 				}
 				else
 				{
@@ -123,10 +131,7 @@ namespace TheBox.Common
 		/// </summary>
 		protected virtual void OnListChanged(EventArgs e)
 		{
-			if (ListChanged != null)
-			{
-				ListChanged(this, e);
-			}
+			ListChanged?.Invoke(this, e);
 		}
 	}
 }

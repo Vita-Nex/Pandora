@@ -26,12 +26,12 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the list of hues to be used for the tiled items
 		/// </summary>
-		public ArrayList Hues { get { return m_Hues; } set { m_Hues = value; } }
+		public ArrayList Hues { get => m_Hues; set => m_Hues = value; }
 
 		/// <summary>
 		///     Gets or sets the list of items that can be randomly picked
 		/// </summary>
-		public ArrayList Items { get { return m_Items; } set { m_Items = value; } }
+		public ArrayList Items { get => m_Items; set => m_Items = value; }
 
 		public RandomItem()
 		{
@@ -49,7 +49,7 @@ namespace TheBox.BoxServer
 		public RandomItem(RandomTilesList tileset, int hue)
 			: this()
 		{
-			m_Hues.Add(hue);
+			_ = m_Hues.Add(hue);
 			m_Items.AddRange(tileset.Tiles);
 		}
 

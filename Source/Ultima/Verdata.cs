@@ -83,7 +83,7 @@ namespace Ultima
 					Stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
 				}
 			}
-			Stream.Seek(lookup, SeekOrigin.Begin);
+			_ = Stream.Seek(lookup, SeekOrigin.Begin);
 		}
 	}
 

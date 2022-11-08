@@ -27,7 +27,7 @@ namespace TheBox.Common
 		{
 			var fi = new FileIcon(file);
 
-			fi.Flags = fi.Flags | SHGetFileInfoConstants.SHGFI_SMALLICON &
+			fi.Flags |= SHGetFileInfoConstants.SHGFI_SMALLICON &
 					   ~(SHGetFileInfoConstants.SHGFI_DISPLAYNAME | SHGetFileInfoConstants.SHGFI_TYPENAME |
 						 SHGetFileInfoConstants.SHGFI_ATTRIBUTES | SHGetFileInfoConstants.SHGFI_EXETYPE);
 
@@ -76,7 +76,7 @@ namespace TheBox.Common
 		private const int FORMAT_MESSAGE_MAX_WIDTH_MASK = 0xFF;
 
 		[DllImport("kernel32")]
-		private extern static int FormatMessage(
+		private static extern int FormatMessage(
 			int dwFlags,
 			IntPtr lpSource,
 			int dwMessageId,
@@ -86,13 +86,10 @@ namespace TheBox.Common
 			int argumentsLong);
 
 		[DllImport("kernel32")]
-		private extern static int GetLastError();
+		private static extern int GetLastError();
 		#endregion
 
 		#region Member Variables
-		private string displayName;
-		private string typeName;
-		private Icon fileIcon;
 		#endregion
 
 		#region Enumerations
@@ -200,9 +197,9 @@ namespace TheBox.Common
 		/// </summary>
 		public void Dispose()
 		{
-			if (fileIcon != null)
+			if (ShellIcon != null)
 			{
-				fileIcon.Dispose();
+				ShellIcon.Dispose();
 			}
 		}
 
@@ -219,19 +216,19 @@ namespace TheBox.Common
 		/// <summary>
 		///     Gets the icon for the chosen file
 		/// </summary>
-		public Icon ShellIcon { get { return fileIcon; } }
+		public Icon ShellIcon { get; private set; }
 
 		/// <summary>
 		///     Gets the display name for the selected file
 		///     if the SHGFI_DISPLAYNAME flag was set.
 		/// </summary>
-		public string DisplayName { get { return displayName; } }
+		public string DisplayName { get; private set; }
 
 		/// <summary>
 		///     Gets the type name for the selected file
 		///     if the SHGFI_TYPENAME flag was set.
 		/// </summary>
-		public string TypeName { get { return typeName; } }
+		public string TypeName { get; private set; }
 
 		/// <summary>
 		///     Gets the information for the specified
@@ -239,28 +236,28 @@ namespace TheBox.Common
 		/// </summary>
 		public void GetInfo()
 		{
-			if (fileIcon != null)
+			if (ShellIcon != null)
 			{
-				fileIcon.Dispose();
+				ShellIcon.Dispose();
 			}
-			fileIcon = null;
-			typeName = "";
-			displayName = "";
+			ShellIcon = null;
+			TypeName = "";
+			DisplayName = "";
 
 			var shfi = new SHFILEINFO();
 			var shfiSize = (uint)Marshal.SizeOf(shfi.GetType());
 
-			var ret = SHGetFileInfo(FileName, 0, ref shfi, shfiSize, (uint)(Flags));
+			var ret = SHGetFileInfo(FileName, 0, ref shfi, shfiSize, (uint)Flags);
 			if (ret != 0)
 			{
 				if (shfi.hIcon != IntPtr.Zero)
 				{
-					fileIcon = Icon.FromHandle(shfi.hIcon);
+					ShellIcon = Icon.FromHandle(shfi.hIcon);
 					// Now owned by the GDI+ object
 					//DestroyIcon(shfi.hIcon);
 				}
-				typeName = shfi.szTypeName;
-				displayName = shfi.szDisplayName;
+				TypeName = shfi.szTypeName;
+				DisplayName = shfi.szDisplayName;
 			}
 			else
 			{

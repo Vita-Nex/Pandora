@@ -24,13 +24,11 @@ namespace TheBox.Common
 	{
 		#region Imports
 		private const int WM_CHAR = 0x0102;
-
-		const byte VK_SHIFT = 0x10;
-		const byte VK_CONTROL = 0x11;
-		const byte VK_ALT = 0xA4;
-
-		const byte KEYEVENTF_EXTENDEDKEY = 0x1;
-		const byte KEYEVENTF_KEYUP = 0x2;
+		private const byte VK_SHIFT = 0x10;
+		private const byte VK_CONTROL = 0x11;
+		private const byte VK_ALT = 0xA4;
+		private const byte KEYEVENTF_EXTENDEDKEY = 0x1;
+		private const byte KEYEVENTF_KEYUP = 0x2;
 
 		[DllImport("User32")]
 		private static extern IntPtr FindWindow(string lpszClassName, string lpszWindowName);
@@ -56,7 +54,7 @@ namespace TheBox.Common
 		/// </summary>
 		public static string CustomClientPath
 		{
-			get { return m_CustomClientPath; }
+			get => m_CustomClientPath;
 			set
 			{
 				if (value == null || File.Exists(value))
@@ -89,9 +87,11 @@ namespace TheBox.Common
 
 			// We have a window
 			foreach (var c in message.ToCharArray())
-				SendMessage(handle.ToInt32(), WM_CHAR, c, 0);
+			{
+				_ = SendMessage(handle.ToInt32(), WM_CHAR, c, 0);
+			}
 
-			SetForegroundWindow(handle.ToInt32());
+			_ = SetForegroundWindow(handle.ToInt32());
 			return true;
 		}
 
@@ -101,7 +101,9 @@ namespace TheBox.Common
 		private static void FindCustomClient()
 		{
 			if (m_ClientProcess != null)
+			{
 				return; // Current client process is valid
+			}
 
 			if (m_CustomClientPath != null && File.Exists(m_CustomClientPath))
 			{
@@ -143,7 +145,7 @@ namespace TheBox.Common
 		{
 			var key = (int)macroKey;
 
-			if (key > byte.MaxValue)
+			if (key > Byte.MaxValue)
 			{
 				return;
 			}
@@ -154,25 +156,41 @@ namespace TheBox.Common
 
 			if (hwnd != 0)
 			{
-				SetForegroundWindow(hwnd);
-				SetFocus(hwnd);
+				_ = SetForegroundWindow(hwnd);
+				_ = SetFocus(hwnd);
 
 				if (ctrl)
+				{
 					keybd_event(VK_CONTROL, 0, KEYEVENTF_EXTENDEDKEY, 0);
+				}
+
 				if (shift)
+				{
 					keybd_event(VK_SHIFT, 0, KEYEVENTF_EXTENDEDKEY, 0);
+				}
+
 				if (alt)
+				{
 					keybd_event(VK_ALT, 0, KEYEVENTF_EXTENDEDKEY, 0);
+				}
 
 				keybd_event(macroChar, 0, 0, 0);
 				keybd_event(macroChar, 0, KEYEVENTF_KEYUP, 0);
 
 				if (ctrl)
+				{
 					keybd_event(VK_CONTROL, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+				}
+
 				if (shift)
+				{
 					keybd_event(VK_SHIFT, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+				}
+
 				if (alt)
+				{
 					keybd_event(VK_ALT, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+				}
 			}
 		}
 
@@ -210,9 +228,11 @@ namespace TheBox.Common
 			var handle = GetClientWindow();
 
 			if (handle.ToInt32() == 0)
+			{
 				return;
+			}
 
-			SetForegroundWindow(handle.ToInt32());
+			_ = SetForegroundWindow(handle.ToInt32());
 		}
 
 		/// <summary>
@@ -221,7 +241,7 @@ namespace TheBox.Common
 		/// <param name="handle">A pointer to the window handle</param>
 		public static void BringWindowToFront(IntPtr handle)
 		{
-			SetForegroundWindow(handle.ToInt32());
+			_ = SetForegroundWindow(handle.ToInt32());
 		}
 
 		/// <summary>
@@ -231,9 +251,11 @@ namespace TheBox.Common
 		public static void EnsureDirectory(string path)
 		{
 			if (!Directory.Exists(path))
-				Directory.CreateDirectory(path);
+			{
+				_ = Directory.CreateDirectory(path);
+			}
 		}
-		
+
 		/// <summary>
 		///     Validates a number ensuring it's withing the supplied bounds
 		/// </summary>
@@ -244,10 +266,14 @@ namespace TheBox.Common
 		public static int ValidateNumber(int value, int min, int max)
 		{
 			if (value < min)
+			{
 				return min;
+			}
 
 			if (value > max)
+			{
 				return max;
+			}
 
 			return value;
 		}
@@ -336,7 +362,7 @@ namespace TheBox.Common
 			var fStream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.Read);
 
 			var data = new byte[stream.Length];
-			stream.Read(data, 0, (int)stream.Length);
+			_ = stream.Read(data, 0, (int)stream.Length);
 
 			fStream.Write(data, 0, data.Length);
 
@@ -355,12 +381,16 @@ namespace TheBox.Common
 		public static object GetEmbeddedObject(Type type, string resource, Assembly asm)
 		{
 			if (resource == null || resource.Length == 0)
+			{
 				return null;
+			}
 
 			var stream = asm.GetManifestResourceStream(resource);
 
 			if (stream == null)
+			{
 				return null;
+			}
 
 			var serializer = new XmlSerializer(type);
 			object obj = null;
@@ -386,7 +416,10 @@ namespace TheBox.Common
 			var parts = path.Split(Path.DirectorySeparatorChar);
 
 			if (parts.Length == 0)
+			{
 				return null;
+			}
+
 			return parts[parts.Length - 1];
 		}
 
@@ -430,7 +463,9 @@ namespace TheBox.Common
 					var destDir = Path.Combine(dest, name);
 
 					if (!CopyDirectory(folder, destDir))
+					{
 						return false;
+					}
 				}
 				else
 				{

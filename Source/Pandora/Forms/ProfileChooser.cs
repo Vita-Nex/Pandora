@@ -40,21 +40,17 @@ namespace TheBox.Forms
 			MakeNewProfile
 		}
 
-		private string m_SelectedProfile;
-
 		/// <summary>
 		///     Gets the profile selected by the user
 		/// </summary>
-		public string SelectedProfile { get { return m_SelectedProfile; } }
+		public string SelectedProfile { get; private set; }
 
-		public bool UseDefault { get { return chkDefault.Checked; } }
-
-		private Actions m_Action = Actions.Exit;
+		public bool UseDefault => chkDefault.Checked;
 
 		/// <summary>
 		///     Gets the action that should be performed after the chooser form is closed
 		/// </summary>
-		public Actions Action { get { return m_Action; } }
+		public Actions Action { get; private set; } = Actions.Exit;
 
 		private Button bNew;
 		private Button bChoose;
@@ -80,7 +76,7 @@ namespace TheBox.Forms
 
 			foreach (var s in profileManager.ProfileNames)
 			{
-				list.Items.Add(s);
+				_ = list.Items.Add(s);
 			}
 		}
 
@@ -174,7 +170,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.bChoose);
 			this.Controls.Add(this.bNew);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "ProfileChooser";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -189,14 +185,14 @@ namespace TheBox.Forms
 
 		private void list_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			bChoose.Enabled = (list.SelectedIndex != -1);
-			chkDefault.Enabled = (list.SelectedIndex != -1);
+			bChoose.Enabled = list.SelectedIndex != -1;
+			chkDefault.Enabled = list.SelectedIndex != -1;
 		}
 
 		private void bChoose_Click(object sender, EventArgs e)
 		{
-			m_SelectedProfile = (string)list.SelectedItem;
-			m_Action = Actions.LoadProfile;
+			SelectedProfile = (string)list.SelectedItem;
+			Action = Actions.LoadProfile;
 
 			// Must be handled from dialog user
 			//if ( chkDefault.Checked )
@@ -207,13 +203,13 @@ namespace TheBox.Forms
 
 		private void bNew_Click(object sender, EventArgs e)
 		{
-			m_Action = Actions.MakeNewProfile;
+			Action = Actions.MakeNewProfile;
 			Close();
 		}
 
 		private void bExit_Click(object sender, EventArgs e)
 		{
-			m_Action = Actions.Exit;
+			Action = Actions.Exit;
 			Close();
 		}
 

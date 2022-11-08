@@ -443,13 +443,8 @@ namespace Ultima
 
 			var fileType = BodyConverter.Convert(ref body);
 
-			FileIndex fileIndex;
-			int index;
-			GetFileIndex(body, action, direction, fileType, out fileIndex, out index);
-
-			int length, extra;
-			bool patched;
-			var stream = fileIndex.Seek(index, out length, out extra, out patched);
+			GetFileIndex(body, action, direction, fileType, out var fileIndex, out var index);
+			var stream = fileIndex.Seek(index, out var length, out _, out _);
 
 			if (stream == null)
 			{
@@ -459,7 +454,7 @@ namespace Ultima
 			{
 				m_StreamBuffer = new byte[length];
 			}
-			stream.Read(m_StreamBuffer, 0, length);
+			_ = stream.Read(m_StreamBuffer, 0, length);
 			m_MemoryStream = new MemoryStream(m_StreamBuffer, false);
 
 			var flip = direction > 4;
@@ -506,7 +501,7 @@ namespace Ultima
 
 				for (var i = 0; i < frameCount; ++i)
 				{
-					bin.BaseStream.Seek(lookups[i], SeekOrigin.Begin);
+					_ = bin.BaseStream.Seek(lookups[i], SeekOrigin.Begin);
 					frames[i] = new Frame(palette, bin, flip);
 
 					if (hueObject != null)
@@ -528,14 +523,8 @@ namespace Ultima
 
 		public static Frame[] GetAnimation(int body, int action, int direction, int fileType)
 		{
-			FileIndex fileIndex;
-			int index;
-			GetFileIndex(body, action, direction, fileType, out fileIndex, out index);
-
-			int length, extra;
-			bool patched;
-
-			var stream = fileIndex.Seek(index, out length, out extra, out patched);
+			GetFileIndex(body, action, direction, fileType, out var fileIndex, out var index);
+			var stream = fileIndex.Seek(index, out _, out _, out _);
 
 			if (stream == null)
 			{
@@ -567,7 +556,7 @@ namespace Ultima
 
 				for (var i = 0; i < frameCount; ++i)
 				{
-					bin.BaseStream.Seek(lookups[i], SeekOrigin.Begin);
+					_ = bin.BaseStream.Seek(lookups[i], SeekOrigin.Begin);
 					frames[i] = new Frame(palette, bin, flip);
 				}
 
@@ -662,13 +651,8 @@ namespace Ultima
 		{
 			Translate(ref body);
 			var fileType = BodyConverter.Convert(ref body);
-			FileIndex fileIndex;
-			int index;
-			GetFileIndex(body, action, direction, fileType, out fileIndex, out index);
-
-			int length, extra;
-			bool patched;
-			var valid = fileIndex.Valid(index, out length, out extra, out patched);
+			GetFileIndex(body, action, direction, fileType, out var fileIndex, out var index);
+			var valid = fileIndex.Valid(index, out var length, out _, out _);
 			if ((!valid) || (length < 1))
 			{
 				return false;
@@ -686,13 +670,8 @@ namespace Ultima
 		/// <returns></returns>
 		public static bool IsAnimDefinied(int body, int action, int dir, int fileType)
 		{
-			FileIndex fileIndex;
-			int index;
-			GetFileIndex(body, action, dir, fileType, out fileIndex, out index);
-
-			int length, extra;
-			bool patched;
-			var stream = fileIndex.Seek(index, out length, out extra, out patched);
+			GetFileIndex(body, action, dir, fileType, out var fileIndex, out var index);
+			var stream = fileIndex.Seek(index, out var length, out _, out _);
 			var def = true;
 			if ((stream == null) || (length == 0))
 			{
@@ -717,19 +696,19 @@ namespace Ultima
 			{
 				default:
 				case 1:
-					count = 400 + (int)(m_FileIndex.IdxLength - 35000 * 12) / (12 * 175);
+					count = 400 + ((int)(m_FileIndex.IdxLength - (35000 * 12)) / (12 * 175));
 					break;
 				case 2:
-					count = 200 + (int)(m_FileIndex2.IdxLength - 22000 * 12) / (12 * 65);
+					count = 200 + ((int)(m_FileIndex2.IdxLength - (22000 * 12)) / (12 * 65));
 					break;
 				case 3:
-					count = 400 + (int)(m_FileIndex3.IdxLength - 35000 * 12) / (12 * 175);
+					count = 400 + ((int)(m_FileIndex3.IdxLength - (35000 * 12)) / (12 * 175));
 					break;
 				case 4:
-					count = 400 + (int)(m_FileIndex4.IdxLength - 35000 * 12) / (12 * 175);
+					count = 400 + ((int)(m_FileIndex4.IdxLength - (35000 * 12)) / (12 * 175));
 					break;
 				case 5:
-					count = 400 + (int)(m_FileIndex5.IdxLength - 35000 * 12) / (12 * 175);
+					count = 400 + ((int)(m_FileIndex5.IdxLength - (35000 * 12)) / (12 * 175));
 					break;
 			}
 			return count;
@@ -743,7 +722,7 @@ namespace Ultima
 		/// <returns></returns>
 		public static int GetAnimLength(int body, int fileType)
 		{
-			var length = 0;
+			int length;
 			switch (fileType)
 			{
 				default:
@@ -923,7 +902,7 @@ namespace Ultima
 			}
 			else
 			{
-				index += direction - (direction - 4) * 2;
+				index += direction - ((direction - 4) * 2);
 			}
 		}
 
@@ -979,7 +958,7 @@ namespace Ultima
 			int header;
 
 			var xBase = xCenter - 0x200;
-			var yBase = (yCenter + height) - 0x200;
+			var yBase = yCenter + height - 0x200;
 
 			if (!flip)
 			{

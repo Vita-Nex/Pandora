@@ -99,7 +99,10 @@ namespace TheBox.Forms
 			get
 			{
 				if (txSearchString.Text == "")
+				{
 					return null;
+				}
+
 				return txSearchString.Text;
 			}
 		}
@@ -109,7 +112,10 @@ namespace TheBox.Forms
 			get
 			{
 				if (txSearchString.Text == "")
+				{
 					return -1;
+				}
+
 				var i = -1;
 
 				try
@@ -126,7 +132,7 @@ namespace TheBox.Forms
 		/// <summary>
 		///     Gets a value stating whether to search for IDs. Valid only for deco items.
 		/// </summary>
-		public bool SearchForIDs { get { return rID.Checked; } }
+		public bool SearchForIDs => rID.Checked;
 
 		/// <summary>
 		///     Clean up any resources being used.
@@ -225,7 +231,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.rName);
 			this.Controls.Add(this.txSearchString);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "SearchForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -257,7 +263,7 @@ namespace TheBox.Forms
 
 		private void SearchForm_Load(object sender, EventArgs e)
 		{
-			txSearchString.Focus();
+			_ = txSearchString.Focus();
 		}
 
 		private void txSearchString_KeyDown(object sender, KeyEventArgs e)

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxCommonLibrary", "Source\BoxCommonLibrary\BoxCommonLibrary.csproj", "{42C26843-2517-44D5-9ADF-EF5310D7E5B0}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -39,6 +39,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrMsgBox", "Source\ErrMsgBox\ErrMsgBox.csproj", "{FCE8364F-68D4-437A-AAC5-03BF4D6BC4C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultima", "Source\Ultima\Ultima.csproj", "{E08CFBE4-E013-44EE-8829-426D05BC083F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7704F4F-82A0-4E3E-B1BF-9E16B85DB34C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,5 +191,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {494E3B54-054C-4294-99FC-DD74D58365AC}
 	EndGlobalSection
 EndGlobal

@@ -21,6 +21,6 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the filename to be retrieved, relative to the RunUO path
 		/// </summary>
-		public string Filename { get { return m_Filename; } set { m_Filename = value; } }
+		public string Filename { get => m_Filename; set => m_Filename = value; }
 	}
 }

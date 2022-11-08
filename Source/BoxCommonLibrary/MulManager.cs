@@ -65,26 +65,34 @@ namespace TheBox.Common
 				if (Directory.Exists(directory))
 				{
 					if (File.Exists(directory + @"\client.exe"))
+					{
 						WriteRegistryKey(directory);
+					}
 				}
 				else
 				{
 					directory = @"C:\Programmi\EA Games\Ultima Online 2D Client";
 					if (Directory.Exists(directory + @"\client.exe"))
+					{
 						WriteRegistryKey(directory);
+					}
 					else
 					{
-						ErrMsgBox.Show(
+						_ = ErrMsgBox.Show(
 							"The automatic search failed to find the folder, please specify the path manually",
 							"Folder not found");
 						if (!SetCustomPath())
+						{
 							return false;
+						}
 					}
 				}
 				return true;
 			}
 			if (reply == DialogResult.No && SetCustomPath())
+			{
 				return true;
+			}
 
 			return false;
 		}
@@ -106,7 +114,9 @@ namespace TheBox.Common
 					"Wrong Folder",
 					MessageBoxButtons.YesNo);
 				if (result == DialogResult.Yes)
+				{
 					return SetCustomPath();
+				}
 			}
 			return false;
 		}
@@ -125,7 +135,7 @@ namespace TheBox.Common
 		/// <summary>
 		///     Gets the files supported by Pandora's Box
 		/// </summary>
-		public string[] SupportedFiles { get { return m_Files; } }
+		public string[] SupportedFiles => m_Files;
 
 		private readonly string m_2DFolder;
 		private readonly string m_3DFolder;
@@ -142,7 +152,7 @@ namespace TheBox.Common
 			// Issues 43 - Problems when the client path isn't found - http://code.google.com/p/pandorasbox3/issues/detail?id=43 - Smjert
 			if (m_2DFolder == null && !FixClientPath())
 			{
-				ErrMsgBox.Show("Impossible to load game files", "Error");
+				_ = ErrMsgBox.Show("Impossible to load game files", "Error");
 				Environment.Exit(1);
 			}
 			// Issues 43 - End
@@ -231,17 +241,21 @@ namespace TheBox.Common
 				using (var key = Registry.LocalMachine.OpenSubKey(String.Format(@"SOFTWARE\Origin Worlds Online\{0}\1.0", subName)))
 				{
 					if (key == null)
+					{
 						return null;
+					}
 
-					var v = key.GetValue("ExePath") as string;
-
-					if (v == null || v.Length <= 0 || !File.Exists(v))
+					if (!(key.GetValue("ExePath") is string v) || v.Length <= 0 || !File.Exists(v))
+					{
 						return null;
+					}
 
 					v = Path.GetDirectoryName(v);
 
 					if (v == null)
+					{
 						return null;
+					}
 
 					return v;
 				}
@@ -322,8 +336,8 @@ namespace TheBox.Common
 		[XmlIgnore]
 		public string this[string format, params object[] args]
 		{
-			get { return this[string.Format(format, args)]; }
-			set { this[string.Format(format, args)] = value; }
+			get => this[String.Format(format, args)];
+			set => this[String.Format(format, args)] = value;
 		}
 	}
 }

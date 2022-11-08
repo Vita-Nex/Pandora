@@ -88,11 +88,6 @@ namespace TheBox.Controls
 		private Point m_RectEnd;
 
 		/// <summary>
-		///     The color used to draw the selected rectangle
-		/// </summary>
-		private Color m_RectColor = Color.Red;
-
-		/// <summary>
 		///     States whether a rectangle is being drawn
 		/// </summary>
 		private bool m_DrawingRect;
@@ -129,7 +124,7 @@ namespace TheBox.Controls
 		[Category("UOGrid"), Description("The color of the grid lines")]
 		public virtual Color GridColor
 		{
-			get { return m_GridColor; }
+			get => m_GridColor;
 			set
 			{
 				if (m_GridColor != value)
@@ -146,7 +141,7 @@ namespace TheBox.Controls
 		[Category("UOGrid"), Description("The color for a cell when it's in selected state")]
 		public virtual Color SelectedCellColor
 		{
-			get { return m_SelectedCellColor; }
+			get => m_SelectedCellColor;
 			set
 			{
 				if (m_SelectedCellColor == value)
@@ -163,7 +158,7 @@ namespace TheBox.Controls
 		[Category("UOGrid"), Description("The color used for a cell when the mouse is moving over it")]
 		public virtual Color MouseOverColor
 		{
-			get { return m_MouseOverColor; }
+			get => m_MouseOverColor;
 			set
 			{
 				if (m_MouseOverColor != value)
@@ -178,7 +173,7 @@ namespace TheBox.Controls
 		/// <summary>
 		/// Gets or sets the color used to draw the selection rectanlge
 		/// </summary>
-		public Color RectColor { get { return m_RectColor; } set { m_RectColor = value; } }
+		public Color RectColor { get; set; } = Color.Red;
 		#endregion
 
 		#region Public Properties
@@ -188,7 +183,7 @@ namespace TheBox.Controls
 		/// </summary>
 		public virtual int GridSpacing
 		{
-			get { return m_GridSpacing; }
+			get => m_GridSpacing;
 			set
 			{
 				if (m_GridSpacing != value)
@@ -206,17 +201,17 @@ namespace TheBox.Controls
 		/// <summary>
 		/// Gets or sets the current drawing mode
 		/// </summary>
-		public GridMode GridMode { get { return m_GridMode; } set { m_GridMode = value; } }
+		public GridMode GridMode { get => m_GridMode; set => m_GridMode = value; }
 
 		/// <summary>
 		///     Gets or sets the color table used for the display of the items in the matrix
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public virtual Dictionary<int, int> ColorTable
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_ColorTable; }
-			set { m_ColorTable = value; }
+			get => m_ColorTable;
+			set => m_ColorTable = value;
 		}
 		#endregion
 
@@ -230,8 +225,8 @@ namespace TheBox.Controls
 			{
 				if (m_Matrix == null)
 				{
-					var width = Width / m_GridSpacing + 1;
-					var height = Height / m_GridSpacing + 1;
+					var width = (Width / m_GridSpacing) + 1;
+					var height = (Height / m_GridSpacing) + 1;
 
 					m_Matrix = new UOMatrix(width, height);
 				}
@@ -242,7 +237,7 @@ namespace TheBox.Controls
 		/// <summary>
 		///     Gets the size in pixels of a cell
 		/// </summary>
-		protected virtual Size CellSize { get { return new Size(m_GridSpacing, m_GridSpacing); } }
+		protected virtual Size CellSize => new Size(m_GridSpacing, m_GridSpacing);
 		#endregion
 
 		/// <summary>
@@ -274,10 +269,12 @@ namespace TheBox.Controls
 						if (item != 0)
 						{
 							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-							int c;
 
-							if (m_ColorTable.TryGetValue(item, out c))
+							if (m_ColorTable.TryGetValue(item, out var c))
+							{
 								return;
+							}
+
 							object o = c;
 							if (o == null)
 							{
@@ -321,7 +318,7 @@ namespace TheBox.Controls
 				var w = (r.Width + 1) * m_GridSpacing;
 				var h = (r.Height + 1) * m_GridSpacing;
 
-				var rectPen = new Pen(m_RectColor);
+				var rectPen = new Pen(RectColor);
 
 				g.DrawRectangle(rectPen, x, y, w, h);
 
@@ -417,8 +414,8 @@ namespace TheBox.Controls
 		/// </summary>
 		protected void ResizeMatrix()
 		{
-			var width = Width / m_GridSpacing + 1;
-			var height = Height / m_GridSpacing + 1;
+			var width = (Width / m_GridSpacing) + 1;
+			var height = (Height / m_GridSpacing) + 1;
 
 			Matrix.Width = width;
 			Matrix.Height = height;
@@ -454,10 +451,7 @@ namespace TheBox.Controls
 
 			if (m_GridMode == GridMode.Single)
 			{
-				if (GridClick != null)
-				{
-					GridClick(this, new GridClickEventArgs(cell));
-				}
+				GridClick?.Invoke(this, new GridClickEventArgs(cell));
 			}
 			else if (m_GridMode == GridMode.Rectanlge)
 			{
@@ -485,10 +479,7 @@ namespace TheBox.Controls
 				// End rectangle drawing
 				if (m_RectStart != m_RectEnd)
 				{
-					if (GridRect != null)
-					{
-						GridRect(this, new GridRectEventArgs(GetRect(m_RectStart, m_RectEnd)));
-					}
+					GridRect?.Invoke(this, new GridRectEventArgs(GetRect(m_RectStart, m_RectEnd)));
 				}
 			}
 		}
@@ -520,31 +511,27 @@ namespace TheBox.Controls
 
 	public class GridClickEventArgs : EventArgs
 	{
-		private readonly Point m_Cell;
-
 		/// <summary>
 		///     Gets the cell that has been clicked
 		/// </summary>
-		public Point Cell { get { return m_Cell; } }
+		public Point Cell { get; }
 
 		public GridClickEventArgs(Point cell)
 		{
-			m_Cell = cell;
+			Cell = cell;
 		}
 	}
 
 	public class GridRectEventArgs : EventArgs
 	{
-		private readonly Rectangle m_Rect;
-
 		/// <summary>
 		///     Gets the Rectangle selected
 		/// </summary>
-		public Rectangle Rect { get { return m_Rect; } }
+		public Rectangle Rect { get; }
 
 		public GridRectEventArgs(Rectangle rect)
 		{
-			m_Rect = rect;
+			Rect = rect;
 		}
 	}
 

@@ -125,7 +125,7 @@ namespace TheBox.Controls.Params
 				{
 					if (m_Param1 != null && m_Param2 != null)
 					{
-						pms = string.Format("{0} {1}", m_Param1.Value, m_Param2.Value);
+						pms = String.Format("{0} {1}", m_Param1.Value, m_Param2.Value);
 					}
 					else if (m_Param1 != null)
 					{
@@ -422,7 +422,9 @@ namespace TheBox.Controls.Params
 		private void chkUse_CheckedChanged(object sender, EventArgs e)
 		{
 			if (!m_SetUp)
+			{
 				Pandora.Profile.Items.UseOptions = chkUse.Checked;
+			}
 		}
 
 		/// <summary>

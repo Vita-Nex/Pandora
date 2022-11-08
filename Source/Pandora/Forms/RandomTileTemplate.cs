@@ -60,7 +60,7 @@ namespace TheBox.Forms
 
 		private RandomTilesList TileSet
 		{
-			get { return m_TileSet; }
+			get => m_TileSet;
 			set
 			{
 				m_TileSet = value;
@@ -289,7 +289,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.txNew);
 			this.Controls.Add(this.grpGroup);
 			this.Controls.Add(this.cmbGroups);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "RandomTileTemplate";
 			this.Text = "Random.EditTile";
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.RandomTileTemplate_Closing);
@@ -310,9 +310,7 @@ namespace TheBox.Forms
 
 		private void labQuick_DragEnter(object sender, DragEventArgs e)
 		{
-			var deco = e.Data.GetData(typeof(BoxDeco)) as BoxDeco;
-
-			if (deco != null)
+			if (e.Data.GetData(typeof(BoxDeco)) is BoxDeco)
 			{
 				e.Effect = DragDropEffects.Copy;
 			}
@@ -333,7 +331,7 @@ namespace TheBox.Forms
 
 			foreach (RandomTilesList list in m_List.List)
 			{
-				cmbGroups.Items.Add(list);
+				_ = cmbGroups.Items.Add(list);
 			}
 
 			if (cmbGroups.Items.Count > 0)
@@ -347,9 +345,9 @@ namespace TheBox.Forms
 			var list = new RandomTilesList(txNew.Text);
 			txNew.Text = "";
 
-			m_List.List.Add(list);
+			_ = m_List.List.Add(list);
 
-			cmbGroups.Items.Add(list);
+			_ = cmbGroups.Items.Add(list);
 			cmbGroups.SelectedItem = list;
 		}
 
@@ -360,7 +358,7 @@ namespace TheBox.Forms
 
 			foreach (RandomTile tile in m_TileSet.Tiles)
 			{
-				lst.Items.Add(tile);
+				_ = lst.Items.Add(tile);
 			}
 
 			lst.EndUpdate();
@@ -376,17 +374,15 @@ namespace TheBox.Forms
 
 		private void labQuick_DragDrop(object sender, DragEventArgs e)
 		{
-			var deco = e.Data.GetData(typeof(BoxDeco)) as BoxDeco;
-
-			if (deco != null)
+			if (e.Data.GetData(typeof(BoxDeco)) is BoxDeco deco)
 			{
 				var tile = new RandomTile();
 
-				tile.Items.Add(deco.ID);
+				_ = tile.Items.Add(deco.ID);
 				tile.Name = deco.Name;
 
-				m_TileSet.Tiles.Add(tile);
-				lst.Items.Add(tile);
+				_ = m_TileSet.Tiles.Add(tile);
+				_ = lst.Items.Add(tile);
 			}
 		}
 
@@ -402,16 +398,17 @@ namespace TheBox.Forms
 
 		private void bAdd_Click(object sender, EventArgs e)
 		{
-			var tile = new RandomTile();
-
-			tile.Name = txName.Text;
+			var tile = new RandomTile
+			{
+				Name = txName.Text
+			};
 
 			foreach (var s in txItems.Lines)
 			{
 				try
 				{
-					var id = int.Parse(s);
-					tile.Items.Add(id);
+					var id = Int32.Parse(s);
+					_ = tile.Items.Add(id);
 				}
 				catch
 				{ }
@@ -419,32 +416,32 @@ namespace TheBox.Forms
 
 			if (tile.Items.Count == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Random.InvalidIDs"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Random.InvalidIDs"]);
 				return;
 			}
 
 			txName.Text = "";
 			txItems.Text = "";
 
-			m_TileSet.Tiles.Add(tile);
-			lst.Items.Add(tile);
+			_ = m_TileSet.Tiles.Add(tile);
+			_ = lst.Items.Add(tile);
 		}
 
 		private void txItems_DragEnter(object sender, DragEventArgs e)
 		{
-			var deco = e.Data.GetData(typeof(BoxDeco)) as BoxDeco;
-
-			if (deco != null)
+			if (e.Data.GetData(typeof(BoxDeco)) is BoxDeco)
+			{
 				e.Effect = DragDropEffects.Copy;
+			}
 			else
+			{
 				e.Effect = DragDropEffects.None;
+			}
 		}
 
 		private void txItems_DragDrop(object sender, DragEventArgs e)
 		{
-			var deco = e.Data.GetData(typeof(BoxDeco)) as BoxDeco;
-
-			if (deco != null)
+			if (e.Data.GetData(typeof(BoxDeco)) is BoxDeco deco)
 			{
 				txItems.AppendText("\r\n");
 				txItems.AppendText(deco.ID.ToString());
@@ -458,9 +455,7 @@ namespace TheBox.Forms
 
 		private void bDelItem_Click(object sender, EventArgs e)
 		{
-			var tile = lst.SelectedItem as RandomTile;
-
-			if (tile != null)
+			if (lst.SelectedItem is RandomTile tile)
 			{
 				m_TileSet.Tiles.Remove(tile);
 				UpdateTileset();
@@ -515,7 +510,9 @@ namespace TheBox.Forms
 			}
 
 			if (purge.Count > 0)
-				MessageBox.Show(string.Format(Pandora.Localization.TextProvider["Random.Purge"], purge.Count));
+			{
+				_ = MessageBox.Show(String.Format(Pandora.Localization.TextProvider["Random.Purge"], purge.Count));
+			}
 
 			m_List.Save();
 		}

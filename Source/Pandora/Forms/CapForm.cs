@@ -61,7 +61,7 @@ namespace TheBox.Forms
 			/// <summary>
 			///     Gets the name without extension of the file
 			/// </summary>
-			public string Name { get { return Path.GetFileNameWithoutExtension(m_File); } }
+			public string Name => Path.GetFileNameWithoutExtension(m_File);
 
 			/// <summary>
 			///     Renames a file
@@ -115,7 +115,7 @@ namespace TheBox.Forms
 				}
 				catch (Exception err)
 				{
-					MessageBox.Show(err.ToString());
+					_ = MessageBox.Show(err.ToString());
 					return false;
 				}
 
@@ -152,7 +152,7 @@ namespace TheBox.Forms
 			{
 				try
 				{
-					Process.Start(m_File);
+					_ = Process.Start(m_File);
 				}
 				catch (Exception err)
 				{
@@ -217,7 +217,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private ImageInfo CurrentImage
 		{
-			get { return m_Image; }
+			get => m_Image;
 			set
 			{
 				m_Image = value;
@@ -300,7 +300,7 @@ namespace TheBox.Forms
 			// cmCat
 			// 
 			this.cmCat.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.miCatRename, this.miCatDelete, this.miCatCreate});
+				new System.Windows.Forms.MenuItem[] { this.miCatRename, this.miCatDelete, this.miCatCreate });
 			this.cmCat.Popup += new System.EventHandler(this.cmCat_Popup);
 			// 
 			// miCatRename
@@ -324,7 +324,7 @@ namespace TheBox.Forms
 			// imgList
 			// 
 			this.imgList.ImageSize = new System.Drawing.Size(16, 16);
-			this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
+			this.imgList.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imgList.ImageStream");
 			this.imgList.TransparentColor = System.Drawing.Color.Transparent;
 			// 
 			// tImg
@@ -473,7 +473,7 @@ namespace TheBox.Forms
 			tCat.Nodes.Clear();
 			tImg.Nodes.Clear();
 
-			tCat.Nodes.Add(GetDirectoryNode(Pandora.Profile.Screenshots.BaseFolder));
+			_ = tCat.Nodes.Add(GetDirectoryNode(Pandora.Profile.Screenshots.BaseFolder));
 			tCat.Nodes[0].Expand();
 
 			tCat.EndUpdate();
@@ -501,12 +501,14 @@ namespace TheBox.Forms
 		{
 			var folders = Directory.GetDirectories(path);
 
-			var node = new TreeNode(GetDirName(path));
-			node.Tag = path;
+			var node = new TreeNode(GetDirName(path))
+			{
+				Tag = path
+			};
 
 			foreach (var folder in folders)
 			{
-				node.Nodes.Add(GetDirectoryNode(folder));
+				_ = node.Nodes.Add(GetDirectoryNode(folder));
 			}
 
 			return node;
@@ -529,10 +531,12 @@ namespace TheBox.Forms
 				{
 					var ii = new ImageInfo(file);
 
-					var node = new TreeNode(ii.Name);
-					node.Tag = ii;
+					var node = new TreeNode(ii.Name)
+					{
+						Tag = ii
+					};
 
-					tImg.Nodes.Add(node);
+					_ = tImg.Nodes.Add(node);
 				}
 			}
 
@@ -666,10 +670,12 @@ namespace TheBox.Forms
 
 			try
 			{
-				Directory.CreateDirectory(path);
-				var node = new TreeNode(GetDirName(path));
-				node.Tag = path;
-				tCat.SelectedNode.Nodes.Add(node);
+				_ = Directory.CreateDirectory(path);
+				var node = new TreeNode(GetDirName(path))
+				{
+					Tag = path
+				};
+				_ = tCat.SelectedNode.Nodes.Add(node);
 				tCat.SelectedNode.Expand();
 
 				node.BeginEdit();
@@ -702,14 +708,16 @@ namespace TheBox.Forms
 		private void tImg_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (e.Button != MouseButtons.Left || tImg.SelectedNode == null)
+			{
 				return;
+			}
 
 			var dx = Math.Abs(e.X - m_DragStart.X);
 			var dy = Math.Abs(e.Y - m_DragStart.Y);
 
 			if (dx > 5 || dy > 5)
 			{
-				tImg.DoDragDrop(tImg.SelectedNode.Tag as ImageInfo, DragDropEffects.Move);
+				_ = tImg.DoDragDrop(tImg.SelectedNode.Tag as ImageInfo, DragDropEffects.Move);
 			}
 		}
 
@@ -731,12 +739,14 @@ namespace TheBox.Forms
 			var node = tCat.SelectedNode;
 
 			if (node == null)
+			{
 				return;
+			}
 
 			var path = node.Tag as string;
 			var ii = e.Data.GetData(typeof(ImageInfo)) as ImageInfo;
 
-			ii.MoveToFolder(path);
+			_ = ii.MoveToFolder(path);
 
 			tCat.SelectedNode = null;
 			tCat.SelectedNode = node;
@@ -751,7 +761,9 @@ namespace TheBox.Forms
 			}
 
 			if (tCat.SelectedNode == null)
+			{
 				return;
+			}
 
 			miCatCreate.Enabled = true;
 			miCatDelete.Enabled = tCat.SelectedNode != tCat.Nodes[0];
@@ -851,7 +863,9 @@ namespace TheBox.Forms
 			var node = tImg.SelectedNode;
 
 			if (node == null)
+			{
 				return;
+			}
 
 			var ii = tImg.SelectedNode.Tag as ImageInfo;
 
@@ -877,7 +891,7 @@ namespace TheBox.Forms
 		{
 			try
 			{
-				Process.Start(Pandora.Profile.Screenshots.BaseFolder);
+				_ = Process.Start(Pandora.Profile.Screenshots.BaseFolder);
 			}
 			catch (Exception err)
 			{

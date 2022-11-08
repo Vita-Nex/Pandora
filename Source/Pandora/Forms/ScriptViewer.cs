@@ -114,9 +114,9 @@ namespace TheBox.Forms
 			// Tree
 			// 
 			this.Tree.Anchor =
-			((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
-													System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
-												  System.Windows.Forms.AnchorStyles.Right)));
+			System.Windows.Forms.AnchorStyles.Top |
+													System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left |
+												  System.Windows.Forms.AnchorStyles.Right;
 			this.Tree.HideSelection = false;
 			this.Tree.ImageList = this.TreeImages;
 			this.Tree.Location = new System.Drawing.Point(4, 104);
@@ -132,7 +132,7 @@ namespace TheBox.Forms
 			this.TreeImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
 			this.TreeImages.ImageSize = new System.Drawing.Size(16, 16);
 			this.TreeImages.ImageStream =
-				((System.Windows.Forms.ImageListStreamer)(resources.GetObject("TreeImages.ImageStream")));
+				(System.Windows.Forms.ImageListStreamer)resources.GetObject("TreeImages.ImageStream");
 			this.TreeImages.TransparentColor = System.Drawing.Color.Transparent;
 			// 
 			// tBar
@@ -195,15 +195,15 @@ namespace TheBox.Forms
 			this.BarImages.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
 			this.BarImages.ImageSize = new System.Drawing.Size(32, 32);
 			this.BarImages.ImageStream =
-				((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImages.ImageStream")));
+				(System.Windows.Forms.ImageListStreamer)resources.GetObject("BarImages.ImageStream");
 			this.BarImages.TransparentColor = System.Drawing.Color.Transparent;
 			// 
 			// txFolder
 			// 
 			this.txFolder.Anchor =
-			((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
-													System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
-												  System.Windows.Forms.AnchorStyles.Right)));
+			System.Windows.Forms.AnchorStyles.Top |
+													System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left |
+												  System.Windows.Forms.AnchorStyles.Right;
 			this.txFolder.BackColor = System.Drawing.SystemColors.Control;
 			this.txFolder.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.txFolder.Location = new System.Drawing.Point(96, 76);
@@ -254,13 +254,17 @@ namespace TheBox.Forms
 
 		private string Folder
 		{
-			get { return m_Folder; }
+			get => m_Folder;
 			set
 			{
 				if (value.StartsWith(Path.DirectorySeparatorChar.ToString()))
+				{
 					m_Folder = value.Substring(1);
+				}
 				else
+				{
 					m_Folder = value;
+				}
 			}
 		}
 
@@ -525,9 +529,7 @@ namespace TheBox.Forms
 
 					if (form.ShowDialog() == DialogResult.OK)
 					{
-						var response = form.Response as FileTransport;
-
-						if (response != null)
+						if (form.Response is FileTransport response)
 						{
 							// Download succesful
 							try
@@ -536,14 +538,14 @@ namespace TheBox.Forms
 								writer.Write(response.Text);
 								writer.Close();
 
-								sBar.Text = string.Format(Pandora.Localization.TextProvider["Script.DownOk"], m_File, SaveFile.FileName);
+								sBar.Text = String.Format(Pandora.Localization.TextProvider["Script.DownOk"], m_File, SaveFile.FileName);
 							}
 							catch (Exception err)
 							{
 								Pandora.Log.WriteError(err, "Can't write file {0} to {1}", filename, SaveFile.FileName);
-								MessageBox.Show(Pandora.Localization.TextProvider["Server.CantWriteFile"]);
+								_ = MessageBox.Show(Pandora.Localization.TextProvider["Server.CantWriteFile"]);
 
-								sBar.Text = string.Format(Pandora.Localization.TextProvider["Script.GenericErr"]);
+								sBar.Text = String.Format(Pandora.Localization.TextProvider["Script.GenericErr"]);
 							}
 						}
 						else
@@ -561,15 +563,21 @@ namespace TheBox.Forms
 		private void Upload()
 		{
 			if (Folder == null)
+			{
 				return;
+			}
 
 			if (OpenFile.ShowDialog() != DialogResult.OK)
+			{
 				return;
+			}
 
 			var filename = Path.Combine(Folder, Path.GetFileName(OpenFile.FileName));
 
-			var msg = new FileTransport();
-			msg.Filename = filename;
+			var msg = new FileTransport
+			{
+				Filename = filename
+			};
 
 			Pandora.Profile.Server.FillBoxMessage(msg);
 
@@ -587,17 +595,14 @@ namespace TheBox.Forms
 				return;
 			}
 
-			var response = Pandora.BoxConnection.ProcessMessage(msg, true) as GenericOK;
-
-			if (response != null)
+			if (Pandora.BoxConnection.ProcessMessage(msg, true) is GenericOK)
 			{
 				// Success
 				sBar.Text = Pandora.Localization.TextProvider["Script.UploadOk"];
 
 				// Add item
 				var node = GetTreeNode(Path.GetFileName(OpenFile.FileName));
-				TreeNode parent = null;
-
+				TreeNode parent;
 				if (m_File == null)
 				{
 					parent = Tree.SelectedNode;
@@ -618,7 +623,9 @@ namespace TheBox.Forms
 				}
 
 				if (!exists)
-					parent.Nodes.Add(node);
+				{
+					_ = parent.Nodes.Add(node);
+				}
 			}
 			else
 			{
@@ -632,7 +639,9 @@ namespace TheBox.Forms
 		private void DeleteFromServer()
 		{
 			if (Folder == null)
+			{
 				return;
+			}
 
 			if (MessageBox.Show(
 					this,
@@ -640,23 +649,25 @@ namespace TheBox.Forms
 					"",
 					MessageBoxButtons.YesNo,
 					MessageBoxIcon.Question) == DialogResult.No)
+			{
 				return;
+			}
 
 			var msg = new DeleteRequest();
 			Pandora.Profile.Server.FillBoxMessage(msg);
 
-			string target = null;
-
+			string target;
 			if (m_File == null)
+			{
 				target = Folder;
+			}
 			else
+			{
 				target = Path.Combine(Folder, m_File);
+			}
 
 			msg.Path = target;
-
-			var response = Pandora.BoxConnection.ProcessMessage(msg, true) as GenericOK;
-
-			if (response != null)
+			if (Pandora.BoxConnection.ProcessMessage(msg, true) is GenericOK)
 			{
 				sBar.Text = Pandora.Localization.TextProvider["Script.DelOk"];
 
@@ -694,7 +705,9 @@ namespace TheBox.Forms
 				var end = path.Length - 1;
 
 				if (Folder.EndsWith(Path.DirectorySeparatorChar.ToString()))
+				{
 					end--;
+				}
 
 				for (var i = 0; i < end; i++)
 				{
@@ -702,10 +715,7 @@ namespace TheBox.Forms
 				}
 
 				msg.Folder = Path.Combine(parentpath, e.Label);
-
-				var response = Pandora.BoxConnection.ProcessMessage(msg, true) as GenericOK;
-
-				if (response != null)
+				if (Pandora.BoxConnection.ProcessMessage(msg, true) is GenericOK)
 				{
 					// Success
 					sBar.Text = Pandora.Localization.TextProvider["Script.CrateOk"];
@@ -725,7 +735,9 @@ namespace TheBox.Forms
 			{
 				// Rename item
 				if (Folder == null)
+				{
 					return;
+				}
 
 				if (e.Label == null || e.Label.Length == 0)
 				{
@@ -733,12 +745,15 @@ namespace TheBox.Forms
 					return;
 				}
 
-				string old = null;
-
+				string old;
 				if (m_File == null)
+				{
 					old = Folder;
+				}
 				else
+				{
 					old = Path.Combine(Folder, m_File);
+				}
 
 				var msg = new MoveRequest();
 
@@ -746,10 +761,7 @@ namespace TheBox.Forms
 
 				msg.OldPath = old;
 				msg.NewPath = Path.Combine(Folder, e.Label);
-
-				var response = Pandora.BoxConnection.ProcessMessage(msg, true) as GenericOK;
-
-				if (response != null)
+				if (Pandora.BoxConnection.ProcessMessage(msg, true) is GenericOK)
 				{
 					// Success
 					sBar.Text = Pandora.Localization.TextProvider["Script.RenOk"];
@@ -772,14 +784,20 @@ namespace TheBox.Forms
 			}
 			else if (e.Button == bCreateFolder)
 			{
-				var n = new TreeNode("NewFolder");
-				n.ImageIndex = 1;
-				n.SelectedImageIndex = 1;
+				var n = new TreeNode("NewFolder")
+				{
+					ImageIndex = 1,
+					SelectedImageIndex = 1
+				};
 
 				if (m_File == null)
-					Tree.SelectedNode.Nodes.Add(n);
+				{
+					_ = Tree.SelectedNode.Nodes.Add(n);
+				}
 				else
-					Tree.SelectedNode.Parent.Nodes.Add(n);
+				{
+					_ = Tree.SelectedNode.Parent.Nodes.Add(n);
+				}
 
 				Tree.SelectedNode = n;
 
@@ -828,9 +846,7 @@ namespace TheBox.Forms
 
 				if (form.ShowDialog() == DialogResult.OK)
 				{
-					var response = form.Response as FileTransport;
-
-					if (response != null)
+					if (form.Response is FileTransport response)
 					{
 						// Download succesful
 						var f = new RemoteEditor(filename, response.Text);
@@ -850,9 +866,11 @@ namespace TheBox.Forms
 		private void form_Closed(object sender, EventArgs e)
 		{
 			if (m_SelfClosing)
+			{
 				return;
+			}
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			m_Editors.Remove((Form)sender);
+			_ = m_Editors.Remove((Form)sender);
 			// Issue 10 - End
 		}
 
@@ -869,7 +887,9 @@ namespace TheBox.Forms
 		private void Tree_DoubleClick(object sender, EventArgs e)
 		{
 			if (bEdit.Enabled)
+			{
 				RemoteEdit();
+			}
 		}
 	}
 }

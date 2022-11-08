@@ -48,8 +48,10 @@ namespace TheBox.Forms
 			// Issue 10 - End
 			Pandora.Localization.LocalizeControl(this);
 
-			tBar.ImageList = new ImageList();
-			tBar.ImageList.ImageSize = new Size(1, 1);
+			tBar.ImageList = new ImageList
+			{
+				ImageSize = new Size(1, 1)
+			};
 
 			bExit.Text = Pandora.Localization.TextProvider["Common.Exit"];
 			bRefresh.Text = Pandora.Localization.TextProvider["Common.Refresh"];
@@ -86,7 +88,7 @@ namespace TheBox.Forms
 				m_Map = value;
 
 				var filename = Path.Combine(Pandora.Profile.BaseFolder, "Maps");
-				filename = Path.Combine(filename, string.Format("map{0}big.jpg", value));
+				filename = Path.Combine(filename, String.Format("map{0}big.jpg", value));
 
 				if (!File.Exists(filename))
 				{
@@ -144,7 +146,7 @@ namespace TheBox.Forms
 			// tBar
 			// 
 			this.tBar.Buttons.AddRange(
-				new System.Windows.Forms.ToolBarButton[] {this.map0, this.map1, this.map2, this.map3, this.bRefresh, this.bExit});
+				new System.Windows.Forms.ToolBarButton[] { this.map0, this.map1, this.map2, this.map3, this.bRefresh, this.bExit });
 			this.tBar.DropDownArrows = true;
 			this.tBar.Location = new System.Drawing.Point(0, 0);
 			this.tBar.Name = "tBar";
@@ -181,7 +183,7 @@ namespace TheBox.Forms
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.ClientSize = new System.Drawing.Size(424, 357);
 			this.Controls.Add(this.tBar);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "VisualClientList";
 			this.Text = "VisualClientList";
 			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VisualClientList_MouseDown);
@@ -193,7 +195,7 @@ namespace TheBox.Forms
 
 		private void VisualClientList_Load(object sender, EventArgs e)
 		{
-			var buttons = new[] {map0, map1, map2, map3};
+			var buttons = new[] { map0, map1, map2, map3 };
 
 			for (var i = 0; i < 4; i++)
 			{
@@ -207,9 +209,7 @@ namespace TheBox.Forms
 
 			var msg = Pandora.BoxConnection.SendToServer(new ClientListRequest());
 
-			var list = msg as ClientListMessage;
-
-			if (list != null)
+			if (msg is ClientListMessage list)
 			{
 				m_Clients = list.Clients;
 			}
@@ -261,8 +261,7 @@ namespace TheBox.Forms
 					m_Grid[x, y] = true;
 
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					List<ClientEntry> current;
-					m_Table.TryGetValue(new Point(x, y), out current);
+					_ = m_Table.TryGetValue(new Point(x, y), out var current);
 					// Issue 10 - End
 
 					if (current != null)
@@ -272,8 +271,10 @@ namespace TheBox.Forms
 					else
 					{
 						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-						current = new List<ClientEntry>();
-						current.Add(client);
+						current = new List<ClientEntry>
+						{
+							client
+						};
 						// Issue 10 - End
 
 						m_Table[new Point(x, y)] = current;
@@ -295,11 +296,11 @@ namespace TheBox.Forms
 						Point p;
 						if (m_Table.ContainsKey(p = new Point(x, y)))
 						{
-							var count = m_Table[p].Count;
+							_ = m_Table[p].Count;
 							Brush backGridBrush = new SolidBrush(Color.Yellow);
 
 							// Draw this background
-							e.Graphics.FillRectangle(backGridBrush, 8 + x * 4, 40 + y * 4, 4, 4);
+							e.Graphics.FillRectangle(backGridBrush, 8 + (x * 4), 40 + (y * 4), 4, 4);
 
 							backGridBrush.Dispose();
 						}
@@ -339,7 +340,7 @@ namespace TheBox.Forms
 
 			e.Button.Pushed = true;
 
-			Map = int.Parse(e.Button.Tag as string);
+			Map = Int32.Parse(e.Button.Tag as string);
 		}
 
 		private void VisualClientList_MouseMove(object sender, MouseEventArgs e)
@@ -350,13 +351,17 @@ namespace TheBox.Forms
 			var y = e.Y - 40;
 
 			if (x < 0 || y < 0 || x >= m_Image.Width - 1 || y >= m_Image.Height - 1)
+			{
 				return;
+			}
 
 			var xBlock = x / 4;
 			var yBlock = y / 4;
 
 			if (m_Grid == null)
+			{
 				return;
+			}
 
 			if (m_Grid[xBlock, yBlock])
 			{
@@ -379,21 +384,22 @@ namespace TheBox.Forms
 			if (m_Grid[xBlock, yBlock])
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				List<ClientEntry> clients;
-				m_Table.TryGetValue(new Point(xBlock, yBlock), out clients);
+				_ = m_Table.TryGetValue(new Point(xBlock, yBlock), out var clients);
 				// Issue 10 - End
 
 				if (clients == null || clients.Count == 0)
+				{
 					return;
+				}
 
-				m_GoPoint = new Point(xBlock * 32 + 16, yBlock * 32 + 16);
+				m_GoPoint = new Point((xBlock * 32) + 16, (yBlock * 32) + 16);
 
-				var title = string.Format("{0} clients - Go there", clients.Count);
+				var title = String.Format("{0} clients - Go there", clients.Count);
 				var sb = new StringBuilder();
 
 				foreach (var entry in clients)
 				{
-					sb.AppendFormat("{0} [Acc: {1}]\r\n", entry.Name, entry.Account);
+					_ = sb.AppendFormat("{0} [Acc: {1}]\r\n", entry.Name, entry.Account);
 				}
 
 				PopUpForm.PopUp(this, title, sb.ToString(), false, OnGo);
@@ -403,7 +409,9 @@ namespace TheBox.Forms
 		private void OnGo()
 		{
 			if (m_GoPoint == Point.Empty)
+			{
 				return;
+			}
 
 			Pandora.Profile.Commands.DoGo(m_GoPoint.X, m_GoPoint.Y, Pandora.Map.GetMapHeight(m_GoPoint, m_Map), m_Map);
 		}

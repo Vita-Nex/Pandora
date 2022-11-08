@@ -16,12 +16,10 @@ namespace TheBox.Buttons
 	/// </summary>
 	public class BoxMenuItem : MenuItem, ICloneable
 	{
-		private readonly MenuCommand m_Command;
-
 		/// <summary>
 		///     Gets the menu command associated with this menu item
 		/// </summary>
-		public MenuCommand Command { get { return m_Command; } }
+		public MenuCommand Command { get; }
 
 		/// <summary>
 		///     Creates a new BoxMenuItem that can be used to send a command to UO
@@ -29,8 +27,8 @@ namespace TheBox.Buttons
 		/// <param name="command">The MenuCommand object that defines the command that should be sent to UO</param>
 		public BoxMenuItem(MenuCommand command)
 		{
-			m_Command = command;
-			Text = m_Command.Caption;
+			Command = command;
+			Text = Command.Caption;
 		}
 
 		/// <summary>
@@ -40,23 +38,20 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendCommand(SendCommandEventArgs e)
 		{
-			if (SendCommand != null)
-			{
-				SendCommand(this, e);
-			}
+			SendCommand?.Invoke(this, e);
 		}
 
 		protected override void OnClick(EventArgs e)
 		{
 			base.OnClick(e);
 
-			OnSendCommand(new SendCommandEventArgs(m_Command.Command, m_Command.UsePrefix));
+			OnSendCommand(new SendCommandEventArgs(Command.Command, Command.UsePrefix));
 		}
 
 		#region ICloneable Members
 		public object Clone()
 		{
-			return new BoxMenuItem(m_Command.Clone() as MenuCommand);
+			return new BoxMenuItem(Command.Clone() as MenuCommand);
 		}
 		#endregion
 	}

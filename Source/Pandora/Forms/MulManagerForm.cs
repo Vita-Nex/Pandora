@@ -259,7 +259,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.lst);
 			this.Controls.Add(this.bClose);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "MulManagerForm";
 			this.ShowInTaskbar = false;
 			this.Text = "Mul.Title";
@@ -275,7 +275,7 @@ namespace TheBox.Forms
 		{
 			foreach (var s in m_Manager.SupportedFiles)
 			{
-				lst.Items.Add(s);
+				_ = lst.Items.Add(s);
 			}
 
 			if (m_Manager.DefaultFolder != null)
@@ -301,7 +301,7 @@ namespace TheBox.Forms
 
 		private string File
 		{
-			get { return m_File; }
+			get => m_File;
 			set
 			{
 				m_File = value;

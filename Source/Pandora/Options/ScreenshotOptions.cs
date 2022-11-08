@@ -43,7 +43,7 @@ namespace TheBox.Options
 
 				return CustomFolder;
 			}
-			set { CustomFolder = value; }
+			set => CustomFolder = value;
 		}
 
 		[XmlAttribute]
@@ -65,14 +65,16 @@ namespace TheBox.Options
 		/// <returns></returns>
 		private string ConvertToString(int value)
 		{
-			var count = value / 10 + 1;
+			var count = (value / 10) + 1;
 
 			if (count > 3)
+			{
 				return value.ToString();
+			}
 
 			var sb = new StringBuilder("0000", 4);
-			sb.Remove(0, count);
-			sb.Append(value);
+			_ = sb.Remove(0, count);
+			_ = sb.Append(value);
 
 			return sb.ToString();
 		}
@@ -84,7 +86,7 @@ namespace TheBox.Options
 		/// <returns>The file name for the speicified index</returns>
 		private string GetFileName(int index)
 		{
-			return string.Format("{0}{1}.jpg", Name, ConvertToString(index));
+			return String.Format("{0}{1}.jpg", Name, ConvertToString(index));
 		}
 
 		/// <summary>
@@ -95,13 +97,13 @@ namespace TheBox.Options
 			get
 			{
 				var files = new StringCollection();
-				files.AddRange(Directory.GetFiles(BaseFolder, string.Format("{0}*.jpg", Name)));
+				files.AddRange(Directory.GetFiles(BaseFolder, String.Format("{0}*.jpg", Name)));
 
 				var index = 1;
 
 				while (files.Contains(Path.Combine(BaseFolder, GetFileName(index))))
 				{
-					if (index < int.MaxValue)
+					if (index < Int32.MaxValue)
 					{
 						index++;
 					}

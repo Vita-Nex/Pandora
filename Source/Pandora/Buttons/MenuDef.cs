@@ -35,10 +35,10 @@ namespace TheBox.Buttons
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<object> Items
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Items; }
-			set { m_Items = value; }
+			get => m_Items;
+			set => m_Items = value;
 		}
 
 		/// <summary>
@@ -86,7 +86,7 @@ namespace TheBox.Buttons
 		/// <returns>A list of menu items resulting from the array list</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private MenuItem[] GetItems(List<object> list)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			var items = new MenuItem[list.Count];
 
@@ -118,8 +118,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendCommand(SendCommandEventArgs e)
 		{
-			if (SendCommand != null)
-				SendCommand(this, e);
+			SendCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -131,17 +130,17 @@ namespace TheBox.Buttons
 		}
 
 		#region IButtonFunction Members
-		public string Name { get { return "ButtonMenuEditor.Menu"; } }
+		public string Name => "ButtonMenuEditor.Menu";
 
 		/// <summary>
 		///     States whether this action allows another action to be configured on the other button
 		/// </summary>
-		public bool AllowsSecondButton { get { return true; } }
+		public bool AllowsSecondButton => true;
 
 		/// <summary>
 		///     States whether this action requires another action configured on the other button
 		/// </summary>
-		public bool RequiresSecondButton { get { return false; } }
+		public bool RequiresSecondButton => false;
 
 		/// <summary>
 		///     Does the action specified by the function
@@ -161,10 +160,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendLastCommand(EventArgs e)
 		{
-			if (SendLastCommand != null)
-			{
-				SendLastCommand(this, e);
-			}
+			SendLastCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -174,10 +170,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnCommandChanged(CommandChangedEventArgs e)
 		{
-			if (CommandChanged != null)
-			{
-				CommandChanged(this, e);
-			}
+			CommandChanged?.Invoke(this, e);
 		}
 		#endregion
 
@@ -194,8 +187,10 @@ namespace TheBox.Buttons
 		#region ICloneable Members
 		public object Clone()
 		{
-			var def = new MenuDef();
-			def.m_Items = CloneItems(m_Items);
+			var def = new MenuDef
+			{
+				m_Items = CloneItems(m_Items)
+			};
 
 			return def;
 		}

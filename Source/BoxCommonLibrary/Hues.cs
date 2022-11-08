@@ -28,19 +28,17 @@ namespace TheBox.Mul
 			int Overlapped // overlapped buffer
 		);
 
-		private readonly HueGroup[] m_Groups;
-
 		/// <summary>
 		///     Gets the hue groups
 		/// </summary>
-		public HueGroup[] Groups { get { return m_Groups; } }
+		public HueGroup[] Groups { get; }
 
 		/// <summary>
 		///     Creates an empty Hues object
 		/// </summary>
 		private Hues()
 		{
-			m_Groups = new HueGroup[375];
+			Groups = new HueGroup[375];
 		}
 
 		/// <summary>
@@ -51,7 +49,9 @@ namespace TheBox.Mul
 		public static Hues Load(string FileName)
 		{
 			if (!File.Exists(FileName))
+			{
 				return null;
+			}
 
 			try
 			{
@@ -62,7 +62,7 @@ namespace TheBox.Mul
 
 				for (var i = 0; i < 375; i++)
 				{
-					hues.m_Groups[i] = HueGroup.Read(reader);
+					hues.Groups[i] = HueGroup.Read(reader);
 				}
 				stream.Close();
 
@@ -82,24 +82,28 @@ namespace TheBox.Mul
 			get
 			{
 				if (index < 1 || index > 3000)
+				{
 					return null;
+				}
 
 				index--;
 
 				var group = index / 8;
 				var entry = index % 8;
 
-				return m_Groups[group].HueList[entry];
+				return Groups[group].HueList[entry];
 			}
 			set
 			{
 				if (index < 1 || index > 3000)
+				{
 					return;
+				}
 
 				var group = index / 8;
 				var entry = index & 8;
 
-				m_Groups[group].HueList[entry] = value;
+				Groups[group].HueList[entry] = value;
 			}
 		}
 	}
@@ -124,13 +128,16 @@ namespace TheBox.Mul
 		/// <returns>A HueGroupd item</returns>
 		public static HueGroup Read(BinaryReader reader)
 		{
-			var group = new HueGroup();
-
-			group.m_Header = reader.ReadInt32();
-			group.HueList = new Hue[8];
+			var group = new HueGroup
+			{
+				m_Header = reader.ReadInt32(),
+				HueList = new Hue[8]
+			};
 
 			for (var i = 0; i < 8; i++)
+			{
 				group.HueList[i] = Hue.Read(reader);
+			}
 
 			return group;
 		}
@@ -157,13 +164,16 @@ namespace TheBox.Mul
 		/// <returns>The hue read</returns>
 		public static Hue Read(BinaryReader reader)
 		{
-			var hue = new Hue();
-
-			hue.ColorTable = new short[32];
-			hue.m_Name = new char[20];
+			var hue = new Hue
+			{
+				ColorTable = new short[32],
+				m_Name = new char[20]
+			};
 
 			for (var i = 0; i < 32; i++)
+			{
 				hue.ColorTable[i] = reader.ReadInt16();
+			}
 
 			hue.m_TableStart = reader.ReadInt16();
 			hue.m_TableEnd = reader.ReadInt16();
@@ -178,13 +188,13 @@ namespace TheBox.Mul
 		/// </summary>
 		public string Name
 		{
-			get { return new string(m_Name); }
+			get => new string(m_Name);
 			set
 			{
 				var name = value;
 				if (name.Length > 20)
 				{
-					name.Substring(0, 20);
+					_ = name.Substring(0, 20);
 				}
 
 				m_Name = name.ToCharArray();
@@ -198,13 +208,17 @@ namespace TheBox.Mul
 		private void Write(BinaryWriter writer)
 		{
 			for (var i = 0; i < 32; i++)
+			{
 				writer.Write(ColorTable[i]);
+			}
 
 			writer.Write(m_TableStart);
 			writer.Write(m_TableEnd);
 
 			for (var i = 0; i < 20; i++)
+			{
 				writer.Write(m_Name[i]);
+			}
 		}
 
 		/// <summary>
@@ -233,9 +247,11 @@ namespace TheBox.Mul
 			for (var i = 0; i < 32; i++)
 			{
 				for (var x = 0; x < 4; x++)
-				for (var y = 0; y < 10; y++)
 				{
-					bmp.SetPixel(i * 4 + x, y, ToColor(ColorTable[i]));
+					for (var y = 0; y < 10; y++)
+					{
+						bmp.SetPixel((i * 4) + x, y, ToColor(ColorTable[i]));
+					}
 				}
 			}
 

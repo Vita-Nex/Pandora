@@ -27,8 +27,6 @@ namespace TheBox.Roofing
 
 		private readonly RoofImage m_RoofImage;
 
-		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		private readonly List<RoofRect> m_Edges;
 		// Issue 10 - End
 
 		/// <summary>
@@ -39,17 +37,15 @@ namespace TheBox.Roofing
 		/// <summary>
 		///     Gets the roof image
 		/// </summary>
-		public Bitmap Image { get { return m_RoofImage.Image; } }
+		public Bitmap Image => m_RoofImage.Image;
 
 		/// <summary>
 		///     Gets the rectangles currently selected
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<RoofRect> Rectangles
-			// Issue 10 - End
-		{
-			get { return m_Edges; }
-		}
+		// Issue 10 - End
+		{ get; }
 
 		/// <summary>
 		///     Gets or sets the tileset used for this roof
@@ -62,7 +58,7 @@ namespace TheBox.Roofing
 		public Roof()
 		{
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			m_Edges = new List<RoofRect>();
+			Rectangles = new List<RoofRect>();
 			// Issue 10 - End
 			m_RoofImage = new RoofImage();
 		}
@@ -92,26 +88,26 @@ namespace TheBox.Roofing
 			}
 			else
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Roofing.EmptyRoof"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Roofing.EmptyRoof"]);
 				return false;
 			}
 
-			foreach (var rr in m_Edges)
+			foreach (var rr in Rectangles)
 			{
 				if (rr.Rectangle.Equals(rect.Rectangle) && rect.GoesUp == rr.GoesUp && rect.Sloped && rr.Sloped)
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["Roofing.AlreadyAdded"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Roofing.AlreadyAdded"]);
 					return false;
 				}
 			}
 
-			m_Edges.Add(rect);
+			Rectangles.Add(rect);
 
 			if (!Calculate())
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Roofing.CantAdd"]);
-				m_Edges.Remove(rect);
-				Calculate();
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Roofing.CantAdd"]);
+				_ = Rectangles.Remove(rect);
+				_ = Calculate();
 
 				return false;
 			}
@@ -124,12 +120,14 @@ namespace TheBox.Roofing
 		/// </summary>
 		public void RemoveLastRectangle()
 		{
-			if (m_Edges.Count == 0)
+			if (Rectangles.Count == 0)
+			{
 				return;
+			}
 
-			m_Edges.RemoveAt(m_Edges.Count - 1);
+			Rectangles.RemoveAt(Rectangles.Count - 1);
 
-			Calculate();
+			_ = Calculate();
 			m_RoofImage.CreateImage();
 		}
 
@@ -140,19 +138,19 @@ namespace TheBox.Roofing
 		{
 			get
 			{
-				if (m_Edges.Count == 0)
+				if (Rectangles.Count == 0)
 				{
 					return Rectangle.Empty;
 				}
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				var temp = m_Edges[0];
+				var temp = Rectangles[0];
 				// Issue 10 - End
 				var bounds = new Rectangle(temp.Rectangle.Location, temp.Rectangle.Size);
 
-				for (var i = 1; i < m_Edges.Count; i++)
+				for (var i = 1; i < Rectangles.Count; i++)
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					var cfr = m_Edges[i];
+					var cfr = Rectangles[i];
 					// Issue 10 - End
 
 					if (bounds.Left > cfr.Rectangle.Left)
@@ -193,7 +191,7 @@ namespace TheBox.Roofing
 			}
 
 			// Empty roof is a valid roof
-			if (m_Edges.Count == 0)
+			if (Rectangles.Count == 0)
 			{
 				return true;
 			}
@@ -224,7 +222,7 @@ namespace TheBox.Roofing
 			bounds.X -= m_BasePoint.X;
 			bounds.Y -= m_BasePoint.Y;
 
-			foreach (var roofrect in m_Edges)
+			foreach (var roofrect in Rectangles)
 			{
 				var rect = roofrect.Clone() as RoofRect;
 
@@ -240,7 +238,7 @@ namespace TheBox.Roofing
 				{
 					for (var i = 0; i < rect.Rectangle.Height + 1; i++)
 					{
-						AddVertexX(
+						_ = AddVertexX(
 							rect.Rectangle.Left,
 							rect.Rectangle.Right,
 							rect.Rectangle.Top + i,
@@ -252,7 +250,7 @@ namespace TheBox.Roofing
 				{
 					for (var i = 0; i < rect.Rectangle.Width + 1; i++)
 					{
-						AddVertexY(
+						_ = AddVertexY(
 							rect.Rectangle.Top,
 							rect.Rectangle.Bottom,
 							rect.Rectangle.Left + i,
@@ -285,10 +283,10 @@ namespace TheBox.Roofing
 				if (slope == Slope.None || slope == Slope.Right)
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					if (m_RoofImage.Data[x2 + y * m_RoofImage.Width] < height)
-						// Issue 10 - End
+					if (m_RoofImage.Data[x2 + (y * m_RoofImage.Width)] < height)
+					// Issue 10 - End
 					{
-						m_RoofImage.Data[x2 + y * m_RoofImage.Width] = height;
+						m_RoofImage.Data[x2 + (y * m_RoofImage.Width)] = height;
 						added = true;
 					}
 
@@ -298,10 +296,10 @@ namespace TheBox.Roofing
 				if (slope == Slope.None || slope == Slope.Left)
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					if (m_RoofImage.Data[x1 + y * m_RoofImage.Width] < height)
-						// Issue 10 - End
+					if (m_RoofImage.Data[x1 + (y * m_RoofImage.Width)] < height)
+					// Issue 10 - End
 					{
-						m_RoofImage.Data[x1 + y * m_RoofImage.Width] = height;
+						m_RoofImage.Data[x1 + (y * m_RoofImage.Width)] = height;
 						added = true;
 					}
 
@@ -335,10 +333,10 @@ namespace TheBox.Roofing
 				if (slope == Slope.None || slope == Slope.Top)
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					if (m_RoofImage.Data[x + y2 * m_RoofImage.Width] < height)
-						// Issue 10 - End
+					if (m_RoofImage.Data[x + (y2 * m_RoofImage.Width)] < height)
+					// Issue 10 - End
 					{
-						m_RoofImage.Data[x + y2 * m_RoofImage.Width] = height;
+						m_RoofImage.Data[x + (y2 * m_RoofImage.Width)] = height;
 						added = true;
 					}
 
@@ -348,10 +346,10 @@ namespace TheBox.Roofing
 				if (slope == Slope.None || slope == Slope.Bottom)
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					if (m_RoofImage.Data[x + y1 * m_RoofImage.Width] < height)
-						// Issue 10 - End
+					if (m_RoofImage.Data[x + (y1 * m_RoofImage.Width)] < height)
+					// Issue 10 - End
 					{
-						m_RoofImage.Data[x + y1 * m_RoofImage.Width] = height;
+						m_RoofImage.Data[x + (y1 * m_RoofImage.Width)] = height;
 						added = true;
 					}
 
@@ -423,7 +421,9 @@ namespace TheBox.Roofing
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				if (m_RoofImage.Data[i] < 0)
+				{
 					m_RoofImage.Data[i] = -m_RoofImage.Data[i];
+				}
 				// Issue 10 - End
 			}
 
@@ -432,7 +432,7 @@ namespace TheBox.Roofing
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				if (m_RoofImage.Data[i] == 0)
-					// Issue 10 - End
+				// Issue 10 - End
 				{
 					roofIDs[i] = 0;
 				}
@@ -473,10 +473,7 @@ namespace TheBox.Roofing
 				m_RoofImage.CreateImage();
 
 				// Request redraw image
-				if (RoofImageChanged != null)
-				{
-					RoofImageChanged(this, new EventArgs());
-				}
+				RoofImageChanged?.Invoke(this, new EventArgs());
 
 				if (MessageBox.Show(
 						Pandora.Localization.TextProvider["Roofing.MissTiles"],
@@ -489,19 +486,7 @@ namespace TheBox.Roofing
 			}
 
 			var idFormat = hue > 0 ? "static {0} set hue " + hue : "static {0}";
-
-			var dx = 0;
-			var dy = 0;
 			var p = 0;
-
-			var tilex = 0;
-			var tiley = 0;
-			var tilew = 0;
-			var tileh = 0;
-
-			var tilez = 0;
-			var tileid = 0;
-
 			for (var y = 0; y < m_RoofImage.Height; y++)
 			{
 				for (var x = 0; x < m_RoofImage.Width; x++, p++)
@@ -511,22 +496,24 @@ namespace TheBox.Roofing
 						continue;
 					}
 
+					int dx;
 					for (dx = 1; dx + x < m_RoofImage.Width; dx++)
 					{
 						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 						if ((roofIDs[p + dx] != roofIDs[p]) || (m_RoofImage.Data[p] != m_RoofImage.Data[p + dx]))
-							// Issue 10 - End
+						// Issue 10 - End
 						{
 							break;
 						}
 					}
 
+					int dy;
 					for (dy = 1; dy + y < m_RoofImage.Height; dy++)
 					{
-						if ((roofIDs[p + m_RoofImage.Width * dy] != roofIDs[p]) ||
+						if ((roofIDs[p + (m_RoofImage.Width * dy)] != roofIDs[p]) ||
 							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-							(m_RoofImage.Data[p] != m_RoofImage.Data[p + m_RoofImage.Width * dy]))
-							// Issue 10 - End
+							(m_RoofImage.Data[p] != m_RoofImage.Data[p + (m_RoofImage.Width * dy)]))
+						// Issue 10 - End
 						{
 							break;
 						}
@@ -536,10 +523,13 @@ namespace TheBox.Roofing
 					dy--;
 
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					tilez = height + (3 * m_RoofImage.Data[p]) - 3;
+					var tilez = height + (3 * m_RoofImage.Data[p]) - 3;
 					// Issue 10 - End
-					tileid = roofIDs[p];
-
+					var tileid = roofIDs[p];
+					int tilex;
+					int tiley;
+					int tilew;
+					int tileh;
 					if (dx > 0 || dy > 0)
 					{
 						tilex = m_BasePoint.X + x;
@@ -552,7 +542,7 @@ namespace TheBox.Roofing
 
 							while (dy >= 0)
 							{
-								roofIDs[p + m_RoofImage.Width * dy] = 0;
+								roofIDs[p + (m_RoofImage.Width * dy)] = 0;
 								dy--;
 							}
 						}
@@ -580,8 +570,8 @@ namespace TheBox.Roofing
 					}
 
 					// Build command
-					var item = string.Format(idFormat, tileid);
-					var cmd = string.Format("TileXYZ {0} {1} {2} {3} {4} {5}", tilex, tiley, tilew, tileh, tilez, item);
+					var item = String.Format(idFormat, tileid);
+					var cmd = String.Format("TileXYZ {0} {1} {2} {3} {4} {5}", tilex, tiley, tilew, tileh, tilez, item);
 					Pandora.SendToUO(cmd, true);
 				}
 			}
@@ -604,7 +594,9 @@ namespace TheBox.Roofing
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				if (m_RoofImage.Data[i] < 0)
+				{
 					m_RoofImage.Data[i] = -m_RoofImage.Data[i];
+				}
 				// Issue 10 - End
 			}
 
@@ -613,7 +605,7 @@ namespace TheBox.Roofing
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				if (m_RoofImage.Data[i] == 0)
-					// Issue 10 - End
+				// Issue 10 - End
 				{
 					roofIDs[i] = 0;
 				}
@@ -637,10 +629,7 @@ namespace TheBox.Roofing
 				m_RoofImage.CreateImage();
 
 				// Request redraw image
-				if (RoofImageChanged != null)
-				{
-					RoofImageChanged(this, new EventArgs());
-				}
+				RoofImageChanged?.Invoke(this, new EventArgs());
 
 				if (MessageBox.Show(
 						Pandora.Localization.TextProvider["Roofing.MissTiles"],
@@ -652,7 +641,7 @@ namespace TheBox.Roofing
 				}
 			}
 
-			var idFormat = hue > 0 ? "static {0} set hue " + hue : "static {0}";
+			_ = hue > 0 ? "static {0} set hue " + hue : "static {0}";
 
 			var p = 0;
 
@@ -670,25 +659,28 @@ namespace TheBox.Roofing
 					}
 
 					// Build item
-					var item = new BuildItem();
+					var item = new BuildItem
+					{
+						Hue = hue,
+						ID = roofIDs[p],
 
-					item.Hue = hue;
-					item.ID = roofIDs[p];
-
-					item.X = m_BasePoint.X + x;
-					item.Y = m_BasePoint.Y + y;
-					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					item.Z = height + (3 * m_RoofImage.Data[p]) - 3;
+						X = m_BasePoint.X + x,
+						Y = m_BasePoint.Y + y,
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						Z = height + (3 * m_RoofImage.Data[p]) - 3
+					};
 					// Issue 10 - End
 
 					items.Add(item);
 				}
 			}
 
-			var msg = new BuildMessage();
-			msg.Items = items;
+			var msg = new BuildMessage
+			{
+				Items = items
+			};
 
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 	}
 }

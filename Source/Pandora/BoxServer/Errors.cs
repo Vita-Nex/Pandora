@@ -28,7 +28,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets the message describing the error
 		/// </summary>
-		public string Message { set { m_Message = value; } get { return m_Message; } }
+		public string Message { set => m_Message = value; get => m_Message; }
 
 		/// <summary>
 		///     Creates a new ErrorMessage
@@ -46,7 +46,7 @@ namespace TheBox.BoxServer
 		/// <param name="args">The arguments for the format</param>
 		public ErrorMessage(string message, params string[] args)
 		{
-			m_Message = string.Format(message, args);
+			m_Message = String.Format(message, args);
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     The type of authentication error
 		/// </summary>
-		public AuthenticationResult Error { set { m_Error = value; } get { return m_Error; } }
+		public AuthenticationResult Error { set => m_Error = value; get => m_Error; }
 
 		/// <summary>
 		///     Creates a new LoginError message

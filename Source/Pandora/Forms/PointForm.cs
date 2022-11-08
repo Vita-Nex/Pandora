@@ -59,17 +59,17 @@ namespace TheBox.Forms
 		/// <summary>
 		///     Gets the X coordinate of the selected point
 		/// </summary>
-		public int PointX { get { return (int)numX.Value; } }
+		public int PointX => (int)numX.Value;
 
 		/// <summary>
 		///     Gets the Y coordinate of the selected point
 		/// </summary>
-		public int PointY { get { return (int)numY.Value; } }
+		public int PointY => (int)numY.Value;
 
 		/// <summary>
 		///     Gets the Z coordinate of the selected point
 		/// </summary>
-		public int PointZ { get { return (int)numZ.Value; } }
+		public int PointZ => (int)numZ.Value;
 
 		#region Windows Form Designer generated code
 		/// <summary>
@@ -87,15 +87,15 @@ namespace TheBox.Forms
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numX).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numY).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).BeginInit();
 			this.SuspendLayout();
 			// 
 			// numX
 			// 
 			this.numX.Location = new System.Drawing.Point(32, 8);
-			this.numX.Maximum = new System.Decimal(new int[] {7000, 0, 0, 0});
+			this.numX.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
 			this.numX.Name = "numX";
 			this.numX.Size = new System.Drawing.Size(56, 20);
 			this.numX.TabIndex = 0;
@@ -103,7 +103,7 @@ namespace TheBox.Forms
 			// numY
 			// 
 			this.numY.Location = new System.Drawing.Point(120, 8);
-			this.numY.Maximum = new System.Decimal(new int[] {7000, 0, 0, 0});
+			this.numY.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
 			this.numY.Name = "numY";
 			this.numY.Size = new System.Drawing.Size(56, 20);
 			this.numY.TabIndex = 1;
@@ -170,13 +170,13 @@ namespace TheBox.Forms
 			this.Controls.Add(this.numY);
 			this.Controls.Add(this.numX);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "PointForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Misc.FindLoc";
-			((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numY)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numX).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numY).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion

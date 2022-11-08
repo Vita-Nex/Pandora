@@ -31,6 +31,6 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the datafile type to retrieve
 		/// </summary>
-		public BoxDatafile DataType { get { return m_DataType; } set { m_DataType = value; } }
+		public BoxDatafile DataType { get => m_DataType; set => m_DataType = value; }
 	}
 }

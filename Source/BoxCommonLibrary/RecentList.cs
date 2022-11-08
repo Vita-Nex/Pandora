@@ -51,17 +51,17 @@ namespace TheBox.Common
 		///     Gets or set the maximum capacity for the list
 		/// </summary>
 		[XmlAttribute]
-		public int Capacity { get { return m_Capacity; } set { m_Capacity = value; } }
+		public int Capacity { get => m_Capacity; set => m_Capacity = value; }
 
 		/// <summary>
 		///     Gets or sets the items in the list
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<object> List
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_List; }
-			set { m_List = value; }
+			get => m_List;
+			set => m_List = value;
 		}
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace TheBox.Common
 			if (m_List.Contains(o))
 			{
 				// Move object to top
-				m_List.Remove(o);
+				_ = m_List.Remove(o);
 				m_List.Insert(0, o);
 			}
 			else
@@ -81,7 +81,9 @@ namespace TheBox.Common
 				m_List.Insert(0, o);
 
 				if (m_List.Count > m_Capacity)
+				{
 					m_List.RemoveRange(m_Capacity, m_List.Count);
+				}
 			}
 		}
 	}

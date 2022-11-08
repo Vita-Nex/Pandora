@@ -26,7 +26,7 @@ namespace TheBox.Forms
 			// Issue 1 - CrossThread operation exception - http://code.google.com/p/pandorasbox3/issues/detail?id=1 - Smjert
 			if (InvokeRequired)
 			{
-				BeginInvoke((MethodInvoker)delegate { SetActionText(action); });
+				_ = BeginInvoke((MethodInvoker)delegate { SetActionText(action); });
 				return;
 			}
 			// Issue 1 - End
@@ -71,7 +71,9 @@ namespace TheBox.Forms
 			base.Dispose(disposing);
 
 			if (Pandora.Profile == null)
+			{
 				Pandora.ClosePandora();
+			}
 		}
 
 		#region Windows Form Designer generated code
@@ -86,12 +88,12 @@ namespace TheBox.Forms
 			this.label1 = new System.Windows.Forms.Label();
 			this.labVersion = new System.Windows.Forms.Label();
 			this.m_ActionLabel = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.pictureBox1).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
 			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(600, 352);
@@ -115,7 +117,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.labVersion.ForeColor = System.Drawing.Color.White;
 			this.labVersion.Location = new System.Drawing.Point(56, 352);
 			this.labVersion.Name = "labVersion";
@@ -131,7 +133,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Italic,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.m_ActionLabel.ForeColor = System.Drawing.Color.White;
 			this.m_ActionLabel.Location = new System.Drawing.Point(320, 352);
 			this.m_ActionLabel.Name = "m_ActionLabel";
@@ -150,11 +152,11 @@ namespace TheBox.Forms
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "SplashScreen";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Pandora\'s Box 3";
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.pictureBox1).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion

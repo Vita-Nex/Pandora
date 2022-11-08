@@ -102,7 +102,7 @@ namespace TheBox.Forms
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<string> Paths
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			set
 			{
@@ -113,18 +113,16 @@ namespace TheBox.Forms
 				{
 					var path = s.Split('.');
 
-					lst.Items.Add(path[path.Length - 1]);
+					_ = lst.Items.Add(path[path.Length - 1]);
 				}
 
 				lst.EndUpdate();
 			}
 		}
 
-		private int m_SelectedClass;
-
 		private void lst_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_SelectedClass = lst.SelectedIndex;
+			SelectedClass = lst.SelectedIndex;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -143,6 +141,6 @@ namespace TheBox.Forms
 		/// <summary>
 		///     Gets the index of the class selected
 		/// </summary>
-		public int SelectedClass { get { return m_SelectedClass; } }
+		public int SelectedClass { get; private set; }
 	}
 }

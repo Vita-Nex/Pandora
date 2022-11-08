@@ -86,7 +86,7 @@ namespace TheBox.Forms.ProfileWizard
 			this.Controls.Add(this.btnOK);
 			this.Controls.Add(this.cmbLang);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "LanguageSelector";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Pandora\'s Box";
@@ -110,7 +110,7 @@ namespace TheBox.Forms.ProfileWizard
 					// Possible language file
 					var lang = Path.GetFileNameWithoutExtension(s);
 
-					cmbLang.Items.Add(lang);
+					_ = cmbLang.Items.Add(lang);
 				}
 			}
 

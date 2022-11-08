@@ -36,8 +36,7 @@ namespace TheBox.Data
 		{
 			get
 			{
-				TreeNode[] nodes = null;
-
+				TreeNode[] nodes;
 				if (Pandora.Profile.Deco.ShowCustomDeco)
 				{
 					nodes = new TreeNode[m_Default.Structure.Count + 1];
@@ -165,7 +164,7 @@ namespace TheBox.Data
 				foreach (GenericNode n2 in n.Elements)
 				{
 					var sub = new TreeNode(n2.Name);
-					cat.Nodes.Add(sub);
+					_ = cat.Nodes.Add(sub);
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					sub.Tag = new List<object>();
 					(sub.Tag as List<object>).AddRange(n2.Elements);

@@ -69,7 +69,7 @@ namespace TheBox.Controls.Params
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.labName.Location = new System.Drawing.Point(0, 0);
 			this.labName.Name = "labName";
 			this.labName.Size = new System.Drawing.Size(96, 16);
@@ -102,8 +102,10 @@ namespace TheBox.Controls.Params
 
 		private void lnk_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			m_Form = new TimeSpanForm();
-			m_Form.TimeSpan = m_TimeSpan;
+			m_Form = new TimeSpanForm
+			{
+				TimeSpan = m_TimeSpan
+			};
 
 			m_Form.Location = PointToScreen(new Point(0, Height - m_Form.Height));
 
@@ -121,9 +123,9 @@ namespace TheBox.Controls.Params
 			}
 		}
 
-		public string Value { get { return m_TimeSpan.ToString(); } }
+		public string Value => m_TimeSpan.ToString();
 
-		public bool IsDefined { get { return true; } }
+		public bool IsDefined => true;
 		#endregion
 
 		private void m_Form_Closed(object sender, EventArgs e)

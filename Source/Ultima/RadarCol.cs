@@ -20,35 +20,34 @@ namespace Ultima
 			Initialize();
 		}
 
-		private static short[] m_Colors;
-		public static short[] Colors { get { return m_Colors; } }
+		public static short[] Colors { get; private set; }
 
 		public static short GetItemColor(int index)
 		{
-			if (index + 0x4000 < m_Colors.Length)
+			if (index + 0x4000 < Colors.Length)
 			{
-				return m_Colors[index + 0x4000];
+				return Colors[index + 0x4000];
 			}
 			return 0;
 		}
 
 		public static short GetLandColor(int index)
 		{
-			if (index < m_Colors.Length)
+			if (index < Colors.Length)
 			{
-				return m_Colors[index];
+				return Colors[index];
 			}
 			return 0;
 		}
 
 		public static void SetItemColor(int index, short value)
 		{
-			m_Colors[index + 0x4000] = value;
+			Colors[index + 0x4000] = value;
 		}
 
 		public static void SetLandColor(int index, short value)
 		{
-			m_Colors[index] = value;
+			Colors[index] = value;
 		}
 
 		public static void Initialize()
@@ -58,17 +57,17 @@ namespace Ultima
 			{
 				using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
 				{
-					m_Colors = new short[fs.Length / 2];
-					var gc = GCHandle.Alloc(m_Colors, GCHandleType.Pinned);
+					Colors = new short[fs.Length / 2];
+					var gc = GCHandle.Alloc(Colors, GCHandleType.Pinned);
 					var buffer = new byte[(int)fs.Length];
-					fs.Read(buffer, 0, (int)fs.Length);
+					_ = fs.Read(buffer, 0, (int)fs.Length);
 					Marshal.Copy(buffer, 0, gc.AddrOfPinnedObject(), (int)fs.Length);
 					gc.Free();
 				}
 			}
 			else
 			{
-				m_Colors = new short[0x8000];
+				Colors = new short[0x8000];
 			}
 		}
 
@@ -78,9 +77,9 @@ namespace Ultima
 			{
 				using (var bin = new BinaryWriter(fs))
 				{
-					for (var i = 0; i < m_Colors.Length; ++i)
+					for (var i = 0; i < Colors.Length; ++i)
 					{
-						bin.Write(m_Colors[i]);
+						bin.Write(Colors[i]);
 					}
 				}
 			}
@@ -94,9 +93,9 @@ namespace Ultima
 			{
 				Tex.WriteLine("ID;Color");
 
-				for (var i = 0; i < m_Colors.Length; ++i)
+				for (var i = 0; i < Colors.Length; ++i)
 				{
-					Tex.WriteLine("0x{0:X4};{1}", i, m_Colors[i]);
+					Tex.WriteLine("0x{0:X4};{1}", i, Colors[i]);
 				}
 			}
 		}
@@ -123,7 +122,7 @@ namespace Ultima
 					}
 					++count;
 				}
-				m_Colors = new short[count];
+				Colors = new short[count];
 			}
 			using (var sr = new StreamReader(FileName))
 			{
@@ -148,7 +147,7 @@ namespace Ultima
 
 						var id = ConvertStringToInt(split[0]);
 						var color = ConvertStringToInt(split[1]);
-						m_Colors[id] = (short)color;
+						Colors[id] = (short)color;
 					}
 					catch
 					{ }
@@ -162,11 +161,11 @@ namespace Ultima
 			if (text.Contains("0x"))
 			{
 				var convert = text.Replace("0x", "");
-				int.TryParse(convert, NumberStyles.HexNumber, null, out result);
+				_ = System.Int32.TryParse(convert, NumberStyles.HexNumber, null, out result);
 			}
 			else
 			{
-				int.TryParse(text, NumberStyles.Integer, null, out result);
+				_ = System.Int32.TryParse(text, NumberStyles.Integer, null, out result);
 			}
 
 			return result;

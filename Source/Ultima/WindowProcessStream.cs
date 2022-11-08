@@ -27,7 +27,7 @@ namespace Ultima
 					return m_ProcessID;
 				}
 
-				NativeMethods.GetWindowThreadProcessId(Window, ref m_ProcessID);
+				_ = NativeMethods.GetWindowThreadProcessId(Window, ref m_ProcessID);
 
 				return m_ProcessID;
 			}

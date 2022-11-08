@@ -47,7 +47,7 @@ namespace TheBox.Localization
 
 				return m_TextProvider;
 			}
-			set { m_TextProvider = value; }
+			set => m_TextProvider = value;
 		}
 
 		/// <summary>
@@ -57,9 +57,10 @@ namespace TheBox.Localization
 		{
 			get
 			{
-				var languages = new StringCollection();
-
-				languages.Add(DEFAULT_LANGUAGE);
+				var languages = new StringCollection
+				{
+					DEFAULT_LANGUAGE
+				};
 
 				// TODO : Add code to correctly detect supported languages
 
@@ -86,11 +87,10 @@ namespace TheBox.Localization
 			{
 				// Box button
 				var b = control as BoxButton;
-
-				ButtonDef def = null;
-
 				if (b.ButtonID >= 0)
-					def = Pandora.Buttons[b];
+				{
+					_ = Pandora.Buttons[b];
+				}
 
 				Pandora.Profile.ButtonIndex.DoButton(b);
 			}
@@ -102,7 +102,9 @@ namespace TheBox.Localization
 				var path = text.Split('.');
 
 				if (path.Length == 2)
+				{
 					control.Text = Pandora.Localization.TextProvider[text];
+				}
 
 				if (control is LinkLabel)
 				{
@@ -114,7 +116,9 @@ namespace TheBox.Localization
 				if (control.Controls.Count > 0)
 				{
 					foreach (Control c in control.Controls)
+					{
 						LocalizeControl(c);
+					}
 				}
 			}
 		}
@@ -132,10 +136,14 @@ namespace TheBox.Localization
 				var localizedText = Pandora.Localization.TextProvider[text];
 
 				if (localizedText != null)
+				{
 					mi.Text = localizedText;
+				}
 
 				if (mi.MenuItems.Count > 0)
+				{
 					LocalizeMenu(mi);
+				}
 			}
 		}
 
@@ -152,14 +160,16 @@ namespace TheBox.Localization
 				var localizedText = Pandora.Localization.TextProvider[text];
 
 				if (localizedText != null)
-					tsi.Text = localizedText;
-
-				if (tsi is ToolStripMenuItem)
 				{
-					var tsmi = (ToolStripMenuItem)tsi;
+					tsi.Text = localizedText;
+				}
 
+				if (tsi is ToolStripMenuItem tsmi)
+				{
 					if (tsmi != null && tsmi.DropDownItems.Count > 0)
+					{
 						LocalizeMenu(tsmi);
+					}
 				}
 			}
 		}
@@ -177,14 +187,16 @@ namespace TheBox.Localization
 				var localizedText = Pandora.Localization.TextProvider[text];
 
 				if (localizedText != null)
-					tsi.Text = localizedText;
-
-				if (tsi is ToolStripMenuItem)
 				{
-					var tsmi = (ToolStripMenuItem)tsi;
+					tsi.Text = localizedText;
+				}
 
+				if (tsi is ToolStripMenuItem tsmi)
+				{
 					if (tsmi != null && tsmi.DropDownItems.Count > 0)
+					{
 						LocalizeMenu(tsmi);
+					}
 				}
 			}
 		}
@@ -197,7 +209,9 @@ namespace TheBox.Localization
 		{
 			// Return a default value: Tarion (19.07.2010)
 			if (Pandora.Profile == null)
+			{
 				return GetLanguage(DEFAULT_LANGUAGE);
+			}
 
 			return GetLanguage(Pandora.Profile.Language);
 		}
@@ -211,12 +225,12 @@ namespace TheBox.Localization
 			var file = Path.Combine(Pandora.Folder, "Lang");
 			string resource = null;
 
-			file = Path.Combine(file, string.Format("{0}.dll", language));
+			file = Path.Combine(file, String.Format("{0}.dll", language));
 
 			if (!File.Exists(file))
 			{
 				// Selected language doesn't exist. Revert to English
-				MessageBox.Show(
+				_ = MessageBox.Show(
 					String.Format(
 						"The langague selected for the current profile could not be located. {0} will be used instead.\n\nMissing language: {0}.",
 						Pandora.Profile.Language,
@@ -225,12 +239,12 @@ namespace TheBox.Localization
 				Pandora.Profile.Language = DEFAULT_LANGUAGE;
 
 				file = Path.Combine(Pandora.Folder, "Lang");
-				file = Path.Combine(file, string.Format(DEFAULT_LANGUAGE + ".dll"));
+				file = Path.Combine(file, String.Format(DEFAULT_LANGUAGE + ".dll"));
 
 				if (!File.Exists(file))
 				{
 					// English doesn't exist either. This is wrong.
-					MessageBox.Show(
+					_ = MessageBox.Show(
 						String.Format(
 							"Pandora's Box couldn't locate a required component ({0}.dll). Please reinstall the program to address this issue.",
 							DEFAULT_LANGUAGE));
@@ -244,7 +258,7 @@ namespace TheBox.Localization
 			try
 			{
 				// Read the TextProvider object
-				resource = string.Format("{0}.language.xml", language);
+				resource = String.Format("{0}.language.xml", language);
 
 				// Load the assembly
 				var asm = Assembly.LoadFile(file);
@@ -261,7 +275,7 @@ namespace TheBox.Localization
 			}
 			catch (Exception err)
 			{
-				MessageBox.Show(
+				_ = MessageBox.Show(
 					"An unexpected error occurred when loading language files. Details about the error have been recorded in the log file. Pandora's Box will now close.");
 				Pandora.Log.WriteError(err, "Loading resource {0} from assembly in file {1}", resource, file);
 				throw new Exception("Language file corrupted");

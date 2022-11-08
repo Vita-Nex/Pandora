@@ -19,26 +19,21 @@ namespace TheBox.Roofing
 	/// </summary>
 	public class TileSet
 	{
-		private string m_Name;
 
-		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		private readonly List<TileMask> m_Tiles;
 		// Issue 10 - End
 
 		/// <summary>
 		///     Gets the name of this tileset
 		/// </summary>
-		public string Name { get { return m_Name; } }
+		public string Name { get; private set; }
 
 		/// <summary>
 		///     Gets the tiles included in this tileset
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<TileMask> Tiles
-			// Issue 10 - End
-		{
-			get { return m_Tiles; }
-		}
+		// Issue 10 - End
+		{ get; }
 
 		/// <summary>
 		///     Creates a new tile set
@@ -46,7 +41,7 @@ namespace TheBox.Roofing
 		public TileSet()
 		{
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			m_Tiles = new List<TileMask>();
+			Tiles = new List<TileMask>();
 			// Issue 10 - End
 		}
 
@@ -57,7 +52,7 @@ namespace TheBox.Roofing
 		/// <returns>The ID of the corresponding tile</returns>
 		public int FindID(uint flags)
 		{
-			foreach (var tile in m_Tiles)
+			foreach (var tile in Tiles)
 			{
 				if ((flags & ~tile.Flags) == 0)
 				{
@@ -85,7 +80,7 @@ namespace TheBox.Roofing
 			while (reader.Peek() > -1)
 			{
 				var line = reader.ReadLine();
-				line.Trim();
+				_ = line.Trim();
 
 				if (line == null || line.Length == 0 || line.StartsWith("#"))
 				{
@@ -97,8 +92,10 @@ namespace TheBox.Roofing
 					line = line.Replace("[", "");
 					line = line.Replace("]", "");
 
-					tileset = new TileSet();
-					tileset.m_Name = line;
+					tileset = new TileSet
+					{
+						Name = line
+					};
 					list.Add(tileset);
 
 					continue;
@@ -112,7 +109,7 @@ namespace TheBox.Roofing
 					var tile = Convert.ToInt32(values[1]);
 
 					var mask = new TileMask(flags, tile);
-					tileset.m_Tiles.Add(mask);
+					tileset.Tiles.Add(mask);
 				}
 			}
 
@@ -121,7 +118,7 @@ namespace TheBox.Roofing
 
 		public override string ToString()
 		{
-			return m_Name;
+			return Name;
 		}
 	}
 }

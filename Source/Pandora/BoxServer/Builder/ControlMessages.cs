@@ -30,7 +30,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		/// Gets or sets the new hue for the items
 		/// </summary>
-		public int Hue { get { return m_Hue; } set { m_Hue = value; } }
+		public int Hue { get => m_Hue; set => m_Hue = value; }
 
 		public HueMessage()
 		{ }
@@ -55,19 +55,19 @@ namespace TheBox.BoxServer
 		/// <summary>
 		/// Gets or sets the X offset
 		/// </summary>
-		public int XOffset { get { return m_X; } set { m_X = value; } }
+		public int XOffset { get => m_X; set => m_X = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the Y offset
 		/// </summary>
-		public int YOffset { get { return m_Y; } set { m_Y = value; } }
+		public int YOffset { get => m_Y; set => m_Y = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the Z offset
 		/// </summary>
-		public int ZOffset { get { return m_Z; } set { m_Z = value; } }
+		public int ZOffset { get => m_Z; set => m_Z = value; }
 
 		public OffsetMessage()
 		{ }

@@ -108,9 +108,9 @@ namespace TheBox.Forms
 			this.lnkZero = new System.Windows.Forms.LinkLabel();
 			this.bSelect = new System.Windows.Forms.Button();
 			this.bSet = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.numIndex)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.barDarkness)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numID)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numIndex).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.barDarkness).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numID).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Chart
@@ -138,7 +138,7 @@ namespace TheBox.Forms
 			// numIndex
 			// 
 			this.numIndex.Location = new System.Drawing.Point(408, 40);
-			this.numIndex.Maximum = new System.Decimal(new int[] {3000, 0, 0, 0});
+			this.numIndex.Maximum = new decimal(new int[] { 3000, 0, 0, 0 });
 			this.numIndex.Name = "numIndex";
 			this.numIndex.Size = new System.Drawing.Size(56, 20);
 			this.numIndex.TabIndex = 2;
@@ -159,7 +159,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Underline,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.labName.Location = new System.Drawing.Point(48, 8);
 			this.labName.Name = "labName";
 			this.labName.Size = new System.Drawing.Size(176, 23);
@@ -206,7 +206,7 @@ namespace TheBox.Forms
 			// comboType
 			// 
 			this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboType.Items.AddRange(new object[] {"Items", "NPCs", "Gumps"});
+			this.comboType.Items.AddRange(new object[] { "Items", "NPCs", "Gumps" });
 			this.comboType.Location = new System.Drawing.Point(520, 216);
 			this.comboType.Name = "comboType";
 			this.comboType.Size = new System.Drawing.Size(104, 21);
@@ -224,7 +224,7 @@ namespace TheBox.Forms
 			// numID
 			// 
 			this.numID.Location = new System.Drawing.Point(520, 240);
-			this.numID.Maximum = new System.Decimal(new int[] {20000, 0, 0, 0});
+			this.numID.Maximum = new decimal(new int[] { 20000, 0, 0, 0 });
 			this.numID.Name = "numID";
 			this.numID.Size = new System.Drawing.Size(64, 20);
 			this.numID.TabIndex = 10;
@@ -336,16 +336,16 @@ namespace TheBox.Forms
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.Chart);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "HuePicker";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "HuePicker.Title";
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.HuePicker_Closing);
 			this.Load += new System.EventHandler(this.HuePicker_Load);
-			((System.ComponentModel.ISupportInitialize)(this.numIndex)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.barDarkness)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numID)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numIndex).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.barDarkness).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numID).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -354,15 +354,20 @@ namespace TheBox.Forms
 
 		public int SelectedHue
 		{
-			get { return m_SelectedHue; }
+			get => m_SelectedHue;
 			set
 			{
 				m_SelectedHue = value;
 
 				if (m_SelectedHue < 0)
+				{
 					m_SelectedHue = 0;
+				}
+
 				if (m_SelectedHue > 3000)
+				{
 					m_SelectedHue = 3000;
+				}
 
 				Chart.SelectedIndex = m_SelectedHue;
 
@@ -438,7 +443,9 @@ namespace TheBox.Forms
 		private void numIndex_ValueChanged(object sender, EventArgs e)
 		{
 			if (SelectedHue != (int)numIndex.Value)
+			{
 				SelectedHue = (int)numIndex.Value;
+			}
 
 			if (SelectedHue == 0)
 			{
@@ -468,7 +475,7 @@ namespace TheBox.Forms
 
 		private void Chart_Click(object sender, EventArgs e)
 		{
-			Chart.Focus();
+			_ = Chart.Focus();
 		}
 
 		private void bSelect_Click(object sender, EventArgs e)

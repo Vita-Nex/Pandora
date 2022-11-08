@@ -56,7 +56,7 @@ namespace TheBox.Controls.Params
 			}
 			catch
 			{ } // VS
-			// End Issue 27
+				// End Issue 27
 		}
 
 		/// <summary>
@@ -87,9 +87,9 @@ namespace TheBox.Controls.Params
 			this.numZ = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numX).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numY).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -103,7 +103,7 @@ namespace TheBox.Controls.Params
 			// numX
 			// 
 			this.numX.Location = new System.Drawing.Point(28, 4);
-			this.numX.Maximum = new System.Decimal(new int[] {7000, 0, 0, 0});
+			this.numX.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
 			this.numX.Name = "numX";
 			this.numX.Size = new System.Drawing.Size(56, 20);
 			this.numX.TabIndex = 1;
@@ -112,7 +112,7 @@ namespace TheBox.Controls.Params
 			// numY
 			// 
 			this.numY.Location = new System.Drawing.Point(28, 28);
-			this.numY.Maximum = new System.Decimal(new int[] {7000, 0, 0, 0});
+			this.numY.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
 			this.numY.Name = "numY";
 			this.numY.Size = new System.Drawing.Size(56, 20);
 			this.numY.TabIndex = 2;
@@ -121,8 +121,8 @@ namespace TheBox.Controls.Params
 			// numZ
 			// 
 			this.numZ.Location = new System.Drawing.Point(28, 52);
-			this.numZ.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.numZ.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.numZ.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.numZ.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.numZ.Name = "numZ";
 			this.numZ.Size = new System.Drawing.Size(56, 20);
 			this.numZ.TabIndex = 3;
@@ -167,9 +167,9 @@ namespace TheBox.Controls.Params
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.Point3DForm_Paint);
 			this.Leave += new System.EventHandler(this.Point3DForm_Leave);
 			this.Deactivate += new System.EventHandler(this.Point3DForm_Deactivate);
-			((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numY)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numX).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numY).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -180,7 +180,7 @@ namespace TheBox.Controls.Params
 			PointY = m_Y;
 			PointZ = m_Z;
 
-			Focus();
+			_ = Focus();
 		}
 
 		private void Point3DForm_Leave(object sender, EventArgs e)
@@ -218,21 +218,21 @@ namespace TheBox.Controls.Params
 		/// <summary>
 		///     Gets or sets the X coordinate
 		/// </summary>
-		public int PointX { get { return (int)numX.Value; } set { numX.Value = value; } }
+		public int PointX { get => (int)numX.Value; set => numX.Value = value; }
 
 		/// <summary>
 		///     Gets or sets the Y coordinate
 		/// </summary>
-		public int PointY { get { return (int)numY.Value; } set { numY.Value = value; } }
+		public int PointY { get => (int)numY.Value; set => numY.Value = value; }
 
 		/// <summary>
 		///     Gets or sets the Z coordinate
 		/// </summary>
-		public int PointZ { get { return (int)numZ.Value; } set { numZ.Value = value; } }
+		public int PointZ { get => (int)numZ.Value; set => numZ.Value = value; }
 
 		/// <summary>
 		///     Gets the point selected by the user
 		/// </summary>
-		public string SelectedPoint { get { return string.Format("({0},{1},{2})", PointX, PointY, PointZ); } }
+		public string SelectedPoint => String.Format("({0},{1},{2})", PointX, PointY, PointZ);
 	}
 }

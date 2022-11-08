@@ -21,14 +21,14 @@ namespace TheBox
 		{
 			var builder = new ContainerBuilder();
 
-			builder.Register<ProfileManager>().ControlledBy<SingletonLifecycle>();
-			builder.Register<StartingContext>().ControlledBy<SingletonLifecycle>();
+			_ = builder.Register<ProfileManager>().ControlledBy<SingletonLifecycle>();
+			_ = builder.Register<StartingContext>().ControlledBy<SingletonLifecycle>();
 
 			// GUI
-			builder.Register<ISplash, Splash>().ControlledBy<SingletonLifecycle>();
-			builder.Register<ILanguageSelector, LanguageSelector>();
-			builder.Register<IProfileChooser, ProfileChooser>();
-			builder.Register<IBoxForm, Box>();
+			_ = builder.Register<ISplash, Splash>().ControlledBy<SingletonLifecycle>();
+			_ = builder.Register<ILanguageSelector, LanguageSelector>();
+			_ = builder.Register<IProfileChooser, ProfileChooser>();
+			_ = builder.Register<IBoxForm, Box>();
 
 			return builder.Build();
 		}

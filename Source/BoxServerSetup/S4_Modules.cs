@@ -117,11 +117,13 @@ namespace BoxServerSetup
 
 			foreach (var module in Setup.Modules)
 			{
-				var node = new TreeNode(module.Name);
-				node.Tag = module;
-				node.Checked = true;
+				var node = new TreeNode(module.Name)
+				{
+					Tag = module,
+					Checked = true
+				};
 
-				tree.Nodes.Add(node);
+				_ = tree.Nodes.Add(node);
 			}
 
 			tree.EndUpdate();
@@ -139,7 +141,7 @@ namespace BoxServerSetup
 
 		private BoxModule SelectedModule
 		{
-			get { return m_Module; }
+			get => m_Module;
 			set
 			{
 				m_Module = value;

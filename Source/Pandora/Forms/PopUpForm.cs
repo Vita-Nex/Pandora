@@ -33,7 +33,7 @@ namespace TheBox.Forms
 		private static readonly Color m_TopColor = Color.LightSkyBlue;
 		private static readonly Color m_BottomColor = Color.AliceBlue;
 		private static readonly Color m_BorderColor = Color.SteelBlue;
-		private static Color m_TextColor = Color.SlateBlue;
+		private static readonly Color m_TextColor = Color.SlateBlue;
 		private string m_Title;
 		private string m_Message;
 		private Rectangle m_TitleBounds;
@@ -79,13 +79,15 @@ namespace TheBox.Forms
 		{
 			this.components = new System.ComponentModel.Container();
 			var resources = new System.Resources.ResourceManager(typeof(PopUpForm));
-			this.imgList = new System.Windows.Forms.ImageList(this.components);
-			// 
-			// imgList
-			// 
-			this.imgList.ImageSize = new System.Drawing.Size(13, 13);
-			this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
-			this.imgList.TransparentColor = System.Drawing.Color.Transparent;
+			this.imgList = new System.Windows.Forms.ImageList(this.components)
+			{
+				// 
+				// imgList
+				// 
+				ImageSize = new System.Drawing.Size(13, 13),
+				ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imgList.ImageStream"),
+				TransparentColor = System.Drawing.Color.Transparent
+			};
 			// 
 			// PopUpForm
 			// 
@@ -109,8 +111,7 @@ namespace TheBox.Forms
 		private void Calculate()
 		{
 			var g = CreateGraphics();
-
-			var rect = new Rectangle(0, 0, Width - 1, Height - 1);
+			_ = new Rectangle(0, 0, Width - 1, Height - 1);
 
 			var font = new Font("Arial", 8.25f);
 
@@ -194,23 +195,26 @@ namespace TheBox.Forms
 		private void PopUpForm_MouseLeave(object sender, EventArgs e)
 		{
 			if (m_ToolTipMode)
+			{
 				Close();
+			}
 		}
 		#endregion
 
 		#region Showing
 		public static void PopUp(Form owner, string title, string message, bool toolTipMode, PopUpCallback callback)
 		{
-			var form = new PopUpForm();
-
-			form.m_Title = title;
-			form.m_Message = message;
-			form.m_ToolTipMode = toolTipMode;
-			form.m_Callback = callback;
+			var form = new PopUpForm
+			{
+				m_Title = title,
+				m_Message = message,
+				m_ToolTipMode = toolTipMode,
+				m_Callback = callback
+			};
 
 			form.Calculate();
 
-			form.ShowDialog(owner);
+			_ = form.ShowDialog(owner);
 		}
 		#endregion
 
@@ -281,7 +285,9 @@ namespace TheBox.Forms
 		private void PopUpForm_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (m_HotSpot == HotSpot.Close)
+			{
 				Refresh();
+			}
 		}
 
 		private void PopUpForm_MouseUp(object sender, MouseEventArgs e)
@@ -296,7 +302,7 @@ namespace TheBox.Forms
 				{
 					try
 					{
-						m_Callback.DynamicInvoke(null);
+						_ = m_Callback.DynamicInvoke(null);
 					}
 					catch
 					{ }

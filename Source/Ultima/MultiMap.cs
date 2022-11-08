@@ -52,12 +52,12 @@ namespace Ultima
 						{
 							m_StreamBuffer = new byte[len];
 						}
-						bin.Read(m_StreamBuffer, 0, len);
+						_ = bin.Read(m_StreamBuffer, 0, len);
 						var j = 0;
 						while (j != len)
 						{
 							pixel = m_StreamBuffer[j++];
-							count = (pixel & 0x7f);
+							count = pixel & 0x7f;
 
 							if ((pixel & 0x80) != 0)
 							{
@@ -245,7 +245,7 @@ namespace Ultima
 					while (x < width)
 					{
 						var hue = line[x];
-						while (x < width && colorsCount < byte.MaxValue && hue == line[x])
+						while (x < width && colorsCount < Byte.MaxValue && hue == line[x])
 						{
 							++colorsCount;
 							++x;
@@ -257,9 +257,9 @@ namespace Ultima
 						colorsCount = 0;
 					}
 					var currpos = writer.BaseStream.Position;
-					writer.BaseStream.Seek(pos, SeekOrigin.Begin);
+					_ = writer.BaseStream.Seek(pos, SeekOrigin.Begin);
 					writer.Write(colorsAtLine * 3); //byte count
-					writer.BaseStream.Seek(currpos, SeekOrigin.Begin);
+					_ = writer.BaseStream.Seek(currpos, SeekOrigin.Begin);
 				}
 			}
 		}

@@ -69,7 +69,10 @@ namespace TheBox.BoxServer
 			}
 
 			if (cmp == Password)
+			{
 				return AuthenticationResult.Success;
+			}
+
 			return AuthenticationResult.WrongCredentials;
 		}
 
@@ -89,7 +92,7 @@ namespace TheBox.BoxServer
 		/// <returns>The MD5 hash corresponding to the password</returns>
 		private static string ComputePasswordHash(string password)
 		{
-			var encoding = Encoding.ASCII;
+			_ = Encoding.ASCII;
 
 			var dataIn = new byte[256];
 

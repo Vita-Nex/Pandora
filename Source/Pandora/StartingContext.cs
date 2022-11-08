@@ -48,7 +48,7 @@ namespace TheBox
 				if (proc != null) // Single instance check
 				{
 					Pandora.Log.WriteError(null, "Double instance detected");
-					MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
+					_ = MessageBox.Show("You can't run two instances of Pandora's Box at the same time");
 					//  Issue 33:  	 Bring to front if already started - Tarion
 					ProcessExtension.BringToFront(proc);
 				}
@@ -78,9 +78,13 @@ namespace TheBox
 			{
 				// No default profile specified. Either choose one or create a new one
 				if (_profileManager.ProfileNames.Length == 0)
+				{
 					MakeNewProfile();
+				}
 				else
+				{
 					ChooseProfile();
+				}
 			}
 		}
 
@@ -137,19 +141,24 @@ namespace TheBox
 
 			if (_profileManager.Profile == null)
 			{
-				var msg = string.Format(
+				var msg = String.Format(
 					"The profile {0} is corrupt, therefore it can't be loaded. Would you like to attempt to restore it?",
 					name);
 
 				if (MessageBox.Show(null, msg, "Profile Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
-					var p = new Profile();
-					p.Name = name;
+					var p = new Profile
+					{
+						Name = name
+					};
 					p.Save();
 					LoadProfile(name);
 				}
 				else
+				{
 					DoProfile();
+				}
+
 				return;
 			}
 
@@ -171,7 +180,7 @@ namespace TheBox
 			}
 			catch (Exception err)
 			{
-				Pandora.Log.WriteError(err, string.Format("Profile {0} failed.", name));
+				Pandora.Log.WriteError(err, String.Format("Profile {0} failed.", name));
 				// Issue 6:  	 Improve error management - Tarion
 				// Application.Exit(); Did not worked correctly
 				// We could use:  Environment.Exit(1);

@@ -102,7 +102,7 @@ namespace TheBox.Forms
 				9F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.tb.HideSelection = false;
 			this.tb.Location = new System.Drawing.Point(0, 0);
 			this.tb.Name = "tb";
@@ -113,13 +113,13 @@ namespace TheBox.Forms
 			// 
 			// mainMenu1
 			// 
-			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.menuItem1});
+			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.menuItem1 });
 			// 
 			// menuItem1
 			// 
 			this.menuItem1.Index = 0;
 			this.menuItem1.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.miRemoteSave, this.miLocalSave, this.menuItem4, this.miExit});
+				new System.Windows.Forms.MenuItem[] { this.miRemoteSave, this.miLocalSave, this.menuItem4, this.miExit });
 			this.menuItem1.Text = "File";
 			// 
 			// miRemoteSave
@@ -174,15 +174,14 @@ namespace TheBox.Forms
 
 		private void miRemoteSave_Click(object sender, EventArgs e)
 		{
-			var msg = new FileTransport();
-			msg.Filename = m_File;
+			var msg = new FileTransport
+			{
+				Filename = m_File
+			};
 
 			Pandora.Profile.Server.FillBoxMessage(msg);
 			msg.Text = m_Text;
-
-			var response = Pandora.BoxConnection.ProcessMessage(msg, true) as GenericOK;
-
-			if (response != null)
+			if (Pandora.BoxConnection.ProcessMessage(msg, true) is GenericOK)
 			{
 				// Success
 				sBar.Text = "Remote save succesful";
@@ -228,7 +227,9 @@ namespace TheBox.Forms
 			SaveFile.FileName = Path.GetFileNameWithoutExtension(m_File);
 
 			if (SaveFile.ShowDialog() != DialogResult.OK)
+			{
 				return;
+			}
 
 			try
 			{

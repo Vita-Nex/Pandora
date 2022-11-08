@@ -41,10 +41,10 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<GenericNode> Structure
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Structure; }
-			set { m_Structure = value; }
+			get => m_Structure;
+			set => m_Structure = value;
 		}
 
 		/// <summary>
@@ -58,8 +58,10 @@ namespace TheBox.Data
 
 			foreach (var gNode in m_Structure)
 			{
-				var node = new TreeNode(gNode.Name);
-				node.Tag = gNode.Elements;
+				var node = new TreeNode(gNode.Name)
+				{
+					Tag = gNode.Elements
+				};
 
 				nodes[i++] = node;
 			}
@@ -77,9 +79,11 @@ namespace TheBox.Data
 
 			foreach (TreeNode node in nodes)
 			{
-				var gNode = new GenericNode(node.Text);
-				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				gNode.Elements = node.Tag as List<object>;
+				var gNode = new GenericNode(node.Text)
+				{
+					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+					Elements = node.Tag as List<object>
+				};
 				// Issue 10 - End
 
 				m_Structure.Add(gNode);
@@ -117,8 +121,7 @@ namespace TheBox.Data
 		{
 			var filename = Path.Combine(Pandora.Profile.BaseFolder, "SpawnGroups.xml");
 
-			SpawnGroups sg = null;
-
+			SpawnGroups sg;
 			if (File.Exists(filename))
 			{
 				try

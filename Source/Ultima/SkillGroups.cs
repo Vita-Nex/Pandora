@@ -62,25 +62,25 @@ namespace Ultima
 						for (var i = 0; i < count - 1; ++i)
 						{
 							int strbuild;
-							fs.Seek((start + (i * strlen)), SeekOrigin.Begin);
+							_ = fs.Seek(start + (i * strlen), SeekOrigin.Begin);
 							var builder2 = new StringBuilder(17);
 							if (unicode)
 							{
 								while ((strbuild = bin.ReadInt16()) != 0)
 								{
-									builder2.Append((char)strbuild);
+									_ = builder2.Append((char)strbuild);
 								}
 							}
 							else
 							{
 								while ((strbuild = bin.ReadByte()) != 0)
 								{
-									builder2.Append((char)strbuild);
+									_ = builder2.Append((char)strbuild);
 								}
 							}
 							List.Add(new SkillGroup(builder2.ToString()));
 						}
-						fs.Seek((start + ((count - 1) * strlen)), SeekOrigin.Begin);
+						_ = fs.Seek(start + ((count - 1) * strlen), SeekOrigin.Begin);
 						try
 						{
 							while (bin.BaseStream.Length != bin.BaseStream.Position)

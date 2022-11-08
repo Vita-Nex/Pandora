@@ -118,12 +118,14 @@ namespace BoxServerSetup
 		public static void PerformInstall(ProgressBar pBar)
 		{
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			Log = new List<string>();
-			// Issue 10 - End
-			Log.Add("Installation log");
-			Log.Add("");
+			Log = new List<string>
+			{
+				// Issue 10 - End
+				"Installation log",
+				""
+			};
 
-			m_Asm = (typeof(Setup)).Assembly;
+			m_Asm = typeof(Setup).Assembly;
 
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 			var files = new List<string>();
@@ -132,8 +134,12 @@ namespace BoxServerSetup
 			files.AddRange(m_Core.Files);
 
 			foreach (var m in Modules)
+			{
 				if (m.Install)
+				{
 					files.AddRange(m.Files);
+				}
+			}
 
 			pBar.Minimum = 0;
 			pBar.Maximum = files.Count + 4;
@@ -166,7 +172,7 @@ namespace BoxServerSetup
 		private static void AddToLog(string format, params string[] args)
 		{
 			format = "- " + format;
-			Log.Add(string.Format(format, args));
+			Log.Add(System.String.Format(format, args));
 		}
 
 		private static void EnsureDirectory(string path)
@@ -174,12 +180,14 @@ namespace BoxServerSetup
 			var dir = Path.GetDirectoryName(path);
 
 			if (!Directory.Exists(dir))
-				Directory.CreateDirectory(dir);
+			{
+				_ = Directory.CreateDirectory(dir);
+			}
 		}
 
 		private static void Copy(string from, string to)
 		{
-			from = string.Format("BoxServerSetup.{0}", from);
+			from = System.String.Format("BoxServerSetup.{0}", from);
 			from = from.Replace("\\", ".");
 
 			EnsureDirectory(to);
@@ -188,7 +196,7 @@ namespace BoxServerSetup
 			var fStream = new FileStream(to, FileMode.Create, FileAccess.Write, FileShare.Read);
 
 			var data = new byte[stream.Length];
-			stream.Read(data, 0, data.Length);
+			_ = stream.Read(data, 0, data.Length);
 			fStream.Write(data, 0, data.Length);
 
 			AddToLog("File created: {0}", to);
@@ -258,7 +266,7 @@ namespace BoxServerSetup
 
 		private static void CopySpawner()
 		{
-			var source = string.Format("Spawner.{0}.cs", Spawner);
+			var source = System.String.Format("Spawner.{0}.cs", Spawner);
 			var dest = Path.Combine(BoxFolder, @"Core\SpawnerHelper.cs");
 
 			Copy(source, dest);

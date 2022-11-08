@@ -27,11 +27,6 @@ namespace TheBox.Options
 			RecentNames = new RecentStringList();
 		}
 
-		private int m_Amount = 1;
-		private int m_Range = 1;
-		private int m_MinDelay = 5;
-		private int m_MaxDelay = 10;
-
 		/// <summary>
 		///     Gets or sets the value representing the selected art for Mobiles
 		/// </summary>
@@ -40,22 +35,22 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or sets the spawn amount
 		/// </summary>
-		public int Amount { get { return m_Amount; } set { m_Amount = value; } }
+		public int Amount { get; set; } = 1;
 
 		/// <summary>
 		///     Gets or sets the spawn range
 		/// </summary>
-		public int Range { get { return m_Range; } set { m_Range = value; } }
+		public int Range { get; set; } = 1;
 
 		/// <summary>
 		///     Gets or sets the min delay for the spawn
 		/// </summary>
-		public int MinDelay { get { return m_MinDelay; } set { m_MinDelay = value; } }
+		public int MinDelay { get; set; } = 5;
 
 		/// <summary>
 		///     Gets or sets the max delay for the spawn
 		/// </summary>
-		public int MaxDelay { get { return m_MaxDelay; } set { m_MaxDelay = value; } }
+		public int MaxDelay { get; set; } = 10;
 
 		/// <summary>
 		///     Gets or sets the spawn team

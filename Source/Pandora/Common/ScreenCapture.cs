@@ -43,20 +43,19 @@ namespace TheBox.Common
 			}
 
 			Utility.BringClientToFront();
-			RedrawWindow(handle, IntPtr.Zero, IntPtr.Zero, RDW_INVALIDATE);
+			_ = RedrawWindow(handle, IntPtr.Zero, IntPtr.Zero, RDW_INVALIDATE);
 
 			if (Pandora.Profile.General.TopMost)
 			{
 				Pandora.BoxForm.Visible = false;
 			}
 
-			Image img = null;
-
 			var ptr = IntPtr.Zero;
 
 			// Give the client time to refresh
 			Thread.Sleep(250);
 
+			Image img;
 			try
 			{
 				ptr = CaptureWindow(handle.ToInt32());
@@ -73,7 +72,7 @@ namespace TheBox.Common
 				Pandora.BoxForm.Visible = true;
 			}
 
-			DeleteObject(ptr);
+			_ = DeleteObject(ptr);
 			return img;
 		}
 	}

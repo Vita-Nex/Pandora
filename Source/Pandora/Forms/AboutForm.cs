@@ -104,7 +104,7 @@ namespace TheBox.Forms
 			this.labVersion = new System.Windows.Forms.Label();
 			this.linkLabelTarion = new System.Windows.Forms.LinkLabel();
 			this.lblLog4Net = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.pictureBox1).BeginInit();
 			this.pnl.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -114,8 +114,8 @@ namespace TheBox.Forms
 			// bClose
 			// 
 			this.bClose.Anchor =
-			((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom |
-												  System.Windows.Forms.AnchorStyles.Right)));
+			System.Windows.Forms.AnchorStyles.Bottom |
+												  System.Windows.Forms.AnchorStyles.Right;
 			this.bClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.bClose.Location = new System.Drawing.Point(346, 152);
 			this.bClose.Name = "bClose";
@@ -126,7 +126,7 @@ namespace TheBox.Forms
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
 			this.pictureBox1.Location = new System.Drawing.Point(12, 12);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(446, 55);
@@ -137,9 +137,9 @@ namespace TheBox.Forms
 			// pnl
 			// 
 			this.pnl.Anchor =
-			((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
-													System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
-												  System.Windows.Forms.AnchorStyles.Right)));
+			System.Windows.Forms.AnchorStyles.Top |
+													System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left |
+												  System.Windows.Forms.AnchorStyles.Right;
 			this.pnl.BackColor = System.Drawing.Color.Black;
 			this.pnl.Controls.Add(this.panel1);
 			this.pnl.Location = new System.Drawing.Point(12, 89);
@@ -151,9 +151,9 @@ namespace TheBox.Forms
 			// panel1
 			// 
 			this.panel1.Anchor =
-			((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
-													System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
-												  System.Windows.Forms.AnchorStyles.Right)));
+			System.Windows.Forms.AnchorStyles.Top |
+													System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left |
+												  System.Windows.Forms.AnchorStyles.Right;
 			this.panel1.BackColor = System.Drawing.Color.White;
 			this.panel1.Controls.Add(this.groupBox2);
 			this.panel1.Controls.Add(this.groupBox1);
@@ -167,8 +167,8 @@ namespace TheBox.Forms
 			// groupBox2
 			// 
 			this.groupBox2.Anchor =
-			((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top |
-												   System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+			System.Windows.Forms.AnchorStyles.Top |
+												   System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			this.groupBox2.Controls.Add(this.linkLabelTarion);
 			this.groupBox2.Controls.Add(this.label1);
 			this.groupBox2.Location = new System.Drawing.Point(8, 32);
@@ -190,8 +190,8 @@ namespace TheBox.Forms
 			// groupBox1
 			// 
 			this.groupBox1.Anchor =
-			((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top |
-												   System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
+			System.Windows.Forms.AnchorStyles.Top |
+												   System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			this.groupBox1.Controls.Add(this.lblLog4Net);
 			this.groupBox1.Controls.Add(this.Arya);
 			this.groupBox1.Controls.Add(this.label14);
@@ -210,7 +210,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.groupBox1.Location = new System.Drawing.Point(149, 32);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(190, 146);
@@ -236,13 +236,13 @@ namespace TheBox.Forms
 			this.label14.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F,
-				((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))),
+				System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label14.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.label14.Location = new System.Drawing.Point(9, 112);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(32, 13);
@@ -258,7 +258,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label13.Location = new System.Drawing.Point(80, 99);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(93, 13);
@@ -273,11 +273,11 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label12.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.label12.Location = new System.Drawing.Point(6, 99);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(62, 13);
@@ -291,7 +291,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label6.Location = new System.Drawing.Point(76, 54);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(70, 16);
@@ -306,7 +306,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label11.Location = new System.Drawing.Point(80, 86);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(84, 13);
@@ -320,7 +320,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Underline,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label10.Location = new System.Drawing.Point(6, 70);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(144, 16);
@@ -335,11 +335,11 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label9.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.label9.Location = new System.Drawing.Point(6, 86);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(59, 13);
@@ -353,7 +353,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label8.Location = new System.Drawing.Point(80, 16);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(104, 16);
@@ -367,11 +367,11 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label7.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.label7.Location = new System.Drawing.Point(8, 16);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(61, 16);
@@ -385,11 +385,11 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.label5.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.label5.Location = new System.Drawing.Point(9, 54);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(61, 16);
@@ -399,25 +399,25 @@ namespace TheBox.Forms
 			// linkLabel1
 			// 
 			this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(128)))),
-				((int)(((byte)(128)))),
-				((int)(((byte)(255)))));
+				128,
+				128,
+				255);
 			this.linkLabel1.AutoSize = true;
 			this.linkLabel1.DisabledLinkColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.linkLabel1.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(41, 38);
 			this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.linkLabel1.Location = new System.Drawing.Point(8, 6);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.Size = new System.Drawing.Size(413, 17);
@@ -428,9 +428,9 @@ namespace TheBox.Forms
 			this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.linkLabel1.UseCompatibleTextRendering = true;
 			this.linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.linkLabel1.LinkClicked +=
 				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 			// 
@@ -449,7 +449,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.labVersion.Location = new System.Drawing.Point(210, 70);
 			this.labVersion.Name = "labVersion";
 			this.labVersion.Size = new System.Drawing.Size(109, 16);
@@ -475,13 +475,13 @@ namespace TheBox.Forms
 			this.lblLog4Net.Font = new System.Drawing.Font(
 				"Microsoft Sans Serif",
 				8.25F,
-				((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))),
+				System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.lblLog4Net.ForeColor = System.Drawing.Color.FromArgb(
-				((int)(((byte)(0)))),
-				((int)(((byte)(0)))),
-				((int)(((byte)(192)))));
+				0,
+				0,
+				192);
 			this.lblLog4Net.Location = new System.Drawing.Point(9, 125);
 			this.lblLog4Net.Name = "lblLog4Net";
 			this.lblLog4Net.Size = new System.Drawing.Size(55, 13);
@@ -499,7 +499,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.pnl);
 			this.Controls.Add(this.pictureBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "AboutForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Pandora\'s Box";
@@ -507,7 +507,7 @@ namespace TheBox.Forms
 			this.Load += new System.EventHandler(this.AboutForm_Load);
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.AboutForm_Paint);
 			this.Closed += new System.EventHandler(this.AboutForm_Closed);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.pictureBox1).EndInit();
 			this.pnl.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
@@ -542,67 +542,71 @@ namespace TheBox.Forms
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			var lnk = sender as LinkLabel;
-
-			if (lnk == null || lnk.Tag == null || !(lnk.Tag is string))
+			if (!(sender is LinkLabel lnk) || lnk.Tag == null || !(lnk.Tag is string))
+			{
 				return;
+			}
 
 			var url = lnk.Tag as string;
 
-			Process.Start(url);
+			_ = Process.Start(url);
 		}
 
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
-			Process.Start("http://www.servuo.com/");
+			_ = Process.Start("http://www.servuo.com/");
 		}
 
 		private void pictureBox3_Click(object sender, EventArgs e)
 		{
-			Process.Start("http://www.vita-nex.com/");
+			_ = Process.Start("http://www.vita-nex.com/");
 		}
 
 		private void pictureBox4_Click(object sender, EventArgs e)
 		{
-			Process.Start("http://www.uogateway.com/");
+			_ = Process.Start("http://www.uogateway.com/");
 		}
 
 		private void label14_Click(object sender, EventArgs e)
 		{
-			Process.Start("http://www.gzip.org/zlib/");
+			_ = Process.Start("http://www.gzip.org/zlib/");
 		}
 
 		private void linkLabel10_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			Process.Start("http://www.phantasya.org/");
+			_ = Process.Start("http://www.phantasya.org/");
 		}
 
 		private void Arya_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			// Issue 34:  	 Visit Website - Tarion
-			Process.Start("http://www.github.com/vita-nex/pandora");
+			_ = Process.Start("http://www.github.com/vita-nex/pandora");
 		}
 
 		private void AboutForm_Load(object sender, EventArgs e)
 		{
 			if (Pandora.BoxForm != null)
+			{
 				Pandora.BoxForm.Visible = false;
+			}
 		}
 
 		private void AboutForm_Closed(object sender, EventArgs e)
 		{
 			if (Pandora.BoxForm != null)
+			{
 				Pandora.BoxForm.Visible = true;
+			}
 		}
 
 		private void linkLabelTarion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			Process.Start("http://www.niondir.de/");
+			_ = Process.Start("http://www.niondir.de/");
 		}
 
 		private void lblLog4Net_Click(object sender, EventArgs e)
 		{
-			Process.Start("http://logging.apache.org/log4net/index.html");
+			_ = Process.Start("http://logging.apache.org/log4net/index.html");
 		}
 	}
 }

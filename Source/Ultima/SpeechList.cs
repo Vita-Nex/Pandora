@@ -45,7 +45,7 @@ namespace Ultima
 				unsafe
 				{
 					var order = 0;
-					fs.Read(buffer, 0, buffer.Length);
+					_ = fs.Read(buffer, 0, buffer.Length);
 					fixed (byte* data = buffer)
 					{
 						var bindat = data;
@@ -123,7 +123,7 @@ namespace Ultima
 					{
 						continue;
 					}
-					if ((line.Contains("Order")) && (line.Contains("KeyWord")))
+					if (line.Contains("Order") && line.Contains("KeyWord"))
 					{
 						continue;
 					}
@@ -153,11 +153,11 @@ namespace Ultima
 			if (text.Contains("0x"))
 			{
 				var convert = text.Replace("0x", "");
-				int.TryParse(convert, NumberStyles.HexNumber, null, out result);
+				_ = Int32.TryParse(convert, NumberStyles.HexNumber, null, out result);
 			}
 			else
 			{
-				int.TryParse(text, NumberStyles.Integer, null, out result);
+				_ = Int32.TryParse(text, NumberStyles.Integer, null, out result);
 			}
 
 			return result;

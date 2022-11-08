@@ -45,13 +45,19 @@ namespace TheBox.Common
 			finally
 			{
 				if (reader != null)
+				{
 					reader.Close();
+				}
 
 				if (stream != null)
+				{
 					stream.Close();
+				}
 
 				if (response != null)
+				{
 					response.Close();
+				}
 			}
 
 			return output;
@@ -98,13 +104,19 @@ namespace TheBox.Common
 			finally
 			{
 				if (stream != null)
+				{
 					stream.Close();
+				}
 
 				if (fs != null)
+				{
 					fs.Close();
+				}
 
 				if (response != null)
+				{
 					response.Close();
+				}
 			}
 
 			return success;

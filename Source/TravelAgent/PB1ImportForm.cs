@@ -125,7 +125,7 @@ namespace Box.Misc
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "PB1ImportForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -134,32 +134,30 @@ namespace Box.Misc
 		}
 		#endregion
 
-		private int m_Map;
-
 		private void button1_Click(object sender, EventArgs e)
 		{
-			m_Map = 0;
+			Map = 0;
 			Close();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			m_Map = 1;
+			Map = 1;
 			Close();
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			m_Map = 2;
+			Map = 2;
 			Close();
 		}
 
 		private void button4_Click(object sender, EventArgs e)
 		{
-			m_Map = 3;
+			Map = 3;
 			Close();
 		}
 
-		public int Map { get { return m_Map; } }
+		public int Map { get; private set; }
 	}
 }

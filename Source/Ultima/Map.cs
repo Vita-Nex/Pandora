@@ -17,16 +17,14 @@ namespace Ultima
 	public sealed class Map
 	{
 		private TileMatrix m_Tiles;
-		private readonly int m_FileIndex;
 		private readonly int m_MapID;
-		private readonly int m_Height;
 		private readonly string m_path;
 
 		private static bool m_UseDiff;
 
 		public static bool UseDiff
 		{
-			get { return m_UseDiff; }
+			get => m_UseDiff;
 			set
 			{
 				m_UseDiff = value;
@@ -52,19 +50,19 @@ namespace Ultima
 
 		public Map(int fileIndex, int mapID, int width, int height)
 		{
-			m_FileIndex = fileIndex;
+			FileIndex = fileIndex;
 			m_MapID = mapID;
 			Width = width;
-			m_Height = height;
+			Height = height;
 			m_path = null;
 		}
 
 		public Map(string path, int fileIndex, int mapID, int width, int height)
 		{
-			m_FileIndex = fileIndex;
+			FileIndex = fileIndex;
 			m_MapID = mapID;
 			Width = width;
-			m_Height = height;
+			Height = height;
 			m_path = path;
 		}
 
@@ -107,7 +105,7 @@ namespace Ultima
 			IsCached_NoStatics_NoPatch = false;
 		}
 
-		public bool LoadedMatrix { get { return (m_Tiles != null); } }
+		public bool LoadedMatrix => m_Tiles != null;
 
 		public TileMatrix Tiles
 		{
@@ -115,7 +113,7 @@ namespace Ultima
 			{
 				if (m_Tiles == null)
 				{
-					m_Tiles = new TileMatrix(m_FileIndex, m_MapID, Width, m_Height, m_path);
+					m_Tiles = new TileMatrix(FileIndex, m_MapID, Width, Height, m_path);
 				}
 
 				return m_Tiles;
@@ -124,9 +122,9 @@ namespace Ultima
 
 		public int Width { get; set; }
 
-		public int Height { get { return m_Height; } }
+		public int Height { get; }
 
-		public int FileIndex { get { return m_FileIndex; } }
+		public int FileIndex { get; }
 
 		/// <summary>
 		///     Returns Bitmap with Statics
@@ -211,7 +209,7 @@ namespace Ultima
 				{
 					IsCached_NoStatics = true;
 				}
-				cache = (statics ? m_Cache : m_Cache_NoStatics);
+				cache = statics ? m_Cache : m_Cache_NoStatics;
 			}
 			else
 			{
@@ -223,7 +221,7 @@ namespace Ultima
 				{
 					IsCached_NoStatics_NoPatch = true;
 				}
-				cache = (statics ? m_Cache_NoPatch : m_Cache_NoStatics_NoPatch);
+				cache = statics ? m_Cache_NoPatch : m_Cache_NoStatics_NoPatch;
 			}
 
 			if (cache == null)
@@ -282,11 +280,11 @@ namespace Ultima
 			short[][][] cache;
 			if (UseDiff)
 			{
-				cache = (statics ? m_Cache : m_Cache_NoStatics);
+				cache = statics ? m_Cache : m_Cache_NoStatics;
 			}
 			else
 			{
-				cache = (statics ? m_Cache_NoPatch : m_Cache_NoStatics_NoPatch);
+				cache = statics ? m_Cache_NoPatch : m_Cache_NoStatics_NoPatch;
 			}
 
 			if (cache == null)
@@ -455,7 +453,7 @@ namespace Ultima
 
 								while (pTiles < pEnd)
 								{
-									*pvData++ = pColors[(pTiles++)->m_ID];
+									*pvData++ = pColors[pTiles++->m_ID];
 								}
 							}
 						}
@@ -612,12 +610,12 @@ namespace Ultima
 						{
 							try
 							{
-								m_IndexReader.BaseStream.Seek(((x * blocky) + y) * 12, SeekOrigin.Begin);
+								_ = m_IndexReader.BaseStream.Seek(((x * blocky) + y) * 12, SeekOrigin.Begin);
 								var lookup = m_IndexReader.ReadInt32();
 								var length = m_IndexReader.ReadInt32();
 								var extra = m_IndexReader.ReadInt32();
 
-								if (((lookup < 0 || length <= 0) && (!map.Tiles.PendingStatic(x, y))) || (map.Tiles.IsStaticBlockRemoved(x, y)))
+								if (((lookup < 0 || length <= 0) && (!map.Tiles.PendingStatic(x, y))) || map.Tiles.IsStaticBlockRemoved(x, y))
 								{
 									binidx.Write(-1); // lookup
 									binidx.Write(-1); // length
@@ -627,7 +625,7 @@ namespace Ultima
 								{
 									if ((lookup >= 0) && (length > 0))
 									{
-										m_Statics.Seek(lookup, SeekOrigin.Begin);
+										_ = m_Statics.Seek(lookup, SeekOrigin.Begin);
 									}
 
 									var fsmullength = (int)binmul.BaseStream.Position;
@@ -691,12 +689,14 @@ namespace Ultima
 										var j = 0;
 										for (var i = 0; i < count; ++i)
 										{
-											var tile = new StaticTile();
-											tile.m_ID = m_StaticsReader.ReadUInt16();
-											tile.m_X = m_StaticsReader.ReadByte();
-											tile.m_Y = m_StaticsReader.ReadByte();
-											tile.m_Z = m_StaticsReader.ReadSByte();
-											tile.m_Hue = m_StaticsReader.ReadInt16();
+											var tile = new StaticTile
+											{
+												m_ID = m_StaticsReader.ReadUInt16(),
+												m_X = m_StaticsReader.ReadByte(),
+												m_Y = m_StaticsReader.ReadByte(),
+												m_Z = m_StaticsReader.ReadSByte(),
+												m_Hue = m_StaticsReader.ReadInt16()
+											};
 
 											if ((tile.m_ID >= 0) && (tile.m_ID <= Art.GetMaxItemID()))
 											{
@@ -707,7 +707,7 @@ namespace Ultima
 												var first = true;
 												for (var k = 0; k < j; ++k)
 												{
-													if ((tilelist[k].m_ID == tile.m_ID) && ((tilelist[k].m_X == tile.m_X) && (tilelist[k].m_Y == tile.m_Y)) &&
+													if ((tilelist[k].m_ID == tile.m_ID) && (tilelist[k].m_X == tile.m_X) && (tilelist[k].m_Y == tile.m_Y) &&
 														(tilelist[k].m_Z == tile.m_Z) && (tilelist[k].m_Hue == tile.m_Hue))
 													{
 														first = false;
@@ -739,7 +739,7 @@ namespace Ultima
 													for (var k = 0; k < j; ++k)
 													{
 														if ((tilelist[k].m_ID == pending[i].m_ID) &&
-															((tilelist[k].m_X == pending[i].m_X) && (tilelist[k].m_Y == pending[i].m_Y)) &&
+															(tilelist[k].m_X == pending[i].m_X) && (tilelist[k].m_Y == pending[i].m_Y) &&
 															(tilelist[k].m_Z == pending[i].m_Z) && (tilelist[k].m_Hue == pending[i].m_Hue))
 														{
 															first = false;
@@ -787,7 +787,7 @@ namespace Ultima
 							}
 							catch // fill the rest
 							{
-								binidx.BaseStream.Seek(((x * blocky) + y) * 12, SeekOrigin.Begin);
+								_ = binidx.BaseStream.Seek(((x * blocky) + y) * 12, SeekOrigin.Begin);
 								for (; x < blockx; ++x)
 								{
 									for (; y < blocky; ++y)
@@ -839,7 +839,7 @@ namespace Ultima
 						{
 							try
 							{
-								m_mapReader.BaseStream.Seek(((x * blocky) + y) * 196, SeekOrigin.Begin);
+								_ = m_mapReader.BaseStream.Seek(((x * blocky) + y) * 196, SeekOrigin.Begin);
 								var header = m_mapReader.ReadInt32();
 								binmul.Write(header);
 								for (var i = 0; i < 64; ++i)
@@ -864,7 +864,7 @@ namespace Ultima
 							}
 							catch //fill rest
 							{
-								binmul.BaseStream.Seek(((x * blocky) + y) * 196, SeekOrigin.Begin);
+								_ = binmul.BaseStream.Seek(((x * blocky) + y) * 196, SeekOrigin.Begin);
 								for (; x < blockx; ++x)
 								{
 									for (; y < blocky; ++y)
@@ -897,7 +897,7 @@ namespace Ultima
 				Tex.WriteLine("x;y;z;Static");
 				for (var x = 0; x < Width; ++x)
 				{
-					for (var y = 0; y < m_Height; ++y)
+					for (var y = 0; y < Height; ++y)
 					{
 						var currtile = Tiles.GetLandTile(x, y);
 						foreach (var currstatic in Tiles.GetStaticTiles(x, y))
@@ -925,7 +925,7 @@ namespace Ultima
 				Tex.WriteLine("x;y;z;Static;LandTile");
 				for (var x = 0; x < Width; ++x)
 				{
-					for (var y = 0; y < m_Height; ++y)
+					for (var y = 0; y < Height; ++y)
 					{
 						var currtile = Tiles.GetLandTile(x, y);
 						if (!Art.IsValidLand(currtile.ID))

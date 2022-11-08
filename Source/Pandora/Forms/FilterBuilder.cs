@@ -54,8 +54,6 @@ namespace TheBox.Forms
 		// Issue 10 - End
 		private Button bCheck;
 
-		private string m_Filter;
-
 		public FilterBuilder()
 		{
 			InitializeComponent();
@@ -119,7 +117,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.label1.Location = new System.Drawing.Point(12, 12);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(248, 28);
@@ -146,7 +144,7 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Underline,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.label2.Location = new System.Drawing.Point(12, 44);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(248, 128);
@@ -332,7 +330,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.cmbType);
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "FilterBuilder";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Props.FB";
@@ -412,14 +410,14 @@ namespace TheBox.Forms
 				return;
 			}
 
-			m_Filter = "where " + cmbType.Text;
+			Filter = "where " + cmbType.Text;
 
 			foreach (var s in m_Conditions)
 			{
-				m_Filter += " " + s;
+				Filter += " " + s;
 			}
 
-			labOutput.Text = m_Filter;
+			labOutput.Text = Filter;
 		}
 
 		private void cmbType_TextChanged(object sender, EventArgs e)
@@ -434,9 +432,9 @@ namespace TheBox.Forms
 
 		private void bAdd_Click(object sender, EventArgs e)
 		{
-			var cond = string.Format("{0}{1}{2}", cmbProp.Text, cmbOp.Text, cmbValue.Text);
+			var cond = String.Format("{0}{1}{2}", cmbProp.Text, cmbOp.Text, cmbValue.Text);
 
-			MessageBox.Show(cond);
+			_ = MessageBox.Show(cond);
 
 			if (chkNot.Checked)
 			{
@@ -454,7 +452,9 @@ namespace TheBox.Forms
 			lst.Items.Clear();
 
 			foreach (var s in m_Conditions)
-				lst.Items.Add(s);
+			{
+				_ = lst.Items.Add(s);
+			}
 
 			UpdateOutput();
 		}
@@ -522,17 +522,17 @@ namespace TheBox.Forms
 
 		private void bCheck_Click(object sender, EventArgs e)
 		{
-			Pandora.SendToUO("Condition " + m_Filter, true);
+			Pandora.SendToUO("Condition " + Filter, true);
 		}
 
 		/// <summary>
 		///     Gets the filter string
 		/// </summary>
-		public string Filter { get { return m_Filter; } }
+		public string Filter { get; private set; }
 
 		/// <summary>
 		///     States whether the edited filter should be added to the presets
 		/// </summary>
-		public bool AddToPresets { get { return chkPresets.Checked; } }
+		public bool AddToPresets => chkPresets.Checked;
 	}
 }

@@ -25,7 +25,9 @@ namespace TheBox.Roofing
 			}
 
 			if (relative < 0)
-				relative = (short)(-relative);
+			{
+				relative = (short)-relative;
+			}
 
 			if (relative == middle)
 			{

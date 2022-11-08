@@ -62,18 +62,15 @@ namespace Ultima
 				return true;
 			}
 
-			int length, extra;
-			bool patched;
-
-			var stream = m_FileIndex.Seek(index, out length, out extra, out patched);
+			var stream = m_FileIndex.Seek(index, out _, out var extra, out _);
 
 			if (stream == null)
 			{
 				return false;
 			}
 			stream.Close();
-			var width = (extra & 0xFFFF);
-			var height = ((extra >> 16) & 0xFFFF);
+			var width = extra & 0xFFFF;
+			var height = (extra >> 16) & 0xFFFF;
 			if ((width > 0) && (height > 0))
 			{
 				return true;
@@ -110,20 +107,18 @@ namespace Ultima
 			{
 				return null;
 			}
-			int length, extra;
-			bool patched;
 
-			var stream = m_FileIndex.Seek(index, out length, out extra, out patched);
+			var stream = m_FileIndex.Seek(index, out var length, out var extra, out _);
 
 			if (stream == null)
 			{
 				return null;
 			}
 
-			width = (extra & 0xFFFF);
-			height = ((extra >> 16) & 0xFFFF);
+			width = extra & 0xFFFF;
+			height = (extra >> 16) & 0xFFFF;
 			var buffer = new byte[length];
-			stream.Read(buffer, 0, length);
+			_ = stream.Read(buffer, 0, length);
 			stream.Close();
 			return buffer;
 		}
@@ -144,24 +139,21 @@ namespace Ultima
 				return m_Cache[index];
 			}
 
-			int length, extra;
-			bool patched;
-
-			var stream = m_FileIndex.Seek(index, out length, out extra, out patched);
+			var stream = m_FileIndex.Seek(index, out var length, out var extra, out var patched);
 
 			if (stream == null)
 			{
 				return null;
 			}
 
-			var width = (extra & 0xFFFF);
-			var height = ((extra >> 16) & 0xFFFF);
+			var width = extra & 0xFFFF;
+			var height = (extra >> 16) & 0xFFFF;
 
 			if (m_StreamBuffer == null || m_StreamBuffer.Length < length)
 			{
 				m_StreamBuffer = new byte[length];
 			}
-			stream.Read(m_StreamBuffer, 0, length);
+			_ = stream.Read(m_StreamBuffer, 0, length);
 
 			var bmp = new Bitmap(width, height, PixelFormat.Format16bppArgb1555);
 			var bd = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
@@ -180,7 +172,7 @@ namespace Ultima
 					while (cur < end)
 					{
 						var value = *bindat++;
-						*cur++ = (ushort)(((0x1f + value) << 10) + ((0x1F + value) << 5) + (0x1F + value));
+						*cur++ = (ushort)(((0x1f + value) << 10) + ((0x1F + value) << 5) + 0x1F + value);
 					}
 				}
 			}
@@ -211,7 +203,7 @@ namespace Ultima
 						}
 						var bmp = m_Cache[index];
 
-						if ((bmp == null) || (m_Removed[index]))
+						if ((bmp == null) || m_Removed[index])
 						{
 							binidx.Write(-1); // lookup
 							binidx.Write(-1); // length

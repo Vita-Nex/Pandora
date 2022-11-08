@@ -36,7 +36,7 @@ namespace TheBox.Buttons
 			Pandora.Localization.LocalizeControl(this);
 
 			m_MenuNode = new TreeNode(Pandora.Localization.TextProvider["ButtonMenuEditor.Menu"]);
-			Tree.Nodes.Add(m_MenuNode);
+			_ = Tree.Nodes.Add(m_MenuNode);
 		}
 
 		private TextBox txSubmenu;
@@ -64,7 +64,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		public MenuDef MenuDefinition
 		{
-			get { return m_Def; }
+			get => m_Def;
 			set
 			{
 				m_Backup = value;
@@ -94,7 +94,7 @@ namespace TheBox.Buttons
 		/// <returns>A collection of corresponding TreeNode objects</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private TreeNode[] DoNodes(List<object> items)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			var nodes = new TreeNode[items.Count];
 
@@ -106,8 +106,10 @@ namespace TheBox.Buttons
 
 					var newMc = mc.Clone() as MenuCommand;
 
-					nodes[i] = new TreeNode(newMc.Caption);
-					nodes[i].Tag = newMc;
+					nodes[i] = new TreeNode(newMc.Caption)
+					{
+						Tag = newMc
+					};
 				}
 				else if (items[i] is GenericNode)
 				{
@@ -330,7 +332,7 @@ namespace TheBox.Buttons
 			this.Controls.Add(this.GroupSubmenu);
 			this.Controls.Add(this.Tree);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "BoxMenuEditor";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -389,32 +391,36 @@ namespace TheBox.Buttons
 		private void bNewCommand_Click(object sender, EventArgs e)
 		{
 			if (Tree.SelectedNode != null && Tree.SelectedNode.Tag is MenuCommand)
+			{
 				return;
+			}
 
 			if (Tree.SelectedNode != null)
 			{
 				if (txCaption.Text.Length == 0 || txCommand.Text.Length == 0)
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["ButtonMenuEditor.ErrCommand"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["ButtonMenuEditor.ErrCommand"]);
 					return;
 				}
 
 				var node = new TreeNode(txCaption.Text);
 
-				var mc = new MenuCommand();
-				mc.Caption = txCaption.Text;
-				mc.Command = txCommand.Text;
-				mc.UsePrefix = chkPrefix.Checked;
+				var mc = new MenuCommand
+				{
+					Caption = txCaption.Text,
+					Command = txCommand.Text,
+					UsePrefix = chkPrefix.Checked
+				};
 
 				node.Tag = mc;
 
-				Tree.SelectedNode.Nodes.Add(node);
+				_ = Tree.SelectedNode.Nodes.Add(node);
 				Tree.SelectedNode.Expand();
 
 				txCaption.Text = "";
 				txCommand.Text = "";
 
-				txCaption.Focus();
+				_ = txCaption.Focus();
 			}
 		}
 
@@ -425,13 +431,13 @@ namespace TheBox.Buttons
 		{
 			if (txSubmenu.Text.Length == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["ButtonMenuEditor.ErrSub"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["ButtonMenuEditor.ErrSub"]);
 				return;
 			}
 
 			var node = new TreeNode(txSubmenu.Text);
 
-			Tree.SelectedNode.Nodes.Add(node);
+			_ = Tree.SelectedNode.Nodes.Add(node);
 			Tree.SelectedNode = node.Parent;
 			Tree.SelectedNode.Expand();
 
@@ -483,8 +489,10 @@ namespace TheBox.Buttons
 		/// </summary>
 		private void DoDef()
 		{
-			m_Def = new MenuDef();
-			m_Def.Items = ProcessTreeNode(m_MenuNode);
+			m_Def = new MenuDef
+			{
+				Items = ProcessTreeNode(m_MenuNode)
+			};
 		}
 
 		/// <summary>
@@ -507,12 +515,15 @@ namespace TheBox.Buttons
 				}
 				else if (n.Nodes.Count > 0)
 				{
-					var gn = new GenericNode(n.Text);
-
-					gn.Elements = ProcessTreeNode(n);
+					var gn = new GenericNode(n.Text)
+					{
+						Elements = ProcessTreeNode(n)
+					};
 
 					if (gn.Elements.Count > 0)
+					{
 						list.Add(gn);
+					}
 				}
 			}
 
@@ -527,10 +538,13 @@ namespace TheBox.Buttons
 			var cmd = "";
 
 			if (e.UsePrefix)
+			{
 				cmd += Pandora.Profile.General.CommandPrefix;
+			}
+
 			cmd += e.Command;
 
-			MessageBox.Show(string.Format(Pandora.Localization.TextProvider["ButtonMenuEditor.PreviewMsg"], cmd));
+			_ = MessageBox.Show(String.Format(Pandora.Localization.TextProvider["ButtonMenuEditor.PreviewMsg"], cmd));
 		}
 
 		/// <summary>
@@ -599,12 +613,18 @@ namespace TheBox.Buttons
 							var nextNode = n.NextNode;
 
 							if (nextNode == null)
+							{
 								nextNode = n.PrevNode;
+							}
 
 							if (nextNode != null)
+							{
 								Tree.SelectedNode = nextNode;
+							}
 							else
+							{
 								Tree.SelectedNode = n.Parent;
+							}
 
 							Tree.Nodes.Remove(n);
 						}
@@ -625,7 +645,9 @@ namespace TheBox.Buttons
 						var index = parent.Nodes.IndexOf(node);
 
 						if (index == 0)
+						{
 							break;
+						}
 
 						var prev = parent.Nodes[index - 1];
 
@@ -652,7 +674,9 @@ namespace TheBox.Buttons
 						var index = parent.Nodes.IndexOf(node);
 
 						if (index == parent.Nodes.Count - 1)
+						{
 							break;
+						}
 
 						var next = parent.Nodes[index + 1];
 

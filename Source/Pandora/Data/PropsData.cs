@@ -52,10 +52,7 @@ namespace TheBox.Data
 				m_Props = value;
 				m_Props.Save();
 
-				if (PropsChanged != null)
-				{
-					PropsChanged(null, new EventArgs());
-				}
+				PropsChanged?.Invoke(null, new EventArgs());
 			}
 		}
 
@@ -64,7 +61,9 @@ namespace TheBox.Data
 			foreach (var e in m_Props.m_Enums)
 			{
 				if (name == e.Name)
+				{
 					return e;
+				}
 			}
 
 			return null;
@@ -78,7 +77,7 @@ namespace TheBox.Data
 		/// ù
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<string> FindClass(string text)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			text = text.ToLower();
 
@@ -104,12 +103,16 @@ namespace TheBox.Data
 		/// <param name="node">The GenericNode to search</param>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private void SearchNode(string text, List<string> results, string path, GenericNode node)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			if (path == "")
+			{
 				path += node.Name;
+			}
 			else
-				path += string.Format(".{0}", node.Name);
+			{
+				path += String.Format(".{0}", node.Name);
+			}
 
 			if (node.Name.ToLower().IndexOf(text) > -1)
 			{
@@ -154,15 +157,12 @@ namespace TheBox.Data
 		/// <returns>The loaded PropsData object, or an empty PropsData if none was found</returns>
 		public static PropsData Load()
 		{
-			PropsData pd = null;
-
 			try
 			{
 				var file = Path.Combine(Pandora.Profile.BaseFolder, "PropsData.xml");
 				var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 				var serializer = new XmlSerializer(typeof(PropsData));
-				pd = serializer.Deserialize(stream) as PropsData;
-
+				var pd = serializer.Deserialize(stream) as PropsData;
 				return pd;
 			}
 			catch (Exception err)
@@ -224,9 +224,11 @@ namespace TheBox.Data
 		/// <returns>A TreeNode</returns>
 		private TreeNode DoNodeSimple(GenericNode gNode)
 		{
-			var node = new TreeNode(gNode.Name);
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode(gNode.Name)
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
 			for (var i = 0; i < gNode.Elements.Count; i++)
@@ -243,9 +245,9 @@ namespace TheBox.Data
 
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					if ((sub.Tag as List<object>).Count > 0 || sub.Nodes.Count > 0)
-						// Issue 10 - End
+					// Issue 10 - End
 					{
-						node.Nodes.Add(sub);
+						_ = node.Nodes.Add(sub);
 					}
 				}
 			}
@@ -287,9 +289,11 @@ namespace TheBox.Data
 		/// <returns>A TreeNode</returns>
 		private TreeNode DoNode(GenericNode gNode)
 		{
-			var node = new TreeNode(gNode.Name);
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode(gNode.Name)
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
 			for (var i = 0; i < gNode.Elements.Count; i++)
@@ -304,7 +308,7 @@ namespace TheBox.Data
 				}
 				else if (obj is GenericNode)
 				{
-					node.Nodes.Add(DoNode(obj as GenericNode));
+					_ = node.Nodes.Add(DoNode(obj as GenericNode));
 				}
 			}
 
@@ -316,13 +320,13 @@ namespace TheBox.Data
 
 		private List<BoxEnum> m_Enums;
 
-		public List<GenericNode> Structure { get { return m_Structure; } set { m_Structure = value; } }
+		public List<GenericNode> Structure { get => m_Structure; set => m_Structure = value; }
 
 		public List<BoxEnum> Enums
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Enums; }
-			set { m_Enums = value; }
+			get => m_Enums;
+			set => m_Enums = value;
 		}
 
 		public PropsData()
@@ -390,7 +394,7 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<string> Values
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			get;
 			set;

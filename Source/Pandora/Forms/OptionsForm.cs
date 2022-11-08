@@ -287,13 +287,13 @@ namespace TheBox.Forms
 			this.groupBox4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.barOpacity)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.barOpacity).BeginInit();
 			this.groupBox2.SuspendLayout();
 			this.pTravel.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.pServer.SuspendLayout();
 			this.grpServer.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numPort)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numPort).BeginInit();
 			this.pAdv.SuspendLayout();
 			this.groupBox9.SuspendLayout();
 			this.groupBox8.SuspendLayout();
@@ -959,7 +959,7 @@ namespace TheBox.Forms
 			// numPort
 			// 
 			this.numPort.Location = new System.Drawing.Point(96, 40);
-			this.numPort.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.numPort.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.numPort.Name = "numPort";
 			this.numPort.Size = new System.Drawing.Size(72, 20);
 			this.numPort.TabIndex = 3;
@@ -1465,7 +1465,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.tabControl1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "OptionsForm";
 			this.ShowInTaskbar = false;
@@ -1478,13 +1478,13 @@ namespace TheBox.Forms
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.barOpacity)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.barOpacity).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.pTravel.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
 			this.pServer.ResumeLayout(false);
 			this.grpServer.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numPort)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numPort).EndInit();
 			this.pAdv.ResumeLayout(false);
 			this.groupBox9.ResumeLayout(false);
 			this.groupBox8.ResumeLayout(false);
@@ -1571,9 +1571,9 @@ namespace TheBox.Forms
 			SpawnColorPreview.BackColor = travel.SpawnColor;
 			chkXRay.Checked = travel.XRayView;
 
-			chkShowSpawns.Enabled = (SpawnData.SpawnProvider != null);
-			linkSpawnColor.Enabled = (SpawnData.SpawnProvider != null);
-			SpawnColorPreview.Enabled = (SpawnData.SpawnProvider != null);
+			chkShowSpawns.Enabled = SpawnData.SpawnProvider != null;
+			linkSpawnColor.Enabled = SpawnData.SpawnProvider != null;
+			SpawnColorPreview.Enabled = SpawnData.SpawnProvider != null;
 
 			// Map names
 			chkMap0.Checked = travel.EnabledMaps[0];
@@ -1658,9 +1658,11 @@ namespace TheBox.Forms
 				var mod = Pandora.Profile.General.Modifiers[i];
 				var warn = Pandora.Profile.General.ModifiersWarnings[i];
 
-				var node = new TreeNode(mod);
-				node.Checked = warn;
-				tModifiers.Nodes.Add(node);
+				var node = new TreeNode(mod)
+				{
+					Checked = warn
+				};
+				_ = tModifiers.Nodes.Add(node);
 			}
 
 			tModifiers.EndUpdate();
@@ -1677,11 +1679,11 @@ namespace TheBox.Forms
 
 			if (defProf != null && defProf.Length > 0)
 			{
-				labDefaultProfile.Text = string.Format(Pandora.Localization.TextProvider["Options.DefaultProf"], defProf);
+				labDefaultProfile.Text = String.Format(Pandora.Localization.TextProvider["Options.DefaultProf"], defProf);
 			}
 			else
 			{
-				labDefaultProfile.Text = string.Format(
+				labDefaultProfile.Text = String.Format(
 					Pandora.Localization.TextProvider["Options.DefaultProf"],
 					Pandora.Localization.TextProvider["Common.None"]);
 			}
@@ -1756,7 +1758,7 @@ namespace TheBox.Forms
 				{
 					// Connect
 					Pandora.BoxConnection.Disconnect();
-					Pandora.BoxConnection.Connect();
+					_ = Pandora.BoxConnection.Connect();
 				}
 			}
 
@@ -1804,21 +1806,27 @@ namespace TheBox.Forms
 		private void chkTray_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.General.MinimizeToTray = chkTray.Checked;
+			}
 		}
 
 		// Topmost
 		private void chkTopmost_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.General.TopMost = chkTopmost.Checked;
+			}
 		}
 
 		// Minimize with X button
 		private void chkXMin_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.General.XMinimize = chkXMin.Checked;
+			}
 		}
 
 		/// <summary>
@@ -1829,7 +1837,9 @@ namespace TheBox.Forms
 			Opacity = barOpacity.Value / 100.0;
 
 			if (m_ApplyOptions)
+			{
 				m_ChangeOpacity = true;
+			}
 		}
 
 		/// <summary>
@@ -1838,7 +1848,9 @@ namespace TheBox.Forms
 		private void txCmdPrefix_TextChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions && txCmdPrefix.Text.Length > 0)
+			{
 				Pandora.Profile.General.CommandPrefix = txCmdPrefix.Text;
+			}
 		}
 
 		/// <summary>
@@ -1847,7 +1859,9 @@ namespace TheBox.Forms
 		private void chkCustomUOFolder_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				m_ChangeUOFolder = true;
+			}
 
 			bBrowseUOFolder.Enabled = chkCustomUOFolder.Checked;
 		}
@@ -1929,8 +1943,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					BoxData bd = null;
-
+					BoxData bd;
 					try
 					{
 						// Try reading the XML file
@@ -1941,7 +1954,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -1968,8 +1981,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					PropsData p = null;
-
+					PropsData p;
 					try
 					{
 						// Try reading the XML file
@@ -1980,7 +1992,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2003,8 +2015,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					SpawnData sd = null;
-
+					SpawnData sd;
 					try
 					{
 						// Try reading the XML file
@@ -2015,7 +2026,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2044,8 +2055,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					SpawnGroups sg = null;
-
+					SpawnGroups sg;
 					try
 					{
 						// Try reading the XML file
@@ -2056,7 +2066,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2168,7 +2178,9 @@ namespace TheBox.Forms
 		private void chkSelectedMapLocations_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.Travel.SelectedMapLocations = chkSelectedMapLocations.Checked;
+			}
 		}
 
 		private void chkXRay_CheckedChanged(object sender, EventArgs e)
@@ -2191,7 +2203,7 @@ namespace TheBox.Forms
 				Pandora.Map.DrawStatics = chkDrawStatics.Checked;
 			}
 		}
-		
+
 		/// <summary>
 		///     Choose new spawn color
 		/// </summary>
@@ -2299,7 +2311,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap0.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[0] = txMap0.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2312,7 +2327,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap1.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[1] = txMap1.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2325,7 +2343,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap2.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[2] = txMap2.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2338,7 +2359,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap3.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[3] = txMap3.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2348,7 +2372,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap4.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[4] = txMap4.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2369,8 +2396,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					Facet facet = null;
-
+					Facet facet;
 					try
 					{
 						// Try reading the XML file
@@ -2381,7 +2407,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2425,7 +2451,7 @@ namespace TheBox.Forms
 			if (Pandora.Profile.Travel.IsEnabled)
 			{
 				var form = new MapFilesForm();
-				form.ShowDialog();
+				_ = form.ShowDialog();
 			}
 		}
 
@@ -2451,7 +2477,7 @@ namespace TheBox.Forms
 		/// <summary>
 		///     Gets the command options
 		/// </summary>
-		private CommandsOptions Commands { get { return Pandora.Profile.Commands; } }
+		private CommandsOptions Commands => Pandora.Profile.Commands;
 		#endregion
 
 		#region Server
@@ -2525,7 +2551,7 @@ namespace TheBox.Forms
 		{
 			Pandora.Profile.Server.SetPassword(txPass.Text);
 			txPass.Text = "";
-			MessageBox.Show(Pandora.Localization.TextProvider["Options.PassUpdated"]);
+			_ = MessageBox.Show(Pandora.Localization.TextProvider["Options.PassUpdated"]);
 		}
 
 		/// <summary>
@@ -2545,7 +2571,7 @@ namespace TheBox.Forms
 			{
 				Pandora.Profile.Server.UseSHA1Crypt = chkSHA1.Checked;
 
-				MessageBox.Show(Pandora.Localization.TextProvider["Options.SHA1CheckWarn"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Options.SHA1CheckWarn"]);
 			}
 		}
 		#endregion
@@ -2556,7 +2582,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void txProfName_TextChanged(object sender, EventArgs e)
 		{
-			if (txProfName.Text.Length > 0 && m_ApplyOptions && !(txProfName.Text.EndsWith(" ")))
+			if (txProfName.Text.Length > 0 && m_ApplyOptions && !txProfName.Text.EndsWith(" "))
 			{
 				string old = null;
 				string newFolder = null;
@@ -2573,7 +2599,7 @@ namespace TheBox.Forms
 
 					if (Directory.Exists(newFolder))
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.ProfExists"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.ProfExists"]);
 						return;
 					}
 
@@ -2600,10 +2626,14 @@ namespace TheBox.Forms
 				bDeleteProfile.Enabled = true;
 				bDefaultProfile.Enabled = true;
 
-				if (lstProfiles.SelectedItem as string == Pandora.Profile.Name)
+				if ((lstProfiles.SelectedItem as string) == Pandora.Profile.Name)
+				{
 					bLoad.Enabled = false;
+				}
 				else
+				{
 					bLoad.Enabled = true;
+				}
 			}
 		}
 
@@ -2817,7 +2847,7 @@ namespace TheBox.Forms
 		private void bAddModifier_Click(object sender, EventArgs e)
 		{
 			var node = new TreeNode(txModifier.Text);
-			tModifiers.Nodes.Add(node);
+			_ = tModifiers.Nodes.Add(node);
 		}
 
 		/// <summary>
@@ -2866,7 +2896,7 @@ namespace TheBox.Forms
 		private void lnkMulManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			var form = new MulManagerForm(Pandora.Profile.MulManager);
-			form.ShowDialog();
+			_ = form.ShowDialog();
 		}
 
 		/// <summary>
@@ -2876,7 +2906,7 @@ namespace TheBox.Forms
 		{
 			try
 			{
-				Process.Start(Pandora.ApplicationDataFolder);
+				_ = Process.Start(Pandora.ApplicationDataFolder);
 			}
 			catch (Exception err)
 			{

@@ -27,7 +27,7 @@ namespace Ultima
 
 		public string Text
 		{
-			get { return m_Text; }
+			get => m_Text;
 			set
 			{
 				if (value == null)
@@ -63,7 +63,7 @@ namespace Ultima
 			RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
 
 		private string m_FmtTxt;
-		private static readonly object[] m_Args = {"", "", "", "", "", "", "", "", "", "", ""};
+		private static readonly object[] m_Args = { "", "", "", "", "", "", "", "", "", "", "" };
 
 		public string Format(params object[] args)
 		{

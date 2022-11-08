@@ -120,7 +120,7 @@ namespace Ultima
 
 		private static bool IsPixelSet(byte[] data, int width, int x, int y)
 		{
-			var offset = x / 8 + y * ((width + 7) / 8);
+			var offset = (x / 8) + (y * ((width + 7) / 8));
 			if (offset > data.Length)
 			{
 				return false;
@@ -148,7 +148,7 @@ namespace Ultima
 				{
 					if (cur[x] == 0x8000)
 					{
-						var offset = x / 8 + y * ((bmp.Width + 7) / 8);
+						var offset = (x / 8) + (y * ((bmp.Width + 7) / 8));
 						Bytes[offset] |= (byte)(1 << (7 - (x % 8)));
 					}
 				}
@@ -192,13 +192,13 @@ namespace Ultima
 						for (var c = 0; c < 0x10000; ++c)
 						{
 							Fonts[i].Chars[c] = new UnicodeChar();
-							fs.Seek(((c) * 4), SeekOrigin.Begin);
+							_ = fs.Seek(c * 4, SeekOrigin.Begin);
 							var num2 = bin.ReadInt32();
 							if ((num2 >= fs.Length) || (num2 <= 0))
 							{
 								continue;
 							}
-							fs.Seek(num2, SeekOrigin.Begin);
+							_ = fs.Seek(num2, SeekOrigin.Begin);
 							var xOffset = bin.ReadSByte();
 							var yOffset = bin.ReadSByte();
 							int Width = bin.ReadByte();
@@ -256,7 +256,7 @@ namespace Ultima
 			{
 				using (var bin = new BinaryWriter(fs))
 				{
-					fs.Seek(0x10000 * 4, SeekOrigin.Begin);
+					_ = fs.Seek(0x10000 * 4, SeekOrigin.Begin);
 					bin.Write(0);
 					// Set first data
 					for (var c = 0; c < 0x10000; ++c)
@@ -265,9 +265,9 @@ namespace Ultima
 						{
 							continue;
 						}
-						fs.Seek(((c) * 4), SeekOrigin.Begin);
+						_ = fs.Seek(c * 4, SeekOrigin.Begin);
 						bin.Write((int)fs.Length);
-						fs.Seek(fs.Length, SeekOrigin.Begin);
+						_ = fs.Seek(fs.Length, SeekOrigin.Begin);
 						bin.Write(Fonts[filetype].Chars[c].XOffset);
 						bin.Write(Fonts[filetype].Chars[c].YOffset);
 						bin.Write((byte)Fonts[filetype].Chars[c].Width);

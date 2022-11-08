@@ -93,9 +93,9 @@ namespace BoxServerSetup
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.ClientSize = new System.Drawing.Size(488, 355);
 			this.FirstStepName = "Introduction";
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "BoxServerSetup";
-			this.SideBarImage = ((System.Drawing.Image)(resources.GetObject("$this.SideBarImage")));
+			this.SideBarImage = (System.Drawing.Image)resources.GetObject("$this.SideBarImage");
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "BoxServer Installation";
 		}

@@ -78,7 +78,7 @@ namespace TheBox.Pages
 		/// <summary>
 		///     The maps corresponding to the listMaps items
 		/// </summary>
-		private readonly int[] m_Maps = {-1, -1, -1, -1, -1};
+		private readonly int[] m_Maps = { -1, -1, -1, -1, -1 };
 
 		private int m_X;
 		private int m_Y;
@@ -102,7 +102,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void SetLocationText()
 		{
-			lnkPoint.Text = string.Format(m_Point, m_X, m_Y, m_Z);
+			lnkPoint.Text = String.Format(m_Point, m_X, m_Y, m_Z);
 		}
 		#endregion
 
@@ -265,7 +265,7 @@ namespace TheBox.Pages
 				14.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.lnkZoomIn.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
 			this.lnkZoomIn.LinkColor = System.Drawing.Color.Red;
 			this.lnkZoomIn.Location = new System.Drawing.Point(476, 112);
@@ -286,7 +286,7 @@ namespace TheBox.Pages
 				24F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.lnkZoomOut.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
 			this.lnkZoomOut.LinkColor = System.Drawing.Color.Red;
 			this.lnkZoomOut.Location = new System.Drawing.Point(476, 128);
@@ -341,7 +341,7 @@ namespace TheBox.Pages
 			// LocMenu
 			// 
 			this.LocMenu.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.mLocEdit, this.mLocDel, this.menuItem3, this.mLocNew});
+				new System.Windows.Forms.MenuItem[] { this.mLocEdit, this.mLocDel, this.menuItem3, this.mLocNew });
 			// 
 			// mLocEdit
 			// 
@@ -544,7 +544,7 @@ namespace TheBox.Pages
 				{
 					if (Pandora.Profile.Travel.EnabledMaps[i])
 					{
-						listMaps.Items.Add(Pandora.Profile.Travel.MapNames[i]);
+						_ = listMaps.Items.Add(Pandora.Profile.Travel.MapNames[i]);
 						m_Maps[index++] = i;
 					}
 				}
@@ -553,7 +553,9 @@ namespace TheBox.Pages
 				m_Map = Pandora.Profile.Travel.Map;
 
 				if (!Pandora.Profile.Travel.EnabledMaps[m_Map])
+				{
 					m_Map = m_Maps[0];
+				}
 
 				var mapIndex = GetMapIndex(m_Map);
 
@@ -577,7 +579,7 @@ namespace TheBox.Pages
 			else
 			{
 				// Travel disabled
-				Pandora.Log.WriteEntry(string.Format("No maps enabled on profile {0}", Pandora.Profile.Name));
+				Pandora.Log.WriteEntry(String.Format("No maps enabled on profile {0}", Pandora.Profile.Name));
 			}
 
 			// Set handlers for the options
@@ -623,7 +625,9 @@ namespace TheBox.Pages
 			for (var i = 0; i < Pandora.Profile.Travel.MapCount; i++)
 			{
 				if (map == m_Maps[i])
+				{
 					return i;
+				}
 			}
 
 			return -1;
@@ -659,7 +663,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Travel.NoMaps"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Travel.NoMaps"]);
 			}
 		}
 
@@ -677,7 +681,9 @@ namespace TheBox.Pages
 		private void listMaps_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (m_StopMessages)
+			{
 				return;
+			}
 
 			if (listMaps.SelectedIndex != -1)
 			{
@@ -717,7 +723,7 @@ namespace TheBox.Pages
 		{
 			if (listMaps.SelectedIndex != -1)
 			{
-				Pandora.SendToUO(string.Format("Set Map {0}", m_Map), true);
+				Pandora.SendToUO(String.Format("Set Map {0}", m_Map), true);
 			}
 		}
 
@@ -823,7 +829,7 @@ namespace TheBox.Pages
 
 			if (m_Results.Count == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Misc.NoResults"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Misc.NoResults"]);
 				m_Results = null;
 			}
 			else
@@ -877,7 +883,7 @@ namespace TheBox.Pages
 			}
 			catch
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Misc.SearchError"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Misc.SearchError"]);
 				m_Results = null;
 			}
 		}
@@ -935,10 +941,14 @@ namespace TheBox.Pages
 				var node = tCat.SelectedNode;
 
 				if (node == null)
+				{
 					return;
+				}
 
 				while (node.Parent != null)
+				{
 					node = node.Parent;
+				}
 
 				var index = tCat.Nodes.IndexOf(node);
 
@@ -957,8 +967,7 @@ namespace TheBox.Pages
 			EnsureMap();
 
 			// Update map
-			TreeNodeCollection nodes = null;
-
+			TreeNodeCollection nodes;
 			if (Pandora.Profile.Travel.SelectedMapLocations)
 			{
 				// Only one facet displayed
@@ -980,11 +989,15 @@ namespace TheBox.Pages
 			if (e.Button == MouseButtons.Right)
 			{
 				if (tCat.SelectedNode == null)
+				{
 					return;
+				}
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				if (tCat.SelectedNode.Tag == null || !(tCat.SelectedNode.Tag is List<object>))
+				{
 					// Issue 10 - End
 					return;
+				}
 
 				var onNode = tLoc.GetNodeAt(e.X, e.Y);
 
@@ -1007,7 +1020,7 @@ namespace TheBox.Pages
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				// Enable new location only if the selected node is a subsection node
 				if (tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is List<object>)
-					// Issue 10 - End
+				// Issue 10 - End
 				{
 					mLocNew.Enabled = true;
 				}
@@ -1042,14 +1055,18 @@ namespace TheBox.Pages
 					var next = tLoc.SelectedNode.NextNode;
 
 					if (next == null)
+					{
 						next = tLoc.SelectedNode.PrevNode;
+					}
 
 					var nextIndex = -1;
 
 					tLoc.Nodes.Remove(tLoc.SelectedNode);
 
 					if (next != null)
+					{
 						nextIndex = tLoc.Nodes.IndexOf(next);
+					}
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					(sub.Tag as List<object>).RemoveAt(index);
 					// Issue 10 - End
@@ -1059,14 +1076,16 @@ namespace TheBox.Pages
 					tCat.SelectedNode = node;
 
 					if (nextIndex > -1)
+					{
 						tLoc.SelectedNode = tLoc.Nodes[nextIndex];
+					}
 
 					UpdateMap();
 				}
 				catch (Exception err)
 				{
 					Pandora.Log.WriteError(err, "Deleting location");
-					MessageBox.Show(Pandora.Localization.TextProvider["Messages.GenericError"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Messages.GenericError"]);
 				}
 			}
 		}
@@ -1076,10 +1095,12 @@ namespace TheBox.Pages
 		/// </summary>
 		private void mLocNew_Click(object sender, EventArgs e)
 		{
-			var location = new Location();
-			location.X = (short)m_X;
-			location.Y = (short)m_Y;
-			location.Z = (sbyte)m_Z;
+			var location = new Location
+			{
+				X = (short)m_X,
+				Y = (short)m_Y,
+				Z = (sbyte)m_Z
+			};
 
 			var quickLoc = new QuickLocation();
 
@@ -1091,10 +1112,9 @@ namespace TheBox.Pages
 			if (quickLoc.ShowDialog() == DialogResult.OK)
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				var list = tCat.SelectedNode.Tag as List<object>;
 				// Issue 10 - End
 
-				if (list != null)
+				if (tCat.SelectedNode.Tag is List<object> list)
 				{
 					list.Add(quickLoc.CurrentLocation);
 					list.Sort();
@@ -1112,7 +1132,7 @@ namespace TheBox.Pages
 				else
 				{
 					Pandora.Log.WriteError(null, "Couldn\'t add location because the tCat node wasn\'t a subsection node");
-					MessageBox.Show(Pandora.Localization.TextProvider["Messages.NewLocErr"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Messages.NewLocErr"]);
 				}
 			}
 		}
@@ -1157,7 +1177,9 @@ namespace TheBox.Pages
 			if (e.Button == MouseButtons.Right)
 			{
 				if (tCat.Nodes.Count == 0)
+				{
 					return;
+				}
 
 				var node = tCat.GetNodeAt(e.X, e.Y);
 
@@ -1185,14 +1207,22 @@ namespace TheBox.Pages
 						node = tCat.SelectedNode;
 
 						if (node.NextNode != null)
+						{
 							mCatDown.Enabled = true;
+						}
 						else
+						{
 							mCatDown.Enabled = false;
+						}
 
 						if (node.PrevNode != null)
+						{
 							mCatUp.Enabled = true;
+						}
 						else
+						{
 							mCatUp.Enabled = false;
+						}
 					}
 				}
 				else
@@ -1231,14 +1261,22 @@ namespace TheBox.Pages
 							node = tCat.SelectedNode;
 
 							if (node.NextNode != null)
+							{
 								mCatDown.Enabled = true;
+							}
 							else
+							{
 								mCatDown.Enabled = false;
+							}
 
 							if (node.PrevNode != null)
+							{
 								mCatUp.Enabled = true;
+							}
 							else
+							{
 								mCatUp.Enabled = false;
+							}
 						}
 					}
 				}
@@ -1305,11 +1343,11 @@ namespace TheBox.Pages
 
 			if (Pandora.Profile.Travel.SelectedMapLocations)
 			{
-				tCat.Nodes.Add(node);
+				_ = tCat.Nodes.Add(node);
 			}
 			else
 			{
-				tCat.Nodes[GetMapIndex(m_Map)].Nodes.Add(node);
+				_ = tCat.Nodes[GetMapIndex(m_Map)].Nodes.Add(node);
 			}
 		}
 
@@ -1318,15 +1356,21 @@ namespace TheBox.Pages
 		/// </summary>
 		private void mCatNewSub_Click(object sender, EventArgs e)
 		{
-			var node = new TreeNode("NewSubsection");
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			node.Tag = new List<object>();
+			var node = new TreeNode("NewSubsection")
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 
 			if (tCat.SelectedNode.Tag != null && tCat.SelectedNode.Tag is List<object>)
+			{
 				// Issue 10 - End
-				tCat.SelectedNode.Parent.Nodes.Add(node);
+				_ = tCat.SelectedNode.Parent.Nodes.Add(node);
+			}
 			else
-				tCat.SelectedNode.Nodes.Add(node);
+			{
+				_ = tCat.SelectedNode.Nodes.Add(node);
+			}
 		}
 
 		/// <summary>
@@ -1337,8 +1381,7 @@ namespace TheBox.Pages
 			var node = tCat.SelectedNode;
 			var parent = node.Parent;
 
-			var index = 0;
-
+			int index;
 			if (parent != null)
 			{
 				index = parent.Nodes.IndexOf(node);
@@ -1367,8 +1410,7 @@ namespace TheBox.Pages
 			var node = tCat.SelectedNode;
 			var parent = node.Parent;
 
-			var index = 0;
-
+			int index;
 			if (parent != null)
 			{
 				index = parent.Nodes.IndexOf(node);
@@ -1428,7 +1470,7 @@ namespace TheBox.Pages
 			{
 				if (Pandora.Profile.Travel.EnabledMaps[i])
 				{
-					listMaps.Items.Add(Pandora.Profile.Travel.MapNames[i]);
+					_ = listMaps.Items.Add(Pandora.Profile.Travel.MapNames[i]);
 					m_Maps[index++] = i;
 				}
 			}
@@ -1442,7 +1484,9 @@ namespace TheBox.Pages
 			}
 
 			if (!Pandora.Profile.Travel.EnabledMaps[m_Map])
+			{
 				m_Map = m_Maps[0];
+			}
 
 			DoTree();
 		}
@@ -1484,7 +1528,7 @@ namespace TheBox.Pages
 			}
 			catch (Exception err)
 			{
-				MessageBox.Show(err.ToString());
+				_ = MessageBox.Show(err.ToString());
 			}
 		}
 
@@ -1498,7 +1542,9 @@ namespace TheBox.Pages
 			if (Pandora.Profile != null)
 			{
 				if (Pandora.Profile.Travel.FollowClient)
+				{
 					Synch();
+				}
 			}
 		}
 
@@ -1510,7 +1556,9 @@ namespace TheBox.Pages
 		private void Map_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
+			{
 				chkSynch.Checked = false;
+			}
 		}
 	}
 }
