@@ -38,11 +38,11 @@ namespace TheBox.Options
 		#region Variables
 		private bool m_WorldMapBig;
 
-		private string[] m_MapNames = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno" };
+		private string[] m_MapNames = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno", "TerMur" };
 
-		public readonly string[] DefaultMaps = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno" };
+		public readonly string[] DefaultMaps = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno", "TerMur" };
 
-		private bool[] m_EnabledMaps = { true, true, true, true, true };
+		private bool[] m_EnabledMaps = { true, true, true, true, true, true };
 
 		private bool m_SelectedMapLocations;
 		private bool m_DrawStatics = true;
@@ -52,7 +52,6 @@ namespace TheBox.Options
 		private bool m_ShowSpawns;
 		private bool m_CustomMaps;
 		private ColorDef m_SpawnColor;
-		private readonly bool m_RotateMap = true;
 		private bool m_XRayView;
 		private bool m_FollowClient;
 		#endregion
@@ -100,9 +99,11 @@ namespace TheBox.Options
 						return "Malas";
 					case 4:
 						return "Tokuno";
+					case 5:
+						return "TerMur";
 				}
 
-				return "Felucca";
+				return "Custom";
 			}
 		}
 
@@ -257,7 +258,7 @@ namespace TheBox.Options
 		{
 			var ind = 0;
 
-			for (var i = 0; i < 5; i++)
+			for (var i = 0; i < m_EnabledMaps.Length; i++)
 			{
 				if (ind == index)
 				{
