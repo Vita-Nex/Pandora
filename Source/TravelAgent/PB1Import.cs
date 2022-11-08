@@ -41,7 +41,7 @@ namespace Box.Misc
 				return Convert(single);
 			}
 			var form = new PB1ImportForm();
-			form.ShowDialog();
+			_ = form.ShowDialog();
 
 			switch (form.Map)
 			{
@@ -68,7 +68,7 @@ namespace Box.Misc
 			{
 				if (!categories.Contains(loc.Category))
 				{
-					categories.Add(loc.Category);
+					_ = categories.Add(loc.Category);
 				}
 			}
 
@@ -86,7 +86,7 @@ namespace Box.Misc
 				{
 					if (loc.Category == g.Name && !sub.Contains(loc.Subsection))
 					{
-						sub.Add(loc.Subsection);
+						_ = sub.Add(loc.Subsection);
 					}
 				}
 
@@ -116,13 +116,14 @@ namespace Box.Misc
 
 		private static TheBox.Data.Location Convert(Location loc)
 		{
-			var newLoc = new TheBox.Data.Location();
-
-			newLoc.Name = loc.Name;
-			newLoc.Map = loc.Map;
-			newLoc.X = loc.x;
-			newLoc.Y = loc.y;
-			newLoc.Z = (sbyte)loc.z;
+			var newLoc = new TheBox.Data.Location
+			{
+				Name = loc.Name,
+				Map = loc.Map,
+				X = loc.x,
+				Y = loc.y,
+				Z = (sbyte)loc.z
+			};
 
 			return newLoc;
 		}
@@ -179,16 +180,23 @@ namespace Box.Misc
 
 		public int CompareTo(object obj)
 		{
-			if (obj is Location)
+			if (obj is Location loc)
 			{
-				var loc = (Location)obj;
-
 				if (loc.Map != Map)
+				{
 					return Map.CompareTo(loc.Map);
+				}
+
 				if (Category != loc.Category)
+				{
 					return Category.CompareTo(loc.Category);
+				}
+
 				if (Subsection != loc.Subsection)
+				{
 					return Subsection.CompareTo(loc.Subsection);
+				}
+
 				return Name.CompareTo(loc.Name);
 			}
 			throw new Exception("Not a Location: " + obj);
@@ -198,8 +206,6 @@ namespace Box.Misc
 		{
 			var X = "";
 			var Y = "";
-			var Z = "";
-
 			while (point[0] != ',')
 			{
 				X += point[0];
@@ -215,8 +221,7 @@ namespace Box.Misc
 			}
 
 			point = point.Substring(1, point.Length - 1);
-			Z = point;
-
+			var Z = point;
 			x = Convert.ToInt16(X);
 			y = Convert.ToInt16(Y);
 			z = Convert.ToInt16(Z);

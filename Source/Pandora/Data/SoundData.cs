@@ -72,10 +72,10 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<GenericNode> Structure
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Structure; }
-			set { m_Structure = value; }
+			get => m_Structure;
+			set => m_Structure = value;
 		}
 
 		/// <summary>
@@ -92,15 +92,12 @@ namespace TheBox.Data
 		/// </summary>
 		public UOSound SelectedSound
 		{
-			get { return m_SelectedSound; }
+			get => m_SelectedSound;
 			set
 			{
 				m_SelectedSound = value;
 
-				if (SoundChanged != null)
-				{
-					SoundChanged(this, new EventArgs());
-				}
+				SoundChanged?.Invoke(this, new EventArgs());
 			}
 		}
 
@@ -120,7 +117,7 @@ namespace TheBox.Data
 						var mitem = new MenuItem(gNode.Name);
 						mitem.MenuItems.AddRange(DoNode(gNode));
 
-						m_Menu.MenuItems.Add(mitem);
+						_ = m_Menu.MenuItems.Add(mitem);
 					}
 				}
 
@@ -139,15 +136,12 @@ namespace TheBox.Data
 
 			for (var i = 0; i < mitems.Length; i++)
 			{
-				var node = gNode.Elements[i] as GenericNode;
-				var snd = gNode.Elements[i] as UOSound;
-
-				if (node != null)
+				if (gNode.Elements[i] is GenericNode node)
 				{
 					mitems[i] = new MenuItem(node.Name);
 					mitems[i].MenuItems.AddRange(DoNode(node));
 				}
-				else if (snd != null)
+				else if (gNode.Elements[i] is UOSound snd)
 				{
 					mitems[i] = new InternalMenuItem(snd);
 					mitems[i].Click += SoundData_Click;
@@ -164,9 +158,7 @@ namespace TheBox.Data
 		/// <param name="e"></param>
 		private void SoundData_Click(object sender, EventArgs e)
 		{
-			var mi = sender as InternalMenuItem;
-
-			if (mi != null)
+			if (sender is InternalMenuItem mi)
 			{
 				SelectedSound = mi.Sound;
 			}

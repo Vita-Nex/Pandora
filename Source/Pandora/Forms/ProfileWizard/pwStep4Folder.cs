@@ -20,7 +20,6 @@ namespace TheBox.Forms.ProfileWizard
 		private Label labFolder;
 		private Button bBrowse;
 		private FolderBrowserDialog FolderBrowse;
-		private LinkLabel linkLabel1;
 		private readonly IContainer components = null;
 
 		public pwStep4Folder()
@@ -57,7 +56,6 @@ namespace TheBox.Forms.ProfileWizard
 			this.labFolder = new System.Windows.Forms.Label();
 			this.bBrowse = new System.Windows.Forms.Button();
 			this.FolderBrowse = new System.Windows.Forms.FolderBrowserDialog();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 			this.SuspendLayout();
 			// 
 			// Description
@@ -92,20 +90,8 @@ namespace TheBox.Forms.ProfileWizard
 			this.bBrowse.Text = "Common.Browse";
 			this.bBrowse.Click += new System.EventHandler(this.bBrowse_Click);
 			// 
-			// linkLabel1
-			// 
-			this.linkLabel1.Location = new System.Drawing.Point(48, 192);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(376, 32);
-			this.linkLabel1.TabIndex = 4;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "WizProfile.MulManage";
-			this.linkLabel1.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-			// 
 			// pwStep4Folder
 			// 
-			this.Controls.Add(this.linkLabel1);
 			this.Controls.Add(this.bBrowse);
 			this.Controls.Add(this.labFolder);
 			this.Controls.Add(this.labMessage);
@@ -120,7 +106,6 @@ namespace TheBox.Forms.ProfileWizard
 			this.Controls.SetChildIndex(this.Description, 0);
 			this.Controls.SetChildIndex(this.labFolder, 0);
 			this.Controls.SetChildIndex(this.bBrowse, 0);
-			this.Controls.SetChildIndex(this.linkLabel1, 0);
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -129,7 +114,7 @@ namespace TheBox.Forms.ProfileWizard
 		{
 			var wiz = Wizard as ProfileWizard;
 
-			if (wiz.Profile.MulManager.DefaultFolder == null)
+			if (wiz.Profile.DefaultFolder == null)
 			{
 				// No folder found
 				labMessage.Text = ProfileWizard.TextProvider["WizProfile.FolderNotFound"];
@@ -138,7 +123,7 @@ namespace TheBox.Forms.ProfileWizard
 			{
 				// Folder found
 				labMessage.Text = ProfileWizard.TextProvider["WizProfile.FolderFound"];
-				labFolder.Text = wiz.Profile.MulManager.DefaultFolder;
+				labFolder.Text = wiz.Profile.DefaultFolder;
 			}
 		}
 
@@ -157,13 +142,7 @@ namespace TheBox.Forms.ProfileWizard
 		{
 			var wiz = Wizard as ProfileWizard;
 
-			wiz.Profile.MulManager.CustomFolder = m_CustomFolder;
-		}
-
-		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			var form = new MulManagerForm((Wizard as ProfileWizard).Profile.MulManager, ProfileWizard.TextProvider);
-			form.ShowDialog();
+			wiz.Profile.DefaultFolder = m_CustomFolder;
 		}
 	}
 }

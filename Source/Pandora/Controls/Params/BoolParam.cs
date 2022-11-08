@@ -74,7 +74,7 @@ namespace TheBox.Controls.Params
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.labName.Location = new System.Drawing.Point(0, 0);
 			this.labName.Name = "labName";
 			this.labName.Size = new System.Drawing.Size(96, 16);
@@ -98,8 +98,8 @@ namespace TheBox.Controls.Params
 		{
 			try
 			{
-				cmb.Items.Add(Pandora.Localization.TextProvider["Common.True"]);
-				cmb.Items.Add(Pandora.Localization.TextProvider["Common.False"]);
+				_ = cmb.Items.Add(Pandora.Localization.TextProvider["Common.True"]);
+				_ = cmb.Items.Add(Pandora.Localization.TextProvider["Common.False"]);
 
 				cmb.SelectedIndex = 0;
 			}
@@ -123,12 +123,15 @@ namespace TheBox.Controls.Params
 			get
 			{
 				if (cmb.SelectedIndex == 0)
+				{
 					return "true";
+				}
+
 				return "false";
 			}
 		}
 
-		public bool IsDefined { get { return true; } }
+		public bool IsDefined => true;
 		#endregion
 	}
 }

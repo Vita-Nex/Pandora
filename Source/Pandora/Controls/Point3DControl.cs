@@ -69,9 +69,9 @@ namespace TheBox.Controls
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numX).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numY).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -85,7 +85,7 @@ namespace TheBox.Controls
 			// numX
 			// 
 			this.numX.Location = new System.Drawing.Point(40, 24);
-			this.numX.Maximum = new System.Decimal(new int[] {7000, 0, 0, 0});
+			this.numX.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
 			this.numX.Name = "numX";
 			this.numX.Size = new System.Drawing.Size(56, 20);
 			this.numX.TabIndex = 1;
@@ -94,7 +94,7 @@ namespace TheBox.Controls
 			// numY
 			// 
 			this.numY.Location = new System.Drawing.Point(40, 48);
-			this.numY.Maximum = new System.Decimal(new int[] {7000, 0, 0, 0});
+			this.numY.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
 			this.numY.Name = "numY";
 			this.numY.Size = new System.Drawing.Size(56, 20);
 			this.numY.TabIndex = 2;
@@ -103,8 +103,8 @@ namespace TheBox.Controls
 			// numZ
 			// 
 			this.numZ.Location = new System.Drawing.Point(40, 72);
-			this.numZ.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.numZ.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.numZ.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.numZ.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.numZ.Name = "numZ";
 			this.numZ.Size = new System.Drawing.Size(56, 20);
 			this.numZ.TabIndex = 3;
@@ -157,9 +157,9 @@ namespace TheBox.Controls
 			this.Name = "Point3DControl";
 			this.Size = new System.Drawing.Size(104, 116);
 			this.Load += new System.EventHandler(this.Point3DControl_Load);
-			((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numY)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numZ)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numX).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numY).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numZ).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -193,7 +193,7 @@ namespace TheBox.Controls
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			var s = string.Format(
+			var s = String.Format(
 				"{0} {1} {2}",
 				Pandora.Profile.Props.PointX,
 				Pandora.Profile.Props.PointY,

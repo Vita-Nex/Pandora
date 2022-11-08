@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - TileMatrix.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Collections.Generic;
@@ -199,7 +193,7 @@ namespace Ultima
 				tiles = m_StaticTiles[x][y] = ReadStaticBlock(x, y);
 			}
 
-			if ((Map.UseDiff) && (patch))
+			if (Map.UseDiff && patch)
 			{
 				if (Patch.StaticBlocksCount > 0)
 				{
@@ -264,7 +258,7 @@ namespace Ultima
 				tiles = m_LandTiles[x][y] = ReadLandBlock(x, y);
 			}
 
-			if ((Map.UseDiff) && (patch))
+			if (Map.UseDiff && patch)
 			{
 				if (Patch.LandBlocksCount > 0)
 				{
@@ -303,7 +297,7 @@ namespace Ultima
 				var count = (int)(index.Length / 12);
 				var gc = GCHandle.Alloc(m_StaticIndex, GCHandleType.Pinned);
 				var buffer = new byte[index.Length];
-				index.Read(buffer, 0, (int)index.Length);
+				_ = index.Read(buffer, 0, (int)index.Length);
 				Marshal.Copy(buffer, 0, gc.AddrOfPinnedObject(), (int)Math.Min(index.Length, BlockHeight * BlockWidth * 12));
 				gc.Free();
 				for (var i = (int)Math.Min(index.Length, BlockHeight * BlockWidth); i < BlockHeight * BlockWidth; ++i)
@@ -354,7 +348,7 @@ namespace Ultima
 				{
 					var count = length / 7;
 
-					m_Statics.Seek(lookup, SeekOrigin.Begin);
+					_ = m_Statics.Seek(lookup, SeekOrigin.Begin);
 
 					if (m_Buffer == null || m_Buffer.Length < length)
 					{
@@ -364,7 +358,7 @@ namespace Ultima
 					var gc = GCHandle.Alloc(m_Buffer, GCHandleType.Pinned);
 					try
 					{
-						m_Statics.Read(m_Buffer, 0, length);
+						_ = m_Statics.Read(m_Buffer, 0, length);
 
 						if (m_Lists == null)
 						{
@@ -385,7 +379,7 @@ namespace Ultima
 
 						for (var i = 0; i < count; ++i)
 						{
-							var ptr = new IntPtr((long)gc.AddrOfPinnedObject() + i * sizeof(StaticTile));
+							var ptr = new IntPtr((long)gc.AddrOfPinnedObject() + (i * sizeof(StaticTile)));
 							var cur = (StaticTile)Marshal.PtrToStructure(ptr, typeof(StaticTile));
 							lists[cur.m_X & 0x7][cur.m_Y & 0x7].Add(Art.GetLegalItemID(cur.m_ID), cur.m_Hue, cur.m_Z);
 						}
@@ -439,22 +433,22 @@ namespace Ultima
 		}
 
 		private UOPFile[] UOPFiles { get; set; }
-		private long UOPLength { get { return m_Map.Length; } }
+		private long UOPLength => m_Map.Length;
 
 		private void ReadUOPFiles(string pattern)
 		{
 			m_UOPReader = new BinaryReader(m_Map);
 
-			m_UOPReader.BaseStream.Seek(0, SeekOrigin.Begin);
+			_ = m_UOPReader.BaseStream.Seek(0, SeekOrigin.Begin);
 
 			if (m_UOPReader.ReadInt32() != 0x50594D)
 			{
 				throw new ArgumentException("Bad UOP file.");
 			}
 
-			m_UOPReader.ReadInt64(); // version + signature
+			_ = m_UOPReader.ReadInt64(); // version + signature
 			var nextBlock = m_UOPReader.ReadInt64();
-			m_UOPReader.ReadInt32(); // block capacity
+			_ = m_UOPReader.ReadInt32(); // block capacity
 			var count = m_UOPReader.ReadInt32();
 
 			UOPFiles = new UOPFile[count];
@@ -463,7 +457,7 @@ namespace Ultima
 
 			for (var i = 0; i < count; i++)
 			{
-				var file = string.Format("build/{0}/{1:D8}.dat", pattern, i);
+				var file = String.Format("build/{0}/{1:D8}.dat", pattern, i);
 				var hash = FileIndex.HashFileName(file);
 
 				if (!hashes.ContainsKey(hash))
@@ -472,7 +466,7 @@ namespace Ultima
 				}
 			}
 
-			m_UOPReader.BaseStream.Seek(nextBlock, SeekOrigin.Begin);
+			_ = m_UOPReader.BaseStream.Seek(nextBlock, SeekOrigin.Begin);
 
 			do
 			{
@@ -486,7 +480,7 @@ namespace Ultima
 					var compressedLength = m_UOPReader.ReadInt32();
 					var decompressedLength = m_UOPReader.ReadInt32();
 					var hash = m_UOPReader.ReadUInt64();
-					m_UOPReader.ReadUInt32(); // Adler32
+					_ = m_UOPReader.ReadUInt32(); // Adler32
 					var flag = m_UOPReader.ReadInt16();
 
 					var length = flag == 1 ? compressedLength : decompressedLength;
@@ -496,8 +490,7 @@ namespace Ultima
 						continue;
 					}
 
-					int idx;
-					if (hashes.TryGetValue(hash, out idx))
+					if (hashes.TryGetValue(hash, out var idx))
 					{
 						if (idx < 0 || idx > UOPFiles.Length)
 						{
@@ -509,9 +502,7 @@ namespace Ultima
 					else
 					{
 						throw new ArgumentException(
-							string.Format(
-								"File with hash 0x{0:X8} was not found in hashes dictionary! EA Mythic changed UOP format!",
-								hash));
+							String.Format("File with hash 0x{0:X8} was not found in hashes dictionary! EA Mythic changed UOP format!", hash));
 					}
 				}
 			}
@@ -563,14 +554,14 @@ namespace Ultima
 			var tiles = new Tile[64];
 			if (m_Map != null)
 			{
-				long offset = ((x * BlockHeight) + y) * 196 + 4;
+				long offset = (((x * BlockHeight) + y) * 196) + 4;
 
 				if (IsUOPFormat)
 				{
 					offset = CalculateOffsetFromUOP(offset);
 				}
 
-				m_Map.Seek(offset, SeekOrigin.Begin);
+				_ = m_Map.Seek(offset, SeekOrigin.Begin);
 
 				var gc = GCHandle.Alloc(tiles, GCHandleType.Pinned);
 				try
@@ -580,7 +571,7 @@ namespace Ultima
 						m_Buffer = new byte[192];
 					}
 
-					m_Map.Read(m_Buffer, 0, 192);
+					_ = m_Map.Read(m_Buffer, 0, 192);
 
 					Marshal.Copy(m_Buffer, 0, gc.AddrOfPinnedObject(), 192);
 				}
@@ -713,9 +704,9 @@ namespace Ultima
 		internal ushort m_ID;
 		internal int m_Hue;
 
-		public ushort ID { get { return m_ID; } set { m_ID = value; } }
-		public int Hue { get { return m_Hue; } set { m_Hue = value; } }
-		public int Z { get { return m_Z; } set { m_Z = (sbyte)value; } }
+		public ushort ID { get => m_ID; set => m_ID = value; }
+		public int Hue { get => m_Hue; set => m_Hue = value; }
+		public int Z { get => m_Z; set => m_Z = (sbyte)value; }
 
 		public HuedTile(ushort id, short hue, sbyte z)
 		{
@@ -739,11 +730,11 @@ namespace Ultima
 		internal TileFlag m_Flag;
 		internal int m_Solver;
 
-		public ushort ID { get { return m_ID; } }
-		public int Z { get { return m_Z; } set { m_Z = (sbyte)value; } }
+		public ushort ID => m_ID;
+		public int Z { get => m_Z; set => m_Z = (sbyte)value; }
 
-		public TileFlag Flag { get { return m_Flag; } set { m_Flag = value; } }
-		public int Solver { get { return m_Solver; } set { m_Solver = value; } }
+		public TileFlag Flag { get => m_Flag; set => m_Flag = value; }
+		public int Solver { get => m_Solver; set => m_Solver = value; }
 
 		public MTile(ushort id, sbyte z)
 		{
@@ -833,8 +824,8 @@ namespace Ultima
 		internal ushort m_ID;
 		internal sbyte m_Z;
 
-		public ushort ID { get { return m_ID; } }
-		public int Z { get { return m_Z; } set { m_Z = (sbyte)value; } }
+		public ushort ID => m_ID;
+		public int Z { get => m_Z; set => m_Z = (sbyte)value; }
 
 		public Tile(ushort id, sbyte z)
 		{
@@ -878,7 +869,7 @@ namespace Ultima
 			{
 				return 1;
 			}
-			if (a.m_Z > m_Z)
+			else if (a.m_Z > m_Z)
 			{
 				return -1;
 			}
@@ -890,7 +881,7 @@ namespace Ultima
 			{
 				return 1;
 			}
-			if (theirData.Height > ourData.Height)
+			else if (theirData.Height > ourData.Height)
 			{
 				return -1;
 			}
@@ -899,7 +890,7 @@ namespace Ultima
 			{
 				return -1;
 			}
-			if (theirData.Background && !ourData.Background)
+			else if (theirData.Background && !ourData.Background)
 			{
 				return 1;
 			}

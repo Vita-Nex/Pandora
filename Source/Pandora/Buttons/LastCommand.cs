@@ -18,11 +18,11 @@ namespace TheBox.Buttons
 	public class LastCommand : IButtonFunction, ICloneable
 	{
 		#region IButtonFunction Members
-		public string Name { get { return "Buttons.LastCommand"; } }
+		public string Name => "Buttons.LastCommand";
 
-		public bool AllowsSecondButton { get { return true; } }
+		public bool AllowsSecondButton => true;
 
-		public bool RequiresSecondButton { get { return true; } }
+		public bool RequiresSecondButton => true;
 
 		public void DoAction(BoxButton button, Point clickPoint, MouseButtons mouseButton)
 		{
@@ -36,10 +36,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendCommand(SendCommandEventArgs e)
 		{
-			if (SendCommand != null)
-			{
-				SendCommand(this, e);
-			}
+			SendCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -49,10 +46,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendLastCommand(EventArgs e)
 		{
-			if (SendLastCommand != null)
-			{
-				SendLastCommand(this, e);
-			}
+			SendLastCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -62,10 +56,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnCommandChanged(CommandChangedEventArgs e)
 		{
-			if (CommandChanged != null)
-			{
-				CommandChanged(this, e);
-			}
+			CommandChanged?.Invoke(this, e);
 		}
 		#endregion
 

@@ -74,10 +74,10 @@ namespace TheBox.Controls.Params
 			this.numHours = new System.Windows.Forms.NumericUpDown();
 			this.numMins = new System.Windows.Forms.NumericUpDown();
 			this.numSeconds = new System.Windows.Forms.NumericUpDown();
-			((System.ComponentModel.ISupportInitialize)(this.numDays)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numHours)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numMins)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numSeconds)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numDays).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numHours).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numMins).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numSeconds).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label5
@@ -115,7 +115,7 @@ namespace TheBox.Controls.Params
 			// numDays
 			// 
 			this.numDays.Location = new System.Drawing.Point(56, 4);
-			this.numDays.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.numDays.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.numDays.Name = "numDays";
 			this.numDays.Size = new System.Drawing.Size(52, 20);
 			this.numDays.TabIndex = 14;
@@ -124,7 +124,7 @@ namespace TheBox.Controls.Params
 			// numHours
 			// 
 			this.numHours.Location = new System.Drawing.Point(56, 24);
-			this.numHours.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.numHours.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.numHours.Name = "numHours";
 			this.numHours.Size = new System.Drawing.Size(52, 20);
 			this.numHours.TabIndex = 13;
@@ -133,7 +133,7 @@ namespace TheBox.Controls.Params
 			// numMins
 			// 
 			this.numMins.Location = new System.Drawing.Point(56, 44);
-			this.numMins.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.numMins.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.numMins.Name = "numMins";
 			this.numMins.Size = new System.Drawing.Size(52, 20);
 			this.numMins.TabIndex = 12;
@@ -142,7 +142,7 @@ namespace TheBox.Controls.Params
 			// numSeconds
 			// 
 			this.numSeconds.Location = new System.Drawing.Point(56, 64);
-			this.numSeconds.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.numSeconds.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.numSeconds.Name = "numSeconds";
 			this.numSeconds.Size = new System.Drawing.Size(52, 20);
 			this.numSeconds.TabIndex = 11;
@@ -166,10 +166,10 @@ namespace TheBox.Controls.Params
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.TimeSpanForm_Paint);
 			this.Leave += new System.EventHandler(this.TimeSpanForm_Leave);
 			this.Deactivate += new System.EventHandler(this.TimeSpanForm_Deactivate);
-			((System.ComponentModel.ISupportInitialize)(this.numDays)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numHours)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numMins)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numSeconds)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numDays).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numHours).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numMins).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numSeconds).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -184,7 +184,7 @@ namespace TheBox.Controls.Params
 		/// </summary>
 		public TimeSpan TimeSpan
 		{
-			get { return new TimeSpan(m_Days, m_Hours, m_Minutes, m_Seconds, 0); }
+			get => new TimeSpan(m_Days, m_Hours, m_Minutes, m_Seconds, 0);
 			set
 			{
 				numDays.Value = value.Days;

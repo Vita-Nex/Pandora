@@ -67,7 +67,7 @@ namespace TheBox.Data
 		/// </summary>
 		public int Width
 		{
-			get { return m_Width; }
+			get => m_Width;
 			set
 			{
 				if (value < m_Width)
@@ -80,7 +80,7 @@ namespace TheBox.Data
 					var difference = value - m_Width;
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					foreach (var row in m_Rows)
-						// Issue 10 - End
+					// Issue 10 - End
 					{
 						var cells = new int[difference];
 						cells.Initialize();
@@ -98,7 +98,7 @@ namespace TheBox.Data
 		/// </summary>
 		public int Height
 		{
-			get { return m_Height; }
+			get => m_Height;
 			set
 			{
 				if (value < m_Height)
@@ -140,7 +140,7 @@ namespace TheBox.Data
 					return row[x];
 					// Issue 10 - End
 				}
-				throw new IndexOutOfRangeException(string.Format("The cell ({0},{1}) doesn't exist in the matrix.", x, y));
+				throw new IndexOutOfRangeException(String.Format("The cell ({0},{1}) doesn't exist in the matrix.", x, y));
 			}
 			set
 			{
@@ -153,7 +153,7 @@ namespace TheBox.Data
 				}
 				else
 				{
-					throw new IndexOutOfRangeException(string.Format("The cell ({0},{1}) doesn't exist in the matrix.", x, y));
+					throw new IndexOutOfRangeException(String.Format("The cell ({0},{1}) doesn't exist in the matrix.", x, y));
 				}
 			}
 		}
@@ -166,7 +166,7 @@ namespace TheBox.Data
 		/// <returns>True if the location is valid</returns>
 		private bool InRange(int x, int y)
 		{
-			return (x >= 0 && x < m_Width && y >= 0 && y < m_Height);
+			return x >= 0 && x < m_Width && y >= 0 && y < m_Height;
 		}
 	}
 }

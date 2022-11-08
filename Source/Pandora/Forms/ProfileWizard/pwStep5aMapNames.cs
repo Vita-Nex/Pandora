@@ -223,33 +223,30 @@ namespace TheBox.Forms.ProfileWizard
 		private void chk0_CheckedChanged(object sender, EventArgs e)
 		{
 			tx0.Enabled = chk0.Checked;
-			m_EnabledMaps[0] = chk0.Checked;
+			EnabledMaps[0] = chk0.Checked;
 		}
 
 		private void chk1_CheckedChanged(object sender, EventArgs e)
 		{
 			tx1.Enabled = chk1.Checked;
-			m_EnabledMaps[1] = chk1.Checked;
+			EnabledMaps[1] = chk1.Checked;
 		}
 
 		private void chk2_CheckedChanged(object sender, EventArgs e)
 		{
 			tx2.Enabled = chk2.Checked;
-			m_EnabledMaps[2] = chk2.Checked;
+			EnabledMaps[2] = chk2.Checked;
 		}
 
 		private void chk3_CheckedChanged(object sender, EventArgs e)
 		{
 			tx3.Enabled = chk3.Checked;
-			m_EnabledMaps[3] = chk3.Checked;
+			EnabledMaps[3] = chk3.Checked;
 		}
 
-		private readonly bool[] m_EnabledMaps = {false, false, false, false, false};
-		private readonly string[] m_MapNames = {"Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno"};
+		public bool[] EnabledMaps { get; } = { false, false, false, false, false };
 
-		public bool[] EnabledMaps { get { return m_EnabledMaps; } }
-
-		public string[] MapNames { get { return m_MapNames; } }
+		public string[] MapNames { get; } = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno" };
 
 		private void pwStep6Images_ValidateStep(object sender, CancelEventArgs e)
 		{
@@ -257,15 +254,15 @@ namespace TheBox.Forms.ProfileWizard
 
 			for (var i = 0; i < 5; i++)
 			{
-				wiz.Profile.Travel.EnabledMaps[i] = m_EnabledMaps[i];
-				wiz.Profile.Travel.MapNames[i] = m_MapNames[i];
+				wiz.Profile.Travel.EnabledMaps[i] = EnabledMaps[i];
+				wiz.Profile.Travel.MapNames[i] = MapNames[i];
 
-				if (m_EnabledMaps[i])
+				if (EnabledMaps[i])
 				{
-					if (m_MapNames[i] == "")
+					if (MapNames[i] == "")
 					{
 						e.Cancel = true;
-						MessageBox.Show(ProfileWizard.TextProvider["WizProfile.NeedMapName"]);
+						_ = MessageBox.Show(ProfileWizard.TextProvider["WizProfile.NeedMapName"]);
 						break;
 					}
 				}
@@ -274,33 +271,33 @@ namespace TheBox.Forms.ProfileWizard
 
 		private void tx0_TextChanged(object sender, EventArgs e)
 		{
-			m_MapNames[0] = tx0.Text;
+			MapNames[0] = tx0.Text;
 		}
 
 		private void tx1_TextChanged(object sender, EventArgs e)
 		{
-			m_MapNames[1] = tx1.Text;
+			MapNames[1] = tx1.Text;
 		}
 
 		private void tx2_TextChanged(object sender, EventArgs e)
 		{
-			m_MapNames[2] = tx2.Text;
+			MapNames[2] = tx2.Text;
 		}
 
 		private void tx3_TextChanged(object sender, EventArgs e)
 		{
-			m_MapNames[3] = tx3.Text;
+			MapNames[3] = tx3.Text;
 		}
 
 		private void chk4_CheckedChanged(object sender, EventArgs e)
 		{
 			tx4.Enabled = chk4.Checked;
-			m_EnabledMaps[4] = chk4.Checked;
+			EnabledMaps[4] = chk4.Checked;
 		}
 
 		private void tx4_TextChanged(object sender, EventArgs e)
 		{
-			m_MapNames[4] = tx4.Text;
+			MapNames[4] = tx4.Text;
 		}
 	}
 }

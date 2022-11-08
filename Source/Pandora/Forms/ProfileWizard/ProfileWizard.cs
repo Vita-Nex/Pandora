@@ -22,9 +22,7 @@ namespace TheBox.Forms.ProfileWizard
 	{
 		private readonly IContainer components = null;
 
-		private static TextProvider m_TextProvider;
-
-		public static TextProvider TextProvider { get { return m_TextProvider; } }
+		public static TextProvider TextProvider { get; private set; }
 
 		public bool Succesful { get; set; }
 
@@ -97,10 +95,10 @@ namespace TheBox.Forms.ProfileWizard
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.ClientSize = new System.Drawing.Size(488, 355);
 			this.FirstStepName = "Step1";
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "ProfileWizard";
-			this.SideBarImage = ((System.Drawing.Image)(resources.GetObject("$this.SideBarImage")));
+			this.SideBarImage = (System.Drawing.Image)resources.GetObject("$this.SideBarImage");
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Profile Wizard";
 			this.Title = "Welcome to Pandora\'s Box Profile Wizard";
@@ -120,7 +118,7 @@ namespace TheBox.Forms.ProfileWizard
 			AddStep("Step6bServer", new pwStep6bServer());
 			AddStep("Step7End", new pwStep7End());
 
-			m_TextProvider = Pandora.Localization.GetLanguage(Profile.Language);
+			TextProvider = Pandora.Localization.GetLanguage(Profile.Language);
 
 			LocalizeControl(this);
 
@@ -129,7 +127,9 @@ namespace TheBox.Forms.ProfileWizard
 				LocalizeControl(c);
 
 				if (c is BaseInteriorStep)
-					c.StepTitle = m_TextProvider[c.StepTitle];
+				{
+					c.StepTitle = TextProvider[c.StepTitle];
+				}
 			}
 
 			//Pandora.Profile = null;
@@ -146,23 +146,36 @@ namespace TheBox.Forms.ProfileWizard
 			var path = text.Split('.');
 
 			if (path.Length == 2)
-				control.Text = m_TextProvider[text];
+			{
+				control.Text = TextProvider[text];
+			}
 
 			if (control.Controls.Count > 0)
 			{
 				foreach (Control c in control.Controls)
+				{
 					LocalizeControl(c);
+				}
 			}
 		}
 
 		private void ProfileWizard_Closing(object sender, CancelEventArgs e)
 		{
-			if (!Succesful && Profile != null)
+			if (!Succesful)
 			{
-				if (Directory.Exists(Profile.BaseFolder))
+				DialogResult = DialogResult.Cancel;
+
+				if (Profile != null)
 				{
-					Directory.Delete(Profile.BaseFolder, true);
+					if (Directory.Exists(Profile.BaseFolder))
+					{
+						Directory.Delete(Profile.BaseFolder, true);
+					}
 				}
+			}
+			else
+			{
+				DialogResult = DialogResult.OK;
 			}
 		}
 

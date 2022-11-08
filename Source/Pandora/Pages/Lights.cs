@@ -51,7 +51,7 @@ namespace TheBox.Pages
 
 			try
 			{
-				m_Buttons = new[] {b0, b1, b2, b3, b4, b5, b6, b7, b8, b9};
+				m_Buttons = new[] { b0, b1, b2, b3, b4, b5, b6, b7, b8, b9 };
 
 				b0.Tag = new CommandCallback(Perform0);
 				b1.Tag = new CommandCallback(Perform1);
@@ -250,7 +250,7 @@ namespace TheBox.Pages
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.labLight.Location = new System.Drawing.Point(360, 0);
 			this.labLight.Name = "labLight";
 			this.labLight.Size = new System.Drawing.Size(132, 32);
@@ -465,11 +465,13 @@ namespace TheBox.Pages
 				var index = 0;
 
 				for (var i = 0; i < 10; i++)
+				{
 					if (m_Buttons[i] == b)
 					{
 						index = i;
 						break;
 					}
+				}
 
 				Pandora.Profile.Deco.Light = Pandora.Lights.Names[index];
 				lnkDecoLight.Text = Pandora.Lights.Names[index];
@@ -478,7 +480,7 @@ namespace TheBox.Pages
 			{
 				var callback = b.Tag as CommandCallback;
 
-				callback.DynamicInvoke(new object[] {null});
+				_ = callback.DynamicInvoke(new object[] { null });
 			}
 		}
 
@@ -523,7 +525,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void lnkDecoLight_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			MessageBox.Show(Pandora.Localization.TextProvider["Lights.SetMsg"]);
+			_ = MessageBox.Show(Pandora.Localization.TextProvider["Lights.SetMsg"]);
 			m_SelectingDecoLight = true;
 		}
 	}

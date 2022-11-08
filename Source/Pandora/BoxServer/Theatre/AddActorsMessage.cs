@@ -23,7 +23,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the list of the BoxActor objects
 		/// </summary>
-		public ArrayList Actors { get { return m_Actors; } set { m_Actors = value; } }
+		public ArrayList Actors { get => m_Actors; set => m_Actors = value; }
 
 		public AddActorsMessage()
 		{
@@ -47,23 +47,23 @@ namespace TheBox.BoxServer
 		/// <summary>
 		/// Gets or sets the constructor for the actor, including addionally set properties
 		/// </summary>
-		public string Ctor { get { return m_Ctor; } set { m_Ctor = value; } }
+		public string Ctor { get => m_Ctor; set => m_Ctor = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the X offset from the invoker
 		/// </summary>
-		public int XOffset { get { return m_XOffset; } set { m_XOffset = value; } }
+		public int XOffset { get => m_XOffset; set => m_XOffset = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the Y offset from the invoker
 		/// </summary>
-		public int YOffset { get { return m_YOffset; } set { m_YOffset = value; } }
+		public int YOffset { get => m_YOffset; set => m_YOffset = value; }
 
 		public override string ToString()
 		{
-			return string.Format("({0},{1}) {2}", m_XOffset, m_YOffset, m_Ctor);
+			return String.Format("({0},{1}) {2}", m_XOffset, m_YOffset, m_Ctor);
 		}
 	}
 }

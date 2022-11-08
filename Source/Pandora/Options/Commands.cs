@@ -27,7 +27,7 @@ namespace TheBox.Options
 		{
 			if (modifier != null)
 			{
-				return string.Format("{0} {1}", modifier, cmd);
+				return String.Format("{0} {1}", modifier, cmd);
 			}
 			return cmd;
 		}
@@ -38,21 +38,21 @@ namespace TheBox.Options
 		private string m_AddToPack = "AddToPack";
 
 		[Description("The command used to add scripted items"), Category("General")]
-		public string AddItem { get { return m_AddItem; } set { m_AddItem = value; } }
+		public string AddItem { get => m_AddItem; set => m_AddItem = value; }
 
 		[Description("The command used to add scripted NPCs"), Category("General")]
-		public string AddMobile { get { return m_AddMobile; } set { m_AddMobile = value; } }
+		public string AddMobile { get => m_AddMobile; set => m_AddMobile = value; }
 
 		[Description("The command used to add an item to a Mobile's backpack"), Category("General")]
-		public string AddToPack { get { return m_AddToPack; } set { m_AddToPack = value; } }
+		public string AddToPack { get => m_AddToPack; set => m_AddToPack = value; }
 
 		public void DoAddItem(string item, string modifier, params string[] additional)
 		{
-			var cmd = string.Format("{0} {1}", m_AddItem, item);
+			var cmd = String.Format("{0} {1}", m_AddItem, item);
 
 			if (modifier != null)
 			{
-				cmd = string.Format("{0} {1}", modifier, cmd);
+				cmd = String.Format("{0} {1}", modifier, cmd);
 			}
 
 			foreach (var s in additional)
@@ -65,7 +65,7 @@ namespace TheBox.Options
 
 		public void DoAddMobile(string mobile, params string[] additional)
 		{
-			var cmd = string.Format("{0} {1}", m_AddMobile, mobile);
+			var cmd = String.Format("{0} {1}", m_AddMobile, mobile);
 
 			foreach (var s in additional)
 			{
@@ -77,11 +77,11 @@ namespace TheBox.Options
 
 		public void DoAddToPack(string item, string modifier, params string[] additional)
 		{
-			var cmd = string.Format("{0} {1}", m_AddToPack, item);
+			var cmd = String.Format("{0} {1}", m_AddToPack, item);
 
 			if (modifier != null)
 			{
-				cmd = string.Format("{0} {1}", modifier, cmd);
+				cmd = String.Format("{0} {1}", modifier, cmd);
 			}
 
 			foreach (var s in additional)
@@ -101,14 +101,14 @@ namespace TheBox.Options
 			 @"Get the value of a property. Variables:
 
 {prop} : the property being evaluated"), Category("Properties")]
-		public string Get { get { return m_Get; } set { m_Get = value; } }
+		public string Get { get => m_Get; set => m_Get = value; }
 
 		[Description(
 			 @"Set the value of a property. Variables:
 
 {prop} : the property being set
 {value} : the value"), Category("Properties")]
-		public string Set { get { return m_Set; } set { m_Set = value; } }
+		public string Set { get => m_Set; set => m_Set = value; }
 
 		public void DoGet(string prop)
 		{
@@ -149,7 +149,7 @@ namespace TheBox.Options
 		[Description(
 			 "When set to true, Pandora will [SetMy Map before sending the go command. Recommended for the default format"),
 		 Category("Travel")]
-		public bool SetMapOnGo { get { return m_SetMapOnGo; } set { m_SetMapOnGo = value; } }
+		public bool SetMapOnGo { get => m_SetMapOnGo; set => m_SetMapOnGo = value; }
 
 		[Description(
 			 @"Available variables:
@@ -159,7 +159,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the format for the go command
 		/// </summary>
-		public string Go { get { return m_GoFormat; } set { m_GoFormat = value; } }
+		public string Go { get => m_GoFormat; set => m_GoFormat = value; }
 
 		/// <summary>
 		///     Sends the Go command to UO
@@ -198,7 +198,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the format for the Send command
 		/// </summary>
-		public string Send { get { return m_SendFormat; } set { m_SendFormat = value; } }
+		public string Send { get => m_SendFormat; set => m_SendFormat = value; }
 
 		/// <summary>
 		///     Sends the Send command to UO
@@ -232,7 +232,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the format for the spawn command
 		/// </summary>
-		public string Spawn { get { return m_SpawnFormat; } set { m_SpawnFormat = value; } }
+		public string Spawn { get => m_SpawnFormat; set => m_SpawnFormat = value; }
 
 		/// <summary>
 		///     Sends the spawn command to UO
@@ -283,10 +283,10 @@ namespace TheBox.Options
 		///     Gets or sets the command used to nudge up items
 		/// </summary>
 		[Category("Deco"), Description("Command used to nudge objects up. Use {z} to specify the absolute nudge offset.")]
-		public string NudgeUp { get { return m_NudgeUp; } set { m_NudgeUp = value; } }
+		public string NudgeUp { get => m_NudgeUp; set => m_NudgeUp = value; }
 
 		[Category("Deco"), Description("Command used to nudge objects down. Use {z} to specify the absolute nudge offset.")]
-		public string NudgeDown { get { return m_NudgeDown; } set { m_NudgeDown = value; } }
+		public string NudgeDown { get => m_NudgeDown; set => m_NudgeDown = value; }
 
 		/// <summary>
 		///     Gets or sets the constructor for a movable item
@@ -298,7 +298,7 @@ namespace TheBox.Options
 {movable} - Depends on the static checkbox
 {hue} - The hue for the item
 {light} - The light applied to the item")]
-		public string Deco { get { return m_Deco; } set { m_Deco = value; } }
+		public string Deco { get => m_Deco; set => m_Deco = value; }
 
 		/// <summary>
 		///     Gets or sets the string that can be used to tile an item
@@ -308,7 +308,7 @@ namespace TheBox.Options
 
 {z} - The height at which the tiling occurs
 {item} - The item being tiled")]
-		public string Tile { get { return m_Tile; } set { m_Tile = value; } }
+		public string Tile { get => m_Tile; set => m_Tile = value; }
 
 		/// <summary>
 		///     Creates a decoration item
@@ -328,7 +328,7 @@ namespace TheBox.Options
 			}
 			else
 			{
-				item = item.Replace("{id}", string.Format("{0} {1}", id, rnd));
+				item = item.Replace("{id}", String.Format("{0} {1}", id, rnd));
 			}
 			item = item.Replace("{movable}", movable.ToString());
 			item = item.Replace("{hue}", hue.ToString());
@@ -348,20 +348,18 @@ namespace TheBox.Options
 		public void DoTile(int z, int id, bool movable, int hue, int rnd)
 		{
 			var item = m_Deco;
-			string tile = null;
-
 			if (rnd == 0)
 			{
 				item = item.Replace("{id}", id.ToString());
 			}
 			else
 			{
-				item = item.Replace("{id}", string.Format("{0} {1}", id, rnd));
+				item = item.Replace("{id}", String.Format("{0} {1}", id, rnd));
 			}
 			item = item.Replace("{movable}", movable.ToString());
 			item = item.Replace("{hue}", hue.ToString());
 
-			tile = m_Tile.Replace("{item}", item);
+			var tile = m_Tile.Replace("{item}", item);
 			tile = tile.Replace("{z}", z.ToString());
 
 			Pandora.SendToUO(tile, true);
@@ -383,10 +381,14 @@ namespace TheBox.Options
 			}
 
 			if (x != 0)
-				cmd += string.Format(" X {0}", x);
+			{
+				cmd += String.Format(" X {0}", x);
+			}
 
 			if (y != 0)
-				cmd += string.Format(" Y {0}", y);
+			{
+				cmd += String.Format(" Y {0}", y);
+			}
 
 			Pandora.SendToUO(cmd, true);
 		}
@@ -402,7 +404,7 @@ namespace TheBox.Options
 
 			if (modifier != null)
 			{
-				nudge = string.Format("{0} {1}", modifier, nudge);
+				nudge = String.Format("{0} {1}", modifier, nudge);
 			}
 
 			Pandora.SendToUO(nudge, true);
@@ -419,7 +421,7 @@ namespace TheBox.Options
 
 			if (modifier != null)
 			{
-				nudge = string.Format("{0} {1}", modifier, nudge);
+				nudge = String.Format("{0} {1}", modifier, nudge);
 			}
 
 			Pandora.SendToUO(nudge, true);
@@ -447,7 +449,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the command used to search for items
 		/// </summary>
-		public string FindByName { get { return m_FindByName; } set { m_FindByName = value; } }
+		public string FindByName { get => m_FindByName; set => m_FindByName = value; }
 
 		/// <summary>
 		///     Performs the FindByName command
@@ -466,7 +468,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the Open Browser command
 		/// </summary>
-		public string OpenBrowser { get { return m_OpenBrowser; } set { m_OpenBrowser = value; } }
+		public string OpenBrowser { get => m_OpenBrowser; set => m_OpenBrowser = value; }
 
 		/// <summary>
 		///     Performs the open browser command
@@ -495,14 +497,14 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the command used to set a skill
 		/// </summary>
-		public string SetSkill { get { return m_SetSkill; } set { m_SetSkill = value; } }
+		public string SetSkill { get => m_SetSkill; set => m_SetSkill = value; }
 
 		[Category("Skills"),
 		 Description("Command used to retrieve the value of a skill on a mobile. Use {skill} to describe the skill name.")]
 		/// <summary>
 		/// Gets or sets the command used to get a skill
 		/// </summary>
-		public string GetSkill { get { return m_GetSkill; } set { m_GetSkill = value; } }
+		public string GetSkill { get => m_GetSkill; set => m_GetSkill = value; }
 
 		[Category("Skills"),
 		 Description(
@@ -510,13 +512,13 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the command to set all skills
 		/// </summary>
-		public string SetAllSkills { get { return m_SetAllSkills; } set { m_SetAllSkills = value; } }
+		public string SetAllSkills { get => m_SetAllSkills; set => m_SetAllSkills = value; }
 
 		[Category("Skills"), Description("Command used to view all the skills of a targeted mobile.")]
 		/// <summary>
 		/// Gets or sets the command to get all skills
 		/// </summary>
-		public string GetAllSkills { get { return m_GetAllSkills; } set { m_GetAllSkills = value; } }
+		public string GetAllSkills { get => m_GetAllSkills; set => m_GetAllSkills = value; }
 
 		/// <summary>
 		///     Sets a single skill on a targeted mobile
@@ -570,13 +572,13 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the dupe command
 		/// </summary>
-		public string Dupe { get { return m_Dupe; } set { m_Dupe = value; } }
+		public string Dupe { get => m_Dupe; set => m_Dupe = value; }
 
 		[Category("Duping"), Description("Command used to dupe an item inside its container")]
 		/// <summary>
 		/// Gets or sets the dupe in bag command
 		/// </summary>
-		public string DupeInBag { get { return m_DupeInBag; } set { m_DupeInBag = value; } }
+		public string DupeInBag { get => m_DupeInBag; set => m_DupeInBag = value; }
 
 		[Category("Duping"),
 		 Description(
@@ -584,7 +586,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the amount duping command
 		/// </summary>
-		public string AmountDupe { get { return m_AmountDupe; } set { m_AmountDupe = value; } }
+		public string AmountDupe { get => m_AmountDupe; set => m_AmountDupe = value; }
 
 		[Category("Duping"),
 		 Description(
@@ -592,7 +594,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the amount dupe in bag command
 		/// </summary>
-		public string AmountDupeInBag { get { return m_AmountDupeInBag; } set { m_AmountDupeInBag = value; } }
+		public string AmountDupeInBag { get => m_AmountDupeInBag; set => m_AmountDupeInBag = value; }
 
 		/// <summary>
 		///     Performs the dupe command
@@ -627,13 +629,13 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the local light level
 		/// </summary>
-		public string LocalLight { get { return m_LocalLight; } set { m_LocalLight = value; } }
+		public string LocalLight { get => m_LocalLight; set => m_LocalLight = value; }
 
 		[Category("Light"), Description("Sets the global light level. Use {level} to specify the light amount.")]
 		/// <summary>
 		/// Gets or sets the global light level
 		/// </summary>
-		public string GlobalLight { get { return m_GlobalLight; } set { m_GlobalLight = value; } }
+		public string GlobalLight { get => m_GlobalLight; set => m_GlobalLight = value; }
 
 		/// <summary>
 		///     Sends the local light command
@@ -667,33 +669,33 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the Tell command
 		/// </summary>
-		public string Tell { get { return m_Tell; } set { m_Tell = value; } }
+		public string Tell { get => m_Tell; set => m_Tell = value; }
 
 		[Category("Speech and Sound"), Description("Sends a message to all staff. Use {text} to specify the message.")]
 		/// <summary>
 		/// Gets or sets the staff message command
 		/// </summary>
-		public string StaffMessage { get { return m_StaffMessage; } set { m_StaffMessage = value; } }
+		public string StaffMessage { get => m_StaffMessage; set => m_StaffMessage = value; }
 
 		[Category("Speech and Sound"),
 		 Description("Broadcasts a message to all online players. Use {text} to specify the message.")]
 		/// <summary>
 		/// Gets or sets the broadcast command
 		/// </summary>
-		public string Broadcast { get { return m_Broadcast; } set { m_Broadcast = value; } }
+		public string Broadcast { get => m_Broadcast; set => m_Broadcast = value; }
 
 		[Category("Speech and Sound"), Description("Plays a sound to a specified mobile. Use {sound} to specify the sound.")]
 		/// <summary>
 		/// Gets or sets the PrivSound command
 		/// </summary>
-		public string PrivSound { get { return m_PrivSound; } set { m_PrivSound = value; } }
+		public string PrivSound { get => m_PrivSound; set => m_PrivSound = value; }
 
 		[Category("Speech and Sound"),
 		 Description("Plays a sound to all mobiles near you. Use {sound} to specify the sound.")]
 		/// <summary>
 		/// Gets or sets the Sound command
 		/// </summary>
-		public string Sound { get { return m_Sound; } set { m_Sound = value; } }
+		public string Sound { get => m_Sound; set => m_Sound = value; }
 
 		/// <summary>
 		///     Sends the PrivSound command

@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Skills.cs
-//  */
-#endregion
-
 #region References
 using System.Collections.Generic;
 using System.IO;
@@ -37,7 +31,7 @@ namespace Ultima
 				}
 				return m_SkillEntries;
 			}
-			set { m_SkillEntries = value; }
+			set => m_SkillEntries = value;
 		}
 
 		/// <summary>
@@ -65,10 +59,7 @@ namespace Ultima
 		/// <returns></returns>
 		public static SkillInfo GetSkill(int index)
 		{
-			int length, extra;
-			bool patched;
-
-			var stream = m_FileIndex.Seek(index, out length, out extra, out patched);
+			var stream = m_FileIndex.Seek(index, out var length, out var extra, out _);
 			if (stream == null)
 			{
 				return null;
@@ -90,7 +81,7 @@ namespace Ultima
 
 		private static string ReadNameString(BinaryReader bin, int length)
 		{
-			bin.Read(m_StringBuffer, 0, length);
+			_ = bin.Read(m_StringBuffer, 0, length);
 			int count;
 			for (count = 0; count < length && m_StringBuffer[count] != 0; ++count)
 			{
@@ -104,8 +95,9 @@ namespace Ultima
 		{
 			var idx = Path.Combine(path, "skills.idx");
 			var mul = Path.Combine(path, "skills.mul");
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				using (BinaryWriter binidx = new BinaryWriter(fsidx), binmul = new BinaryWriter(fsmul))
 				{
@@ -147,7 +139,7 @@ namespace Ultima
 
 		public string Name
 		{
-			get { return m_Name; }
+			get => m_Name;
 			set
 			{
 				if (value == null)

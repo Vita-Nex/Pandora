@@ -43,7 +43,7 @@ namespace TheBox.Data
 
 		private string GetFile(int Index)
 		{
-			var filename = Path.Combine(m_BaseFolder, string.Format("map{0}.xml", Index));
+			var filename = Path.Combine(m_BaseFolder, String.Format("map{0}.xml", Index));
 
 			return filename;
 		}
@@ -52,7 +52,7 @@ namespace TheBox.Data
 		{
 			var file = GetFile(index);
 
-			Pandora.Log.WriteEntry(string.Format("Saving file: {0}", file));
+			Pandora.Log.WriteEntry(String.Format("Saving file: {0}", file));
 
 			var serializer = new XmlSerializer(typeof(Facet));
 
@@ -66,7 +66,7 @@ namespace TheBox.Data
 			}
 			catch (Exception err)
 			{
-				Pandora.Log.WriteError(err, string.Format("Updates for map file {0} have not been recorded.", index));
+				Pandora.Log.WriteError(err, String.Format("Updates for map file {0} have not been recorded.", index));
 			}
 		}
 
@@ -79,12 +79,13 @@ namespace TheBox.Data
 			for (var i = 0; i < Pandora.Profile.Travel.MapCount; i++)
 			{
 				if (!Pandora.Profile.Travel.EnabledMaps[i])
+				{
 					continue;
+				}
 
-				Pandora.Log.WriteEntry(string.Format("Reading locations file {0}: {1}", i, GetFile(i)));
+				Pandora.Log.WriteEntry(String.Format("Reading locations file {0}: {1}", i, GetFile(i)));
 
-				FileStream stream = null;
-
+				FileStream stream;
 				try
 				{
 					stream = new FileStream(GetFile(i), FileMode.Open);
@@ -93,8 +94,10 @@ namespace TheBox.Data
 				{
 					Pandora.Log.WriteEntry("Creating new data files for map {0}", i.ToString());
 
-					m_Facets[i] = new Facet();
-					m_Facets[i].MapValue = (byte)i;
+					m_Facets[i] = new Facet
+					{
+						MapValue = (byte)i
+					};
 
 					continue;
 				}
@@ -131,7 +134,9 @@ namespace TheBox.Data
 			for (var i = 0; i < Pandora.Profile.Travel.MapCount; i++)
 			{
 				if (Pandora.Profile.Travel.EnabledMaps[i])
+				{
 					count++;
+				}
 			}
 
 			var nodes = new TreeNode[count];
@@ -144,8 +149,10 @@ namespace TheBox.Data
 				{
 					if (m_Facets[i] == null)
 					{
-						m_Facets[i] = new Facet();
-						m_Facets[i].MapValue = (byte)i;
+						m_Facets[i] = new Facet
+						{
+							MapValue = (byte)i
+						};
 						m_FacetNames[i] = Pandora.Profile.Travel.MapNames[i];
 					}
 
@@ -185,7 +192,7 @@ namespace TheBox.Data
 		/// <returns>An array of TreeNode objects corresponding to the locations supplied</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public TreeNode[] GetLocationNodes(List<object> locations)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			var nodes = new TreeNode[locations.Count];
 
@@ -195,8 +202,10 @@ namespace TheBox.Data
 				var loc = locations[i] as Location;
 				// Issue 10 - End
 
-				nodes[i] = new TreeNode(loc.Name);
-				nodes[i].Tag = loc;
+				nodes[i] = new TreeNode(loc.Name)
+				{
+					Tag = loc
+				};
 			}
 
 			return nodes;
@@ -259,14 +268,14 @@ namespace TheBox.Data
 				Directory.Delete(m_BaseFolder, true);
 			}
 
-			Directory.CreateDirectory(m_BaseFolder);
+			_ = Directory.CreateDirectory(m_BaseFolder);
 
 			for (var i = 0; i < Pandora.Profile.Travel.MapCount; i++)
 			{
 				if (Pandora.Profile.Travel.EnabledMaps[i])
 				{
-					var resource = string.Format("Data.map{0}.xml", i);
-					var file = string.Format(Path.Combine(m_BaseFolder, string.Format("map{0}.xml", i)));
+					var resource = String.Format("Data.map{0}.xml", i);
+					var file = String.Format(Path.Combine(m_BaseFolder, String.Format("map{0}.xml", i)));
 
 					try
 					{

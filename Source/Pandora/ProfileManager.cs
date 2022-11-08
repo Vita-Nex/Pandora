@@ -10,6 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using TheBox.Common;
+using TheBox.Forms;
 using TheBox.Forms.ProfileWizard;
 using TheBox.Options;
 #endregion
@@ -46,14 +47,12 @@ namespace TheBox
 		// Maybe a solution
 		//public event EventHandler CreateNewProfile;
 
-		public bool ProfileLoaded { get { return (_profile != null); } }
-
-		private Profile _profile;
+		public bool ProfileLoaded => Profile != null;
 
 		/// <summary>
 		///     Gets the profile currently loaded
 		/// </summary>
-		public Profile Profile { get { return _profile; } }
+		public Profile Profile { get; private set; }
 
 		/// <summary>
 		///     Gets the location of the Profiles folder for this machine
@@ -100,7 +99,10 @@ namespace TheBox
 						if (args.Length == 2 && args[0].ToLower() == "defaultprofile")
 						{
 							if (args[1].Length > 0)
+							{
 								return args[1];
+							}
+
 							return null;
 						}
 					}
@@ -187,11 +189,17 @@ namespace TheBox
 		/// </summary>
 		public void CreateNewProfile(string language)
 		{
-			var profile = new Profile();
-			profile.Language = language;
+			var profile = new Profile
+			{
+				Language = language
+			};
 			// TODO: Display GUI to create a new profile. 
 			var wiz = new ProfileWizard(profile);
-			wiz.ShowDialog();
+			if (wiz.ShowDialog() != DialogResult.OK)
+			{
+				_splash.Close();
+				return;
+			}
 			profile = wiz.Profile;
 
 			if (wiz.UseProfileAsDefault)
@@ -201,12 +209,12 @@ namespace TheBox
 
 			profile.Save();
 			profile.CreateData();
-			_profile = profile;
+			Profile = profile;
 		}
 
 		public void LoadProfile(string name)
 		{
-			_profile = Profile.Load(name);
+			Profile = Profile.Load(name);
 		}
 
 		/// <summary>
@@ -224,8 +232,8 @@ namespace TheBox
 				Pandora.BoxForm.Dispose();
 			}
 
-			Profile.DeleteProfile(_profile.Name);
-			_profile = null;
+			Profile.DeleteProfile(Profile.Name);
+			Profile = null;
 
 			// Temporarly deisabled
 			//_context.DoProfile();
@@ -249,14 +257,14 @@ namespace TheBox
 			}
 			catch (Exception err)
 			{
-				MessageBox.Show(err.ToString());
+				_ = MessageBox.Show(err.ToString());
 			}
 
 			if (p == null)
 			{
 				return false;
 			}
-			_profile = p;
+			Profile = p;
 
 			var run = false;
 
@@ -286,12 +294,12 @@ namespace TheBox
 
 			if (run)
 			{
-				MessageBox.Show("Profile imported correctly.");
+				_ = MessageBox.Show("Profile imported correctly.");
 			}
 
 			if (!run)
 			{
-				_profile = null;
+				Profile = null;
 			}
 
 			return run;
@@ -304,12 +312,14 @@ namespace TheBox
 		/// <param name="p">The profile to export</param>
 		public void ExportProfile()
 		{
-			var dlg = new SaveFileDialog();
-			dlg.Filter = "Pandora's Box Profile (*.pbp)|*.pbp";
+			var dlg = new SaveFileDialog
+			{
+				Filter = "Pandora's Box Profile (*.pbp)|*.pbp"
+			};
 
 			if (dlg.ShowDialog() == DialogResult.OK)
 			{
-				var pio = new ProfileIO(_profile);
+				var pio = new ProfileIO(Profile);
 				pio.Save(dlg.FileName);
 			}
 
@@ -322,8 +332,10 @@ namespace TheBox
 		/// <returns>The Profile object imported</returns>
 		public Profile ImportProfile()
 		{
-			var dlg = new OpenFileDialog();
-			dlg.Filter = "Pandora's Box Profile (*.pbp)|*.pbp";
+			var dlg = new OpenFileDialog
+			{
+				Filter = "Pandora's Box Profile (*.pbp)|*.pbp"
+			};
 			Profile p = null;
 
 			if (dlg.ShowDialog() == DialogResult.OK)
@@ -396,12 +408,16 @@ namespace TheBox
 			var oldFolder = Path.Combine(Pandora.Folder, "Profiles");
 
 			if (!Directory.Exists(oldFolder))
+			{
 				return;
+			}
 
 			var profiles = Directory.GetDirectories(oldFolder);
 
 			if (profiles.Length == 0)
+			{
 				return;
+			}
 
 			_splash.SetStatusText("Moving old profiles");
 
@@ -415,7 +431,7 @@ namespace TheBox
 				var index = 1; // Adjust name if there's already a match
 				while (Directory.Exists(newFolder))
 				{
-					newFolder = Path.Combine(ProfilesFolder, string.Format("{0} {1}", name, index++));
+					newFolder = Path.Combine(ProfilesFolder, String.Format("{0} {1}", name, index++));
 				}
 
 				try

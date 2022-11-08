@@ -20,7 +20,6 @@ using TheBox.Controls;
 using TheBox.Data;
 using TheBox.Forms;
 using TheBox.Localization;
-using TheBox.Mul;
 using TheBox.Options;
 #endregion
 
@@ -52,7 +51,7 @@ namespace TheBox
 		/// </summary>
 		public static PropManager Prop
 		{
-			set { m_Prop = value; }
+			set => m_Prop = value;
 			get
 			{
 				if (m_Prop == null)
@@ -68,7 +67,7 @@ namespace TheBox
 		/// </summary>
 		public static MapViewer.MapViewer Map
 		{
-			set { m_Map = value; }
+			set => m_Map = value;
 			get
 			{
 				if (m_Map == null)
@@ -83,14 +82,14 @@ namespace TheBox
 		/// <summary>
 		///     To check if the Art property is null
 		/// </summary>
-		public static bool ArtLoaded { get { return (m_Art != null); } }
+		public static bool ArtLoaded => m_Art != null;
 
 		/// <summary>
 		///     Gets or sets the ArtViewer control used to display the art in Pandora's Box
 		/// </summary>
 		public static ArtViewer.ArtViewer Art
 		{
-			set { m_Art = value; }
+			set => m_Art = value;
 			get
 			{
 				if (m_Art == null)
@@ -104,19 +103,7 @@ namespace TheBox
 		/// <summary>
 		///     Gets the loaded hues
 		/// </summary>
-		public static Hues Hues
-		{
-			get
-			{
-				if (m_Hues == null)
-				{
-					if (Profile.MulManager["hues.mul"] != null)
-						m_Hues = Hues.Load(Profile.MulManager["hues.mul"]);
-				}
-
-				return m_Hues;
-			}
-		}
+		public static Ultima.Hue[] Hues => Ultima.Hues.List;
 		#endregion
 
 		#region Localization
@@ -143,10 +130,11 @@ namespace TheBox
 			{
 				if (m_ToolTip == null)
 				{
-					m_ToolTip = new ToolTip();
-
-					m_ToolTip.Active = true;
-					m_ToolTip.ShowAlways = true;
+					m_ToolTip = new ToolTip
+					{
+						Active = true,
+						ShowAlways = true
+					};
 				}
 
 				return m_ToolTip;
@@ -179,16 +167,6 @@ namespace TheBox
 		///     The working folder for the program
 		/// </summary>
 		private static string m_Folder;
-
-		/// <summary>
-		///     The Box form
-		/// </summary>
-		private static IBoxForm m_TheBox;
-
-		/// <summary>
-		///     The loaded hues
-		/// </summary>
-		private static Hues m_Hues;
 
 		/// <summary>
 		///     The data provider for travel locations
@@ -233,7 +211,7 @@ namespace TheBox
 		/// <summary>
 		///     The context governing the application
 		/// </summary>
-		private static StartingContext m_Context;
+		private static readonly StartingContext m_Context;
 
 		/// <summary>
 		///     The assembly containing general purpose data
@@ -309,12 +287,12 @@ namespace TheBox
 		/// <summary>
 		///     Gets the Box form
 		/// </summary>
-		public static IBoxForm BoxForm { get { return m_TheBox; } set { m_TheBox = value; } }
+		public static IBoxForm BoxForm { get; set; }
 
 		/// <summary>
 		///     Gets the version of this assembly
 		/// </summary>
-		public static string Version { get { return Application.ProductVersion; } }
+		public static string Version => Application.ProductVersion;
 
 		/// <summary>
 		///     Sends text to UO automatically adding the \n at the end of the line
@@ -332,17 +310,17 @@ namespace TheBox
 			{
 				if (UsePrefix)
 				{
-					success = Utility.SendToUO(string.Format("{0}{1}\r\n", Profile.General.CommandPrefix, text));
+					success = Utility.SendToUO(String.Format("{0}{1}\r\n", Profile.General.CommandPrefix, text));
 				}
 				else
 				{
-					success = Utility.SendToUO(string.Format("{0}\r\n", text));
+					success = Utility.SendToUO(String.Format("{0}\r\n", text));
 				}
 			}
 
 			if (!success)
 			{
-				MessageBox.Show(
+				_ = MessageBox.Show(
 					"Client handle not found. If UO is running, try to set Tools -> Options -> Advanced -> Use a custom client");
 			}
 		}
@@ -398,10 +376,10 @@ namespace TheBox
 		{
 			get
 			{
-				// Issue 11 - Change profile directory - http://code.google.com/p/pandorasbox3/issues/detail?id=11 - Smjert
-				var folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Pandora's Box 3");
-				// Issue 11 - End
+				var folder = "State";
+
 				Utility.EnsureDirectory(folder);
+
 				return folder;
 			}
 		}
@@ -411,12 +389,10 @@ namespace TheBox
 		/// <summary>
 		///     Gets the profile currently loaded
 		/// </summary>
-		[Obsolete("ProfileManager.Profile should be used")]
+		//[Obsolete("ProfileManager.Profile should be used")]
 		public static Profile Profile
-		{
 			// Workaround, there are over 640 refferences... - Tarion
-			get { return _profileManager.Profile; }
-		}
+			=> _profileManager.Profile;
 
 		/// <summary>
 		///     Closes Pandora's Box and creates a new profile
@@ -478,7 +454,7 @@ namespace TheBox
 
 				return m_TravelAgent;
 			}
-			set { m_TravelAgent = value; }
+			set => m_TravelAgent = value;
 		}
 		#endregion
 
@@ -491,7 +467,9 @@ namespace TheBox
 			get
 			{
 				if (m_ButtonManager == null)
+				{
 					m_ButtonManager = new ButtonManager();
+				}
 
 				return m_ButtonManager;
 			}
@@ -541,7 +519,7 @@ namespace TheBox
 
 				return m_Mobiles;
 			}
-			set { m_Mobiles = value; }
+			set => m_Mobiles = value;
 		}
 
 		/// <summary>
@@ -573,7 +551,7 @@ namespace TheBox
 
 				return m_Items;
 			}
-			set { m_Items = value; }
+			set => m_Items = value;
 		}
 
 		/// <summary>
@@ -749,7 +727,7 @@ namespace TheBox
 				var item = new MenuItem(modifier);
 				item.Click += OnModifierMenu;
 
-				m_cmModifiers.MenuItems.Add(item);
+				_ = m_cmModifiers.MenuItems.Add(item);
 			}
 		}
 
@@ -770,7 +748,7 @@ namespace TheBox
 				var item = new MenuItem(modifier);
 				item.Click += OnModifierMenu;
 
-				m_cmModifiers.MenuItems.Add(item);
+				_ = m_cmModifiers.MenuItems.Add(item);
 			}
 		}
 
@@ -781,9 +759,7 @@ namespace TheBox
 		{
 			if (m_cmModifiers.SourceControl.Tag != null)
 			{
-				var callback = m_cmModifiers.SourceControl.Tag as CommandCallback;
-
-				if (callback != null)
+				if (m_cmModifiers.SourceControl.Tag is CommandCallback callback)
 				{
 					var mi = sender as MenuItem;
 
@@ -793,7 +769,7 @@ namespace TheBox
 					{
 						if (MessageBox.Show(
 								BoxForm as Form,
-								string.Format(Localization.TextProvider["Errors.ModifierWarn"], mi.Text),
+								String.Format(Localization.TextProvider["Errors.ModifierWarn"], mi.Text),
 								"",
 								MessageBoxButtons.YesNo) == DialogResult.No)
 						{
@@ -802,7 +778,7 @@ namespace TheBox
 					}
 
 					// Do
-					callback.DynamicInvoke(mi.Text);
+					_ = callback.DynamicInvoke(mi.Text);
 				}
 			}
 		}
@@ -855,7 +831,7 @@ namespace TheBox
 		///     The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			try
 			{
@@ -886,7 +862,7 @@ namespace TheBox
 
 				if (args.Length == 1 && File.Exists(args[0]) && Path.GetExtension(args[0]).ToLower() == ".pbp")
 				{
-					_profileManager.ImportProfile(args[0]);
+					_ = _profileManager.ImportProfile(args[0]);
 				}
 
 				var context = Container.Resolve<StartingContext>();
@@ -926,7 +902,7 @@ namespace TheBox
 			catch (Exception err)
 			{
 				Clipboard.SetDataObject(err.ToString(), true);
-				MessageBox.Show(
+				_ = MessageBox.Show(
 					"An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
 				// Issue 6:  	 Improve error management - Tarion
 				Environment.Exit(1);
@@ -935,10 +911,10 @@ namespace TheBox
 		}
 
 		// Issue 6:  	 Improve error management - Tarion
-		static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+		private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
 		{
 			Clipboard.SetDataObject("UnhandledException: \n" + e, true);
-			MessageBox.Show(
+			_ = MessageBox.Show(
 				"An error occurred. The error text has been placed on your clipboard, use CTRL+V to paste it in a text file.");
 			Environment.Exit(1);
 		}

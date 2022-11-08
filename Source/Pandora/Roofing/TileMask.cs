@@ -11,18 +11,16 @@ namespace TheBox.Roofing
 	/// </summary>
 	public class TileMask
 	{
-		private readonly uint m_Flags;
-		private readonly int m_Id;
 
 		/// <summary>
 		///     Gets the tile flags
 		/// </summary>
-		public uint Flags { get { return m_Flags; } }
+		public uint Flags { get; }
 
 		/// <summary>
 		///     Gets the tile ID
 		/// </summary>
-		public int ID { get { return m_Id; } }
+		public int ID { get; }
 
 		/// <summary>
 		///     Creates a new TileMask object
@@ -31,8 +29,8 @@ namespace TheBox.Roofing
 		/// <param name="id">The item id for this tile</param>
 		public TileMask(uint flags, int id)
 		{
-			m_Flags = flags;
-			m_Id = id;
+			Flags = flags;
+			ID = id;
 		}
 	}
 }

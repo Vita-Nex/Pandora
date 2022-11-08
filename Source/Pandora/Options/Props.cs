@@ -34,9 +34,6 @@ namespace TheBox.Options
 			Filters = new StringCollection();
 		}
 
-		// Props Data
-		private AccessLevel m_Filter = AccessLevel.Administrator;
-
 		// TimeSpan
 
 		// Point3D
@@ -74,7 +71,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     States how to fileter the properties displayed on the properties tree
 		/// </summary>
-		public AccessLevel Filter { get { return m_Filter; } set { m_Filter = value; } }
+		public AccessLevel Filter { get; set; } = AccessLevel.Administrator;
 
 		/// <summary>
 		///     Gets or sets the recently searched classes

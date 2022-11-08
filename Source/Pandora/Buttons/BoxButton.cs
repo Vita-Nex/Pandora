@@ -39,7 +39,7 @@ namespace TheBox.Buttons
 				mExport = new MenuItem(Pandora.Localization.TextProvider["Common.Export"], ExportButton);
 				mRestore = new MenuItem(Pandora.Localization.TextProvider["Common.RestoreDefault"], RestoreDefault);
 
-				m_Menu = new ContextMenu(new[] {mEdit, mClear, new MenuItem("-"), mImport, mExport, new MenuItem("-"), mRestore});
+				m_Menu = new ContextMenu(new[] { mEdit, mClear, new MenuItem("-"), mImport, mExport, new MenuItem("-"), mRestore });
 
 				m_Menu.Popup += MenuPopup;
 			}
@@ -47,7 +47,7 @@ namespace TheBox.Buttons
 
 		private void MenuPopup(object sender, EventArgs e)
 		{
-			mClear.Enabled = (m_Def != null);
+			mClear.Enabled = m_Def != null;
 		}
 
 		/// <summary>
@@ -58,7 +58,9 @@ namespace TheBox.Buttons
 			var editor = new ButtonEditor();
 
 			if (m_Def != null)
+			{
 				editor.Def = m_Def;
+			}
 
 			if (editor.ShowDialog() == DialogResult.OK)
 			{
@@ -105,7 +107,7 @@ namespace TheBox.Buttons
 					}
 					else
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Buttons.LoadFail"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Buttons.LoadFail"]);
 					}
 				}
 			}
@@ -120,7 +122,7 @@ namespace TheBox.Buttons
 			{
 				if (!m_Def.Save(SaveFile.FileName))
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["Buttons.SaveFail"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Buttons.SaveFail"]);
 				}
 			}
 		}
@@ -150,18 +152,16 @@ namespace TheBox.Buttons
 
 		private int m_ButtonID = -1;
 		private bool m_IDSet;
-		private bool m_IsActive = true;
-		private bool m_AllowEdit = true;
 
 		/// <summary>
 		///     Gets or sets a value stating whether the button can be edited
 		/// </summary>
-		public bool AllowEdit { get { return m_AllowEdit; } set { m_AllowEdit = value; } }
+		public bool AllowEdit { get; set; } = true;
 
 		/// <summary>
 		///     Gets or sets a value stating whether the button will actually send commands
 		/// </summary>
-		public bool IsActive { get { return m_IsActive; } set { m_IsActive = value; } }
+		public bool IsActive { get; set; } = true;
 
 		/// <summary>
 		///     Gets the unique ID for this customizable button
@@ -171,7 +171,9 @@ namespace TheBox.Buttons
 			get
 			{
 				if (!Created && !m_IDSet)
+				{
 					return -1;
+				}
 
 				if (!m_IDSet && m_ButtonID == -1)
 				{
@@ -194,7 +196,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		public ButtonDef Def
 		{
-			get { return m_Def; }
+			get => m_Def;
 			set
 			{
 				m_Def = value;
@@ -255,7 +257,10 @@ namespace TheBox.Buttons
 				var control = GetKeyState(VK_CONTROL);
 
 				if (control < -100)
+				{
 					return true;
+				}
+
 				return false;
 			}
 		}
@@ -269,7 +274,9 @@ namespace TheBox.Buttons
 			Text = m_Def.Caption;
 
 			if (m_Def.MultiDef != null)
+			{
 				Pandora.Profile.ButtonIndex[m_ButtonID] = m_Def.MultiDef.DefaultIndex;
+			}
 		}
 
 		/// <summary>
@@ -279,8 +286,10 @@ namespace TheBox.Buttons
 		{
 			OnSendCommand(e);
 
-			if (m_IsActive && !e.Sent)
+			if (IsActive && !e.Sent)
+			{
 				Pandora.SendToUO(e.Command, e.UsePrefix);
+			}
 		}
 
 		/// <summary>
@@ -290,10 +299,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendCommand(SendCommandEventArgs e)
 		{
-			if (SendCommand != null)
-			{
-				SendCommand(this, e);
-			}
+			SendCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -303,13 +309,13 @@ namespace TheBox.Buttons
 		{
 			base.OnMouseDown(e);
 
-			if (m_AllowEdit && (m_Def == null || (m_Def.Left == null && m_Def.Right == null)))
+			if (AllowEdit && (m_Def == null || (m_Def.Left == null && m_Def.Right == null)))
 			{
 				EditButton(this, new EventArgs());
 				return;
 			}
 
-			if (CtrlPressed && m_AllowEdit)
+			if (CtrlPressed && AllowEdit)
 			{
 				// Configure: show context menu
 				m_Menu.Show(this, new Point(e.X, e.Y));
@@ -332,7 +338,10 @@ namespace TheBox.Buttons
 			get
 			{
 				if (m_Def != null)
+				{
 					return m_Def.ToolTipText;
+				}
+
 				return null;
 			}
 		}
@@ -340,7 +349,7 @@ namespace TheBox.Buttons
 		/// <summary>
 		///     Gets a value stating whether this button has a tool tip
 		/// </summary>
-		public bool HasToolTip { get { return (m_Def != null && (m_Def.Left != null || m_Def.Right != null)); } }
+		public bool HasToolTip => m_Def != null && (m_Def.Left != null || m_Def.Right != null);
 
 		protected override void Dispose(bool disposing)
 		{
@@ -349,7 +358,9 @@ namespace TheBox.Buttons
 			if (disposing)
 			{
 				if (m_Def != null)
+				{
 					m_Def.Dispose();
+				}
 			}
 		}
 

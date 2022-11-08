@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - AssemblyInfo.cs
-//  */
-#endregion
-
 #region References
 using System.Reflection;
 using System.Resources;

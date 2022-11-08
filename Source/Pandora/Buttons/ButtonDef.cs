@@ -40,10 +40,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnToolTipChanged(ToolTipEventArgs e)
 		{
-			if (ToolTipChanged != null)
-			{
-				ToolTipChanged(this, e);
-			}
+			ToolTipChanged?.Invoke(this, e);
 		}
 
 		[XmlIgnore]
@@ -52,18 +49,20 @@ namespace TheBox.Buttons
 		/// </summary>
 		public IButtonFunction Left
 		{
-			get { return m_Left; }
+			get => m_Left;
 			set
 			{
 				if (value == m_Left)
+				{
 					return;
+				}
 
 				if (m_Left != null)
 				{
-					var d = m_Left as IDisposable;
-
-					if (d != null)
+					if (m_Left is IDisposable d)
+					{
 						d.Dispose();
+					}
 				}
 
 				m_Left = value;
@@ -85,18 +84,20 @@ namespace TheBox.Buttons
 		/// </summary>
 		public IButtonFunction Right
 		{
-			get { return m_Right; }
+			get => m_Right;
 			set
 			{
 				if (value == m_Right)
+				{
 					return;
+				}
 
 				if (m_Right != null)
 				{
-					var d = m_Right as IDisposable;
-
-					if (d != null)
+					if (m_Right is IDisposable d)
+					{
 						d.Dispose();
+					}
 				}
 
 				m_Right = value;
@@ -115,12 +116,12 @@ namespace TheBox.Buttons
 		/// <summary>
 		///     Gets or sets the object assigned to the right button
 		/// </summary>
-		public object RightObject { get { return m_Right; } set { Right = value as IButtonFunction; } }
+		public object RightObject { get => m_Right; set => Right = value as IButtonFunction; }
 
 		/// <summary>
 		///     Gets or sets the object assigned to the left button
 		/// </summary>
-		public object LeftObject { get { return m_Left; } set { Left = value as IButtonFunction; } }
+		public object LeftObject { get => m_Left; set => Left = value as IButtonFunction; }
 
 		protected void SendLastCommand(object sender, EventArgs e)
 		{
@@ -166,7 +167,9 @@ namespace TheBox.Buttons
 				}
 
 				if (m_Left == null && m_Right == null)
-					return string.Empty;
+				{
+					return String.Empty;
+				}
 
 				return m_Caption;
 			}
@@ -184,10 +187,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnCaptionChanged(EventArgs e)
 		{
-			if (CaptionChanged != null)
-			{
-				CaptionChanged(this, e);
-			}
+			CaptionChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -197,10 +197,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendCommand(SendCommandEventArgs e)
 		{
-			if (SendCommand != null)
-			{
-				SendCommand(this, e);
-			}
+			SendCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -249,11 +246,17 @@ namespace TheBox.Buttons
 			if (m_Right == null)
 			{
 				if (left.RequiresSecondButton)
+				{
 					return false;
+				}
+
 				return true;
 			}
 			if (m_Right.AllowsSecondButton && left.AllowsSecondButton)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -267,11 +270,17 @@ namespace TheBox.Buttons
 			if (m_Left == null)
 			{
 				if (right.RequiresSecondButton)
+				{
 					return false;
+				}
+
 				return true;
 			}
 			if (m_Left.AllowsSecondButton && right.AllowsSecondButton)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -292,11 +301,11 @@ namespace TheBox.Buttons
 
 				stream.Close();
 
-				Pandora.Log.WriteEntry(string.Format("Custom button definition serizlized correctly to {0}", FileName));
+				Pandora.Log.WriteEntry(String.Format("Custom button definition serizlized correctly to {0}", FileName));
 			}
 			catch (Exception err)
 			{
-				Pandora.Log.WriteError(err, string.Format("Failed to serialize custom button definition to: {0}", FileName));
+				Pandora.Log.WriteError(err, String.Format("Failed to serialize custom button definition to: {0}", FileName));
 				return false;
 			}
 
@@ -318,13 +327,13 @@ namespace TheBox.Buttons
 
 				var def = serializer.Deserialize(stream) as ButtonDef;
 
-				Pandora.Log.WriteEntry(string.Format("Succesfully deserialized button from: {0}", FileName));
+				Pandora.Log.WriteEntry(String.Format("Succesfully deserialized button from: {0}", FileName));
 
 				return def;
 			}
 			catch (Exception err)
 			{
-				Pandora.Log.WriteError(err, string.Format("Failed to read custom button from: {0}", FileName));
+				Pandora.Log.WriteError(err, String.Format("Failed to read custom button from: {0}", FileName));
 				return null;
 			}
 		}
@@ -337,10 +346,14 @@ namespace TheBox.Buttons
 			get
 			{
 				if (m_Left != null && m_Left is MultiCommandDef)
+				{
 					return m_Left as MultiCommandDef;
+				}
 
 				if (m_Right != null && m_Right is MultiCommandDef)
+				{
 					return m_Right as MultiCommandDef;
+				}
 
 				return null;
 			}
@@ -354,10 +367,14 @@ namespace TheBox.Buttons
 			get
 			{
 				if (m_Left != null && m_Left is ModifierCommand)
+				{
 					return m_Left as ModifierCommand;
+				}
 
 				if (m_Right != null && m_Right is ModifierCommand)
+				{
 					return m_Right as ModifierCommand;
+				}
 
 				return null;
 			}
@@ -379,7 +396,10 @@ namespace TheBox.Buttons
 			if (function is LastCommand)
 			{
 				if (m_LastCommand != null)
+				{
 					return m_LastCommand.FullCommand;
+				}
+
 				return null;
 			}
 			if (function is MenuDef)
@@ -399,12 +419,12 @@ namespace TheBox.Buttons
 			{
 				if (ModifierDef != null)
 				{
-					var left = string.Format(Pandora.Localization.TextProvider["Buttons.TipLeft"], ModifierDef.Command);
-					var right = string.Format(
+					var left = String.Format(Pandora.Localization.TextProvider["Buttons.TipLeft"], ModifierDef.Command);
+					var right = String.Format(
 						Pandora.Localization.TextProvider["Buttons.TipRight"],
 						Pandora.Localization.TextProvider["Buttons.ModRight"]);
 
-					return string.Format(Pandora.Localization.TextProvider["Buttons.TipTwoLine"], left, right);
+					return String.Format(Pandora.Localization.TextProvider["Buttons.TipTwoLine"], left, right);
 				}
 				if (MultiDef == null)
 				{
@@ -423,18 +443,18 @@ namespace TheBox.Buttons
 
 					if (left != null && right != null)
 					{
-						var l = string.Format(Pandora.Localization.TextProvider["Buttons.TipLeft"], left);
-						var r = string.Format(Pandora.Localization.TextProvider["Buttons.TipRight"], right);
+						var l = String.Format(Pandora.Localization.TextProvider["Buttons.TipLeft"], left);
+						var r = String.Format(Pandora.Localization.TextProvider["Buttons.TipRight"], right);
 
-						return string.Format(Pandora.Localization.TextProvider["Buttons.TipTwoLine"], l, r);
+						return String.Format(Pandora.Localization.TextProvider["Buttons.TipTwoLine"], l, r);
 					}
 					if (left != null)
 					{
-						return string.Format(Pandora.Localization.TextProvider["Buttons.TipLeft"], left);
+						return String.Format(Pandora.Localization.TextProvider["Buttons.TipLeft"], left);
 					}
 					if (right != null)
 					{
-						return string.Format(Pandora.Localization.TextProvider["Buttons.TipRight"], right);
+						return String.Format(Pandora.Localization.TextProvider["Buttons.TipRight"], right);
 					}
 
 					return null;
@@ -443,14 +463,14 @@ namespace TheBox.Buttons
 				{
 					// This is a multi def
 
-					var left = string.Format(
+					var left = String.Format(
 						Pandora.Localization.TextProvider["Buttons.TipLeft"],
 						MultiDef.DefaultCommand.FullCommand);
-					var right = string.Format(
+					var right = String.Format(
 						Pandora.Localization.TextProvider["Buttons.TipRight"],
 						Pandora.Localization.TextProvider["Buttons.MultiRightClick"]);
 
-					return string.Format(Pandora.Localization.TextProvider["Buttons.TipTwoLine"], left, right);
+					return String.Format(Pandora.Localization.TextProvider["Buttons.TipTwoLine"], left, right);
 				}
 			}
 		}
@@ -501,16 +521,24 @@ namespace TheBox.Buttons
 			var def = new ButtonDef();
 
 			if (m_Caption != null)
-				def.m_Caption = string.Copy(m_Caption);
+			{
+				def.m_Caption = String.Copy(m_Caption);
+			}
 
 			if (m_LastCommand != null)
+			{
 				def.m_LastCommand = new SendCommandEventArgs(m_LastCommand.Command, m_LastCommand.UsePrefix);
+			}
 
 			if (m_Left != null)
+			{
 				def.Left = (m_Left as ICloneable).Clone() as IButtonFunction;
+			}
 
 			if (m_Right != null)
+			{
 				def.Right = (m_Right as ICloneable).Clone() as IButtonFunction;
+			}
 
 			return def;
 		}

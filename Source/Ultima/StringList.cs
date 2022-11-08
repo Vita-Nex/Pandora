@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - StringList.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Collections.Generic;
@@ -75,7 +69,7 @@ namespace Ultima
 						m_Buffer = new byte[(length + 1023) & ~1023];
 					}
 
-					bin.Read(m_Buffer, 0, length);
+					_ = bin.Read(m_Buffer, 0, length);
 					var text = Encoding.UTF8.GetString(m_Buffer, 0, length);
 
 					var se = new StringEntry(number, text, flag);
@@ -149,11 +143,14 @@ namespace Ultima
 				{
 					return 0;
 				}
-				if (m_desc)
+				else if (m_desc)
 				{
 					return (objA.Number < objB.Number) ? 1 : -1;
 				}
-				return (objA.Number < objB.Number) ? -1 : 1;
+				else
+				{
+					return (objA.Number < objB.Number) ? -1 : 1;
+				}
 			}
 		}
 
@@ -174,17 +171,23 @@ namespace Ultima
 					{
 						return 0;
 					}
-					if (m_desc)
+					else if (m_desc)
 					{
 						return (objA.Number < objB.Number) ? 1 : -1;
 					}
-					return (objA.Number < objB.Number) ? -1 : 1;
+					else
+					{
+						return (objA.Number < objB.Number) ? -1 : 1;
+					}
 				}
-				if (m_desc)
+				else if (m_desc)
 				{
 					return ((byte)objA.Flag < (byte)objB.Flag) ? 1 : -1;
 				}
-				return ((byte)objA.Flag < (byte)objB.Flag) ? -1 : 1;
+				else
+				{
+					return ((byte)objA.Flag < (byte)objB.Flag) ? -1 : 1;
+				}
 			}
 		}
 
@@ -203,7 +206,10 @@ namespace Ultima
 				{
 					return String.Compare(objB.Text, objA.Text);
 				}
-				return String.Compare(objA.Text, objB.Text);
+				else
+				{
+					return String.Compare(objA.Text, objB.Text);
+				}
 			}
 		}
 		#endregion

@@ -43,8 +43,10 @@ namespace TheBox.Options
 			get
 			{
 				if (m_Table.ContainsKey(ButtonID))
+				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					return m_Table[ButtonID];
+				}
 				// Issue 10 - End
 				return -1;
 			}
@@ -57,7 +59,7 @@ namespace TheBox.Options
 
 		public static ButtonIndex Load()
 		{
-			var filename = string.Format(Path.Combine(Pandora.Profile.BaseFolder, "bdi.xml"));
+			var filename = String.Format(Path.Combine(Pandora.Profile.BaseFolder, "bdi.xml"));
 
 			if (File.Exists(filename))
 			{
@@ -67,7 +69,7 @@ namespace TheBox.Options
 
 				if (dom.ChildNodes.Count != 2)
 				{
-					Pandora.Log.WriteError(null, string.Format("Bad format for file {0}", filename));
+					Pandora.Log.WriteError(null, String.Format("Bad format for file {0}", filename));
 					return null;
 				}
 
@@ -75,7 +77,7 @@ namespace TheBox.Options
 
 				if (main.Name != "table")
 				{
-					Pandora.Log.WriteError(null, string.Format("Bad format for file {0}", filename));
+					Pandora.Log.WriteError(null, String.Format("Bad format for file {0}", filename));
 					return null;
 				}
 
@@ -92,7 +94,7 @@ namespace TheBox.Options
 					}
 					catch (Exception err)
 					{
-						Pandora.Log.WriteError(err, string.Format("An error occurred when reading entries from {0}", filename));
+						Pandora.Log.WriteError(err, String.Format("An error occurred when reading entries from {0}", filename));
 						return null;
 					}
 				}
@@ -106,12 +108,12 @@ namespace TheBox.Options
 		{
 			try
 			{
-				var filename = string.Format(Path.Combine(Pandora.Profile.BaseFolder, "bdi.xml"));
+				var filename = String.Format(Path.Combine(Pandora.Profile.BaseFolder, "bdi.xml"));
 
 				var dom = new XmlDocument();
 
 				var decl = dom.CreateXmlDeclaration("1.0", null, null);
-				dom.AppendChild(decl);
+				_ = dom.AppendChild(decl);
 
 				var main = dom.CreateElement("table");
 
@@ -121,16 +123,16 @@ namespace TheBox.Options
 
 					var id = dom.CreateAttribute("id");
 					id.Value = key.ToString();
-					data.Attributes.Append(id);
+					_ = data.Attributes.Append(id);
 
 					var val = dom.CreateAttribute("index");
 					val.Value = m_Table[key].ToString();
-					data.Attributes.Append(val);
+					_ = data.Attributes.Append(val);
 
-					main.AppendChild(data);
+					_ = main.AppendChild(data);
 				}
 
-				dom.AppendChild(main);
+				_ = dom.AppendChild(main);
 
 				dom.Save(filename);
 			}
@@ -149,8 +151,7 @@ namespace TheBox.Options
 			if (button.Def != null && button.Def.MultiDef != null && button.ButtonID >= 0)
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				int i;
-				m_Table.TryGetValue(button.ButtonID, out i);
+				_ = m_Table.TryGetValue(button.ButtonID, out var i);
 
 				button.Def.MultiDef.DefaultIndex = i;
 

@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Textures.cs
-//  */
-#endregion
-
 #region References
 using System.Collections;
 using System.Collections.Generic;
@@ -81,8 +75,6 @@ namespace Ultima
 		/// <returns></returns>
 		public static bool TestTexture(int index)
 		{
-			int length, extra;
-			bool patched;
 			if (m_Removed[index])
 			{
 				return false;
@@ -91,7 +83,8 @@ namespace Ultima
 			{
 				return true;
 			}
-			var valid = m_FileIndex.Valid(index, out length, out extra, out patched);
+
+			var valid = m_FileIndex.Valid(index, out var length, out _, out _);
 			if ((!valid) || (length == 0))
 			{
 				return false;
@@ -106,8 +99,7 @@ namespace Ultima
 		/// <returns></returns>
 		public static Bitmap GetTexture(int index)
 		{
-			bool patched;
-			return GetTexture(index, out patched);
+			return GetTexture(index, out _);
 		}
 
 		/// <summary>
@@ -135,8 +127,7 @@ namespace Ultima
 				return m_Cache[index];
 			}
 
-			int length, extra;
-			var stream = m_FileIndex.Seek(index, out length, out extra, out patched);
+			var stream = m_FileIndex.Seek(index, out var length, out var extra, out patched);
 			if (stream == null)
 			{
 				return null;
@@ -152,8 +143,9 @@ namespace Ultima
 
 			var size = extra == 0 ? 64 : 128;
 
-			var bmp = new Bitmap(size, size, PixelFormat.Format16bppArgb1555);
-			var bd = bmp.LockBits(new Rectangle(0, 0, size, size), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(size, size, Settings.PixelFormat);
+			var bd = bmp.LockBits(
+				new Rectangle(0, 0, size, size), ImageLockMode.WriteOnly, Settings.PixelFormat);
 
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
@@ -164,7 +156,7 @@ namespace Ultima
 			{
 				m_StreamBuffer = new byte[max];
 			}
-			stream.Read(m_StreamBuffer, 0, max);
+			_ = stream.Read(m_StreamBuffer, 0, max);
 
 			fixed (byte* data = m_StreamBuffer)
 			{
@@ -188,7 +180,10 @@ namespace Ultima
 			{
 				return m_Cache[index] = bmp;
 			}
-			return bmp;
+			else
+			{
+				return bmp;
+			}
 		}
 
 		public static unsafe void Save(string path)
@@ -196,8 +191,9 @@ namespace Ultima
 			var idx = Path.Combine(path, "texidx.mul");
 			var mul = Path.Combine(path, "texmaps.mul");
 			checksums = new List<CheckSums>();
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				var memidx = new MemoryStream();
 				var memmul = new MemoryStream();
@@ -213,7 +209,7 @@ namespace Ultima
 						}
 
 						var bmp = m_Cache[index];
-						if ((bmp == null) || (m_Removed[index]))
+						if ((bmp == null) || m_Removed[index])
 						{
 							binidx.Write(-1); // lookup
 							binidx.Write(0); // length
@@ -224,8 +220,7 @@ namespace Ultima
 							var ms = new MemoryStream();
 							bmp.Save(ms, ImageFormat.Bmp);
 							var checksum = sha.ComputeHash(ms.ToArray());
-							CheckSums sum;
-							if (compareSaveImages(checksum, out sum))
+							if (compareSaveImages(checksum, out var sum))
 							{
 								binidx.Write(sum.pos); //lookup
 								binidx.Write(sum.length);
@@ -235,9 +230,7 @@ namespace Ultima
 								continue;
 							}
 							var bd = bmp.LockBits(
-								new Rectangle(0, 0, bmp.Width, bmp.Height),
-								ImageLockMode.ReadOnly,
-								PixelFormat.Format16bppArgb1555);
+								new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 							var line = (ushort*)bd.Scan0;
 							var delta = bd.Stride >> 1;
 
@@ -255,7 +248,7 @@ namespace Ultima
 							var start = length;
 							length = (int)binmul.BaseStream.Position - length;
 							binidx.Write(length);
-							binidx.Write((bmp.Width == 64 ? 0 : 1));
+							binidx.Write(bmp.Width == 64 ? 0 : 1);
 							bmp.UnlockBits(bd);
 							var s = new CheckSums
 							{
@@ -280,7 +273,7 @@ namespace Ultima
 			for (var i = 0; i < checksums.Count; ++i)
 			{
 				var cmp = checksums[i].checksum;
-				if (((cmp == null) || (newchecksum == null)) || (cmp.Length != newchecksum.Length))
+				if ((cmp == null) || (newchecksum == null) || (cmp.Length != newchecksum.Length))
 				{
 					return false;
 				}

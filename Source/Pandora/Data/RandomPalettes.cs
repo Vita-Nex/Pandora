@@ -38,7 +38,7 @@ namespace TheBox.Data
 		/// </summary>
 		public int Hue
 		{
-			get { return m_Hue; }
+			get => m_Hue;
 			set
 			{
 				m_Hue = value;
@@ -116,14 +116,18 @@ namespace TheBox.Data
 				for (var y = 0; y < m_Rectangle.Height; y++)
 				{
 					if (!m_Grid[x, y])
+					{
 						continue;
+					}
 
 					var tile = m_TileSet.Tiles[rnd.Next(m_TileSet.Tiles.Count)] as RandomTile;
 
 					foreach (int id in tile.Items)
 					{
-						var item = new BuildItem();
-						item.ID = id;
+						var item = new BuildItem
+						{
+							ID = id
+						};
 
 						// Hue
 						var hue = m_Hue;
@@ -142,9 +146,13 @@ namespace TheBox.Data
 						item.Y = m_Rectangle.Y + y;
 
 						if (Z != -1)
+						{
 							item.Z = Pandora.Map.GetMapHeight(new Point(item.X, item.Y));
+						}
 						else
+						{
 							item.Z = Z;
+						}
 
 						m_Message.Items.Add(item);
 					}
@@ -208,7 +216,7 @@ namespace TheBox.Data
 		/// <returns>The server message created</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private RandomBrushMessage CreateMessage(RandomTilesList tileset, List<int> hues, double fill)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			var msg = new RandomBrushMessage();
 			var rnd = new Random();
@@ -225,17 +233,18 @@ namespace TheBox.Data
 
 						foreach (int id in tile.Items)
 						{
-							var item = new BuildItem();
+							var item = new BuildItem
+							{
+								ID = id,
+								// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+								Hue = hues[rnd.Next(hues.Count)],
+								// Issue 10 - End
 
-							item.ID = id;
-							// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-							item.Hue = hues[rnd.Next(hues.Count)];
-							// Issue 10 - End
+								X = x - (Width / 2),
+								Y = y - (Height / 2)
+							};
 
-							item.X = x - (Width / 2);
-							item.Y = y - (Height / 2);
-
-							msg.Items.Add(item);
+							_ = msg.Items.Add(item);
 						}
 					}
 				}
@@ -266,9 +275,11 @@ namespace TheBox.Data
 		public RandomBrushMessage CreateMessage(RandomTilesList tileset, int hue, double fill)
 		{
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			var list = new List<int>();
-			// Issue 10 - End
-			list.Add(hue);
+			var list = new List<int>
+			{
+				// Issue 10 - End
+				hue
+			};
 
 			return CreateMessage(tileset, list, fill);
 		}

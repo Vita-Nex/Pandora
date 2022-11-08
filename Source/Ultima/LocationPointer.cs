@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - LocationPointer.cs
-//  */
-#endregion
-
 namespace Ultima
 {
 	public sealed class LocationPointer

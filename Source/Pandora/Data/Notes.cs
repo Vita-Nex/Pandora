@@ -53,12 +53,12 @@ namespace TheBox.Data
 		/// <summary>
 		///     States the type of sorting that should be used for notes
 		/// </summary>
-		public static NoteSorting Sorting { get { return m_Sorting; } }
+		public static NoteSorting Sorting => m_Sorting;
 
 		/// <summary>
 		///     States whether the notes should be sorted in ascending order
 		/// </summary>
-		public static bool Ascending { get { return m_Ascending; } }
+		public static bool Ascending => m_Ascending;
 
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private List<Note> m_Notes;
@@ -69,10 +69,10 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<Note> NotesList
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Notes; }
-			set { m_Notes = value; }
+			get => m_Notes;
+			set => m_Notes = value;
 		}
 
 		/// <summary>
@@ -80,17 +80,14 @@ namespace TheBox.Data
 		/// </summary>
 		public NoteSorting NoteSorting
 		{
-			get { return m_Sorting; }
+			get => m_Sorting;
 			set
 			{
 				m_Sorting = value;
 
 				m_Notes.Sort();
 
-				if (SortingChanged != null)
-				{
-					SortingChanged(this, new EventArgs());
-				}
+				SortingChanged?.Invoke(this, new EventArgs());
 			}
 		}
 
@@ -99,17 +96,14 @@ namespace TheBox.Data
 		/// </summary>
 		public bool AscendingSorting
 		{
-			get { return m_Ascending; }
+			get => m_Ascending;
 			set
 			{
 				m_Ascending = value;
 
 				m_Notes.Sort();
 
-				if (SortingChanged != null)
-				{
-					SortingChanged(this, new EventArgs());
-				}
+				SortingChanged?.Invoke(this, new EventArgs());
 			}
 		}
 
@@ -135,10 +129,12 @@ namespace TheBox.Data
 					var note = m_Notes[i];
 					// Issue 10 - End
 
-					nodes[i] = new TreeNode(note.Name);
-					nodes[i].Tag = note;
-					nodes[i].ImageIndex = (int)note.Priority;
-					nodes[i].SelectedImageIndex = (int)note.Priority;
+					nodes[i] = new TreeNode(note.Name)
+					{
+						Tag = note,
+						ImageIndex = (int)note.Priority,
+						SelectedImageIndex = (int)note.Priority
+					};
 				}
 
 				return nodes;
@@ -167,49 +163,43 @@ namespace TheBox.Data
 		/// <summary>
 		/// Gets or sets the name of the note
 		/// </summary>
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the note priority
 		/// </summary>
-		public NotePriority Priority { get { return m_Priority; } set { m_Priority = value; } }
+		public NotePriority Priority { get => m_Priority; set => m_Priority = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the date for this note
 		/// </summary>
-		public string Date { get { return m_Date.ToString(); } set { m_Date = DateTime.Parse(value); } }
+		public string Date { get => m_Date.ToString(); set => m_Date = DateTime.Parse(value); }
 
 		/// <summary>
 		///     Gets or sets the text of the note
 		/// </summary>
-		public string[] Text { get { return m_Text; } set { m_Text = value; } }
+		public string[] Text { get => m_Text; set => m_Text = value; }
 
 		/// <summary>
 		///     Gets or sets the locations associated with this note
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<Location> Locations
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Locations; }
-			set { m_Locations = value; }
+			get => m_Locations;
+			set => m_Locations = value;
 		}
 
 		/// <summary>
 		///     Gets the created string for this note
 		/// </summary>
-		public string CreatedString
-		{
-			get
-			{
-				return string.Format(
+		public string CreatedString => String.Format(
 					Pandora.Localization.TextProvider["Notes.Created"],
 					m_Date.ToShortDateString(),
 					m_Date.ToShortTimeString());
-			}
-		}
 
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public Note(string name)
@@ -256,33 +246,33 @@ namespace TheBox.Data
 			// Add new location
 			var miAdd = new MenuItem(Pandora.Localization.TextProvider["Notes.AddLoc"]);
 			miAdd.Click += miAdd_Click;
-			m_LocationsMenu.MenuItems.Add(miAdd);
+			_ = m_LocationsMenu.MenuItems.Add(miAdd);
 
 			// Delete locations
-			var miDel = new MenuItem(Pandora.Localization.TextProvider["Notes.DelLoc"]);
-			miDel.Enabled = m_Locations.Count > 0;
-			m_LocationsMenu.MenuItems.Add(miDel);
+			var miDel = new MenuItem(Pandora.Localization.TextProvider["Notes.DelLoc"])
+			{
+				Enabled = m_Locations.Count > 0
+			};
+			_ = m_LocationsMenu.MenuItems.Add(miDel);
 
-			m_LocationsMenu.MenuItems.Add(new MenuItem("-"));
+			_ = m_LocationsMenu.MenuItems.Add(new MenuItem("-"));
 
 			foreach (var loc in m_Locations)
 			{
 				var miLoc = new MenuItem(loc.Name);
 				miLoc.Click += miLoc_Click;
-				miDel.MenuItems.Add(miLoc);
+				_ = miDel.MenuItems.Add(miLoc);
 
 				var miLocList = new MenuItem(loc.Name);
 				miLocList.Click += miLocList_Click;
-				m_LocationsMenu.MenuItems.Add(miLocList);
+				_ = m_LocationsMenu.MenuItems.Add(miLocList);
 			}
 		}
 
 		#region IComparable Members
 		public int CompareTo(object obj)
 		{
-			var cmp = obj as Note;
-
-			if (cmp == null)
+			if (!(obj is Note cmp))
 			{
 				return 0;
 			}

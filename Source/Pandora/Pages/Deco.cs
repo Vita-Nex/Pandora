@@ -66,7 +66,7 @@ namespace TheBox.Pages
 
 		private BoxDeco SelectedDeco
 		{
-			get { return m_SelectedDeco; }
+			get => m_SelectedDeco;
 			set
 			{
 				m_SelectedDeco = value;
@@ -144,10 +144,10 @@ namespace TheBox.Pages
 			this.chkRnd = new System.Windows.Forms.CheckBox();
 			this.nRnd = new System.Windows.Forms.NumericUpDown();
 			this.panel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numTile)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numNudge)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numTile).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numNudge).BeginInit();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nRnd)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nRnd).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel
@@ -182,7 +182,7 @@ namespace TheBox.Pages
 			// 
 			// cmItem
 			// 
-			this.cmItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.menuItem1});
+			this.cmItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.menuItem1 });
 			this.cmItem.Popup += new System.EventHandler(this.cmItem_Popup);
 			// 
 			// menuItem1
@@ -229,8 +229,8 @@ namespace TheBox.Pages
 			// numTile
 			// 
 			this.numTile.Location = new System.Drawing.Point(440, 0);
-			this.numTile.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.numTile.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.numTile.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.numTile.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.numTile.Name = "numTile";
 			this.numTile.Size = new System.Drawing.Size(52, 20);
 			this.numTile.TabIndex = 2;
@@ -294,12 +294,12 @@ namespace TheBox.Pages
 			// numNudge
 			// 
 			this.numNudge.Location = new System.Drawing.Point(24, 16);
-			this.numNudge.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.numNudge.Minimum = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.numNudge.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.numNudge.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			this.numNudge.Name = "numNudge";
 			this.numNudge.Size = new System.Drawing.Size(48, 20);
 			this.numNudge.TabIndex = 11;
-			this.numNudge.Value = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.numNudge.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			this.numNudge.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DoKeys);
 			this.numNudge.ValueChanged += new System.EventHandler(this.numNudge_ValueChanged);
 			// 
@@ -346,7 +346,7 @@ namespace TheBox.Pages
 			// bNudgeUp
 			// 
 			this.bNudgeUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bNudgeUp.Image = ((System.Drawing.Image)(resources.GetObject("bNudgeUp.Image")));
+			this.bNudgeUp.Image = (System.Drawing.Image)resources.GetObject("bNudgeUp.Image");
 			this.bNudgeUp.Location = new System.Drawing.Point(76, 16);
 			this.bNudgeUp.Name = "bNudgeUp";
 			this.bNudgeUp.Size = new System.Drawing.Size(16, 20);
@@ -356,7 +356,7 @@ namespace TheBox.Pages
 			// bNudgeDown
 			// 
 			this.bNudgeDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bNudgeDown.Image = ((System.Drawing.Image)(resources.GetObject("bNudgeDown.Image")));
+			this.bNudgeDown.Image = (System.Drawing.Image)resources.GetObject("bNudgeDown.Image");
 			this.bNudgeDown.Location = new System.Drawing.Point(4, 16);
 			this.bNudgeDown.Name = "bNudgeDown";
 			this.bNudgeDown.Size = new System.Drawing.Size(16, 20);
@@ -366,7 +366,7 @@ namespace TheBox.Pages
 			// cmCustom
 			// 
 			this.cmCustom.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.cmCustomCat, this.cmCustomItem, this.cmCustomDel});
+				new System.Windows.Forms.MenuItem[] { this.cmCustomCat, this.cmCustomItem, this.cmCustomDel });
 			this.cmCustom.Popup += new System.EventHandler(this.cmCustom_Popup);
 			// 
 			// cmCustomCat
@@ -400,8 +400,8 @@ namespace TheBox.Pages
 			// nRnd
 			// 
 			this.nRnd.Location = new System.Drawing.Point(376, 48);
-			this.nRnd.Maximum = new System.Decimal(new int[] {15000, 0, 0, 0});
-			this.nRnd.Minimum = new System.Decimal(new int[] {15000, 0, 0, -2147483648});
+			this.nRnd.Maximum = new decimal(new int[] { 15000, 0, 0, 0 });
+			this.nRnd.Minimum = new decimal(new int[] { 15000, 0, 0, -2147483648 });
 			this.nRnd.Name = "nRnd";
 			this.nRnd.Size = new System.Drawing.Size(48, 20);
 			this.nRnd.TabIndex = 18;
@@ -427,10 +427,10 @@ namespace TheBox.Pages
 			this.Load += new System.EventHandler(this.Deco_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DoKeys);
 			this.panel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numTile)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numNudge)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numTile).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numNudge).EndInit();
 			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.nRnd)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nRnd).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -441,7 +441,9 @@ namespace TheBox.Pages
 		private void Deco_Load(object sender, EventArgs e)
 		{
 			if (tCat.Nodes.Count > 0)
+			{
 				return;
+			}
 
 			try
 			{
@@ -562,7 +564,7 @@ namespace TheBox.Pages
 
 					foreach (BoxDeco deco in list)
 					{
-						tDeco.Nodes.Add(deco.TreeNode);
+						_ = tDeco.Nodes.Add(deco.TreeNode);
 					}
 				}
 
@@ -600,12 +602,16 @@ namespace TheBox.Pages
 		private bool IsCustom(TreeNode node)
 		{
 			if (!Pandora.Profile.Deco.ShowCustomDeco)
+			{
 				return false;
+			}
 
 			if (node.Parent == null)
+			{
 				return false;
+			}
 
-			return (tCat.Nodes.IndexOf(node.Parent) == 0);
+			return tCat.Nodes.IndexOf(node.Parent) == 0;
 		}
 
 		/// <summary>
@@ -622,7 +628,9 @@ namespace TheBox.Pages
 			cmCustomDel.Enabled = false;
 
 			if (node == null)
+			{
 				return;
+			}
 
 			cmCustomCat.Enabled = true;
 
@@ -660,12 +668,14 @@ namespace TheBox.Pages
 		/// </summary>
 		private void cmCustomCat_Click(object sender, EventArgs e)
 		{
-			var n = new TreeNode("New Category");
-			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-			n.Tag = new List<object>();
+			var n = new TreeNode("New Category")
+			{
+				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+				Tag = new List<object>()
+			};
 			// Issue 10 - End
 
-			tCat.Nodes[0].Nodes.Add(n);
+			_ = tCat.Nodes[0].Nodes.Add(n);
 
 			tCat.SelectedNode = n;
 
@@ -683,7 +693,7 @@ namespace TheBox.Pages
 			{
 				var deco = form.Deco;
 
-				tDeco.Nodes.Add(deco.TreeNode);
+				_ = tDeco.Nodes.Add(deco.TreeNode);
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				(tCat.SelectedNode.Tag as List<object>).Add(deco);
 				(tCat.SelectedNode.Tag as List<object>).Sort();
@@ -913,7 +923,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				MessageBox.Show(string.Format(Pandora.Localization.TextProvider["Deco.NoIDFound"], id));
+				_ = MessageBox.Show(String.Format(Pandora.Localization.TextProvider["Deco.NoIDFound"], id));
 			}
 		}
 
@@ -951,7 +961,7 @@ namespace TheBox.Pages
 			}
 			else
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Deco.NoResults"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Deco.NoResults"]);
 			}
 		}
 
@@ -1006,11 +1016,11 @@ namespace TheBox.Pages
 			}
 			else if (sender.Equals(tCat) && e.KeyCode == Keys.Right && tDeco.Nodes.Count > 0)
 			{
-				tDeco.Focus();
+				_ = tDeco.Focus();
 			}
 			else if (sender.Equals(tDeco) && e.KeyCode == Keys.Left)
 			{
-				tCat.Focus();
+				_ = tCat.Focus();
 			}
 			else if (sender.Equals(tCat) && e.KeyCode == Keys.Enter)
 			{
@@ -1043,7 +1053,7 @@ namespace TheBox.Pages
 
 		private void menuItem1_Click(object sender, EventArgs e)
 		{
-			Pandora.SendToUO(string.Format("Set ItemID {0}", SelectedDeco.ID), true);
+			Pandora.SendToUO(String.Format("Set ItemID {0}", SelectedDeco.ID), true);
 		}
 
 		private void cmItem_Popup(object sender, EventArgs e)
@@ -1076,7 +1086,9 @@ namespace TheBox.Pages
 		private void tDeco_MouseMove(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.None)
+			{
 				return;
+			}
 
 			if (Math.Abs(e.X - m_DragPoint.X) > 5 || Math.Abs(e.Y - m_DragPoint.Y) > 5)
 			{
@@ -1084,7 +1096,7 @@ namespace TheBox.Pages
 
 				if (SelectedDeco != null)
 				{
-					tDeco.DoDragDrop(SelectedDeco, DragDropEffects.Copy);
+					_ = tDeco.DoDragDrop(SelectedDeco, DragDropEffects.Copy);
 				}
 				m_DragPoint = Point.Empty;
 			}
@@ -1110,15 +1122,15 @@ namespace TheBox.Pages
 			tCat.SelectedNode = tCat.GetNodeAt(e.X, e.Y);
 
 			if (tCat.SelectedNode == null)
+			{
 				return;
+			}
 
-			string cat = null;
-			string sub = null;
-			string data = null;
-
+			string cat;
+			string data;
 			if (tCat.SelectedNode.Parent != null)
 			{
-				sub = tCat.SelectedNode.Text;
+				var sub = tCat.SelectedNode.Text;
 				cat = tCat.SelectedNode.Parent.Text;
 				data = cat + "|" + sub;
 			}
@@ -1128,8 +1140,8 @@ namespace TheBox.Pages
 				data = cat;
 			}
 
-			tCat.DoDragDrop(data, DragDropEffects.Copy);
-			tCat.Focus();
+			_ = tCat.DoDragDrop(data, DragDropEffects.Copy);
+			_ = tCat.Focus();
 		}
 	}
 }

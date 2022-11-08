@@ -545,7 +545,9 @@ namespace TheBox.Pages
 			var file = Pandora.Profile.Admin.ServerExe;
 
 			if (file != null && !File.Exists(file))
+			{
 				return;
+			}
 
 			var processes = Process.GetProcesses();
 
@@ -590,9 +592,11 @@ namespace TheBox.Pages
 			var handle = Pandora.Profile.Admin.Console;
 
 			if (handle == 0)
+			{
 				return 0;
+			}
 
-			var win = NativeWindow.FromHandle(new IntPtr(handle));
+			_ = NativeWindow.FromHandle(new IntPtr(handle));
 
 			const int nChars = 256;
 			var Buff = new StringBuilder(nChars);
@@ -622,7 +626,7 @@ namespace TheBox.Pages
 
 			if (ptr != IntPtr.Zero)
 			{
-				ShowWindow(ptr.ToInt32(), SW_SHOW);
+				_ = ShowWindow(ptr.ToInt32(), SW_SHOW);
 				Pandora.Profile.Admin.ConsoleHidden = false;
 			}
 
@@ -638,7 +642,7 @@ namespace TheBox.Pages
 
 			if (ptr != IntPtr.Zero)
 			{
-				ShowWindow(ptr.ToInt32(), SW_HIDE);
+				_ = ShowWindow(ptr.ToInt32(), SW_HIDE);
 				Pandora.Profile.Admin.ConsoleHidden = true;
 			}
 
@@ -756,13 +760,15 @@ namespace TheBox.Pages
 
 			foreach (var s in Pandora.Profile.Admin.Args.List)
 			{
-				cmbArgs.Items.Add(s);
+				_ = cmbArgs.Items.Add(s);
 			}
 
 			cmbArgs.EndUpdate();
 
 			if (arg.Length > 0)
+			{
 				cmbArgs.SelectedItem = arg;
+			}
 		}
 
 		/// <summary>

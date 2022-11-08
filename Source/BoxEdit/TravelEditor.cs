@@ -38,7 +38,7 @@ namespace TheBox.Editors
 
 		private Location CurrentLocation
 		{
-			get { return m_CurrentLocation; }
+			get => m_CurrentLocation;
 			set
 			{
 				m_CurrentLocation = value;
@@ -55,7 +55,9 @@ namespace TheBox.Editors
 				nZ.Value = value.Z;
 
 				if (value.X != 0 || value.Y != 0)
+				{
 					Map.Center = new Point(value.X, value.Y);
+				}
 
 				m_CurrentLocation = value;
 			}
@@ -162,9 +164,9 @@ namespace TheBox.Editors
 			this.miZoomOut = new System.Windows.Forms.MenuItem();
 			this.menuItem1 = new System.Windows.Forms.MenuItem();
 			this.menuItem2 = new System.Windows.Forms.MenuItem();
-			((System.ComponentModel.ISupportInitialize)(this.nX)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nY)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nZ)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nX).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nY).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nZ).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tCat
@@ -251,7 +253,7 @@ namespace TheBox.Editors
 			// 
 			this.nX.Enabled = false;
 			this.nX.Location = new System.Drawing.Point(504, 8);
-			this.nX.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nX.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nX.Name = "nX";
 			this.nX.Size = new System.Drawing.Size(64, 20);
 			this.nX.TabIndex = 8;
@@ -261,7 +263,7 @@ namespace TheBox.Editors
 			// 
 			this.nY.Enabled = false;
 			this.nY.Location = new System.Drawing.Point(576, 8);
-			this.nY.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nY.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nY.Name = "nY";
 			this.nY.Size = new System.Drawing.Size(64, 20);
 			this.nY.TabIndex = 9;
@@ -271,8 +273,8 @@ namespace TheBox.Editors
 			// 
 			this.nZ.Enabled = false;
 			this.nZ.Location = new System.Drawing.Point(648, 8);
-			this.nZ.Maximum = new System.Decimal(new int[] {128, 0, 0, 0});
-			this.nZ.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.nZ.Maximum = new decimal(new int[] { 128, 0, 0, 0 });
+			this.nZ.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.nZ.Name = "nZ";
 			this.nZ.Size = new System.Drawing.Size(64, 20);
 			this.nZ.TabIndex = 10;
@@ -291,7 +293,7 @@ namespace TheBox.Editors
 			// 
 			// mMain
 			// 
-			this.mMain.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.mFile, this.mMap});
+			this.mMain.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.mFile, this.mMap });
 			// 
 			// mFile
 			// 
@@ -316,7 +318,7 @@ namespace TheBox.Editors
 			// miFileSave
 			// 
 			this.miFileSave.Index = 2;
-			this.miFileSave.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.menuItem1, this.menuItem2});
+			this.miFileSave.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.menuItem1, this.menuItem2 });
 			this.miFileSave.Text = "&Save";
 			this.miFileSave.Click += new System.EventHandler(this.miFileSave_Click);
 			// 
@@ -334,7 +336,7 @@ namespace TheBox.Editors
 			// 
 			this.mMap.Index = 1;
 			this.mMap.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.miMap0, this.miMap1, this.miMap2, this.miMap3});
+				new System.Windows.Forms.MenuItem[] { this.miMap0, this.miMap1, this.miMap2, this.miMap3 });
 			this.mMap.Text = "&Map";
 			this.mMap.Popup += new System.EventHandler(this.mMap_Popup);
 			// 
@@ -408,7 +410,7 @@ namespace TheBox.Editors
 			// 
 			// cmMap
 			// 
-			this.cmMap.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.miZoomIn, this.miZoomOut});
+			this.cmMap.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.miZoomIn, this.miZoomOut });
 			// 
 			// miZoomIn
 			// 
@@ -453,9 +455,9 @@ namespace TheBox.Editors
 			this.Menu = this.mMain;
 			this.Name = "TravelEditor";
 			this.Text = "Travel Editor";
-			((System.ComponentModel.ISupportInitialize)(this.nX)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nY)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nZ)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nX).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nY).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nZ).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -478,11 +480,13 @@ namespace TheBox.Editors
 			tLoc.Nodes.Clear();
 			Map.Map = Maps.Felucca;
 
-			m_Facet = new Facet();
-			m_Facet.MapValue = 0;
+			m_Facet = new Facet
+			{
+				MapValue = 0
+			};
 
 			m_FacetNode = new TreeNode("Facet");
-			tCat.Nodes.Add(m_FacetNode);
+			_ = tCat.Nodes.Add(m_FacetNode);
 
 			LocationControls(false);
 		}
@@ -576,7 +580,9 @@ namespace TheBox.Editors
 			foreach (TreeNode node in nodes)
 			{
 				if (node.Text.ToLower() == text.ToLower())
+				{
 					return true;
+				}
 			}
 
 			return false;
@@ -588,7 +594,7 @@ namespace TheBox.Editors
 
 			if (newSection.Length == 0)
 			{
-				MessageBox.Show("You can't create an empty category");
+				_ = MessageBox.Show("You can't create an empty category");
 				return;
 			}
 
@@ -596,29 +602,31 @@ namespace TheBox.Editors
 
 			if ((currentNode.Parent != null) && (currentNode.Parent != m_FacetNode) && (currentNode.Parent.Parent != null))
 			{
-				MessageBox.Show("No further subsections are allowed");
+				_ = MessageBox.Show("No further subsections are allowed");
 				return;
 			}
 
 			if (CheckForDuplicates(currentNode.Nodes, newSection))
 			{
-				MessageBox.Show(string.Format("An entry called {0} already exists.", newSection));
+				_ = MessageBox.Show(String.Format("An entry called {0} already exists.", newSection));
 				return;
 			}
 
 			var tNode = new TreeNode(newSection);
 
 			if (currentNode.Parent != null && currentNode.Parent == m_FacetNode)
+			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 				tNode.Tag = new List<object>();
+			}
 			// Issue 10 - End
 
-			currentNode.Nodes.Add(tNode);
+			_ = currentNode.Nodes.Add(tNode);
 
 			tCat.SelectedNode = tNode.Parent;
 
 			txNewCat.Text = "";
-			txNewCat.Focus();
+			_ = txNewCat.Focus();
 
 			m_Updated = true;
 		}
@@ -675,32 +683,36 @@ namespace TheBox.Editors
 
 			if (name.Length == 0)
 			{
-				MessageBox.Show("Please enter a name for the new location");
+				_ = MessageBox.Show("Please enter a name for the new location");
 				return;
 			}
 
 			if (CheckForDuplicates(tLoc.Nodes, name))
 			{
-				MessageBox.Show(string.Format("A location called {0} already exists", name));
+				_ = MessageBox.Show(String.Format("A location called {0} already exists", name));
 				return;
 			}
 
-			var loc = new Location();
-			loc.Name = name;
+			var loc = new Location
+			{
+				Name = name
+			};
 
-			var tNode = new TreeNode(name);
-			tNode.Tag = loc;
+			var tNode = new TreeNode(name)
+			{
+				Tag = loc
+			};
 
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 			((List<object>)tCat.SelectedNode.Tag).Add(loc);
 			// Issue 10 - End
 
-			tLoc.Nodes.Add(tNode);
+			_ = tLoc.Nodes.Add(tNode);
 
 			tLoc.SelectedNode = tNode;
 
 			txNewLoc.Text = "";
-			txNewLoc.Focus();
+			_ = txNewLoc.Focus();
 
 			m_Updated = true;
 		}
@@ -724,7 +736,7 @@ namespace TheBox.Editors
 
 		private void bTest_Click(object sender, EventArgs e)
 		{
-			Utility.SendToUO(string.Format("[Go {0} {1} {2}\n", CurrentLocation.X, CurrentLocation.Y, CurrentLocation.Z));
+			_ = Utility.SendToUO(String.Format("[Go {0} {1} {2}\n", CurrentLocation.X, CurrentLocation.Y, CurrentLocation.Z));
 		}
 
 		private void bSetCoordinates_Click(object sender, EventArgs e)
@@ -749,7 +761,7 @@ namespace TheBox.Editors
 			}
 			catch (Exception err)
 			{
-				MessageBox.Show(err.ToString());
+				_ = MessageBox.Show(err.ToString());
 			}
 		}
 
@@ -773,7 +785,7 @@ namespace TheBox.Editors
 
 			m_FacetNode = m_Facet.GetTreeNode("Facet");
 
-			tCat.Nodes.Add(m_FacetNode);
+			_ = tCat.Nodes.Add(m_FacetNode);
 			tCat.SelectedNode = m_FacetNode;
 
 			tCat.EndUpdate();
@@ -794,7 +806,7 @@ namespace TheBox.Editors
 			var z = 0;
 			var facet = 0;
 
-			Client.FindLocation(ref x, ref y, ref z, ref facet);
+			_ = Client.FindLocation(ref x, ref y, ref z, ref facet);
 
 			if (x != 0 || y != 0 || z != 0)
 			{
@@ -806,11 +818,11 @@ namespace TheBox.Editors
 
 				SynchData();
 
-				txNewLoc.Focus();
+				_ = txNewLoc.Focus();
 			}
 			else
 			{
-				MessageBox.Show("Please calibrate your client. If you're at 0,0,0 this method won't work");
+				_ = MessageBox.Show("Please calibrate your client. If you're at 0,0,0 this method won't work");
 			}
 		}
 
@@ -849,7 +861,7 @@ namespace TheBox.Editors
 					{
 						if (tCat.SelectedNode == m_FacetNode)
 						{
-							MessageBox.Show("You can't delete the facet node");
+							_ = MessageBox.Show("You can't delete the facet node");
 						}
 						else
 						{
@@ -900,7 +912,7 @@ namespace TheBox.Editors
 					{
 						var loc = tLoc.SelectedNode.Tag as Location;
 						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-						((List<object>)tCat.SelectedNode.Tag).Remove(loc);
+						_ = ((List<object>)tCat.SelectedNode.Tag).Remove(loc);
 						// Issue 10 - End
 
 						tLoc.Nodes.Remove(tLoc.SelectedNode);

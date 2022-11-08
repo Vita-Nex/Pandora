@@ -21,13 +21,13 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the previous name of location to move
 		/// </summary>
-		public string OldPath { get { return m_OldPath; } set { m_OldPath = value; } }
+		public string OldPath { get => m_OldPath; set => m_OldPath = value; }
 
 		private string m_NewPath;
 
 		/// <summary>
 		///     Gets or sets the new location of the object
 		/// </summary>
-		public string NewPath { get { return m_NewPath; } set { m_NewPath = value; } }
+		public string NewPath { get => m_NewPath; set => m_NewPath = value; }
 	}
 }

@@ -67,7 +67,6 @@ namespace TheBox
 		private Button bSetHue;
 		private PictureBox imgHue;
 		private NumericUpDown numHue;
-		private Travel m_TravelTab;
 		private TabPage tabArt;
 		private TabPage tabMap;
 		private TabPage tabProps;
@@ -83,9 +82,7 @@ namespace TheBox
 		private BoxButton boxButton8;
 		private TabPage TabNPCs;
 		private PropManager ucPropManager;
-		private Mobiles m_PageMobiles;
 		private TabPage TabProperties;
-		private Props m_PageProperties;
 		private TabPage TabDeco;
 		private TabPage TabItems;
 		private TabPage TabNotes;
@@ -135,17 +132,17 @@ namespace TheBox
 		/// <summary>
 		///     Gets the travel user control
 		/// </summary>
-		public Travel Travel { get { return m_TravelTab; } }
+		public Travel Travel { get; private set; }
 
 		/// <summary>
 		///     Gets the Mobiles user control
 		/// </summary>
-		public Mobiles Mobiles { get { return m_PageMobiles; } }
+		public Mobiles Mobiles { get; private set; }
 
 		/// <summary>
 		///     Gets the page displaying all the properties
 		/// </summary>
-		public Props Properties { get { return m_PageProperties; } }
+		public Props Properties { get; private set; }
 		#endregion
 
 		private readonly ProfileManager _profileManager;
@@ -165,8 +162,6 @@ namespace TheBox
 			InitializeComponent();
 
 			_splash.SetStatusText("Initializing maps and artwork");
-			Map.MulManager = _profileManager.Profile.MulManager;
-			Art.MulFileManager = _profileManager.Profile.MulManager;
 
 			Pandora.Map = Map;
 			Pandora.Art = Art;
@@ -187,7 +182,7 @@ namespace TheBox
 			// Update Title when online change!
 			Pandora.BoxConnection.OnlineChanged += delegate
 			{
-				Text = string.Format(
+				Text = String.Format(
 					Pandora.Localization.TextProvider["Misc.BoxTitle"],
 					_profileManager.Profile.Name,
 					Pandora.BoxConnection.Connected
@@ -212,7 +207,9 @@ namespace TheBox
 				numHue.Value = p.Hues.SelectedIndex;
 
 				if (p.Hues.SelectedIndex != 0)
+				{
 					imgHue.Image = Pandora.Hues[p.Hues.SelectedIndex].GetSpectrum(imgHue.Size);
+				}
 
 				m_HuesMenu = new RecentHuesMenu(p.Hues.RecentHues);
 				m_HuesMenu.HueClicked += m_HuesMenu_HueClicked;
@@ -234,7 +231,7 @@ namespace TheBox
 		/// </summary>
 		private void InitPages()
 		{
-			m_TravelTab.Init();
+			Travel.Init();
 		}
 
 		/// <summary>
@@ -261,7 +258,6 @@ namespace TheBox
 		{
 			this.components = new System.ComponentModel.Container();
 			var resources = new System.ComponentModel.ComponentResourceManager(typeof(Box));
-			var mulManager1 = new TheBox.Common.MulManager();
 			this.BigTab = new System.Windows.Forms.TabControl();
 			this.TabGeneral = new System.Windows.Forms.TabPage();
 			this.TabDeco = new System.Windows.Forms.TabPage();
@@ -325,10 +321,10 @@ namespace TheBox
 			this.boxButton9 = new TheBox.Buttons.BoxButton();
 			this.general1 = new TheBox.Pages.General();
 			this.m_TabDeco = new TheBox.Pages.Deco();
-			this.m_TravelTab = new TheBox.Pages.Travel();
-			this.m_PageProperties = new TheBox.Pages.Props();
+			this.Travel = new TheBox.Pages.Travel();
+			this.Properties = new TheBox.Pages.Props();
 			this.m_ItemsTab = new TheBox.Pages.Items();
-			this.m_PageMobiles = new TheBox.Pages.Mobiles();
+			this.Mobiles = new TheBox.Pages.Mobiles();
 			this.m_TabAdmin = new TheBox.Pages.Admin();
 			this.m_Tools = new TheBox.Pages.Tools();
 			this.DoorsTab = new TheBox.Pages.Doors();
@@ -351,9 +347,9 @@ namespace TheBox
 			this.tabMap.SuspendLayout();
 			this.tabProps.SuspendLayout();
 			this.tabCustom.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numHue)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pctCap)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgHue)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numHue).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.pctCap).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.imgHue).BeginInit();
 			this.SuspendLayout();
 			// 
 			// BigTab
@@ -398,7 +394,7 @@ namespace TheBox
 			// 
 			// TabTravel
 			// 
-			this.TabTravel.Controls.Add(this.m_TravelTab);
+			this.TabTravel.Controls.Add(this.Travel);
 			this.TabTravel.Location = new System.Drawing.Point(4, 20);
 			this.TabTravel.Name = "TabTravel";
 			this.TabTravel.Size = new System.Drawing.Size(496, 142);
@@ -407,7 +403,7 @@ namespace TheBox
 			// 
 			// TabProperties
 			// 
-			this.TabProperties.Controls.Add(this.m_PageProperties);
+			this.TabProperties.Controls.Add(this.Properties);
 			this.TabProperties.Location = new System.Drawing.Point(4, 20);
 			this.TabProperties.Name = "TabProperties";
 			this.TabProperties.Size = new System.Drawing.Size(496, 142);
@@ -425,7 +421,7 @@ namespace TheBox
 			// 
 			// TabNPCs
 			// 
-			this.TabNPCs.Controls.Add(this.m_PageMobiles);
+			this.TabNPCs.Controls.Add(this.Mobiles);
 			this.TabNPCs.Location = new System.Drawing.Point(4, 20);
 			this.TabNPCs.Name = "TabNPCs";
 			this.TabNPCs.Size = new System.Drawing.Size(496, 142);
@@ -531,14 +527,11 @@ namespace TheBox
 			this.Map.Center = new System.Drawing.Point(0, 0);
 			this.Map.DisplayErrors = true;
 			this.Map.DrawObjects =
-			((System.Collections.Generic.List<TheBox.MapViewer.DrawObjects.IMapDrawable>)
-				(resources.GetObject("Map.DrawObjects")));
+			(System.Collections.Generic.List<TheBox.MapViewer.DrawObjects.IMapDrawable>)
+				resources.GetObject("Map.DrawObjects");
 			this.Map.DrawStatics = false;
 			this.Map.Location = new System.Drawing.Point(1, 1);
 			this.Map.Map = TheBox.MapViewer.Maps.Felucca;
-			mulManager1.CustomFolder = null;
-			mulManager1.Table = null;
-			this.Map.MulManager = mulManager1;
 			this.Map.Name = "Map";
 			this.Map.Navigation = TheBox.MapViewer.MapNavigation.LeftMouseButton;
 			this.Map.ShowCross = true;
@@ -595,7 +588,7 @@ namespace TheBox
 			// Tray
 			// 
 			this.Tray.ContextMenu = this.TrayMenu;
-			this.Tray.Icon = ((System.Drawing.Icon)(resources.GetObject("Tray.Icon")));
+			this.Tray.Icon = (System.Drawing.Icon)resources.GetObject("Tray.Icon");
 			this.Tray.Text = "Pandora\'s Box";
 			this.Tray.Visible = true;
 			this.Tray.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tray_MouseDown);
@@ -629,7 +622,7 @@ namespace TheBox
 			// menuItem3
 			// 
 			this.menuItem3.Index = 3;
-			this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.miViewDataFolder, this.miViewLog});
+			this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.miViewDataFolder, this.miViewLog });
 			this.menuItem3.Text = "Common.View";
 			// 
 			// miViewDataFolder
@@ -669,7 +662,7 @@ namespace TheBox
 			// numHue
 			// 
 			this.numHue.Location = new System.Drawing.Point(24, 0);
-			this.numHue.Maximum = new decimal(new int[] {3000, 0, 0, 0});
+			this.numHue.Maximum = new decimal(new int[] { 3000, 0, 0, 0 });
 			this.numHue.Name = "numHue";
 			this.numHue.Size = new System.Drawing.Size(48, 20);
 			this.numHue.TabIndex = 6;
@@ -678,7 +671,7 @@ namespace TheBox
 			// boxImgLst
 			// 
 			this.boxImgLst.ImageStream =
-				((System.Windows.Forms.ImageListStreamer)(resources.GetObject("boxImgLst.ImageStream")));
+				(System.Windows.Forms.ImageListStreamer)resources.GetObject("boxImgLst.ImageStream");
 			this.boxImgLst.TransparentColor = System.Drawing.Color.Transparent;
 			this.boxImgLst.Images.SetKeyName(0, "");
 			this.boxImgLst.Images.SetKeyName(1, "");
@@ -699,7 +692,7 @@ namespace TheBox
 			// 
 			// pctCap
 			// 
-			this.pctCap.Image = ((System.Drawing.Image)(resources.GetObject("pctCap.Image")));
+			this.pctCap.Image = (System.Drawing.Image)resources.GetObject("pctCap.Image");
 			this.pctCap.Location = new System.Drawing.Point(656, 0);
 			this.pctCap.Name = "pctCap";
 			this.pctCap.Size = new System.Drawing.Size(32, 20);
@@ -1045,18 +1038,18 @@ namespace TheBox
 			// 
 			// m_TravelTab
 			// 
-			this.m_TravelTab.Location = new System.Drawing.Point(0, 0);
-			this.m_TravelTab.Name = "m_TravelTab";
-			this.m_TravelTab.Size = new System.Drawing.Size(496, 142);
-			this.m_TravelTab.TabIndex = 0;
+			this.Travel.Location = new System.Drawing.Point(0, 0);
+			this.Travel.Name = "m_TravelTab";
+			this.Travel.Size = new System.Drawing.Size(496, 142);
+			this.Travel.TabIndex = 0;
 			// 
 			// m_PageProperties
 			// 
-			this.m_PageProperties.Location = new System.Drawing.Point(0, 0);
-			this.m_PageProperties.Name = "m_PageProperties";
-			this.m_PageProperties.SelectedProperty = null;
-			this.m_PageProperties.Size = new System.Drawing.Size(496, 142);
-			this.m_PageProperties.TabIndex = 0;
+			this.Properties.Location = new System.Drawing.Point(0, 0);
+			this.Properties.Name = "m_PageProperties";
+			this.Properties.SelectedProperty = null;
+			this.Properties.Size = new System.Drawing.Size(496, 142);
+			this.Properties.TabIndex = 0;
 			// 
 			// m_ItemsTab
 			// 
@@ -1067,10 +1060,10 @@ namespace TheBox
 			// 
 			// m_PageMobiles
 			// 
-			this.m_PageMobiles.Location = new System.Drawing.Point(0, 0);
-			this.m_PageMobiles.Name = "m_PageMobiles";
-			this.m_PageMobiles.Size = new System.Drawing.Size(496, 142);
-			this.m_PageMobiles.TabIndex = 0;
+			this.Mobiles.Location = new System.Drawing.Point(0, 0);
+			this.Mobiles.Name = "m_PageMobiles";
+			this.Mobiles.Size = new System.Drawing.Size(496, 142);
+			this.Mobiles.TabIndex = 0;
 			// 
 			// m_TabAdmin
 			// 
@@ -1127,7 +1120,7 @@ namespace TheBox
 			this.Controls.Add(this.SmallTab);
 			this.Controls.Add(this.BigTab);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "Box";
 			this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1155,9 +1148,9 @@ namespace TheBox
 			this.tabMap.ResumeLayout(false);
 			this.tabProps.ResumeLayout(false);
 			this.tabCustom.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numHue)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pctCap)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgHue)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numHue).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.pctCap).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.imgHue).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -1179,14 +1172,9 @@ namespace TheBox
 		private RecentHuesMenu m_HuesMenu;
 
 		/// <summary>
-		///     The next profile that should be loaded after this form is closed
-		/// </summary>
-		private string m_NextProfile;
-
-		/// <summary>
 		///     Gets the name of the profile that should be loaded after this instance is closed
 		/// </summary>
-		public string NextProfile { get { return m_NextProfile; } }
+		public string NextProfile { get; private set; }
 		#endregion
 
 		/// <summary>
@@ -1259,7 +1247,7 @@ namespace TheBox
 		private void TrayBox_Click(object sender, EventArgs e)
 		{
 			// Issue 34:  	 Visit Website - Tarion
-			Process.Start("http://code.google.com/p/pandorasbox3/");
+			_ = Process.Start("http://code.google.com/p/pandorasbox3/");
 		}
 
 		/// <summary>
@@ -1268,7 +1256,7 @@ namespace TheBox
 		private void TrayOptions_Click(object sender, EventArgs e)
 		{
 			var of = new OptionsForm(_profileManager);
-			of.ShowDialog(this);
+			_ = of.ShowDialog(this);
 		}
 
 		/// <summary>
@@ -1285,12 +1273,12 @@ namespace TheBox
 		/// </summary>
 		private void ChangeProfile(object sender, EventArgs e)
 		{
-			var mi = sender as MenuItem;
-
-			if (mi == null)
+			if (!(sender is MenuItem mi))
+			{
 				return;
+			}
 
-			m_NextProfile = mi.Text;
+			NextProfile = mi.Text;
 			m_Exit = true;
 			Close();
 		}
@@ -1339,7 +1327,7 @@ namespace TheBox
 		private void miAbout_Click(object sender, EventArgs e)
 		{
 			var form = new AboutForm();
-			form.ShowDialog();
+			_ = form.ShowDialog();
 		}
 
 		#region Box Menu
@@ -1384,7 +1372,9 @@ namespace TheBox
 		private void numHue_ValueChanged(object sender, EventArgs e)
 		{
 			if (!Created)
+			{
 				return;
+			}
 
 			if (numHue.Value != 0)
 			{
@@ -1423,7 +1413,9 @@ namespace TheBox
 		private void imgHue_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (!imgHue.Enabled)
+			{
 				return;
+			}
 
 			if (e.Button == MouseButtons.Left)
 			{
@@ -1485,7 +1477,9 @@ namespace TheBox
 			}
 
 			if (SmallTab.SelectedTab != page)
+			{
 				SmallTab.SelectedTab = page;
+			}
 		}
 
 		/// <summary>
@@ -1513,11 +1507,11 @@ namespace TheBox
 		{
 			if (BigTab.SelectedTab == TabTravel)
 			{
-				m_TravelTab.DoKeys(this, e);
+				Travel.DoKeys(this, e);
 			}
 			else if (BigTab.SelectedTab == TabNPCs)
 			{
-				m_PageMobiles.DoKeys(this, e);
+				Mobiles.DoKeys(this, e);
 			}
 			else if (BigTab.SelectedTab == TabDeco)
 			{
@@ -1560,14 +1554,14 @@ namespace TheBox
 			{
 				_splash.SetStatusText("Connecting to BoxServer");
 				var form = new BoxServerForm(true);
-				form.ShowDialog();
+				_ = form.ShowDialog();
 			}
 
 			// Startup programs
 			_splash.SetStatusText("Launching startup programs");
 			_profileManager.Profile.Launcher.PerformStartup();
 
-			Text = string.Format(
+			Text = String.Format(
 				Pandora.Localization.TextProvider["Misc.BoxTitle"],
 				_profileManager.Profile.Name,
 				Pandora.BoxConnection.Connected
@@ -1595,28 +1589,34 @@ namespace TheBox
 			// Build profiles menu items
 			var miNewProfile = new MenuItem(Pandora.Localization.TextProvider["Common.New"]);
 			miNewProfile.Click += miNewProfile_Click;
-			miProfile.MenuItems.Add(miNewProfile);
+			_ = miProfile.MenuItems.Add(miNewProfile);
 
 			var miExportProfile = new MenuItem(Pandora.Localization.TextProvider["Common.Export"]);
 			miExportProfile.Click += miExportProfile_Click;
-			miProfile.MenuItems.Add(miExportProfile);
+			_ = miProfile.MenuItems.Add(miExportProfile);
 
 			var miImportProfile = new MenuItem(Pandora.Localization.TextProvider["Common.Import"]);
 			miImportProfile.Click += miImportProfile_Click;
-			miProfile.MenuItems.Add(miImportProfile);
+			_ = miProfile.MenuItems.Add(miImportProfile);
 
-			miProfile.MenuItems.Add(new MenuItem("-"));
+			_ = miProfile.MenuItems.Add(new MenuItem("-"));
 
 			foreach (var s in Profile.ExistingProfiles)
 			{
-				var mi = new MenuItem(s);
-				mi.Checked = s == _profileManager.Profile.Name;
+				var mi = new MenuItem(s)
+				{
+					Checked = s == _profileManager.Profile.Name
+				};
 				if (!mi.Checked)
+				{
 					mi.Click += ChangeProfile;
+				}
 				else
+				{
 					mi.Enabled = false;
+				}
 
-				miProfile.MenuItems.Add(mi);
+				_ = miProfile.MenuItems.Add(mi);
 			}
 
 			bSetHue.Tag = new CommandCallback(SetHue);
@@ -1643,7 +1643,7 @@ namespace TheBox
 
 				Pandora.Art.Art = ArtViewer.Art.NPCs;
 				Pandora.Art.ArtIndex = _profileManager.Profile.Mobiles.ArtIndex;
-				m_PageMobiles.RefreshArt();
+				Mobiles.RefreshArt();
 			}
 			else if (page == TabProperties)
 			{
@@ -1682,10 +1682,14 @@ namespace TheBox
 		private void VerifyVisibility()
 		{
 			if (Left < 0)
+			{
 				Left = 0;
+			}
 
 			if (Top < 0)
+			{
 				Top = 0;
+			}
 
 			double xdelta = Right - SystemInformation.WorkingArea.Width;
 			double ydelta = Bottom - SystemInformation.WorkingArea.Height;
@@ -1716,7 +1720,7 @@ namespace TheBox
 		/// </summary>
 		public void UpdateBoxData()
 		{
-			m_PageMobiles.RefreshData();
+			Mobiles.RefreshData();
 			m_ItemsTab.UpdateBoxData();
 		}
 
@@ -1754,7 +1758,7 @@ namespace TheBox
 		/// <param name="nextProfile">The name of the next profile</param>
 		public void ChangeProfile(string nextProfile)
 		{
-			m_NextProfile = nextProfile;
+			NextProfile = nextProfile;
 			m_Exit = true;
 			Close();
 		}
@@ -1792,7 +1796,7 @@ namespace TheBox
 			{
 				// Show screenshot control
 				var form = new CapForm();
-				form.ShowDialog();
+				_ = form.ShowDialog();
 			}
 		}
 
@@ -1816,7 +1820,7 @@ namespace TheBox
 		{
 			try
 			{
-				Process.Start(Pandora.ApplicationDataFolder);
+				_ = Process.Start(Pandora.ApplicationDataFolder);
 			}
 			catch
 			{ }
@@ -1833,7 +1837,7 @@ namespace TheBox
 			{
 				try
 				{
-					Process.Start(log);
+					_ = Process.Start(log);
 				}
 				catch
 				{ }
@@ -1862,13 +1866,15 @@ namespace TheBox
 		/// <param name="style">The style being applied</param>
 		private void SetButtonStyle(Control c, FlatStyle style)
 		{
-			var b = c as ButtonBase;
-
-			if (b != null)
+			if (c is ButtonBase b)
+			{
 				b.FlatStyle = style;
+			}
 
 			foreach (Control child in c.Controls)
+			{
 				SetButtonStyle(child, style);
+			}
 		}
 
 		private void bMenu_Click(object sender, EventArgs e)

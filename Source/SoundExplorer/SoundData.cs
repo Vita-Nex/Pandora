@@ -57,10 +57,10 @@ namespace SoundExplorer
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<GenericNode> Structure
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Structure; }
-			set { m_Structure = value; }
+			get => m_Structure;
+			set => m_Structure = value;
 		}
 
 		public SoundData()
@@ -120,18 +120,17 @@ namespace SoundExplorer
 
 			foreach (var o in gNode.Elements)
 			{
-				var child = o as GenericNode;
-				var item = o as UOSound;
-
-				if (child != null)
+				if (o is GenericNode child)
 				{
-					node.Nodes.Add(GetNode(child));
+					_ = node.Nodes.Add(GetNode(child));
 				}
-				else if (item != null)
+				else if (o is UOSound item)
 				{
-					var itemNode = new TreeNode(item.Name);
-					itemNode.Tag = item.Index;
-					node.Nodes.Add(itemNode);
+					var itemNode = new TreeNode(item.Name)
+					{
+						Tag = item.Index
+					};
+					_ = node.Nodes.Add(itemNode);
 				}
 			}
 

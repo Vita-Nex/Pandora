@@ -34,7 +34,7 @@ namespace TheBox.Common
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<object> Elements
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			get;
 			set;
@@ -68,9 +68,7 @@ namespace TheBox.Common
 		/// <returns>The comparison result</returns>
 		public int CompareTo(object obj)
 		{
-			var cmp = obj as GenericNode;
-
-			if (cmp != null)
+			if (obj is GenericNode cmp)
 			{
 				return Name.CompareTo(cmp.Name);
 			}

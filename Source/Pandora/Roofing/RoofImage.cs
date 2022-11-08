@@ -19,17 +19,13 @@ namespace TheBox.Roofing
 	/// </summary>
 	public class RoofImage
 	{
-		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		// Issue 10 - End
-
-		private readonly Bitmap m_Image;
 
 		/// <summary>
 		///     Gets or sets the data containing the structure of the roof
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<int> Data
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			get;
 			set;
@@ -48,7 +44,7 @@ namespace TheBox.Roofing
 		/// <summary>
 		///     Gets the roof image
 		/// </summary>
-		public Bitmap Image { get { return m_Image; } }
+		public Bitmap Image { get; }
 
 		/// <summary>
 		///     Creates a new RoofImage object
@@ -60,7 +56,7 @@ namespace TheBox.Roofing
 			// Issue 10 - End
 			Height = 0;
 			Width = 0;
-			m_Image = new Bitmap(240, 240);
+			Image = new Bitmap(240, 240);
 		}
 
 		/// <summary>
@@ -74,7 +70,7 @@ namespace TheBox.Roofing
 			{
 				for (var j = rect.Top; j <= rect.Bottom; j++)
 				{
-					m_Image.SetPixel(i, j, color);
+					Image.SetPixel(i, j, color);
 				}
 			}
 		}
@@ -85,11 +81,11 @@ namespace TheBox.Roofing
 		public void CreateImage()
 		{
 			// Use white background
-			for (var x = 0; x < m_Image.Width; x++)
+			for (var x = 0; x < Image.Width; x++)
 			{
-				for (var y = 0; y < m_Image.Height; y++)
+				for (var y = 0; y < Image.Height; y++)
 				{
-					m_Image.SetPixel(x, y, Color.White);
+					Image.SetPixel(x, y, Color.White);
 				}
 			}
 
@@ -99,8 +95,8 @@ namespace TheBox.Roofing
 			}
 
 			// Scale factor
-			var dw = m_Image.Width / Width;
-			var dh = m_Image.Height / Height;
+			var dw = Image.Width / Width;
+			var dh = Image.Height / Height;
 
 			if (dh > dw)
 			{
@@ -113,21 +109,21 @@ namespace TheBox.Roofing
 
 			var basePoint = Point.Empty;
 
-			basePoint.X = (m_Image.Width - Width * dw) / 2;
-			basePoint.Y = (m_Image.Height - Height * dh) / 2;
+			basePoint.X = (Image.Width - (Width * dw)) / 2;
+			basePoint.Y = (Image.Height - (Height * dh)) / 2;
 
 			var p = 0; // Counter for the data
 			var rect = Rectangle.Empty;
 
 			for (var y = 0; y < Height; y++)
 			{
-				rect.Y = y * dh + basePoint.Y;
-				rect.Height = (y + 1) * dh + basePoint.Y - rect.Y;
+				rect.Y = (y * dh) + basePoint.Y;
+				rect.Height = ((y + 1) * dh) + basePoint.Y - rect.Y;
 
 				for (var x = 0; x < Width; x++)
 				{
-					rect.X = x * dw + basePoint.X;
-					rect.Width = (x + 1) * dw + basePoint.X - rect.X;
+					rect.X = (x * dw) + basePoint.X;
+					rect.Width = ((x + 1) * dw) + basePoint.X - rect.X;
 
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					if (Data[p] > 0)
@@ -136,7 +132,7 @@ namespace TheBox.Roofing
 						PaintRect(rect, Color.FromArgb(0, Math.Min(255, (Data[p] * 10) + 100), 0));
 					}
 					else if (Data[p] < 0)
-						// Issue 10 - End
+					// Issue 10 - End
 					{
 						// Data negative: not valid piece - Use Red
 						PaintRect(rect, Color.FromArgb(Math.Max(-255, (-Data[p] * 10) + 100), 0, 0));

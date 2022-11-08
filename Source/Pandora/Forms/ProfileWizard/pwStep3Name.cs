@@ -84,41 +84,39 @@ namespace TheBox.Forms.ProfileWizard
 		}
 		#endregion
 
-		private string m_ProfileName = "";
-
 		/// <summary>
 		///     Gets the name of the profile
 		/// </summary>
-		public string ProfileName { get { return m_ProfileName; } }
+		public string ProfileName { get; private set; } = "";
 
 		private void Step3Name_ValidateStep(object sender, CancelEventArgs e)
 		{
-			if (m_ProfileName.Length == 0)
+			if (ProfileName.Length == 0)
 			{
-				MessageBox.Show(ProfileWizard.TextProvider["WizProfile.EmptyName"]);
+				_ = MessageBox.Show(ProfileWizard.TextProvider["WizProfile.EmptyName"]);
 				e.Cancel = true;
 			}
 
-			if (Profile.ExistingProfiles.Contains(m_ProfileName))
+			if (Profile.ExistingProfiles.Contains(ProfileName))
 			{
-				MessageBox.Show(string.Format(ProfileWizard.TextProvider["WizProfile.ProfileExists"], m_ProfileName));
+				_ = MessageBox.Show(String.Format(ProfileWizard.TextProvider["WizProfile.ProfileExists"], ProfileName));
 				txProfileName.Text = "";
 				e.Cancel = true;
 			}
 
 			var wiz = Wizard as ProfileWizard;
 
-			wiz.Profile.Name = m_ProfileName;
+			wiz.Profile.Name = ProfileName;
 		}
 
 		private void txProfileName_TextChanged(object sender, EventArgs e)
 		{
-			m_ProfileName = txProfileName.Text;
+			ProfileName = txProfileName.Text;
 		}
 
 		private void pwStep3Name_ShowStep(object sender, ShowStepEventArgs e)
 		{
-			txProfileName.Focus();
+			_ = txProfileName.Focus();
 		}
 	}
 }

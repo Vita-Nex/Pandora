@@ -9,18 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using TheBox.Common;
-using TheBox.CustomMessageBox;
 using TheBox.MapViewer.DrawObjects;
-
-using Ultima;
 
 // Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 // Issue 10 - End
@@ -119,15 +113,10 @@ namespace TheBox.MapViewer
 			SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
 			// Initialize variables
-			m_DrawObjects = new List<IMapDrawable>();
-			
+			DrawObjects = new List<IMapDrawable>();
+
 			// Create the default view. This will be most likely changed by the frame
 			m_ViewInfo = new MapViewInfo(this);
-		}
-
-		static MapViewer()
-		{
-			m_MulManager = new MulManager();
 		}
 
 		#region Events
@@ -152,10 +141,7 @@ namespace TheBox.MapViewer
 		/// <param name="e">Standard EventArgs</param>
 		protected virtual void OnMapLocationChanged(EventArgs e)
 		{
-			if (MapLocationChanged != null)
-			{
-				MapLocationChanged(this, e);
-			}
+			MapLocationChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -164,10 +150,7 @@ namespace TheBox.MapViewer
 		/// <param name="e">Standard EventArgs</param>
 		protected virtual void OnMapChanged(EventArgs e)
 		{
-			if (MapChanged != null)
-			{
-				MapChanged(this, e);
-			}
+			MapChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -175,10 +158,7 @@ namespace TheBox.MapViewer
 		/// </summary>
 		protected virtual void OnZoomLevelChanged(EventArgs e)
 		{
-			if (ZoomLevelChanged != null)
-			{
-				ZoomLevelChanged(this, e);
-			}
+			ZoomLevelChanged?.Invoke(this, e);
 		}
 		#endregion
 
@@ -229,11 +209,11 @@ namespace TheBox.MapViewer
 
 			var index = (int)map;
 
-			var umap = Ultima.Map.Maps[index];
+			var umap = GetMapByID(index);
 
 			if (umap == null)
 			{
-				throw new FileNotFoundException(string.Format("File {0} doens't exist. Impossible to extract the map.", map));
+				throw new FileNotFoundException(String.Format("File {0} doens't exist. Impossible to extract the map.", map));
 			}
 
 			var step = (int)scale;
@@ -268,7 +248,7 @@ namespace TheBox.MapViewer
 				return;
 			}
 
-			Map umap = Ultima.Map.Maps[(int)m_Map];
+			var umap = GetMapByID((int)m_Map);
 
 			if (umap == null)
 			{
@@ -318,10 +298,12 @@ namespace TheBox.MapViewer
 					var font = new Font(FontFamily.GenericSansSerif, 8);
 					var color = SystemColors.ControlText;
 					Brush brush = new SolidBrush(color);
-					var format = new StringFormat();
-					format.LineAlignment = StringAlignment.Center;
+					var format = new StringFormat
+					{
+						LineAlignment = StringAlignment.Center
+					};
 
-					var error = string.Format(
+					var error = String.Format(
 						"An unexpected error occurred. A crash log has been generated at {0}.",
 						crashlog);
 
@@ -330,13 +312,13 @@ namespace TheBox.MapViewer
 					return;
 				}
 			}
-			
+
 			e.Graphics.DrawImage(m_Image, 0, 0);
 
 			//
 			// DRAW OBJECTS
 			//
-			foreach (var drawObject in m_DrawObjects)
+			foreach (var drawObject in DrawObjects)
 			{
 				if (drawObject.IsVisible(m_ViewInfo.Bounds, m_Map))
 				{
@@ -372,7 +354,7 @@ namespace TheBox.MapViewer
 		///     Specifies whether the map should draw statics or not
 		/// </summary>
 		private bool m_drawStatics;
-		
+
 		/// <summary>
 		///     The image used to draw the control
 		/// </summary>
@@ -402,38 +384,16 @@ namespace TheBox.MapViewer
 		///     The bottom block read from file
 		/// </summary>
 		private int m_BottomBlock;
-		
-		/// <summary>
-		///     Error display on the control surface
-		/// </summary>
-		private bool m_DisplayErrors = true;
-		
+
 		/// <summary>
 		///     Displays the cross at the center of the map
 		/// </summary>
 		private bool m_ShowCross;
 
-		private List<IMapDrawable> m_DrawObjects;
-
 		/// <summary>
 		///     Contains all the information about the current view of the map on the control
 		/// </summary>
 		private readonly MapViewInfo m_ViewInfo;
-
-		/// <summary>
-		///     The file manager to use with Pandora's Box
-		/// </summary>
-		private static MulManager m_MulManager;
-
-		/// <summary>
-		///     Specifies whether the map viewer should zoom when using the mouse wheel
-		/// </summary>
-		private bool m_WheelZoom;
-
-		/// <summary>
-		///     Specifies the built in navigation mode
-		/// </summary>
-		private MapNavigation m_Navigation = MapNavigation.None;
 
 		/// <summary>
 		///     Specifies the X-Ray mode where statics below the map are displayed
@@ -446,26 +406,33 @@ namespace TheBox.MapViewer
 		///     Gets or sets the navigation style
 		/// </summary>
 		[Category("Settings"), Description("Specifies the navigation style on the map viewer")]
-		public MapNavigation Navigation { get { return m_Navigation; } set { m_Navigation = value; } }
-		
+		public MapNavigation Navigation { get; set; } = MapNavigation.None;
+
 		/// <summary>
 		///     The zoom level of the map. Acceptable values are from -3 to 4.
 		/// </summary>
 		[Category("Settings"), Description("The zoom level for the map. Values range from -3 to 4.")]
 		public int ZoomLevel
 		{
-			get { return m_ViewInfo.ZoomLevel; }
+			get => m_ViewInfo.ZoomLevel;
 			set
 			{
 				if (m_ViewInfo.ZoomLevel == value)
+				{
 					return;
+				}
 
 				var zoomLevel = value;
 
 				if (zoomLevel > 4)
+				{
 					zoomLevel = 4;
+				}
+
 				if (zoomLevel < -3)
+				{
 					zoomLevel = -3;
+				}
 
 				// Calculate the map view
 				m_ViewInfo.ZoomLevel = zoomLevel;
@@ -482,7 +449,7 @@ namespace TheBox.MapViewer
 		[Category("Settings"), Description("Controls the display of statics on the control.")]
 		public bool DrawStatics
 		{
-			get { return m_drawStatics; }
+			get => m_drawStatics;
 			set
 			{
 				if (m_drawStatics != value)
@@ -498,25 +465,25 @@ namespace TheBox.MapViewer
 		///     Gets the width of the current map
 		/// </summary>
 		[Browsable(false)]
-		public int MapWidth { get { return m_ViewInfo.MapSize.Width; } }
+		public int MapWidth => m_ViewInfo.MapSize.Width;
 
 		/// <summary>
 		///     Gets the height of the current map
 		/// </summary>
 		[Browsable(false)]
-		public int MapHeight { get { return m_ViewInfo.MapSize.Height; } }
+		public int MapHeight => m_ViewInfo.MapSize.Height;
 
 		/// <summary>
 		///     Gets the number of horizontal map blocks for the current map
 		/// </summary>
 		[Browsable(false)]
-		private int XBlocks { get { return m_ViewInfo.MapSize.Width / 8; } }
+		private int XBlocks => m_ViewInfo.MapSize.Width / 8;
 
 		/// <summary>
 		///     Gets the number of vertical map blocks for the current map
 		/// </summary>
 		[Browsable(false)]
-		private int YBlocks { get { return m_ViewInfo.MapSize.Height / 8; } }
+		private int YBlocks => m_ViewInfo.MapSize.Height / 8;
 
 		/// <summary>
 		///     Gets or sets the coordinates of the center of the map
@@ -534,7 +501,7 @@ namespace TheBox.MapViewer
 					OnMapLocationChanged(new EventArgs());
 				}
 			}
-			get { return m_ViewInfo.Center; }
+			get => m_ViewInfo.Center;
 		}
 
 		/// <summary>
@@ -543,7 +510,7 @@ namespace TheBox.MapViewer
 		[Category("Settings"), Description("The map type displayed.")]
 		public Maps Map
 		{
-			get { return m_Map; }
+			get => m_Map;
 			set
 			{
 				if (value != m_Map)
@@ -563,7 +530,7 @@ namespace TheBox.MapViewer
 		///     Gets or sets a value stating whether error messages get displayed on the control surface
 		/// </summary>
 		[Category("Settings"), Description("Specifies whether the control displays error messages on its surface")]
-		public bool DisplayErrors { get { return m_DisplayErrors; } set { m_DisplayErrors = value; } }
+		public bool DisplayErrors { get; set; } = true;
 
 		/// <summary>
 		///     Controls the display of a small cross at the center of the control
@@ -571,7 +538,7 @@ namespace TheBox.MapViewer
 		[Category("Settings"), Description("Controls the display of a small cross at the center of the control")]
 		public bool ShowCross
 		{
-			get { return m_ShowCross; }
+			get => m_ShowCross;
 			set
 			{
 				if (m_ShowCross != value)
@@ -587,54 +554,14 @@ namespace TheBox.MapViewer
 		/// </summary>
 		[Browsable(false)]
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		public List<IMapDrawable> DrawObjects
-			// Issue 10 - End
-		{
-			get { return m_DrawObjects; }
-			set { m_DrawObjects = value; }
-		}
-
-		/// <summary>
-		///     Gets or sets the mul file manager
-		/// </summary>
-		[Browsable(false)]
-		public MulManager MulManager
-		{
-			get
-			{
-				if (m_MulManager == null)
-				{
-					m_MulManager = new MulManager();
-				}
-
-				return m_MulManager;
-			}
-			set { m_MulManager = value; }
-		}
-
-		/// <summary>
-		///     Gets the mul file manager
-		/// </summary>
-		[Browsable(false)]
-		public static MulManager MulFileManager
-		{
-			get
-			{
-				if (m_MulManager == null)
-				{
-					m_MulManager = new MulManager();
-				}
-
-				return m_MulManager;
-			}
-			set { m_MulManager = value; }
-		}
+		public List<IMapDrawable> DrawObjects { get; set; }
+		// Issue 10 - End
 
 		/// <summary>
 		///     States whether the map viewer can use the mouse wheel for zoom purposes
 		/// </summary>
 		[Category("Settings"), Description("States whether the map viewer will use mouse wheel zoom input for zooming.")]
-		public bool WheelZoom { get { return m_WheelZoom; } set { m_WheelZoom = value; } }
+		public bool WheelZoom { get; set; }
 
 		/// <summary>
 		///     Specifies the X-Ray view mode
@@ -642,7 +569,7 @@ namespace TheBox.MapViewer
 		[Category("Settings"), Description("Enables X-Ray view where statics below the ground are displayed")]
 		public bool XRayView
 		{
-			get { return m_XRayView; }
+			get => m_XRayView;
 			set
 			{
 				if (m_XRayView != value)
@@ -678,7 +605,7 @@ namespace TheBox.MapViewer
 		/// </summary>
 		protected override void OnMouseWheel(MouseEventArgs e)
 		{
-			if (m_WheelZoom)
+			if (WheelZoom)
 			{
 				if (e.Delta > 0)
 				{
@@ -698,7 +625,7 @@ namespace TheBox.MapViewer
 		{
 			var navigate = false;
 
-			switch (m_Navigation)
+			switch (Navigation)
 			{
 				case MapNavigation.AnyMouseButton:
 
@@ -730,7 +657,7 @@ namespace TheBox.MapViewer
 			base.OnMouseDown(e);
 		}
 		#endregion
-		
+
 		/// <summary>
 		///     Converts a point on the control surface to map coordinates
 		/// </summary>
@@ -783,7 +710,7 @@ namespace TheBox.MapViewer
 			m_RightBlock = BottomRight.XBlock;
 			m_TopBlock = TopLeft.YBlock;
 			m_BottomBlock = BottomRight.YBlock;
-			
+
 			CreateImage();
 
 			// Set the refreshed flag to true
@@ -821,7 +748,7 @@ namespace TheBox.MapViewer
 		/// <param name="drawObject">The IMapDrawable object that should be added</param>
 		public void AddDrawObject(IMapDrawable drawObject)
 		{
-			m_DrawObjects.Add(drawObject);
+			DrawObjects.Add(drawObject);
 
 			// Redraw the map
 			Refresh();
@@ -834,10 +761,12 @@ namespace TheBox.MapViewer
 		/// <param name="refresh">Specifies whether the map should be redrawn after the object is added</param>
 		public void AddDrawObject(IMapDrawable drawObject, bool refresh)
 		{
-			m_DrawObjects.Add(drawObject);
+			DrawObjects.Add(drawObject);
 
 			if (refresh)
+			{
 				Refresh();
+			}
 		}
 
 		/// <summary>
@@ -846,8 +775,10 @@ namespace TheBox.MapViewer
 		/// <param name="drawObject">The draw object to be removed</param>
 		public void RemoveDrawObject(IMapDrawable drawObject)
 		{
-			if (m_DrawObjects.Contains(drawObject))
-				m_DrawObjects.Remove(drawObject);
+			if (DrawObjects.Contains(drawObject))
+			{
+				_ = DrawObjects.Remove(drawObject);
+			}
 		}
 
 		/// <summary>
@@ -855,7 +786,7 @@ namespace TheBox.MapViewer
 		/// </summary>
 		public void RemoveAllDrawObjects()
 		{
-			m_DrawObjects.Clear();
+			DrawObjects.Clear();
 			Refresh();
 		}
 
@@ -886,7 +817,7 @@ namespace TheBox.MapViewer
 		/// <returns>The height corresponding to the point</returns>
 		public int GetMapHeight(Point point, int mapIndex)
 		{
-			var umap = Ultima.Map.Maps[mapIndex];
+			var umap = GetMapByID(mapIndex);
 
 			if (umap == null || point.X < 0 || point.X > umap.Height || point.Y < 0 || point.Y > umap.Height)
 			{
@@ -896,6 +827,22 @@ namespace TheBox.MapViewer
 			var lt = umap.Tiles.GetLandTile(point.X, point.Y);
 
 			return lt.Z;
+		}
+
+		public static Ultima.Map GetMapByID(int mapID)
+		{
+			Ultima.Map umap = null;
+
+			foreach (var um in Ultima.Map.Maps)
+			{
+				if (um.MapID == mapID)
+				{
+					umap = um;
+					break;
+				}
+			}
+
+			return umap;
 		}
 
 		/// <summary>
@@ -910,10 +857,12 @@ namespace TheBox.MapViewer
 
 			var rect = new Rectangle(c.X - (range / 2), c.Y - (range / 2), range, range);
 
-			foreach (var obj in m_DrawObjects)
+			foreach (var obj in DrawObjects)
 			{
 				if (obj.IsVisible(rect, m_Map))
+				{
 					return obj;
+				}
 			}
 
 			return null;

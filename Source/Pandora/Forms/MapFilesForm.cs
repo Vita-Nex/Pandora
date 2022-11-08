@@ -70,7 +70,7 @@ namespace TheBox.Forms
 			this.ControlBox = false;
 			this.Controls.Add(this.pBar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "MapFilesForm";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -81,7 +81,7 @@ namespace TheBox.Forms
 
 		private void MapFilesForm_Load(object sender, EventArgs e)
 		{
-			ThreadPool.QueueUserWorkItem(DoWork);
+			_ = ThreadPool.QueueUserWorkItem(DoWork);
 		}
 
 		private void DoWork(object o)

@@ -61,7 +61,7 @@ namespace TheBox.Controls.Params
 		{
 			this.labName = new System.Windows.Forms.Label();
 			this.num = new System.Windows.Forms.NumericUpDown();
-			((System.ComponentModel.ISupportInitialize)(this.num)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.num).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labName
@@ -71,7 +71,7 @@ namespace TheBox.Controls.Params
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((byte)(0)));
+				0);
 			this.labName.Location = new System.Drawing.Point(0, 0);
 			this.labName.Name = "labName";
 			this.labName.Size = new System.Drawing.Size(96, 16);
@@ -80,7 +80,7 @@ namespace TheBox.Controls.Params
 			// num
 			// 
 			this.num.Location = new System.Drawing.Point(0, 16);
-			this.num.Maximum = new decimal(new int[] {Int32.MaxValue, 0, 0, 0});
+			this.num.Maximum = new decimal(new int[] { Int32.MaxValue, 0, 0, 0 });
 			this.num.Name = "num";
 			this.num.Size = new System.Drawing.Size(96, 20);
 			this.num.TabIndex = 1;
@@ -93,7 +93,7 @@ namespace TheBox.Controls.Params
 			this.Name = "NumericParam";
 			this.Size = new System.Drawing.Size(96, 36);
 			this.Load += new System.EventHandler(this.NumericParam_Load);
-			((System.ComponentModel.ISupportInitialize)(this.num)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.num).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -149,9 +149,9 @@ namespace TheBox.Controls.Params
 			}
 		}
 
-		public string Value { get { return num.Value.ToString(); } }
+		public string Value => num.Value.ToString();
 
-		public bool IsDefined { get { return true; } }
+		public bool IsDefined => true;
 		#endregion
 
 		private void Hues_HueChanged(object sender, EventArgs e)

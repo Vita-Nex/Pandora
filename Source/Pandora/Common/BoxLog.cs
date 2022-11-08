@@ -21,22 +21,6 @@ namespace TheBox.Common
 		// Intergration of log4net
 
 		#region Imports
-		//Struct to retrive system info
-		[StructLayout(LayoutKind.Sequential)]
-		private struct SYSTEM_INFO
-		{
-			public readonly uint dwOemId;
-			public readonly uint dwPageSize;
-			public readonly uint lpMinimumApplicationAddress;
-			public readonly uint lpMaximumApplicationAddress;
-			public readonly uint dwActiveProcessorMask;
-			public readonly uint dwNumberOfProcessors;
-			public readonly uint dwProcessorType;
-			public readonly uint dwAllocationGranularity;
-			public readonly uint dwProcessorLevel;
-			public readonly uint dwProcessorRevision;
-		}
-
 		//struct to retrive memory status
 		[StructLayout(LayoutKind.Sequential)]
 		private struct MEMORYSTATUS
@@ -59,18 +43,14 @@ namespace TheBox.Common
 		private const int PROCESSOR_MIPS_R4000 = 4000;
 		private const int PROCESSOR_ALPHA_21064 = 21064;
 
-		//To get system information
-		[DllImport("kernel32")]
-		static extern void GetSystemInfo(ref SYSTEM_INFO pSI);
-
 		//To get Memory status
 		[DllImport("kernel32")]
-		static extern void GlobalMemoryStatus(ref MEMORYSTATUS buf);
+		private static extern void GlobalMemoryStatus(ref MEMORYSTATUS buf);
 		#endregion
 
 		private readonly string filename;
 		private StreamWriter m_Stream;
-		
+
 		public BoxLog(string filename)
 		{
 			this.filename = filename;
@@ -79,7 +59,9 @@ namespace TheBox.Common
 
 			// Ensure directory
 			if (!Directory.Exists(folder))
-				Directory.CreateDirectory(folder);
+			{
+				_ = Directory.CreateDirectory(folder);
+			}
 
 			try
 			{
@@ -99,32 +81,6 @@ namespace TheBox.Common
 		/// </summary>
 		private void LogHeader()
 		{
-			// System info
-			var pSI = new SYSTEM_INFO();
-			GetSystemInfo(ref pSI);
-			string CPUType;
-			switch (pSI.dwProcessorType)
-			{
-				case PROCESSOR_INTEL_386:
-					CPUType = "Intel 386";
-					break;
-				case PROCESSOR_INTEL_486:
-					CPUType = "Intel 486";
-					break;
-				case PROCESSOR_INTEL_PENTIUM:
-					CPUType = "Intel Pentium";
-					break;
-				case PROCESSOR_MIPS_R4000:
-					CPUType = "MIPS R4000";
-					break;
-				case PROCESSOR_ALPHA_21064:
-					CPUType = "DEC Alpha 21064";
-					break;
-				default:
-					CPUType = "(unknown)";
-					break;
-			}
-
 			var memSt = new MEMORYSTATUS();
 			GlobalMemoryStatus(ref memSt);
 
@@ -133,17 +89,11 @@ namespace TheBox.Common
 			m_Stream.WriteLine("");
 			m_Stream.WriteLine(DateTime.Now.ToString());
 			m_Stream.WriteLine("Windows version: " + Environment.OSVersion.Version);
-
-			m_Stream.WriteLine("Processor family: " + CPUType);
-
 			m_Stream.WriteLine("Physical memory: " + (memSt.dwTotalPhys / 1024));
 			m_Stream.WriteLine();
 		}
 
-		private string CurrentTime
-		{
-			get { return string.Format("[{0}:{1}:{2}]", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second); }
-		}
+		private string CurrentTime => String.Format("[{0}:{1}:{2}]", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
 
 		public void WriteEntry(string text)
 		{
@@ -156,7 +106,7 @@ namespace TheBox.Common
 
 		public void WriteEntry(string format, params object[] args)
 		{
-			WriteEntry(string.Format(format, args));
+			WriteEntry(String.Format(format, args));
 		}
 
 		public void WriteError(Exception error, string additionalInfo)
@@ -166,10 +116,14 @@ namespace TheBox.Common
 				WriteEntry("**** ERROR ****");
 
 				if (error != null)
+				{
 					m_Stream.WriteLine(error.ToString());
+				}
 
 				if (additionalInfo != null)
+				{
 					m_Stream.WriteLine("Additional information: {0}", additionalInfo);
+				}
 
 				m_Stream.Flush();
 			}
@@ -177,7 +131,7 @@ namespace TheBox.Common
 
 		public void WriteError(Exception error, string format, params object[] args)
 		{
-			WriteError(error, string.Format(format, args));
+			WriteError(error, String.Format(format, args));
 		}
 
 		/// <summary>

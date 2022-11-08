@@ -37,8 +37,6 @@ namespace TheBox.Forms.Editors
 			InitializeComponent();
 
 			Pandora.Localization.LocalizeControl(this);
-
-			m_Preview.MulFileManager = Pandora.Profile.MulManager;
 		}
 
 		/// <summary>
@@ -127,7 +125,7 @@ namespace TheBox.Forms.Editors
 			this.Controls.Add(this.m_Preview);
 			this.Controls.Add(this.pGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "QuickMobile";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -156,11 +154,13 @@ namespace TheBox.Forms.Editors
 			}
 			set
 			{
-				m_Backup = new BoxMobile();
-				m_Backup.Art = value.Art;
-				m_Backup.CanBeNamed = value.CanBeNamed;
-				m_Backup.Hue = value.Hue;
-				m_Backup.Name = value.Name;
+				m_Backup = new BoxMobile
+				{
+					Art = value.Art,
+					CanBeNamed = value.CanBeNamed,
+					Hue = value.Hue,
+					Name = value.Name
+				};
 
 				m_Mobile = value;
 				pGrid.SelectedObject = m_Mobile;
@@ -179,7 +179,7 @@ namespace TheBox.Forms.Editors
 		{
 			if (m_Mobile.Name.Length == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["NPCs.NameError"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["NPCs.NameError"]);
 				return;
 			}
 

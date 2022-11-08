@@ -63,9 +63,9 @@ namespace TheBox.Forms
 			// tx
 			// 
 			this.tx.Anchor =
-			((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top |
-													System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) |
-												  System.Windows.Forms.AnchorStyles.Right)));
+			System.Windows.Forms.AnchorStyles.Top |
+													System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left |
+												  System.Windows.Forms.AnchorStyles.Right;
 			this.tx.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.tx.Location = new System.Drawing.Point(8, 8);
 			this.tx.Multiline = true;
@@ -79,8 +79,8 @@ namespace TheBox.Forms
 			// bClose
 			// 
 			this.bClose.Anchor =
-			((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom |
-												  System.Windows.Forms.AnchorStyles.Left)));
+			System.Windows.Forms.AnchorStyles.Bottom |
+												  System.Windows.Forms.AnchorStyles.Left;
 			this.bClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.bClose.Location = new System.Drawing.Point(118, 232);
 			this.bClose.Name = "bClose";
@@ -95,7 +95,7 @@ namespace TheBox.Forms
 			this.ClientSize = new System.Drawing.Size(296, 261);
 			this.Controls.Add(this.bClose);
 			this.Controls.Add(this.tx);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "GenericLongMessage";
 			this.SizeChanged += new System.EventHandler(this.GenericLongMessage_SizeChanged);
 			this.Load += new System.EventHandler(this.GenericLongMessage_Load);
@@ -117,7 +117,7 @@ namespace TheBox.Forms
 		private void GenericLongMessage_Load(object sender, EventArgs e)
 		{
 			tx.Select(0, 0);
-			bClose.Focus();
+			_ = bClose.Focus();
 		}
 	}
 }

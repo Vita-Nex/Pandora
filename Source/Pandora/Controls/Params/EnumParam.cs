@@ -69,7 +69,7 @@ namespace TheBox.Controls.Params
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.labName.Location = new System.Drawing.Point(0, 0);
 			this.labName.Name = "labName";
 			this.labName.Size = new System.Drawing.Size(96, 16);
@@ -101,10 +101,7 @@ namespace TheBox.Controls.Params
 
 		private void cmb_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (EnumValueChanged != null)
-			{
-				EnumValueChanged(this, new EventArgs());
-			}
+			EnumValueChanged?.Invoke(this, new EventArgs());
 		}
 
 		/// <summary>
@@ -112,7 +109,7 @@ namespace TheBox.Controls.Params
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<object> EnumValues
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			set
 			{
@@ -124,7 +121,7 @@ namespace TheBox.Controls.Params
 
 					foreach (string s in value)
 					{
-						cmb.Items.Add(s);
+						_ = cmb.Items.Add(s);
 					}
 
 					cmb.EndUpdate();
@@ -143,9 +140,9 @@ namespace TheBox.Controls.Params
 			}
 		}
 
-		public string Value { get { return cmb.SelectedItem as string; } }
+		public string Value => cmb.SelectedItem as string;
 
-		public bool IsDefined { get { return true; } }
+		public bool IsDefined => true;
 		#endregion
 	}
 }

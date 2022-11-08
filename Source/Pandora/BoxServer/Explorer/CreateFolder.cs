@@ -21,6 +21,6 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the name of the new folder
 		/// </summary>
-		public string Folder { get { return m_Folder; } set { m_Folder = value; } }
+		public string Folder { get => m_Folder; set => m_Folder = value; }
 	}
 }

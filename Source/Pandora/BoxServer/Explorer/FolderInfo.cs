@@ -29,7 +29,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the Structure of the allowed folders on the server
 		/// </summary>
-		public GenericNode Structure { get { return m_Structure; } set { m_Structure = value; } }
+		public GenericNode Structure { get => m_Structure; set => m_Structure = value; }
 
 		/// <summary>
 		///     Gets the TreeNodes corresponding to the folder structure
@@ -43,9 +43,11 @@ namespace TheBox.BoxServer
 			{
 				var gNode = m_Structure.Elements[i] as GenericNode;
 
-				var node = new TreeNode(gNode.Name);
-				node.ImageIndex = 1;
-				node.SelectedImageIndex = 1;
+				var node = new TreeNode(gNode.Name)
+				{
+					ImageIndex = 1,
+					SelectedImageIndex = 1
+				};
 
 				node.Nodes.AddRange(DoElements(gNode.Elements));
 
@@ -62,7 +64,7 @@ namespace TheBox.BoxServer
 		/// <returns>The corresponding tree nodes</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private TreeNode[] DoElements(List<object> elements)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			var nodes = new TreeNode[elements.Count];
 
@@ -74,18 +76,18 @@ namespace TheBox.BoxServer
 				{
 					var gNode = obj as GenericNode;
 
-					var folder = new TreeNode(gNode.Name);
-					folder.ImageIndex = 1;
-					folder.SelectedImageIndex = 1;
+					var folder = new TreeNode(gNode.Name)
+					{
+						ImageIndex = 1,
+						SelectedImageIndex = 1
+					};
 
 					folder.Nodes.AddRange(DoElements(gNode.Elements));
 
 					nodes[i] = folder;
 				}
-				else if (obj is string)
+				else if (obj is string file)
 				{
-					var file = (string)obj;
-
 					var fileNode = new TreeNode(file);
 
 					if (file.ToLower().EndsWith(".cs"))

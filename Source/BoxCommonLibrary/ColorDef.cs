@@ -27,25 +27,25 @@ namespace TheBox.Common
 		///     Gets or sets the red component of the color
 		/// </summary>
 		[XmlAttribute]
-		public int Red { get { return m_Red; } set { m_Red = value; } }
+		public int Red { get => m_Red; set => m_Red = value; }
 
 		/// <summary>
 		///     Gets or sets the green component of the color
 		/// </summary>
 		[XmlAttribute]
-		public int Green { get { return m_Green; } set { m_Green = value; } }
+		public int Green { get => m_Green; set => m_Green = value; }
 
 		/// <summary>
 		///     Gets or sets the blue component of the color
 		/// </summary>
 		[XmlAttribute]
-		public int Blue { get { return m_Blue; } set { m_Blue = value; } }
+		public int Blue { get => m_Blue; set => m_Blue = value; }
 
 		/// <summary>
 		///     Gets or sets the alpha component of the color
 		/// </summary>
 		[XmlAttribute]
-		public int Alpha { get { return m_Alpha; } set { m_Alpha = value; } }
+		public int Alpha { get => m_Alpha; set => m_Alpha = value; }
 
 		/// <summary>
 		///     Gets or sets the color specified
@@ -53,7 +53,7 @@ namespace TheBox.Common
 		[XmlIgnore]
 		public Color Color
 		{
-			get { return Color.FromArgb(m_Alpha, m_Red, m_Green, m_Blue); }
+			get => Color.FromArgb(m_Alpha, m_Red, m_Green, m_Blue);
 			set
 			{
 				m_Red = value.R;

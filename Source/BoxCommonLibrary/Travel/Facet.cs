@@ -36,7 +36,7 @@ namespace TheBox.Data
 		///     Gets or sets the map file corresponding to this facet
 		/// </summary>
 		[XmlAttribute]
-		public byte MapValue { get { return m_Map; } set { m_Map = value; } }
+		public byte MapValue { get => m_Map; set => m_Map = value; }
 
 		/// <summary>
 		///     Gets or sets the category nodes
@@ -44,10 +44,10 @@ namespace TheBox.Data
 
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<GenericNode> Nodes
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Nodes; }
-			set { m_Nodes = value; }
+			get => m_Nodes;
+			set => m_Nodes = value;
 		}
 
 		/// <summary>
@@ -75,13 +75,15 @@ namespace TheBox.Data
 
 				foreach (GenericNode Subsection in Category.Elements)
 				{
-					var SubsectionNode = new TreeNode(Subsection.Name);
-					SubsectionNode.Tag = Subsection.Elements;
+					var SubsectionNode = new TreeNode(Subsection.Name)
+					{
+						Tag = Subsection.Elements
+					};
 
-					CategoryNode.Nodes.Add(SubsectionNode);
+					_ = CategoryNode.Nodes.Add(SubsectionNode);
 				}
 
-				FacetNode.Nodes.Add(CategoryNode);
+				_ = FacetNode.Nodes.Add(CategoryNode);
 			}
 
 			return FacetNode;
@@ -95,9 +97,10 @@ namespace TheBox.Data
 		/// <returns>A Facet object representing the nodes collection</returns>
 		public static Facet FromTreeNodes(TreeNodeCollection nodes, byte name)
 		{
-			var facet = new Facet();
-
-			facet.MapValue = name;
+			var facet = new Facet
+			{
+				MapValue = name
+			};
 
 			foreach (TreeNode CatNode in nodes)
 			{
@@ -105,9 +108,11 @@ namespace TheBox.Data
 
 				foreach (TreeNode SubNode in CatNode.Nodes)
 				{
-					var Subsection = new GenericNode(SubNode.Text);
-					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-					Subsection.Elements = (List<object>)SubNode.Tag;
+					var Subsection = new GenericNode(SubNode.Text)
+					{
+						// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
+						Elements = (List<object>)SubNode.Tag
+					};
 					// Issue 10 - End
 
 					Category.Elements.Add(Subsection);
@@ -176,7 +181,7 @@ namespace TheBox.Data
 			{
 				if (cat.Name.ToLower() == category.ToLower())
 				{
-					foreach (GenericNode sub in (cat.Elements))
+					foreach (GenericNode sub in cat.Elements)
 					{
 						if (sub.Name.ToLower() == subsection.ToLower())
 						{
@@ -184,7 +189,7 @@ namespace TheBox.Data
 							{
 								if (l == loc)
 								{
-									sub.Elements.Remove(loc);
+									_ = sub.Elements.Remove(loc);
 									return;
 								}
 							}
@@ -211,7 +216,7 @@ namespace TheBox.Data
 				{
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 					foreach (Location loc in sub.Tag as List<object>)
-						// Issue 10 - End
+					// Issue 10 - End
 					{
 						if (loc.Name.ToLower().IndexOf(text) != -1)
 						{

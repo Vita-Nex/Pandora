@@ -65,12 +65,12 @@ namespace TheBox.Buttons
 		/// <summary>
 		///     Gets the command specified
 		/// </summary>
-		public string Command { get { return txCommand.Text; } set { txCommand.Text = value; } }
+		public string Command { get => txCommand.Text; set => txCommand.Text = value; }
 
 		/// <summary>
 		///     Gets the prefix value
 		/// </summary>
-		public bool UsePrefix { get { return chkPrefix.Checked; } set { chkPrefix.Checked = value; } }
+		public bool UsePrefix { get => chkPrefix.Checked; set => chkPrefix.Checked = value; }
 
 		#region Windows Form Designer generated code
 		/// <summary>
@@ -132,7 +132,7 @@ namespace TheBox.Buttons
 			this.Controls.Add(this.chkPrefix);
 			this.Controls.Add(this.txCommand);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "SimpleCommand";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -145,7 +145,7 @@ namespace TheBox.Buttons
 		{
 			if (txCommand.Text.Length == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Buttons.ErrCommand"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Buttons.ErrCommand"]);
 				return;
 			}
 

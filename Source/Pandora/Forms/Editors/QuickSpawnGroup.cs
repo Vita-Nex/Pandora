@@ -77,7 +77,7 @@ namespace TheBox.Forms.Editors
 			this.bAddType = new System.Windows.Forms.Button();
 			this.bClear = new System.Windows.Forms.Button();
 			this.bDelete = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.dGrid)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.dGrid).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pGrid
@@ -121,7 +121,7 @@ namespace TheBox.Forms.Editors
 			this.dGrid.SelectionForeColor = System.Drawing.Color.White;
 			this.dGrid.Size = new System.Drawing.Size(208, 232);
 			this.dGrid.TabIndex = 1;
-			this.dGrid.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] {this.dataGridTableStyle1});
+			this.dGrid.TableStyles.AddRange(new System.Windows.Forms.DataGridTableStyle[] { this.dataGridTableStyle1 });
 			this.dGrid.DragDrop += new System.Windows.Forms.DragEventHandler(this.dGrid_DragDrop);
 			this.dGrid.DragEnter += new System.Windows.Forms.DragEventHandler(this.dGrid_DragEnter);
 			// 
@@ -212,12 +212,12 @@ namespace TheBox.Forms.Editors
 			this.Controls.Add(this.dGrid);
 			this.Controls.Add(this.pGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "QuickSpawnGroup";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Spawns.Title";
 			this.Load += new System.EventHandler(this.QuickSpawnGroup_Load);
-			((System.ComponentModel.ISupportInitialize)(this.dGrid)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.dGrid).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -232,10 +232,7 @@ namespace TheBox.Forms.Editors
 
 		protected virtual void OnSpawnReady(EventArgs e)
 		{
-			if (SpawnReady != null)
-			{
-				SpawnReady(this, e);
-			}
+			SpawnReady?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -266,13 +263,15 @@ namespace TheBox.Forms.Editors
 
 				if (exists)
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["Spawns.Exists"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Spawns.Exists"]);
 				}
 				else
 				{
 					// Actually add
-					var entry = new BoxSpawnEntry();
-					entry.Type = type;
+					var entry = new BoxSpawnEntry
+					{
+						Type = type
+					};
 
 					Spawn.Entries.Add(entry);
 
@@ -317,8 +316,10 @@ namespace TheBox.Forms.Editors
 		{
 			var type = e.Data.GetData(DataFormats.Text).ToString();
 
-			var entry = new BoxSpawnEntry();
-			entry.Type = type;
+			var entry = new BoxSpawnEntry
+			{
+				Type = type
+			};
 
 			Spawn.Entries.Add(entry);
 
@@ -364,11 +365,11 @@ namespace TheBox.Forms.Editors
 		{
 			if (m_Spawn.Name == null || m_Spawn.Name.Length == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Spawns.NoName"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Spawns.NoName"]);
 			}
 			else if (m_Spawn.Entries.Count == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Spawns.Empty"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Spawns.Empty"]);
 			}
 			else
 			{

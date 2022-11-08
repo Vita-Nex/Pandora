@@ -25,7 +25,7 @@ namespace TheBox.BoxServer
 		public event EventHandler OnlineChanged;
 
 		private BoxRemote m_Remote;
-		private ProfileManager m_Profiles;
+		private readonly ProfileManager m_Profiles;
 
 		/// <summary>
 		///     Specifies whether Pandora is connected to the BoxServer
@@ -37,17 +37,14 @@ namespace TheBox.BoxServer
 		/// </summary>
 		public bool Connected
 		{
-			get { return m_Connected; }
+			get => m_Connected;
 			private set
 			{
 				if (m_Connected != value)
 				{
 					m_Connected = value;
 
-					if (OnlineChanged != null)
-					{
-						OnlineChanged(null, new EventArgs());
-					}
+					OnlineChanged?.Invoke(null, new EventArgs());
 				}
 			}
 		}
@@ -71,12 +68,12 @@ namespace TheBox.BoxServer
 					Disconnect();
 
 					var form = new BoxServerForm(false);
-					form.ShowDialog();
+					_ = form.ShowDialog();
 				}
 			}
 			else
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Errors.NoServer"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.NoServer"]);
 			}
 		}
 
@@ -88,13 +85,15 @@ namespace TheBox.BoxServer
 		public bool CheckErrors(BoxMessage msg)
 		{
 			if (msg == null)
+			{
 				return true; // null message means no error
+			}
 
 			if (msg is ErrorMessage)
 			{
 				// Generic error message
-				MessageBox.Show(
-					string.Format(Pandora.Localization.TextProvider["Errors.GenServErr"], (msg as ErrorMessage).Message));
+				_ = MessageBox.Show(
+					String.Format(Pandora.Localization.TextProvider["Errors.GenServErr"], (msg as ErrorMessage).Message));
 				return false;
 			}
 			if (msg is LoginError)
@@ -130,12 +129,12 @@ namespace TheBox.BoxServer
 						return true;
 				}
 
-				MessageBox.Show(err);
+				_ = MessageBox.Show(err);
 				return false;
 			}
 			if (msg is FeatureNotSupported)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Errors.NotSupported"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.NotSupported"]);
 				return false;
 			}
 
@@ -160,7 +159,7 @@ namespace TheBox.BoxServer
 		{
 			try
 			{
-				var ConnectionString = string.Format(
+				var ConnectionString = String.Format(
 					"tcp://{0}:{1}/BoxRemote",
 					Pandora.Profile.Server.Address,
 					Pandora.Profile.Server.Port);
@@ -168,18 +167,18 @@ namespace TheBox.BoxServer
 				m_Remote = Activator.GetObject(typeof(BoxRemote), ConnectionString) as BoxRemote;
 
 				// Perform Login
-				BoxMessage msg = new LoginMessage();
-
-				msg.Username = Pandora.Profile.Server.Username;
-				msg.Password = Pandora.Profile.Server.Password;
+				BoxMessage msg = new LoginMessage
+				{
+					Username = Pandora.Profile.Server.Username,
+					Password = Pandora.Profile.Server.Password
+				};
 				var data = msg.Compress();
-				string outType = null;
 
-				var result = m_Remote.PerformRemoteRequest(msg.GetType().FullName, data, out outType);
+				var result = m_Remote.PerformRemoteRequest(msg.GetType().FullName, data, out var outType);
 
 				if (result == null)
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["Errors.ServerError"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.ServerError"]);
 					Connected = false;
 					return false;
 				}
@@ -237,7 +236,7 @@ namespace TheBox.BoxServer
 			if (window)
 			{
 				var form = new BoxServerForm(msg);
-				form.ShowDialog();
+				_ = form.ShowDialog();
 				return form.Response;
 			}
 			return ProcessMessage(msg);
@@ -250,20 +249,21 @@ namespace TheBox.BoxServer
 		/// <returns>A BoxMessage if there is one</returns>
 		public BoxMessage ProcessMessage(BoxMessage msg)
 		{
-			BoxMessage outcome = null;
+			if (!Connected)
+			{
+				_ = Connect();
+			}
 
 			if (!Connected)
-				Connect();
-
-			if (!Connected)
+			{
 				return null;
+			}
 
 			var data = msg.Compress();
-			string outType = null;
-
+			BoxMessage outcome;
 			try
 			{
-				var result = m_Remote.PerformRemoteRequest(msg.GetType().FullName, data, out outType);
+				var result = m_Remote.PerformRemoteRequest(msg.GetType().FullName, data, out var outType);
 
 				if (result == null)
 				{
@@ -281,7 +281,7 @@ namespace TheBox.BoxServer
 			catch (Exception err)
 			{
 				Pandora.Log.WriteError(err, "Error when processing a BoxMessage of type: {0}", msg.GetType().FullName);
-				MessageBox.Show(Pandora.Localization.TextProvider["Errors.ConnectionLost"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.ConnectionLost"]);
 				Connected = false;
 				outcome = null;
 			}
@@ -307,7 +307,7 @@ namespace TheBox.BoxServer
 						MessageBoxIcon.Question) == DialogResult.Yes)
 				{
 					var form = new BoxServerForm(false);
-					form.ShowDialog();
+					_ = form.ShowDialog();
 				}
 
 				if (!Connected)
@@ -319,7 +319,7 @@ namespace TheBox.BoxServer
 			Pandora.Profile.Server.FillBoxMessage(message);
 
 			var msgForm = new BoxServerForm(message);
-			msgForm.ShowDialog();
+			_ = msgForm.ShowDialog();
 
 			Utility.BringClientToFront();
 

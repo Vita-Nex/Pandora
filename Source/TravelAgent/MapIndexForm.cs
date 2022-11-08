@@ -150,7 +150,7 @@ namespace TheBox.TravelAgent
 			this.Controls.Add(this.radioButton1);
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "MapIndexForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -159,26 +159,24 @@ namespace TheBox.TravelAgent
 		}
 		#endregion
 
-		private int m_MapFile;
-
 		private void radioButton1_CheckedChanged(object sender, EventArgs e)
 		{
-			m_MapFile = 0;
+			MapFile = 0;
 		}
 
 		private void radioButton2_CheckedChanged(object sender, EventArgs e)
 		{
-			m_MapFile = 1;
+			MapFile = 1;
 		}
 
 		private void radioButton3_CheckedChanged(object sender, EventArgs e)
 		{
-			m_MapFile = 2;
+			MapFile = 2;
 		}
 
 		private void radioButton4_CheckedChanged(object sender, EventArgs e)
 		{
-			m_MapFile = 3;
+			MapFile = 3;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -188,9 +186,9 @@ namespace TheBox.TravelAgent
 
 		private void radioButton5_CheckedChanged(object sender, EventArgs e)
 		{
-			m_MapFile = 4;
+			MapFile = 4;
 		}
 
-		public int MapFile { get { return m_MapFile; } }
+		public int MapFile { get; private set; }
 	}
 }

@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using TheBox.Common;
+using TheBox.Controls;
 #endregion
 
 namespace TheBox.Forms
@@ -39,8 +40,6 @@ namespace TheBox.Forms
 			InitializeComponent();
 
 			Pandora.Localization.LocalizeControl(this);
-
-			Art.MulFileManager = Pandora.Profile.MulManager;
 		}
 
 		/// <summary>
@@ -66,7 +65,7 @@ namespace TheBox.Forms
 		private void InitializeComponent()
 		{
 			var resources = new System.Resources.ResourceManager(typeof(QuickHue));
-			this.huesChart1 = new TheBox.Common.HuesChart();
+			this.huesChart1 = new TheBox.Controls.HuesChart();
 			this.Art = new TheBox.ArtViewer.ArtViewer();
 			this.button1 = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -77,7 +76,6 @@ namespace TheBox.Forms
 			// huesChart1
 			// 
 			this.huesChart1.ColorTableIndex = 28;
-			this.huesChart1.Hues = null;
 			this.huesChart1.Location = new System.Drawing.Point(8, 8);
 			this.huesChart1.Name = "huesChart1";
 			this.huesChart1.SelectedIndex = 1;
@@ -146,36 +144,28 @@ namespace TheBox.Forms
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.Art);
 			this.Controls.Add(this.huesChart1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "QuickHue";
 			this.Text = "HuePicker.Title";
-			this.Load += new System.EventHandler(this.QuickHue_Load);
 			this.ResumeLayout(false);
 		}
 		#endregion
 
-		private int m_Hue;
-
 		/// <summary>
 		///     Gets the hue selected by the user
 		/// </summary>
-		public int Hue { get { return m_Hue; } }
+		public int Hue { get; private set; }
 
 		private void huesChart1_HueChanged(object sender, EventArgs e)
 		{
 			Art.Hue = huesChart1.SelectedIndex;
-			m_Hue = huesChart1.SelectedIndex;
+			Hue = huesChart1.SelectedIndex;
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
 			Art.Hue = 0;
-			m_Hue = 0;
-		}
-
-		private void QuickHue_Load(object sender, EventArgs e)
-		{
-			huesChart1.Hues = Pandora.Hues;
+			Hue = 0;
 		}
 
 		private void button1_Click(object sender, EventArgs e)

@@ -19,32 +19,32 @@ namespace TheBox.MapViewer
 		/// <summary>
 		///     Gets the size of the Felucca ML map
 		/// </summary>
-		public static Size Felucca { get { return new Size(7168, 4096); } }
+		public static Size Felucca => new Size(7168, 4096);
 
 		/// <summary>
 		///     Gets the size of the Trammel map
 		/// </summary>
-		public static Size Trammel { get { return new Size(6144, 4096); } }
+		public static Size Trammel => new Size(6144, 4096);
 
 		/// <summary>
 		///     Gets the size of the Ilshenar map
 		/// </summary>
-		public static Size Ilshenar { get { return new Size(2304, 1600); } }
+		public static Size Ilshenar => new Size(2304, 1600);
 
 		/// <summary>
 		///     Gets the size of the Malas map
 		/// </summary>
-		public static Size Malas { get { return new Size(2560, 2048); } }
+		public static Size Malas => new Size(2560, 2048);
 
 		/// <summary>
 		///     Gets the size of the Tokuno islands map
 		/// </summary>
-		public static Size Tokuno { get { return new Size(1448, 1448); } }
+		public static Size Tokuno => new Size(1448, 1448);
 
 		/// <summary>
 		///     Gets the size of the Tokuno islands map
 		/// </summary>
-		public static Size TerMur { get { return new Size(1280, 4096); } }
+		public static Size TerMur => new Size(1280, 4096);
 
 		/// <summary>
 		///     Gets the size of a map
@@ -68,7 +68,7 @@ namespace TheBox.MapViewer
 					return TerMur;
 			}
 
-			throw new Exception(string.Format("Map file {0} not supported", mapfile));
+			throw new Exception(String.Format("Map file {0} not supported", mapfile));
 		}
 	}
 }

@@ -55,16 +55,18 @@ namespace TheBox.Forms.Editors
 		/// </summary>
 		public Location CurrentLocation
 		{
-			get { return m_CurrentLocation; }
+			get => m_CurrentLocation;
 			set
 			{
 				m_CurrentLocation = value;
 
-				m_Backup = new Location();
-				m_Backup.Name = value.Name;
-				m_Backup.X = value.X;
-				m_Backup.Y = value.Y;
-				m_Backup.Z = value.Z;
+				m_Backup = new Location
+				{
+					Name = value.Name,
+					X = value.X,
+					Y = value.Y,
+					Z = value.Z
+				};
 
 				Map.Center = new Point(value.X, value.Y);
 
@@ -128,9 +130,9 @@ namespace TheBox.Forms.Editors
 			this.bCancel = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.nX)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nY)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nZ)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nX).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nY).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nZ).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Map
@@ -169,7 +171,7 @@ namespace TheBox.Forms.Editors
 			// nX
 			// 
 			this.nX.Location = new System.Drawing.Point(24, 40);
-			this.nX.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nX.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nX.Name = "nX";
 			this.nX.Size = new System.Drawing.Size(64, 20);
 			this.nX.TabIndex = 3;
@@ -178,7 +180,7 @@ namespace TheBox.Forms.Editors
 			// nY
 			// 
 			this.nY.Location = new System.Drawing.Point(104, 40);
-			this.nY.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nY.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nY.Name = "nY";
 			this.nY.Size = new System.Drawing.Size(56, 20);
 			this.nY.TabIndex = 4;
@@ -187,8 +189,8 @@ namespace TheBox.Forms.Editors
 			// nZ
 			// 
 			this.nZ.Location = new System.Drawing.Point(184, 40);
-			this.nZ.Maximum = new System.Decimal(new int[] {128, 0, 0, 0});
-			this.nZ.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.nZ.Maximum = new decimal(new int[] { 128, 0, 0, 0 });
+			this.nZ.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.nZ.Name = "nZ";
 			this.nZ.Size = new System.Drawing.Size(48, 20);
 			this.nZ.TabIndex = 5;
@@ -300,16 +302,16 @@ namespace TheBox.Forms.Editors
 			this.Controls.Add(this.txName);
 			this.Controls.Add(this.Map);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "QuickLocation";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Travel.NewLoc";
-			((System.ComponentModel.ISupportInitialize)(this.nX)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nY)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nZ)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nX).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nY).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nZ).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -335,7 +337,7 @@ namespace TheBox.Forms.Editors
 		{
 			if (m_CurrentLocation.Name == null || m_CurrentLocation.Name.Length == 0)
 			{
-				MessageBox.Show("The location name can't be empty");
+				_ = MessageBox.Show("The location name can't be empty");
 				return;
 			}
 
@@ -367,7 +369,7 @@ namespace TheBox.Forms.Editors
 			var z = 0;
 			var facet = 0;
 
-			Client.FindLocation(ref x, ref y, ref z, ref facet);
+			_ = Client.FindLocation(ref x, ref y, ref z, ref facet);
 
 			if (x == 0 && y == 0 && z == 0)
 			{
@@ -376,7 +378,7 @@ namespace TheBox.Forms.Editors
 
 			if (facet != (int)Map.Map)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Travel.WrongMap"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Travel.WrongMap"]);
 			}
 
 			m_CurrentLocation.X = (short)x;
@@ -390,7 +392,9 @@ namespace TheBox.Forms.Editors
 		private void txName_TextChanged(object sender, EventArgs e)
 		{
 			if (!m_Updating)
+			{
 				m_CurrentLocation.Name = txName.Text;
+			}
 		}
 
 		private void nX_ValueChanged(object sender, EventArgs e)
@@ -432,6 +436,6 @@ namespace TheBox.Forms.Editors
 		/// <summary>
 		///     Sets the map displayed on the control
 		/// </summary>
-		public int MapFile { set { Map.Map = (Maps)value; } }
+		public int MapFile { set => Map.Map = (Maps)value; }
 	}
 }

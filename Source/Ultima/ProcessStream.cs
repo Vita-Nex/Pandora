@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - ProcessStream.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.IO;
@@ -57,7 +51,7 @@ namespace Ultima
 
 			fixed (byte* p = buffer)
 			{
-				NativeMethods.ReadProcessMemory(m_Process, m_Position, p + offset, count, ref res);
+				_ = NativeMethods.ReadProcessMemory(m_Process, m_Position, p + offset, count, ref res);
 			}
 
 			m_Position += count;
@@ -76,7 +70,7 @@ namespace Ultima
 
 			fixed (byte* p = buffer)
 			{
-				NativeMethods.WriteProcessMemory(m_Process, m_Position, p + offset, count, 0);
+				_ = NativeMethods.WriteProcessMemory(m_Process, m_Position, p + offset, count, 0);
 			}
 
 			m_Position += count;
@@ -87,12 +81,12 @@ namespace Ultima
 			}
 		}
 
-		public override bool CanRead { get { return true; } }
-		public override bool CanWrite { get { return true; } }
-		public override bool CanSeek { get { return true; } }
+		public override bool CanRead => true;
+		public override bool CanWrite => true;
+		public override bool CanSeek => true;
 
-		public override long Length { get { throw new NotSupportedException(); } }
-		public override long Position { get { return m_Position; } set { m_Position = (int)value; } }
+		public override long Length => throw new NotSupportedException();
+		public override long Position { get => m_Position; set => m_Position = (int)value; }
 
 		public override void SetLength(long value)
 		{

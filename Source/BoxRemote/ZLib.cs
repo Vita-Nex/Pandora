@@ -23,12 +23,12 @@ namespace TheBox.BoxServer
 			Z_OK = 0,
 			Z_STREAM_END = 1,
 			Z_NEED_DICT = 2,
-			Z_ERRNO = (-1),
-			Z_STREAM_ERROR = (-2),
-			Z_DATA_ERROR = (-3),
-			Z_MEM_ERROR = (-4),
-			Z_BUF_ERROR = (-5),
-			Z_VERSION_ERROR = (-6)
+			Z_ERRNO = -1,
+			Z_STREAM_ERROR = -2,
+			Z_DATA_ERROR = -3,
+			Z_MEM_ERROR = -4,
+			Z_BUF_ERROR = -5,
+			Z_VERSION_ERROR = -6
 		}
 
 		private enum ZLibCompressionLevel
@@ -36,7 +36,7 @@ namespace TheBox.BoxServer
 			Z_NO_COMPRESSION = 0,
 			Z_BEST_SPEED = 1,
 			Z_BEST_COMPRESSION = 9,
-			Z_DEFAULT_COMPRESSION = (-1)
+			Z_DEFAULT_COMPRESSION = -1
 		}
 
 		[DllImport("zlib")]
@@ -62,8 +62,7 @@ namespace TheBox.BoxServer
 		/// <returns>True if the liberary version matches, false otherwise or if the library can't be found</returns>
 		public static bool CheckVersion()
 		{
-			string[] ver = null;
-
+			string[] ver;
 			try
 			{
 				ver = zlibVersion().Split('.');
@@ -128,7 +127,7 @@ namespace TheBox.BoxServer
 			}
 			catch (Exception err)
 			{
-				var g = err.ToString();
+				_ = err.ToString();
 				return new byte[0];
 			}
 		}

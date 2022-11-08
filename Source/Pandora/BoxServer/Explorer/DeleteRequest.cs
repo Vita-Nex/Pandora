@@ -21,7 +21,7 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the path that must be deleted
 		/// </summary>
-		public string Path { get { return m_Path; } set { m_Path = value; } }
+		public string Path { get => m_Path; set => m_Path = value; }
 
 		/// <summary>
 		///     Creates a new delete request

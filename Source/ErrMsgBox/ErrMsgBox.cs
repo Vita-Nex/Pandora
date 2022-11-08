@@ -13,35 +13,37 @@ namespace TheBox.CustomMessageBox
 {
 	public class ErrMsgBox
 	{
-		static public DialogResult Show(string message)
+		public static DialogResult Show(string message)
 		{
-			return Show(message, string.Empty, MessageBoxButtons.OK);
+			return Show(message, System.String.Empty, MessageBoxButtons.OK);
 		}
 
-		static public DialogResult Show(string message, string title)
+		public static DialogResult Show(string message, string title)
 		{
 			return Show(message, title, MessageBoxButtons.OK);
 		}
 
-		static public DialogResult Show(string message, string title, MessageBoxButtons buttons)
+		public static DialogResult Show(string message, string title, MessageBoxButtons buttons)
 		{
 			// Create a host form that is a TopMost window which will be the 
 
 			// parent of the MessageBox.
 
-			var topmostForm = new Form();
-			// We do not want anyone to see this window so position it off the 
+			var topmostForm = new Form
+			{
+				// We do not want anyone to see this window so position it off the 
 
-			// visible screen and make it as small as possible
+				// visible screen and make it as small as possible
 
-			topmostForm.Size = new Size(1, 1);
-			topmostForm.StartPosition = FormStartPosition.Manual;
+				Size = new Size(1, 1),
+				StartPosition = FormStartPosition.Manual
+			};
 			var rect = SystemInformation.VirtualScreen;
 			topmostForm.Location = new Point(rect.Bottom + 10, rect.Right + 10);
 			topmostForm.Show();
 			// Make this form the active form and make it TopMost
 
-			topmostForm.Focus();
+			_ = topmostForm.Focus();
 			topmostForm.BringToFront();
 			topmostForm.TopMost = true;
 			// Finally show the MessageBox with the form just created as its owner

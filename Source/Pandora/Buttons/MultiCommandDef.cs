@@ -35,10 +35,10 @@ namespace TheBox.Buttons
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<MenuCommand> Commands
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Commands; }
-			set { m_Commands = value; }
+			get => m_Commands;
+			set => m_Commands = value;
 		}
 
 		[XmlAttribute]
@@ -47,7 +47,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		public int DefaultIndex
 		{
-			get { return m_DefaultIndex; }
+			get => m_DefaultIndex;
 			set
 			{
 				m_DefaultIndex = value;
@@ -89,7 +89,9 @@ namespace TheBox.Buttons
 			get
 			{
 				if (m_Menu == null)
+				{
 					DoMenu();
+				}
 
 				return m_Menu;
 			}
@@ -110,13 +112,13 @@ namespace TheBox.Buttons
 			for (var i = 0; i < m_Commands.Count; i++)
 			{
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				var bmi = (m_Commands[i]).MenuItem;
+				var bmi = m_Commands[i].MenuItem;
 				// Issue 10 - End
 
-				bmi.Checked = (m_DefaultIndex == i);
+				bmi.Checked = m_DefaultIndex == i;
 				bmi.Click += bmi_Click;
 
-				m_Menu.MenuItems.Add(bmi);
+				_ = m_Menu.MenuItems.Add(bmi);
 			}
 
 			m_Menu.Popup += m_Menu_Popup;
@@ -127,9 +129,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		private void bmi_Click(object sender, EventArgs e)
 		{
-			var bmi = sender as BoxMenuItem;
-
-			if (bmi != null)
+			if (sender is BoxMenuItem bmi)
 			{
 				m_DefaultIndex = m_Commands.IndexOf(bmi.Command);
 
@@ -145,22 +145,22 @@ namespace TheBox.Buttons
 		{
 			for (var i = 0; i < m_Menu.MenuItems.Count; i++)
 			{
-				m_Menu.MenuItems[i].Checked = (i == m_DefaultIndex);
+				m_Menu.MenuItems[i].Checked = i == m_DefaultIndex;
 			}
 		}
 
 		#region IButtonFunction Members
-		public string Name { get { return "Buttons.Multi"; } }
+		public string Name => "Buttons.Multi";
 
 		/// <summary>
 		///     States whether a second function is allowed on the button
 		/// </summary>
-		public bool AllowsSecondButton { get { return false; } }
+		public bool AllowsSecondButton => false;
 
 		/// <summary>
 		///     States whether a second function is required on the button
 		/// </summary>
-		public bool RequiresSecondButton { get { return false; } }
+		public bool RequiresSecondButton => false;
 
 		/// <summary>
 		///     Does the action specified by the function
@@ -187,10 +187,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendCommand(SendCommandEventArgs e)
 		{
-			if (SendCommand != null)
-			{
-				SendCommand(this, e);
-			}
+			SendCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -200,10 +197,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnSendLastCommand(EventArgs e)
 		{
-			if (SendLastCommand != null)
-			{
-				SendLastCommand(this, e);
-			}
+			SendLastCommand?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -213,10 +207,7 @@ namespace TheBox.Buttons
 
 		protected virtual void OnCommandChanged(CommandChangedEventArgs e)
 		{
-			if (CommandChanged != null)
-			{
-				CommandChanged(this, e);
-			}
+			CommandChanged?.Invoke(this, e);
 		}
 		#endregion
 
@@ -233,9 +224,10 @@ namespace TheBox.Buttons
 		#region ICloneable Members
 		public object Clone()
 		{
-			var mcd = new MultiCommandDef();
-
-			mcd.m_DefaultIndex = m_DefaultIndex;
+			var mcd = new MultiCommandDef
+			{
+				m_DefaultIndex = m_DefaultIndex
+			};
 
 			foreach (var mc in m_Commands)
 			{

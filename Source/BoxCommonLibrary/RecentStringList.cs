@@ -24,7 +24,7 @@ namespace TheBox.Common
 		/// <summary>
 		///     Gets or sets the list of strings in the collection
 		/// </summary>
-		public StringCollection List { get { return m_List; } set { m_List = value; } }
+		public StringCollection List { get => m_List; set => m_List = value; }
 
 		/// <summary>
 		///     Gets or sets the capacity of the collection
@@ -32,12 +32,14 @@ namespace TheBox.Common
 		[XmlAttribute]
 		public int Capacity
 		{
-			get { return m_Capacity; }
+			get => m_Capacity;
 			set
 			{
 				m_Capacity = value;
 				if (m_Capacity < 1)
+				{
 					m_Capacity = 1;
+				}
 
 				while (m_Capacity < m_List.Count)
 				{
@@ -85,7 +87,10 @@ namespace TheBox.Common
 			get
 			{
 				if (index < m_List.Count)
+				{
 					return m_List[index];
+				}
+
 				return null;
 			}
 		}

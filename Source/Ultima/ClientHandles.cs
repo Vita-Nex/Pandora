@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - ClientHandles.cs
-//  */
-#endregion
-
 #region References
 using System;
 

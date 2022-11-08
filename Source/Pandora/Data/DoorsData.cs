@@ -33,12 +33,10 @@ namespace TheBox.Data
 		private int m_PortEWBase;
 		private string m_PortName;
 
-		private ContextMenu m_Menu;
-
 		/// <summary>
 		///     Gets the doors context menu
 		/// </summary>
-		public ContextMenu Menu { get { return m_Menu; } }
+		public ContextMenu Menu { get; private set; }
 
 		/// <summary>
 		///     Occurs when a door is selected
@@ -82,8 +80,8 @@ namespace TheBox.Data
 					m_PortNS = xNode.Attributes["itemNS"].Value;
 					m_PortEW = xNode.Attributes["itemEW"].Value;
 					m_PortName = xNode.Attributes["name"].Value;
-					m_PortEWBase = int.Parse(xNode.Attributes["EW"].Value);
-					m_PortNSBase = int.Parse(xNode.Attributes["NS"].Value);
+					m_PortEWBase = Int32.Parse(xNode.Attributes["EW"].Value);
+					m_PortNSBase = Int32.Parse(xNode.Attributes["NS"].Value);
 				}
 				else
 				{
@@ -103,24 +101,24 @@ namespace TheBox.Data
 		/// </summary>
 		private void BuildMenu()
 		{
-			m_Menu = new ContextMenu();
+			Menu = new ContextMenu();
 
 			foreach (var gNode in m_Structure)
 			{
 				var category = new MenuItem(gNode.Name);
-				m_Menu.MenuItems.Add(category);
+				_ = Menu.MenuItems.Add(category);
 
 				foreach (DoorInfo door in gNode.Elements)
 				{
 					var mi = new InternalMenuItem(door);
 					mi.Click += DoorClicked;
-					category.MenuItems.Add(mi);
+					_ = category.MenuItems.Add(mi);
 				}
 			}
 
 			var port = new MenuItem(m_PortName);
 			port.Click += PortcullisClicked;
-			m_Menu.MenuItems.Add(port);
+			_ = Menu.MenuItems.Add(port);
 		}
 
 		/// <summary>
@@ -134,7 +132,7 @@ namespace TheBox.Data
 			{
 				string category = null;
 
-				foreach (MenuItem parent in m_Menu.MenuItems)
+				foreach (MenuItem parent in Menu.MenuItems)
 				{
 					if (parent.MenuItems.Contains(mi))
 					{
@@ -162,17 +160,15 @@ namespace TheBox.Data
 		#region Internal Menu Item
 		private class InternalMenuItem : MenuItem
 		{
-			private readonly DoorInfo m_Door;
-
 			/// <summary>
 			///     Gets the door represented by this menu item
 			/// </summary>
-			public DoorInfo Door { get { return m_Door; } }
+			public DoorInfo Door { get; }
 
 			public InternalMenuItem(DoorInfo info)
 				: base(info.Name)
 			{
-				m_Door = info;
+				Door = info;
 			}
 		}
 		#endregion
@@ -190,44 +186,39 @@ namespace TheBox.Data
 	/// </summary>
 	public class PortcullisEventArgs : EventArgs
 	{
-		private readonly string m_Name;
-		private readonly string m_ItemNS;
-		private readonly string m_ItemEW;
-		private readonly int m_ArtNS;
-		private readonly int m_ArtEW;
 
 		/// <summary>
 		///     Gets the Portcullis door name
 		/// </summary>
-		public string Name { get { return m_Name; } }
+		public string Name { get; }
 
 		/// <summary>
 		///     Gets the item name for the NS orientation
 		/// </summary>
-		public string ItemNS { get { return m_ItemNS; } }
+		public string ItemNS { get; }
 
 		/// <summary>
 		///     Gets the item name for the EW orientation
 		/// </summary>
-		public string ItemEW { get { return m_ItemEW; } }
+		public string ItemEW { get; }
 
 		/// <summary>
 		///     Gets the art for the NS orientation
 		/// </summary>
-		public int ArtNS { get { return m_ArtNS; } }
+		public int ArtNS { get; }
 
 		/// <summary>
 		///     Gets the art for the EW orientation
 		/// </summary>
-		public int ArtEW { get { return m_ArtEW; } }
+		public int ArtEW { get; }
 
 		public PortcullisEventArgs(string name, string itemNS, string itemEW, int artNS, int artEW)
 		{
-			m_Name = name;
-			m_ItemNS = itemNS;
-			m_ItemEW = itemEW;
-			m_ArtNS = artNS;
-			m_ArtEW = artEW;
+			Name = name;
+			ItemNS = itemNS;
+			ItemEW = itemEW;
+			ArtNS = artNS;
+			ArtEW = artEW;
 		}
 	}
 
@@ -237,8 +228,6 @@ namespace TheBox.Data
 	public class DoorEventArgs : EventArgs
 	{
 		private readonly string m_Name;
-		private readonly string m_Item;
-		private readonly int m_BaseID;
 		private readonly string m_Category;
 
 		/// <summary>
@@ -249,7 +238,10 @@ namespace TheBox.Data
 			get
 			{
 				if (m_Category != null)
-					return string.Format("{0}:\n{1}", m_Category, m_Name);
+				{
+					return String.Format("{0}:\n{1}", m_Category, m_Name);
+				}
+
 				return m_Name;
 			}
 		}
@@ -257,12 +249,12 @@ namespace TheBox.Data
 		/// <summary>
 		///     Gets the item name
 		/// </summary>
-		public string Item { get { return m_Item; } }
+		public string Item { get; }
 
 		/// <summary>
 		///     Gets the item base ID
 		/// </summary>
-		public int BaseID { get { return m_BaseID; } }
+		public int BaseID { get; }
 
 		/// <summary>
 		///     Creates a new DoorEventArgs object
@@ -272,8 +264,8 @@ namespace TheBox.Data
 		public DoorEventArgs(DoorInfo info, string category)
 		{
 			m_Name = info.Name;
-			m_Item = info.Item;
-			m_BaseID = info.BaseID;
+			Item = info.Item;
+			BaseID = info.BaseID;
 			m_Category = category;
 		}
 	}
@@ -313,11 +305,12 @@ namespace TheBox.Data
 		/// <returns>A Door Info object</returns>
 		public static DoorInfo FromXmlNode(XmlNode xNode)
 		{
-			var door = new DoorInfo();
-
-			door.Name = xNode.Attributes["name"].Value;
-			door.Item = xNode.Attributes["item"].Value;
-			door.BaseID = int.Parse(xNode.Attributes["base"].Value);
+			var door = new DoorInfo
+			{
+				Name = xNode.Attributes["name"].Value,
+				Item = xNode.Attributes["item"].Value,
+				BaseID = Int32.Parse(xNode.Attributes["base"].Value)
+			};
 
 			return door;
 		}

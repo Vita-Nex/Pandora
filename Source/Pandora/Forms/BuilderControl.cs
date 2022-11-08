@@ -73,7 +73,7 @@ namespace TheBox.Forms
 			this.numNudge = new System.Windows.Forms.NumericUpDown();
 			this.bNudgeUp = new System.Windows.Forms.Button();
 			this.bNudgeDown = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.numNudge)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numNudge).BeginInit();
 			this.SuspendLayout();
 			// 
 			// bDelete
@@ -119,17 +119,17 @@ namespace TheBox.Forms
 			// numNudge
 			// 
 			this.numNudge.Location = new System.Drawing.Point(24, 88);
-			this.numNudge.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.numNudge.Minimum = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.numNudge.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.numNudge.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			this.numNudge.Name = "numNudge";
 			this.numNudge.Size = new System.Drawing.Size(44, 20);
 			this.numNudge.TabIndex = 4;
-			this.numNudge.Value = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.numNudge.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			// 
 			// bNudgeUp
 			// 
 			this.bNudgeUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bNudgeUp.Image = ((System.Drawing.Image)(resources.GetObject("bNudgeUp.Image")));
+			this.bNudgeUp.Image = (System.Drawing.Image)resources.GetObject("bNudgeUp.Image");
 			this.bNudgeUp.Location = new System.Drawing.Point(68, 88);
 			this.bNudgeUp.Name = "bNudgeUp";
 			this.bNudgeUp.Size = new System.Drawing.Size(16, 23);
@@ -139,7 +139,7 @@ namespace TheBox.Forms
 			// bNudgeDown
 			// 
 			this.bNudgeDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bNudgeDown.Image = ((System.Drawing.Image)(resources.GetObject("bNudgeDown.Image")));
+			this.bNudgeDown.Image = (System.Drawing.Image)resources.GetObject("bNudgeDown.Image");
 			this.bNudgeDown.Location = new System.Drawing.Point(4, 88);
 			this.bNudgeDown.Name = "bNudgeDown";
 			this.bNudgeDown.Size = new System.Drawing.Size(16, 23);
@@ -158,11 +158,11 @@ namespace TheBox.Forms
 			this.Controls.Add(this.dMover);
 			this.Controls.Add(this.bDelete);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "BuilderControl";
 			this.Text = "Common.Server";
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.BuilderControl_Closing);
-			((System.ComponentModel.ISupportInitialize)(this.numNudge)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numNudge).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -170,49 +170,52 @@ namespace TheBox.Forms
 		private void bDelete_Click(object sender, EventArgs e)
 		{
 			var msg = new BuilderDeleteMessage();
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void dMover_OnDecoMove(int xOffset, int yOffset)
 		{
-			var msg = new OffsetMessage();
+			var msg = new OffsetMessage
+			{
+				XOffset = xOffset,
+				YOffset = yOffset
+			};
 
-			msg.XOffset = xOffset;
-			msg.YOffset = yOffset;
-
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bNudgeUp_Click(object sender, EventArgs e)
 		{
-			var msg = new OffsetMessage();
+			var msg = new OffsetMessage
+			{
+				ZOffset = (int)numNudge.Value
+			};
 
-			msg.ZOffset = (int)numNudge.Value;
-
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bNudgeDown_Click(object sender, EventArgs e)
 		{
-			var msg = new OffsetMessage();
+			var msg = new OffsetMessage
+			{
+				ZOffset = -(int)numNudge.Value
+			};
 
-			msg.ZOffset = -(int)numNudge.Value;
-
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bHue_Click(object sender, EventArgs e)
 		{
 			var msg = new HueMessage(Pandora.Profile.Hues.SelectedIndex);
 
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void bRemoveHue_Click(object sender, EventArgs e)
 		{
 			var msg = new HueMessage(0);
 
-			Pandora.BoxConnection.SendToServer(msg);
+			_ = Pandora.BoxConnection.SendToServer(msg);
 		}
 
 		private void BuilderControl_Closing(object sender, CancelEventArgs e)

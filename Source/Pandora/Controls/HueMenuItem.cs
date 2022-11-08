@@ -8,8 +8,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using TheBox.Mul;
 #endregion
 
 namespace TheBox.Controls
@@ -54,7 +52,9 @@ namespace TheBox.Controls
 			for (var i = 0; i < 32; i++)
 			{
 				for (var y = 1; y < 13; y++)
-					Image.SetPixel(i + 1, y, Hue.ToColor(colors[i]));
+				{
+					Image.SetPixel(i + 1, y, Ultima.Hues.HueToColor(colors[i]));
+				}
 			}
 		}
 
@@ -74,8 +74,7 @@ namespace TheBox.Controls
 		{
 			var MenuFont = SystemInformation.MenuFont;
 
-			SolidBrush menuBrush = null;
-
+			SolidBrush menuBrush;
 			if ((e.State & DrawItemState.Selected) != 0)
 			{
 				menuBrush = new SolidBrush(SystemColors.HighlightText);
@@ -85,8 +84,10 @@ namespace TheBox.Controls
 				menuBrush = new SolidBrush(SystemColors.MenuText);
 			}
 
-			var stringformat = new StringFormat();
-			stringformat.LineAlignment = StringAlignment.Center;
+			_ = new StringFormat
+			{
+				LineAlignment = StringAlignment.Center
+			};
 
 			var rectImage = e.Bounds;
 
@@ -99,9 +100,13 @@ namespace TheBox.Controls
 
 			// Draw rect
 			if ((e.State & DrawItemState.Selected) != 0)
+			{
 				e.Graphics.FillRectangle(SystemBrushes.Highlight, e.Bounds);
+			}
 			else
+			{
 				e.Graphics.FillRectangle(SystemBrushes.Menu, e.Bounds);
+			}
 
 			if (NoHue)
 			{
@@ -130,7 +135,9 @@ namespace TheBox.Controls
 			if (disposing)
 			{
 				if (Image != null)
+				{
 					Image.Dispose();
+				}
 			}
 		}
 	}

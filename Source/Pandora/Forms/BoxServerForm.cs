@@ -92,7 +92,7 @@ namespace TheBox.Forms
 			this.ClientSize = new System.Drawing.Size(158, 23);
 			this.ControlBox = false;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "BoxServerForm";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -111,16 +111,13 @@ namespace TheBox.Forms
 
 		private Timer m_Timer;
 
-		private int m_MaxProgress { get { return Size.Width - 10; } }
+		private int m_MaxProgress => Size.Width - 10;
 
-		private Point m_Start { get { return new Point(5, 5); } }
+		private Point m_Start => new Point(5, 5);
 
-		private Point m_GradientEnd { get { return new Point(5 + m_Progress, 5); } }
+		private Point m_GradientEnd => new Point(5 + m_Progress, 5);
 
-		private LinearGradientBrush m_Brush
-		{
-			get { return new LinearGradientBrush(m_Start, m_GradientEnd, m_StartColor, m_EndColor); }
-		}
+		private LinearGradientBrush m_Brush => new LinearGradientBrush(m_Start, m_GradientEnd, m_StartColor, m_EndColor);
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
@@ -160,18 +157,20 @@ namespace TheBox.Forms
 
 		private void BoxServerForm_Load(object sender, EventArgs e)
 		{
-			m_Timer = new Timer();
-			m_Timer.Interval = 200;
+			m_Timer = new Timer
+			{
+				Interval = 200
+			};
 			m_Timer.Tick += m_Timer_Tick;
 			m_Timer.Start();
 
 			if (m_Login)
 			{
-				ThreadPool.QueueUserWorkItem(Connect);
+				_ = ThreadPool.QueueUserWorkItem(Connect);
 			}
 			else
 			{
-				ThreadPool.QueueUserWorkItem(SendMessage);
+				_ = ThreadPool.QueueUserWorkItem(SendMessage);
 			}
 		}
 
@@ -180,7 +179,7 @@ namespace TheBox.Forms
 		private void Connect(object o)
 		{
 			var response = Pandora.BoxConnection.Connect(!m_Silent);
-			Invoke(new CloseForm(Close));
+			_ = Invoke(new CloseForm(Close));
 		}
 
 		private void SendMessage(object o)
@@ -201,7 +200,9 @@ namespace TheBox.Forms
 			}
 
 			if (!Pandora.BoxConnection.Connected)
+			{
 				DialogResult = DialogResult.Cancel; // Account for communication error
+			}
 
 			Close();
 		}

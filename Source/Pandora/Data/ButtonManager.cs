@@ -69,11 +69,11 @@ namespace TheBox.Data
 					{
 						Pandora.Log.WriteError(
 							err,
-							string.Format("Custom file for button {0} was corrupted. It has been renamed to {0}.old.xml", filename));
+							String.Format("Custom file for button {0} was corrupted. It has been renamed to {0}.old.xml", filename));
 
 						try
 						{
-							File.Move(filename, string.Format("{0}.old.xml", filename));
+							File.Move(filename, String.Format("{0}.old.xml", filename));
 						}
 						catch
 						{
@@ -83,7 +83,7 @@ namespace TheBox.Data
 				}
 				// Get default
 
-				var resource = string.Format("DefaultButtons.{0}.xml", button.ButtonID);
+				var resource = String.Format("DefaultButtons.{0}.xml", button.ButtonID);
 
 				try
 				{
@@ -119,7 +119,7 @@ namespace TheBox.Data
 				{
 					Pandora.Log.WriteError(
 						err,
-						string.Format("Error occurred when setting the def object for button #{0}", button.ButtonID));
+						String.Format("Error occurred when setting the def object for button #{0}", button.ButtonID));
 					button.Def = null;
 				}
 			}
@@ -128,7 +128,7 @@ namespace TheBox.Data
 		/// <summary>
 		///     Gets the base folder for the storage of button files
 		/// </summary>
-		private string BaseFolder { get { return Path.Combine(Pandora.Profile.BaseFolder, "Buttons"); } }
+		private string BaseFolder => Path.Combine(Pandora.Profile.BaseFolder, "Buttons");
 
 		/// <summary>
 		///     Gets the filename for a given button def file
@@ -137,7 +137,7 @@ namespace TheBox.Data
 		/// <returns>The full path to the file defining the button</returns>
 		private string GetFile(int ButtonID)
 		{
-			return Path.Combine(BaseFolder, string.Format("{0}.xml", ButtonID));
+			return Path.Combine(BaseFolder, String.Format("{0}.xml", ButtonID));
 		}
 
 		/// <summary>
@@ -156,7 +156,7 @@ namespace TheBox.Data
 				}
 				catch (Exception err)
 				{
-					Pandora.Log.WriteError(err, string.Format("Cannot delete file {0}", filename));
+					Pandora.Log.WriteError(err, String.Format("Cannot delete file {0}", filename));
 					return;
 				}
 			}

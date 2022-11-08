@@ -46,7 +46,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private Note SelectedNote
 		{
-			get { return m_Note; }
+			get => m_Note;
 			set
 			{
 				m_Note = value;
@@ -70,7 +70,7 @@ namespace TheBox.Pages
 					txText.Lines = m_Note.Text;
 					labCreated.Text = m_Note.CreatedString;
 
-					txText.Focus();
+					_ = txText.Focus();
 				}
 			}
 		}
@@ -240,7 +240,7 @@ namespace TheBox.Pages
 			// imgPriority
 			// 
 			this.imgPriority.ImageStream =
-				((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgPriority.ImageStream")));
+				(System.Windows.Forms.ImageListStreamer)resources.GetObject("imgPriority.ImageStream");
 			this.imgPriority.TransparentColor = System.Drawing.Color.Transparent;
 			this.imgPriority.Images.SetKeyName(0, "");
 			this.imgPriority.Images.SetKeyName(1, "");
@@ -325,26 +325,30 @@ namespace TheBox.Pages
 					splitter1.SplitPosition = Pandora.Profile.General.NotesSplitter;
 				}
 
-				cmbAscending.Items.Add(Pandora.Localization.TextProvider["Notes.Ascending"]);
-				cmbAscending.Items.Add(Pandora.Localization.TextProvider["Notes.Descending"]);
+				_ = cmbAscending.Items.Add(Pandora.Localization.TextProvider["Notes.Ascending"]);
+				_ = cmbAscending.Items.Add(Pandora.Localization.TextProvider["Notes.Descending"]);
 
-				cmbType.Items.Add(Pandora.Localization.TextProvider["Common.Name"]);
-				cmbType.Items.Add(Pandora.Localization.TextProvider["Notes.Date"]);
-				cmbType.Items.Add(Pandora.Localization.TextProvider["Notes.Priority"]);
+				_ = cmbType.Items.Add(Pandora.Localization.TextProvider["Common.Name"]);
+				_ = cmbType.Items.Add(Pandora.Localization.TextProvider["Notes.Date"]);
+				_ = cmbType.Items.Add(Pandora.Localization.TextProvider["Notes.Priority"]);
 
-				cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.Low"]);
-				cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.Normal"]);
-				cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.High"]);
-				cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.Urgent"]);
+				_ = cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.Low"]);
+				_ = cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.Normal"]);
+				_ = cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.High"]);
+				_ = cmbPriority.Items.Add(Pandora.Localization.TextProvider["Notes.Urgent"]);
 				cmbPriority.SelectedIndex = 1;
 
 				// Read the stored notes
 				RefreshNotes(null);
 
 				if (Pandora.Profile.Notes.AscendingSorting)
+				{
 					cmbAscending.SelectedIndex = 0;
+				}
 				else
+				{
 					cmbAscending.SelectedIndex = 1;
+				}
 
 				cmbType.SelectedIndex = (int)Pandora.Profile.Notes.NoteSorting;
 			}
@@ -387,7 +391,9 @@ namespace TheBox.Pages
 		private void ChangePriority(NotePriority priority)
 		{
 			if (!m_Running)
+			{
 				return;
+			}
 
 			if (SelectedNote != null && SelectedNote.Priority != priority)
 			{
@@ -409,7 +415,9 @@ namespace TheBox.Pages
 		private void cmbPriority_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (!m_Running)
+			{
 				return;
+			}
 
 			ChangePriority((NotePriority)cmbPriority.SelectedIndex);
 		}
@@ -420,7 +428,9 @@ namespace TheBox.Pages
 		private void txName_TextChanged(object sender, EventArgs e)
 		{
 			if (!m_Running || SelectedNote == null)
+			{
 				return;
+			}
 
 			SelectedNote.Name = txName.Text;
 			tNotes.SelectedNode.Text = txName.Text;
@@ -432,7 +442,9 @@ namespace TheBox.Pages
 		private void txText_TextChanged(object sender, EventArgs e)
 		{
 			if (!m_Running || SelectedNote == null)
+			{
 				return;
+			}
 
 			SelectedNote.Text = txText.Lines;
 		}
@@ -443,15 +455,17 @@ namespace TheBox.Pages
 		private void bAdd_Click(object sender, EventArgs e)
 		{
 			var note = new Note("Note");
-			var node = new TreeNode("Note");
-			node.Tag = note;
+			var node = new TreeNode("Note")
+			{
+				Tag = note,
 
-			node.ImageIndex = (int)NotePriority.Normal;
-			node.SelectedImageIndex = (int)NotePriority.Normal;
+				ImageIndex = (int)NotePriority.Normal,
+				SelectedImageIndex = (int)NotePriority.Normal
+			};
 
 			Pandora.Profile.Notes.NotesList.Add(note);
 
-			tNotes.Nodes.Add(node);
+			_ = tNotes.Nodes.Add(node);
 			tNotes.SelectedNode = node;
 
 			txName.Text = "Note";
@@ -473,7 +487,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private void bDelete_Click(object sender, EventArgs e)
 		{
-			Pandora.Profile.Notes.NotesList.Remove(SelectedNote);
+			_ = Pandora.Profile.Notes.NotesList.Remove(SelectedNote);
 			tNotes.Nodes.Remove(tNotes.SelectedNode);
 
 			if (tNotes.SelectedNode == null)

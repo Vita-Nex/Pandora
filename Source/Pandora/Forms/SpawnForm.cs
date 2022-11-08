@@ -107,18 +107,18 @@ namespace TheBox.Forms
 			this.label1 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.nRange2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nTeam)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMaxDelay)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMinDelay)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nRange)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.nAmount)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange2).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nTeam).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nMaxDelay).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nMinDelay).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.nAmount).BeginInit();
 			this.SuspendLayout();
 			// 
 			// nRange2
 			// 
 			this.nRange2.Location = new System.Drawing.Point(60, 88);
-			this.nRange2.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nRange2.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nRange2.Name = "nRange2";
 			this.nRange2.Size = new System.Drawing.Size(48, 20);
 			this.nRange2.TabIndex = 30;
@@ -127,7 +127,7 @@ namespace TheBox.Forms
 			// nTeam
 			// 
 			this.nTeam.Location = new System.Drawing.Point(4, 88);
-			this.nTeam.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nTeam.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nTeam.Name = "nTeam";
 			this.nTeam.Size = new System.Drawing.Size(48, 20);
 			this.nTeam.TabIndex = 29;
@@ -136,7 +136,7 @@ namespace TheBox.Forms
 			// nMaxDelay
 			// 
 			this.nMaxDelay.Location = new System.Drawing.Point(60, 52);
-			this.nMaxDelay.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.nMaxDelay.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.nMaxDelay.Name = "nMaxDelay";
 			this.nMaxDelay.Size = new System.Drawing.Size(48, 20);
 			this.nMaxDelay.TabIndex = 28;
@@ -145,7 +145,7 @@ namespace TheBox.Forms
 			// nMinDelay
 			// 
 			this.nMinDelay.Location = new System.Drawing.Point(4, 52);
-			this.nMinDelay.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.nMinDelay.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.nMinDelay.Name = "nMinDelay";
 			this.nMinDelay.Size = new System.Drawing.Size(48, 20);
 			this.nMinDelay.TabIndex = 27;
@@ -154,7 +154,7 @@ namespace TheBox.Forms
 			// nRange
 			// 
 			this.nRange.Location = new System.Drawing.Point(60, 16);
-			this.nRange.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nRange.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nRange.Name = "nRange";
 			this.nRange.Size = new System.Drawing.Size(48, 20);
 			this.nRange.TabIndex = 26;
@@ -167,9 +167,9 @@ namespace TheBox.Forms
 				8.25F,
 				System.Drawing.FontStyle.Regular,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.nAmount.Location = new System.Drawing.Point(4, 16);
-			this.nAmount.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.nAmount.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.nAmount.Name = "nAmount";
 			this.nAmount.Size = new System.Drawing.Size(48, 20);
 			this.nAmount.TabIndex = 25;
@@ -241,7 +241,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.label6);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "SpawnForm";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -250,12 +250,12 @@ namespace TheBox.Forms
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.SpawnForm_Paint);
 			this.Leave += new System.EventHandler(this.SpawnForm_Leave);
 			this.Deactivate += new System.EventHandler(this.SpawnForm_Deactivate);
-			((System.ComponentModel.ISupportInitialize)(this.nRange2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nTeam)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMaxDelay)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nMinDelay)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nRange)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.nAmount)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange2).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nTeam).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nMaxDelay).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nMinDelay).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nRange).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.nAmount).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -324,10 +324,7 @@ namespace TheBox.Forms
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (OnSpawn != null)
-			{
-				OnSpawn(this, new EventArgs());
-			}
+			OnSpawn?.Invoke(this, new EventArgs());
 
 			Close();
 		}

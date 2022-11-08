@@ -6,7 +6,6 @@
 
 #region References
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Xml;
@@ -178,13 +177,13 @@ namespace TheBox.Lang
 			// 
 			// mainMenu1
 			// 
-			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {this.menuItem1});
+			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { this.menuItem1 });
 			// 
 			// menuItem1
 			// 
 			this.menuItem1.Index = 0;
 			this.menuItem1.MenuItems.AddRange(
-				new System.Windows.Forms.MenuItem[] {this.menuItem2, this.menuItem3, this.menuItem4, this.menuItem5});
+				new System.Windows.Forms.MenuItem[] { this.menuItem2, this.menuItem3, this.menuItem4, this.menuItem5 });
 			this.menuItem1.Text = "File";
 			// 
 			// menuItem2
@@ -340,7 +339,7 @@ namespace TheBox.Lang
 		///     The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main()
+		private static void Main()
 		{
 			Application.EnableVisualStyles();
 			Application.Run(new Localizer());
@@ -355,7 +354,7 @@ namespace TheBox.Lang
 					var one = (string)lCat.SelectedItem;
 					var two = (string)lDef.SelectedItem;
 
-					return string.Format("{0}.{1}", one, two);
+					return String.Format("{0}.{1}", one, two);
 				}
 
 				throw new Exception("No chosen definition");
@@ -366,7 +365,7 @@ namespace TheBox.Lang
 		{
 			if (txNewCat.Text.Length == 0)
 			{
-				MessageBox.Show("Can't add an empty category");
+				_ = MessageBox.Show("Can't add an empty category");
 				return;
 			}
 
@@ -374,12 +373,12 @@ namespace TheBox.Lang
 			{
 				if (s == txNewCat.Text)
 				{
-					MessageBox.Show("Can't add duplicate items");
+					_ = MessageBox.Show("Can't add duplicate items");
 					return;
 				}
 			}
 
-			lCat.Items.Add(txNewCat.Text);
+			_ = lCat.Items.Add(txNewCat.Text);
 			txNewCat.Text = "";
 		}
 
@@ -420,7 +419,7 @@ namespace TheBox.Lang
 
 			if (one == null)
 			{
-				MessageBox.Show("Please select a category first");
+				_ = MessageBox.Show("Please select a category first");
 				return;
 			}
 
@@ -428,25 +427,27 @@ namespace TheBox.Lang
 
 			if (two.Length == 0)
 			{
-				MessageBox.Show("The key can't be empty");
+				_ = MessageBox.Show("The key can't be empty");
 				return;
 			}
 
 			if (txText.Text.Length == 0)
 			{
-				MessageBox.Show("The text can't be empty");
+				_ = MessageBox.Show("The text can't be empty");
 				return;
 			}
 
-			m_TextProvider[string.Format("{0}.{1}", one, two)] = txText.Text;
+			m_TextProvider[String.Format("{0}.{1}", one, two)] = txText.Text;
 
 			foreach (string s in lDef.Items)
 			{
 				if (s == two)
+				{
 					return;
+				}
 			}
 
-			lDef.Items.Add(two);
+			_ = lDef.Items.Add(two);
 			txDef.Text = "";
 			txText.Text = "";
 		}
@@ -454,7 +455,9 @@ namespace TheBox.Lang
 		private void lCat_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lCat.SelectedItem == null)
+			{
 				return;
+			}
 
 			// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 
@@ -464,13 +467,18 @@ namespace TheBox.Lang
 			txText.Text = "";
 			// Issue 45 - End
 
-			Dictionary<string, string> hash;
-			if (!m_TextProvider.Data.TryGetValue((string)lCat.SelectedItem, out hash))
+			if (!m_TextProvider.Data.TryGetValue((string)lCat.SelectedItem, out var hash))
+			{
 				return;
+			}
 
 			if (hash != null)
+			{
 				foreach (var s in hash.Keys)
-					lDef.Items.Add(s);
+				{
+					_ = lDef.Items.Add(s);
+				}
+			}
 		}
 
 		private void lDef_SelectedIndexChanged(object sender, EventArgs e)
@@ -507,7 +515,7 @@ namespace TheBox.Lang
 		{
 			if (m_TextProvider.Language == null || m_TextProvider.Language.Length == 0)
 			{
-				MessageBox.Show("Please enter a language");
+				_ = MessageBox.Show("Please enter a language");
 				return;
 			}
 
@@ -519,7 +527,7 @@ namespace TheBox.Lang
 				}
 				catch (Exception err)
 				{
-					MessageBox.Show(err.ToString());
+					_ = MessageBox.Show(err.ToString());
 				}
 			}
 		}
@@ -543,7 +551,7 @@ namespace TheBox.Lang
 				}
 				catch
 				{
-					MessageBox.Show("Wrong file type");
+					_ = MessageBox.Show("Wrong file type");
 					return;
 				}
 
@@ -553,7 +561,7 @@ namespace TheBox.Lang
 
 				foreach (var s in m_TextProvider.Data.Keys)
 				{
-					lCat.Items.Add(s);
+					_ = lCat.Items.Add(s);
 				}
 			}
 		}
@@ -562,14 +570,18 @@ namespace TheBox.Lang
 		{
 			var one = (string)lCat.SelectedItem;
 			var two = (string)lDef.SelectedItem;
-			Clipboard.SetDataObject(string.Format("{0}.{1}", one, two));
+			Clipboard.SetDataObject(String.Format("{0}.{1}", one, two));
 
 			if (CheckMinimize.Checked)
 			{
 				if (TopMost)
+				{
 					WindowState = FormWindowState.Minimized;
+				}
 				else
+				{
 					SendToBack();
+				}
 			}
 
 			txDef.Text = "";
@@ -585,7 +597,7 @@ namespace TheBox.Lang
 		{
 			if (lCat.SelectedItem != null)
 			{
-				m_TextProvider.Data.Remove((string)lCat.SelectedItem);
+				_ = m_TextProvider.Data.Remove((string)lCat.SelectedItem);
 				lCat.Items.Remove(lCat.SelectedItem);
 				lDef.Items.Clear();
 				txDef.Text = "";
@@ -597,11 +609,12 @@ namespace TheBox.Lang
 		{
 			if (lDef.SelectedItem != null)
 			{
-				Dictionary<string, string> hash;
-				if (!m_TextProvider.Data.TryGetValue((string)lCat.SelectedItem, out hash))
+				if (!m_TextProvider.Data.TryGetValue((string)lCat.SelectedItem, out var hash))
+				{
 					return;
+				}
 
-				hash.Remove((string)lDef.SelectedItem);
+				_ = hash.Remove((string)lDef.SelectedItem);
 				lDef.Items.Remove(lDef.SelectedItem);
 				txDef.Text = "";
 				txText.Text = "";

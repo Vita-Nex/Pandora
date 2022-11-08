@@ -1,10 +1,4 @@
-﻿#region Header
-// /*
-//  *    2018 - Ultima - Files.cs
-//  */
-#endregion
-
-#region References
+﻿#region References
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,19 +17,13 @@ namespace Ultima
 
 		public static void FireFileSaveEvent()
 		{
-			if (FileSaveEvent != null)
-			{
-				FileSaveEvent();
-			}
+			FileSaveEvent?.Invoke();
 		}
-
-		private static bool m_CacheData = true;
-		private static string m_Directory;
 
 		/// <summary>
 		///     Should loaded Data be cached
 		/// </summary>
-		public static bool CacheData { get { return m_CacheData; } set { m_CacheData = value; } }
+		public static bool CacheData { get; set; } = true;
 
 		/// <summary>
 		///     Should a Hashfile be used to speed up loading
@@ -50,14 +38,14 @@ namespace Ultima
 		/// <summary>
 		///     Gets a list of paths to the Client's data files.
 		/// </summary>
-		public static string Directory { get { return m_Directory; } }
+		public static string Directory { get; private set; }
 
 		/// <summary>
 		///     Contains the rootDir (so relative values are possible for <see cref="MulPath" />
 		/// </summary>
 		public static string RootDir { get; set; }
 
-		private static readonly string[] m_Files =
+		private static readonly string[] m_Files = new[]
 		{
 			"anim.idx", "anim.mul", "anim2.idx", "anim2.mul", "anim3.idx", "anim3.mul", "anim4.idx", "anim4.mul", "anim5.idx",
 			"anim5.mul", "animdata.mul", "art.mul", "artidx.mul", "artlegacymul.uop", "body.def", "bodyconv.def", "client.exe",
@@ -79,7 +67,7 @@ namespace Ultima
 
 		static Files()
 		{
-			m_Directory = LoadDirectory();
+			Directory = LoadDirectory();
 			LoadMulPath();
 		}
 
@@ -88,7 +76,7 @@ namespace Ultima
 		/// </summary>
 		public static void ReLoadDirectory()
 		{
-			m_Directory = LoadDirectory();
+			Directory = LoadDirectory();
 		}
 
 		/// <summary>
@@ -201,21 +189,28 @@ namespace Ultima
 			return GetFilePath(String.Format(format, args));
 		}
 
-		private static readonly string[] knownRegkeys =
+		private static readonly string[] knownRegkeys = new[]
 		{
-			@"Electronic Arts\EA Games\Ultima Online Classic", @"Electronic Arts\EA Games\Ultima Online Stygian Abyss Classic",
-			@"Origin Worlds Online\Ultima Online\KR Legacy Beta", @"Origin Worlds Online\Ultima Online Samurai Empire\3d\1.0",
+			@"Electronic Arts\EA Games\Ultima Online Classic", 
+			@"Electronic Arts\EA Games\Ultima Online Stygian Abyss Classic",
+			@"Origin Worlds Online\Ultima Online\KR Legacy Beta", 
+			@"Origin Worlds Online\Ultima Online Samurai Empire\3d\1.0",
 			@"Origin Worlds Online\Ultima Online Samurai Empire\2d\1.0",
 			@"Origin Worlds Online\Ultima Online Samurai Empire BETA\3d\1.0",
-			@"Origin Worlds Online\Ultima Online Samurai Empire BETA\2d\1.0", @"EA Games\Ultima Online: Mondain's Legacy\1.0",
-			@"EA Games\Ultima Online: Mondain's Legacy\1.00.0000", @"EA GAMES\Ultima Online: Samurai Empire\1.00.0000",
-			@"EA Games\Ultima Online: Mondain's Legacy", @"EA GAMES\Ultima Online Samurai Empire\1.00.0000",
-			@"EA GAMES\Ultima Online: Samurai Empire\1.0", @"EA GAMES\Ultima Online Samurai Empire",
-			@"EA GAMES\Ultima Online Samurai Empire\1.0", @"Origin Worlds Online\Ultima Online\1.0",
-			@"Origin Worlds Online\Ultima Online Third Dawn\1.0"
+			@"Origin Worlds Online\Ultima Online Samurai Empire BETA\2d\1.0",
+			@"EA Games\Ultima Online: Mondain's Legacy\1.0", 
+			@"EA Games\Ultima Online: Mondain's Legacy\1.00.0000",
+			@"EA GAMES\Ultima Online: Samurai Empire\1.00.0000", 
+			@"EA Games\Ultima Online: Mondain's Legacy",
+			@"EA GAMES\Ultima Online Samurai Empire\1.00.0000", 
+			@"EA GAMES\Ultima Online: Samurai Empire\1.0",
+			@"EA GAMES\Ultima Online Samurai Empire", 
+			@"EA GAMES\Ultima Online Samurai Empire\1.0",
+			@"Origin Worlds Online\Ultima Online\1.0", 
+			@"Origin Worlds Online\Ultima Online Third Dawn\1.0",
 		};
 
-		private static readonly string[] knownRegPathkeys = {"ExePath", "Install Dir", "InstallDir"};
+		private static readonly string[] knownRegPathkeys = new[] { "ExePath", "Install Dir", "InstallDir" };
 
 		public static string LoadDirectory()
 		{
@@ -226,7 +221,7 @@ namespace Ultima
 
 				if (Environment.Is64BitOperatingSystem)
 				{
-					exePath = GetPath(string.Format(@"Wow6432Node\{0}", knownRegkeys[i]));
+					exePath = GetPath(String.Format(@"Wow6432Node\{0}", knownRegkeys[i]));
 				}
 				else
 				{
@@ -246,11 +241,11 @@ namespace Ultima
 		{
 			try
 			{
-				var key = Registry.LocalMachine.OpenSubKey(string.Format(@"SOFTWARE\{0}", regkey));
+				var key = Registry.LocalMachine.OpenSubKey(String.Format(@"SOFTWARE\{0}", regkey));
 
 				if (key == null)
 				{
-					key = Registry.CurrentUser.OpenSubKey(string.Format(@"SOFTWARE\{0}", regkey));
+					key = Registry.CurrentUser.OpenSubKey(String.Format(@"SOFTWARE\{0}", regkey));
 
 					if (key == null)
 					{
@@ -270,7 +265,7 @@ namespace Ultima
 
 					if (pathkey == "InstallDir")
 					{
-						path = path + @"\";
+						path += @"\";
 					}
 
 					if (!System.IO.Directory.Exists(path) && !File.Exists(path))
@@ -322,11 +317,8 @@ namespace Ultima
 				var md5Hash = md5.ComputeHash(FileCheck);
 				FileCheck.Close();
 				var md5string = BitConverter.ToString(md5Hash).Replace("-", "").ToLower();
-				if (md5string == hash)
-				{
-					return true;
-				}
-				return false;
+				
+				return md5string == hash;
 			}
 		}
 
@@ -366,7 +358,7 @@ namespace Ultima
 					{
 						var length = bin.ReadInt32();
 						var buffer = new byte[length];
-						bin.Read(buffer, 0, length);
+						_ = bin.Read(buffer, 0, length);
 						var hashold = BitConverter.ToString(buffer).Replace("-", "").ToLower();
 						return CompareMD5(GetFilePath(String.Format("{0}.mul", what)), hashold);
 					}

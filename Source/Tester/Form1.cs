@@ -120,7 +120,7 @@ namespace Tester
 		///     The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main()
+		private static void Main()
 		{
 			Application.Run(new Form1());
 		}
@@ -132,8 +132,8 @@ namespace Tester
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Utility.SendToUO(
-				string.Format("[go {0} {1} {2}\n", mapViewer1.Center.X, mapViewer1.Center.Y, mapViewer1.GetMapHeight()));
+			_ = Utility.SendToUO(
+				String.Format("[go {0} {1} {2}\n", mapViewer1.Center.X, mapViewer1.Center.Y, mapViewer1.GetMapHeight()));
 		}
 	}
 }

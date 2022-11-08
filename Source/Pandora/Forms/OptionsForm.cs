@@ -33,9 +33,7 @@ namespace TheBox.Forms
 		private GroupBox groupBox2;
 		private Label label1;
 		private Label labUOFolder;
-		private Label labCustomUOFolder;
 		private Button bBrowseUOFolder;
-		private CheckBox chkCustomUOFolder;
 		private FolderBrowserDialog FolderBrowser;
 		private TrackBar barOpacity;
 		private Label label2;
@@ -126,8 +124,6 @@ namespace TheBox.Forms
 		private Button bMoveUpModifier;
 		private TextBox txModifier;
 		private Label label11;
-		private GroupBox groupBox9;
-		private LinkLabel lnkMulManager;
 		private Button bLoad;
 		private Button bRestoreDefLocations;
 		private LinkLabel lnkViewDataFolder;
@@ -191,9 +187,7 @@ namespace TheBox.Forms
 			this.chkTopmost = new System.Windows.Forms.CheckBox();
 			this.barOpacity = new System.Windows.Forms.TrackBar();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.labCustomUOFolder = new System.Windows.Forms.Label();
 			this.bBrowseUOFolder = new System.Windows.Forms.Button();
-			this.chkCustomUOFolder = new System.Windows.Forms.CheckBox();
 			this.labUOFolder = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.pTravel = new System.Windows.Forms.TabPage();
@@ -236,8 +230,6 @@ namespace TheBox.Forms
 			this.chkUseServer = new System.Windows.Forms.CheckBox();
 			this.pAdv = new System.Windows.Forms.TabPage();
 			this.chkFlat = new System.Windows.Forms.CheckBox();
-			this.groupBox9 = new System.Windows.Forms.GroupBox();
-			this.lnkMulManager = new System.Windows.Forms.LinkLabel();
 			this.groupBox8 = new System.Windows.Forms.GroupBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.txModifier = new System.Windows.Forms.TextBox();
@@ -287,15 +279,14 @@ namespace TheBox.Forms
 			this.groupBox4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.barOpacity)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.barOpacity).BeginInit();
 			this.groupBox2.SuspendLayout();
 			this.pTravel.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.pServer.SuspendLayout();
 			this.grpServer.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numPort)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numPort).BeginInit();
 			this.pAdv.SuspendLayout();
-			this.groupBox9.SuspendLayout();
 			this.groupBox8.SuspendLayout();
 			this.groupBox7.SuspendLayout();
 			this.pCommands.SuspendLayout();
@@ -544,9 +535,7 @@ namespace TheBox.Forms
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.labCustomUOFolder);
 			this.groupBox2.Controls.Add(this.bBrowseUOFolder);
-			this.groupBox2.Controls.Add(this.chkCustomUOFolder);
 			this.groupBox2.Controls.Add(this.labUOFolder);
 			this.groupBox2.Controls.Add(this.label1);
 			this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -557,15 +546,6 @@ namespace TheBox.Forms
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Options.UOFolder";
 			// 
-			// labCustomUOFolder
-			// 
-			this.labCustomUOFolder.Location = new System.Drawing.Point(88, 72);
-			this.labCustomUOFolder.Name = "labCustomUOFolder";
-			this.labCustomUOFolder.Size = new System.Drawing.Size(280, 23);
-			this.labCustomUOFolder.TabIndex = 4;
-			this.labCustomUOFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.labCustomUOFolder.Paint += new System.Windows.Forms.PaintEventHandler(this.labCustomUOFolder_Paint);
-			// 
 			// bBrowseUOFolder
 			// 
 			this.bBrowseUOFolder.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -574,16 +554,6 @@ namespace TheBox.Forms
 			this.bBrowseUOFolder.TabIndex = 3;
 			this.bBrowseUOFolder.Text = "Common.Browse";
 			this.bBrowseUOFolder.Click += new System.EventHandler(this.bBrowseUOFolder_Click);
-			// 
-			// chkCustomUOFolder
-			// 
-			this.chkCustomUOFolder.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkCustomUOFolder.Location = new System.Drawing.Point(8, 48);
-			this.chkCustomUOFolder.Name = "chkCustomUOFolder";
-			this.chkCustomUOFolder.Size = new System.Drawing.Size(224, 24);
-			this.chkCustomUOFolder.TabIndex = 2;
-			this.chkCustomUOFolder.Text = "Options.UseCustomFolder";
-			this.chkCustomUOFolder.CheckedChanged += new System.EventHandler(this.chkCustomUOFolder_CheckedChanged);
 			// 
 			// labUOFolder
 			// 
@@ -959,7 +929,7 @@ namespace TheBox.Forms
 			// numPort
 			// 
 			this.numPort.Location = new System.Drawing.Point(96, 40);
-			this.numPort.Maximum = new System.Decimal(new int[] {100000, 0, 0, 0});
+			this.numPort.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
 			this.numPort.Name = "numPort";
 			this.numPort.Size = new System.Drawing.Size(72, 20);
 			this.numPort.TabIndex = 3;
@@ -1003,7 +973,6 @@ namespace TheBox.Forms
 			// pAdv
 			// 
 			this.pAdv.Controls.Add(this.chkFlat);
-			this.pAdv.Controls.Add(this.groupBox9);
 			this.pAdv.Controls.Add(this.groupBox8);
 			this.pAdv.Controls.Add(this.cmbTabs);
 			this.pAdv.Controls.Add(this.labSelTab);
@@ -1024,28 +993,6 @@ namespace TheBox.Forms
 			this.chkFlat.TabIndex = 6;
 			this.chkFlat.Text = "Options.FlatBtn";
 			this.chkFlat.CheckedChanged += new System.EventHandler(this.chkFlat_CheckedChanged);
-			// 
-			// groupBox9
-			// 
-			this.groupBox9.Controls.Add(this.lnkMulManager);
-			this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox9.Location = new System.Drawing.Point(188, 168);
-			this.groupBox9.Name = "groupBox9";
-			this.groupBox9.Size = new System.Drawing.Size(196, 52);
-			this.groupBox9.TabIndex = 5;
-			this.groupBox9.TabStop = false;
-			this.groupBox9.Text = "Options.MulManage";
-			// 
-			// lnkMulManager
-			// 
-			this.lnkMulManager.Location = new System.Drawing.Point(4, 16);
-			this.lnkMulManager.Name = "lnkMulManager";
-			this.lnkMulManager.Size = new System.Drawing.Size(188, 32);
-			this.lnkMulManager.TabIndex = 0;
-			this.lnkMulManager.TabStop = true;
-			this.lnkMulManager.Text = "Options.MulManage2";
-			this.lnkMulManager.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkMulManager_LinkClicked);
 			// 
 			// groupBox8
 			// 
@@ -1465,7 +1412,7 @@ namespace TheBox.Forms
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.tabControl1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "OptionsForm";
 			this.ShowInTaskbar = false;
@@ -1478,15 +1425,14 @@ namespace TheBox.Forms
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.barOpacity)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.barOpacity).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.pTravel.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
 			this.pServer.ResumeLayout(false);
 			this.grpServer.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numPort)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numPort).EndInit();
 			this.pAdv.ResumeLayout(false);
-			this.groupBox9.ResumeLayout(false);
 			this.groupBox8.ResumeLayout(false);
 			this.groupBox7.ResumeLayout(false);
 			this.pCommands.ResumeLayout(false);
@@ -1532,26 +1478,13 @@ namespace TheBox.Forms
 			txArtBackground.BackColor = general.ArtBackground.Color;
 
 			// UO Folder
-			if (Pandora.Profile.MulManager.DefaultFolder == null)
+			if (Pandora.Profile.DefaultFolder == null)
 			{
 				labUOFolder.Text = Pandora.Localization.TextProvider["Options.NOUOFolder"];
 			}
 			else
 			{
-				labUOFolder.Text = Pandora.Profile.MulManager.DefaultFolder;
-			}
-
-			if (Pandora.Profile.MulManager.CustomFolder != null)
-			{
-				// Custom path
-				chkCustomUOFolder.Checked = true;
-				labCustomUOFolder.Text = Pandora.Profile.MulManager.CustomFolder;
-				bBrowseUOFolder.Enabled = true;
-			}
-			else
-			{
-				bBrowseUOFolder.Enabled = false;
-				labCustomUOFolder.Text = "";
+				labUOFolder.Text = Pandora.Profile.DefaultFolder;
 			}
 
 			// Opacity
@@ -1571,9 +1504,9 @@ namespace TheBox.Forms
 			SpawnColorPreview.BackColor = travel.SpawnColor;
 			chkXRay.Checked = travel.XRayView;
 
-			chkShowSpawns.Enabled = (SpawnData.SpawnProvider != null);
-			linkSpawnColor.Enabled = (SpawnData.SpawnProvider != null);
-			SpawnColorPreview.Enabled = (SpawnData.SpawnProvider != null);
+			chkShowSpawns.Enabled = SpawnData.SpawnProvider != null;
+			linkSpawnColor.Enabled = SpawnData.SpawnProvider != null;
+			SpawnColorPreview.Enabled = SpawnData.SpawnProvider != null;
 
 			// Map names
 			chkMap0.Checked = travel.EnabledMaps[0];
@@ -1658,9 +1591,11 @@ namespace TheBox.Forms
 				var mod = Pandora.Profile.General.Modifiers[i];
 				var warn = Pandora.Profile.General.ModifiersWarnings[i];
 
-				var node = new TreeNode(mod);
-				node.Checked = warn;
-				tModifiers.Nodes.Add(node);
+				var node = new TreeNode(mod)
+				{
+					Checked = warn
+				};
+				_ = tModifiers.Nodes.Add(node);
 			}
 
 			tModifiers.EndUpdate();
@@ -1677,11 +1612,11 @@ namespace TheBox.Forms
 
 			if (defProf != null && defProf.Length > 0)
 			{
-				labDefaultProfile.Text = string.Format(Pandora.Localization.TextProvider["Options.DefaultProf"], defProf);
+				labDefaultProfile.Text = String.Format(Pandora.Localization.TextProvider["Options.DefaultProf"], defProf);
 			}
 			else
 			{
-				labDefaultProfile.Text = string.Format(
+				labDefaultProfile.Text = String.Format(
 					Pandora.Localization.TextProvider["Options.DefaultProf"],
 					Pandora.Localization.TextProvider["Common.None"]);
 			}
@@ -1730,14 +1665,7 @@ namespace TheBox.Forms
 
 			if (m_ChangeUOFolder)
 			{
-				if (chkCustomUOFolder.Checked)
-				{
-					Pandora.Profile.MulManager.CustomFolder = labCustomUOFolder.Text;
-				}
-				else
-				{
-					Pandora.Profile.MulManager.CustomFolder = null;
-				}
+				Pandora.Profile.DefaultFolder = labUOFolder.Text;
 			}
 
 			if (m_ChangeOpacity)
@@ -1756,7 +1684,7 @@ namespace TheBox.Forms
 				{
 					// Connect
 					Pandora.BoxConnection.Disconnect();
-					Pandora.BoxConnection.Connect();
+					_ = Pandora.BoxConnection.Connect();
 				}
 			}
 
@@ -1804,21 +1732,27 @@ namespace TheBox.Forms
 		private void chkTray_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.General.MinimizeToTray = chkTray.Checked;
+			}
 		}
 
 		// Topmost
 		private void chkTopmost_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.General.TopMost = chkTopmost.Checked;
+			}
 		}
 
 		// Minimize with X button
 		private void chkXMin_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.General.XMinimize = chkXMin.Checked;
+			}
 		}
 
 		/// <summary>
@@ -1829,7 +1763,9 @@ namespace TheBox.Forms
 			Opacity = barOpacity.Value / 100.0;
 
 			if (m_ApplyOptions)
+			{
 				m_ChangeOpacity = true;
+			}
 		}
 
 		/// <summary>
@@ -1838,18 +1774,9 @@ namespace TheBox.Forms
 		private void txCmdPrefix_TextChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions && txCmdPrefix.Text.Length > 0)
+			{
 				Pandora.Profile.General.CommandPrefix = txCmdPrefix.Text;
-		}
-
-		/// <summary>
-		///     CheckBox: use a custom UO folder
-		/// </summary>
-		private void chkCustomUOFolder_CheckedChanged(object sender, EventArgs e)
-		{
-			if (m_ApplyOptions)
-				m_ChangeUOFolder = true;
-
-			bBrowseUOFolder.Enabled = chkCustomUOFolder.Checked;
+			}
 		}
 
 		/// <summary>
@@ -1859,7 +1786,7 @@ namespace TheBox.Forms
 		{
 			if (FolderBrowser.ShowDialog() == DialogResult.OK)
 			{
-				labCustomUOFolder.Text = FolderBrowser.SelectedPath;
+				labUOFolder.Text = FolderBrowser.SelectedPath;
 				m_ChangeUOFolder = true;
 			}
 		}
@@ -1929,8 +1856,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					BoxData bd = null;
-
+					BoxData bd;
 					try
 					{
 						// Try reading the XML file
@@ -1941,7 +1867,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -1968,8 +1894,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					PropsData p = null;
-
+					PropsData p;
 					try
 					{
 						// Try reading the XML file
@@ -1980,7 +1905,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2003,8 +1928,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					SpawnData sd = null;
-
+					SpawnData sd;
 					try
 					{
 						// Try reading the XML file
@@ -2015,7 +1939,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2044,8 +1968,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					SpawnGroups sg = null;
-
+					SpawnGroups sg;
 					try
 					{
 						// Try reading the XML file
@@ -2056,7 +1979,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2151,14 +2074,6 @@ namespace TheBox.Forms
 		{
 			Utility.DrawBorder(labUOFolder, e.Graphics);
 		}
-
-		/// <summary>
-		///     Draw border
-		/// </summary>
-		private void labCustomUOFolder_Paint(object sender, PaintEventArgs e)
-		{
-			Utility.DrawBorder(labCustomUOFolder, e.Graphics);
-		}
 		#endregion
 
 		#region Travel
@@ -2168,7 +2083,9 @@ namespace TheBox.Forms
 		private void chkSelectedMapLocations_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyOptions)
+			{
 				Pandora.Profile.Travel.SelectedMapLocations = chkSelectedMapLocations.Checked;
+			}
 		}
 
 		private void chkXRay_CheckedChanged(object sender, EventArgs e)
@@ -2191,7 +2108,7 @@ namespace TheBox.Forms
 				Pandora.Map.DrawStatics = chkDrawStatics.Checked;
 			}
 		}
-		
+
 		/// <summary>
 		///     Choose new spawn color
 		/// </summary>
@@ -2299,7 +2216,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap0.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[0] = txMap0.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2312,7 +2232,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap1.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[1] = txMap1.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2325,7 +2248,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap2.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[2] = txMap2.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2338,7 +2264,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap3.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[3] = txMap3.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2348,7 +2277,10 @@ namespace TheBox.Forms
 			if (m_ApplyOptions)
 			{
 				if (txMap4.Text.Length > 0)
+				{
 					Pandora.Profile.Travel.MapNames[4] = txMap4.Text;
+				}
+
 				Pandora.BoxForm.Travel.ResetMaps();
 			}
 		}
@@ -2369,8 +2301,7 @@ namespace TheBox.Forms
 			{
 				if (OpenFile.ShowDialog() == DialogResult.OK)
 				{
-					Facet facet = null;
-
+					Facet facet;
 					try
 					{
 						// Try reading the XML file
@@ -2381,7 +2312,7 @@ namespace TheBox.Forms
 					}
 					catch
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.WrongFile"]);
 						return;
 					}
 
@@ -2425,7 +2356,7 @@ namespace TheBox.Forms
 			if (Pandora.Profile.Travel.IsEnabled)
 			{
 				var form = new MapFilesForm();
-				form.ShowDialog();
+				_ = form.ShowDialog();
 			}
 		}
 
@@ -2451,7 +2382,7 @@ namespace TheBox.Forms
 		/// <summary>
 		///     Gets the command options
 		/// </summary>
-		private CommandsOptions Commands { get { return Pandora.Profile.Commands; } }
+		private CommandsOptions Commands => Pandora.Profile.Commands;
 		#endregion
 
 		#region Server
@@ -2525,7 +2456,7 @@ namespace TheBox.Forms
 		{
 			Pandora.Profile.Server.SetPassword(txPass.Text);
 			txPass.Text = "";
-			MessageBox.Show(Pandora.Localization.TextProvider["Options.PassUpdated"]);
+			_ = MessageBox.Show(Pandora.Localization.TextProvider["Options.PassUpdated"]);
 		}
 
 		/// <summary>
@@ -2545,7 +2476,7 @@ namespace TheBox.Forms
 			{
 				Pandora.Profile.Server.UseSHA1Crypt = chkSHA1.Checked;
 
-				MessageBox.Show(Pandora.Localization.TextProvider["Options.SHA1CheckWarn"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Options.SHA1CheckWarn"]);
 			}
 		}
 		#endregion
@@ -2556,7 +2487,7 @@ namespace TheBox.Forms
 		/// </summary>
 		private void txProfName_TextChanged(object sender, EventArgs e)
 		{
-			if (txProfName.Text.Length > 0 && m_ApplyOptions && !(txProfName.Text.EndsWith(" ")))
+			if (txProfName.Text.Length > 0 && m_ApplyOptions && !txProfName.Text.EndsWith(" "))
 			{
 				string old = null;
 				string newFolder = null;
@@ -2573,7 +2504,7 @@ namespace TheBox.Forms
 
 					if (Directory.Exists(newFolder))
 					{
-						MessageBox.Show(Pandora.Localization.TextProvider["Errors.ProfExists"]);
+						_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.ProfExists"]);
 						return;
 					}
 
@@ -2600,10 +2531,14 @@ namespace TheBox.Forms
 				bDeleteProfile.Enabled = true;
 				bDefaultProfile.Enabled = true;
 
-				if (lstProfiles.SelectedItem as string == Pandora.Profile.Name)
+				if ((lstProfiles.SelectedItem as string) == Pandora.Profile.Name)
+				{
 					bLoad.Enabled = false;
+				}
 				else
+				{
 					bLoad.Enabled = true;
+				}
 			}
 		}
 
@@ -2817,7 +2752,7 @@ namespace TheBox.Forms
 		private void bAddModifier_Click(object sender, EventArgs e)
 		{
 			var node = new TreeNode(txModifier.Text);
-			tModifiers.Nodes.Add(node);
+			_ = tModifiers.Nodes.Add(node);
 		}
 
 		/// <summary>
@@ -2861,22 +2796,13 @@ namespace TheBox.Forms
 		}
 
 		/// <summary>
-		///     Show mul file management
-		/// </summary>
-		private void lnkMulManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			var form = new MulManagerForm(Pandora.Profile.MulManager);
-			form.ShowDialog();
-		}
-
-		/// <summary>
 		///     View the data folder
 		/// </summary>
 		private void lnkViewDataFolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			try
 			{
-				Process.Start(Pandora.ApplicationDataFolder);
+				_ = Process.Start(Pandora.ApplicationDataFolder);
 			}
 			catch (Exception err)
 			{

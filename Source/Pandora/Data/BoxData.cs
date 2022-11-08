@@ -51,10 +51,10 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<object> Items
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Items; }
-			set { m_Items = value; }
+			get => m_Items;
+			set => m_Items = value;
 		}
 
 		/// <summary>
@@ -62,10 +62,10 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<object> Mobiles
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Mobiles; }
-			set { m_Mobiles = value; }
+			get => m_Mobiles;
+			set => m_Mobiles = value;
 		}
 
 		//		/// <summary>
@@ -143,7 +143,7 @@ namespace TheBox.Data
 		/// <returns>The node, if found. Null otherwise.</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private GenericNode FindNode(List<object> where, string name)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			name = name.ToLower();
 
@@ -154,7 +154,9 @@ namespace TheBox.Data
 					var node = o as GenericNode;
 
 					if (node.Name.ToLower() == name)
+					{
 						return node;
+					}
 				}
 			}
 
@@ -179,11 +181,11 @@ namespace TheBox.Data
 					var stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
 					data = serializer.Deserialize(stream) as BoxData;
 					stream.Close();
-					Pandora.Log.WriteEntry(string.Format("BoxData read correctly from file: {0}", filename));
+					Pandora.Log.WriteEntry(String.Format("BoxData read correctly from file: {0}", filename));
 				}
 				catch (Exception err)
 				{
-					Pandora.Log.WriteError(err, string.Format("Cannot read BoxData from file {0}", filename));
+					Pandora.Log.WriteError(err, String.Format("Cannot read BoxData from file {0}", filename));
 				}
 			}
 
@@ -204,7 +206,7 @@ namespace TheBox.Data
 				serializer.Serialize(stream, this);
 				stream.Close();
 
-				Pandora.Log.WriteEntry(string.Format("BoxData saved correctly to {0}", filename));
+				Pandora.Log.WriteEntry(String.Format("BoxData saved correctly to {0}", filename));
 			}
 			catch (Exception err)
 			{
@@ -231,14 +233,14 @@ namespace TheBox.Data
 		/// Gets or sets the name of the mobile (Type name)
 		/// </summary>
 		[XmlAttribute]
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		[Description("The number corresponding to the body of this mobile"), Category("Mobile")]
 		/// <summary>
 		/// Gets or sets the ID used to display the mobile
 		/// </summary>
 		[XmlAttribute]
-		public int Art { get { return m_Art; } set { m_Art = value; } }
+		public int Art { get => m_Art; set => m_Art = value; }
 
 		[Description("The number corresponding to the hue of this mobile"), Category("Mobile")]
 		/// <summary>
@@ -247,12 +249,14 @@ namespace TheBox.Data
 		[XmlAttribute]
 		public int Hue
 		{
-			get { return m_Hue; }
+			get => m_Hue;
 			set
 			{
 				m_Hue = value;
 				if (m_Hue >= 3000)
+				{
 					m_Hue = 0;
+				}
 			}
 		}
 
@@ -261,7 +265,7 @@ namespace TheBox.Data
 		/// Gets or sets a value stating whether the mobile has a constructor allowing to name it
 		/// </summary>
 		[XmlAttribute]
-		public bool CanBeNamed { get { return m_CanBeNamed; } set { m_CanBeNamed = value; } }
+		public bool CanBeNamed { get => m_CanBeNamed; set => m_CanBeNamed = value; }
 
 		#region IComparable Members
 		public int CompareTo(object obj)

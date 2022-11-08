@@ -24,8 +24,10 @@ namespace TheBox.Options
 	{
 		public TravelOptions()
 		{
-			m_SpawnColor = new ColorDef();
-			m_SpawnColor.Color = Color.Green;
+			m_SpawnColor = new ColorDef
+			{
+				Color = Color.Green
+			};
 		}
 
 		/// <summary>
@@ -36,11 +38,11 @@ namespace TheBox.Options
 		#region Variables
 		private bool m_WorldMapBig;
 
-		private string[] m_MapNames = {"Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno"};
+		private string[] m_MapNames = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno" };
 
-		public readonly string[] DefaultMaps = {"Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno"};
+		public readonly string[] DefaultMaps = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno" };
 
-		private bool[] m_EnabledMaps = {true, true, true, true, true};
+		private bool[] m_EnabledMaps = { true, true, true, true, true };
 
 		private bool m_SelectedMapLocations;
 		private bool m_DrawStatics = true;
@@ -50,7 +52,7 @@ namespace TheBox.Options
 		private bool m_ShowSpawns;
 		private bool m_CustomMaps;
 		private ColorDef m_SpawnColor;
-		private bool m_RotateMap = true;
+		private readonly bool m_RotateMap = true;
 		private bool m_XRayView;
 		private bool m_FollowClient;
 		#endregion
@@ -68,8 +70,7 @@ namespace TheBox.Options
 
 		protected virtual void OnTreeDisplayChanged(EventArgs e)
 		{
-			if (TreeDisplayChanged != null)
-				TreeDisplayChanged(this, e);
+			TreeDisplayChanged?.Invoke(this, e);
 		}
 		#endregion
 
@@ -77,7 +78,7 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the color used to display spawns on the map
 		/// </summary>
-		public Color SpawnColor { get { return m_SpawnColor.Color; } set { m_SpawnColor.Color = value; } }
+		public Color SpawnColor { get => m_SpawnColor.Color; set => m_SpawnColor.Color = value; }
 
 		[XmlIgnore]
 		/// <summary>
@@ -108,34 +109,34 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or sets the object that defines the color used to display spawns
 		/// </summary>
-		public ColorDef SpawnObjColor { get { return m_SpawnColor; } set { m_SpawnColor = value; } }
+		public ColorDef SpawnObjColor { get => m_SpawnColor; set => m_SpawnColor = value; }
 
 		/// <summary>
 		///     Gets or sets the zoom level on the Map viewer
 		/// </summary>
-		public int Zoom { get { return m_Zoom; } set { m_Zoom = value; } }
+		public int Zoom { get => m_Zoom; set => m_Zoom = value; }
 
 		/// <summary>
 		///     Gets or sets the map displayed on the viewer
 		/// </summary>
-		public int Map { get { return m_Map; } set { m_Map = value; } }
+		public int Map { get => m_Map; set => m_Map = value; }
 
 		/// <summary>
 		///     Gets or sets the point displayed on the map
 		/// </summary>
-		public Point MapCenter { get { return m_MapCenter; } set { m_MapCenter = value; } }
+		public Point MapCenter { get => m_MapCenter; set => m_MapCenter = value; }
 
 		/// <summary>
 		///     Gets or sets a value stating whether the map viewer will display statics
 		/// </summary>
-		public bool DrawStatics { get { return m_DrawStatics; } set { m_DrawStatics = value; } }
+		public bool DrawStatics { get => m_DrawStatics; set => m_DrawStatics = value; }
 
 		/// <summary>
 		///     Gets or sets a value stating whether the travel tab should display locations only for the selected map
 		/// </summary>
 		public bool SelectedMapLocations
 		{
-			get { return m_SelectedMapLocations; }
+			get => m_SelectedMapLocations;
 			set
 			{
 				if (m_SelectedMapLocations != value)
@@ -150,49 +151,46 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or sets a value stating whether the world map will display big images
 		/// </summary>
-		public bool WorldMapBig { get { return m_WorldMapBig; } set { m_WorldMapBig = value; } }
+		public bool WorldMapBig { get => m_WorldMapBig; set => m_WorldMapBig = value; }
 
 		/// <summary>
 		///     Gets or sets a string containing the names of the maps on this profile
 		/// </summary>
-		public string[] MapNames { get { return m_MapNames; } set { m_MapNames = value; } }
+		public string[] MapNames { get => m_MapNames; set => m_MapNames = value; }
 
 		/// <summary>
 		///     Gets or sets the enabled state for the maps in this profile
 		/// </summary>
-		public bool[] EnabledMaps { get { return m_EnabledMaps; } set { m_EnabledMaps = value; } }
+		public bool[] EnabledMaps { get => m_EnabledMaps; set => m_EnabledMaps = value; }
 
 		/// <summary>
 		///     States whether the profile uses custom maps
 		/// </summary>
-		public bool CustomMaps { get { return m_CustomMaps; } set { m_CustomMaps = value; } }
+		public bool CustomMaps { get => m_CustomMaps; set => m_CustomMaps = value; }
 
 		/// <summary>
 		///     States whether the map should display spawns
 		/// </summary>
 		public bool ShowSpawns
 		{
-			get { return m_ShowSpawns; }
+			get => m_ShowSpawns;
 			set
 			{
 				m_ShowSpawns = value;
 
-				if (ShowSpawnsChanged != null)
-				{
-					ShowSpawnsChanged(this, new EventArgs());
-				}
+				ShowSpawnsChanged?.Invoke(this, new EventArgs());
 			}
 		}
-		
+
 		/// <summary>
 		///     States whether the map should display statics under ground
 		/// </summary>
-		public bool XRayView { get { return m_XRayView; } set { m_XRayView = value; } }
+		public bool XRayView { get => m_XRayView; set => m_XRayView = value; }
 
 		/// <summary>
 		///     States whether the map should follow client movements on the map
 		/// </summary>
-		public bool FollowClient { get { return m_FollowClient; } set { m_FollowClient = value; } }
+		public bool FollowClient { get => m_FollowClient; set => m_FollowClient = value; }
 
 		/// <summary>
 		///     Gets an image for the world map
@@ -202,7 +200,7 @@ namespace TheBox.Options
 		/// <returns>A bitmap containing the map</returns>
 		public Bitmap GetMapImage(int index, bool big)
 		{
-			var FileName = string.Format(
+			var FileName = String.Format(
 				"{0}{1}Maps{1}map{2}{3}.jpg",
 				Pandora.Profile.BaseFolder,
 				Path.DirectorySeparatorChar,
@@ -220,7 +218,7 @@ namespace TheBox.Options
 				{
 					Pandora.Log.WriteError(
 						err,
-						string.Format("Unable to read map {0} ({1}) from location {2}", index, big ? "big" : "small", FileName));
+						String.Format("Unable to read map {0} ({1}) from location {2}", index, big ? "big" : "small", FileName));
 					return null;
 				}
 			}
@@ -230,7 +228,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets a value stating whether there is at least one enabled map
 		/// </summary>
-		public bool IsEnabled { get { return m_EnabledMaps[0] || m_EnabledMaps[1] || m_EnabledMaps[2] || m_EnabledMaps[3]; } }
+		public bool IsEnabled => m_EnabledMaps[0] || m_EnabledMaps[1] || m_EnabledMaps[2] || m_EnabledMaps[3];
 
 		/// <summary>
 		///     Shows or hides the spawns on the map

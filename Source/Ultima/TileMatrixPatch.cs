@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - TileMatrixPatch.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.IO;
@@ -163,8 +157,9 @@ namespace Ultima
 
 		private int PatchLand(TileMatrix matrix, string dataPath, string indexPath)
 		{
-			using (FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
-							  fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (
+				FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
+						   fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				using (var indexReader = new BinaryReader(fsIndex))
 				{
@@ -176,7 +171,7 @@ namespace Ultima
 						var x = blockID / matrix.BlockHeight;
 						var y = blockID % matrix.BlockHeight;
 
-						fsData.Seek(4, SeekOrigin.Current);
+						_ = fsData.Seek(4, SeekOrigin.Current);
 
 						var tiles = new Tile[64];
 
@@ -188,7 +183,7 @@ namespace Ultima
 								m_Buffer = new byte[192];
 							}
 
-							fsData.Read(m_Buffer, 0, 192);
+							_ = fsData.Read(m_Buffer, 0, 192);
 
 							Marshal.Copy(m_Buffer, 0, gc.AddrOfPinnedObject(), 192);
 						}
@@ -209,9 +204,10 @@ namespace Ultima
 
 		private int PatchStatics(TileMatrix matrix, string dataPath, string indexPath, string lookupPath)
 		{
-			using (FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
-							  fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read),
-							  fsLookup = new FileStream(lookupPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (
+				FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
+						   fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read),
+						   fsLookup = new FileStream(lookupPath, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				using (BinaryReader indexReader = new BinaryReader(fsIndex), lookupReader = new BinaryReader(fsLookup))
 				{
@@ -237,7 +233,7 @@ namespace Ultima
 
 						var offset = lookupReader.ReadInt32();
 						var length = lookupReader.ReadInt32();
-						lookupReader.ReadInt32(); // Extra
+						_ = lookupReader.ReadInt32(); // Extra
 
 						if (offset < 0 || length <= 0)
 						{
@@ -250,7 +246,7 @@ namespace Ultima
 							continue;
 						}
 
-						fsData.Seek(offset, SeekOrigin.Begin);
+						_ = fsData.Seek(offset, SeekOrigin.Begin);
 
 						var tileCount = length / 7;
 
@@ -269,7 +265,7 @@ namespace Ultima
 								m_Buffer = new byte[length];
 							}
 
-							fsData.Read(m_Buffer, 0, length);
+							_ = fsData.Read(m_Buffer, 0, length);
 
 							Marshal.Copy(m_Buffer, 0, gc.AddrOfPinnedObject(), length);
 

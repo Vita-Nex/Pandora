@@ -38,77 +38,71 @@ namespace TheBox.Options
 		private AdminOptions m_Admin;
 		private LauncherOptions m_Launcher;
 		private ScreenshotOptions m_Screenshots;
-		private MulManager m_MulManager;
 
 		/// <summary>
 		///     Gets or sets the general options for this profile
 		/// </summary>
-		public GeneralOptions General { get { return m_General; } set { m_General = value; } }
+		public GeneralOptions General { get => m_General; set => m_General = value; }
 
 		/// <summary>
 		///     Gets or sets travel related options
 		/// </summary>
-		public TravelOptions Travel { get { return m_Travel; } set { m_Travel = value; } }
+		public TravelOptions Travel { get => m_Travel; set => m_Travel = value; }
 
 		/// <summary>
 		///     Gets or sets the hues options
 		/// </summary>
-		public HuesOptions Hues { get { return m_Hues; } set { m_Hues = value; } }
+		public HuesOptions Hues { get => m_Hues; set => m_Hues = value; }
 
 		/// <summary>
 		///     Gets or sets the commands options
 		/// </summary>
-		public CommandsOptions Commands { get { return m_Commands; } set { m_Commands = value; } }
+		public CommandsOptions Commands { get => m_Commands; set => m_Commands = value; }
 
 		/// <summary>
 		///     Gets or sets options related to mobiles
 		/// </summary>
-		public MobilesOptions Mobiles { get { return m_Mobiles; } set { m_Mobiles = value; } }
+		public MobilesOptions Mobiles { get => m_Mobiles; set => m_Mobiles = value; }
 
 		/// <summary>
 		///     Gets or sets options related to properties
 		/// </summary>
-		public PropsOptions Props { get { return m_Props; } set { m_Props = value; } }
+		public PropsOptions Props { get => m_Props; set => m_Props = value; }
 
 		/// <summary>
 		///     Gets or sets BoxServer options
 		/// </summary>
-		public ServerOptions Server { get { return m_Server; } set { m_Server = value; } }
+		public ServerOptions Server { get => m_Server; set => m_Server = value; }
 
 		/// <summary>
 		///     Gets or sets the deco options
 		/// </summary>
-		public DecoOptions Deco { get { return m_Deco; } set { m_Deco = value; } }
+		public DecoOptions Deco { get => m_Deco; set => m_Deco = value; }
 
 		/// <summary>
 		///     Gets or sets the options for the Items tab
 		/// </summary>
-		public ItemsOptions Items { get { return m_Items; } set { m_Items = value; } }
+		public ItemsOptions Items { get => m_Items; set => m_Items = value; }
 
 		/// <summary>
 		///     Gets or sets the notes collection
 		/// </summary>
-		public Notes Notes { get { return m_Notes; } set { m_Notes = value; } }
+		public Notes Notes { get => m_Notes; set => m_Notes = value; }
 
 		/// <summary>
 		///     Gets or sets admin options
 		/// </summary>
-		public AdminOptions Admin { get { return m_Admin; } set { m_Admin = value; } }
+		public AdminOptions Admin { get => m_Admin; set => m_Admin = value; }
 
 		/// <summary>
 		///     Gets or sets the launcher options
 		/// </summary>
-		public LauncherOptions Launcher { get { return m_Launcher; } set { m_Launcher = value; } }
+		public LauncherOptions Launcher { get => m_Launcher; set => m_Launcher = value; }
 
 		/// <summary>
 		///     Gets or sets the launcher options
 		/// </summary>
-		public ScreenshotOptions Screenshots { get { return m_Screenshots; } set { m_Screenshots = value; } }
-
-		/// <summary>
-		///     Gets or sets the mul files manager
-		/// </summary>
-		public MulManager MulManager { get { return m_MulManager; } set { m_MulManager = value; } }
+		public ScreenshotOptions Screenshots { get => m_Screenshots; set => m_Screenshots = value; }
 		#endregion
 
 		/// <summary>
@@ -129,12 +123,12 @@ namespace TheBox.Options
 			m_Admin = new AdminOptions();
 			m_Launcher = new LauncherOptions();
 			m_Screenshots = new ScreenshotOptions();
-			m_MulManager = new MulManager();
 		}
 
-		private string m_Name;
+		private string m_Name = "Default";
 		private string m_Language = "English";
 		private string m_CustomClient;
+		private string m_DefaultFolder;
 
 		/// <summary>
 		///     Gets a list of all the existing profiles
@@ -154,7 +148,7 @@ namespace TheBox.Options
 
 					foreach (var pro in profiles)
 					{
-						list.Add(pro.Substring(index, pro.Length - index));
+						_ = list.Add(pro.Substring(index, pro.Length - index));
 					}
 				}
 
@@ -166,23 +160,38 @@ namespace TheBox.Options
 		/// <summary>
 		/// Gets or sets the name of the profile
 		/// </summary>
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the language used by this instance of Pandora
 		/// </summary>
-		public string Language { get { return m_Language; } set { m_Language = value; } }
+		public string Language { get => m_Language; set => m_Language = value; }
 
 		public string CustomClient
 		{
-			get { return m_CustomClient; }
+			get => m_CustomClient;
 			set
 			{
 				if (value == null || File.Exists(value))
 				{
 					m_CustomClient = value;
+
 					Utility.CustomClientPath = m_CustomClient;
+				}
+			}
+		}
+
+		public string DefaultFolder
+		{
+			get => m_DefaultFolder;
+			set
+			{
+				if (value == null || Directory.Exists(value))
+				{
+					m_DefaultFolder = value;
+
+					Ultima.Files.SetMulPath(value);
 				}
 			}
 		}
@@ -190,7 +199,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets the base folder for this profile
 		/// </summary>
-		public string BaseFolder { get { return Path.Combine(ProfileManager.ProfilesFolder, m_Name); } }
+		public string BaseFolder => Path.Combine(ProfileManager.ProfilesFolder, m_Name);
 
 		private ButtonIndex m_ButtonIndex;
 
@@ -235,7 +244,7 @@ namespace TheBox.Options
 
 			if (!Directory.Exists(MapsFolder))
 			{
-				Directory.CreateDirectory(MapsFolder);
+				_ = Directory.CreateDirectory(MapsFolder);
 			}
 		}
 
@@ -247,12 +256,16 @@ namespace TheBox.Options
 		{
 			ResetMaps();
 
-			Pandora.Log.WriteEntry(string.Format("Profile {0} is generating the images for world map", m_Name));
+			Pandora.Log.WriteEntry(String.Format("Profile {0} is generating the images for world map", m_Name));
 
 			var count = 0;
 			foreach (var b in m_Travel.EnabledMaps)
+			{
 				if (b)
+				{
 					count++;
+				}
+			}
 
 			if (count == 0)
 			{
@@ -267,8 +280,6 @@ namespace TheBox.Options
 				bar.Step = 1;
 				bar.Value = 0;
 			}
-
-			MapViewer.MapViewer.MulFileManager = MulManager;
 
 			for (var i = 0; i < m_Travel.MapCount; i++)
 			{
@@ -289,8 +300,8 @@ namespace TheBox.Options
 						scaleb = MapViewer.MapViewer.MapScale.Fourth;
 					}
 
-					var FileSmall = string.Format("map{0}small.jpg", i);
-					var FileBig = string.Format("map{0}big.jpg", i);
+					var FileSmall = String.Format("map{0}small.jpg", i);
+					var FileBig = String.Format("map{0}big.jpg", i);
 
 					try
 					{
@@ -298,19 +309,19 @@ namespace TheBox.Options
 						MapViewer.MapViewer.ExtractMap(
 							(Maps)i,
 							scales,
-							Path.Combine(BaseFolder, string.Format("Maps{0}{1}", Path.DirectorySeparatorChar, FileSmall)));
+							Path.Combine(BaseFolder, String.Format("Maps{0}{1}", Path.DirectorySeparatorChar, FileSmall)));
 						bar.Value++;
 						MapViewer.MapViewer.ExtractMap(
 							(Maps)i,
 							scaleb,
-							Path.Combine(BaseFolder, string.Format("Maps{0}{1}", Path.DirectorySeparatorChar, FileBig)));
-						Pandora.Log.WriteEntry(string.Format("Images for map {0} generated correctly", i));
+							Path.Combine(BaseFolder, String.Format("Maps{0}{1}", Path.DirectorySeparatorChar, FileBig)));
+						Pandora.Log.WriteEntry(String.Format("Images for map {0} generated correctly", i));
 					}
 					catch (Exception err)
 					{
-						Pandora.Log.WriteError(err, string.Format("Couldn't extract images for map {0}: map disabled in the profile", i));
-						MessageBox.Show(
-							string.Format(
+						Pandora.Log.WriteError(err, String.Format("Couldn't extract images for map {0}: map disabled in the profile", i));
+						_ = MessageBox.Show(
+							String.Format(
 								"An error has occurred and map {0} has been disabled in this profile. Please review the log for further information on the error.",
 								i));
 
@@ -320,7 +331,7 @@ namespace TheBox.Options
 				else
 				{
 					// Disabled
-					Pandora.Log.WriteEntry(string.Format("Map {0} is disabled. Skipping.", m_Travel.MapNames[i]));
+					Pandora.Log.WriteEntry(String.Format("Map {0} is disabled. Skipping.", m_Travel.MapNames[i]));
 				}
 			}
 		}
@@ -331,7 +342,9 @@ namespace TheBox.Options
 		public void Save()
 		{
 			if (!Directory.Exists(BaseFolder))
-				Directory.CreateDirectory(BaseFolder);
+			{
+				_ = Directory.CreateDirectory(BaseFolder);
+			}
 
 			var file = Path.Combine(BaseFolder, "Profile.xml");
 
@@ -340,7 +353,7 @@ namespace TheBox.Options
 			serializer.Serialize(stream, this);
 			stream.Close();
 
-			Pandora.Log.WriteEntry(string.Format("Profile {0} save succesfully", m_Name));
+			Pandora.Log.WriteEntry(String.Format("Profile {0} save succesfully", m_Name));
 		}
 
 		/// <summary>
@@ -354,10 +367,10 @@ namespace TheBox.Options
 
 			if (!File.Exists(file))
 			{
-				throw new FileNotFoundException(string.Format("Profile {0} not found.", name), file);
+				throw new FileNotFoundException(String.Format("Profile {0} not found.", name), file);
 			}
 
-			Pandora.Log.WriteEntry(string.Format("Reading profile {0}", name));
+			Pandora.Log.WriteEntry(String.Format("Reading profile {0}", name));
 			FileStream stream = null;
 			Profile p = null;
 
@@ -375,15 +388,19 @@ namespace TheBox.Options
 			}
 			catch (Exception err)
 			{
-				Pandora.Log.WriteError(err, string.Format("Can't read profile {0}", name));
+				Pandora.Log.WriteError(err, String.Format("Can't read profile {0}", name));
 			}
 
 			// Close the already closed stream if there is no error... Can be better ;) - Tarion
 			if (stream != null)
+			{
 				stream.Close();
+			}
 
 			if (p != null)
+			{
 				p.ValidateMaps();
+			}
 
 			return p;
 		}
@@ -394,7 +411,9 @@ namespace TheBox.Options
 		private void ValidateMaps()
 		{
 			if (m_Travel.EnabledMaps.Length == m_Travel.MapCount)
+			{
 				return;
+			}
 
 			var names = new string[m_Travel.MapCount];
 			var enabled = new bool[m_Travel.MapCount];
@@ -436,12 +455,12 @@ namespace TheBox.Options
 
 				for (var i = 0; i < 5; i++)
 				{
-					var stream = asm.GetManifestResourceStream(string.Format(res, i));
-					var fStream = new FileStream(string.Format(dest, i), FileMode.Create, FileAccess.Write, FileShare.Read);
+					var stream = asm.GetManifestResourceStream(String.Format(res, i));
+					var fStream = new FileStream(String.Format(dest, i), FileMode.Create, FileAccess.Write, FileShare.Read);
 
 					var data = new byte[stream.Length];
 
-					stream.Read(data, 0, (int)stream.Length);
+					_ = stream.Read(data, 0, (int)stream.Length);
 
 					fStream.Write(data, 0, data.Length);
 
@@ -463,7 +482,7 @@ namespace TheBox.Options
 			foreach (var data in m_EmbeddedData)
 			{
 				var dest = Path.Combine(BaseFolder, data);
-				var resource = string.Format("Data.{0}", data);
+				var resource = String.Format("Data.{0}", data);
 
 				Utility.ExtractEmbeddedResource(Pandora.DataAssembly, resource, dest);
 			}
@@ -482,7 +501,7 @@ namespace TheBox.Options
 				catch (Exception err)
 				{
 					Pandora.Log.WriteError(err, "Couldn't delete profile {0}.", profile);
-					MessageBox.Show(Pandora.Localization.TextProvider["Errors.DelProfileErr"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Errors.DelProfileErr"]);
 				}
 			}
 		}

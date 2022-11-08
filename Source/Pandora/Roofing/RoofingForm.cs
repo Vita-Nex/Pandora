@@ -138,13 +138,13 @@ namespace TheBox.Roofing
 			this.bClearAll = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.n2Y)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.n2X)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n2Y).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n2X).BeginInit();
 			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.n1Y)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.n1X)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n1Y).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.n1X).BeginInit();
 			this.groupBox4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numHeight)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.numHeight).BeginInit();
 			this.SuspendLayout();
 			// 
 			// pctImage
@@ -252,7 +252,7 @@ namespace TheBox.Roofing
 			// n2Y
 			// 
 			this.n2Y.Location = new System.Drawing.Point(88, 16);
-			this.n2Y.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n2Y.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n2Y.Name = "n2Y";
 			this.n2Y.Size = new System.Drawing.Size(52, 20);
 			this.n2Y.TabIndex = 2;
@@ -260,7 +260,7 @@ namespace TheBox.Roofing
 			// n2X
 			// 
 			this.n2X.Location = new System.Drawing.Point(20, 16);
-			this.n2X.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n2X.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n2X.Name = "n2X";
 			this.n2X.Size = new System.Drawing.Size(52, 20);
 			this.n2X.TabIndex = 1;
@@ -312,7 +312,7 @@ namespace TheBox.Roofing
 			// n1Y
 			// 
 			this.n1Y.Location = new System.Drawing.Point(88, 16);
-			this.n1Y.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n1Y.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n1Y.Name = "n1Y";
 			this.n1Y.Size = new System.Drawing.Size(52, 20);
 			this.n1Y.TabIndex = 1;
@@ -320,7 +320,7 @@ namespace TheBox.Roofing
 			// n1X
 			// 
 			this.n1X.Location = new System.Drawing.Point(20, 16);
-			this.n1X.Maximum = new System.Decimal(new int[] {10000, 0, 0, 0});
+			this.n1X.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
 			this.n1X.Name = "n1X";
 			this.n1X.Size = new System.Drawing.Size(52, 20);
 			this.n1X.TabIndex = 0;
@@ -386,8 +386,8 @@ namespace TheBox.Roofing
 			// numHeight
 			// 
 			this.numHeight.Location = new System.Drawing.Point(116, 44);
-			this.numHeight.Maximum = new System.Decimal(new int[] {127, 0, 0, 0});
-			this.numHeight.Minimum = new System.Decimal(new int[] {128, 0, 0, -2147483648});
+			this.numHeight.Maximum = new decimal(new int[] { 127, 0, 0, 0 });
+			this.numHeight.Minimum = new decimal(new int[] { 128, 0, 0, -2147483648 });
 			this.numHeight.Name = "numHeight";
 			this.numHeight.Size = new System.Drawing.Size(48, 20);
 			this.numHeight.TabIndex = 11;
@@ -491,7 +491,7 @@ namespace TheBox.Roofing
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.pctImage);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.MaximizeBox = false;
 			this.Name = "RoofingForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -499,13 +499,13 @@ namespace TheBox.Roofing
 			this.Load += new System.EventHandler(this.RoofingForm_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.n2Y)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.n2X)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n2Y).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n2X).EndInit();
 			this.groupBox2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.n1Y)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.n1X)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n1Y).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.n1X).EndInit();
 			this.groupBox4.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.numHeight)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.numHeight).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -534,14 +534,14 @@ namespace TheBox.Roofing
 				if (chkUp.Checked)
 				{
 					// Goes up: Left/Right
-					cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Left"]);
-					cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Right"]);
+					_ = cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Left"]);
+					_ = cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Right"]);
 				}
 				else
 				{
 					// NO Goes up: // Top Bottom
-					cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Top"]);
-					cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Bottom"]);
+					_ = cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Top"]);
+					_ = cmbSlope.Items.Add(Pandora.Localization.TextProvider["Roofing.Bottom"]);
 				}
 
 				cmbSlope.SelectedIndex = 0;
@@ -663,12 +663,12 @@ namespace TheBox.Roofing
 
 			if (Client.FindLocation(ref x, ref y, ref z, ref map))
 			{
-				if (sender as LinkLabel == lnkFromClient1)
+				if ((sender as LinkLabel) == lnkFromClient1)
 				{
 					n1X.Value = x;
 					n1Y.Value = y;
 				}
-				else if (sender as LinkLabel == lnkFromClient2)
+				else if ((sender as LinkLabel) == lnkFromClient2)
 				{
 					n2X.Value = x;
 					n2Y.Value = y;
@@ -698,7 +698,7 @@ namespace TheBox.Roofing
 
 			foreach (var tileset in m_RoofTiles)
 			{
-				cmbTiles.Items.Add(tileset);
+				_ = cmbTiles.Items.Add(tileset);
 			}
 
 			cmbTiles.SelectedIndex = 0;
@@ -729,7 +729,7 @@ namespace TheBox.Roofing
 		/// </summary>
 		private void bGenerate_Click(object sender, EventArgs e)
 		{
-			m_Roof.GenerateClassic(
+			_ = m_Roof.GenerateClassic(
 				Roof.TestMode.NoTest,
 				(int)numHeight.Value,
 				chkHue.Checked ? Pandora.Profile.Hues.SelectedIndex : 0);
@@ -760,7 +760,7 @@ namespace TheBox.Roofing
 						MessageBoxButtons.YesNo,
 						MessageBoxIcon.Question) == DialogResult.Yes)
 				{
-					m_Roof.GenerateClassic(
+					_ = m_Roof.GenerateClassic(
 						Roof.TestMode.Rest,
 						(int)numHeight.Value,
 						chkHue.Checked ? Pandora.Profile.Hues.SelectedIndex : 0);

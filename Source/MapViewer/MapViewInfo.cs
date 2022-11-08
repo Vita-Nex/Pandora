@@ -30,7 +30,7 @@ namespace TheBox.MapViewer
 			m_Map = map;
 			m_ControlSize = controlSize;
 			m_Center = center;
-			m_ZoomLevel = zoomLevel;
+			Zoom = zoomLevel;
 			m_Viewer = viewer;
 
 			Calculate();
@@ -45,7 +45,7 @@ namespace TheBox.MapViewer
 			m_Map = Maps.Felucca;
 			m_ControlSize = new Size(20, 20);
 			m_Center = new Point(0, 0);
-			m_ZoomLevel = 0;
+			Zoom = 0;
 			m_Viewer = viewer;
 
 			Calculate();
@@ -71,21 +71,6 @@ namespace TheBox.MapViewer
 		///     The coordinates of the center of the control
 		/// </summary>
 		private Point m_ControlCenter;
-
-		/// <summary>
-		///     The zoom level of the control
-		/// </summary>
-		private int m_ZoomLevel;
-
-		/// <summary>
-		///     The number of cells used (horizontally or vertically) to display each block
-		/// </summary>
-		private int m_CellsPerBlock;
-
-		/// <summary>
-		///     The number of pixels used to display each cell
-		/// </summary>
-		private int m_PixelsPerCell;
 
 		/// <summary>
 		///     The map currently displayed by the control
@@ -118,16 +103,6 @@ namespace TheBox.MapViewer
 		private BlockInfo m_ValidEnd;
 
 		/// <summary>
-		///     The number of pixels needed to represent the topmost cell
-		/// </summary>
-		private int m_TopPixels;
-
-		/// <summary>
-		///     The number of pixels needed to represent the leftmost cell
-		/// </summary>
-		private int m_LeftPixels;
-
-		/// <summary>
 		///     The current point being drawn on the control
 		/// </summary>
 		private Point m_CurrentPoint;
@@ -153,20 +128,10 @@ namespace TheBox.MapViewer
 		private int m_CurrentYCell;
 
 		/// <summary>
-		///     The number of X blocks read into the array
-		/// </summary>
-		private int m_ValidXBlocks;
-
-		/// <summary>
-		///     The number of Y blocks read into the array
-		/// </summary>
-		private int m_ValidYBlocks;
-
-		/// <summary>
 		///     The visible area of the map
 		/// </summary>
 		private Rectangle m_Bounds;
-		
+
 		/// <summary>
 		///     The MapViewer owner of this view info
 		/// </summary>
@@ -187,37 +152,37 @@ namespace TheBox.MapViewer
 		/// <summary>
 		///     Gets the bounds of the visible map region
 		/// </summary>
-		internal Rectangle Bounds { get { return m_Bounds; } }
+		internal Rectangle Bounds => m_Bounds;
 
 		/// <summary>
 		///     Gets the width in pixels of the leftmost cell on the control
 		/// </summary>
-		internal int LeftCell { get { return m_LeftPixels; } }
+		internal int LeftCell { get; private set; }
 
 		/// <summary>
 		///     Gets the height in pixels of the topmost cell on the control
 		/// </summary>
-		internal int TopCell { get { return m_TopPixels; } }
+		internal int TopCell { get; private set; }
 
 		/// <summary>
 		///     Gets the number of cells displayed for each block
 		/// </summary>
-		internal int CellsPerBlock { get { return m_CellsPerBlock; } }
+		internal int CellsPerBlock { get; private set; }
 
 		/// <summary>
 		///     Gets the number of pixels used to display each cell
 		/// </summary>
-		internal int PixelsPerCell { get { return m_PixelsPerCell; } }
+		internal int PixelsPerCell { get; private set; }
 
 		/// <summary>
 		///     Gets the number of X blocks read into the array
 		/// </summary>
-		internal int ValidXBlocks { get { return m_ValidXBlocks; } }
+		internal int ValidXBlocks { get; private set; }
 
 		/// <summary>
 		///     Gets the number of Y blocks read into the array
 		/// </summary>
-		internal int ValidYBlocks { get { return m_ValidYBlocks; } }
+		internal int ValidYBlocks { get; private set; }
 
 		/// <summary>
 		///     Sets the point corresponding to the center of the control
@@ -232,7 +197,7 @@ namespace TheBox.MapViewer
 					Calculate();
 				}
 			}
-			get { return m_Center; }
+			get => m_Center;
 		}
 
 		/// <summary>
@@ -263,7 +228,7 @@ namespace TheBox.MapViewer
 					Calculate();
 				}
 			}
-			get { return m_ControlSize; }
+			get => m_ControlSize;
 		}
 
 		/// <summary>
@@ -273,39 +238,39 @@ namespace TheBox.MapViewer
 		{
 			set
 			{
-				if (value != m_ZoomLevel)
+				if (value != Zoom)
 				{
-					m_ZoomLevel = value;
+					Zoom = value;
 					Calculate();
 				}
 			}
-			get { return m_ZoomLevel; }
+			get => Zoom;
 		}
 
 		/// <summary>
 		///     Gets the zoom level for the current map view
 		/// </summary>
-		public int Zoom { get { return m_ZoomLevel; } }
+		public int Zoom { get; private set; }
 
 		/// <summary>
 		///     Gets the size of the map currently displayed
 		/// </summary>
-		public Size MapSize { get { return m_MapSize; } }
+		public Size MapSize => m_MapSize;
 
 		/// <summary>
 		///     Gets the BlockInfo for the top left corner of the control
 		/// </summary>
-		internal BlockInfo TopLeft { get { return m_Start; } }
+		internal BlockInfo TopLeft => m_Start;
 
 		/// <summary>
 		///     Gets the BlockInfo for the bottom right corner of the control
 		/// </summary>
-		internal BlockInfo BottomRight { get { return m_End; } }
-		
+		internal BlockInfo BottomRight => m_End;
+
 		/// <summary>
 		///     Gets the size of the image needed to produce the control output
 		/// </summary>
-		internal Size ImageSize { get { return m_ImageSize; } }
+		internal Size ImageSize => m_ImageSize;
 		#endregion
 
 		#region Methods
@@ -322,26 +287,30 @@ namespace TheBox.MapViewer
 
 			m_ImageSize = m_ControlSize;
 			m_Transform = null;
-			
+
 			// Calculate the number of cells displayed for each block
-			m_CellsPerBlock = 8;
+			CellsPerBlock = 8;
 
-			if (m_ZoomLevel < 0)
+			if (Zoom < 0)
 			{
-				m_CellsPerBlock = 8 / ((int)Math.Pow(2, Math.Abs(m_ZoomLevel)));
+				CellsPerBlock = 8 / ((int)Math.Pow(2, Math.Abs(Zoom)));
 
-				if (m_CellsPerBlock < 1)
-					m_CellsPerBlock = 1;
+				if (CellsPerBlock < 1)
+				{
+					CellsPerBlock = 1;
+				}
 			}
 
 			// Calculate the number of pixels used to display each block
-			m_PixelsPerCell = 1;
+			PixelsPerCell = 1;
 
-			if (m_ZoomLevel > 0)
-				m_PixelsPerCell = (int)Math.Pow(2, m_ZoomLevel);
+			if (Zoom > 0)
+			{
+				PixelsPerCell = (int)Math.Pow(2, Zoom);
+			}
 
 			// Calculate the number of cells in each pixel
-			m_CellsPerPixel = 1.0 / m_PixelsPerCell;
+			m_CellsPerPixel = 1.0 / PixelsPerCell;
 
 			// Calculate the center of the control
 			m_ControlCenter = new Point(m_Viewer.Width / 2, m_Viewer.Height / 2);
@@ -360,29 +329,37 @@ namespace TheBox.MapViewer
 			start.Validate();
 			end.Validate();
 
-			m_ValidXBlocks = end.XBlock - start.XBlock + 1;
-			m_ValidYBlocks = end.YBlock - start.YBlock + 1;
+			ValidXBlocks = end.XBlock - start.XBlock + 1;
+			ValidYBlocks = end.YBlock - start.YBlock + 1;
 
 			// Calculate the number of pixels needed to represent the left and top cells
-			if (m_PixelsPerCell > 1)
+			if (PixelsPerCell > 1)
 			{
-				var yDiff = (m_ImageSize.Height / 2) % m_PixelsPerCell;
-				var xDiff = (m_ImageSize.Width / 2) % m_PixelsPerCell;
+				var yDiff = m_ImageSize.Height / 2 % PixelsPerCell;
+				var xDiff = m_ImageSize.Width / 2 % PixelsPerCell;
 
 				if (yDiff == 0)
-					m_TopPixels = m_PixelsPerCell;
+				{
+					TopCell = PixelsPerCell;
+				}
 				else
-					m_TopPixels = yDiff;
+				{
+					TopCell = yDiff;
+				}
 
 				if (xDiff == 0)
-					m_LeftPixels = m_PixelsPerCell;
+				{
+					LeftCell = PixelsPerCell;
+				}
 				else
-					m_LeftPixels = xDiff;
+				{
+					LeftCell = xDiff;
+				}
 			}
 			else
 			{
-				m_TopPixels = 1;
-				m_LeftPixels = 1;
+				TopCell = 1;
+				LeftCell = 1;
 			}
 
 			// Calculate the bounds
@@ -401,8 +378,8 @@ namespace TheBox.MapViewer
 			var yDelta = screenPoint.Y - m_ControlCenter.Y;
 
 			// Calculate the difference in map points
-			var xMapDelta = ((int)Math.Floor(xDelta * m_CellsPerPixel)) * 8 / m_CellsPerBlock;
-			var yMapDelta = ((int)Math.Floor(yDelta * m_CellsPerPixel)) * 8 / m_CellsPerBlock;
+			var xMapDelta = ((int)Math.Floor(xDelta * m_CellsPerPixel)) * 8 / CellsPerBlock;
+			var yMapDelta = ((int)Math.Floor(yDelta * m_CellsPerPixel)) * 8 / CellsPerBlock;
 
 			return new Point(m_Center.X + xMapDelta, m_Center.Y + yMapDelta);
 		}
@@ -419,8 +396,8 @@ namespace TheBox.MapViewer
 			var yDelta = screenPoint.Y - m_ControlCenter.Y;
 
 			// Calculate the difference in map points
-			var xMapDelta = ((int)Math.Floor(xDelta * m_CellsPerPixel)) * 8 / m_CellsPerBlock;
-			var yMapDelta = ((int)Math.Floor(yDelta * m_CellsPerPixel)) * 8 / m_CellsPerBlock;
+			var xMapDelta = ((int)Math.Floor(xDelta * m_CellsPerPixel)) * 8 / CellsPerBlock;
+			var yMapDelta = ((int)Math.Floor(yDelta * m_CellsPerPixel)) * 8 / CellsPerBlock;
 
 			return new Point(m_Center.X + xMapDelta, m_Center.Y + yMapDelta);
 		}
@@ -432,7 +409,7 @@ namespace TheBox.MapViewer
 		/// <returns>The corresponding length in map units</returns>
 		public int ControlToMap(int screenDistance)
 		{
-			return ((int)Math.Floor(m_CellsPerPixel * screenDistance)) * 8 / m_CellsPerBlock;
+			return ((int)Math.Floor(m_CellsPerPixel * screenDistance)) * 8 / CellsPerBlock;
 		}
 
 		/// <summary>
@@ -447,8 +424,8 @@ namespace TheBox.MapViewer
 			var yDelta = mapPoint.Y - m_Center.Y;
 
 			// Calculate the difference in pixels
-			var xScreenDelta = xDelta * m_PixelsPerCell / (8 / m_CellsPerBlock);
-			var yScreenDelta = yDelta * m_PixelsPerCell / (8 / m_CellsPerBlock);
+			var xScreenDelta = xDelta * PixelsPerCell / (8 / CellsPerBlock);
+			var yScreenDelta = yDelta * PixelsPerCell / (8 / CellsPerBlock);
 
 			var p = new Point(m_ControlCenter.X + xScreenDelta, m_ControlCenter.Y + yScreenDelta);
 
@@ -474,7 +451,7 @@ namespace TheBox.MapViewer
 		/// <returns></returns>
 		public int MapToControl(int mapDistance)
 		{
-			return m_PixelsPerCell * mapDistance / (8 / m_CellsPerBlock);
+			return PixelsPerCell * mapDistance / (8 / CellsPerBlock);
 		}
 
 		/// <summary>
@@ -516,7 +493,7 @@ namespace TheBox.MapViewer
 					m_CurrentYBlock - m_ValidStart.YBlock,
 					m_CurrentXCell,
 					m_CurrentYCell,
-					m_ValidYBlocks);
+					ValidYBlocks);
 			}
 
 			m_CurrentPoint.X++;
@@ -532,16 +509,16 @@ namespace TheBox.MapViewer
 				m_CurrentXCell = m_Start.XCell;
 
 				// Move one cell down
-				if (m_CurrentPoint.Y < m_TopPixels)
+				if (m_CurrentPoint.Y < TopCell)
 				{
 					m_CurrentYCell = m_Start.YCell;
 					m_CurrentYBlock = m_Start.YBlock;
 				}
 				else
 				{
-					if ((m_CurrentPoint.Y - m_TopPixels) % m_PixelsPerCell == 0)
+					if ((m_CurrentPoint.Y - TopCell) % PixelsPerCell == 0)
 					{
-						m_CurrentYCell += (8 / m_CellsPerBlock);
+						m_CurrentYCell += 8 / CellsPerBlock;
 
 						if (m_CurrentYCell > 7)
 						{
@@ -553,10 +530,10 @@ namespace TheBox.MapViewer
 			}
 			else
 			{
-				if ((m_CurrentPoint.X - m_LeftPixels) % m_PixelsPerCell == 0)
+				if ((m_CurrentPoint.X - LeftCell) % PixelsPerCell == 0)
 				{
 					// move one step right
-					m_CurrentXCell += (8 / m_CellsPerBlock);
+					m_CurrentXCell += 8 / CellsPerBlock;
 
 					if (m_CurrentXCell > 7)
 					{
@@ -576,16 +553,24 @@ namespace TheBox.MapViewer
 		private bool CurrentBlockIsValid()
 		{
 			if (m_CurrentXBlock < 0)
+			{
 				return false;
+			}
 
 			if (m_CurrentXBlock >= m_MapSize.Width / 8)
+			{
 				return false;
+			}
 
 			if (m_CurrentYBlock < 0)
+			{
 				return false;
+			}
 
 			if (m_CurrentYBlock >= m_MapSize.Height / 8)
+			{
 				return false;
+			}
 
 			return true;
 		}
@@ -595,29 +580,27 @@ namespace TheBox.MapViewer
 	#region PixelCoordinate
 	internal struct PixelCoordinate
 	{
-		private readonly int m_Block;
-		private readonly int m_Cell;
 
 		/// <summary>
 		///     Gets the number of the block in the array stored in memory
 		/// </summary>
-		public int Block { get { return m_Block; } }
+		public int Block { get; }
 
 		/// <summary>
 		///     Gets the number of the cell correpsonding to the pixl in the block
 		/// </summary>
-		public int Cell { get { return m_Cell; } }
+		public int Cell { get; }
 
 		public PixelCoordinate(int block, int cell)
 		{
-			m_Block = block;
-			m_Cell = cell;
+			Block = block;
+			Cell = cell;
 		}
 
 		public PixelCoordinate(int xblock, int yblock, int xcell, int ycell, int yblocks)
 		{
-			m_Block = xblock * (yblocks) + yblock;
-			m_Cell = ycell * 8 + xcell;
+			Block = (xblock * yblocks) + yblock;
+			Cell = (ycell * 8) + xcell;
 		}
 	}
 	#endregion
@@ -628,47 +611,35 @@ namespace TheBox.MapViewer
 	/// </summary>
 	internal struct BlockInfo
 	{
-		private int m_BlockNumber;
-
 		/// <summary>
 		///     Gets the map file block number for the referenced point
 		/// </summary>
-		public int BlockNumber { get { return m_BlockNumber; } }
-
-		private int m_XBlock;
+		public int BlockNumber { get; private set; }
 
 		/// <summary>
 		///     Gets the X coordinate of the block in a block matrix
 		/// </summary>
-		public int XBlock { get { return m_XBlock; } }
-
-		private int m_YBlock;
+		public int XBlock { get; private set; }
 
 		/// <summary>
 		///     Gets the Y coordinate of the block in a block matrix
 		/// </summary>
-		public int YBlock { get { return m_YBlock; } }
-
-		private int m_Cell;
+		public int YBlock { get; private set; }
 
 		/// <summary>
 		///     Gets the number of the cell representing the referenced point
 		/// </summary>
-		public int Cell { get { return m_Cell; } }
-
-		private int m_XCell;
+		public int Cell { get; private set; }
 
 		/// <summary>
 		///     Gets the X coordinate of the referenced point in the cells matrix
 		/// </summary>
-		public int XCell { get { return m_XCell; } }
-
-		private int m_YCell;
+		public int XCell { get; private set; }
 
 		/// <summary>
 		///     Gets the Y coordinate of the referenced point in the cells matrix
 		/// </summary>
-		public int YCell { get { return m_YCell; } }
+		public int YCell { get; private set; }
 
 		private Size m_MapSize;
 
@@ -679,25 +650,35 @@ namespace TheBox.MapViewer
 		/// <param name="mapSize">The size of the map file in cells</param>
 		public BlockInfo(Point point, Size mapSize)
 		{
-			m_XBlock = point.X / 8;
-			m_YBlock = point.Y / 8;
+			XBlock = point.X / 8;
+			YBlock = point.Y / 8;
 
 			if (point.X < 0)
-				m_XBlock--;
+			{
+				XBlock--;
+			}
+
 			if (point.Y < 0)
-				m_YBlock--;
+			{
+				YBlock--;
+			}
 
-			m_BlockNumber = m_XBlock * (mapSize.Height / 8) + m_YBlock;
+			BlockNumber = (XBlock * (mapSize.Height / 8)) + YBlock;
 
-			m_XCell = point.X % 8;
-			m_YCell = point.Y % 8;
+			XCell = point.X % 8;
+			YCell = point.Y % 8;
 
-			if (m_XCell < 0)
-				m_XCell = 8 + m_XCell;
-			if (m_YCell < 0)
-				m_YCell = 8 + m_YCell;
+			if (XCell < 0)
+			{
+				XCell = 8 + XCell;
+			}
 
-			m_Cell = m_YCell * 8 + m_XCell;
+			if (YCell < 0)
+			{
+				YCell = 8 + YCell;
+			}
+
+			Cell = (YCell * 8) + XCell;
 
 			m_MapSize = mapSize;
 		}
@@ -709,42 +690,42 @@ namespace TheBox.MapViewer
 		{
 			var changed = false;
 
-			if (m_XBlock < 0)
+			if (XBlock < 0)
 			{
-				m_XBlock = 0;
-				m_XCell = 0;
+				XBlock = 0;
+				XCell = 0;
 
 				changed = true;
 			}
 
-			if (m_XBlock > (m_MapSize.Width / 8) - 1)
+			if (XBlock > (m_MapSize.Width / 8) - 1)
 			{
-				m_XBlock = m_MapSize.Width / 8 - 1;
-				m_XCell = 7;
+				XBlock = (m_MapSize.Width / 8) - 1;
+				XCell = 7;
 
 				changed = true;
 			}
 
-			if (m_YBlock < 0)
+			if (YBlock < 0)
 			{
-				m_YBlock = 0;
-				m_YCell = 0;
+				YBlock = 0;
+				YCell = 0;
 
 				changed = true;
 			}
 
-			if (m_YBlock > (m_MapSize.Height / 8) - 1)
+			if (YBlock > (m_MapSize.Height / 8) - 1)
 			{
-				m_YBlock = m_MapSize.Height / 8 - 1;
-				m_YCell = 7;
+				YBlock = (m_MapSize.Height / 8) - 1;
+				YCell = 7;
 
 				changed = true;
 			}
 
 			if (changed)
 			{
-				m_BlockNumber = m_XBlock * m_MapSize.Height + m_YBlock;
-				m_Cell = m_YCell * 8 + m_XCell;
+				BlockNumber = (XBlock * m_MapSize.Height) + YBlock;
+				Cell = (YCell * 8) + XCell;
 			}
 		}
 	}

@@ -21,7 +21,7 @@
     <RootNamespace>TheBox</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>TheBox.Pandora</StartupObject>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
@@ -192,6 +192,10 @@
       <DependentUpon>HueMenuItem.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HuesChart.resx">
+      <DependentUpon>HuesChart.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Params\BoolParam.resx">
       <DependentUpon>BoolParam.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -246,10 +250,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RecentHuesMenu.resx">
       <DependentUpon>RecentHuesMenu.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TileList.resx">
-      <DependentUpon>TileList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TimeSpanControl.resx">
@@ -326,10 +326,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MapFilesForm.resx">
       <DependentUpon>MapFilesForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MulManagerForm.resx">
-      <DependentUpon>MulManagerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OptionsForm.resx">
@@ -624,7 +620,6 @@
     <Compile Include="Common\ISplash.cs" />
     <Compile Include="Common\ProcessExtension.cs" />
     <Compile Include="Common\ScreenCapture.cs" />
-    <Compile Include="Common\Splash.cs" />
     <Compile Include="Controls\BooleanControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -638,6 +633,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\HueMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\HuesChart.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Params\BoolParam.cs">
@@ -686,9 +684,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\SpawnDrawObject.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controls\TileList.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\TimeSpanControl.cs">
@@ -818,9 +813,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MapFilesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MulManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\OptionsForm.cs">

@@ -33,10 +33,10 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<HuesCollection> Groups
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Groups; }
-			set { m_Groups = value; }
+			get => m_Groups;
+			set => m_Groups = value;
 		}
 
 		public HueGroups()
@@ -62,7 +62,7 @@ namespace TheBox.Data
 		public void Save()
 		{
 			var filename = Path.Combine(Pandora.Profile.BaseFolder, "HueGroups.xml");
-			Utility.SaveXml(this, filename);
+			_ = Utility.SaveXml(this, filename);
 		}
 	}
 
@@ -82,17 +82,17 @@ namespace TheBox.Data
 		///     Gets or sets the name of this group
 		/// </summary>
 		[XmlAttribute]
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		/// <summary>
 		///     Gets or sets the list of hues
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<int> Hues
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Hues; }
-			set { m_Hues = value; }
+			get => m_Hues;
+			set => m_Hues = value;
 		}
 
 		public HuesCollection()

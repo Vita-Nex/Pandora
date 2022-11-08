@@ -33,13 +33,13 @@ namespace TheBox.Data
 		///     Gets or sets the name of the decoration object
 		/// </summary>
 		[XmlAttribute]
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		/// <summary>
 		///     Gets or sets the ID of the decoration object
 		/// </summary>
 		[XmlAttribute]
-		public int ID { get { return m_ID; } set { m_ID = value; } }
+		public int ID { get => m_ID; set => m_ID = value; }
 
 		[XmlIgnore, Browsable(false)]
 		/// <summary>
@@ -49,8 +49,10 @@ namespace TheBox.Data
 		{
 			get
 			{
-				var node = new TreeNode(m_Name);
-				node.Tag = this;
+				var node = new TreeNode(m_Name)
+				{
+					Tag = this
+				};
 
 				return node;
 			}
@@ -59,10 +61,10 @@ namespace TheBox.Data
 		#region IComparable Members
 		public int CompareTo(object obj)
 		{
-			var cmp = obj as BoxDeco;
-
-			if (cmp == null)
+			if (!(obj is BoxDeco cmp))
+			{
 				return 0;
+			}
 
 			var res = m_Name.CompareTo(cmp.m_Name);
 
@@ -90,10 +92,10 @@ namespace TheBox.Data
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<GenericNode> Structure
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Structure; }
-			set { m_Structure = value; }
+			get => m_Structure;
+			set => m_Structure = value;
 		}
 
 		/// <summary>
@@ -113,13 +115,11 @@ namespace TheBox.Data
 		/// <returns>The BoxDecoList read from the specified file</returns>
 		public static BoxDecoList FromFile(string filename)
 		{
-			BoxDecoList list = null;
-
 			try
 			{
 				var stream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 				var serializer = new XmlSerializer(typeof(BoxDecoList));
-				list = serializer.Deserialize(stream) as BoxDecoList;
+				var list = serializer.Deserialize(stream) as BoxDecoList;
 				stream.Close();
 				return list;
 			}

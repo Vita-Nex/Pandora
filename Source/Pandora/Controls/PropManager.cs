@@ -171,7 +171,7 @@ namespace TheBox.Controls
 			// imgFilter
 			// 
 			this.imgFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.imgFilter.Image = ((System.Drawing.Image)(resources.GetObject("imgFilter.Image")));
+			this.imgFilter.Image = (System.Drawing.Image)resources.GetObject("imgFilter.Image");
 			this.imgFilter.Location = new System.Drawing.Point(152, 68);
 			this.imgFilter.Name = "imgFilter";
 			this.imgFilter.Size = new System.Drawing.Size(20, 16);
@@ -199,16 +199,20 @@ namespace TheBox.Controls
 		}
 		#endregion
 
-		private PropsOptions Options { get { return Pandora.Profile.Props; } }
+		private PropsOptions Options => Pandora.Profile.Props;
 
 		#region Access Methods
 		public void SetProperty(string prop, string value, string type)
 		{
 			if (prop == null)
+			{
 				return;
+			}
 
 			if (prop == "")
+			{
 				return;
+			}
 
 			// Set property first
 			cbProps.Text = prop;
@@ -427,7 +431,7 @@ namespace TheBox.Controls
 
 				if (m_FilterForm.AddToPresets && !Pandora.Profile.Props.Filters.Contains(m_FilterForm.Filter))
 				{
-					Pandora.Profile.Props.Filters.Add(m_FilterForm.Filter);
+					_ = Pandora.Profile.Props.Filters.Add(m_FilterForm.Filter);
 					BuildPresets();
 				}
 			}
@@ -447,26 +451,26 @@ namespace TheBox.Controls
 
 			var add = new MenuItem(Pandora.Localization.TextProvider["Props.AddPreset"]);
 			add.Click += add_Click;
-			cmFilters.MenuItems.Add(add);
+			_ = cmFilters.MenuItems.Add(add);
 
 			var del = new MenuItem(Pandora.Localization.TextProvider["Props.DelPreset"]);
 
 			foreach (var s in Pandora.Profile.Props.Filters)
 			{
 				var presDel = new MenuItem(s);
-				del.MenuItems.Add(presDel);
+				_ = del.MenuItems.Add(presDel);
 				presDel.Click += presDel_Click;
 			}
 
-			cmFilters.MenuItems.Add(del);
+			_ = cmFilters.MenuItems.Add(del);
 
-			cmFilters.MenuItems.Add("-");
+			_ = cmFilters.MenuItems.Add("-");
 
 			foreach (var s in Pandora.Profile.Props.Filters)
 			{
 				var doPres = new MenuItem(s);
 				doPres.Click += doPres_Click;
-				cmFilters.MenuItems.Add(doPres);
+				_ = cmFilters.MenuItems.Add(doPres);
 			}
 
 			cmFilters.Popup += cmFilters_Popup;
@@ -477,7 +481,7 @@ namespace TheBox.Controls
 		private void add_Click(object sender, EventArgs e)
 		{
 			// Add current text to presets
-			Pandora.Profile.Props.Filters.Add(cbType.Text);
+			_ = Pandora.Profile.Props.Filters.Add(cbType.Text);
 			BuildPresets();
 		}
 

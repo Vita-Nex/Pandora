@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Animdata.cs
-//  */
-#endregion
-
 #region References
 using System.Collections;
 using System.IO;
@@ -45,11 +39,11 @@ namespace Ultima
 							byte finter;
 							byte fstart;
 							sbyte[] fdata;
-							m_Header = new int[bin.BaseStream.Length / (4 + 8 * (64 + 4))];
+							m_Header = new int[bin.BaseStream.Length / (4 + (8 * (64 + 4)))];
 							while (h < m_Header.Length /*bin.BaseStream.Length != bin.BaseStream.Position*/)
 							{
 								m_Header[h++] = bin.ReadInt32(); // chunk header
-								// Read 8 tiles
+																 // Read 8 tiles
 								var buffer = bin.ReadBytes(544);
 								fixed (byte* buf = buffer)
 								{
@@ -92,9 +86,12 @@ namespace Ultima
 		{
 			if (AnimData.Contains(id))
 			{
-				return ((Data)AnimData[id]);
+				return (Data)AnimData[id];
 			}
-			return null;
+			else
+			{
+				return null;
+			}
 		}
 
 		public static void Save(string path)

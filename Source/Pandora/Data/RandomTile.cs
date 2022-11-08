@@ -26,7 +26,7 @@ namespace TheBox.Data
 		/// <summary>
 		///     Gets or sets the list of random tiles defined
 		/// </summary>
-		public ArrayList List { get { return m_List; } set { m_List = value; } }
+		public ArrayList List { get => m_List; set => m_List = value; }
 
 		public RandomTiles()
 		{
@@ -38,7 +38,7 @@ namespace TheBox.Data
 		/// </summary>
 		public void Save()
 		{
-			Utility.SaveXml(this, Path.Combine(Pandora.Profile.BaseFolder, "RandomTiles.xml"));
+			_ = Utility.SaveXml(this, Path.Combine(Pandora.Profile.BaseFolder, "RandomTiles.xml"));
 		}
 
 		/// <summary>
@@ -65,13 +65,13 @@ namespace TheBox.Data
 		/// <summary>
 		///     Gets or sets the list of tiles
 		/// </summary>
-		public ArrayList Tiles { get { return m_Tiles; } set { m_Tiles = value; } }
+		public ArrayList Tiles { get => m_Tiles; set => m_Tiles = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the name for this group
 		/// </summary>
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		public RandomTilesList(string name)
 			: this()
@@ -102,13 +102,13 @@ namespace TheBox.Data
 		/// <summary>
 		///     Gets or sets the list of items that should be created for this tile
 		/// </summary>
-		public ArrayList Items { get { return m_Items; } set { m_Items = value; } }
+		public ArrayList Items { get => m_Items; set => m_Items = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the name for this tile
 		/// </summary>
-		public string Name { get { return m_Name; } set { m_Name = value; } }
+		public string Name { get => m_Name; set => m_Name = value; }
 
 		public RandomTile()
 		{

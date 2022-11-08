@@ -66,7 +66,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		public ButtonDef Def
 		{
-			get { return m_Def; }
+			get => m_Def;
 			set
 			{
 				if (m_Def != null)
@@ -295,7 +295,7 @@ namespace TheBox.Buttons
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "ButtonEditor";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -315,10 +315,13 @@ namespace TheBox.Buttons
 		{
 			var cmd = "";
 			if (e.UsePrefix)
+			{
 				cmd += Pandora.Profile.General.CommandPrefix;
+			}
+
 			cmd += e.Command;
 
-			MessageBox.Show(string.Format(Pandora.Localization.TextProvider["ButtonMenuEditor.PreviewMsg"], cmd));
+			_ = MessageBox.Show(String.Format(Pandora.Localization.TextProvider["ButtonMenuEditor.PreviewMsg"], cmd));
 		}
 
 		/// <summary>
@@ -338,17 +341,24 @@ namespace TheBox.Buttons
 			if (m_EditLeft)
 			{
 				if (m_Def.Left == null)
+				{
 					return true;
+				}
 			}
 			else
 			{
 				if (m_Def.Right == null)
+				{
 					return true;
+				}
 			}
 
 			if (MessageBox.Show(this, Pandora.Localization.TextProvider["Buttons.ErasePrevious"], "", MessageBoxButtons.YesNo) ==
 				DialogResult.Yes)
+			{
 				return true;
+			}
+
 			return false;
 		}
 
@@ -360,9 +370,13 @@ namespace TheBox.Buttons
 			m_EditLeft = true;
 
 			if (e.Button == MouseButtons.Right && m_Def.Left != null)
+			{
 				EditDef();
+			}
 			else
+			{
 				cMenu.Show(linkLeft, new Point(e.X, e.Y));
+			}
 		}
 
 		/// <summary>
@@ -373,9 +387,13 @@ namespace TheBox.Buttons
 			m_EditLeft = false;
 
 			if (e.Button == MouseButtons.Right && m_Def.Right != null)
+			{
 				EditDef();
+			}
 			else
+			{
 				cMenu.Show(linkRight, new Point(e.X, e.Y));
+			}
 		}
 
 		/// <summary>
@@ -388,7 +406,7 @@ namespace TheBox.Buttons
 			if (m_EditLeft)
 			{
 				// Left button
-				mNone.Enabled = (m_Def.Left != null);
+				mNone.Enabled = m_Def.Left != null;
 
 				mSingleCommand.Enabled = m_Def.TryLeft(new MenuCommand());
 				mMenu.Enabled = m_Def.TryLeft(new MenuDef());
@@ -399,7 +417,7 @@ namespace TheBox.Buttons
 			else
 			{
 				// Right button
-				mNone.Enabled = (m_Def.Right != null);
+				mNone.Enabled = m_Def.Right != null;
 
 				mSingleCommand.Enabled = m_Def.TryRight(new MenuCommand());
 				mMenu.Enabled = m_Def.TryRight(new MenuDef());
@@ -434,22 +452,26 @@ namespace TheBox.Buttons
 		/// </summary>
 		private void EditDef()
 		{
-			IButtonFunction function = null;
-
+			IButtonFunction function;
 			if (m_EditLeft)
+			{
 				function = m_Def.Left;
+			}
 			else
+			{
 				function = m_Def.Right;
+			}
 
 			if (function is MenuCommand)
 			{
 				var mc = function as MenuCommand;
 
 				// Single command
-				var sc = new SimpleCommand();
-
-				sc.Command = mc.Command;
-				sc.UsePrefix = mc.UsePrefix;
+				var sc = new SimpleCommand
+				{
+					Command = mc.Command,
+					UsePrefix = mc.UsePrefix
+				};
 
 				if (sc.ShowDialog() == DialogResult.OK)
 				{
@@ -461,9 +483,10 @@ namespace TheBox.Buttons
 			{
 				var mc = function as ModifierCommand;
 
-				var sc = new SimpleCommand(true);
-
-				sc.Command = mc.Command;
+				var sc = new SimpleCommand(true)
+				{
+					Command = mc.Command
+				};
 
 				if (sc.ShowDialog() == DialogResult.OK)
 				{
@@ -475,15 +498,21 @@ namespace TheBox.Buttons
 				var md = function as MenuDef;
 
 				// Menu
-				var me = new BoxMenuEditor();
-				me.MenuDefinition = md;
+				var me = new BoxMenuEditor
+				{
+					MenuDefinition = md
+				};
 
 				if (me.ShowDialog() == DialogResult.OK)
 				{
 					if (m_EditLeft)
+					{
 						m_Def.Left = me.MenuDefinition;
+					}
 					else
+					{
 						m_Def.Right = me.MenuDefinition;
+					}
 				}
 			}
 			else if (function is MultiCommandDef)
@@ -491,15 +520,21 @@ namespace TheBox.Buttons
 				var mcd = function as MultiCommandDef;
 
 				// Multi Command
-				var mce = new MultiCommandEditor();
-				mce.MultiDef = mcd;
+				var mce = new MultiCommandEditor
+				{
+					MultiDef = mcd
+				};
 
 				if (mce.ShowDialog() == DialogResult.OK)
 				{
 					if (m_EditLeft)
+					{
 						m_Def.Left = mce.MultiDef;
+					}
 					else
+					{
 						m_Def.Right = mce.MultiDef;
+					}
 				}
 			}
 		}
@@ -515,9 +550,11 @@ namespace TheBox.Buttons
 
 				if (sc.ShowDialog() == DialogResult.OK)
 				{
-					var mc = new MenuCommand();
-					mc.Command = sc.Command;
-					mc.UsePrefix = sc.UsePrefix;
+					var mc = new MenuCommand
+					{
+						Command = sc.Command,
+						UsePrefix = sc.UsePrefix
+					};
 
 					if (m_EditLeft)
 					{
@@ -544,8 +581,10 @@ namespace TheBox.Buttons
 
 				if (sc.ShowDialog() == DialogResult.OK)
 				{
-					var mc = new ModifierCommand();
-					mc.Command = sc.Command;
+					var mc = new ModifierCommand
+					{
+						Command = sc.Command
+					};
 
 					if (m_EditLeft)
 					{

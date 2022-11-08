@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - MultiMap.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Drawing;
@@ -38,11 +32,9 @@ namespace Ultima
 						ushort c = 0;
 						width = bin.ReadInt32();
 						height = bin.ReadInt32();
-						var multimap = new Bitmap(width, height, PixelFormat.Format16bppArgb1555);
+						var multimap = new Bitmap(width, height, Settings.PixelFormat);
 						var bd = multimap.LockBits(
-							new Rectangle(0, 0, multimap.Width, multimap.Height),
-							ImageLockMode.WriteOnly,
-							PixelFormat.Format16bppArgb1555);
+							new Rectangle(0, 0, multimap.Width, multimap.Height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 						var line = (ushort*)bd.Scan0;
 						var delta = bd.Stride >> 1;
 
@@ -52,12 +44,12 @@ namespace Ultima
 						{
 							m_StreamBuffer = new byte[len];
 						}
-						bin.Read(m_StreamBuffer, 0, len);
+						_ = bin.Read(m_StreamBuffer, 0, len);
 						var j = 0;
 						while (j != len)
 						{
 							pixel = m_StreamBuffer[j++];
-							count = (pixel & 0x7f);
+							count = pixel & 0x7f;
 
 							if ((pixel & 0x80) != 0)
 							{
@@ -98,9 +90,7 @@ namespace Ultima
 			byte mask = 0x0;
 			ushort curcolor = 0;
 			var bd = image.LockBits(
-				new Rectangle(0, 0, image.Width, image.Height),
-				ImageLockMode.ReadOnly,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, image.Width, image.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
 			var cur = line;
@@ -178,9 +168,7 @@ namespace Ultima
 
 					bmp = new Bitmap(width, height);
 					var bd = bmp.LockBits(
-						new Rectangle(0, 0, bmp.Width, bmp.Height),
-						ImageLockMode.WriteOnly,
-						PixelFormat.Format16bppArgb1555);
+						new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 					var line = (ushort*)bd.Scan0;
 					var delta = bd.Stride >> 1;
 
@@ -222,15 +210,13 @@ namespace Ultima
 			var width = sourceBitmap.Width;
 			var height = sourceBitmap.Height;
 
-			using (var writer =
-				new BinaryWriter(new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite)))
+			using (
+				var writer = new BinaryWriter(new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite)))
 			{
 				writer.Write((short)width);
 				writer.Write((short)height);
 				var bd = sourceBitmap.LockBits(
-					new Rectangle(0, 0, width, height),
-					ImageLockMode.ReadOnly,
-					PixelFormat.Format16bppArgb1555);
+					new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 				var line = (ushort*)bd.Scan0;
 				var delta = bd.Stride >> 1;
 				for (var y = 0; y < height; y++, line += delta)
@@ -245,7 +231,7 @@ namespace Ultima
 					while (x < width)
 					{
 						var hue = line[x];
-						while (x < width && colorsCount < byte.MaxValue && hue == line[x])
+						while (x < width && colorsCount < Byte.MaxValue && hue == line[x])
 						{
 							++colorsCount;
 							++x;
@@ -257,9 +243,9 @@ namespace Ultima
 						colorsCount = 0;
 					}
 					var currpos = writer.BaseStream.Position;
-					writer.BaseStream.Seek(pos, SeekOrigin.Begin);
+					_ = writer.BaseStream.Seek(pos, SeekOrigin.Begin);
 					writer.Write(colorsAtLine * 3); //byte count
-					writer.BaseStream.Seek(currpos, SeekOrigin.Begin);
+					_ = writer.BaseStream.Seek(currpos, SeekOrigin.Begin);
 				}
 			}
 		}

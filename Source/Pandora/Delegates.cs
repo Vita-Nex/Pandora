@@ -23,8 +23,6 @@ namespace TheBox
 	/// </summary>
 	public class SendCommandEventArgs : EventArgs
 	{
-		private readonly string m_Command;
-		private readonly bool m_UsePrefix;
 
 		/// <summary>
 		///     Gets or sets a value stating whether this command has been sent or not
@@ -34,23 +32,17 @@ namespace TheBox
 		/// <summary>
 		///     Gets the full command, including the command prefix
 		/// </summary>
-		public string FullCommand
-		{
-			get
-			{
-				return string.Format("{0}{1}", m_UsePrefix ? Pandora.Profile.General.CommandPrefix : string.Empty, m_Command);
-			}
-		}
+		public string FullCommand => String.Format("{0}{1}", UsePrefix ? Pandora.Profile.General.CommandPrefix : String.Empty, Command);
 
 		/// <summary>
 		///     Gets the command that is being sent to UO
 		/// </summary>
-		public string Command { get { return m_Command; } }
+		public string Command { get; }
 
 		/// <summary>
 		///     States whether the command prefix should be used
 		/// </summary>
-		public bool UsePrefix { get { return m_UsePrefix; } }
+		public bool UsePrefix { get; }
 
 		/// <summary>
 		///     Creates a new SendCommandEventArgs object
@@ -60,8 +52,8 @@ namespace TheBox
 		public SendCommandEventArgs(string command, bool useprefix)
 		{
 			Sent = false;
-			m_Command = command;
-			m_UsePrefix = useprefix;
+			Command = command;
+			UsePrefix = useprefix;
 		}
 	}
 	#endregion
@@ -74,12 +66,10 @@ namespace TheBox
 
 	public class CommandChangedEventArgs : EventArgs
 	{
-		private readonly MenuCommand m_Command;
-
 		/// <summary>
 		///     Gets the new command for the button
 		/// </summary>
-		public MenuCommand Command { get { return m_Command; } }
+		public MenuCommand Command { get; }
 
 		/// <summary>
 		///     Creates a new CommandChangedEventArgs object
@@ -87,7 +77,7 @@ namespace TheBox
 		/// <param name="command">The command that should be applied to the button</param>
 		public CommandChangedEventArgs(MenuCommand command)
 		{
-			m_Command = command;
+			Command = command;
 		}
 	}
 	#endregion
@@ -100,17 +90,15 @@ namespace TheBox
 
 	public class ToolTipEventArgs : EventArgs
 	{
-		private readonly string m_Text;
-
 		/// <summary>
 		///     Gets the new text for the tool tip
 		/// </summary>
-		public string Text { get { return m_Text; } }
+		public string Text { get; }
 
 		/// <summary>
 		///     Gets a value stating whether the control has a tool tip or not
 		/// </summary>
-		public bool HasToolTip { get { return m_Text != null; } }
+		public bool HasToolTip => Text != null;
 
 		/// <summary>
 		///     Creates a new ToolTipEventArgs object
@@ -118,7 +106,7 @@ namespace TheBox
 		/// <param name="tooltip">The new tool tip text. Use null for no tool tip.</param>
 		public ToolTipEventArgs(string tooltip)
 		{
-			m_Text = tooltip;
+			Text = tooltip;
 		}
 	}
 	#endregion

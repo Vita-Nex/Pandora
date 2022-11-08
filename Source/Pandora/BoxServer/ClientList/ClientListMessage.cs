@@ -29,17 +29,15 @@ namespace TheBox.BoxServer
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<ClientEntry> Clients
-			// Issue 10 - End
+		// Issue 10 - End
 		{
-			get { return m_Clients; }
-			set { m_Clients = value; }
+			get => m_Clients;
+			set => m_Clients = value;
 		}
 	}
 
 	public class ClientEntry
 	{
-		private DateTime m_LastLogin;
-
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the name of the connected client
@@ -76,16 +74,16 @@ namespace TheBox.BoxServer
 		/// </summary>
 		public string LastLogin
 		{
-			get { return m_LastLogin.ToString(); }
+			get => LoggedIn.ToString();
 			set
 			{
 				try
 				{
-					m_LastLogin = DateTime.Parse(value);
+					LoggedIn = DateTime.Parse(value);
 				}
 				catch
 				{
-					m_LastLogin = DateTime.MinValue;
+					LoggedIn = DateTime.MinValue;
 				}
 			}
 		}
@@ -100,6 +98,6 @@ namespace TheBox.BoxServer
 		/// <summary>
 		/// Gets the last login time
 		/// </summary>
-		public DateTime LoggedIn { get { return m_LastLogin; } }
+		public DateTime LoggedIn { get; private set; }
 	}
 }

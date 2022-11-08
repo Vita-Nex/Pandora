@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - WindowProcessStream.cs
-//  */
-#endregion
-
 namespace Ultima
 {
 	public class WindowProcessStream : ProcessStream
@@ -27,7 +21,7 @@ namespace Ultima
 					return m_ProcessID;
 				}
 
-				NativeMethods.GetWindowThreadProcessId(Window, ref m_ProcessID);
+				_ = NativeMethods.GetWindowThreadProcessId(Window, ref m_ProcessID);
 
 				return m_ProcessID;
 			}

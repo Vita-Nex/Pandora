@@ -37,7 +37,7 @@ namespace TheBox.Forms.Editors
 		/// </summary>
 		public BoxItem Item
 		{
-			get { return m_Item; }
+			get => m_Item;
 			set
 			{
 				m_Backup = value.Clone() as BoxItem;
@@ -52,8 +52,6 @@ namespace TheBox.Forms.Editors
 			InitializeComponent();
 
 			Pandora.Localization.LocalizeControl(this);
-
-			m_Preview.MulFileManager = Pandora.Profile.MulManager;
 		}
 
 		/// <summary>
@@ -143,7 +141,7 @@ namespace TheBox.Forms.Editors
 			this.Controls.Add(this.m_Preview);
 			this.Controls.Add(this.pGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "QuickItem";
 			this.ShowInTaskbar = false;
 			this.Text = "QuickItem";
@@ -158,8 +156,10 @@ namespace TheBox.Forms.Editors
 
 			if (m_Item == null)
 			{
-				m_Item = new BoxItem();
-				m_Item.EmptyCtor = true;
+				m_Item = new BoxItem
+				{
+					EmptyCtor = true
+				};
 
 				pGrid.SelectedObject = m_Item;
 
@@ -187,7 +187,7 @@ namespace TheBox.Forms.Editors
 			}
 			else
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["Items.NoName"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["Items.NoName"]);
 			}
 		}
 

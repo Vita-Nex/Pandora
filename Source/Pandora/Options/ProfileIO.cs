@@ -88,7 +88,7 @@ namespace TheBox.Options
 			// Uncompress first of all
 			var fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
 			var data = new byte[fs.Length];
-			fs.Read(data, 0, data.Length);
+			_ = fs.Read(data, 0, data.Length);
 			fs.Close();
 
 			var uncompressed = BoxZLib.Decompress(data);
@@ -99,30 +99,38 @@ namespace TheBox.Options
 			fs.Close();
 
 			if (!File.Exists(temp))
+			{
 				return null;
+			}
 
 			var asm = Assembly.LoadFile(temp);
 
 			// Get ProfileIO object
-			var prof = Utility.GetEmbeddedObject(typeof(ProfileIO), "ProfileIO.xml", asm) as ProfileIO;
 
-			if (prof == null)
+			if (!(Utility.GetEmbeddedObject(typeof(ProfileIO), "ProfileIO.xml", asm) is ProfileIO prof))
+			{
 				return null;
+			}
 
 			if (prof.ProfileVersion > m_CurrentVersion)
 			{
 				if (Pandora.Localization.TextProvider != null)
-					MessageBox.Show(Pandora.Localization.TextProvider["Misc.ProfileIOErr"]);
+				{
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Misc.ProfileIOErr"]);
+				}
 				else
-					MessageBox.Show(
+				{
+					_ = MessageBox.Show(
 						"Please upgrade your version of Pandora's Box.\n\nThe profile you are importing has been created with a more recent version of this software.");
+				}
 			}
 
 			prof.Generate(asm);
 
-			var p = new Profile();
-
-			p.Name = prof.Name;
+			var p = new Profile
+			{
+				Name = prof.Name
+			};
 			p.General.CommandPrefix = prof.CommandPrefix;
 			p.Deco.ShowCustomDeco = prof.CustomDeco;
 			p.Travel.EnabledMaps = prof.EnabledMaps;
@@ -152,7 +160,7 @@ namespace TheBox.Options
 
 				while (true)
 				{
-					Name = string.Format("{0} {1}", name, count++);
+					Name = System.String.Format("{0} {1}", name, count++);
 
 					if (!Profile.ExistingProfiles.Contains(Name))
 					{
@@ -166,22 +174,26 @@ namespace TheBox.Options
 			var locFolder = Path.Combine(folder, "Locations");
 			var butFolder = Path.Combine(folder, "Buttons");
 
-			Directory.CreateDirectory(folder);
-			Directory.CreateDirectory(mapsFolder);
-			Directory.CreateDirectory(locFolder);
-			Directory.CreateDirectory(butFolder);
+			_ = Directory.CreateDirectory(folder);
+			_ = Directory.CreateDirectory(mapsFolder);
+			_ = Directory.CreateDirectory(locFolder);
+			_ = Directory.CreateDirectory(butFolder);
 
-			var nextIndex = 0;
-
+			int nextIndex;
 			if (MapIndex > -1)
+			{
 				nextIndex = MapIndex;
+			}
 			else if (ButtonIndex > -1)
+			{
 				nextIndex = MapIndex;
+			}
 			else
+			{
 				nextIndex = EmbeddedList.Length;
+			}
 
-			var index = 0;
-
+			int index;
 			for (index = 0; index < nextIndex; index++)
 			{
 				var resource = EmbeddedList[index];
@@ -192,9 +204,13 @@ namespace TheBox.Options
 			if (MapIndex > -1)
 			{
 				if (ButtonIndex > -1)
+				{
 					nextIndex = ButtonIndex;
+				}
 				else
+				{
 					nextIndex = EmbeddedList.Length;
+				}
 
 				for (; index < nextIndex; index++)
 				{
@@ -258,9 +274,9 @@ namespace TheBox.Options
 
 			for (var i = 0; i < 4; i++)
 			{
-				var xml = Path.Combine(m_Profile.BaseFolder, Path.Combine("Locations", string.Format("map{0}.xml", i)));
-				var small = Path.Combine(m_Profile.BaseFolder, Path.Combine("Maps", string.Format("map{0}small.jpg", i)));
-				var big = Path.Combine(m_Profile.BaseFolder, Path.Combine("Maps", string.Format("map{0}big.jpg", i)));
+				var xml = Path.Combine(m_Profile.BaseFolder, Path.Combine("Locations", System.String.Format("map{0}.xml", i)));
+				var small = Path.Combine(m_Profile.BaseFolder, Path.Combine("Maps", System.String.Format("map{0}small.jpg", i)));
+				var big = Path.Combine(m_Profile.BaseFolder, Path.Combine("Maps", System.String.Format("map{0}big.jpg", i)));
 
 				if (File.Exists(xml))
 				{
@@ -284,7 +300,9 @@ namespace TheBox.Options
 			ButtonIndex = embedded.Count;
 
 			if (ButtonIndex == MapIndex)
+			{
 				MapIndex = -1;
+			}
 
 			if (Directory.Exists(Path.Combine(m_Profile.BaseFolder, "Buttons")))
 			{
@@ -300,18 +318,20 @@ namespace TheBox.Options
 			EmbeddedList = new string[embedded.Count];
 
 			if (EmbeddedList.Length == ButtonIndex)
+			{
 				ButtonIndex = -1;
+			}
 
 			var temp = Path.Combine(Pandora.Folder, "temp.xml");
 
 			// Build the string with all the embedded resources
-			var res = string.Format("/resource:\"{0}\",{1}", temp, "ProfileIO.xml");
+			var res = System.String.Format("/resource:\"{0}\",{1}", temp, "ProfileIO.xml");
 
 			for (var i = 0; i < embedded.Count; i++)
 			{
 				res += " ";
 				// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-				res += string.Format("/resource:\"{0}\",{1}", files[i], embedded[i]);
+				res += System.String.Format("/resource:\"{0}\",{1}", files[i], embedded[i]);
 
 				EmbeddedList[i] = embedded[i];
 				// Issue 10 - End
@@ -320,7 +340,7 @@ namespace TheBox.Options
 			if (!Utility.SaveXml(this, temp))
 			{
 				Pandora.Log.WriteError(null, "Couldn't export profile {0}", m_Profile.Name);
-				MessageBox.Show("An error occurred, export failed.");
+				_ = MessageBox.Show("An error occurred, export failed.");
 				return;
 			}
 
@@ -328,20 +348,20 @@ namespace TheBox.Options
 			var compiler = CodeDomProvider.CreateProvider("CSharp");
 			// Issue 3 - End
 
-			var options = new CompilerParameters();
-
-			options.CompilerOptions = res;
-			options.GenerateExecutable = false;
-			options.IncludeDebugInformation = false;
-			options.OutputAssembly = filename;
-
-			var err = compiler.CompileAssemblyFromSource(options, "//Empty");
+			var options = new CompilerParameters
+			{
+				CompilerOptions = res,
+				GenerateExecutable = false,
+				IncludeDebugInformation = false,
+				OutputAssembly = filename
+			};
+			_ = compiler.CompileAssemblyFromSource(options, "//Empty");
 
 			if (File.Exists(filename))
 			{
 				var fStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
 				var data = new byte[fStream.Length];
-				fStream.Read(data, 0, (int)fStream.Length);
+				_ = fStream.Read(data, 0, (int)fStream.Length);
 				fStream.Close();
 
 				File.Delete(filename);
@@ -354,7 +374,7 @@ namespace TheBox.Options
 				}
 				catch
 				{
-					MessageBox.Show(
+					_ = MessageBox.Show(
 						"Missing zlib.dll, can not export profile.",
 						"Missing library",
 						MessageBoxButtons.OK,
@@ -373,7 +393,9 @@ namespace TheBox.Options
 			}
 
 			if (File.Exists(temp))
+			{
 				File.Delete(temp);
+			}
 		}
 	}
 }

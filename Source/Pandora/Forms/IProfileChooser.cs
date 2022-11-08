@@ -6,6 +6,6 @@
 
 namespace TheBox.Forms
 {
-	public interface IProfileChooser
+	public interface IProfileChooser : IForm
 	{ }
 }

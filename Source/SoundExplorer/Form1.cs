@@ -133,7 +133,7 @@ namespace SoundExplorer
 		///     The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main()
+		private static void Main()
 		{
 			Application.Run(new Form1());
 		}
@@ -156,7 +156,7 @@ namespace SoundExplorer
 			{
 				var data = new SoundData(tree.Nodes);
 
-				Utility.SaveXml(data, save.FileName);
+				_ = Utility.SaveXml(data, save.FileName);
 			}
 		}
 
@@ -165,11 +165,13 @@ namespace SoundExplorer
 			if (tree.SelectedNode != null)
 			{
 				if (e.KeyCode == Keys.F2)
+				{
 					tree.SelectedNode.BeginEdit();
+				}
 				else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
 				{
 					var text = Clipboard.GetDataObject().GetData(DataFormats.Text).ToString();
-					tree.SelectedNode.Text = string.Format("{0} {1}", text, m_Index++);
+					tree.SelectedNode.Text = String.Format("{0} {1}", text, m_Index++);
 
 					tree.SelectedNode.BeginEdit();
 				}
@@ -180,14 +182,14 @@ namespace SoundExplorer
 
 					Clipboard.SetDataObject(tree.SelectedNode.Text);
 
-					tree.SelectedNode.Text = string.Format("{0} {1}", text, m_Index++);
+					tree.SelectedNode.Text = String.Format("{0} {1}", text, m_Index++);
 				}
 				else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
 				{
 					var text = tree.SelectedNode.Text;
-					var first = char.ToUpper(text[0]);
+					var first = Char.ToUpper(text[0]);
 					text = text.Substring(1);
-					text = string.Format("{0}{1}", first, text);
+					text = String.Format("{0}{1}", first, text);
 					tree.SelectedNode.Text = text;
 				}
 			}
@@ -198,7 +200,9 @@ namespace SoundExplorer
 		private void button2_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right)
+			{
 				tree.SelectedNode = null;
+			}
 		}
 
 		private void tree_DoubleClick(object sender, EventArgs e)
@@ -206,14 +210,16 @@ namespace SoundExplorer
 			var node = tree.SelectedNode;
 
 			if (node == null || node.Tag != null)
+			{
 				return;
+			}
 
 			var name = node.Text;
 			var index = 1;
 
 			foreach (TreeNode child in node.Nodes)
 			{
-				child.Text = string.Format("{0} {1}", name, index++);
+				child.Text = String.Format("{0} {1}", name, index++);
 			}
 		}
 	}

@@ -35,14 +35,14 @@ namespace TheBox.Common.Localization
 					return null;
 				}
 
-				Dictionary<string, string> loc;
-				m_Sections.TryGetValue(locate[0], out loc);
+				_ = m_Sections.TryGetValue(locate[0], out var loc);
 
 				if (loc == null)
+				{
 					return null;
+				}
 
-				string s;
-				loc.TryGetValue(locate[1], out s);
+				_ = loc.TryGetValue(locate[1], out var s);
 				return s;
 			}
 			set
@@ -61,12 +61,12 @@ namespace TheBox.Common.Localization
 		/// <summary>
 		///     Gets or sets a string identifying the language represented by the text provider
 		/// </summary>
-		public string Language { get { return m_Language; } set { m_Language = value; } }
+		public string Language { get => m_Language; set => m_Language = value; }
 
 		/// <summary>
 		///     Gets or sets the data collection (sections) for this text provider
 		/// </summary>
-		public Dictionary<string, Dictionary<string, string>> Data { get { return m_Sections; } set { m_Sections = value; } }
+		public Dictionary<string, Dictionary<string, string>> Data { get => m_Sections; set => m_Sections = value; }
 
 		/// <summary>
 		///     Creates a new TextProvider object
@@ -82,7 +82,7 @@ namespace TheBox.Common.Localization
 		/// <param name="name">The name of the section that will be deleted</param>
 		public void DeleteSection(string name)
 		{
-			m_Sections.Remove(name);
+			_ = m_Sections.Remove(name);
 		}
 
 		/// <summary>
@@ -92,12 +92,11 @@ namespace TheBox.Common.Localization
 		/// <param name="item">The item name</param>
 		public void RemoveItem(string section, string item)
 		{
-			Dictionary<string, string> hash;
-			m_Sections.TryGetValue(section, out hash);
+			_ = m_Sections.TryGetValue(section, out var hash);
 
 			if (hash != null)
 			{
-				hash.Remove(item);
+				_ = hash.Remove(item);
 			}
 		}
 
@@ -110,15 +109,16 @@ namespace TheBox.Common.Localization
 			var loc = definition.Split('.');
 
 			if (loc.Length != 2)
+			{
 				return;
+			}
 
 			RemoveItem(loc[0], loc[1]);
 		}
 
 		private void Add(string text, string category, string definition)
 		{
-			Dictionary<string, string> loc = null;
-
+			Dictionary<string, string> loc;
 			if (m_Sections.ContainsKey(category))
 			{
 				loc = m_Sections[category];
@@ -143,13 +143,13 @@ namespace TheBox.Common.Localization
 
 			XmlNode decl = dom.CreateXmlDeclaration("1.0", null, null);
 
-			dom.AppendChild(decl);
+			_ = dom.AppendChild(decl);
 
 			XmlNode lang = dom.CreateElement("Data");
 
 			var langtype = dom.CreateAttribute("language");
 			langtype.Value = m_Language;
-			lang.Attributes.Append(langtype);
+			_ = lang.Attributes.Append(langtype);
 
 			foreach (var toplevel in m_Sections.Keys)
 			{
@@ -158,10 +158,9 @@ namespace TheBox.Common.Localization
 				var topname = dom.CreateAttribute("name");
 				topname.Value = toplevel;
 
-				topnode.Attributes.Append(topname);
+				_ = topnode.Attributes.Append(topname);
 
-				Dictionary<string, string> hash;
-				m_Sections.TryGetValue(toplevel, out hash);
+				_ = m_Sections.TryGetValue(toplevel, out var hash);
 
 				foreach (var lowlevel in hash.Keys)
 				{
@@ -169,21 +168,20 @@ namespace TheBox.Common.Localization
 
 					var name = dom.CreateAttribute("name");
 					name.Value = lowlevel;
-					entrynode.Attributes.Append(name);
+					_ = entrynode.Attributes.Append(name);
 
 					var val = dom.CreateAttribute("text");
-					string value;
-					hash.TryGetValue(lowlevel, out value);
+					_ = hash.TryGetValue(lowlevel, out var value);
 					val.Value = value;
-					entrynode.Attributes.Append(val);
+					_ = entrynode.Attributes.Append(val);
 
-					topnode.AppendChild(entrynode);
+					_ = topnode.AppendChild(entrynode);
 				}
 
-				lang.AppendChild(topnode);
+				_ = lang.AppendChild(topnode);
 			}
 
-			dom.AppendChild(lang);
+			_ = dom.AppendChild(lang);
 
 			dom.Save(filename);
 		}
@@ -197,9 +195,10 @@ namespace TheBox.Common.Localization
 		{
 			var data = dom.ChildNodes[1];
 
-			var text = new TextProvider();
-
-			text.m_Language = data.Attributes["language"].Value;
+			var text = new TextProvider
+			{
+				m_Language = data.Attributes["language"].Value
+			};
 
 			foreach (XmlNode section in data.ChildNodes)
 			{

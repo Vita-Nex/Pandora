@@ -227,7 +227,7 @@ namespace TheBox.Buttons
 			this.Controls.Add(this.linkPreview);
 			this.Controls.Add(this.groupBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			this.Name = "MultiCommandEditor";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -246,7 +246,7 @@ namespace TheBox.Buttons
 		/// </summary>
 		public MultiCommandDef MultiDef
 		{
-			get { return m_Def; }
+			get => m_Def;
 			set
 			{
 				m_Backup = value;
@@ -267,11 +267,13 @@ namespace TheBox.Buttons
 				var mc = m_Def.Commands[i];
 				// Issue 10 - End
 
-				var node = new TreeNode(mc.Caption);
-				node.Tag = mc;
-				node.Checked = (i == m_Def.DefaultIndex);
+				var node = new TreeNode(mc.Caption)
+				{
+					Tag = mc,
+					Checked = i == m_Def.DefaultIndex
+				};
 
-				Tree.Nodes.Add(node);
+				_ = Tree.Nodes.Add(node);
 			}
 		}
 
@@ -290,7 +292,9 @@ namespace TheBox.Buttons
 						var node = Tree.Nodes[m_Def.DefaultIndex];
 
 						if (node.Checked)
+						{
 							node.Checked = false;
+						}
 					}
 				}
 
@@ -369,19 +373,23 @@ namespace TheBox.Buttons
 		{
 			if (txCaption.Text.Length == 0 || txCommand.Text.Length == 0)
 			{
-				MessageBox.Show(Pandora.Localization.TextProvider["ButtonMenuEditor.ErrCommand"]);
+				_ = MessageBox.Show(Pandora.Localization.TextProvider["ButtonMenuEditor.ErrCommand"]);
 				return;
 			}
 
-			var mc = new MenuCommand();
-			mc.Caption = txCaption.Text;
-			mc.Command = txCommand.Text;
-			mc.UsePrefix = chkPrefix.Checked;
+			var mc = new MenuCommand
+			{
+				Caption = txCaption.Text,
+				Command = txCommand.Text,
+				UsePrefix = chkPrefix.Checked
+			};
 
-			var node = new TreeNode(mc.Caption);
-			node.Tag = mc;
+			var node = new TreeNode(mc.Caption)
+			{
+				Tag = mc
+			};
 
-			Tree.Nodes.Add(node);
+			_ = Tree.Nodes.Add(node);
 
 			m_Edit = false;
 			txCaption.Text = "";
@@ -393,7 +401,7 @@ namespace TheBox.Buttons
 				Tree.Nodes[0].Checked = true;
 			}
 
-			txCaption.Focus();
+			_ = txCaption.Focus();
 		}
 
 		/// <summary>
@@ -410,7 +418,9 @@ namespace TheBox.Buttons
 				m_Def.Commands.Add(mc);
 
 				if (node.Checked)
+				{
 					m_Def.DefaultIndex = Tree.Nodes.IndexOf(node);
+				}
 			}
 		}
 
@@ -428,10 +438,13 @@ namespace TheBox.Buttons
 				var cmd = "";
 
 				if (m_Def.DefaultCommand.UsePrefix)
+				{
 					cmd += Pandora.Profile.General.CommandPrefix;
+				}
+
 				cmd += m_Def.DefaultCommand.Command;
 
-				MessageBox.Show(string.Format(Pandora.Localization.TextProvider["ButtonMenuEditor.PreviewMsg"], cmd));
+				_ = MessageBox.Show(String.Format(Pandora.Localization.TextProvider["ButtonMenuEditor.PreviewMsg"], cmd));
 			}
 			else
 			{
@@ -489,11 +502,12 @@ namespace TheBox.Buttons
 		private void Tree_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (Tree.SelectedNode == null)
+			{
 				return;
+			}
 
 			var node = Tree.SelectedNode;
-			var index = 0;
-
+			int index;
 			switch (e.KeyCode)
 			{
 				case Keys.Delete:
@@ -503,19 +517,27 @@ namespace TheBox.Buttons
 					var nextnode = node.NextNode;
 
 					if (nextnode == null)
+					{
 						nextnode = node.PrevNode;
+					}
 
 					var checknextnode = false;
 					if (node.Checked && nextnode != null)
+					{
 						checknextnode = true;
+					}
 
 					Tree.Nodes.Remove(node);
 
 					if (nextnode != null)
+					{
 						Tree.SelectedNode = nextnode;
+					}
 
 					if (checknextnode)
+					{
 						nextnode.Checked = true;
+					}
 
 					break;
 
@@ -526,7 +548,9 @@ namespace TheBox.Buttons
 					var prev = node.PrevNode;
 
 					if (prev == null)
+					{
 						break;
+					}
 
 					index = Tree.Nodes.IndexOf(prev);
 
@@ -546,7 +570,9 @@ namespace TheBox.Buttons
 					var next = node.NextNode;
 
 					if (next == null)
+					{
 						break;
+					}
 
 					index = Tree.Nodes.IndexOf(node);
 
@@ -564,9 +590,13 @@ namespace TheBox.Buttons
 		private void bCancel_Click(object sender, EventArgs e)
 		{
 			if (m_Backup != null)
+			{
 				m_Def = m_Backup;
+			}
 			else
+			{
 				m_Def = null;
+			}
 
 			DialogResult = DialogResult.Cancel;
 			Close();

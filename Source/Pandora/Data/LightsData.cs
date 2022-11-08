@@ -93,7 +93,7 @@ namespace TheBox.Data
 		/// </summary>
 		public string SelectedCategory
 		{
-			get { return m_SelectedCategory; }
+			get => m_SelectedCategory;
 			set
 			{
 				if (value != m_SelectedCategory)
@@ -142,7 +142,7 @@ namespace TheBox.Data
 				for (var i = 0; i < images.Length; i++)
 				{
 					var name = (string)gNode.Elements[i];
-					var location = string.Format("Data.Lights.{0}.{1}.jpg", m_SelectedCategory, name);
+					var location = System.String.Format("Data.Lights.{0}.{1}.jpg", m_SelectedCategory, name);
 
 					images[i] = Bitmap.FromStream(Pandora.DataAssembly.GetManifestResourceStream(location));
 				}

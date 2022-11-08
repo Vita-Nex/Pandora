@@ -29,10 +29,10 @@ namespace TheBox.BoxServer
 		/// </summary>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public List<BuildItem> Items
-			// Issue 10 - End 
+		// Issue 10 - End 
 		{
-			get { return m_Items; }
-			set { m_Items = value; }
+			get => m_Items;
+			set => m_Items = value;
 		}
 
 		/// <summary>
@@ -62,30 +62,30 @@ namespace TheBox.BoxServer
 		///     Gets or sets the item ID
 		/// </summary>
 		[XmlAttribute]
-		public int ID { get { return m_ID; } set { m_ID = value; } }
+		public int ID { get => m_ID; set => m_ID = value; }
 
 		/// <summary>
 		///     Gets or sets the item hue
 		/// </summary>
 		[XmlAttribute]
-		public int Hue { get { return m_Hue; } set { m_Hue = value; } }
+		public int Hue { get => m_Hue; set => m_Hue = value; }
 
 		/// <summary>
 		///     Gets or sets the X coordinate
 		/// </summary>
 		[XmlAttribute]
-		public int X { get { return m_X; } set { m_X = value; } }
+		public int X { get => m_X; set => m_X = value; }
 
 		/// <summary>
 		///     Gets or sets the Y coordinate
 		/// </summary>
 		[XmlAttribute]
-		public int Y { get { return m_Y; } set { m_Y = value; } }
+		public int Y { get => m_Y; set => m_Y = value; }
 
 		/// <summary>
 		///     Gets or sets the Z coordinate
 		/// </summary>
 		[XmlAttribute]
-		public int Z { get { return m_Z; } set { m_Z = value; } }
+		public int Z { get => m_Z; set => m_Z = value; }
 	}
 }

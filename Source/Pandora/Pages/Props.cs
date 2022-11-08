@@ -80,7 +80,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private Control VisibleControl
 		{
-			get { return m_VisibleControl; }
+			get => m_VisibleControl;
 			set
 			{
 				if (m_VisibleControl != null)
@@ -102,7 +102,7 @@ namespace TheBox.Pages
 		/// </summary>
 		public BoxProp SelectedProperty
 		{
-			get { return m_SelectedProperty; }
+			get => m_SelectedProperty;
 			set
 			{
 				m_SelectedProperty = value;
@@ -253,7 +253,7 @@ namespace TheBox.Pages
 			// cmbFilter
 			// 
 			this.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbFilter.Items.AddRange(new object[] {"Administrator", "Seer", "GameMaster", "Councelor"});
+			this.cmbFilter.Items.AddRange(new object[] { "Administrator", "Seer", "GameMaster", "Councelor" });
 			this.cmbFilter.Location = new System.Drawing.Point(4, 28);
 			this.cmbFilter.Name = "cmbFilter";
 			this.cmbFilter.Size = new System.Drawing.Size(92, 21);
@@ -521,7 +521,7 @@ namespace TheBox.Pages
 		/// <param name="existing">The List the should be used as comparison</param>
 		/// // Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private void RemoveDuplicates(List<TreeNode> from, List<TreeNode> existing)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			foreach (var n in existing)
 			{
@@ -529,7 +529,7 @@ namespace TheBox.Pages
 
 				if (found != null)
 				{
-					from.Remove(found);
+					_ = from.Remove(found);
 				}
 			}
 		}
@@ -542,7 +542,7 @@ namespace TheBox.Pages
 		/// <returns>The TreeNode if found, null otherwise</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		private TreeNode NodeExists(string text, List<TreeNode> nodes)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			foreach (var node in nodes)
 			{
@@ -572,8 +572,10 @@ namespace TheBox.Pages
 			{
 				if (p.SetAccess <= Pandora.Profile.Props.Filter)
 				{
-					var n = new TreeNode(p.Name);
-					n.Tag = p;
+					var n = new TreeNode(p.Name)
+					{
+						Tag = p
+					};
 
 					nodes.Add(n);
 				}
@@ -639,7 +641,9 @@ namespace TheBox.Pages
 		private void chkAllClasses_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyingOptions)
+			{
 				return;
+			}
 
 			Pandora.Profile.Props.ShowAllTypes = chkAllClasses.Checked;
 			RefreshTrees();
@@ -651,7 +655,9 @@ namespace TheBox.Pages
 		private void chkAllProps_CheckedChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyingOptions)
+			{
 				return;
+			}
 
 			Pandora.Profile.Props.ShowAllProps = chkAllProps.Checked;
 			RefreshPropsTree();
@@ -663,7 +669,9 @@ namespace TheBox.Pages
 		private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (m_ApplyingOptions)
+			{
 				return;
+			}
 
 			Pandora.Profile.Props.Filter = (AccessLevel)(4 - cmbFilter.SelectedIndex);
 			RefreshPropsTree();
@@ -691,7 +699,7 @@ namespace TheBox.Pages
 
 				if (results.Count == 0)
 				{
-					MessageBox.Show(Pandora.Localization.TextProvider["Props.NoClassMatch"]);
+					_ = MessageBox.Show(Pandora.Localization.TextProvider["Props.NoClassMatch"]);
 				}
 				else if (results.Count == 1)
 				{
@@ -701,14 +709,15 @@ namespace TheBox.Pages
 				}
 				else
 				{
-					var selector = new SearchResultsSelector();
-
-					selector.Paths = results;
+					var selector = new SearchResultsSelector
+					{
+						Paths = results
+					};
 
 					var loc = PointToScreen(Point.Empty);
 					selector.Location = loc;
 
-					selector.ShowDialog();
+					_ = selector.ShowDialog();
 
 					var index = selector.SelectedClass;
 					// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
@@ -811,7 +820,7 @@ namespace TheBox.Pages
 
 			if (view != null && view.SelectedNode != null)
 			{
-				view.DoDragDrop(view.SelectedNode.Text, DragDropEffects.Copy);
+				_ = view.DoDragDrop(view.SelectedNode.Text, DragDropEffects.Copy);
 			}
 		}
 	}

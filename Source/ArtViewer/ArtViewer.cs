@@ -11,6 +11,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 using TheBox.Common;
+
 using Ultima;
 #endregion
 
@@ -134,7 +135,9 @@ namespace TheBox.ArtViewer
 					StopAnimation();
 
 					if (m_Image != null)
+					{
 						m_Image.Dispose();
+					}
 
 					m_Image = new Bitmap(value);
 
@@ -151,13 +154,15 @@ namespace TheBox.ArtViewer
 		/// </summary>
 		public Art Art
 		{
-			get { return m_Art; }
+			get => m_Art;
 			set
 			{
 				if (m_Art != value)
 				{
 					if (value == Art.Images)
+					{
 						return;
+					}
 
 					m_Art = value;
 
@@ -173,7 +178,7 @@ namespace TheBox.ArtViewer
 		/// </summary>
 		public int ArtIndex
 		{
-			get { return m_ArtIndex; }
+			get => m_ArtIndex;
 			set
 			{
 				if (value != m_ArtIndex)
@@ -184,10 +189,7 @@ namespace TheBox.ArtViewer
 					m_ImageInvalidated = true;
 					Refresh();
 
-					if (ArtIndexChanged != null)
-					{
-						ArtIndexChanged(this, new EventArgs());
-					}
+					ArtIndexChanged?.Invoke(this, new EventArgs());
 				}
 			}
 		}
@@ -197,7 +199,7 @@ namespace TheBox.ArtViewer
 		/// </summary>
 		public bool Animate
 		{
-			get { return m_Animate; }
+			get => m_Animate;
 			set
 			{
 				if (m_Animate != value)
@@ -219,19 +221,25 @@ namespace TheBox.ArtViewer
 		/// </summary>
 		public int Hue
 		{
-			get { return m_Hue; }
+			get => m_Hue;
 			set
 			{
 				if (m_Hue == value)
+				{
 					return;
+				}
 
 				m_Hue = value;
 
 				if (m_Hue < 0)
+				{
 					m_Hue = 0;
+				}
 
 				if (m_Hue > 2999)
+				{
 					m_Hue = 2999;
+				}
 
 				StopAnimation();
 				m_ImageInvalidated = true;
@@ -244,7 +252,7 @@ namespace TheBox.ArtViewer
 		/// </summary>
 		public bool ResizeTallItems
 		{
-			get { return m_ResizeTallItems; }
+			get => m_ResizeTallItems;
 			set
 			{
 				if (m_ResizeTallItems != value)
@@ -261,7 +269,7 @@ namespace TheBox.ArtViewer
 		/// </summary>
 		public bool RoomView
 		{
-			get { return m_RoomView; }
+			get => m_RoomView;
 			set
 			{
 				if (m_RoomView != value)
@@ -275,7 +283,7 @@ namespace TheBox.ArtViewer
 
 		public bool ShowID
 		{
-			get { return m_ShowID; }
+			get => m_ShowID;
 			set
 			{
 				if (m_ShowID != value)
@@ -289,7 +297,7 @@ namespace TheBox.ArtViewer
 
 		public bool ShowHexID
 		{
-			get { return m_ShowHexID; }
+			get => m_ShowHexID;
 			set
 			{
 				if (m_ShowHexID != value)
@@ -299,42 +307,6 @@ namespace TheBox.ArtViewer
 				}
 			}
 		}
-		#endregion
-
-		#region Mul Manager
-		private static MulManager m_MulManager;
-
-		/// <summary>
-		///     Gets or sets the mul manager
-		/// </summary>
-		public static MulManager MulManager
-		{
-			get
-			{
-				if (m_MulManager == null)
-				{
-					m_MulManager = new MulManager();
-				}
-
-				return m_MulManager;
-			}
-			set
-			{
-				if (value != null)
-				{
-					m_MulManager = value;
-				}
-				else
-				{
-					m_MulManager = new MulManager();
-				}
-			}
-		}
-
-		/// <summary>
-		///     Sets the file manager to use for this art viewer
-		/// </summary>
-		public MulManager MulFileManager { set { m_MulManager = value; } }
 		#endregion
 
 		/// <summary>
@@ -367,14 +339,15 @@ namespace TheBox.ArtViewer
 			base.OnPaint(e);
 
 			if (m_ImageInvalidated)
+			{
 				CreateDisplay();
+			}
 
 			if (m_Image != null)
 			{
 				// Position image
 				var location = Point.Empty;
-				var size = Size.Empty;
-
+				Size size;
 				if (m_Image.Width <= Width && m_Image.Height <= Height)
 				{
 					// Image fits
@@ -426,7 +399,9 @@ namespace TheBox.ArtViewer
 			else
 			{
 				if (m_Art == Art.Items && m_RoomView)
+				{
 					DrawRoomView(e.Graphics, new Rectangle((Width - 44) / 2, (Height - 44) / 2, 44, 44));
+				}
 			}
 
 			// ID
@@ -526,12 +501,12 @@ namespace TheBox.ArtViewer
 			Brush whiteBrush = new LinearGradientBrush(top, right, Color.DarkSlateBlue, Color.SkyBlue);
 
 			// Draw base block
-			var baseBlock = new[] {top, right, bottom, left, top};
+			var baseBlock = new[] { top, right, bottom, left, top };
 			g.FillPolygon(whiteBrush, baseBlock);
 
 			// Fill
-			var leftArea = new[] {left, top1, top2, top, left};
-			var rightArea = new[] {top, top2, top3, right, top};
+			var leftArea = new[] { left, top1, top2, top, left };
+			var rightArea = new[] { top, top2, top3, right, top };
 
 			Brush darkBrush = new LinearGradientBrush(left, top1, Color.MidnightBlue, Color.LightGray);
 			Brush lightBrush = new LinearGradientBrush(right, top3, Color.SteelBlue, Color.White);
@@ -570,7 +545,7 @@ namespace TheBox.ArtViewer
 		/// <returns>A point on the bounds of the control</returns>
 		private Point GetIntersection(Point p1, Point p2)
 		{
-			var a = ((p1.Y - p2.Y) / (double)(p1.X - p2.X));
+			var a = (p1.Y - p2.Y) / (double)(p1.X - p2.X);
 			var b = p1.Y - (a * p1.X);
 
 			if (p1.X < p2.X)
@@ -579,7 +554,7 @@ namespace TheBox.ArtViewer
 				var pRight = Point.Empty;
 
 				pRight.X = Width;
-				pRight.Y = (int)(Width * a + b);
+				pRight.Y = (int)((Width * a) + b);
 
 				if (pRight.Y < 0)
 				{
@@ -666,9 +641,13 @@ namespace TheBox.ArtViewer
 							var frames = Animations.GetAnimation(m_ArtIndex, 0, 1, ref hue, true, true);
 
 							if (frames != null)
+							{
 								m_Image = new Bitmap(frames[0].Bitmap);
+							}
 							else
+							{
 								m_Image = null;
+							}
 						}
 					}
 					catch
@@ -708,7 +687,9 @@ namespace TheBox.ArtViewer
 				var frames = Animations.GetAnimation(m_ArtIndex, 0, 1, ref m_Hue, true, false);
 
 				if (frames == null)
+				{
 					return null;
+				}
 
 				var count = frames.Length;
 				m_Animation = new Bitmap[count];
@@ -718,8 +699,10 @@ namespace TheBox.ArtViewer
 					m_Animation[i] = frames[i].Bitmap;
 				}
 
-				m_Timer = new Timer();
-				m_Timer.Interval = 1000 / count;
+				m_Timer = new Timer
+				{
+					Interval = 1000 / count
+				};
 				m_Timer.Tick += AnimTick;
 				m_Timer.Start();
 
@@ -734,7 +717,9 @@ namespace TheBox.ArtViewer
 			m_FrameIndex++;
 
 			if (m_FrameIndex == m_Animation.Length)
+			{
 				m_FrameIndex = 0;
+			}
 
 			m_ImageInvalidated = true;
 			Refresh();
@@ -748,7 +733,9 @@ namespace TheBox.ArtViewer
 			if (m_Timer != null)
 			{
 				if (m_Timer.Enabled)
+				{
 					m_Timer.Stop();
+				}
 
 				m_Timer.Dispose();
 				m_Timer = null;
@@ -757,8 +744,12 @@ namespace TheBox.ArtViewer
 			if (m_Animation != null)
 			{
 				for (var i = 0; i < m_Animation.Length; i++)
+				{
 					if (m_Animation[i] != null)
+					{
 						m_Animation[i].Dispose();
+					}
+				}
 			}
 
 			m_Animation = null;

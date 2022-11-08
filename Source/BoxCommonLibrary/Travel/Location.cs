@@ -50,7 +50,7 @@ namespace TheBox.Data
 		/// <summary>
 		///     Gets or sets the map the location resides on
 		/// </summary>
-		public int Map { get { return m_Map; } set { m_Map = (byte)value; } }
+		public int Map { get => m_Map; set => m_Map = (byte)value; }
 
 		/// <summary>
 		///     Converts a collection of Location structures to a TreeNodeCollection
@@ -59,7 +59,7 @@ namespace TheBox.Data
 		/// <returns>A TreeNodeCollection object containing nodes for all the locations in the list</returns>
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 		public static TreeNode[] ArrayToNodes(List<object> list)
-			// Issue 10 - End
+		// Issue 10 - End
 		{
 			var nodes = new TreeNode[list.Count];
 
@@ -67,8 +67,10 @@ namespace TheBox.Data
 			{
 				var loc = list[i] as Location;
 
-				var node = new TreeNode(loc.Name);
-				node.Tag = loc;
+				var node = new TreeNode(loc.Name)
+				{
+					Tag = loc
+				};
 
 				nodes[i] = node;
 			}
@@ -82,7 +84,7 @@ namespace TheBox.Data
 		/// <returns></returns>
 		public override string ToString()
 		{
-			return string.Format("{0} ({1},{2},{3})", Name, X, Y, Z);
+			return String.Format("{0} ({1},{2},{3})", Name, X, Y, Z);
 		}
 
 		#region IComparable Members
@@ -93,10 +95,10 @@ namespace TheBox.Data
 		/// <returns>The result value of the comparison</returns>
 		public int CompareTo(object obj)
 		{
-			var o = obj as Location;
-
-			if (o == null)
-				throw new Exception(string.Format("Cannot compare Location to {0}", obj.GetType().Name));
+			if (!(obj is Location o))
+			{
+				throw new Exception(String.Format("Cannot compare Location to {0}", obj.GetType().Name));
+			}
 
 			return Name.CompareTo(o.Name);
 		}

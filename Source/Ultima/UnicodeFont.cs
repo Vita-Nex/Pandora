@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - UnicodeFont.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Drawing;
@@ -92,11 +86,9 @@ namespace Ultima
 			{
 				return null;
 			}
-			var bmp = new Bitmap(Width, Height, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(Width, Height, Settings.PixelFormat);
 			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.WriteOnly,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
 			for (var y = 0; y < Height; ++y, line += delta)
@@ -120,7 +112,7 @@ namespace Ultima
 
 		private static bool IsPixelSet(byte[] data, int width, int x, int y)
 		{
-			var offset = x / 8 + y * ((width + 7) / 8);
+			var offset = (x / 8) + (y * ((width + 7) / 8));
 			if (offset > data.Length)
 			{
 				return false;
@@ -136,9 +128,7 @@ namespace Ultima
 		{
 			Bytes = new byte[bmp.Height * (((bmp.Width - 1) / 8) + 1)];
 			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.WriteOnly,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			//int delta = bd.Stride >> 1;
 			for (var y = 0; y < bmp.Height; ++y)
@@ -148,7 +138,7 @@ namespace Ultima
 				{
 					if (cur[x] == 0x8000)
 					{
-						var offset = x / 8 + y * ((bmp.Width + 7) / 8);
+						var offset = (x / 8) + (y * ((bmp.Width + 7) / 8));
 						Bytes[offset] |= (byte)(1 << (7 - (x % 8)));
 					}
 				}
@@ -159,7 +149,7 @@ namespace Ultima
 
 	public static class UnicodeFonts
 	{
-		private static readonly string[] m_files =
+		private static readonly string[] m_files = new[]
 		{
 			"unifont.mul", "unifont1.mul", "unifont2.mul", "unifont3.mul", "unifont4.mul", "unifont5.mul", "unifont6.mul",
 			"unifont7.mul", "unifont8.mul", "unifont9.mul", "unifont10.mul", "unifont11.mul", "unifont12.mul"
@@ -192,13 +182,13 @@ namespace Ultima
 						for (var c = 0; c < 0x10000; ++c)
 						{
 							Fonts[i].Chars[c] = new UnicodeChar();
-							fs.Seek(((c) * 4), SeekOrigin.Begin);
+							_ = fs.Seek(c * 4, SeekOrigin.Begin);
 							var num2 = bin.ReadInt32();
 							if ((num2 >= fs.Length) || (num2 <= 0))
 							{
 								continue;
 							}
-							fs.Seek(num2, SeekOrigin.Begin);
+							_ = fs.Seek(num2, SeekOrigin.Begin);
 							var xOffset = bin.ReadSByte();
 							var yOffset = bin.ReadSByte();
 							int Width = bin.ReadByte();
@@ -256,7 +246,7 @@ namespace Ultima
 			{
 				using (var bin = new BinaryWriter(fs))
 				{
-					fs.Seek(0x10000 * 4, SeekOrigin.Begin);
+					_ = fs.Seek(0x10000 * 4, SeekOrigin.Begin);
 					bin.Write(0);
 					// Set first data
 					for (var c = 0; c < 0x10000; ++c)
@@ -265,9 +255,9 @@ namespace Ultima
 						{
 							continue;
 						}
-						fs.Seek(((c) * 4), SeekOrigin.Begin);
+						_ = fs.Seek(c * 4, SeekOrigin.Begin);
 						bin.Write((int)fs.Length);
-						fs.Seek(fs.Length, SeekOrigin.Begin);
+						_ = fs.Seek(fs.Length, SeekOrigin.Begin);
 						bin.Write(Fonts[filetype].Chars[c].XOffset);
 						bin.Write(Fonts[filetype].Chars[c].YOffset);
 						bin.Write((byte)Fonts[filetype].Chars[c].Width);

@@ -71,7 +71,7 @@ namespace TheBox.Controls.Params
 				8.25F,
 				System.Drawing.FontStyle.Bold,
 				System.Drawing.GraphicsUnit.Point,
-				((System.Byte)(0)));
+				0);
 			this.labName.Location = new System.Drawing.Point(0, 0);
 			this.labName.Name = "labName";
 			this.labName.Size = new System.Drawing.Size(96, 16);
@@ -100,7 +100,7 @@ namespace TheBox.Controls.Params
 		/// <summary>
 		///     States whether this control is used for text, or a generic and undefined input
 		/// </summary>
-		public bool IsOther { set { m_IsOther = value; } }
+		public bool IsOther { set => m_IsOther = value; }
 
 		private void TextParam_Load(object sender, EventArgs e)
 		{
@@ -136,9 +136,9 @@ namespace TheBox.Controls.Params
 			}
 		}
 
-		public string Value { get { return tx.Text; } }
+		public string Value => tx.Text;
 
-		public bool IsDefined { get { return true; } }
+		public bool IsDefined => true;
 		#endregion
 	}
 }

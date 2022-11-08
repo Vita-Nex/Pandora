@@ -22,20 +22,18 @@ namespace TheBox.Data
 		public event SkillEventHandler SkillSelected;
 		public event EventHandler AllSkillsSelected;
 
-		private readonly ContextMenu m_Menu;
-
 		/// <summary>
 		///     Gets the skills context menu
 		/// </summary>
-		public ContextMenu Menu { get { return m_Menu; } }
+		public ContextMenu Menu { get; }
 
 		public SkillsData()
 		{
-			m_Menu = new ContextMenu();
+			Menu = new ContextMenu();
 			var allskills = new MenuItem(Pandora.Localization.TextProvider["Misc.AllSkills"]);
 			allskills.Click += allskills_Click;
-			m_Menu.MenuItems.Add(allskills);
-			m_Menu.MenuItems.Add(new MenuItem("-"));
+			_ = Menu.MenuItems.Add(allskills);
+			_ = Menu.MenuItems.Add(new MenuItem("-"));
 			Load();
 		}
 
@@ -49,7 +47,7 @@ namespace TheBox.Data
 			if (!File.Exists(file))
 			{
 				Pandora.Log.WriteError(null, "Skills.ini file missing");
-				m_Menu.MenuItems.Add(new MenuItem("Skills.ini not found"));
+				_ = Menu.MenuItems.Add(new MenuItem("Skills.ini not found"));
 				return;
 			}
 
@@ -65,16 +63,20 @@ namespace TheBox.Data
 					line = line.Trim();
 
 					if (line.Length == 0)
+					{
 						continue;
+					}
 
 					if (line.StartsWith("#"))
+					{
 						continue;
+					}
 
 					if (line.StartsWith(":"))
 					{
 						// New category
 						var cat = new MenuItem(line.Substring(1));
-						m_Menu.MenuItems.Add(cat);
+						_ = Menu.MenuItems.Add(cat);
 						parent = cat;
 					}
 					else
@@ -83,22 +85,24 @@ namespace TheBox.Data
 						var defs = line.Split(':');
 
 						if (defs.Length != 2)
+						{
 							continue;
+						}
 
 						defs[0] = defs[0].Trim();
 						defs[1] = defs[1].Trim();
 
 						var mi = new InternalMenuItem(defs[0], defs[1]);
 						mi.Click += mi_Click;
-						parent.MenuItems.Add(mi);
+						_ = parent.MenuItems.Add(mi);
 					}
 				}
 			}
 			catch (Exception err)
 			{
 				Pandora.Log.WriteError(err, "Can't read Skills.ini");
-				m_Menu.MenuItems.Clear();
-				m_Menu.MenuItems.Add(new MenuItem("You really had to mess up with Skills.ini...."));
+				Menu.MenuItems.Clear();
+				_ = Menu.MenuItems.Add(new MenuItem("You really had to mess up with Skills.ini...."));
 			}
 		}
 
@@ -128,10 +132,7 @@ namespace TheBox.Data
 
 		private void allskills_Click(object sender, EventArgs e)
 		{
-			if (AllSkillsSelected != null)
-			{
-				AllSkillsSelected(this, new EventArgs());
-			}
+			AllSkillsSelected?.Invoke(this, new EventArgs());
 		}
 	}
 

@@ -56,7 +56,7 @@ namespace TheBox.Forms
 		/// <summary>
 		///     Gets or sets the text edited by this form
 		/// </summary>
-		public string EntryText { get { return tx.Text; } set { tx.Text = value; } }
+		public string EntryText { get => tx.Text; set => tx.Text = value; }
 
 		#region Windows Form Designer generated code
 		/// <summary>
@@ -103,7 +103,7 @@ namespace TheBox.Forms
 				tx.SelectAll();
 			}
 
-			tx.Focus();
+			_ = tx.Focus();
 		}
 
 		private void SimpleTextEntry_Deactivate(object sender, EventArgs e)

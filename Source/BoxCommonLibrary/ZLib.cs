@@ -24,12 +24,12 @@ namespace TheBox.Common
 			Z_OK = 0,
 			Z_STREAM_END = 1,
 			Z_NEED_DICT = 2,
-			Z_ERRNO = (-1),
-			Z_STREAM_ERROR = (-2),
-			Z_DATA_ERROR = (-3),
-			Z_MEM_ERROR = (-4),
-			Z_BUF_ERROR = (-5),
-			Z_VERSION_ERROR = (-6)
+			Z_ERRNO = -1,
+			Z_STREAM_ERROR = -2,
+			Z_DATA_ERROR = -3,
+			Z_MEM_ERROR = -4,
+			Z_BUF_ERROR = -5,
+			Z_VERSION_ERROR = -6
 		}
 
 		private enum ZLibCompressionLevel
@@ -37,7 +37,7 @@ namespace TheBox.Common
 			Z_NO_COMPRESSION = 0,
 			Z_BEST_SPEED = 1,
 			Z_BEST_COMPRESSION = 9,
-			Z_DEFAULT_COMPRESSION = (-1)
+			Z_DEFAULT_COMPRESSION = -1
 		}
 
 		[DllImport("zlib")]
@@ -63,8 +63,7 @@ namespace TheBox.Common
 		/// <returns>True if the liberary version matches, false otherwise or if the library can't be found</returns>
 		public static bool CheckVersion()
 		{
-			string[] ver = null;
-
+			string[] ver;
 			try
 			{
 				ver = zlibVersion().Split('.');
@@ -193,7 +192,9 @@ namespace TheBox.Common
 				result = compress(dest, ref destLength, data, data.Length);
 
 				if (result != ZLibError.Z_OK)
+				{
 					return null;
+				}
 			}
 			catch (DllNotFoundException ex)
 			{
@@ -206,7 +207,7 @@ namespace TheBox.Common
 			// Copy length to the start of the array
 			res[0] = (byte)(length & 0xFF);
 			res[1] = (byte)((length >> 8) & 0xFF);
-			res[2] = (byte)((length >> 16 & 0xFF));
+			res[2] = (byte)((length >> 16) & 0xFF);
 			res[3] = (byte)((length >> 24) & 0xFF);
 
 			return res;

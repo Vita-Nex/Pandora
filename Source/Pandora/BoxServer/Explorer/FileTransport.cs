@@ -22,11 +22,11 @@ namespace TheBox.BoxServer
 		/// <summary>
 		///     Gets or sets the path to the file relative to the RunUO folder
 		/// </summary>
-		public string Filename { get { return m_Filename; } set { m_Filename = value; } }
+		public string Filename { get => m_Filename; set => m_Filename = value; }
 
 		/// <summary>
 		///     Gets or sets the content of the file
 		/// </summary>
-		public string Text { get { return m_Text; } set { m_Text = value; } }
+		public string Text { get => m_Text; set => m_Text = value; }
 	}
 }

@@ -75,24 +75,24 @@ namespace TheBox.Controls
 			this.bDownRight = new System.Windows.Forms.Button();
 			this.bRight = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(this.num)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)this.num).BeginInit();
 			this.SuspendLayout();
 			// 
 			// num
 			// 
 			this.num.Location = new System.Drawing.Point(16, 0);
-			this.num.Maximum = new System.Decimal(new int[] {7000, 0, 0, 0});
-			this.num.Minimum = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.num.Maximum = new decimal(new int[] { 7000, 0, 0, 0 });
+			this.num.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
 			this.num.Name = "num";
 			this.num.Size = new System.Drawing.Size(44, 20);
 			this.num.TabIndex = 1;
-			this.num.Value = new System.Decimal(new int[] {1, 0, 0, 0});
+			this.num.Value = new decimal(new int[] { 1, 0, 0, 0 });
 			this.num.ValueChanged += new System.EventHandler(this.num_ValueChanged);
 			// 
 			// bUpLeft
 			// 
 			this.bUpLeft.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bUpLeft.Image = ((System.Drawing.Image)(resources.GetObject("bUpLeft.Image")));
+			this.bUpLeft.Image = (System.Drawing.Image)resources.GetObject("bUpLeft.Image");
 			this.bUpLeft.Location = new System.Drawing.Point(0, 20);
 			this.bUpLeft.Name = "bUpLeft";
 			this.bUpLeft.Size = new System.Drawing.Size(22, 22);
@@ -103,7 +103,7 @@ namespace TheBox.Controls
 			// bUp
 			// 
 			this.bUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bUp.Image = ((System.Drawing.Image)(resources.GetObject("bUp.Image")));
+			this.bUp.Image = (System.Drawing.Image)resources.GetObject("bUp.Image");
 			this.bUp.Location = new System.Drawing.Point(24, 20);
 			this.bUp.Name = "bUp";
 			this.bUp.Size = new System.Drawing.Size(22, 22);
@@ -114,7 +114,7 @@ namespace TheBox.Controls
 			// bUpRight
 			// 
 			this.bUpRight.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bUpRight.Image = ((System.Drawing.Image)(resources.GetObject("bUpRight.Image")));
+			this.bUpRight.Image = (System.Drawing.Image)resources.GetObject("bUpRight.Image");
 			this.bUpRight.Location = new System.Drawing.Point(48, 20);
 			this.bUpRight.Name = "bUpRight";
 			this.bUpRight.Size = new System.Drawing.Size(22, 22);
@@ -125,7 +125,7 @@ namespace TheBox.Controls
 			// bLeft
 			// 
 			this.bLeft.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bLeft.Image = ((System.Drawing.Image)(resources.GetObject("bLeft.Image")));
+			this.bLeft.Image = (System.Drawing.Image)resources.GetObject("bLeft.Image");
 			this.bLeft.Location = new System.Drawing.Point(0, 44);
 			this.bLeft.Name = "bLeft";
 			this.bLeft.Size = new System.Drawing.Size(22, 22);
@@ -136,7 +136,7 @@ namespace TheBox.Controls
 			// bDownLeft
 			// 
 			this.bDownLeft.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bDownLeft.Image = ((System.Drawing.Image)(resources.GetObject("bDownLeft.Image")));
+			this.bDownLeft.Image = (System.Drawing.Image)resources.GetObject("bDownLeft.Image");
 			this.bDownLeft.Location = new System.Drawing.Point(0, 68);
 			this.bDownLeft.Name = "bDownLeft";
 			this.bDownLeft.Size = new System.Drawing.Size(22, 22);
@@ -147,7 +147,7 @@ namespace TheBox.Controls
 			// bDown
 			// 
 			this.bDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bDown.Image = ((System.Drawing.Image)(resources.GetObject("bDown.Image")));
+			this.bDown.Image = (System.Drawing.Image)resources.GetObject("bDown.Image");
 			this.bDown.Location = new System.Drawing.Point(24, 68);
 			this.bDown.Name = "bDown";
 			this.bDown.Size = new System.Drawing.Size(22, 22);
@@ -158,7 +158,7 @@ namespace TheBox.Controls
 			// bDownRight
 			// 
 			this.bDownRight.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bDownRight.Image = ((System.Drawing.Image)(resources.GetObject("bDownRight.Image")));
+			this.bDownRight.Image = (System.Drawing.Image)resources.GetObject("bDownRight.Image");
 			this.bDownRight.Location = new System.Drawing.Point(48, 68);
 			this.bDownRight.Name = "bDownRight";
 			this.bDownRight.Size = new System.Drawing.Size(22, 22);
@@ -169,7 +169,7 @@ namespace TheBox.Controls
 			// bRight
 			// 
 			this.bRight.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.bRight.Image = ((System.Drawing.Image)(resources.GetObject("bRight.Image")));
+			this.bRight.Image = (System.Drawing.Image)resources.GetObject("bRight.Image");
 			this.bRight.Location = new System.Drawing.Point(48, 44);
 			this.bRight.Name = "bRight";
 			this.bRight.Size = new System.Drawing.Size(22, 22);
@@ -179,7 +179,7 @@ namespace TheBox.Controls
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
 			this.pictureBox1.Location = new System.Drawing.Point(24, 44);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(24, 24);
@@ -202,7 +202,7 @@ namespace TheBox.Controls
 			this.Name = "DecoMover";
 			this.Size = new System.Drawing.Size(72, 92);
 			this.Load += new System.EventHandler(this.DecoMover_Load);
-			((System.ComponentModel.ISupportInitialize)(this.num)).EndInit();
+			((System.ComponentModel.ISupportInitialize)this.num).EndInit();
 			this.ResumeLayout(false);
 		}
 		#endregion
@@ -225,10 +225,7 @@ namespace TheBox.Controls
 
 			if (EventMode)
 			{
-				if (OnDecoMove != null)
-				{
-					OnDecoMove(x, y);
-				}
+				OnDecoMove?.Invoke(x, y);
 			}
 			else
 			{

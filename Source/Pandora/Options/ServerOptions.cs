@@ -32,42 +32,42 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets or sets a value stating whether Pandora should use BoxServer
 		/// </summary>
-		public bool Enabled { get { return m_Enabled; } set { m_Enabled = value; } }
+		public bool Enabled { get => m_Enabled; set => m_Enabled = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the server address
 		/// </summary>
-		public string Address { get { return m_Address; } set { m_Address = value; } }
+		public string Address { get => m_Address; set => m_Address = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the Port number
 		/// </summary>
-		public int Port { get { return m_Port; } set { m_Port = value; } }
+		public int Port { get => m_Port; set => m_Port = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the Username
 		/// </summary>
-		public string Username { get { return m_Username; } set { m_Username = value; } }
+		public string Username { get => m_Username; set => m_Username = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets the Password
 		/// </summary>
-		public string Password { get { return m_Password; } set { m_Password = value; } }
+		public string Password { get => m_Password; set => m_Password = value; }
 
 		[XmlAttribute]
 		/// <summary>
 		/// Gets or sets a value stating whether Pandora should connect on startup
 		/// </summary>
-		public bool ConnectOnStartup { get { return m_ConnectOnStartup; } set { m_ConnectOnStartup = value; } }
+		public bool ConnectOnStartup { get => m_ConnectOnStartup; set => m_ConnectOnStartup = value; }
 
 		/// <summary>
 		///     Specifies whether the server uses the SHA1 crypt to perform hashing
 		/// </summary>
-		public bool UseSHA1Crypt { get { return m_UseSHA1Crypt; } set { m_UseSHA1Crypt = value; } }
+		public bool UseSHA1Crypt { get => m_UseSHA1Crypt; set => m_UseSHA1Crypt = value; }
 
 		/// <summary>
 		///     Sets the correct username and password for an outgoing BoxMessage
@@ -87,7 +87,7 @@ namespace TheBox.Options
 		{
 			if (!m_UseSHA1Crypt)
 			{
-				var encoding = Encoding.ASCII;
+				_ = Encoding.ASCII;
 
 				var dataIn = new byte[256];
 
@@ -119,10 +119,10 @@ namespace TheBox.Options
 
 			var sb = new StringBuilder();
 
-			sb.Append(username);
+			_ = sb.Append(username);
 			// Issue 56:  	 BoxServer Work with PD 3.0.0.4 - Tarion
 			//sb.Append( username.Length );
-			sb.Append(password);
+			_ = sb.Append(password);
 
 			password = sb.ToString(); // Salted
 

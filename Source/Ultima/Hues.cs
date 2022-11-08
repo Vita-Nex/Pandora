@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Hues.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Drawing;
@@ -48,11 +42,11 @@ namespace Ultima
 					}
 					m_Header = new int[blockCount];
 					var structsize = Marshal.SizeOf(typeof(HueDataMul));
-					var buffer = new byte[blockCount * (4 + 8 * structsize)];
+					var buffer = new byte[blockCount * (4 + (8 * structsize))];
 					var gc = GCHandle.Alloc(buffer, GCHandleType.Pinned);
 					try
 					{
-						fs.Read(buffer, 0, buffer.Length);
+						_ = fs.Read(buffer, 0, buffer.Length);
 						long currpos = 0;
 
 						for (var i = 0; i < blockCount; ++i)
@@ -175,30 +169,28 @@ namespace Ultima
 		public static Color HueToColor(short hue)
 		{
 			const int scale = 255 / 31;
-			return Color.FromArgb((((hue & 0x7c00) >> 10) * scale), (((hue & 0x3e0) >> 5) * scale), ((hue & 0x1f) * scale));
+			return Color.FromArgb(((hue & 0x7c00) >> 10) * scale, ((hue & 0x3e0) >> 5) * scale, (hue & 0x1f) * scale);
 		}
 
 		public static int HueToColorR(short hue)
 		{
-			return (((hue & 0x7c00) >> 10) * (255 / 31));
+			return ((hue & 0x7c00) >> 10) * (255 / 31);
 		}
 
 		public static int HueToColorG(short hue)
 		{
-			return (((hue & 0x3e0) >> 5) * (255 / 31));
+			return ((hue & 0x3e0) >> 5) * (255 / 31);
 		}
 
 		public static int HueToColorB(short hue)
 		{
-			return ((hue & 0x1f) * (255 / 31));
+			return (hue & 0x1f) * (255 / 31);
 		}
 
 		public static unsafe void ApplyTo(Bitmap bmp, short[] Colors, bool onlyHueGrayPixels)
 		{
 			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.ReadWrite,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, Settings.PixelFormat);
 
 			var stride = bd.Stride >> 1;
 			var width = bd.Width;
@@ -329,6 +321,31 @@ namespace Ultima
 		}
 
 		/// <summary>
+		///     Gets a spectrum corresponding to this hue
+		/// </summary>
+		/// <param name="imgSize">The size of the spectrum</param>
+		/// <returns>A 32x1 bitmap with the spectrum</returns>
+		public Bitmap GetSpectrum(Size imgSize)
+		{
+			var bmp = new Bitmap(128, 10);
+
+			for (var i = 0; i < 32; i++)
+			{
+				for (var x = 0; x < 4; x++)
+				{
+					for (var y = 0; y < 10; y++)
+					{
+						bmp.SetPixel((i * 4) + x, y, Hues.HueToColor(Colors[i]));
+					}
+				}
+			}
+
+			var bmp1 = new Bitmap(bmp, imgSize);
+
+			return bmp1;
+		}
+
+		/// <summary>
 		///     Applies Hue to Bitmap
 		/// </summary>
 		/// <param name="bmp"></param>
@@ -336,9 +353,7 @@ namespace Ultima
 		public unsafe void ApplyTo(Bitmap bmp, bool onlyHueGrayPixels)
 		{
 			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.ReadWrite,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, Settings.PixelFormat);
 
 			var stride = bd.Stride >> 1;
 			var width = bd.Width;
@@ -401,9 +416,9 @@ namespace Ultima
 
 		public void Export(string FileName)
 		{
-			using (var Tex = new StreamWriter(
-				new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite),
-				Encoding.GetEncoding(1252)))
+			using (
+				var Tex = new StreamWriter(
+					new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite), Encoding.GetEncoding(1252)))
 			{
 				Tex.WriteLine(Name);
 				Tex.WriteLine(((short)(TableStart ^ 0x8000)).ToString());
@@ -440,15 +455,15 @@ namespace Ultima
 						}
 						else if (i == -2)
 						{
-							TableStart = (short)(ushort.Parse(line) | 0x8000);
+							TableStart = (short)(UInt16.Parse(line) | 0x8000);
 						}
 						else if (i == -1)
 						{
-							TableEnd = (short)(ushort.Parse(line) | 0x8000);
+							TableEnd = (short)(UInt16.Parse(line) | 0x8000);
 						}
 						else
 						{
-							Colors[i] = (short)(ushort.Parse(line) | 0x8000);
+							Colors[i] = (short)(UInt16.Parse(line) | 0x8000);
 						}
 						++i;
 					}

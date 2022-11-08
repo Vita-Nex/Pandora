@@ -114,7 +114,7 @@ namespace BoxServerSetup
 
 				if (Setup.BoxFolder.IndexOf(scripts) == -1)
 				{
-					MessageBox.Show(
+					_ = MessageBox.Show(
 						"The BoxServer folder must be located within the scripts folder of the RunUO installation specified in the previous step.");
 					Setup.BoxFolder = null;
 				}
@@ -131,7 +131,7 @@ namespace BoxServerSetup
 					}
 				}
 
-				labPath.Text = Setup.BoxFolder != null ? Setup.BoxFolder : "Please hit browse to select.";
+				labPath.Text = Setup.BoxFolder ?? "Please hit browse to select.";
 			}
 		}
 

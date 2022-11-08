@@ -56,7 +56,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private DoorEventArgs Door
 		{
-			get { return m_Door; }
+			get => m_Door;
 			set
 			{
 				if (m_Portcullis != null)
@@ -85,7 +85,7 @@ namespace TheBox.Pages
 		/// </summary>
 		private PortcullisEventArgs Portcullis
 		{
-			get { return m_Portcullis; }
+			get => m_Portcullis;
 			set
 			{
 				if (m_Door != null)
@@ -116,7 +116,7 @@ namespace TheBox.Pages
 
 			try
 			{
-				m_AllLabels = new[] {WestCW, EastCW, EastCCW, SouthCCW, NorthCCW, SouthCW};
+				m_AllLabels = new[] { WestCW, EastCW, EastCCW, SouthCCW, NorthCCW, SouthCW };
 
 				// Set callbacks
 				WestCW.Tag = new CommandCallback(PerformWestCW);
@@ -173,7 +173,7 @@ namespace TheBox.Pages
 			// WestCCW
 			// 
 			this.WestCCW.BackColor = System.Drawing.Color.White;
-			this.WestCCW.Image = ((System.Drawing.Image)(resources.GetObject("WestCCW.Image")));
+			this.WestCCW.Image = (System.Drawing.Image)resources.GetObject("WestCCW.Image");
 			this.WestCCW.Location = new System.Drawing.Point(72, 0);
 			this.WestCCW.Name = "WestCCW";
 			this.WestCCW.Size = new System.Drawing.Size(68, 68);
@@ -186,7 +186,7 @@ namespace TheBox.Pages
 			// EastCW
 			// 
 			this.EastCW.BackColor = System.Drawing.Color.White;
-			this.EastCW.Image = ((System.Drawing.Image)(resources.GetObject("EastCW.Image")));
+			this.EastCW.Image = (System.Drawing.Image)resources.GetObject("EastCW.Image");
 			this.EastCW.Location = new System.Drawing.Point(124, 72);
 			this.EastCW.Name = "EastCW";
 			this.EastCW.Size = new System.Drawing.Size(68, 68);
@@ -199,7 +199,7 @@ namespace TheBox.Pages
 			// WestCW
 			// 
 			this.WestCW.BackColor = System.Drawing.Color.White;
-			this.WestCW.Image = ((System.Drawing.Image)(resources.GetObject("WestCW.Image")));
+			this.WestCW.Image = (System.Drawing.Image)resources.GetObject("WestCW.Image");
 			this.WestCW.Location = new System.Drawing.Point(0, 0);
 			this.WestCW.Name = "WestCW";
 			this.WestCW.Size = new System.Drawing.Size(68, 68);
@@ -212,7 +212,7 @@ namespace TheBox.Pages
 			// EastCCW
 			// 
 			this.EastCCW.BackColor = System.Drawing.Color.White;
-			this.EastCCW.Image = ((System.Drawing.Image)(resources.GetObject("EastCCW.Image")));
+			this.EastCCW.Image = (System.Drawing.Image)resources.GetObject("EastCCW.Image");
 			this.EastCCW.Location = new System.Drawing.Point(52, 72);
 			this.EastCCW.Name = "EastCCW";
 			this.EastCCW.Size = new System.Drawing.Size(68, 68);
@@ -225,7 +225,7 @@ namespace TheBox.Pages
 			// NorthCW
 			// 
 			this.NorthCW.BackColor = System.Drawing.Color.White;
-			this.NorthCW.Image = ((System.Drawing.Image)(resources.GetObject("NorthCW.Image")));
+			this.NorthCW.Image = (System.Drawing.Image)resources.GetObject("NorthCW.Image");
 			this.NorthCW.Location = new System.Drawing.Point(356, 0);
 			this.NorthCW.Name = "NorthCW";
 			this.NorthCW.Size = new System.Drawing.Size(68, 68);
@@ -238,7 +238,7 @@ namespace TheBox.Pages
 			// SouthCCW
 			// 
 			this.SouthCCW.BackColor = System.Drawing.Color.White;
-			this.SouthCCW.Image = ((System.Drawing.Image)(resources.GetObject("SouthCCW.Image")));
+			this.SouthCCW.Image = (System.Drawing.Image)resources.GetObject("SouthCCW.Image");
 			this.SouthCCW.Location = new System.Drawing.Point(304, 72);
 			this.SouthCCW.Name = "SouthCCW";
 			this.SouthCCW.Size = new System.Drawing.Size(68, 68);
@@ -251,7 +251,7 @@ namespace TheBox.Pages
 			// NorthCCW
 			// 
 			this.NorthCCW.BackColor = System.Drawing.Color.White;
-			this.NorthCCW.Image = ((System.Drawing.Image)(resources.GetObject("NorthCCW.Image")));
+			this.NorthCCW.Image = (System.Drawing.Image)resources.GetObject("NorthCCW.Image");
 			this.NorthCCW.Location = new System.Drawing.Point(428, 0);
 			this.NorthCCW.Name = "NorthCCW";
 			this.NorthCCW.Size = new System.Drawing.Size(68, 68);
@@ -264,7 +264,7 @@ namespace TheBox.Pages
 			// SouthCW
 			// 
 			this.SouthCW.BackColor = System.Drawing.Color.White;
-			this.SouthCW.Image = ((System.Drawing.Image)(resources.GetObject("SouthCW.Image")));
+			this.SouthCW.Image = (System.Drawing.Image)resources.GetObject("SouthCW.Image");
 			this.SouthCW.Location = new System.Drawing.Point(376, 72);
 			this.SouthCW.Name = "SouthCW";
 			this.SouthCW.Size = new System.Drawing.Size(68, 68);
@@ -384,9 +384,13 @@ namespace TheBox.Pages
 			if (m_Portcullis != null)
 			{
 				if (m_LabelFocus == WestCCW)
+				{
 					id = m_Portcullis.ArtNS;
+				}
 				else if (m_LabelFocus == NorthCW)
+				{
 					id = m_Portcullis.ArtEW;
+				}
 			}
 			else if (m_Door != null)
 			{
@@ -520,18 +524,21 @@ namespace TheBox.Pages
 		{
 			if (m_Portcullis != null)
 			{
-				string item = null;
-
+				string item;
 				if (facing == "WestCCW")
+				{
 					item = m_Portcullis.ItemNS;
+				}
 				else
+				{
 					item = m_Portcullis.ItemEW;
+				}
 
 				Pandora.Profile.Commands.DoAddItem(item, modifier);
 			}
 			else if (m_Door != null)
 			{
-				var item = string.Format("{0} {1}", m_Door.Item, facing);
+				var item = String.Format("{0} {1}", m_Door.Item, facing);
 				Pandora.Profile.Commands.DoAddItem(item, modifier);
 			}
 		}
@@ -583,11 +590,9 @@ namespace TheBox.Pages
 		/// </summary>
 		private void WestCCW_MouseDown(object sender, MouseEventArgs e)
 		{
-			var lab = sender as Label;
-
-			if (lab != null)
+			if (sender is Label lab)
 			{
-				(lab.Tag as CommandCallback).DynamicInvoke(new object[] {null});
+				_ = (lab.Tag as CommandCallback).DynamicInvoke(new object[] { null });
 			}
 		}
 
