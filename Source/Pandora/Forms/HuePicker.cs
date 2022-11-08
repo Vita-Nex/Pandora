@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using TheBox.ArtViewer;
 using TheBox.Common;
+using TheBox.Controls;
 #endregion
 
 namespace TheBox.Forms
@@ -55,10 +56,6 @@ namespace TheBox.Forms
 			try
 			{
 				Pandora.Localization.LocalizeControl(this);
-
-				// Hues
-				Chart.Hues = Pandora.Hues;
-				Art.MulFileManager = Pandora.Profile.MulManager;
 			}
 			catch (Exception)
 			{
@@ -89,7 +86,7 @@ namespace TheBox.Forms
 		private void InitializeComponent()
 		{
 			var resources = new System.Resources.ResourceManager(typeof(HuePicker));
-			this.Chart = new TheBox.Common.HuesChart();
+			this.Chart = new TheBox.Controls.HuesChart();
 			this.label1 = new System.Windows.Forms.Label();
 			this.numIndex = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
@@ -116,7 +113,6 @@ namespace TheBox.Forms
 			// Chart
 			// 
 			this.Chart.ColorTableIndex = 28;
-			this.Chart.Hues = null;
 			this.Chart.Location = new System.Drawing.Point(8, 64);
 			this.Chart.Name = "Chart";
 			this.Chart.SelectedIndex = 1;

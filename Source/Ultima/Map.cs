@@ -1,11 +1,6 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Map.cs
-//  */
-#endregion
-
 #region References
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -17,7 +12,6 @@ namespace Ultima
 	public sealed class Map
 	{
 		private TileMatrix m_Tiles;
-		private readonly int m_MapID;
 		private readonly string m_path;
 
 		private static bool m_UseDiff;
@@ -34,14 +28,23 @@ namespace Ultima
 
 		public static Map Felucca = new Map(0, 0, 6144, 4096);
 		public static Map Trammel = new Map(0, 1, 6144, 4096);
-		public static readonly Map Ilshenar = new Map(2, 2, 2304, 1600);
-		public static readonly Map Malas = new Map(3, 3, 2560, 2048);
-		public static readonly Map Tokuno = new Map(4, 4, 1448, 1448);
-		public static readonly Map TerMur = new Map(5, 5, 1280, 4096);
+		public static Map Ilshenar = new Map(2, 2, 2304, 1600);
+		public static Map Malas = new Map(3, 3, 2560, 2048);
+		public static Map Tokuno = new Map(4, 4, 1448, 1448);
+		public static Map TerMur = new Map(5, 5, 1280, 4096);
 
-		public static readonly Map[] Maps = { Felucca, Trammel, Ilshenar, Malas, Tokuno, TerMur };
-
-		public static Map Custom;
+		public static IEnumerable<Map> Maps
+		{
+			get
+			{
+				yield return Felucca;
+				yield return Trammel;
+				yield return Ilshenar;
+				yield return Malas;
+				yield return Tokuno;
+				yield return TerMur;
+			}
+		}
 
 		public static void StartUpSetDiff(bool value)
 		{
@@ -51,7 +54,7 @@ namespace Ultima
 		public Map(int fileIndex, int mapID, int width, int height)
 		{
 			FileIndex = fileIndex;
-			m_MapID = mapID;
+			MapID = mapID;
 			Width = width;
 			Height = height;
 			m_path = null;
@@ -60,7 +63,7 @@ namespace Ultima
 		public Map(string path, int fileIndex, int mapID, int width, int height)
 		{
 			FileIndex = fileIndex;
-			m_MapID = mapID;
+			MapID = mapID;
 			Width = width;
 			Height = height;
 			m_path = path;
@@ -71,26 +74,18 @@ namespace Ultima
 		/// </summary>
 		public static void Reload()
 		{
-			Felucca.Tiles.Dispose();
-			Trammel.Tiles.Dispose();
-			Ilshenar.Tiles.Dispose();
-			Malas.Tiles.Dispose();
-			Tokuno.Tiles.Dispose();
-			TerMur.Tiles.Dispose();
-			Felucca.Tiles.StaticIndexInit = false;
-			Trammel.Tiles.StaticIndexInit = false;
-			Ilshenar.Tiles.StaticIndexInit = false;
-			Malas.Tiles.StaticIndexInit = false;
-			Tokuno.Tiles.StaticIndexInit = false;
-			TerMur.Tiles.StaticIndexInit = false;
-			Felucca.m_Cache = Trammel.m_Cache = Ilshenar.m_Cache = Malas.m_Cache = Tokuno.m_Cache = TerMur.m_Cache = null;
-			Felucca.m_Tiles = Trammel.m_Tiles = Ilshenar.m_Tiles = Malas.m_Tiles = Tokuno.m_Tiles = TerMur.m_Tiles = null;
-			Felucca.m_Cache_NoStatics = Trammel.m_Cache_NoStatics = Ilshenar.m_Cache_NoStatics =
-				Malas.m_Cache_NoStatics = Tokuno.m_Cache_NoStatics = TerMur.m_Cache_NoStatics = null;
-			Felucca.m_Cache_NoPatch = Trammel.m_Cache_NoPatch = Ilshenar.m_Cache_NoPatch =
-				Malas.m_Cache_NoPatch = Tokuno.m_Cache_NoPatch = TerMur.m_Cache_NoPatch = null;
-			Felucca.m_Cache_NoStatics_NoPatch = Trammel.m_Cache_NoStatics_NoPatch = Ilshenar.m_Cache_NoStatics_NoPatch =
-				Malas.m_Cache_NoStatics_NoPatch = Tokuno.m_Cache_NoStatics_NoPatch = TerMur.m_Cache_NoStatics_NoPatch = null;
+			foreach (var map in Maps)
+			{
+				map.Tiles.StaticIndexInit = false;
+				
+				map.Tiles.Dispose();
+				
+				map.m_Tiles = null;
+				map.m_Cache = null;
+				map.m_Cache_NoStatics = null;
+				map.m_Cache_NoPatch = null;
+				map.m_Cache_NoStatics_NoPatch = null;
+			}
 		}
 
 		public void ResetCache()
@@ -113,7 +108,7 @@ namespace Ultima
 			{
 				if (m_Tiles == null)
 				{
-					m_Tiles = new TileMatrix(FileIndex, m_MapID, Width, Height, m_path);
+					m_Tiles = new TileMatrix(FileIndex, MapID, Width, Height, m_path);
 				}
 
 				return m_Tiles;
@@ -125,6 +120,8 @@ namespace Ultima
 		public int Height { get; }
 
 		public int FileIndex { get; }
+
+		public int MapID { get; }
 
 		/// <summary>
 		///     Returns Bitmap with Statics
@@ -176,12 +173,15 @@ namespace Ultima
 				{
 					return IsCached_NoStatics;
 				}
+				
 				return IsCached_Default;
 			}
+			
 			if (!statics)
 			{
 				return IsCached_NoStatics_NoPatch;
 			}
+				
 			return IsCached_NoPatch;
 		}
 
@@ -488,10 +488,7 @@ namespace Ultima
 		/// <param name="statics"></param>
 		public unsafe void GetImage(int x, int y, int width, int height, Bitmap bmp, bool statics)
 		{
-			var bd = bmp.LockBits(
-				new Rectangle(0, 0, width << 3, height << 3),
-				ImageLockMode.WriteOnly,
-				PixelFormat.Format16bppRgb555);
+			var bd = bmp.LockBits(new Rectangle(0, 0, width << 3, height << 3), ImageLockMode.WriteOnly, PixelFormat.Format16bppRgb555);
 			var stride = bd.Stride;
 			var blockStride = stride << 3;
 
@@ -889,10 +886,8 @@ namespace Ultima
 
 		public void ReportInvisStatics(string reportfile)
 		{
-			reportfile = Path.Combine(reportfile, String.Format("staticReport-{0}.csv", m_MapID));
-			using (var Tex = new StreamWriter(
-				new FileStream(reportfile, FileMode.Create, FileAccess.ReadWrite),
-				Encoding.GetEncoding(1252)))
+			reportfile = Path.Combine(reportfile, String.Format("staticReport-{0}.csv", MapID));
+			using (var Tex = new StreamWriter(new FileStream(reportfile, FileMode.Create, FileAccess.ReadWrite), Encoding.GetEncoding(1252)))
 			{
 				Tex.WriteLine("x;y;z;Static");
 				for (var x = 0; x < Width; ++x)
@@ -906,7 +901,7 @@ namespace Ultima
 							{
 								if (TileData.ItemTable[currstatic.ID].Height + currstatic.Z < currtile.Z)
 								{
-									Tex.WriteLine("{0};{1};{2};0x{3:X}", x, y, currstatic.Z, currstatic.ID);
+									Tex.WriteLine(String.Format("{0};{1};{2};0x{3:X}", x, y, currstatic.Z, currstatic.ID));
 								}
 							}
 						}
@@ -917,10 +912,8 @@ namespace Ultima
 
 		public void ReportInvalidMapIDs(string reportfile)
 		{
-			reportfile = Path.Combine(reportfile, String.Format("ReportInvalidMapIDs-{0}.csv", m_MapID));
-			using (var Tex = new StreamWriter(
-				new FileStream(reportfile, FileMode.Create, FileAccess.ReadWrite),
-				Encoding.GetEncoding(1252)))
+			reportfile = Path.Combine(reportfile, String.Format("ReportInvalidMapIDs-{0}.csv", MapID));
+			using (var Tex = new StreamWriter(new FileStream(reportfile, FileMode.Create, FileAccess.ReadWrite), Encoding.GetEncoding(1252)))
 			{
 				Tex.WriteLine("x;y;z;Static;LandTile");
 				for (var x = 0; x < Width; ++x)
@@ -930,13 +923,13 @@ namespace Ultima
 						var currtile = Tiles.GetLandTile(x, y);
 						if (!Art.IsValidLand(currtile.ID))
 						{
-							Tex.WriteLine("{0};{1};{2};0;0x{3:X}", x, y, currtile.Z, currtile.ID);
+							Tex.WriteLine(String.Format("{0};{1};{2};0;0x{3:X}", x, y, currtile.Z, currtile.ID));
 						}
 						foreach (var currstatic in Tiles.GetStaticTiles(x, y))
 						{
 							if (!Art.IsValidStatic(currstatic.ID))
 							{
-								Tex.WriteLine("{0};{1};{2};0x{3:X};0", x, y, currstatic.Z, currstatic.ID);
+								Tex.WriteLine(String.Format("{0};{1};{2};0x{3:X};0", x, y, currstatic.Z, currstatic.ID));
 							}
 						}
 					}

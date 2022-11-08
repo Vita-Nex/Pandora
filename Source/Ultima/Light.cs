@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Light.cs
-//  */
-#endregion
-
 #region References
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -155,8 +149,9 @@ namespace Ultima
 			}
 			_ = stream.Read(m_StreamBuffer, 0, length);
 
-			var bmp = new Bitmap(width, height, PixelFormat.Format16bppArgb1555);
-			var bd = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(width, height, Settings.PixelFormat);
+			var bd = bmp.LockBits(
+				new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
@@ -183,15 +178,19 @@ namespace Ultima
 			{
 				return m_Cache[index] = bmp;
 			}
-			return bmp;
+			else
+			{
+				return bmp;
+			}
 		}
 
 		public static unsafe void Save(string path)
 		{
 			var idx = Path.Combine(path, "lightidx.mul");
 			var mul = Path.Combine(path, "light.mul");
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				using (BinaryWriter binidx = new BinaryWriter(fsidx), binmul = new BinaryWriter(fsmul))
 				{
@@ -212,9 +211,7 @@ namespace Ultima
 						else
 						{
 							var bd = bmp.LockBits(
-								new Rectangle(0, 0, bmp.Width, bmp.Height),
-								ImageLockMode.ReadOnly,
-								PixelFormat.Format16bppArgb1555);
+								new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 							var line = (ushort*)bd.Scan0;
 							var delta = bd.Stride >> 1;
 

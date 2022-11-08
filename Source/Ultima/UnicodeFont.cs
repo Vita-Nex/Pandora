@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - UnicodeFont.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Drawing;
@@ -92,11 +86,9 @@ namespace Ultima
 			{
 				return null;
 			}
-			var bmp = new Bitmap(Width, Height, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(Width, Height, Settings.PixelFormat);
 			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.WriteOnly,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
 			for (var y = 0; y < Height; ++y, line += delta)
@@ -136,9 +128,7 @@ namespace Ultima
 		{
 			Bytes = new byte[bmp.Height * (((bmp.Width - 1) / 8) + 1)];
 			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.WriteOnly,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			//int delta = bd.Stride >> 1;
 			for (var y = 0; y < bmp.Height; ++y)
@@ -159,7 +149,7 @@ namespace Ultima
 
 	public static class UnicodeFonts
 	{
-		private static readonly string[] m_files =
+		private static readonly string[] m_files = new[]
 		{
 			"unifont.mul", "unifont1.mul", "unifont2.mul", "unifont3.mul", "unifont4.mul", "unifont5.mul", "unifont6.mul",
 			"unifont7.mul", "unifont8.mul", "unifont9.mul", "unifont10.mul", "unifont11.mul", "unifont12.mul"

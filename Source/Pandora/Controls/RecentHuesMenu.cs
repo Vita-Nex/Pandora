@@ -62,7 +62,7 @@ namespace TheBox.Controls
 				}
 				else
 				{
-					mi = new HueMenuItem(i.ToString(), Pandora.Hues[i].ColorTable);
+					mi = new HueMenuItem(i.ToString(), Pandora.Hues[i].Colors);
 				}
 
 				_ = MenuItems.Add(mi);

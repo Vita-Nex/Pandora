@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - TileList.cs
-//  */
-#endregion
-
 #region References
 using System.Collections.Generic;
 #endregion

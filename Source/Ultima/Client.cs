@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Client.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.IO;
@@ -26,8 +20,7 @@ namespace Ultima
 		{ }
 
 		/// <summary>
-		///     Gets a <see cref="ProcessStream" /> instance which can be used to read the memory. Null is returned if the Client
-		///     is not running.
+		///     Gets a <see cref="ProcessStream" /> instance which can be used to read the memory. Null is returned if the Client is not running.
 		/// </summary>
 		public static ProcessStream ProcessStream
 		{
@@ -379,8 +372,7 @@ namespace Ultima
 		public static LocationPointer LocationPointer { get; set; }
 
 		/// <summary>
-		///     Gets the current window handle. A value of <c>ClientHandle.Invalid</c> is returned if the Client is not currently
-		///     running.
+		///     Gets the current window handle. A value of <c>ClientHandle.Invalid</c> is returned if the Client is not currently running.
 		///     <seealso cref="Running" />
 		/// </summary>
 		public static ClientWindowHandle Handle
@@ -429,12 +421,14 @@ namespace Ultima
 
 				return true;
 			}
-			return false;
+			else
+			{
+				return false;
+			}
 		}
 
 		/// <summary>
-		///     Sends a <see cref="String" /> of characters (<paramref name="text" />) to the Client. The string is followed by a
-		///     carriage return and line feed.
+		///     Sends a <see cref="String" /> of characters (<paramref name="text" />) to the Client. The string is followed by a carriage return and line feed.
 		/// </summary>
 		/// <returns>True if the Client is running, false if not.</returns>
 		public static bool SendText(string text)
@@ -453,12 +447,14 @@ namespace Ultima
 
 				return true;
 			}
-			return false;
+			else
+			{
+				return false;
+			}
 		}
 
 		/// <summary>
-		///     Sends a formatted <see cref="String" /> of characters to the Client. The string is followed by a carriage return
-		///     and line feed. The format functionality is the same as
+		///     Sends a formatted <see cref="String" /> of characters to the Client. The string is followed by a carriage return and line feed. The format functionality is the same as
 		///     <see
 		///         cref="String.Format">
 		///         String.Format

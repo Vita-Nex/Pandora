@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Skills.cs
-//  */
-#endregion
-
 #region References
 using System.Collections.Generic;
 using System.IO;
@@ -101,8 +95,9 @@ namespace Ultima
 		{
 			var idx = Path.Combine(path, "skills.idx");
 			var mul = Path.Combine(path, "skills.mul");
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				using (BinaryWriter binidx = new BinaryWriter(fsidx), binmul = new BinaryWriter(fsmul))
 				{

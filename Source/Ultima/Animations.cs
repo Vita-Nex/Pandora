@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Animations.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Collections;
@@ -230,8 +224,7 @@ namespace Ultima
 		}
 
 		/// <summary>
-		///     Attempts to convert <paramref name="body" /> to a body index relative to a file subset, specified by the return
-		///     value.
+		///     Attempts to convert <paramref name="body" /> to a body index relative to a file subset, specified by the return value.
 		/// </summary>
 		/// <returns>
 		///     A value indicating a file subset:
@@ -425,12 +418,7 @@ namespace Ultima
 		/// <param name="FirstFrame"></param>
 		/// <returns></returns>
 		public static Frame[] GetAnimation(
-			int body,
-			int action,
-			int direction,
-			ref int hue,
-			bool preserveHue,
-			bool FirstFrame)
+			int body, int action, int direction, ref int hue, bool preserveHue, bool FirstFrame)
 		{
 			if (preserveHue)
 			{
@@ -806,12 +794,7 @@ namespace Ultima
 		/// <param name="fileIndex"></param>
 		/// <param name="index"></param>
 		private static void GetFileIndex(
-			int body,
-			int action,
-			int direction,
-			int fileType,
-			out FileIndex fileIndex,
-			out int index)
+			int body, int action, int direction, int fileType, out FileIndex fileIndex, out int index)
 		{
 			switch (fileType)
 			{
@@ -920,7 +903,10 @@ namespace Ultima
 			{
 				return "anim.mul";
 			}
-			return String.Format("anim{0}.mul", fileType);
+			else
+			{
+				return String.Format("anim{0}.mul", fileType);
+			}
 		}
 	}
 
@@ -950,8 +936,9 @@ namespace Ultima
 			{
 				return;
 			}
-			var bmp = new Bitmap(width, height, PixelFormat.Format16bppArgb1555);
-			var bd = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(width, height, Settings.PixelFormat);
+			var bd = bmp.LockBits(
+				new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
 

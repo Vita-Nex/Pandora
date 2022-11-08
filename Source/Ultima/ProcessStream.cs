@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - ProcessStream.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.IO;

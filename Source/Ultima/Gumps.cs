@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Gumps.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Collections;
@@ -17,14 +11,7 @@ namespace Ultima
 	public sealed class Gumps
 	{
 		private static FileIndex m_FileIndex = new FileIndex(
-			"Gumpidx.mul",
-			"Gumpart.mul",
-			"gumpartLegacyMUL.uop",
-			0xFFFF,
-			12,
-			".tga",
-			-1,
-			true);
+			"Gumpidx.mul", "Gumpart.mul", "gumpartLegacyMUL.uop", 0xFFFF, 12, ".tga", -1, true);
 
 		private static Bitmap[] m_Cache;
 		private static bool[] m_Removed;
@@ -327,7 +314,7 @@ namespace Ultima
 								}
 							}
 							stream.Close();
-							return new Bitmap(width, height, bytesPerStride, PixelFormat.Format16bppArgb1555, (IntPtr)pPixelDataStart);
+							return new Bitmap(width, height, bytesPerStride, Settings.PixelFormat, (IntPtr)pPixelDataStart);
 						}
 					}
 				}
@@ -394,8 +381,9 @@ namespace Ultima
 			{
 				return null;
 			}
-			var bmp = new Bitmap(width, height, PixelFormat.Format16bppArgb1555);
-			var bd = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(width, height, Settings.PixelFormat);
+			var bd = bmp.LockBits(
+				new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 
 			if (m_StreamBuffer == null || m_StreamBuffer.Length < length)
 			{
@@ -444,15 +432,19 @@ namespace Ultima
 			{
 				return m_Cache[index] = bmp;
 			}
-			return bmp;
+			else
+			{
+				return bmp;
+			}
 		}
 
 		public static unsafe void Save(string path)
 		{
 			var idx = Path.Combine(path, "Gumpidx.mul");
 			var mul = Path.Combine(path, "Gumpart.mul");
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				using (BinaryWriter binidx = new BinaryWriter(fsidx), binmul = new BinaryWriter(fsmul))
 				{
@@ -473,9 +465,7 @@ namespace Ultima
 						else
 						{
 							var bd = bmp.LockBits(
-								new Rectangle(0, 0, bmp.Width, bmp.Height),
-								ImageLockMode.ReadOnly,
-								PixelFormat.Format16bppArgb1555);
+								new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 							var line = (ushort*)bd.Scan0;
 							var delta = bd.Stride >> 1;
 

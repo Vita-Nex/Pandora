@@ -8,8 +8,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using TheBox.Mul;
 #endregion
 
 namespace TheBox.Controls
@@ -55,7 +53,7 @@ namespace TheBox.Controls
 			{
 				for (var y = 1; y < 13; y++)
 				{
-					Image.SetPixel(i + 1, y, Hue.ToColor(colors[i]));
+					Image.SetPixel(i + 1, y, Ultima.Hues.HueToColor(colors[i]));
 				}
 			}
 		}

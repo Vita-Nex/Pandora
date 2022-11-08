@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Textures.cs
-//  */
-#endregion
-
 #region References
 using System.Collections;
 using System.Collections.Generic;
@@ -149,8 +143,9 @@ namespace Ultima
 
 			var size = extra == 0 ? 64 : 128;
 
-			var bmp = new Bitmap(size, size, PixelFormat.Format16bppArgb1555);
-			var bd = bmp.LockBits(new Rectangle(0, 0, size, size), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(size, size, Settings.PixelFormat);
+			var bd = bmp.LockBits(
+				new Rectangle(0, 0, size, size), ImageLockMode.WriteOnly, Settings.PixelFormat);
 
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
@@ -185,7 +180,10 @@ namespace Ultima
 			{
 				return m_Cache[index] = bmp;
 			}
-			return bmp;
+			else
+			{
+				return bmp;
+			}
 		}
 
 		public static unsafe void Save(string path)
@@ -193,8 +191,9 @@ namespace Ultima
 			var idx = Path.Combine(path, "texidx.mul");
 			var mul = Path.Combine(path, "texmaps.mul");
 			checksums = new List<CheckSums>();
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				var memidx = new MemoryStream();
 				var memmul = new MemoryStream();
@@ -231,9 +230,7 @@ namespace Ultima
 								continue;
 							}
 							var bd = bmp.LockBits(
-								new Rectangle(0, 0, bmp.Width, bmp.Height),
-								ImageLockMode.ReadOnly,
-								PixelFormat.Format16bppArgb1555);
+								new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 							var line = (ushort*)bd.Scan0;
 							var delta = bd.Stride >> 1;
 

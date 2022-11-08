@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - FileIndex.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Collections.Generic;
@@ -73,7 +67,7 @@ namespace Ultima
 				patched = false;
 				return null;
 			}
-			if (Stream.Length < e.lookup)
+			else if (Stream.Length < e.lookup)
 			{
 				length = extra = 0;
 				patched = false;
@@ -475,7 +469,7 @@ namespace Ultima
 		{
 			uint eax, ecx, edx, ebx, esi, edi;
 
-			eax = _ = _ = _ = 0u;
+			eax = _ = _ = _ = esi = 0;
 			ebx = edi = esi = (uint)s.Length + 0xDEADBEEF;
 
 			int i;

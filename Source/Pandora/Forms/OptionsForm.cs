@@ -33,9 +33,7 @@ namespace TheBox.Forms
 		private GroupBox groupBox2;
 		private Label label1;
 		private Label labUOFolder;
-		private Label labCustomUOFolder;
 		private Button bBrowseUOFolder;
-		private CheckBox chkCustomUOFolder;
 		private FolderBrowserDialog FolderBrowser;
 		private TrackBar barOpacity;
 		private Label label2;
@@ -126,8 +124,6 @@ namespace TheBox.Forms
 		private Button bMoveUpModifier;
 		private TextBox txModifier;
 		private Label label11;
-		private GroupBox groupBox9;
-		private LinkLabel lnkMulManager;
 		private Button bLoad;
 		private Button bRestoreDefLocations;
 		private LinkLabel lnkViewDataFolder;
@@ -191,9 +187,7 @@ namespace TheBox.Forms
 			this.chkTopmost = new System.Windows.Forms.CheckBox();
 			this.barOpacity = new System.Windows.Forms.TrackBar();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.labCustomUOFolder = new System.Windows.Forms.Label();
 			this.bBrowseUOFolder = new System.Windows.Forms.Button();
-			this.chkCustomUOFolder = new System.Windows.Forms.CheckBox();
 			this.labUOFolder = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.pTravel = new System.Windows.Forms.TabPage();
@@ -236,8 +230,6 @@ namespace TheBox.Forms
 			this.chkUseServer = new System.Windows.Forms.CheckBox();
 			this.pAdv = new System.Windows.Forms.TabPage();
 			this.chkFlat = new System.Windows.Forms.CheckBox();
-			this.groupBox9 = new System.Windows.Forms.GroupBox();
-			this.lnkMulManager = new System.Windows.Forms.LinkLabel();
 			this.groupBox8 = new System.Windows.Forms.GroupBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.txModifier = new System.Windows.Forms.TextBox();
@@ -295,7 +287,6 @@ namespace TheBox.Forms
 			this.grpServer.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)this.numPort).BeginInit();
 			this.pAdv.SuspendLayout();
-			this.groupBox9.SuspendLayout();
 			this.groupBox8.SuspendLayout();
 			this.groupBox7.SuspendLayout();
 			this.pCommands.SuspendLayout();
@@ -544,9 +535,7 @@ namespace TheBox.Forms
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.labCustomUOFolder);
 			this.groupBox2.Controls.Add(this.bBrowseUOFolder);
-			this.groupBox2.Controls.Add(this.chkCustomUOFolder);
 			this.groupBox2.Controls.Add(this.labUOFolder);
 			this.groupBox2.Controls.Add(this.label1);
 			this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -557,15 +546,6 @@ namespace TheBox.Forms
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Options.UOFolder";
 			// 
-			// labCustomUOFolder
-			// 
-			this.labCustomUOFolder.Location = new System.Drawing.Point(88, 72);
-			this.labCustomUOFolder.Name = "labCustomUOFolder";
-			this.labCustomUOFolder.Size = new System.Drawing.Size(280, 23);
-			this.labCustomUOFolder.TabIndex = 4;
-			this.labCustomUOFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.labCustomUOFolder.Paint += new System.Windows.Forms.PaintEventHandler(this.labCustomUOFolder_Paint);
-			// 
 			// bBrowseUOFolder
 			// 
 			this.bBrowseUOFolder.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -574,16 +554,6 @@ namespace TheBox.Forms
 			this.bBrowseUOFolder.TabIndex = 3;
 			this.bBrowseUOFolder.Text = "Common.Browse";
 			this.bBrowseUOFolder.Click += new System.EventHandler(this.bBrowseUOFolder_Click);
-			// 
-			// chkCustomUOFolder
-			// 
-			this.chkCustomUOFolder.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.chkCustomUOFolder.Location = new System.Drawing.Point(8, 48);
-			this.chkCustomUOFolder.Name = "chkCustomUOFolder";
-			this.chkCustomUOFolder.Size = new System.Drawing.Size(224, 24);
-			this.chkCustomUOFolder.TabIndex = 2;
-			this.chkCustomUOFolder.Text = "Options.UseCustomFolder";
-			this.chkCustomUOFolder.CheckedChanged += new System.EventHandler(this.chkCustomUOFolder_CheckedChanged);
 			// 
 			// labUOFolder
 			// 
@@ -1003,7 +973,6 @@ namespace TheBox.Forms
 			// pAdv
 			// 
 			this.pAdv.Controls.Add(this.chkFlat);
-			this.pAdv.Controls.Add(this.groupBox9);
 			this.pAdv.Controls.Add(this.groupBox8);
 			this.pAdv.Controls.Add(this.cmbTabs);
 			this.pAdv.Controls.Add(this.labSelTab);
@@ -1024,28 +993,6 @@ namespace TheBox.Forms
 			this.chkFlat.TabIndex = 6;
 			this.chkFlat.Text = "Options.FlatBtn";
 			this.chkFlat.CheckedChanged += new System.EventHandler(this.chkFlat_CheckedChanged);
-			// 
-			// groupBox9
-			// 
-			this.groupBox9.Controls.Add(this.lnkMulManager);
-			this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.groupBox9.Location = new System.Drawing.Point(188, 168);
-			this.groupBox9.Name = "groupBox9";
-			this.groupBox9.Size = new System.Drawing.Size(196, 52);
-			this.groupBox9.TabIndex = 5;
-			this.groupBox9.TabStop = false;
-			this.groupBox9.Text = "Options.MulManage";
-			// 
-			// lnkMulManager
-			// 
-			this.lnkMulManager.Location = new System.Drawing.Point(4, 16);
-			this.lnkMulManager.Name = "lnkMulManager";
-			this.lnkMulManager.Size = new System.Drawing.Size(188, 32);
-			this.lnkMulManager.TabIndex = 0;
-			this.lnkMulManager.TabStop = true;
-			this.lnkMulManager.Text = "Options.MulManage2";
-			this.lnkMulManager.LinkClicked +=
-				new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkMulManager_LinkClicked);
 			// 
 			// groupBox8
 			// 
@@ -1486,7 +1433,6 @@ namespace TheBox.Forms
 			this.grpServer.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)this.numPort).EndInit();
 			this.pAdv.ResumeLayout(false);
-			this.groupBox9.ResumeLayout(false);
 			this.groupBox8.ResumeLayout(false);
 			this.groupBox7.ResumeLayout(false);
 			this.pCommands.ResumeLayout(false);
@@ -1532,26 +1478,13 @@ namespace TheBox.Forms
 			txArtBackground.BackColor = general.ArtBackground.Color;
 
 			// UO Folder
-			if (Pandora.Profile.MulManager.DefaultFolder == null)
+			if (Pandora.Profile.DefaultFolder == null)
 			{
 				labUOFolder.Text = Pandora.Localization.TextProvider["Options.NOUOFolder"];
 			}
 			else
 			{
-				labUOFolder.Text = Pandora.Profile.MulManager.DefaultFolder;
-			}
-
-			if (Pandora.Profile.MulManager.CustomFolder != null)
-			{
-				// Custom path
-				chkCustomUOFolder.Checked = true;
-				labCustomUOFolder.Text = Pandora.Profile.MulManager.CustomFolder;
-				bBrowseUOFolder.Enabled = true;
-			}
-			else
-			{
-				bBrowseUOFolder.Enabled = false;
-				labCustomUOFolder.Text = "";
+				labUOFolder.Text = Pandora.Profile.DefaultFolder;
 			}
 
 			// Opacity
@@ -1732,14 +1665,7 @@ namespace TheBox.Forms
 
 			if (m_ChangeUOFolder)
 			{
-				if (chkCustomUOFolder.Checked)
-				{
-					Pandora.Profile.MulManager.CustomFolder = labCustomUOFolder.Text;
-				}
-				else
-				{
-					Pandora.Profile.MulManager.CustomFolder = null;
-				}
+				Pandora.Profile.DefaultFolder = labUOFolder.Text;
 			}
 
 			if (m_ChangeOpacity)
@@ -1854,26 +1780,13 @@ namespace TheBox.Forms
 		}
 
 		/// <summary>
-		///     CheckBox: use a custom UO folder
-		/// </summary>
-		private void chkCustomUOFolder_CheckedChanged(object sender, EventArgs e)
-		{
-			if (m_ApplyOptions)
-			{
-				m_ChangeUOFolder = true;
-			}
-
-			bBrowseUOFolder.Enabled = chkCustomUOFolder.Checked;
-		}
-
-		/// <summary>
 		///     Browse for a custom UO folder
 		/// </summary>
 		private void bBrowseUOFolder_Click(object sender, EventArgs e)
 		{
 			if (FolderBrowser.ShowDialog() == DialogResult.OK)
 			{
-				labCustomUOFolder.Text = FolderBrowser.SelectedPath;
+				labUOFolder.Text = FolderBrowser.SelectedPath;
 				m_ChangeUOFolder = true;
 			}
 		}
@@ -2160,14 +2073,6 @@ namespace TheBox.Forms
 		private void labUOFolder_Paint(object sender, PaintEventArgs e)
 		{
 			Utility.DrawBorder(labUOFolder, e.Graphics);
-		}
-
-		/// <summary>
-		///     Draw border
-		/// </summary>
-		private void labCustomUOFolder_Paint(object sender, PaintEventArgs e)
-		{
-			Utility.DrawBorder(labCustomUOFolder, e.Graphics);
 		}
 		#endregion
 
@@ -2888,15 +2793,6 @@ namespace TheBox.Forms
 			tModifiers.SelectedNode = node;
 
 			EnableModifiers();
-		}
-
-		/// <summary>
-		///     Show mul file management
-		/// </summary>
-		private void lnkMulManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			var form = new MulManagerForm(Pandora.Profile.MulManager);
-			_ = form.ShowDialog();
 		}
 
 		/// <summary>

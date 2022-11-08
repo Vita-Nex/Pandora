@@ -1,10 +1,5 @@
-﻿#region Header
-// /*
-//  *    2018 - Ultima - RadarCol.cs
-//  */
-#endregion
-
-#region References
+﻿#region References
+using System;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -87,15 +82,15 @@ namespace Ultima
 
 		public static void ExportToCSV(string FileName)
 		{
-			using (var Tex = new StreamWriter(
-				new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite),
-				Encoding.GetEncoding(1252)))
+			using (
+				var Tex = new StreamWriter(
+					new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite), Encoding.GetEncoding(1252)))
 			{
 				Tex.WriteLine("ID;Color");
 
 				for (var i = 0; i < Colors.Length; ++i)
 				{
-					Tex.WriteLine("0x{0:X4};{1}", i, Colors[i]);
+					Tex.WriteLine(String.Format("0x{0:X4};{1}", i, Colors[i]));
 				}
 			}
 		}
@@ -161,11 +156,11 @@ namespace Ultima
 			if (text.Contains("0x"))
 			{
 				var convert = text.Replace("0x", "");
-				_ = System.Int32.TryParse(convert, NumberStyles.HexNumber, null, out result);
+				_ = Int32.TryParse(convert, NumberStyles.HexNumber, null, out result);
 			}
 			else
 			{
-				_ = System.Int32.TryParse(text, NumberStyles.Integer, null, out result);
+				_ = Int32.TryParse(text, NumberStyles.Integer, null, out result);
 			}
 
 			return result;

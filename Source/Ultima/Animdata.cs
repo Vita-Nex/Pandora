@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Animdata.cs
-//  */
-#endregion
-
 #region References
 using System.Collections;
 using System.IO;
@@ -94,7 +88,10 @@ namespace Ultima
 			{
 				return (Data)AnimData[id];
 			}
-			return null;
+			else
+			{
+				return null;
+			}
 		}
 
 		public static void Save(string path)

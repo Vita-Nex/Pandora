@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - StringEntry.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Text.RegularExpressions;
@@ -63,7 +57,7 @@ namespace Ultima
 			RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.CultureInvariant);
 
 		private string m_FmtTxt;
-		private static readonly object[] m_Args = { "", "", "", "", "", "", "", "", "", "", "" };
+		private static readonly object[] m_Args = new object[] { "", "", "", "", "", "", "", "", "", "", "" };
 
 		public string Format(params object[] args)
 		{

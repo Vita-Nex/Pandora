@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Art.cs
-//  */
-#endregion
-
 #region References
 using System.Collections;
 using System.Collections.Generic;
@@ -17,20 +11,12 @@ namespace Ultima
 {
 	public sealed class Art
 	{
-		private static FileIndex m_FileIndex = new FileIndex(
-			"Artidx.mul",
-			"Art.mul",
-			"artLegacyMUL.uop",
-			0x10000 /*0x13FDC*/,
-			4,
-			".tga",
-			0x13FDC,
-			false);
+		private static FileIndex m_FileIndex = new FileIndex("Artidx.mul", "Art.mul", "artLegacyMUL.uop", 0x14000, 4, ".tga", 0x13FDC, false);
 
 		private static Bitmap[] m_Cache;
 		private static bool[] m_Removed;
 		private static readonly Hashtable m_patched = new Hashtable();
-		public static bool Modified;
+		public static bool Modified = false;
 
 		private static byte[] m_StreamBuffer;
 		private static byte[] Validbuffer;
@@ -48,15 +34,15 @@ namespace Ultima
 
 		static Art()
 		{
-			m_Cache = new Bitmap[0x10000];
-			m_Removed = new bool[0x10000];
+			m_Cache = new Bitmap[0x14000];
+			m_Removed = new bool[0x14000];
 		}
 
 		public static int GetMaxItemID()
 		{
 			if (GetIdxLength() >= 0x13FDC)
 			{
-				return 0x10000;
+				return 0xFFFF;
 			}
 
 			if (GetIdxLength() == 0xC000)
@@ -100,17 +86,9 @@ namespace Ultima
 		/// </summary>
 		public static void Reload()
 		{
-			m_FileIndex = new FileIndex(
-				"Artidx.mul",
-				"Art.mul",
-				"artLegacyMUL.uop",
-				0x10000 /*0x13FDC*/,
-				4,
-				".tga",
-				0x13FDC,
-				false);
-			m_Cache = new Bitmap[0x10000];
-			m_Removed = new bool[0x10000];
+			m_FileIndex = new FileIndex("Artidx.mul", "Art.mul", "artLegacyMUL.uop", 0x14000, 4, ".tga", 0x13FDC, false);
+			m_Cache = new Bitmap[0x14000];
+			m_Removed = new bool[0x14000];
 			m_patched.Clear();
 			Modified = false;
 		}
@@ -289,6 +267,7 @@ namespace Ultima
 			{
 				return m_Cache[index] = LoadLand(stream, length);
 			}
+			
 			return LoadLand(stream, length);
 		}
 
@@ -359,6 +338,7 @@ namespace Ultima
 			{
 				return m_Cache[index] = LoadStatic(stream, length);
 			}
+			
 			return LoadStatic(stream, length);
 		}
 
@@ -387,10 +367,7 @@ namespace Ultima
 				return;
 			}
 
-			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.ReadOnly,
-				PixelFormat.Format16bppArgb1555);
+			var bd = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 
 			var delta = (bd.Stride >> 1) - bd.Width;
 			var lineDelta = bd.Stride >> 1;
@@ -484,8 +461,8 @@ namespace Ultima
 					lookups[i] = start + bindata[count++];
 				}
 
-				bmp = new Bitmap(width, height, PixelFormat.Format16bppArgb1555);
-				var bd = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+				bmp = new Bitmap(width, height, Settings.PixelFormat);			
+				var bd = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 
 				var line = (ushort*)bd.Scan0;
 				var delta = bd.Stride >> 1;
@@ -524,14 +501,14 @@ namespace Ultima
 
 		private static unsafe Bitmap LoadLand(Stream stream, int length)
 		{
-			var bmp = new Bitmap(44, 44, PixelFormat.Format16bppArgb1555);
-			var bd = bmp.LockBits(new Rectangle(0, 0, 44, 44), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+			var bmp = new Bitmap(44, 44, Settings.PixelFormat);
+			var bd = bmp.LockBits(new Rectangle(0, 0, 44, 44), ImageLockMode.WriteOnly, Settings.PixelFormat);
 			if (m_StreamBuffer == null || m_StreamBuffer.Length < length)
 			{
 				m_StreamBuffer = new byte[length];
-			}
-			_ = stream.Read(m_StreamBuffer, 0, length);
-			stream.Close();
+			}			
+			_ = stream.Read(m_StreamBuffer, 0, length);			
+			stream.Close();			
 			fixed (byte* bindata = m_StreamBuffer)
 			{
 				var bdata = (ushort*)bindata;
@@ -566,7 +543,9 @@ namespace Ultima
 					}
 				}
 			}
+			
 			bmp.UnlockBits(bd);
+			
 			return bmp;
 		}
 
@@ -581,7 +560,7 @@ namespace Ultima
 			var idx = Path.Combine(path, "artidx.mul");
 			var mul = Path.Combine(path, "art.mul");
 			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+						      fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				var memidx = new MemoryStream();
 				var memmul = new MemoryStream();
@@ -627,10 +606,7 @@ namespace Ultima
 								continue;
 							}
 							//land
-							var bd = bmp.LockBits(
-								new Rectangle(0, 0, bmp.Width, bmp.Height),
-								ImageLockMode.ReadOnly,
-								PixelFormat.Format16bppArgb1555);
+							var bd = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 							var line = (ushort*)bd.Scan0;
 							var delta = bd.Stride >> 1;
 							binidx.Write((int)binmul.BaseStream.Position); //lookup
@@ -691,10 +667,7 @@ namespace Ultima
 							}
 
 							// art
-							var bd = bmp.LockBits(
-								new Rectangle(0, 0, bmp.Width, bmp.Height),
-								ImageLockMode.ReadOnly,
-								PixelFormat.Format16bppArgb1555);
+							var bd = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 							var line = (ushort*)bd.Scan0;
 							var delta = bd.Stride >> 1;
 							binidx.Write((int)binmul.BaseStream.Position); //lookup

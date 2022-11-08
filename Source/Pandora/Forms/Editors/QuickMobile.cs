@@ -37,8 +37,6 @@ namespace TheBox.Forms.Editors
 			InitializeComponent();
 
 			Pandora.Localization.LocalizeControl(this);
-
-			m_Preview.MulFileManager = Pandora.Profile.MulManager;
 		}
 
 		/// <summary>

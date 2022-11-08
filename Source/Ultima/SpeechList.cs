@@ -1,10 +1,4 @@
-﻿#region Header
-// /*
-//  *    2018 - Ultima - SpeechList.cs
-//  */
-#endregion
-
-#region References
+﻿#region References
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -102,7 +96,7 @@ namespace Ultima
 				Tex.WriteLine("Order;ID;KeyWord");
 				foreach (var entry in Entries)
 				{
-					Tex.WriteLine("{0};{1};{2}", entry.Order, entry.ID, entry.KeyWord);
+					Tex.WriteLine(String.Format("{0};{1};{2}", entry.Order, entry.ID, entry.KeyWord));
 				}
 			}
 		}
@@ -179,11 +173,14 @@ namespace Ultima
 				{
 					return 0;
 				}
-				if (m_desc)
+				else if (m_desc)
 				{
 					return (objA.ID < objB.ID) ? 1 : -1;
 				}
-				return (objA.ID < objB.ID) ? -1 : 1;
+				else
+				{
+					return (objA.ID < objB.ID) ? -1 : 1;
+				}
 			}
 		}
 
@@ -202,7 +199,10 @@ namespace Ultima
 				{
 					return String.Compare(objB.KeyWord, objA.KeyWord);
 				}
-				return String.Compare(objA.KeyWord, objB.KeyWord);
+				else
+				{
+					return String.Compare(objA.KeyWord, objB.KeyWord);
+				}
 			}
 		}
 
@@ -214,7 +214,10 @@ namespace Ultima
 				{
 					return 0;
 				}
-				return (objA.Order < objB.Order) ? -1 : 1;
+				else
+				{
+					return (objA.Order < objB.Order) ? -1 : 1;
+				}
 			}
 		}
 		#endregion

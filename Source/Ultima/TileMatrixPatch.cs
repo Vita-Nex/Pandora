@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - TileMatrixPatch.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.IO;
@@ -163,8 +157,9 @@ namespace Ultima
 
 		private int PatchLand(TileMatrix matrix, string dataPath, string indexPath)
 		{
-			using (FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
-							  fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (
+				FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
+						   fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				using (var indexReader = new BinaryReader(fsIndex))
 				{
@@ -209,9 +204,10 @@ namespace Ultima
 
 		private int PatchStatics(TileMatrix matrix, string dataPath, string indexPath, string lookupPath)
 		{
-			using (FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
-							  fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read),
-							  fsLookup = new FileStream(lookupPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (
+				FileStream fsData = new FileStream(dataPath, FileMode.Open, FileAccess.Read, FileShare.Read),
+						   fsIndex = new FileStream(indexPath, FileMode.Open, FileAccess.Read, FileShare.Read),
+						   fsLookup = new FileStream(lookupPath, FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				using (BinaryReader indexReader = new BinaryReader(fsIndex), lookupReader = new BinaryReader(fsLookup))
 				{

@@ -38,7 +38,6 @@ namespace TheBox.Options
 		private AdminOptions m_Admin;
 		private LauncherOptions m_Launcher;
 		private ScreenshotOptions m_Screenshots;
-		private MulManager m_MulManager;
 
 		/// <summary>
 		///     Gets or sets the general options for this profile
@@ -104,11 +103,6 @@ namespace TheBox.Options
 		///     Gets or sets the launcher options
 		/// </summary>
 		public ScreenshotOptions Screenshots { get => m_Screenshots; set => m_Screenshots = value; }
-
-		/// <summary>
-		///     Gets or sets the mul files manager
-		/// </summary>
-		public MulManager MulManager { get => m_MulManager; set => m_MulManager = value; }
 		#endregion
 
 		/// <summary>
@@ -129,12 +123,12 @@ namespace TheBox.Options
 			m_Admin = new AdminOptions();
 			m_Launcher = new LauncherOptions();
 			m_Screenshots = new ScreenshotOptions();
-			m_MulManager = new MulManager();
 		}
 
 		private string m_Name = "Default";
 		private string m_Language = "English";
 		private string m_CustomClient;
+		private string m_DefaultFolder;
 
 		/// <summary>
 		///     Gets a list of all the existing profiles
@@ -182,7 +176,22 @@ namespace TheBox.Options
 				if (value == null || File.Exists(value))
 				{
 					m_CustomClient = value;
+
 					Utility.CustomClientPath = m_CustomClient;
+				}
+			}
+		}
+
+		public string DefaultFolder
+		{
+			get => m_DefaultFolder;
+			set
+			{
+				if (value == null || Directory.Exists(value))
+				{
+					m_DefaultFolder = value;
+
+					Ultima.Files.SetMulPath(value);
 				}
 			}
 		}
@@ -271,8 +280,6 @@ namespace TheBox.Options
 				bar.Step = 1;
 				bar.Value = 0;
 			}
-
-			MapViewer.MapViewer.MulFileManager = MulManager;
 
 			for (var i = 0; i < m_Travel.MapCount; i++)
 			{

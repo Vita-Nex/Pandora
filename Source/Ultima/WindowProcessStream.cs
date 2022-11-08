@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - WindowProcessStream.cs
-//  */
-#endregion
-
 namespace Ultima
 {
 	public class WindowProcessStream : ProcessStream

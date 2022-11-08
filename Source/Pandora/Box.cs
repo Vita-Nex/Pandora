@@ -162,8 +162,6 @@ namespace TheBox
 			InitializeComponent();
 
 			_splash.SetStatusText("Initializing maps and artwork");
-			Map.MulManager = _profileManager.Profile.MulManager;
-			Art.MulFileManager = _profileManager.Profile.MulManager;
 
 			Pandora.Map = Map;
 			Pandora.Art = Art;
@@ -260,7 +258,6 @@ namespace TheBox
 		{
 			this.components = new System.ComponentModel.Container();
 			var resources = new System.ComponentModel.ComponentResourceManager(typeof(Box));
-			var mulManager1 = new TheBox.Common.MulManager();
 			this.BigTab = new System.Windows.Forms.TabControl();
 			this.TabGeneral = new System.Windows.Forms.TabPage();
 			this.TabDeco = new System.Windows.Forms.TabPage();
@@ -535,9 +532,6 @@ namespace TheBox
 			this.Map.DrawStatics = false;
 			this.Map.Location = new System.Drawing.Point(1, 1);
 			this.Map.Map = TheBox.MapViewer.Maps.Felucca;
-			mulManager1.CustomFolder = null;
-			mulManager1.Table = null;
-			this.Map.MulManager = mulManager1;
 			this.Map.Name = "Map";
 			this.Map.Navigation = TheBox.MapViewer.MapNavigation.LeftMouseButton;
 			this.Map.ShowCross = true;

@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - TileData.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Globalization;
@@ -436,7 +430,10 @@ namespace Ultima
 				{
 					return m_Height / 2;
 				}
-				return m_Height;
+				else
+				{
+					return m_Height;
+				}
 			}
 		}
 
@@ -631,7 +628,7 @@ namespace Ultima
 	///     <seealso cref="LandData" />
 	/// </summary>
 	[Flags]
-	public enum TileFlag
+	public enum TileFlag : ulong
 	{
 		/// <summary>
 		///     Nothing is flagged.
@@ -796,7 +793,7 @@ namespace Ultima
 		/// <summary>
 		///     Not yet documented.
 		/// </summary>
-		StairRight = unchecked((int)0x80000000)
+		StairRight = 0x80000000
 	}
 
 	/// <summary>
@@ -804,7 +801,7 @@ namespace Ultima
 	///     <seealso cref="LandData" />
 	///     <seealso cref="ItemData" />
 	/// </summary>
-	public sealed class TileData
+	public static class TileData
 	{
 
 		/// <summary>
@@ -845,9 +842,6 @@ namespace Ultima
 
 			return Encoding.Default.GetString(m_StringBuffer, 0, count);
 		}
-
-		private TileData()
-		{ }
 
 		private static int[] landheader;
 		private static int[] itemheader;
@@ -1026,9 +1020,9 @@ namespace Ultima
 		/// <param name="FileName"></param>
 		public static void ExportItemDataToCSV(string FileName)
 		{
-			using (var Tex = new StreamWriter(
-				new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite),
-				Encoding.GetEncoding(1252)))
+			using (
+				var Tex = new StreamWriter(
+					new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite), Encoding.GetEncoding(1252)))
 			{
 				Tex.Write(
 					"ID;Name;Weight/Quantity;Layer/Quality;Gump/AnimID;Height;Hue;Class/Quantity;StackingOffset;MiscData;Unknown1;Unknown2;Unknown3");
@@ -1040,11 +1034,11 @@ namespace Ultima
 				for (var i = 0; i < ItemTable.Length; ++i)
 				{
 					var tile = ItemTable[i];
-					Tex.Write("0x{0:X4}", i);
-					Tex.Write(";{0}", tile.Name);
+					Tex.Write(String.Format("0x{0:X4}", i));
+					Tex.Write(String.Format(";{0}", tile.Name));
 					Tex.Write(";" + tile.Weight);
 					Tex.Write(";" + tile.Quality);
-					Tex.Write(";0x{0:X4}", tile.Animation);
+					Tex.Write(String.Format(";0x{0:X4}", tile.Animation));
 					Tex.Write(";" + tile.Height);
 					Tex.Write(";" + tile.Hue);
 					Tex.Write(";" + tile.Quantity);
@@ -1107,7 +1101,7 @@ namespace Ultima
 				for (var i = 0; i < LandTable.Length; ++i)
 				{
 					var tile = LandTable[i];
-					Tex.Write("0x{0:X4}", i);
+					Tex.Write(String.Format("0x{0:X4}", i));
 					Tex.Write(";" + tile.Name);
 					Tex.Write(";" + String.Format("0x{0:X4}", tile.TextureID));
 					Tex.Write(";" + tile.Unk1);

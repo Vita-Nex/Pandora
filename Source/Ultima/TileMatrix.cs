@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - TileMatrix.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Collections.Generic;
@@ -508,9 +502,7 @@ namespace Ultima
 					else
 					{
 						throw new ArgumentException(
-							String.Format(
-								"File with hash 0x{0:X8} was not found in hashes dictionary! EA Mythic changed UOP format!",
-								hash));
+							String.Format("File with hash 0x{0:X8} was not found in hashes dictionary! EA Mythic changed UOP format!", hash));
 					}
 				}
 			}
@@ -877,7 +869,7 @@ namespace Ultima
 			{
 				return 1;
 			}
-			if (a.m_Z > m_Z)
+			else if (a.m_Z > m_Z)
 			{
 				return -1;
 			}
@@ -889,7 +881,7 @@ namespace Ultima
 			{
 				return 1;
 			}
-			if (theirData.Height > ourData.Height)
+			else if (theirData.Height > ourData.Height)
 			{
 				return -1;
 			}
@@ -898,7 +890,7 @@ namespace Ultima
 			{
 				return -1;
 			}
-			if (theirData.Background && !ourData.Background)
+			else if (theirData.Background && !ourData.Background)
 			{
 				return 1;
 			}

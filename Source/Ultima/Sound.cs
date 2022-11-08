@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Sound.cs
-//  */
-#endregion
-
 #region References
 using System;
 using System.Collections.Generic;
@@ -26,7 +20,7 @@ namespace Ultima
 			ID = id;
 			buffer = buff;
 		}
-	}
+	};
 
 	public static class Sounds
 	{
@@ -177,7 +171,7 @@ namespace Ultima
 			 * ====================
 			 * */
 			return new[]
-				{0x46464952, length + 36, 0x45564157, 0x20746D66, 0x10, 0x010001, 0x5622, 0xAC44, 0x100002, 0x61746164, length};
+			{0x46464952, length + 36, 0x45564157, 0x20746D66, 0x10, 0x010001, 0x5622, 0xAC44, 0x100002, 0x61746164, length};
 		}
 
 		/// <summary>
@@ -287,8 +281,9 @@ namespace Ultima
 			var idx = Path.Combine(path, "soundidx.mul");
 			var mul = Path.Combine(path, "sound.mul");
 			var Headerlength = 44;
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				using (BinaryWriter binidx = new BinaryWriter(fsidx), binmul = new BinaryWriter(fsmul))
 				{
@@ -348,9 +343,9 @@ namespace Ultima
 
 		public static void SaveSoundListToCSV(string FileName)
 		{
-			using (var Tex = new StreamWriter(
-				new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite),
-				Encoding.GetEncoding(1252)))
+			using (
+				var Tex = new StreamWriter(
+					new FileStream(FileName, FileMode.Create, FileAccess.ReadWrite), Encoding.GetEncoding(1252)))
 			{
 				Tex.WriteLine("ID;Name;Length");
 				var name = "";
@@ -358,9 +353,9 @@ namespace Ultima
 				{
 					if (IsValidSound(i - 1, out name))
 					{
-						Tex.Write("0x{0:X3}", i);
-						Tex.Write(";{0}", name);
-						Tex.WriteLine(";{0:f}", GetSoundLength(i - 1));
+						Tex.Write(String.Format("0x{0:X3}", i));
+						Tex.Write(String.Format(";{0}", name));
+						Tex.WriteLine(String.Format(";{0:f}", GetSoundLength(i - 1)));
 					}
 				}
 			}

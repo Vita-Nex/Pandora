@@ -8,11 +8,9 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using TheBox.Mul;
 #endregion
 
-namespace TheBox.Common
+namespace TheBox.Controls
 {
 	/// <summary>
 	///     Summary description for HuesChart.
@@ -20,25 +18,11 @@ namespace TheBox.Common
 	public class HuesChart : Control
 	{
 		#region Variables
-		private Hues m_Hues;
 		private int m_SelectedIndex = 1;
 		private int m_ColorTableIndex = 28;
 		#endregion
 
 		#region Properties
-		/// <summary>
-		///     Gets or sets the Hues used on the chart
-		/// </summary>
-		public Hues Hues
-		{
-			get => m_Hues;
-			set
-			{
-				m_Hues = value;
-				Refresh();
-			}
-		}
-
 		/// <summary>
 		///     Gets or sets the index of the selected hue
 		/// </summary>
@@ -47,7 +31,7 @@ namespace TheBox.Common
 			get => m_SelectedIndex;
 			set
 			{
-				if (value > 0 && value < 3001)
+				if (value >= 0 && value <= 3000)
 				{
 					if (m_SelectedIndex != value)
 					{
@@ -64,7 +48,7 @@ namespace TheBox.Common
 		/// <summary>
 		///     Gets the selected Hue object
 		/// </summary>
-		public Hue SelectedHue => m_Hues[m_SelectedIndex];
+		public Ultima.Hue SelectedHue => Ultima.Hues.GetHue(m_SelectedIndex);
 
 		/// <summary>
 		///     Gets or sets the value that specifies which color from each hue is used to draw the hue
@@ -149,11 +133,6 @@ namespace TheBox.Common
 		{
 			base.OnPaint(e);
 
-			if (m_Hues == null)
-			{
-				return;
-			}
-
 			for (var i = 1; i < 3001; i++)
 			{
 				PaintHue(i, e.Graphics);
@@ -164,7 +143,7 @@ namespace TheBox.Common
 
 			e.Graphics.DrawRectangle(black, 0, 0, Width - 1, Height - 1);
 
-			if (m_SelectedIndex > 0 && m_SelectedIndex < 3001)
+			if (m_SelectedIndex > 0 && m_SelectedIndex <= 3000)
 			{
 				var column = (m_SelectedIndex - 1) / 60;
 				var row = (m_SelectedIndex - 1) % 60;
@@ -192,7 +171,9 @@ namespace TheBox.Common
 			var x = column * 9;
 			var y = row * 5;
 
-			Brush brush = new SolidBrush(Hue.ToColor(m_Hues[index].ColorTable[m_ColorTableIndex]));
+			var hue = Ultima.Hues.GetHue(index);
+
+			Brush brush = new SolidBrush(Ultima.Hues.HueToColor(hue.Colors[m_ColorTableIndex]));
 
 			g.FillRectangle(brush, x + 1, y + 1, 9, 5);
 

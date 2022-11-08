@@ -13,7 +13,6 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using TheBox.Data;
-using TheBox.Mul;
 
 // Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
 // Issue 10 - End
@@ -74,7 +73,6 @@ namespace TheBox.Forms
 		private byte GCSteps;
 		private int PreviousSelectedColor;
 		private int SelectedColor;
-		private readonly Hues m_Hues;
 		private PictureBox TheImage;
 		private ComboBox cmbGroups;
 		private Button bUpdate;
@@ -100,8 +98,6 @@ namespace TheBox.Forms
 			// Issue 10 - End
 
 			TempBmp = new Bitmap(450, 300);
-
-			m_Hues = Hues.Load(Pandora.Profile.MulManager["hues.mul"]);
 
 			DrawHues();
 
@@ -286,14 +282,11 @@ namespace TheBox.Forms
 			var Brightness = 28;
 			var Index = 0;
 
-			foreach (var group in m_Hues.Groups)
+			foreach (var entry in Ultima.Hues.List)
 			{
-				foreach (var entry in group.HueList)
-				{
-					// Draw the box for the hue
-					DrawBox(Chart, entry.ColorTable[Brightness], Index);
-					Index++;
-				}
+				// Draw the box for the hue
+				DrawBox(Chart, entry.Colors[Brightness], Index);
+				Index++;
 			}
 
 			// Display the chart
@@ -307,7 +300,7 @@ namespace TheBox.Forms
 			var row = Index % 60;
 
 			// Get the color
-			var color = Hue.ToColor(Color16);
+			var color = Ultima.Hues.HueToColor(Color16);
 
 			// Find the top left corner of the box
 			var x = column * 9;
@@ -655,9 +648,9 @@ namespace TheBox.Forms
 			return (index - 1) % 8;
 		}
 
-		private Hue GetHue(int index)
+		private Ultima.Hue GetHue(int index)
 		{
-			return m_Hues[index];
+			return Ultima.Hues.GetHue(index);
 		}
 
 		private bool ShiftPressed()
@@ -693,11 +686,11 @@ namespace TheBox.Forms
 			return false;
 		}
 
-		private Hue m_Hue;
+		private Ultima.Hue m_Hue;
 
 		private void PreviewHue(int x, int y)
 		{
-			var hue = m_Hues[GetHueIndex(x, y)];
+			var hue = Ultima.Hues.List[GetHueIndex(x, y)];
 
 			if (hue != m_Hue)
 			{

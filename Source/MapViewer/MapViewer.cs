@@ -119,11 +119,6 @@ namespace TheBox.MapViewer
 			m_ViewInfo = new MapViewInfo(this);
 		}
 
-		static MapViewer()
-		{
-			m_MulManager = new MulManager();
-		}
-
 		#region Events
 		/// <summary>
 		///     The coordinates of the center of the control have been changed
@@ -214,7 +209,7 @@ namespace TheBox.MapViewer
 
 			var index = (int)map;
 
-			var umap = Ultima.Map.Maps[index];
+			var umap = GetMapByID(index);
 
 			if (umap == null)
 			{
@@ -253,7 +248,7 @@ namespace TheBox.MapViewer
 				return;
 			}
 
-			var umap = Ultima.Map.Maps[(int)m_Map];
+			var umap = GetMapByID((int)m_Map);
 
 			if (umap == null)
 			{
@@ -399,11 +394,6 @@ namespace TheBox.MapViewer
 		///     Contains all the information about the current view of the map on the control
 		/// </summary>
 		private readonly MapViewInfo m_ViewInfo;
-
-		/// <summary>
-		///     The file manager to use with Pandora's Box
-		/// </summary>
-		private static MulManager m_MulManager;
 
 		/// <summary>
 		///     Specifies the X-Ray mode where statics below the map are displayed
@@ -564,45 +554,8 @@ namespace TheBox.MapViewer
 		/// </summary>
 		[Browsable(false)]
 		// Issue 10 - Update the code to Net Framework 3.5 - http://code.google.com/p/pandorasbox3/issues/detail?id=10 - Smjert
-		public List<IMapDrawable> DrawObjects
+		public List<IMapDrawable> DrawObjects { get; set; }
 		// Issue 10 - End
-		{ get; set; }
-
-		/// <summary>
-		///     Gets or sets the mul file manager
-		/// </summary>
-		[Browsable(false)]
-		public MulManager MulManager
-		{
-			get
-			{
-				if (m_MulManager == null)
-				{
-					m_MulManager = new MulManager();
-				}
-
-				return m_MulManager;
-			}
-			set => m_MulManager = value;
-		}
-
-		/// <summary>
-		///     Gets the mul file manager
-		/// </summary>
-		[Browsable(false)]
-		public static MulManager MulFileManager
-		{
-			get
-			{
-				if (m_MulManager == null)
-				{
-					m_MulManager = new MulManager();
-				}
-
-				return m_MulManager;
-			}
-			set => m_MulManager = value;
-		}
 
 		/// <summary>
 		///     States whether the map viewer can use the mouse wheel for zoom purposes
@@ -864,7 +817,7 @@ namespace TheBox.MapViewer
 		/// <returns>The height corresponding to the point</returns>
 		public int GetMapHeight(Point point, int mapIndex)
 		{
-			var umap = Ultima.Map.Maps[mapIndex];
+			var umap = GetMapByID(mapIndex);
 
 			if (umap == null || point.X < 0 || point.X > umap.Height || point.Y < 0 || point.Y > umap.Height)
 			{
@@ -874,6 +827,22 @@ namespace TheBox.MapViewer
 			var lt = umap.Tiles.GetLandTile(point.X, point.Y);
 
 			return lt.Z;
+		}
+
+		public static Ultima.Map GetMapByID(int mapID)
+		{
+			Ultima.Map umap = null;
+
+			foreach (var um in Ultima.Map.Maps)
+			{
+				if (um.MapID == mapID)
+				{
+					umap = um;
+					break;
+				}
+			}
+
+			return umap;
 		}
 
 		/// <summary>

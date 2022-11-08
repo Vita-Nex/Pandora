@@ -309,42 +309,6 @@ namespace TheBox.ArtViewer
 		}
 		#endregion
 
-		#region Mul Manager
-		private static MulManager m_MulManager;
-
-		/// <summary>
-		///     Gets or sets the mul manager
-		/// </summary>
-		public static MulManager MulManager
-		{
-			get
-			{
-				if (m_MulManager == null)
-				{
-					m_MulManager = new MulManager();
-				}
-
-				return m_MulManager;
-			}
-			set
-			{
-				if (value != null)
-				{
-					m_MulManager = value;
-				}
-				else
-				{
-					m_MulManager = new MulManager();
-				}
-			}
-		}
-
-		/// <summary>
-		///     Sets the file manager to use for this art viewer
-		/// </summary>
-		public MulManager MulFileManager { set => m_MulManager = value; }
-		#endregion
-
 		/// <summary>
 		///     Viewer for the Ultima Online art
 		/// </summary>

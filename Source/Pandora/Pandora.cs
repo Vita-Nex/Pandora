@@ -20,7 +20,6 @@ using TheBox.Controls;
 using TheBox.Data;
 using TheBox.Forms;
 using TheBox.Localization;
-using TheBox.Mul;
 using TheBox.Options;
 #endregion
 
@@ -104,21 +103,7 @@ namespace TheBox
 		/// <summary>
 		///     Gets the loaded hues
 		/// </summary>
-		public static Hues Hues
-		{
-			get
-			{
-				if (m_Hues == null)
-				{
-					if (Profile.MulManager["hues.mul"] != null)
-					{
-						m_Hues = Hues.Load(Profile.MulManager["hues.mul"]);
-					}
-				}
-
-				return m_Hues;
-			}
-		}
+		public static Ultima.Hue[] Hues => Ultima.Hues.List;
 		#endregion
 
 		#region Localization
@@ -182,11 +167,6 @@ namespace TheBox
 		///     The working folder for the program
 		/// </summary>
 		private static string m_Folder;
-
-		/// <summary>
-		///     The loaded hues
-		/// </summary>
-		private static Hues m_Hues;
 
 		/// <summary>
 		///     The data provider for travel locations

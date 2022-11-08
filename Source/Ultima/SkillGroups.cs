@@ -1,10 +1,4 @@
-﻿#region Header
-// /*
-//  *    2018 - Ultima - SkillGroups.cs
-//  */
-#endregion
-
-#region References
+﻿#region References
 using System;
 using System.Collections.Generic;
 using System.IO;

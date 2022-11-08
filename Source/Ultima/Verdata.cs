@@ -1,9 +1,3 @@
-#region Header
-// /*
-//  *    2018 - Ultima - Verdata.cs
-//  */
-#endregion
-
 #region References
 using System.IO;
 #endregion

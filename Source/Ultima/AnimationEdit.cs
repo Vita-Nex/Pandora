@@ -1,10 +1,4 @@
-﻿#region Header
-// /*
-//  *    2018 - Ultima - AnimationEdit.cs
-//  */
-#endregion
-
-#region References
+﻿#region References
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -86,12 +80,7 @@ namespace Ultima
 		}
 
 		private static void GetFileIndex(
-			int body,
-			int fileType,
-			int action,
-			int direction,
-			out FileIndex fileIndex,
-			out int index)
+			int body, int fileType, int action, int direction, out FileIndex fileIndex, out int index)
 		{
 			switch (fileType)
 			{
@@ -228,7 +217,10 @@ namespace Ultima
 					{
 						return true;
 					}
-					return false;
+					else
+					{
+						return false;
+					}
 				}
 			}
 
@@ -360,8 +352,9 @@ namespace Ultima
 			}
 			var idx = Path.Combine(path, filename + ".idx");
 			var mul = Path.Combine(path, filename + ".mul");
-			using (FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
-							  fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
+			using (
+				FileStream fsidx = new FileStream(idx, FileMode.Create, FileAccess.Write, FileShare.Write),
+						   fsmul = new FileStream(mul, FileMode.Create, FileAccess.Write, FileShare.Write))
 			{
 				using (BinaryWriter binidx = new BinaryWriter(fsidx), binmul = new BinaryWriter(fsmul))
 				{
@@ -488,8 +481,9 @@ namespace Ultima
 				{
 					continue;
 				}
-				var bmp = new Bitmap(width, height, PixelFormat.Format16bppArgb1555);
-				var bd = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+				var bmp = new Bitmap(width, height, Settings.PixelFormat);
+				var bd = bmp.LockBits(
+					new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, Settings.PixelFormat);
 				var line = (ushort*)bd.Scan0;
 				var delta = bd.Stride >> 1;
 
@@ -561,48 +555,35 @@ namespace Ultima
 			Frames.Clear();
 		}
 
-#if false //Soulblighter Modification
+#if false
+	//Soulblighter Modification
 		public void GetGifPalette(Bitmap bit)
 		{
-			using (MemoryStream imageStreamSource
-= new MemoryStream())
+			using (MemoryStream imageStreamSource = new MemoryStream())
 			{
-				System.Drawing.ImageConverter ic
-= new System.Drawing.ImageConverter();
-				byte[] btImage
-= (byte[])ic.ConvertTo(bit, typeof(byte[]));
+				System.Drawing.ImageConverter ic = new System.Drawing.ImageConverter();
+				byte[] btImage = (byte[])ic.ConvertTo(bit, typeof(byte[]));
 				imageStreamSource.Write(btImage, 0, btImage.Length);
-				GifBitmapDecoder decoder
-= new GifBitmapDecoder(imageStreamSource, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-				BitmapPalette pal
-= decoder.Palette;
+				GifBitmapDecoder decoder = new GifBitmapDecoder(imageStreamSource, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
+				BitmapPalette pal = decoder.Palette;
 				int i;
-				for (i
-= 0; i < 0x100; i++)
+				for (i = 0; i < 0x100; i++)
 				{
-					this.Palette[i]
-= 0;
+					this.Palette[i] = 0;
 				}
 				try
 				{
-					i
-= 0;
+					i = 0;
 					while (i < 0x100)//&& i < pal.Colors.Count)
 					{
 
-						int Red
-= pal.Colors[i].R / 8;
-						int Green
-= pal.Colors[i].G / 8;
-						int Blue
-= pal.Colors[i].B / 8;
-						int contaFinal
-= (((0x400 * Red) + (0x20 * Green)) + Blue) + 0x8000;
+						int Red = pal.Colors[i].R / 8;
+						int Green = pal.Colors[i].G / 8;
+						int Blue = pal.Colors[i].B / 8;
+						int contaFinal = (((0x400 * Red) + (0x20 * Green)) + Blue) + 0x8000;
 						if (contaFinal == 0x8000)
-							contaFinal
-= 0x8001;
-						this.Palette[i]
-= (ushort)contaFinal;
+							contaFinal = 0x8001;
+						this.Palette[i] = (ushort)contaFinal;
 						i++;
 					}
 				}
@@ -610,12 +591,10 @@ namespace Ultima
 				{ }
 				catch (System.ArgumentOutOfRangeException)
 				{ }
-				for (i
-= 0; i < 0x100; i++)
+				for (i = 0; i < 0x100; i++)
 				{
 					if (this.Palette[i] < 0x8000)
-						this.Palette[i]
-= 0x8000;
+						this.Palette[i] = 0x8000;
 				}
 			}
 		}
@@ -626,9 +605,7 @@ namespace Ultima
 			var count = 0;
 			var bmp = new Bitmap(bit);
 			var bd = bmp.LockBits(
-				new Rectangle(0, 0, bmp.Width, bmp.Height),
-				ImageLockMode.ReadOnly,
-				PixelFormat.Format16bppArgb1555);
+				new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
 			var cur = line;
@@ -810,8 +787,9 @@ namespace Ultima
 					break;
 				case 1:
 				{
-					var bmp = new Bitmap(0x100, 20, PixelFormat.Format16bppArgb1555);
-					var bd = bmp.LockBits(new Rectangle(0, 0, 0x100, 20), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+					var bmp = new Bitmap(0x100, 20, Settings.PixelFormat);
+					var bd = bmp.LockBits(
+						new Rectangle(0, 0, 0x100, 20), ImageLockMode.WriteOnly, Settings.PixelFormat);
 					var line = (ushort*)bd.Scan0;
 					var delta = bd.Stride >> 1;
 					for (var y = 0; y < bd.Height; ++y, line += delta)
@@ -831,8 +809,9 @@ namespace Ultima
 				}
 				case 2:
 				{
-					var bmp = new Bitmap(0x100, 20, PixelFormat.Format16bppArgb1555);
-					var bd = bmp.LockBits(new Rectangle(0, 0, 0x100, 20), ImageLockMode.WriteOnly, PixelFormat.Format16bppArgb1555);
+					var bmp = new Bitmap(0x100, 20, Settings.PixelFormat);
+					var bd = bmp.LockBits(
+						new Rectangle(0, 0, 0x100, 20), ImageLockMode.WriteOnly, Settings.PixelFormat);
 					var line = (ushort*)bd.Scan0;
 					var delta = bd.Stride >> 1;
 					for (var y = 0; y < bd.Height; ++y, line += delta)
@@ -991,7 +970,8 @@ namespace Ultima
 			Center = new Point(centerx, centery);
 			width = bit.Width;
 			height = bit.Height;
-			var bd = bit.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, PixelFormat.Format16bppArgb1555);
+			var bd = bit.LockBits(
+				new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, Settings.PixelFormat);
 			var line = (ushort*)bd.Scan0;
 			var delta = bd.Stride >> 1;
 			var tmp = new List<Raw>();
