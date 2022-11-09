@@ -78,7 +78,7 @@ namespace TheBox.Pages
 		/// <summary>
 		///     The maps corresponding to the listMaps items
 		/// </summary>
-		private readonly int[] m_Maps = { -1, -1, -1, -1, -1 };
+		private readonly int[] m_Maps = { -1, -1, -1, -1, -1, -1 };
 
 		private int m_X;
 		private int m_Y;

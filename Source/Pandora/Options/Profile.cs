@@ -426,7 +426,7 @@ namespace TheBox.Options
 
 			for (var i = m_Travel.MapNames.Length; i < m_Travel.MapCount; i++)
 			{
-				names[i] = m_Travel.DefaultMaps[i];
+				names[i] = TravelOptions.DefaultMaps[i];
 				enabled[i] = false;
 			}
 
@@ -453,7 +453,7 @@ namespace TheBox.Options
 				// Import default files
 				var asm = Pandora.DataAssembly;
 
-				for (var i = 0; i < 5; i++)
+				for (var i = 0; i < Travel.MapCount; i++)
 				{
 					var stream = asm.GetManifestResourceStream(String.Format(res, i));
 					var fStream = new FileStream(String.Format(dest, i), FileMode.Create, FileAccess.Write, FileShare.Read);

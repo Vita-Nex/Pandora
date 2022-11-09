@@ -30,17 +30,17 @@ namespace TheBox.Options
 			};
 		}
 
+		public static readonly string[] DefaultMaps = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno", "TerMur" };
+
 		/// <summary>
 		///     The number of maps currently supported
 		/// </summary>
-		public readonly int MapCount = 5;
+		public int MapCount => DefaultMaps.Length;
 
 		#region Variables
 		private bool m_WorldMapBig;
 
 		private string[] m_MapNames = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno", "TerMur" };
-
-		public readonly string[] DefaultMaps = { "Felucca", "Trammel", "Ilshenar", "Malas", "Tokuno", "TerMur" };
 
 		private bool[] m_EnabledMaps = { true, true, true, true, true, true };
 
@@ -229,7 +229,7 @@ namespace TheBox.Options
 		/// <summary>
 		///     Gets a value stating whether there is at least one enabled map
 		/// </summary>
-		public bool IsEnabled => m_EnabledMaps[0] || m_EnabledMaps[1] || m_EnabledMaps[2] || m_EnabledMaps[3];
+		public bool IsEnabled => Array.IndexOf(m_EnabledMaps, true) >= 0;
 
 		/// <summary>
 		///     Shows or hides the spawns on the map

@@ -171,6 +171,9 @@
     <EmbeddedResource Include="SoundData.xml" />
     <EmbeddedResource Include="map4.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="map5.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
