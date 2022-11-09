@@ -171,22 +171,17 @@ namespace TheBox
 
 		public void CreateNewProfile()
 		{
-			// Temporarly deisabled
-			//_context.MainForm = null;
-
-			if (Pandora.BoxForm != null)
+			if (Profile != null)
+			{
+				CreateNewProfile(Profile.Language);
+			}
+			else if (Pandora.BoxForm != null)
 			{
 				Pandora.BoxForm.Close();
 				Pandora.BoxForm.Dispose();
 			}
-
-			// Temporarly deisabled
-			//_context.MakeNewProfile();
 		}
 
-		/// <summary>
-		///     Closes Pandora's Box and creates a new profile
-		/// </summary>
 		public void CreateNewProfile(string language)
 		{
 			var profile = new Profile
@@ -197,7 +192,7 @@ namespace TheBox
 			var wiz = new ProfileWizard(profile);
 			if (wiz.ShowDialog() != DialogResult.OK)
 			{
-				_splash.Close();
+				_splash?.Close();
 				return;
 			}
 			profile = wiz.Profile;
@@ -222,9 +217,7 @@ namespace TheBox
 		/// </summary>
 		public void DeleteCurrentProfile()
 		{
-			// Have to be refactored when we have a more global GUI handling - Tarion
-			// Temporarly deisabled
-			//_context.MainForm = null;
+			Profile.DeleteProfile(Profile.Name);
 
 			if (Pandora.BoxForm != null)
 			{
@@ -232,11 +225,7 @@ namespace TheBox
 				Pandora.BoxForm.Dispose();
 			}
 
-			Profile.DeleteProfile(Profile.Name);
 			Profile = null;
-
-			// Temporarly deisabled
-			//_context.DoProfile();
 		}
 
 		/// <summary>

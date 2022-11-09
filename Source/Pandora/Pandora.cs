@@ -399,19 +399,7 @@ namespace TheBox
 		/// </summary>
 		public static void CreateNewProfile()
 		{
-			Container.Resolve<ProfileManager>().CreateNewProfile();
-
-			/* Now handled by ProfileManager
-			m_Context.MainForm = null;
-
-			if (m_TheBox != null)
-			{
-				m_TheBox.Close();
-				m_TheBox.Dispose();
-			}
-
-			m_Context.MakeNewProfile();
-			 * */
+			_profileManager.CreateNewProfile();
 		}
 
 		/// <summary>
@@ -419,21 +407,7 @@ namespace TheBox
 		/// </summary>
 		public static void DeleteCurrentProfile()
 		{
-			Container.Resolve<ProfileManager>().DeleteCurrentProfile();
-
-			/* Now handled by ProfileManager
-			// Have to be refactored when we have a more global GUI handling - Tarion
-			m_Context.MainForm = null;
-
-			if (m_TheBox != null)
-			{
-				m_TheBox.Close();
-				m_TheBox.Dispose();
-			}
-
-			ProfileManager.Instance.DeleteCurrentProfile();
-			m_Context.DoProfile();
-			 * */
+			_profileManager.DeleteCurrentProfile();
 		}
 		#endregion
 

@@ -2645,6 +2645,8 @@ namespace TheBox.Forms
 		{
 			Pandora.Profile.Save();
 			Pandora.CreateNewProfile();
+
+			DisplayProfiles();
 		}
 
 		/// <summary>
