@@ -310,11 +310,11 @@ namespace TheBox
 			{
 				if (UsePrefix)
 				{
-					success = Utility.SendToUO(String.Format("{0}{1}\r\n", Profile.General.CommandPrefix, text));
+					success = Utility.SendToUO(String.Format("{0}{1}", Profile.General.CommandPrefix, text));
 				}
 				else
 				{
-					success = Utility.SendToUO(String.Format("{0}\r\n", text));
+					success = Utility.SendToUO(String.Format("{0}", text));
 				}
 			}
 
