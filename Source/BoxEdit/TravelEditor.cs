@@ -736,7 +736,7 @@ namespace TheBox.Editors
 
 		private void bTest_Click(object sender, EventArgs e)
 		{
-			_ = Utility.SendToUO(String.Format("[Go {0} {1} {2}\n", CurrentLocation.X, CurrentLocation.Y, CurrentLocation.Z));
+			_ = Utility.SendToUO(String.Format("[Go {0} {1} {2}", CurrentLocation.X, CurrentLocation.Y, CurrentLocation.Z));
 		}
 
 		private void bSetCoordinates_Click(object sender, EventArgs e)

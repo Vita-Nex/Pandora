@@ -33,8 +33,60 @@ namespace TheBox.Common
 		[DllImport("User32")]
 		private static extern IntPtr FindWindow(string lpszClassName, string lpszWindowName);
 
+		/// <summary>
+		/// Synthesizes keystrokes, mouse motions, and button clicks.
+		/// </summary>
 		[DllImport("user32.dll")]
-		private static extern int SendMessage(int hWnd, uint Msg, int wParam, int lParam);
+		internal static extern uint SendInput(uint nInputs,
+		   [MarshalAs(UnmanagedType.LPArray), In] INPUT[] pInputs,
+		   int cbSize);
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct INPUT
+		{
+			public int type;
+			public InputUnion U;
+		}
+
+		[StructLayout(LayoutKind.Explicit)]
+		public struct InputUnion
+		{
+			[FieldOffset(0)]
+			public MOUSEINPUT mi;
+			[FieldOffset(0)]
+			public KEYBDINPUT ki;
+			[FieldOffset(0)]
+			public HARDWAREINPUT hi;
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct MOUSEINPUT
+		{
+			public int dx;
+			public int dy;
+			public int mouseData;
+			public uint dwFlags;
+			public uint time;
+			public IntPtr dwExtraInfo;
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct KEYBDINPUT
+		{
+			public ushort wVk;
+			public ushort wScan;
+			public uint dwFlags;
+			public uint time;
+			public IntPtr dwExtraInfo;
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct HARDWAREINPUT
+		{
+			public uint uMsg;
+			public ushort wParamL;
+			public ushort wParamH;
+		}
 
 		[DllImport("user32.dll")]
 		private static extern int SetForegroundWindow(int hWnd);
@@ -85,13 +137,62 @@ namespace TheBox.Common
 				return false;
 			}
 
+			var input = new INPUT[message.Length + 2];
+
 			// We have a window
-			foreach (var c in message.ToCharArray())
+			for (int i = 0; i < message.Length; i++)
 			{
-				_ = SendMessage(handle.ToInt32(), WM_CHAR, c, 0);
+				// Send Text
+				input[i] = new INPUT
+				{
+					type = 0x0001, // Keyboard input
+					U = new InputUnion
+					{
+						ki = new KEYBDINPUT
+						{
+							wVk = 0,
+							wScan = message[i],
+							dwFlags = 0x0004, // KEYEVENTF_UNICODE
+							time = 0,
+							dwExtraInfo = IntPtr.Zero
+						}
+					}
+				};
 			}
+			// Send Enter
+			input[message.Length] = new INPUT
+			{
+				type = 0x0001, // Keyboard input
+				U = new InputUnion
+				{
+					ki = new KEYBDINPUT
+					{
+						wVk = 0x0D,
+						wScan = 0,
+						dwFlags = 0,
+						time = 0,
+						dwExtraInfo = IntPtr.Zero
+					}
+				}
+			};
+			input[message.Length+1] = new INPUT
+			{
+				type = 0x0001, // Keyboard input
+				U = new InputUnion
+				{
+					ki = new KEYBDINPUT
+					{
+						wVk = 0x0D,
+						wScan = 0,
+						dwFlags = 0x0002, // KEYEVENTF_KEYUP
+						time = 0,
+						dwExtraInfo = IntPtr.Zero
+					}
+				}
+			};
 
 			_ = SetForegroundWindow(handle.ToInt32());
+			SendInput((uint)input.Length, input, Marshal.SizeOf(typeof(INPUT)));
 			return true;
 		}
 
